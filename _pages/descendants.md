@@ -7,6 +7,13 @@ author_profile: true
 
 Summer interns
 
+-   At [Novi](http://novi.com) :
+    - [Oded Naor](https://www.linkedin.com/in/oded-naor/?originalSubdomain=il)
+    - [Erica Blum](http://www.cs.umd.edu/~erblum/)
+    - [Suyash Gupta](https://gupta-suyash.github.io/)
+    - [Zhuolun (Daniel) Xiang](https://sites.google.com/site/danielxiangzl/)
+    - [Shir Cohen](https://www.linkedin.com/in/shir-cohen/?originalSubdomain=il)
+
 -   At [VRG](http://research.vmware.com) :
     -   [Ted Yin](https://www.cs.cornell.edu/~tedyin/) (Cornell, summer 2018)
     -   [Soujanya Ponnapalli](https://www.linkedin.com/in/soujanya-ponnapalli-553275107/) (UT Austin, summer 2018)
