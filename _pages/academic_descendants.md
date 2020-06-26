@@ -1,3 +1,10 @@
+---
+layout: archive
+title: "Academic Descendants"
+permalink: /academic_descendants/
+author_profile: true
+---
+
 Summer interns
 
 -   At [VRG](http://research.vmware.com) :
