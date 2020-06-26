@@ -8,6 +8,7 @@ redirect_from:
 ---
 {% include base_path %}
 
-[tech profile]({{ base_path }}/files/RnT-profile.pdf)
-[academic_resume]({{ base_path }}/files/dahliamalkhi-cv.pdf)
+- [tech profile]({{ base_path }}/files/RnT-profile.pdf)
+
+- [academic_resume]({{ base_path }}/files/dahliamalkhi-cv.pdf)
 

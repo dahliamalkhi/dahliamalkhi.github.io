@@ -81,7 +81,7 @@ analytics:
 # Site Author
 author:
   name             : "Dahlia Malkhi"
-  avatar           : "images/dahliabest.jpg"
+  avatar           : "dahliabest.jpg"
   bio              : "Lead researcher at Facebook/Novi and lead maintainer of the Libra project"
   location         : "California"
   employer         :
