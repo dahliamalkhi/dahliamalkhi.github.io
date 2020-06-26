@@ -8,11 +8,11 @@ author_profile: true
 
 #### 2020
 
--   *Twins: White-Glove Approach for BFT Testing.\
-    *Shehar Bano, Alberto Sonnino, Andrey Chursin, Dmitri Perelman, Dahlia Malkhi.\
+-   *Twins: White-Glove Approach for BFT Testing.*\
+     Shehar Bano, Alberto Sonnino, Andrey Chursin, Dmitri Perelman, Dahlia Malkhi.\
     [<https://arxiv.org/abs/2004.10617>]
--   *Cogsworth: Byzantine Round Synchronization.\
-    *Oded Naor, Mathieu Baudet, Dahlia Malkhi, Alexander Spiegelman.\
+-   *Cogsworth: Byzantine Round Synchronization.*\
+     Oded Naor, Mathieu Baudet, Dahlia Malkhi, Alexander Spiegelman.\
     [Cryptoeconomics Systems Conference (CES) 2020](https://cryptoeconomicsystems.pubpub.org/ces20).\
     Final version coming soon. ArXiv 2019 version [<https://arxiv.org/abs/1909.05204>].
 
