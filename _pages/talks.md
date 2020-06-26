@@ -1,4 +1,9 @@
-## Keynotes:
+---
+layout: archive
+title: "Invited Talks and Keynotes"
+permalink: /talks/
+author_profile: true
+---
 
 -   Several invited presentations about the Libra technology under the umbrella title "*The Journey to Libra Blockchain Core and Beyond*":
     -   at [ITA 2020](https://ita.ucsd.edu/ws/schedule2020/#d_5), 
