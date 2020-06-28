@@ -422,12 +422,9 @@ author_profile: true
 -   *Transis: A Communication Sub-System for High Availability.*
     Yair Amir, Danny Dolev, Shlomo Kramer and Dalia Malki.
     Proceedings of the 22nd Annual International Symposium on Fault-Tolerant Computing (FTCS), July 1992, pp. 76-84. [[pdf]](https://dahliamalkhi.files.wordpress.com/2016/08/transis-ftcs1992.pdf "Transis-FTCS1992")
-% {% if author.googlescholar %}
-%   You can also find my articles on <u><a href="{{author.googlescholar}}">my Google Scholar profile</a>.</u>
-% {% endif %}
-% 
-% {% include base_path %}
-% 
-% {% for post in site.publications reversed %}
-%   {% include archive-single.html %}
-% {% endfor %}
+
+---
+
+{% if author.googlescholar %}
+   You can also find my articles on <u><a href="{{author.googlescholar}}">my Google Scholar profile</a>.</u>
+{% endif %}
