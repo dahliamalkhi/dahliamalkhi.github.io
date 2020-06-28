@@ -84,9 +84,9 @@ author:
   avatar           : "dahliabest.jpg"
   bio              : "Lead researcher at Facebook/Novi and lead maintainer of the Libra project"
   location         : "California"
-  employer         :
+  employer         : "Novi"
   pubmed           : 
-  googlescholar    : 
+  googlescholar    : "http://scholar.google.com/citations?user=A_VZ7N0AAAAJ&hl=en"
   email            :
   researchgate     :  # example: "https://www.researchgate.net/profile/yourprofile"
   uri              :
@@ -115,6 +115,7 @@ author:
   xing             :
   youtube          :
   wikipedia        :
+  dblp             : "https://dblp.uni-trier.de/pers/m/Malkhi:Dahlia.html"
 
 
 # Reading Files
