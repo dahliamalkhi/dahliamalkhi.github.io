@@ -44,9 +44,9 @@ PhD students (Hebrew U.)
 -   Gregory (Grisha) Chockler (2003), [professor, Royal Holloway](https://pure.royalholloway.ac.uk/portal/en/persons/gregory-chockler%28bc850403-f033-4dbe-978f-094e06b3068a%29.html).
 -   Yaron Sella (2004), Cisco.
 -   Elan Pavlov (2005).
--   Ittai Abraham (2008), [VMware Research](https://research.vmware.com/researchers/8).\
+-   Ittai Abraham (2008), [VMware Research](https://research.vmware.com/researchers/8).
 -   Danny Bickson (2008), [Dato (formerly GraphLab)](https://dato.com/company/team/index.html).
--   Yaacov Fernandess (2010), [Yahoo Labs](https://labs.yahoo.com/researchers/coby).
+-   Yaacov Fernandess (2010).
 
 MSc students (Hebrew U.)
 
