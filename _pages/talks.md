@@ -6,10 +6,10 @@ author_profile: true
 ---
 
 -   Several invited presentations about the Libra technology under the umbrella title "*The Journey to Libra Blockchain Core and Beyond*":
+    -  [DSN'20](https://dsn2020.webs.upv.es/final-program/keynotes/)
+    -  [TPBC'20](https://eventum.upf.edu/51585/detail/theory-and-practice-of-blockchains-online-weekly-seminar-series-.html), [[video]](https://www.youtube.com/watch?v=S9oPB9j-UZU&feature=youtu.be),
+    -  [FAB'20](https://scfab.github.io/2020/index.html),
     -   at [ITA 2020](https://ita.ucsd.edu/ws/schedule2020/#d_5), 
-       [FAB'20](https://scfab.github.io/2020/index.html),
-       [TPBC'20](https://eventum.upf.edu/51585/detail/theory-and-practice-of-blockchains-online-weekly-seminar-series-.html), [[video]](https://www.youtube.com/watch?v=S9oPB9j-UZU&feature=youtu.be),
-       [DSN'20](https://dsn2020.webs.upv.es/final-program/keynotes/)
 -   "New Approaches in BFT", [Chicago booth Cryptocurrencies and Blockchains Conference](https://bfi.uchicago.edu/event/cryptocurrencies-and-blockchains-conference/)
 -   "Byzantine Fault Tolerance meets Flexibility", [Richard M. Karp Distinguished Lecture](https://simons.berkeley.edu/rmklectures2019-fall-3), November 2019
 -   "Beyond Classical BFT Approaches", [CES 2019](https://cryptoeconomicsystems.pubpub.org/)
