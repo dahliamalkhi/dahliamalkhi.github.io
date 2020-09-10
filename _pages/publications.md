@@ -9,13 +9,17 @@ author_profile: true
 
 #### 2020
 
+-   *Asynchronous Distributed Key Generation for Computationally Secure Randomness, Consensus, and Threshold Signatures.*
+    Eleftherios Kokoris Kogias, Dahlia Malkhi, Alexander Spiegelman. 
+    [ACS Conference on Computer and Communications Security (CCS) 2020](https://www.sigsac.org/ccs/CCS2020/).
+    Final version coming soon. ArXiv 2019 version [https://eprint.iacr.org/2019/1015](https://eprint.iacr.org/2019/1015)
 -   *Twins: White-Glove Approach for BFT Testing.*
      Shehar Bano, Alberto Sonnino, Andrey Chursin, Dmitri Perelman, Dahlia Malkhi.
     [<https://arxiv.org/abs/2004.10617>]
 -   *Cogsworth: Byzantine Round Synchronization.*
      Oded Naor, Mathieu Baudet, Dahlia Malkhi, Alexander Spiegelman.
     [Cryptoeconomics Systems Conference (CES) 2020](https://cryptoeconomicsystems.pubpub.org/ces20).
-    Final version coming soon. ArXiv 2019 version [<https://arxiv.org/abs/1909.05204>].
+    Final version coming soon. ArXiv 2019 version [https://arxiv.org/abs/1909.05204](https://arxiv.org/abs/1909.05204).
 
 #### 2019
 
