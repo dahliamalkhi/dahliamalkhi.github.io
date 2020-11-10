@@ -9,10 +9,13 @@ author_profile: true
 
 #### 2020
 
+-   *ACE: Abstract Consensus Encapsulation for Liveness Boosting of State Machine Replication.*
+    Alexander Spiegelman, Arik Rinberg, Dahlia Malkhi. 
+    [The 24th International Conference on Principles of Distributed Systems (OPODIS 2020)](https://opodis2020.unistra.fr/).
 -   *Asynchronous Distributed Key Generation for Computationally Secure Randomness, Consensus, and Threshold Signatures.*
     Eleftherios Kokoris Kogias, Dahlia Malkhi, Alexander Spiegelman. 
     [ACS Conference on Computer and Communications Security (CCS) 2020](https://www.sigsac.org/ccs/CCS2020/).
-    Final version coming soon. ArXiv 2019 version [https://eprint.iacr.org/2019/1015](https://eprint.iacr.org/2019/1015)
+    ArXiv 2019 version [https://eprint.iacr.org/2019/1015](https://eprint.iacr.org/2019/1015)
 -   *Twins: White-Glove Approach for BFT Testing.*
      Shehar Bano, Alberto Sonnino, Andrey Chursin, Dmitri Perelman, Dahlia Malkhi.
     [<https://arxiv.org/abs/2004.10617>]
