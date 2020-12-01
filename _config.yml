@@ -10,7 +10,7 @@ locale                   : "en-US"
 title                    : "Dahlia Malkhi / PhD"
 title_separator          : "-"
 name                     : &name "Dahlia Malkhi"
-description              : &description "Personal homepage of Dahlia Malkhi, lead researcher at Novi"
+description              : &description "Personal homepage of Dahlia Malkhi, Chief Technology Officer at Libra Association"
 url                      : https://dahliamalkhi.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "dahliamalkhi/dahliamalkhi.github.io"
@@ -82,7 +82,7 @@ analytics:
 author:
   name             : "Dahlia Malkhi"
   avatar           : "dahliabest.jpg"
-  bio              : "Lead researcher at Facebook/Novi and lead maintainer of the Libra project"
+  bio              : "Chief Technology Officer at Libra Association, Lead researcher at Novi and Lead Maintainer of the Libra project"
   location         : "California"
   employer         : "Novi"
   pubmed           : 
