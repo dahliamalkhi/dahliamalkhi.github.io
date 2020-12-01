@@ -15,7 +15,7 @@ Lead Researcher at Novi.
 
 I have applied and foundational research interest in broad aspects of reliability and security of distributed systems. For over two decades, I participated in driving innovation in tech, notably:  co-inventor of HotStuff, co-founder and technical lead of VMware blockchain, co-inventor of Flexible Paxos, the technology behind Log Device, creator and tech lead of CorfuDB, a database-less database driving VMware’s NSX-T distributed control plane (see Corfu github repo), and co-inventor of the FairPlay project.
 
-I joined the Libra team in Juny 2019, first as a Lead Reseacher at Novi and later as Chief Technology Officer at the Libra Association.
+I joined the Libra team in June 2019, first as a Lead Reseacher at Novi and later as Chief Technology Officer at the Libra Association.
 In 2014, after the closing of the Microsoft Research Silicon Valley lab, I co-founded VMware Research and became a Principal Researcher at VMware until June 2019. From 2004-2014, I was a principal researcher at Microsoft Research, Silicon Valley. From 1999-2007, I served as tenured associate professor at the Hebrew University of Jerusalem. From 1995-1999, I was a senior researcher at AT&T Labs, NJ.
 
 #### Selected distinctions:
