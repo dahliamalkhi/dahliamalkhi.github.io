@@ -28,3 +28,7 @@ In 2014, after the closing of the Microsoft Research Silicon Valley lab, I co-fo
 -   Associate editor of the Distributed Computing Journal since 2002.
 -   Program chair for [Usenix ATC 2019](https://www.usenix.org/conferences/byname/131) (new!), [LADIS 2012](http://ladisworkshop.org/) , [Locality 2007](http://research.microsoft.com/en-us/um/people/moscitho/locality/), [PODC 2006](http://www.podc.org/podc2006/), [Locality 2005](http://www.mimuw.edu.pl/~disc2005/index.php?page=workshops) and [DISC 2002](http://www.disc-conference.org/disc2002/index.html).
 -   Co-chair of the Simons Institute [Advisory Board](https://simons.berkeley.edu/people/advisory) 2019-2021
+
+#### Blog:
+
+[My personal blog](https://dahliamalkhi.wordpress.com)
