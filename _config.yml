@@ -21,14 +21,14 @@ future                   : false
 read_more                : "enabled" # if enabled, adds "Read more" links to excerpts
 talkmap_link             : false #change to true to add link to talkmap on talks page
 comments:
-  provider               : "twitter" # false (default), "disqus", "discourse", "facebook", "google-plus", "staticman", "custom"
+  provider               :  # false (default), "disqus", "discourse", "facebook", "google-plus", "staticman", "custom"
   disqus:
     shortname            :
   discourse:
     server               : # https://meta.discourse.org/t/embedding-discourse-comments-via-javascript/31963 , e.g.: meta.discourse.org
   facebook:
     appid                :
-    num_posts            : 5 # 5 (default)
+    num_posts            : # 5 (default)
     colorscheme          : # "light" (default), "dark"
 staticman:
   allowedFields          : ['name', 'email', 'url', 'message']
@@ -180,13 +180,16 @@ collections:
   publications:
     output: true
     permalink: /:collection/:path/
+  posts:
+    output          : true
+    permalink: /:collection/:path/
 
 
 # Defaults
 defaults:
   # _posts
   - scope:
-      path: ""
+      path: "posts"
       type: posts
     values:
       layout: single
