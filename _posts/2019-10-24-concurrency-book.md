@@ -1,6 +1,6 @@
 ---
 title: '"Concurrency" Book is Here'
-date: 2020-12-25
+date: 2019-10-24
 permalink: /posts/2019/10/concurrency-book/
 tags:
   - concurrency
