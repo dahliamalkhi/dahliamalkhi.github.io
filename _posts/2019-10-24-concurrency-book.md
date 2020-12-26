@@ -10,9 +10,9 @@ tags:
 ---
 
 
-![](/images/lam.jpg)
-
 Today, I am proud to announce that a book I edited titled “_Concurrency: The Works of Leslie Lamport_” has just been published and is available on  [Amazon](https://www.amazon.com/dp/1450372708/ref=cm_sw_em_r_mt_dp_U_Ic-RDbS2XSGD5) ; [Google books](https://books.google.com/books/about/Concurrency.html?id=z_m2DwAAQBAJ) ; [ACM books](http://books.acm.org/titles#tab312) .
+
+![](/images/lam.jpg)
 
 Sharp as a razor, Leslie has unique intuition and insights on distributed systems that bring clarity and new angles on problems. Those of us who collaborated with him often found the experience remarkable and sometimes even career-altering. Personally, I am awed when I look back at the ten years at Microsoft Research SVC during which I had the pleasure of working with and alongside Leslie. He taught me several wisdoms.
 
