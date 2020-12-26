@@ -31,4 +31,4 @@ In 2014, after the closing of the Microsoft Research Silicon Valley lab, I co-fo
 
 #### Blog:
 
-[My personal blog](https://dahliamalkhi.wordpress.com)
+[My personal blog](https://dahliamalkhi.github.io/posts)
