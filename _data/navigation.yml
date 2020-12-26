@@ -1,8 +1,8 @@
 # main links links
 main:
-  - title: "Publications"
-    url: /publications/
-
+  - title: "Blog"
+    url: /posts/
+    
   - title: "Books"
     url: /books/    
 
@@ -15,12 +15,12 @@ main:
 #  - title: "Portfolio"
 #    url: /portfolio/
         
-  - title: "Blog"
-    url: /posts/
-    
   - title: "CV"
     url: /cv/
     
+  - title: "Publications"
+    url: /publications/
+
   - title: "Academic-descendants"
     url: /descendants/
     
