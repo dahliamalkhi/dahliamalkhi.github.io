@@ -1,5 +1,5 @@
 ---
-title: 'The BFT lens: Hot-Stuff and Casper'
+title: 'The BFT lens: HotStuff and Casper'
 date: 2018-03-13
 permalink: /posts/2018/03/bft-lens-casper/
 tags:
@@ -79,22 +79,22 @@ For completeness, let me briefly mention two classes of improvements that were s
 
 ### HotStuff
 
-[HotStuff](https://arxiv.org/abs/1803.05069)  reduces by factor n the PBFT proposer proof. This does not make the protocol more complex, on the contrary, it considerably simplifies it. In HotStuff, a new proposer carries only **one commit-certificate, the highest-level certificate it knows**. Replicas **reject a proposition if it conflicts with the highest-level certificate they committed to**. This modification is very simple, but as I said, suprisingly powerful. It is illustrated below, PBFT on the left, the Hot-Stuff linear proposer protocol on the right:
+[HotStuff](https://arxiv.org/abs/1803.05069)  reduces by factor n the PBFT proposer proof. This does not make the protocol more complex, on the contrary, it considerably simplifies it. In HotStuff, a new proposer carries only **one commit-certificate, the highest-level certificate it knows**. Replicas **reject a proposition if it conflicts with the highest-level certificate they committed to**. This modification is very simple, but as I said, suprisingly powerful. It is illustrated below, PBFT on the left, the HotStuff linear proposer protocol on the right:
 
 ![PBFTfull](/images/pbftfull.png)![LVC](/images/lvc.png)  
 An ArXiv  [manuscript on HotStuff](http://arxiv.org/abs/1803.05069)  describes how to drive down the communication by another factor n by employing threshold cryptography.
 
-The next modification will make the Hot-Stuff protocol look much more like a blockchain than a BFT protocol. Again, this is a small but powerful modification. In Hot-Stuff, the **commit-phase of each level is pushed into the prepare-phase of the next level**. We will refer to the single per-level locking phase as ‘vote’. This works as follows.
+The next modification will make the HotStuff protocol look much more like a blockchain than a BFT protocol. Again, this is a small but powerful modification. In HotStuff, the **commit-phase of each level is pushed into the prepare-phase of the next level**. We will refer to the single per-level locking phase as ‘vote’. This works as follows.
 
-When a proposer extends the chain with a new value, it optionally includes in the proposition the commit-certificate for the previous level. A vote on the proposition is both an explicit prepare and an implicit commit. It is an explicit prepare on the new value. And if the proposition includes a commit-certificate for the preceding level, it is an implicit commit on the certificate. The complete Hot-Stuff framework is depicted below.
+When a proposer extends the chain with a new value, it optionally includes in the proposition the commit-certificate for the previous level. A vote on the proposition is both an explicit prepare and an implicit commit. It is an explicit prepare on the new value. And if the proposition includes a commit-certificate for the preceding level, it is an implicit commit on the certificate. The complete HotStuff framework is depicted below.
 
 ![HSfull](/images/hsfull.png)
 
 It is safe for proposers not to include in a proposition a commit-certificate for the preceding level. But note that a decision may be reached only at levels in which a proposer does include a commit-certificate for the preceding level. The same happens in PBFT: A commit-phase may either complete, or a timeout is reached and a proposer transitions to the next level without a decision.
 
-### The Hot-Stuff “Pseudo-code”
+### The HotStuff “Pseudo-code”
 
-The entire Hot-Stuff protocol is a one-message exchange. The Hot-Stuff framework explicitly separates an abstract mechanism for progress, called a ‘beacon’, allowing for different pluggable implementations:
+The entire HotStuff protocol is a one-message exchange. The HotStuff framework explicitly separates an abstract mechanism for progress, called a ‘beacon’, allowing for different pluggable implementations:
 
 Beacon functionality:
 
@@ -108,23 +108,23 @@ Replica functionality:
 
 The replica functionality is the same as before, simply merging the prepare for one level with the (optional) commit of the preceding level. As before, replicas reject a proposition if it conflicts with the highest-level commit-certificate they hold.
 
-The full details are described in an ArXiv  [manuscript on Hot-Stuff](http://arxiv.org/abs/1803.05069). The full manuscript elaborates on several possible materializations of the beacon functionality: Hardware clocks, proposer rotation, and PoW.
+The full details are described in an ArXiv  [manuscript on HotStuff](http://arxiv.org/abs/1803.05069). The full manuscript elaborates on several possible materializations of the beacon functionality: Hardware clocks, proposer rotation, and PoW.
 
 ### Casper
 
-We first regard Casper as a pure BFT engine, but hint to its intended use-case by referring to participants as ‘validators’ instead of replicas. Having introduced Hot-Stuff, we can describe the Casper BFT protocol in a single-step refinement. The gist of it is quite simple. Casper **moves the responsibility for pushing a commit-certificate from the beacon-functionality to peer-to-peer dissemination among the validators**.
+We first regard Casper as a pure BFT engine, but hint to its intended use-case by referring to participants as ‘validators’ instead of replicas. Having introduced HotStuff, we can describe the Casper BFT protocol in a single-step refinement. The gist of it is quite simple. Casper **moves the responsibility for pushing a commit-certificate from the beacon-functionality to peer-to-peer dissemination among the validators**.
 
 More specifically, each validator signs its vote and sends it directly to a random subset of the validators. Validators forward votes they receive at random for a while. This gossip-style spreading strategy guarantees with high probability that all validators will collect a commit-certificate within a reasonable time frame.
 
-Once a replica obtains a commit-certificate, it refers to it in its vote at the next level. The figure below depicts Casper and highlights the differences from Hot-Stuff:
+Once a replica obtains a commit-certificate, it refers to it in its vote at the next level. The figure below depicts Casper and highlights the differences from HotStuff:
 
 ![casper-highlights](/images/casper-highlights.png)
 
 Removing the responsibility from the proposer role to collect and distribute commit-certificates is inherent for the setting that Casper addresses, as discussed below.
 
-This variation is safe, replicas **can** indeed spread votes among themselves. It is live, but just like Hot-Stuff and PBFT, progress depends on certain synchrony. In Hot-Stuff, proposers (occasionally) need to collect a commit-certificate from the preceding level in order to make progress. In Casper, proposers do not collect, nor spread, commit-certificates. Instead, proposers must (occasionally) wait sufficiently long for the validators to spread votes among themselves and obtain commit-certificates in order to make progress. This requires proposers to (occasionally) delay for the worst case dissemination bound. Recall what I said above: Relying on synchrony provides a worst-case upper bound, but sets a (pessimistic) lower-bound.
+This variation is safe, replicas **can** indeed spread votes among themselves. It is live, but just like HotStuff and PBFT, progress depends on certain synchrony. In HotStuff, proposers (occasionally) need to collect a commit-certificate from the preceding level in order to make progress. In Casper, proposers do not collect, nor spread, commit-certificates. Instead, proposers must (occasionally) wait sufficiently long for the validators to spread votes among themselves and obtain commit-certificates in order to make progress. This requires proposers to (occasionally) delay for the worst case dissemination bound. Recall what I said above: Relying on synchrony provides a worst-case upper bound, but sets a (pessimistic) lower-bound.
 
-As mentioned above, the complete Hot-Stuff solution achieves factor n improvement in communication complexity by applying threshold cryptography. This improvement relies on a proposer’s active involvement.
+As mentioned above, the complete HotStuff solution achieves factor n improvement in communication complexity by applying threshold cryptography. This improvement relies on a proposer’s active involvement.
 
 ### The Casper Finality Engine
 
@@ -147,7 +147,7 @@ Under the above three conditions, Casper provides liveness.
 
 # Epilogue
 
-When we began our exploration of new-wave BFT protocols like Tendermint and Casper, they appeared quite different from traditional BFT protocols like DLS and PBFT. I hope that Hot-Stuff provided a useful algorithmic framework to discuss both worlds.
+When we began our exploration of new-wave BFT protocols like Tendermint and Casper, they appeared quite different from traditional BFT protocols like DLS and PBFT. I hope that HotStuff provided a useful algorithmic framework to discuss both worlds.
 
 ----------
 
