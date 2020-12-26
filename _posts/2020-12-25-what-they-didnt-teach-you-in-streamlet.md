@@ -8,9 +8,6 @@ tags:
 ---
 
 
-What They Didn't Teach You in Streamlet
-======
-
 Authors: Shir Cohen and Dahlia Malkhi
 
 In an [ePrint article](https://eprint.iacr.org/2020/088.pdf) and a following [post](https://decentralizedthoughts.github.io/2020-05-14-streamlet/), Chan and Shi introduce Streamlet, a "textbook blockchain protocol" that is "absurdly simple, making it a perfect choice for pedagogy".

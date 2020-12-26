@@ -10,8 +10,6 @@ tags:
 ---
 
 
-# "Concurrency" Book is Here
-
 ![](/images/lam.jpg)
 
 Today, I am proud to announce that a book I edited titled “_Concurrency: The Works of Leslie Lamport_” has just been published and is available on  [Amazon](https://www.amazon.com/dp/1450372708/ref=cm_sw_em_r_mt_dp_U_Ic-RDbS2XSGD5) ; [Google books](https://books.google.com/books/about/Concurrency.html?id=z_m2DwAAQBAJ) ; [ACM books](http://books.acm.org/titles#tab312) .
