@@ -30,18 +30,18 @@ This may bring many of the pedagogical benefits of Streamlet and at the same tim
 
 ## A Quick overview of Streamlet
 
-Model: Streamlet is a protocol for the partially synchronous and authenticated settings. The system consists of n=3f+1 known validators, up to f of which may be Byzantine and the rest are honest. The network has an unknown global stabilization time (GST), after which there is a known duration Δ (measured in units called rounds) that bounds all transmission delays between honest validators.
+**Model**: Streamlet is a protocol for the partially synchronous and authenticated settings. The system consists of n=3f+1 known validators, up to f of which may be Byzantine and the rest are honest. The network has an unknown global stabilization time (GST), after which there is a known duration Δ (measured in units called rounds) that bounds all transmission delays between honest validators.
 
-Blocks and Notarization: Streamlet is an epoch-by-epoch protocol with a known designated leader per epoch. In each epoch a leader broadcasts a proposed block carrying transactions, and a hash of the prefix of the extended chain. Similarly to HotStuff, once a validator observes 2f+1 votes per block (quorum certificate) it considers this block as a notarized. Unlike Hotstuff, where the set of votes is recorded on the blockchain itself, the determination of a block as notarized is personal.
+**Blocks and Notarization**: Streamlet is an epoch-by-epoch protocol with a known designated leader per epoch. In each epoch a leader broadcasts a proposed block carrying transactions, and a hash of the prefix of the extended chain. Similarly to HotStuff, once a validator observes 2f+1 votes per block (quorum certificate) it considers this block as a notarized. Unlike Hotstuff, where the set of votes is recorded on the blockchain itself, the determination of a block as notarized is personal.
 
-Longest Chain and Casting Votes: Every honest validator maintains the longest notarized chain(s) that it knows.
+**Longest Chain and Casting Votes**: Every honest validator maintains the longest notarized chain(s) that it knows.
 
 -   A leader proposal extends its longest notarized chain, or an arbitrary one of them if there are more than one
     
 -   A validator votes for a leader proposal iff it extends one of its longest notarized chains, and the epoch number of the block matches the current epoch
     
 
-Commit: Whenever a 3-chain of blocks (as depicted below) whose epochs are consecutive is formed, a validator finalizes the middle block of the 3-chain and its prefix chain.
+**Commit**: Whenever a 3-chain of blocks (as depicted below) whose epochs are consecutive is formed, a validator finalizes the middle block of the 3-chain and its prefix chain.
 
   
 
@@ -49,17 +49,15 @@ Commit: Whenever a 3-chain of blocks (as depicted below) whose epochs are consec
 
 ![](/images/streamlet1.png)
 
-Echo: In Streamlet, every validator must echo every message it receives to all other validators. Skipping the echo mechanism violates the liveness property of the protocol, even in perfect synchrony.
+**Echo**: In Streamlet, every validator must echo every message it receives to all other validators. Skipping the echo mechanism violates the liveness property of the protocol, even in perfect synchrony.
 
-Epoch synchronization: Streamlet requires epochs to start in perfect synchrony and to last 2Δ rounds. Under this assumption, Streamlet guarantees a new finalization after GST whenever a succession of 5 epochs with honest leaders occurs.
+**Epoch synchronization**: Streamlet requires epochs to start in perfect synchrony and to last 2Δ rounds. Under this assumption, Streamlet guarantees a new finalization after GST whenever a succession of 5 epochs with honest leaders occurs.
 
 ## Morphing Streamlet back into HotStuff
 
-[HotStuff](https://dahliamalkhi.wordpress.com/2018/10/24/hotstuff-three-chain-rules/) already showed how to achieve a simple BFT consensus for blockchains.
-
 Turning Streamlet into HotStuff is trivial, because Streamlet is built with the same ingredients of HotStuff -- blocks, quorum certificates (QCs), and a 3-chain finality rule:
 
-HotStuff highest QC: In HotStuff, every validator keeps the highest epoch QC (HighQC) it knows of a parent of a block, instead of a block itself as in Streamlet.
+**HotStuff highest QC**: In HotStuff, every validator keeps the highest epoch QC (HighQC) it knows of a parent of a block, instead of a block itself as in Streamlet.
 
 As in Streamlet:
 
@@ -68,7 +66,7 @@ As in Streamlet:
 -   A validator votes for a leader proposal if it extends the branch of its highQC.
     
 
-HotStuff commit:
+**HotStuff commit**:
 
 Whenever a 3-chain of alternating blocks/QCs whose epochs are consecutive is formed, the middle block of the 3-chain becomes finalized.
 
