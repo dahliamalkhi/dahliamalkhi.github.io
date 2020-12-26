@@ -1,3 +1,4 @@
+---
 title: 'HotStuff: Three-Chain Rules!'
 date: 2019-08-01
 permalink: /posts/2019/08/hotstuff-three-chain-rules/

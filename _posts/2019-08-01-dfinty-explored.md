@@ -1,3 +1,4 @@
+---
 title: 'Dfinty Consensus Explored'
 date: 2019-08-01
 permalink: /posts/2019/08/dfinty-explored
