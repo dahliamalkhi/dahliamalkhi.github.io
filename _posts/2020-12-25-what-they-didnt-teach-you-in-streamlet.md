@@ -45,7 +45,6 @@ Commit: Whenever a 3-chain of blocks (as depicted below) whose epochs are consec
 
   
 
-![](https://lh5.googleusercontent.com/_773qSkVy-TaoZsC0Ov3dkatRJbtr86H59etyJexgjmIg_VbgEcgBiOgkb-fFTHKx3iS0T4ZQfrw4pCOm_Y5VoJTT4hg7Mt1YiqIOA-ALw6Qwg0xZc_20X4TPtV34N1RIAteXiWd)
 
 
 ![](/images/streamlet1.png)
@@ -79,7 +78,7 @@ In each Streamlet epoch, every validator broadcasts the votes of all other valid
 
 Importantly, Streamlet does not work without echoing messages (incurring n<sup>3</sup> communication complexity). Here’s a simple example to explain this (appears in the figure below): Assume a system of 7 validators {a,b,c,d,e,x,y} where validators x and y are Byzantine. By epoch e, all honest validators share the same view of the world. Then, x is chosen to be the leader of epoch e. During the first round of epoch e (Δ) it sends its block proposal B only to validators a,b,c and y. In the following round, a,b and c, follow the protocol and vote for the proposed block, sending their signature to all other validators. y, on the other hand, sends its vote only to a. At this point the epoch ends and no further votes on the block are casted. It is clear that at this point a has collected 5 (=2f+1) votes for the proposed block (from a,b,c,x,y) while any other honest validator collected only 4 of them. This leads to the proposed blocked being notarized only by a.
 
-If there are no vote echoes, in the following epochs a does not vote for any proposal that doesn’t extend B. If the Byzatine cease to participate, liveness is compromised. When a becomes leader, it proposes to extend B and no one else votes for it, because they don’t know it is notarized.![](https://lh3.googleusercontent.com/iQBmb_mM-pyPpIDFnS1Vu8cnNrHYwHxecQSndFrfwFh82GTCCZksglc7mapWE7zbLpGSQq6exuNMgnj5B6EMvxKODcgL5m2z0DoTgRLKpnIJdDJemSRSwLzvaANbZnuTw4A3Rfvx)
+If there are no vote echoes, in the following epochs a does not vote for any proposal that doesn’t extend B. If the Byzatine cease to participate, liveness is compromised. When a becomes leader, it proposes to extend B and no one else votes for it, because they don’t know it is notarized.
 ![](/images/streamlet2.png)
 
 ## Streamlet requires lock-step epoch synchronization
