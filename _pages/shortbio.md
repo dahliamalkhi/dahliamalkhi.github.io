@@ -1,5 +1,5 @@
 ---
-permalink: /
+permalink: /shortbio/
 title: "About me"
 excerpt: "dahlia malkhi short bio"
 author_profile: true
