@@ -30,7 +30,7 @@ In doing this, we aim to preserve the benefits of pedagogy and bring the benefit
 
 **Model**: Streamlet is a protocol for the partially synchronous and authenticated settings. The system consists of n=3f+1 known validators, up to f of which may be Byzantine and the rest are honest. The network has an unknown global stabilization time (GST), after which there is a known duration Δ (measured in units called rounds) that bounds all transmission delays between honest validators.
 
-**Blocks and Notarization**: Streamlet is an epoch-by-epoch protocol with a known designated leader per epoch. In each epoch a leader broadcasts a proposed block carrying transactions, and a hash of the prefix of the extended chain. Once a validator observes 2f+1 votes per block (quorum certificate) it considers this block as a notarized. 
+**Blocks and Notarization**: Streamlet is an epoch-by-epoch protocol with a known designated leader per epoch. In each epoch a leader broadcasts a proposed block carrying transactions, and a hash of the prefix of the extended chain. Once a validator observes 2f+1 votes per block (quorum certificate) it considers this block notarized. 
 
 **Longest Chain and Casting Votes**: Every honest validator maintains the longest notarized chain(s) that it knows.
 
@@ -104,7 +104,7 @@ In HotStuff as in other BFT protocols for the partial synchrony settings, it is 
 
   
 In Streamlet, QCs are not recorded on the blockchain itself. That is,
-once a validator in Streamlet observes 2f+1 votes for a block (quorum certificate), it considers this block as a notarized. However, unlike Hotstuff, the leader does not embed the QQ in its proposed block.
+once a validator in Streamlet observes 2f+1 votes for a block (quorum certificate), it considers this block notarized. However, unlike Hotstuff, Streamlet leaders do not embed QCs within proposed blocks.
 Therefore, while Streamlet creates a total-order on client requests, the question of how an external client can verify the correctness of the log and obtain a response is not addressed. 
 Blockchains and State Machine Replication (SMR) are used to serve clients, and clients need to be able to query the service to obtain the latest state. 
 
@@ -112,6 +112,6 @@ This gap is easy to resolve by storing QCs on the blockchain (as in hotStuff). A
 
 ## Summary
 
-Streamlet is “absurdly simple", though perhaps too simple, as it leaves gaps for the reader to fill. This post underscored several gaps and indicates how related literatures solves them around message echoing, communication complexity, synchronization, latency, and the SMR service, 
+Streamlet is “absurdly simple", though perhaps too simple, as it leaves gaps for the reader to fill. This post underscores several gaps and indicates how related literatures solves them around message echoing, communication complexity, synchronization, latency, and the SMR service. 
 
 
