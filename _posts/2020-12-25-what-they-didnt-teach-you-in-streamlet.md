@@ -20,16 +20,17 @@ In this post, we explore the gaps Streamlet leaves, including:
     
 3.  Streamlet makes a strong and unnecessary synchrony assumption.
     
-4.  Streamlet does not implement State-Machine-Replication.  
+4.  Streamlet does not provide API for State-Machine-Replication.  
       
-Given the striking similarity Streamlet bears to HotStuff, we show how to convert Streamlet to HotStuff in a few easy steps.
-This may bring many of the pedagogical benefits of Streamlet and at the same time closes these engineering gaps. 
+To close these gaps, we indicate below how to convert Streamlet to HotStuff.
+Given the striking similarity Streamlet bears to HotStuff, this is done in a few easy steps.
+In doing this, we aim to preserve the benefits of pedagogy and bring the benefit of an engineering-ready BFT consensus. 
 
 ## A Quick overview of Streamlet
 
 **Model**: Streamlet is a protocol for the partially synchronous and authenticated settings. The system consists of n=3f+1 known validators, up to f of which may be Byzantine and the rest are honest. The network has an unknown global stabilization time (GST), after which there is a known duration Δ (measured in units called rounds) that bounds all transmission delays between honest validators.
 
-**Blocks and Notarization**: Streamlet is an epoch-by-epoch protocol with a known designated leader per epoch. In each epoch a leader broadcasts a proposed block carrying transactions, and a hash of the prefix of the extended chain. Similarly to HotStuff, once a validator observes 2f+1 votes per block (quorum certificate) it considers this block as a notarized. Unlike Hotstuff, where the set of votes is recorded on the blockchain itself, the determination of a block as notarized is personal.
+**Blocks and Notarization**: Streamlet is an epoch-by-epoch protocol with a known designated leader per epoch. In each epoch a leader broadcasts a proposed block carrying transactions, and a hash of the prefix of the extended chain. Once a validator observes 2f+1 votes per block (quorum certificate) it considers this block as a notarized. 
 
 **Longest Chain and Casting Votes**: Every honest validator maintains the longest notarized chain(s) that it knows.
 
@@ -38,7 +39,7 @@ This may bring many of the pedagogical benefits of Streamlet and at the same tim
 -   A validator votes for a leader proposal iff it extends one of its longest notarized chains, and the epoch number of the block matches the current epoch
     
 
-**Commit**: Whenever a 3-chain of blocks (as depicted below) whose epochs are consecutive is formed, a validator finalizes the middle block of the 3-chain and its prefix chain.
+**Commit**: Whenever a 3-chain of notarized blocks (as depicted below) whose epochs are consecutive is formed, a validator finalizes the middle block of the 3-chain and its prefix chain.
 
   
 
@@ -52,9 +53,9 @@ This may bring many of the pedagogical benefits of Streamlet and at the same tim
 
 ## Morphing Streamlet back into HotStuff
 
-Turning Streamlet into HotStuff is trivial, because Streamlet is built with the same ingredients of HotStuff -- blocks, quorum certificates (QCs), and a 3-chain finality rule:
+Turning Streamlet into HotStuff is trivial, because Streamlet is built with the same ingredients of HotStuff -- blocks, designated leaders, quorum certificates (QCs), and a 3-chain finality rule. In HotStuff, a block is linked to its parent using the QC itself, on-chain, so everyone can verify it has been notarized.
 
-**HotStuff highest QC**: In HotStuff, every validator keeps the highest epoch QC (HighQC) it knows of a parent of a block, instead of a block itself as in Streamlet.
+**HotStuff highest QC**: In HotStuff, every validator keeps the highest epoch QC (HighQC) it knows of, instead of a block itself as in Streamlet.
 
 As in Streamlet:
 
@@ -66,6 +67,12 @@ As in Streamlet:
 **HotStuff commit**:
 
 Whenever a 3-chain of alternating blocks/QCs whose epochs are consecutive is formed, the middle block of the 3-chain becomes finalized.
+
+**HotStuff round synchronization**:
+
+HotStuff does **not** require epoch synchronization for safety. Rather, it has a component called PaceMaker for advancing epochs that guarantees progress. PaceMaker advertises the start of an epoch in order to bring non-faulty validators to overlap in the same epoch during periods of network stability. See additional discussion below.
+
+**That's it! **
 
 ## Streamlet has high communication complexity
 
@@ -93,14 +100,18 @@ In HotStuff as in other BFT protocols for the partial synchrony settings, it is 
 5.  [Treshold Logical Clocks](https://arxiv.org/abs/1907.07010) generalizes PaceMakers to other of Byzantine protocols.
     
 
-## Streamlet is almost a blockchain
+## Streamlet does not provide API for SMR
 
   
+In Streamlet, QCs are not recorded on the blockchain itself. That is,
+once a validator in Streamlet observes 2f+1 votes for a block (quorum certificate), it considers this block as a notarized. However, unlike Hotstuff, the leader does not embed the QQ in its proposed block.
+Therefore, while Streamlet creates a total-order on client requests, the question of how an external client can verify the correctness of the log and obtain a response is not addressed. 
+Blockchains and State Machine Replication (SMR) are used to serve clients, and clients need to be able to query the service to obtain the latest state. 
 
-Blockchains, also known as State Machine Replication (SMR), are used to serve clients. A client can query the service to obtain the latest state. While Streamlet creates a total-order on client requests, the question of how an external client can verify the correctness of the log and obtain a response is not addressed. This is mainly due to the fact that validators' votes leave no fingerprints on the chain, and that notarization is a subjective property. This can be solved by having the notarization property being documented on the growing ledger, in the form of a quorum certificate (as in hotStuff). Another simple option is for a client to collect responses from a read quorum.
+This gap is easy to resolve by storing QCs on the blockchain (as in hotStuff). Another simple option is for client queries to collect responses from a read quorum.
 
 ## Summary
 
-Streamlet is “absurdly simple", perhaps too simple. While focusing on simplicity and ease of explanation, Streamlet leaves gaps for the reader. It is not clearly specified how a validator handles votes that arrive after an epoch ends, and the echo step that is crucial for the liveness property is somewhat neglected when presenting the algorithm. Furthermore, Streamlet has high message complexity and latency.
+Streamlet is “absurdly simple", though perhaps too simple, as it leaves gaps for the reader to fill. This post underscored several gaps and indicates how related literatures solves them around message echoing, communication complexity, synchronization, latency, and the SMR service, 
 
 
