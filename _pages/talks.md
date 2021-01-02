@@ -9,6 +9,7 @@ author_profile: true
     -  [UC Davis ExpoLab](https://expolab.org/ecs189f-fall-2020/speakers.html) [[video]](https://www.youtube.com/watch?v=WR7K3adIqbI&feature=youtu.be&ab_channel=ExpoLabatUCDavis)
     -  [CMU ECE](https://ece.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=83b2040d-b937-4889-831e-ac6401292548)
     -  [ACM AFT'20](https://aft.acm.org/program-2020)
+    -  [UZH Blockchain Center Summer School](https://www.blockchain.uzh.ch/events/summer-school-deep-dive-into-blockchain/)
     -  [DSN'20](https://dsn2020.webs.upv.es/final-program/keynotes/)
     -  [TPBC'20](https://eventum.upf.edu/51585/detail/theory-and-practice-of-blockchains-online-weekly-seminar-series-.html), [[video]](https://www.youtube.com/watch?v=S9oPB9j-UZU&feature=youtu.be),
     -  [FAB'20](https://scfab.github.io/2020/index.html),
