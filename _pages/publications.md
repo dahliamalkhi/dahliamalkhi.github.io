@@ -7,6 +7,13 @@ author_profile: true
 {% include base_path %}
 
 
+#### 2021
+
+-   Strengthened Fault Tolerance in Byzantine Fault Tolerant Replication.
+    Zhuolun Xiang, Dahlia Malkhi, Kartik Nayak and Ling Ren
+    [ICDCS 2021](https://icdcs2021.us/).
+    Arxiv version https://arxiv.org/abs/2101.03715.
+
 #### 2020
 
 -   *ACE: Abstract Consensus Encapsulation for Liveness Boosting of State Machine Replication.*
