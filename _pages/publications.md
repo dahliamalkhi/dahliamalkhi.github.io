@@ -12,7 +12,7 @@ author_profile: true
 -   *Strengthened Fault Tolerance in Byzantine Fault Tolerant Replication*.
     Zhuolun Xiang, Dahlia Malkhi, Kartik Nayak and Ling Ren
     [ICDCS 2021](https://icdcs2021.us/).
-    Arxiv version [https://arxiv](https://arxiv.org/abs/2101.03715).
+    Arxiv version [https://arxiv/abs/2101.03715](https://arxiv.org/abs/2101.03715).
 
 #### 2020
 
