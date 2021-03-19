@@ -19,7 +19,7 @@ I joined the Diem (Libra) team in June 2019, first as a Lead Reseacher at Novi a
 In 2014, after the closing of the Microsoft Research Silicon Valley lab, I co-founded VMware Research and became a Principal Researcher at VMware until June 2019. From 2004-2014, I was a principal researcher at Microsoft Research, Silicon Valley. From 1999-2007, I served as tenured associate professor at the Hebrew University of Jerusalem. From 1995-1999, I was a senior researcher at AT&T Labs, NJ.
  I hold Ph.D., M.S. and B.S. in computer science from the Hebrew University of Jerusalem.
 
-#### Selected distinctions:
+#### Selected roles and distinctions:
 
 -   ACM fellow, 2011.
 -   IBM Faculty award recipient, 2003 and 2004.
@@ -28,6 +28,7 @@ In 2014, after the closing of the Microsoft Research Silicon Valley lab, I co-fo
 -   Associate editor of the Distributed Computing Journal since 2002.
 -   Program chair for [Usenix ATC 2019](https://www.usenix.org/conferences/byname/131) (new!), [LADIS 2012](http://ladisworkshop.org/) , [Locality 2007](http://research.microsoft.com/en-us/um/people/moscitho/locality/), [PODC 2006](http://www.podc.org/podc2006/), [Locality 2005](http://www.mimuw.edu.pl/~disc2005/index.php?page=workshops) and [DISC 2002](http://www.disc-conference.org/disc2002/index.html).
 -   Co-chair of the Simons Institute [Advisory Board](https://simons.berkeley.edu/people/advisory) 2019-2021
+-   Advisory board member of [Cryptoeconomic Systems](https://cryptoeconomicsystems.pubpub.org/) 2019-
 
 #### Blog:
 
