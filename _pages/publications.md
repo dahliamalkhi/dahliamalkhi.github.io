@@ -9,6 +9,11 @@ author_profile: true
 
 #### 2021
 
+-   *DenseChain: Faster Transaction Processing in Public Blockchains*.
+    S. Ponnapalli, A. Shah, S. Banerjee, D. Malkhi, A. Tai, V. Chidambaram, M. Wei
+    [Usenix ATC 20201](https://www.usenix.org/conference/atc21).
+    Final version coming soon.[densechain-ATC2021]({{ base_path }}/files/densechain-ATC2021.pdf)
+
 -   *Strengthened Fault Tolerance in Byzantine Fault Tolerant Replication*.
     Zhuolun Xiang, Dahlia Malkhi, Kartik Nayak and Ling Ren
     [ICDCS 2021](https://icdcs2021.us/).
