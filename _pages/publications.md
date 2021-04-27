@@ -11,7 +11,7 @@ author_profile: true
 
 -   *DenseChain: Faster Transaction Processing in Public Blockchains*.
     S. Ponnapalli, A. Shah, S. Banerjee, D. Malkhi, A. Tai, V. Chidambaram, M. Wei
-    [Usenix ATC 20201](https://www.usenix.org/conference/atc21).
+    [Usenix ATC 2021](https://www.usenix.org/conference/atc21).
     Final version coming soon.
 
 -   *Strengthened Fault Tolerance in Byzantine Fault Tolerant Replication*.
