@@ -21,6 +21,7 @@ In 2014, after the closing of the Microsoft Research Silicon Valley lab, I co-fo
 
 #### Selected roles and distinctions:
 
+-   [IEEE TCDP Outstanding Technical Achievement Award, 2021.](https://tc.computer.org/tcdp/awardrecipients/)
 -   ACM fellow, 2011.
 -   IBM Faculty award recipient, 2003 and 2004.
 -   German-Israeli Foundation (G.I.F.) Young Scientist career award, 2002.
