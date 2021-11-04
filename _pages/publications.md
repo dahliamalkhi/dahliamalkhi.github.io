@@ -9,10 +9,13 @@ author_profile: true
 
 #### 2021
 
--   *DenseChain: Faster Transaction Processing in Public Blockchains*.
-    S. Ponnapalli, A. Shah, S. Banerjee, D. Malkhi, A. Tai, V. Chidambaram, M. Wei
-    [Usenix ATC 2021](https://www.usenix.org/conference/atc21).
-    Final version coming soon.
+-   *Twins: BFT Systems Made Robust*
+    Shehar Bano, Alberto Sonnino, Andrey Chursin, Dmitri Perelman, Zekun Li, Avery Ching, Dahlia Malkhi.
+    [The 25th International Conference on Principles of Distributed Systems (OPODIS 2021)](https://opodis2021.unistra.fr/).
+
+-   *RainBlock: Faster Transaction Processing in Public Blockchains*.
+    Soujanya Ponnapalli, Aashaka Shah, Souvik Banerjee, Dahlia Malkhi, Amy Tai, Vijai Chidambaram, Michael Wei. 
+    [Usenix ATC 2021](https://www.usenix.org/conference/atc21) [pdf](https://www.usenix.org/system/files/atc21-ponnapalli.pdf).
 
 -   *Strengthened Fault Tolerance in Byzantine Fault Tolerant Replication*.
     Zhuolun Xiang, Dahlia Malkhi, Kartik Nayak and Ling Ren
@@ -34,7 +37,7 @@ author_profile: true
 -   *Cogsworth: Byzantine Round Synchronization.*
      Oded Naor, Mathieu Baudet, Dahlia Malkhi, Alexander Spiegelman.
     [Cryptoeconomics Systems Conference (CES) 2020](https://cryptoeconomicsystems.pubpub.org/ces20).
-    Final version coming soon. ArXiv 2019 version [https://arxiv.org/abs/1909.05204](https://arxiv.org/abs/1909.05204).
+    ArXiv 2019 version [https://arxiv.org/abs/1909.05204](https://arxiv.org/abs/1909.05204).
 
 #### 2019
 
