@@ -15,7 +15,7 @@ author_profile: true
 
 -   *RainBlock: Faster Transaction Processing in Public Blockchains*.
     Soujanya Ponnapalli, Aashaka Shah, Souvik Banerjee, Dahlia Malkhi, Amy Tai, Vijai Chidambaram, Michael Wei. 
-    [Usenix ATC 2021](https://www.usenix.org/conference/atc21) [pdf](https://www.usenix.org/system/files/atc21-ponnapalli.pdf).
+    [Usenix ATC 2021](https://www.usenix.org/conference/atc21) [[RainBlock-ATC21.pdf]](https://www.usenix.org/system/files/atc21-ponnapalli.pdf).
 
 -   *Strengthened Fault Tolerance in Byzantine Fault Tolerant Replication*.
     Zhuolun Xiang, Dahlia Malkhi, Kartik Nayak and Ling Ren
@@ -42,10 +42,10 @@ author_profile: true
 #### 2019
 
 -   *FairLedger: A Fair Blockchain Protocol for Financial Institutions.*
-    Kfir Lev-Ari, Alexander Spiegelman, Idit Keidar and Dahlia Malkhi. OPODIS 2019, **best paper award** [FairLedger-OPODIS2019]({{ base_path }}/files/FairLedger-OPODIS2019.pdf) . (see also <https://arxiv.org/abs/1906.03819>).
+    Kfir Lev-Ari, Alexander Spiegelman, Idit Keidar and Dahlia Malkhi. OPODIS 2019, **best paper award** [[FairLedger-OPODIS2019.pdf]]({{ base_path }}/files/FairLedger-OPODIS2019.pdf) . (see also <https://arxiv.org/abs/1906.03819>).
 -   *Sync HotStuff: Simple and Practical Synchronous State Machine Replication.*
     Ittai Abraham, Dahlia Malkhi, Kartik Nayak, Ling Ren, Maofan Yin.
-    IEEE Security and Privacy 2020 [SyncHotStuff-SP2020]({{ base_path }}/files/SyncHotStuff-SP2020.pdf) [short S&P 2020 video](https://drive.google.com/file/d/1GDMU61PeQY9ytPiiX3BXWpqWZGPdHX6P/view?usp=sharing).
+    IEEE Security and Privacy 2020 [[SyncHotStuff-SP2020.pdf]]({{ base_path }}/files/SyncHotStuff-SP2020.pdf) [short S&P 2020 video](https://drive.google.com/file/d/1GDMU61PeQY9ytPiiX3BXWpqWZGPdHX6P/view?usp=sharing).
     (see also <https://eprint.iacr.org/2019/270> ).
 -   *Scalable and Efficient Data Authentication for Decentralized Systems.*
     Soujanya Ponnapalli, Aashaka Shah, Amy Tai, Souvik Banerjee, Vijay Chidambaram, Dahlia Malkhi, Michael Wei. [<https://arxiv.org/abs/1909.11590>]
