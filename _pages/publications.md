@@ -6,10 +6,15 @@ author_profile: true
 ---
 {% include base_path %}
 
+#### 2022
+
+-   *Be Aware of Your Leaders*.
+    Shir Cohen, Rati Gelashvili, Eleftherios Kokoris Kogias, Dahlia Malkhi, Zekun Li, Alberto Sonnino, Alexander Spiegelman.
+    [FC'22](https://fc22.ifca.ai/).
 
 #### 2021
 
--   *Twins: BFT Systems Made Robust.*
+-   *Twins: BFT Systems Made Robust*.
     Shehar Bano, Alberto Sonnino, Andrey Chursin, Dmitri Perelman, Zekun Li, Avery Ching, Dahlia Malkhi.
     [The 25th International Conference on Principles of Distributed Systems (OPODIS 2021)](https://opodis2021.unistra.fr/).
 
