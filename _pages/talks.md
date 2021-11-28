@@ -5,6 +5,7 @@ permalink: /talks/
 author_profile: true
 ---
 
+-   [DISC 2011 keynote](http://www.disc-conference.org/wp/disc2021/program/) ["Tech Transfer Stories and Takeaways"](https://drops.dagstuhl.de/opus/volltexte/2021/14804/pdf/LIPIcs-DISC-2021-2.pdf) [[video]](https://www.youtube.com/watch?v=9RRUQHymcJA)
 -   Several invited presentations about the Libra technology:
     -  [UC Davis ExpoLab](https://expolab.org/ecs189f-fall-2020/speakers.html) [[video]](https://www.youtube.com/watch?v=WR7K3adIqbI&feature=youtu.be&ab_channel=ExpoLabatUCDavis)
     -  [CMU ECE](https://ece.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=83b2040d-b937-4889-831e-ac6401292548)
