@@ -5,6 +5,7 @@ permalink: /talks/
 author_profile: true
 ---
 
+-   "Tech Transfer Stories and Takeaways", [Cornell CS fall colloqium](https://www.cs.cornell.edu/content/tech-transfer-stories-and-takeaways)
 -   [DISC 2011 keynote](http://www.disc-conference.org/wp/disc2021/program/) ["Tech Transfer Stories and Takeaways"](https://drops.dagstuhl.de/opus/volltexte/2021/14804/pdf/LIPIcs-DISC-2021-2.pdf) [[video]](https://www.youtube.com/watch?v=9RRUQHymcJA)
 -   Several invited presentations about the Libra technology:
     -  [UC Davis ExpoLab](https://expolab.org/ecs189f-fall-2020/speakers.html) [[video]](https://www.youtube.com/watch?v=WR7K3adIqbI&feature=youtu.be&ab_channel=ExpoLabatUCDavis)
