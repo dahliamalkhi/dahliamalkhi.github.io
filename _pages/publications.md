@@ -8,6 +8,10 @@ author_profile: true
 
 #### 2022
 
+-   *Block-STM: Scaling Blockchain Execution by Turning Ordering Curse to a Performance Blessing*.
+    Rati Gelashvili, Alexander Spiegelman, Zhuolun Xiang, George Danezis, Zekun Li, Yu Xia, Runtian Zhou, Dahlia Malkhi.
+    [https://arxiv.org/abs/2203.06871](https://arxiv.org/abs/2203.06871).
+
 -   *Be Aware of Your Leaders*.
     Shir Cohen, Rati Gelashvili, Eleftherios Kokoris Kogias, Dahlia Malkhi, Zekun Li, Alberto Sonnino, Alexander Spiegelman.
     [FC'22](https://fc22.ifca.ai/).
