@@ -15,7 +15,7 @@ Co-inventor of [HotStuff](https://arxiv.org/abs/1803.05069), co-founder and tech
 
 From 2019 to 2022, served three roles in the Diem(Libra) project: CTO at the Diem Association, Lead Maintainer of the Diem open-source project, and Lead Researcher at Novi. In 2014, after the closing of the Microsoft Research Silicon Valley lab, co-founded [VMware Research](https://octo.vmware.com/introduction-vrg/) and became a principal researcher at VMware until June 2019. Prior to that, over two decades of [research contributions](https://scholar.google.com/citations?user=A_VZ7N0AAAAJ&hl=en) spanning industrial research at Microsoft Research, 2004-2014, and at AT&T Labs, 1995-1999; and as a tenured associate professor of the Hebrew University of Jerusalem, 1999-2007. 
 
-#### Selected roles and distinctions:
+#### Selected academic roles and distinctions:
 
 -   [IEEE TCDP Outstanding Technical Achievement Award, 2021.](https://tc.computer.org/tcdp/awardrecipients/)
 -   Advisory board member of [Cryptoeconomic Systems](https://cryptoeconomicsystems.pubpub.org/) 2019-present.
