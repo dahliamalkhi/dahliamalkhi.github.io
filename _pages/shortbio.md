@@ -10,14 +10,11 @@ redirect_from:
 
 #### Short bio
 
-I am Chief Technology Officer at Diem Association, Lead Maintainer of the Diem project, and
-Lead Researcher at Novi.
+A research and innovation lead in broad aspects of reliability and security of distributed systems with focus on blockchains and advances in financial technology.
+Co-inventor of HotStuff, co-founder and technical co-lead of VMware blockchain, co-inventor of Flexible Paxos (the technology behind Log Device), creator and tech lead of CorfuDB (a database-less database driving VMware’s NSX-T distributed control plane, and co-inventor of the FairPlay project.
 
-I have applied and foundational research interest in broad aspects of reliability and security of distributed systems. For over two decades, I participated in driving innovation in tech, notably:  co-inventor of HotStuff, co-founder and technical co-lead of VMware blockchain, co-inventor of Flexible Paxos, the technology behind Log Device, creator and tech lead of CorfuDB, a database-less database driving VMware’s NSX-T distributed control plane (see Corfu github repo), and co-inventor of the FairPlay project.
-
-I joined the Diem (Libra) team in June 2019, first as a Lead Reseacher at Novi and later as Chief Technology Officer at the Diem Association.
-In 2014, after the closing of the Microsoft Research Silicon Valley lab, I co-founded VMware Research and became a Principal Researcher at VMware until June 2019. From 2004-2014, I was a principal researcher at Microsoft Research, Silicon Valley. From 1999-2007, I served as tenured associate professor at the Hebrew University of Jerusalem. From 1995-1999, I was a senior researcher at AT&T Labs, NJ.
- I hold Ph.D., M.S. and B.S. in computer science from the Hebrew University of Jerusalem.
+From 2019 to 2022, served in three roles in the Diem(Libra) project: CTO at the Diem Association, Lead Maintainers of the Diem open-source project, and Lead Researcher at Novi. In 2014, after the closing of the Microsoft Research Silicon Valley lab, co-founded VMware Research and became a principal researcher at VMware until June 2019. From 2004-2014, a principal researcher at Microsoft Research, Silicon Valley. A tenured associate professor (1999-2007) at, and PhD (1995) from the Hebrew University of Jerusalem. From 1995-1999, a senior researcher at AT&T Labs, NJ.
+m
 
 #### Selected roles and distinctions:
 
