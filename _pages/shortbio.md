@@ -17,7 +17,7 @@ From 2019 to 2022, served three roles in the Diem(Libra) project: CTO at the Die
 
 #### Selected academic roles and distinctions:
 
--   [IEEE TCDP Outstanding Technical Achievement Award, 2021.](https://tc.computer.org/tcdp/awardrecipients/)
+-   [IEEE TCDP Outstanding Technical Achievement Award](https://tc.computer.org/tcdp/awardrecipients/), 2021.
 -   Advisory board member of [Cryptoeconomic Systems](https://cryptoeconomicsystems.pubpub.org/), 2019-present.
 -   Co-chair of the Simons Institute [Advisory Board](https://simons.berkeley.edu/people/advisory), 2019-2022.
 -   ACM fellow, 2011.
