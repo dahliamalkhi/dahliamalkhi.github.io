@@ -11,7 +11,7 @@ redirect_from:
 #### Short bio
 
 A research and innovation lead in broad aspects of reliability and security of distributed systems with focus on blockchains and advances in financial technology.
-Co-inventor of [HotStuff](https://arxiv.org/abs/1803.05069), co-founder and technical co-lead of VMware blockchain, co-inventor of [Flexible Paxos](https://arxiv.org/abs/1608.06696) (the technology behind Log Device), creator and tech lead of [CorfuDB](https://github.com/CorfuDB/CorfuDB) (a database-less database driving VMware’s NSX-T distributed control plane), and co-inventor of the [FairPlay project](https://www.cs.huji.ac.il/project/Fairplay/).
+Co-inventor of [HotStuff](https://arxiv.org/abs/1803.05069), co-founder and technical co-lead of VMware blockchain, co-inventor of [Flexible Paxos](https://arxiv.org/abs/1608.06696) (the technology behind [Log Device](https://logdevice.io/docs/Consensus.html)), creator and tech lead of [CorfuDB](https://github.com/CorfuDB/CorfuDB) (a database-less database driving VMware’s NSX-T distributed control plane), and co-inventor of the [FairPlay project](https://www.cs.huji.ac.il/project/Fairplay/).
 
 From 2019 to 2022, served three roles in the Diem(Libra) project: CTO at the Diem Association, Lead Maintainer of the Diem open-source project, and Lead Researcher at Novi. In 2014, after the closing of the Microsoft Research Silicon Valley lab, co-founded VMware Research and became a principal researcher at VMware until June 2019. From 2004 to 2014, a principal researcher at Microsoft Research, Silicon Valley. A tenured associate professor (1999-2007) at, and PhD (1995) from the Hebrew University of Jerusalem. From 1995 to 1999, a senior researcher at AT&T Labs, NJ.
 m
