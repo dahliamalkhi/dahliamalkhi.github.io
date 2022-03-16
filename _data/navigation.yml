@@ -1,7 +1,7 @@
 # main links links
 main:
   - title: "Blog"
-    url: /
+    url: /blog/
     
   - title: "Books"
     url: /books/    
@@ -16,7 +16,7 @@ main:
 #    url: /portfolio/
         
   - title: "Short-bio"
-    url: /shortbio/
+    url: /
 
   - title: "CV"
     url: /cv/
