@@ -27,6 +27,3 @@ From 2019 to 2022, served three roles in the Diem(Libra) project: CTO at the Die
 -   German-Israeli Foundation (G.I.F.) Young Scientist career award, 2002.
 -   Program chair for [Usenix ATC 2019](https://www.usenix.org/conferences/byname/131), [LADIS 2012](http://ladisworkshop.org/) , [Locality 2007](http://research.microsoft.com/en-us/um/people/moscitho/locality/), [PODC 2006](http://www.podc.org/podc2006/), [Locality 2005](http://www.mimuw.edu.pl/~disc2005/index.php?page=workshops) and [DISC 2002](http://www.disc-conference.org/disc2002/index.html).
 
-#### Blog:
-
-[My personal blog](https://dahliamalkhi.github.io/posts)
