@@ -83,13 +83,13 @@ parallel execute all transactions 1..n
 validTo.initialize(0)
 
 per thread main loop:
-	if validTo >= n, and no task is still running, exit loop
-	j := validTo.increment() ; if j > n, go back to loop 
+    if validTo >= n, and no task is still running, exit loop
+    j := validTo.increment() ; if j > n, go back to loop 
 
-	re-read j-transaction read-set 
-	if read-set differs from original read-set of the latest j-transaction execution 
-		re-execute j-transaction
-		validTo.setMin(j) 
+    re-read j-transaction read-set 
+    if read-set differs from original read-set of the latest j-transaction execution 
+        re-execute j-transaction
+        validTo.setMin(j) 
 ```
 
 
@@ -114,19 +114,19 @@ per thread main loop:
     if initialExecutionDoneTo >= n, validTo >= n, and no task is still running, exit loop
     needExecution := false
 
-    if validTo < initialExecutionDoneTo 				# validate
-	    j := validTo.increment() ; if j > n, go back to loop
-	    re-read j-transaction read-set 
-	    if read-set differs from original read-set of the latest j-transaction execution 
-	        needExecution := true
+    if validTo < initialExecutionDoneTo                 # validate
+        j := validTo.increment() ; if j > n, go back to loop
+        re-read j-transaction read-set 
+        if read-set differs from original read-set of the latest j-transaction execution 
+            needExecution := true
 
-    otherwise if initialExecutionDoneTo < n 			# execute
-	    j := initialExecutionDoneTo.increment() ; if j > n, go back to loop
-	    needExecution := true
+    otherwise if initialExecutionDoneTo < n             # execute
+        j := initialExecutionDoneTo.increment() ; if j > n, go back to loop
+        needExecution := true
 
     if needExecution
-	    (re-)execute j-transaction
-	    validTo.setMin(j) 
+        (re-)execute j-transaction
+        validTo.setMin(j) 
 ```
 
 Interleaving initial executions in S-3 with validations avoids unncessary work executing transactions that succeed aborted ones. For example, in the running scenario above, a batch of initial executions may contain transcation 1..4. Validations will be scheduled immediately when their execution completes. When the 4-trasncation aborts and re-executes, no higher transaction execution will have been wasted. 
@@ -152,17 +152,17 @@ per thread main loop:
     if initialExecutionDoneTo >= n, validTo >= n, and no task is still running, exit loop
     needExecution := false
 
-    if validTo < initialExecutionDoneTo 				# validate
+    if validTo < initialExecutionDoneTo                 # validate
         j := validTo.increment() ; if j > n, go back to loop
         re-read j-transaction read-set 
         if read-set differs from original read-set of the latest j-transaction execution 
-        	mark the j-transaction write-set ABORTED
-		validTo.setMin(j)
-        	needExecution := true
+            mark the j-transaction write-set ABORTED
+        validTo.setMin(j)
+            needExecution := true
 
-    otherwise if initialExecutionDoneTo < n 			# execute
+    otherwise if initialExecutionDoneTo < n             # execute
         j := initialExecutionDoneTo.increment() ; if j > n, go back to loop
-	    needExecution := true
+        needExecution := true
 
     if needExecution
         (re-)execute j-transaction
