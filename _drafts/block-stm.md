@@ -27,10 +27,10 @@ The Block-STM approach builds on an approach which was pioneered in the [Calvin]
 This post explains the construction of an efficient parallel execution that preserves block pre-order utilizing two key tenets: 
 
 
-    **MVCC**: An in-memory data structure keeps versioned write-sets, the j-transaction storing values whose version is j. A special value ABORTED may be stored at version j when the latest invocation of j-transaction aborts. A read by k-transaction obtains the latest value recorded by a j-transaction with j &lt; k (or the k-transaction suspends on an ABORTED value and resumes when the value becomes set).  
+* **MVCC**: An in-memory data structure keeps versioned write-sets, the j-transaction storing values whose version is j. A special value ABORTED may be stored at version j when the latest invocation of j-transaction aborts. A read by k-transaction obtains the latest value recorded by a j-transaction with j &lt; k (or the k-transaction suspends on an ABORTED value and resumes when the value becomes set).  
 
 
-    **SAFETY(j, k)**: When a j-transaction executes (or re-executes), every k-transaction with index k > j has to (re)validate after the j-transaction completes execution. Validation re-reads the read-set of the k-transaction and compares against the original read-set the k-transaction obtained in its latest execution. If validation fails, the k-transaction needs to re-execute.
+* **SAFETY(j, k)**: When a j-transaction executes (or re-executes), every k-transaction with index k > j has to (re)validate after the j-transaction completes execution. Validation re-reads the read-set of the k-transaction and compares against the original read-set the k-transaction obtained in its latest execution. If validation fails, the k-transaction needs to re-execute.
 
 Together, MVCC and SAFETY(j, k) suffice to guarantee safety and liveness no matter what scheduling policy is used, so long as execution and validation tasks are eventually dispatched. Safety follows because a k-transaction gets validated after all j-transactions, j &lt; k, are finalized. Liveness follows by induction. Initially transaction 1 is guaranteed to pass validation successfully and not require re-execution. Once transactions 1..j have successfully validated, the next invocation of transaction j+1 will pass validation successfully and not require re-execution.
 
@@ -41,7 +41,7 @@ It remains to focus on devising an efficient schedule for parallelizing executio
 At a first cut, consider the following scheduler, let’s call it S-1.
 
 
-    **S-1:**
+## **S-1:**
 
 
 ```
@@ -74,7 +74,7 @@ However, both the execution and validation loops are logically centrally coordin
 Replacing the above validation-loop, we write a task-stealing loop at each thread, resulting the following scheduler called S-2:
 
 
-    **S-2:**
+## **S-2:**
 
 
 ```
@@ -100,7 +100,7 @@ Next we tackle the initial transaction execution loop, allowing threads to steal
 The interleaved scheduler supporting ABORTED is called S-3 and works as follows:
 
 
-    **S-3:**
+## **S-3:**
 
 
 ```
@@ -139,7 +139,7 @@ The second one increases re-validation parallelism. When a transaction aborts, r
 The final scheduling algorithm, S-4, is captured abstractly in full in under one page as follows:
 
 
-    **S-4:**
+## **S-4:**
 
 
 ```
