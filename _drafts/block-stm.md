@@ -107,7 +107,7 @@ per thread main loop:
     needExecution := false
 
     if validTo < initialExecutionDoneTo                 # validate
-        j := validTo.increment() ; if j > n, go back to loop
+        j := validTo.increment() ; if j > initialExecutionDoneTo, go back to loop
         re-read j-transaction read-set 
         if read-set differs from original read-set of the latest j-transaction execution 
             needExecution := true
@@ -145,7 +145,7 @@ per thread main loop:
     needExecution := false
 
     if validTo < initialExecutionDoneTo                 # validate
-        j := validTo.increment() ; if j > n, go back to loop
+        j := validTo.increment() ; if j > initialExecutionDoneTo, go back to loop
         re-read j-transaction read-set 
         if read-set differs from original read-set of the latest j-transaction execution 
             mark the j-transaction write-set ABORTED
