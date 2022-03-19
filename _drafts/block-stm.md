@@ -55,9 +55,9 @@ At a first cut, consider the following scheduler, let’s call it S-1.
         If read-set differs from original read-set of the latest j-transaction execution 
             re-execute j-transaction 
         If any j-transaction failed validation
-        Update ValidTo to the minimal failed j-transaction
+            Update ValidTo to the minimal failed j-transaction
         Otherwise
-        Exit loop  
+            Exit loop  
 ```
 
 
@@ -78,18 +78,18 @@ Replacing the above validation-loop, we write a task-stealing loop at each threa
 
 
 ```
-    parallel execute all transactions 1..n
+parallel execute all transactions 1..n
 
-    ValidTo.initialize(0)
+ValidTo.initialize(0)
 
-    Per thread main loop:
-    	If ValidTo >= n, and no task is still running, exit loop
+Per thread main loop:
+	If ValidTo >= n, and no task is still running, exit loop
+	j := ValidTo.increment() ; if j > n, go back to loop 
 
-        j := ValidTo.increment() ; if j > n, go back to loop 
-    re-read j-transaction read-set 
-    If read-set differs from original read-set of the latest j-transaction execution 
-        re-execute j-transaction
-        ValidTo.setMin(j) 
+	re-read j-transaction read-set 
+	If read-set differs from original read-set of the latest j-transaction execution 
+		re-execute j-transaction
+		ValidTo.setMin(j) 
 ```
 
 
@@ -104,29 +104,27 @@ The interleaved scheduler supporting ABORTED is called S-3 and works as follows:
 
 
 ```
-    DoneTo.initialize(0) 
-    ValidTo.initialize(0) 
+DoneTo.initialize(0) 
+ValidTo.initialize(0) 
 
-    Per thread main loop:
-
+Per thread main loop:
 
     If DoneTo >= n, ValidTo >= n, and no task is still running, exit loop
     needExecution := false
 
     If ValidTo < DoneTo 				# validate
-        j := ValidTo.increment() ; if j > n, go back to loop
-        re-read j-transaction read-set 
-        If read-set differs from original read-set of the latest j-transaction execution 
-        	needExecution := true
+	j := ValidTo.increment() ; if j > n, go back to loop
+	re-read j-transaction read-set 
+	If read-set differs from original read-set of the latest j-transaction execution 
+	    needExecution := true
 
     Otherwise if DoneTo < n 			# execute
-        j := DoneTo.increment() ; if j > n, go back to loop
-        if available
-            needExecution := true
+	j := DoneTo.increment() ; if j > n, go back to loop
+	needExecution := true
 
     if needExecution
-        (re-)execute j-transaction
-        ValidTo.setMin(j) 
+	(re-)execute j-transaction
+	ValidTo.setMin(j) 
 ```
 
 
@@ -143,11 +141,10 @@ The final scheduling algorithm, S-4, is captured abstractly in full in under one
 
 
 ```
-    DoneTo.initialize(0) 
-    ValidTo.initialize(0) 
+DoneTo.initialize(0) 
+ValidTo.initialize(0) 
 
-    Per thread main loop:
-
+Per thread main loop:
 
     If DoneTo >= n, ValidTo >= n, and no task is still running, exit loop
     needExecution := false
@@ -157,12 +154,12 @@ The final scheduling algorithm, S-4, is captured abstractly in full in under one
         re-read j-transaction read-set 
         If read-set differs from original read-set of the latest j-transaction execution 
         	Mark the j-transaction write-set ABORTED
-            ValidTo.setMin(j)
+		ValidTo.setMin(j)
         	needExecution := true
 
     Otherwise if DoneTo < n 			# execute
         j := DoneTo.increment() ; if j > n, go back to loop
-            needExecution := true
+	needExecution := true
 
     if needExecution
         (re-)execute j-transaction
