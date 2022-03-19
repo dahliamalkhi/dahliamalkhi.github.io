@@ -1,34 +1,16 @@
-<!-----
+[Block-STM](https://arxiv.org/pdf/2203.06871.pdf) is an exciting technology emanating from the Diem project, recently enhanced by Aptos and integrated into [aptos-core](https://github.com/aptos-labs/aptos-core), that accelerates smart-contract execution. 
 
-Yay, no errors, warnings, or alerts!
+## How it all started
 
-Conversion time: 0.626 seconds.
-
-
-Using this Markdown file:
-
-1. Paste this output into your source file.
-2. See the notes and action items below regarding this conversion run.
-3. Check the rendered output (headings, lists, code blocks, tables) for proper
-   formatting and use a linkchecker before you publish this page.
-
-Conversion notes:
-
-* Docs to Markdown version 1.0β33
-* Sat Mar 19 2022 10:21:48 GMT-0700 (PDT)
-* Source doc: Block-STM post [03-19-2022]
------>
-
-
-[Block-STM](https://arxiv.org/pdf/2203.06871.pdf) is an exciting innovation emanating from the Diem project, recently enhanced by Aptos and integrated into [aptos-core](https://github.com/aptos-labs/aptos-core), that accelerates smart-contract execution. 
-
-The Block-STM approach builds on an approach which was pioneered in the [Calvin](http://cs.yale.edu/homes/thomson/publications/calvin-sigmod12.pdf) and [Bohm](https://arxiv.org/pdf/1412.2324.pdf) projects. These projects introduced  an insighful innovation in the context of distributed databases: simplify concurrency management by first 
+Block-STM builds on the approach pioneered in the [Calvin](http://cs.yale.edu/homes/thomson/publications/calvin-sigmod12.pdf) and [Bohm](https://arxiv.org/pdf/1412.2324.pdf) projects in the context of distributed databases. These projects introduced an insightful idea, simplifying concurrency management by 
 forming pre-ordered batches (akin to blocks) of transactions and disseminating them to everyone. 
-Every transcation would then arrive at a consistent output simply by waiting for read-dependencies on preceding transactions to resolve, with no need for locking or coordination. The [first DiemVM parallel executor](https://github.com/diem/diem/issues/8829) implements this approach relying on pre-estimation of trasction read- and write- sets. 
+Every database partition then arrives at a consistent output simply by waiting for read-dependencies on transactions earlier in the block to resolve. The [first DiemVM parallel executor](https://github.com/diem/diem/issues/8829) implements this approach using a static trasnaction analyzer to pre-estimate read- and write- sets. 
 
-[Dickerson et al](https://arxiv.org/abs/1702.04467) later harnessed software transactional memory (STM) to pre-determine a serialization order as a “fork-join” schedule, removing the reliance on static transcation analysis but requiring pre-executing blocks.
+[Dickerson et al](https://arxiv.org/abs/1702.04467) later harnessed software transactional memory (STM) to pre-determine a serialization order as a “fork-join” schedule, removing the reliance on static transcation analysis but requiring to pre-execute blocks.
 
-Unlike these previous approaches, Block-STM completely removes the need to pre-execute and pre-determine transaction dependencies. Repeatability stems from guaranteeing that the result of the parallel execution is identical with executing transactions in their block pre-order, one after another. 
+Unlike these previous approaches, the current Block-STM parallal executor completely removes the need to pre-execute and pre-determine transaction dependencies. Repeatability stems from guaranteeing that the result of the parallel execution is identical with executing transactions in their block pre-order, one after another. 
+
+## Overview
 
 This post explains the construction of an efficient parallel execution that preserves block pre-order utilizing two key tenets: 
 
@@ -39,6 +21,8 @@ This post explains the construction of an efficient parallel execution that pres
 * **SAFETY(j, k)**: When a j-transaction executes (or re-executes), every k-transaction with index k > j has to (re)validate after the j-transaction completes execution. Validation re-reads the read-set of the k-transaction and compares against the original read-set the k-transaction obtained in its latest execution. If validation fails, the k-transaction needs to re-execute.
 
 Together, MVCC and SAFETY(j, k) suffice to guarantee safety and liveness no matter what scheduling policy is used, so long as execution and validation tasks are eventually dispatched. Safety follows because a k-transaction gets validated after all j-transactions, j &lt; k, are finalized. Liveness follows by induction. Initially transaction 1 is guaranteed to pass validation successfully and not require re-execution. Once transactions 1..j have successfully validated, the next invocation of transaction j+1 will pass validation successfully and not require re-execution.
+
+## Scheduling
 
 It remains to focus on devising an efficient schedule for parallelizing execution and validations. We will construct an effective scheduling strategy gradually in four steps; readers may skip to “S-4” at the bottom, where the full scheduling strategy is described in under 20 lines of pseudo-code, and come back here as needed for step-by-step construction. 
 
@@ -67,7 +51,7 @@ validation loop:
 ```
 
 
-The schedule first executes all transactions optimistically in parallel. It then iterates over waves of parallel validations. The first iteration validates all transactions; some may fail validation and will be re-executed. The next wave re-validates all transactions higher than the lowest failing index; some may fail and re-execute. And so on, until there are no more validation failures. 
+The S-1 schedule first executes all transactions optimistically in parallel. It then iterates over waves of parallel validations. The first iteration validates all transactions; some may fail validation and will be re-executed. The next wave re-validates all transactions higher than the lowest failing index; some may fail and re-execute. And so on, until there are no more validation failures. 
 
 For example, say that a block has ten transactions 1..10, and transaction pairs (1,4), (4,7) and (7,8) are conflicting. The first iteration of the validation-loop performs validations of 1..10; the validations of 4, 7 and 8 will fail. The second iteration re-validates 5..10 and 7, 8 fail. In a third iteration, 7..10 re-validate and 8 fails. Finally in a fourth iteration, validations 8..10 succeed.
 
