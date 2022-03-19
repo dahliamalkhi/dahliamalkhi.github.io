@@ -80,7 +80,7 @@ Replacing the above validation-loop, we write a task-stealing loop at each threa
 ```
     parallel execute all transactions 1..n
 
-    *ValidTo.initialize(0)*
+    <mark>ValidTo.initialize(0)</mark>
 
     Per thread main loop:
     	If ValidTo >= n, and no task is still running, exit loop
