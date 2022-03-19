@@ -22,7 +22,13 @@ Conversion notes:
 
 [Block-STM](https://arxiv.org/pdf/2203.06871.pdf) is an exciting innovation emanating from the Diem project, recently enhanced by Aptos and integrated into [aptos-core](https://github.com/aptos-labs/aptos-core), that accelerates smart-contract execution. 
 
-The Block-STM approach builds on an approach which was pioneered in the [Calvin](http://cs.yale.edu/homes/thomson/publications/calvin-sigmod12.pdf) and [Bohm](https://arxiv.org/pdf/1412.2324.pdf) projects, driving repeated parallel execution by forming pre-ordered batches (akin to blocks) of transactions that execute in parallel as soon as their read dependencies are resolved;  pre-ordering provides repeatable execution. Later, [Dickerson et al](https://arxiv.org/abs/1702.04467) harnessed software transactional memory (STM) to pre-determine a serialization order as a “fork-join” schedule. Unlike these previous approaches, Block-STM completely removes the need to pre-execute and pre-determine transaction dependencies. Repeatability stems from guaranteeing that the result of the parallel execution is identical with executing transactions in their block pre-order, one after another. 
+The Block-STM approach builds on an approach which was pioneered in the [Calvin](http://cs.yale.edu/homes/thomson/publications/calvin-sigmod12.pdf) and [Bohm](https://arxiv.org/pdf/1412.2324.pdf) projects. These projects introduced  an insighful innovation in the context of distributed databases: simplify concurrency management by first 
+forming pre-ordered batches (akin to blocks) of transactions and disseminating them to everyone. 
+Every transcation would then arrive at a consistent output simply by waiting for read-dependencies on preceding transactions to resolve, with no need for locking or coordination. The [first DiemVM parallel executor](https://github.com/diem/diem/issues/8829) implements this approach relying on pre-estimation of trasction read- and write- sets. 
+
+[Dickerson et al](https://arxiv.org/abs/1702.04467) later harnessed software transactional memory (STM) to pre-determine a serialization order as a “fork-join” schedule, removing the reliance on static transcation analysis but requiring pre-executing blocks.
+
+Unlike these previous approaches, Block-STM completely removes the need to pre-execute and pre-determine transaction dependencies. Repeatability stems from guaranteeing that the result of the parallel execution is identical with executing transactions in their block pre-order, one after another. 
 
 This post explains the construction of an efficient parallel execution that preserves block pre-order utilizing two key tenets: 
 
