@@ -115,18 +115,18 @@ per thread main loop:
     needExecution := false
 
     if validTo < initialExecutionDoneTo 				# validate
-	j := validTo.increment() ; if j > n, go back to loop
-	re-read j-transaction read-set 
-	if read-set differs from original read-set of the latest j-transaction execution 
-	    needExecution := true
+	    j := validTo.increment() ; if j > n, go back to loop
+	    re-read j-transaction read-set 
+	    if read-set differs from original read-set of the latest j-transaction execution 
+	        needExecution := true
 
     otherwise if initialExecutionDoneTo < n 			# execute
-	j := initialExecutionDoneTo.increment() ; if j > n, go back to loop
-	needExecution := true
+	    j := initialExecutionDoneTo.increment() ; if j > n, go back to loop
+	    needExecution := true
 
     if needExecution
-	(re-)execute j-transaction
-	validTo.setMin(j) 
+	    (re-)execute j-transaction
+	    validTo.setMin(j) 
 ```
 
 Interleaving initial executions in S-3 with validations avoids unncessary work executing transactions that succeed aborted ones. For example, in the running scenario above, a batch of initial executions may contain transcation 1..4. Validations will be scheduled immediately when their execution completes. When the 4-trasncation aborts and re-executes, no higher transaction execution will have been wasted. 
@@ -162,7 +162,7 @@ per thread main loop:
 
     otherwise if initialExecutionDoneTo < n 			# execute
         j := initialExecutionDoneTo.increment() ; if j > n, go back to loop
-	needExecution := true
+	    needExecution := true
 
     if needExecution
         (re-)execute j-transaction
