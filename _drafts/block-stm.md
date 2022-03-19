@@ -1,4 +1,6 @@
-[Block-STM](https://arxiv.org/pdf/2203.06871.pdf) is an exciting technology emanating from the Diem project, recently enhanced by Aptos and integrated into [aptos-core](https://github.com/aptos-labs/aptos-core), that accelerates smart-contract execution. 
+[Block-STM](https://arxiv.org/pdf/2203.06871.pdf) is an exciting technology 
+that accelerates smart-contract execution, emanating from the Diem project
+and recently enhanced by Aptos Labs and integrated into [aptos-core](https://github.com/aptos-labs/aptos-core), 
 
 ## How it all started
 
@@ -163,5 +165,5 @@ per thread main loop:
 
 S-4 lets re-validations of k-transactions, k > j,  proceed early while preserving SAFETY(j, k): if a k-transaction validation reads an ABORTED value, it has to wait; and if it reads a value which is not marked ABORTED and the j re-execution overwrites it, the k-transaction will be forced to revalidate again.
 
-S-4 enables essentially unbounded parallelism. It reflects more-or-less accurately the [Block-STM](https://arxiv.org/pdf/2203.06871.pdf) approach; for details, see the paper (note, the description above uses different names from the paper, e.g., ABORTED replaces “ESTIMATE”, initialExecutionDoneTo replaces “execution_idx”, validTo replaces “validation_idx”). Block-STM has been implemented within the Diem blockchain core ([https://diem/diem](https://diem/diem)) and evaluated on synthetic transaction workload, yielding over 17x speedup on 32 cores under low/modest contention. 
+S-4 enables essentially unbounded parallelism. It reflects more-or-less faithfully the [Block-STM](https://arxiv.org/pdf/2203.06871.pdf) approach; for details, see the paper (note, the description above uses different names from the paper, e.g., ABORTED replaces “ESTIMATE”, initialExecutionDoneTo replaces “execution_idx”, validTo replaces “validation_idx”). Block-STM has been implemented within the Diem blockchain core ([https://diem/diem](https://diem/diem)) and evaluated on synthetic transaction workload, yielding over 17x speedup on 32 cores under low/modest contention. 
 
