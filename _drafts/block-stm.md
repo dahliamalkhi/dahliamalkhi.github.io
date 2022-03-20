@@ -88,6 +88,8 @@ per thread main loop:
 
 The S-2 task-stealing regime is more efficient than the S-1 validation loop, because it decreases `nextValidation` immediately upon validation failure, allowing higher index re-validations to commence. For example, in the scenario above, when the validation of 4 fails, re-validation of 5..10 will start right away, 7 will fail validation and re-execute only once, and similarly 8. 
 
+Concurrent task stealing creates a challenge since multiple "incarnations" of the same transaction validation or execution tasks may be occurring simultaneously. This requires MVCC to incorporate incarnations and refine the MVCC tenet such that reading a value recorded by a transaction returns the **highest incarnation** value; for more details, see the paper.
+
 Importantly, SAFETY(j, k) is preserved because upon (re-)execution of a j-transaction it decreased `ValidTo `to j. This guarantees that every k > j will be validated after the j execution. 
 
 Next we tackle the preliminary transaction execution loop, allowing threads to steal preliminary execution tasks using another synchronization counter nextPrelimExecution that tracks preliminary transaction invocations. However, rather than waiting for all preliminary execution to complete to start validation, we will interleave them with validation. This improves performance since early detection of conflicts, especially in low-index transactions, can prevent aborts later. 
