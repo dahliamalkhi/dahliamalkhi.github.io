@@ -5,12 +5,12 @@ and recently enhanced by Aptos Labs and integrated into [aptos-core](https://git
 ## How it all started
 
 An approach pioneered in the [Calvin](http://cs.yale.edu/homes/thomson/publications/calvin-sigmod12.pdf) and [Bohm](https://arxiv.org/pdf/1412.2324.pdf) projects in the context of distributed databases is the foundation of much of what follows. The insightful idea in those projects is to simplify concurrency management by disseminating pre-ordered batches (akin to blocks) of transactions along with pre-estimates of their read- and write- sets. 
-Every database partition can then autonomously execute transactions according to the block in pre-order, each transaction
+Every database partition can then autonomously execute transactions according to the block pre-order, each transaction
 waiting only for read dependencies on earlier transactions in the block. The [first DiemVM parallel executor](https://github.com/diem/diem/issues/8829) implements this approach but it relies on a static transaction analyzer to pre-estimate read/write-sets which is time consuming. 
 
 Another work by [Dickerson et al](https://arxiv.org/abs/1702.04467)
-provides a link from traditional database concurrency to smart-contract parallelism. In that work, a consensus *leader* (or *miner*) pre-computes a parallel execution serialization
-harnessing optimistic software transactional memory (STM) (a later work [OptSmart](https://arxiv.org/abs/2102.04875) added read/write-set dependency tracking) and disseminates the resulting serialization to all "validator" nodes. Those approaches
+provides a link from traditional database concurrency to smart-contract parallelism. In that work, a consensus *leader* (or *miner*) pre-computes a parallel execution serialization by
+harnessing optimistic software transactional memory (STM) (a later work [OptSmart](https://arxiv.org/abs/2102.04875) added read/write-set dependency tracking) and disseminates the pre-execution scheduling guidelines to all *validator* nodes. Those approaches
 remove the reliance on static transaction analysis but require a leader to pre-execute blocks.
 
 The Block-STM parallel executor combines the pre-ordered block idea with optimistic STM to enforce the block pre-order of transactions on-the-fly, completely removing the need to pre-disseminate an execution schedule or pre-compute transaction dependencies, while guaranteeing repeatability.
@@ -29,7 +29,7 @@ Together, MVCC and SAFETY(j, k) suffice to guarantee safety and liveness no matt
 
 ## Scheduling
 
-It remains to focus on devising an efficient schedule for parallelizing execution and validations. We will construct an effective scheduling strategy gradually in four steps; readers may skip to “S-4” at the bottom, where the full scheduling strategy is described in under 20 lines of pseudo-code, and come back here as needed for step-by-step construction. 
+It remains to focus on devising an efficient schedule for parallelizing execution and validations. We will construct an effective scheduling strategy gradually in four steps; readers may skip to “S-4” at the bottom, where the full scheduling strategy is described in under 20 lines of pseudo-code, and come back here as needed for a step-by-step construction. 
 
  
 
