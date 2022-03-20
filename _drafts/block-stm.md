@@ -8,7 +8,8 @@ An approach pioneered in the [Calvin](http://cs.yale.edu/homes/thomson/publicati
 Every database partition can then autonomously execute transactions according to the block in pre-order, each transaction
 waiting only for read dependencies on earlier transactions in the block. The [first DiemVM parallel executor](https://github.com/diem/diem/issues/8829) implements this approach but it relies on a static transaction analyzer to pre-estimate read/write-sets which is time consuming. 
 
-Another work provides a link from traditional database concurrency to smart-contract parallelism [Dickerson et al](https://arxiv.org/abs/1702.04467). In that work, a consensus *leader* (or *miner*) pre-computes a parallel execution serialization
+Another work by [Dickerson et al](https://arxiv.org/abs/1702.04467)
+provides a link from traditional database concurrency to smart-contract parallelism. In that work, a consensus *leader* (or *miner*) pre-computes a parallel execution serialization
 harnessing optimistic software transactional memory (STM) (a later work [OptSmart](https://arxiv.org/abs/2102.04875) added read/write-set dependency tracking) and disseminates the resulting serialization as a “fork-join” schedule to all "validator" nodes. Those approaches
 remove the reliance on static transaction analysis but require a leader to pre-execute blocks.
 
