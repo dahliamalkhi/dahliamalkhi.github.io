@@ -13,17 +13,16 @@ provides a link from traditional database concurrency to smart-contract parallel
 harnessing optimistic software transactional memory (STM) 
 and disseminates the pre-execution scheduling guidelines to all *validator* nodes. 
 A later work [OptSmart](https://arxiv.org/abs/2102.04875) adds read/write-set dependency tracking during pre-execution and disseminates this information to increase parallelism. 
-Those approaches
-remove the reliance on static transaction analysis but require a leader to pre-execute blocks.
+Those approaches remove the reliance on static transaction analysis but require a leader to pre-execute blocks.
 
 The Block-STM parallel executor combines the pre-ordered block idea with optimistic STM to enforce the block pre-order of transactions on-the-fly, completely removing the need to pre-disseminate an execution schedule or pre-compute transaction dependencies, while guaranteeing repeatability.
 
-## Block-STM Overview
+## Overview
 
 This post explains the construction of an efficient parallel execution that preserves block pre-order utilizing two key tenets: 
 
 
-* **MVCC**: An in-memory data structure keeps versioned write-sets, the j-transaction storing values whose version is j. A special value ABORTED may be stored at version j when the latest invocation of j-transaction aborts. A read by k-transaction obtains the value recorded by the latest invocation of a j-transaction with the highest j &lt; k (or the k-transaction suspends on an ABORTED value and resumes when the value becomes set).  
+* **MVCC**: An in-memory data structure keeps versioned write-sets, the j-transaction storing values whose version is j. A special value ABORTED may be stored at version j when the latest invocation of j-transaction aborts. A read by k-transaction obtains the value recorded by the latest invocation of a j-transaction with the highest j &lt; k (the k-transaction suspends on an ABORTED value and resumes when the value becomes set).  
 
 
 * **SAFETY(j, k)**: When a j-transaction executes (or re-executes), every k-transaction with index k > j has to (re)validate after the j-transaction completes execution. Validation re-reads the read-set of the k-transaction and compares against the original read-set the k-transaction obtained in its latest execution. If validation fails, the k-transaction needs to re-execute.
