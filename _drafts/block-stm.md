@@ -10,7 +10,7 @@ waiting only for read dependencies on earlier transactions in the block. The [fi
 
 Another work by [Dickerson et al](https://arxiv.org/abs/1702.04467)
 provides a link from traditional database concurrency to smart-contract parallelism. In that work, a consensus *leader* (or *miner*) pre-computes a parallel execution serialization
-harnessing optimistic software transactional memory (STM) (a later work [OptSmart](https://arxiv.org/abs/2102.04875) added read/write-set dependency tracking) and disseminates the resulting serialization as a “fork-join” schedule to all "validator" nodes. Those approaches
+harnessing optimistic software transactional memory (STM) (a later work [OptSmart](https://arxiv.org/abs/2102.04875) added read/write-set dependency tracking) and disseminates the resulting serialization to all "validator" nodes. Those approaches
 remove the reliance on static transaction analysis but require a leader to pre-execute blocks.
 
 The Block-STM parallel executor combines the pre-ordered block idea with optimistic STM to enforce the block pre-order of transactions on-the-fly, completely removing the need to pre-disseminate an execution schedule or pre-compute transaction dependencies, while guaranteeing repeatability.
