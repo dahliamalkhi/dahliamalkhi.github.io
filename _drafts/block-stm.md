@@ -138,7 +138,7 @@ The final scheduling algorithm, S-4, is captured abstractly in full in under one
 
 ```
 nextPrelimExecution.initialize(1) 
-nextValidation.initialize(1) 
+nextValidation.initialize(2) 
 
 per thread main loop:
 
