@@ -7,11 +7,11 @@ and recently enhanced by Aptos Labs and integrated into [aptos-core](https://git
 Block-STM builds on an approach pioneered in the [Calvin](http://cs.yale.edu/homes/thomson/publications/calvin-sigmod12.pdf) and [Bohm](https://arxiv.org/pdf/1412.2324.pdf) projects in the context of distributed databases. The insightful idea in these projects is to simplify concurrency management by 
 disseminating pre-ordered batches (akin to blocks) of transactions along with pre-estimates of their read- and write- sets. 
 Every database partition executes transactions in the block in pre-order, each transaction
-waiting for read dependencies only on earlier transactions in the block. The [first DiemVM parallel executor](https://github.com/diem/diem/issues/8829) implements this approach but it relies on a static trasnaction analyzer to pre-estimate read- and write- sets which is time consuming. 
+waiting for read dependencies only on earlier transactions in the block. The [first DiemVM parallel executor](https://github.com/diem/diem/issues/8829) implements this approach but it relies on a static transaction analyzer to pre-estimate read- and write- sets which is time consuming. 
 
 
-To remove the reliance on static analysis, Block-STM combines the pre-ordered block idea with an approach for smart-contract parallelism by [Dickerson et al](https://arxiv.org/abs/1702.04467). It harnesses optimistic concurrency control via software transactional memory (STM) to determine a serialization. The original idea pre-executes blocks and disseminates  as a “fork-join” schedule, removing the reliance on static transcation analysis but requires to pre-execute blocks.
-The Block-STM parallal executor uses STM to enforce the block pre-order of transactions, completely removing the need to pre-disseminate an execution schedule or pre-compute transaction dependencies, while guaranteeing repeatability.
+To remove the reliance on static analysis, Block-STM combines the pre-ordered block idea with an approach for smart-contract parallelism by [Dickerson et al](https://arxiv.org/abs/1702.04467). It harnesses optimistic concurrency control via software transactional memory (STM) to determine a serialization. The original idea pre-executes blocks and disseminates  as a “fork-join” schedule, removing the reliance on static transaction analysis but requires to pre-execute blocks.
+The Block-STM parallel executor uses STM to enforce the block pre-order of transactions, completely removing the need to pre-disseminate an execution schedule or pre-compute transaction dependencies, while guaranteeing repeatability.
 
 ## Block-STM Overview
 
@@ -40,7 +40,7 @@ At a first cut, consider the following scheduler, let’s call it S-1.
 ```
 parallel execute all transactions 1..n
 
-nextValidation := 1 
+nextValidation := 2 
 
 validation loop:
     parallel-do for all j in [ nextValidation..n ] :
@@ -73,7 +73,7 @@ Replacing the above validation-loop, we write a task-stealing loop at each threa
 ```
 parallel execute all transactions 1..n
 
-nextValidation.initialize(1)
+nextValidation.initialize(2)
 
 per thread main loop:
     if nextValidation > n, and no task is still running, exit loop
@@ -100,26 +100,29 @@ The interleaved scheduler supporting ABORTED is called S-3 and works as follows:
 
 ```
 nextPrelimExecution.initialize(1) 
-nextValidation.initialize(1) 
+nextValidation.initialize(2) 
 
 per thread main loop:
 
     if nextPrelimExecution > n, nextValidation > n, and no task is still running, exit loop
 
-    if nextValidation < nextPrelimExecution                 # validate
-        j := nextValidation.increment() ; if j > nextPrelimExecution, go back to loop
+    if nextValidation < nextPrelimExecution                 # schedule validation
+        j := nextValidation.increment() ; if j >= nextPrelimExecution, go back to loop
         re-read j-transaction read-set 
         if read-set differs from original read-set of the latest j-transaction execution 
-            re-execute j-transaction
-            nextValidation.setMin(j+1) 
+            goto execute
 
-    otherwise if nextPrelimExecution <= n             # execute
+    otherwise if nextPrelimExecution <= n             # schedule execution
         j := nextPrelimExecution.increment() ; if j > n, go back to loop
-        execute j-transaction
-        nextValidation.setMin(j) 
+
+    otherwise go back to loop
+
+execute:
+    (re-)execute j-transaction
+    nextValidation.setMin(j+1) 
 ```
 
-Interleaving preliminary executions in S-3 with validations avoids unncessary work executing transactions that succeed aborted ones. For example, in the running scenario above, a batch of preliminary executions may contain transcation 1..4. Validations will be scheduled immediately when their execution completes. When the 4-trasncation aborts and re-executes, no higher transaction execution will have been wasted. 
+Interleaving preliminary executions in S-3 with validations avoids unnecessary work executing transactions that succeed aborted ones. For example, in the running scenario above, a batch of preliminary executions may contain transaction 1..4. Validations will be scheduled immediately when their execution completes. When the 4-transaction aborts and re-executes, no higher transaction execution will have been wasted. 
 
 The last improvement step consists of two important improvements.
 
@@ -139,22 +142,25 @@ nextValidation.initialize(1)
 
 per thread main loop:
 
-    if nextPrelimExecution > n, nextValidation > n, and no task is still running, exit loop
+     if nextPrelimExecution > n, nextValidation > n, and no task is still running, exit loop
 
-    if nextValidation < nextPrelimExecution                 # validate
-        j := nextValidation.increment() ; if j > nextPrelimExecution, go back to loop
-        re-read j-transaction read-set 
-        if read-set differs from original read-set of the latest j-transaction execution 
-            mark the j-transaction write-set ABORTED
-            nextValidation.setMmin(j+1) 
-            re-execute j-transaction
-            if the j-transaction write-set contains locations not marked ABORTED
-                nextValidation.setMmin(j+1) 
+     if nextValidation < nextPrelimExecution                 # schedule validation
+         j := nextValidation.increment() ; if j >= nextPrelimExecution, go back to loop
+         re-read j-transaction read-set 
+         if read-set differs from original read-set of the latest j-transaction execution 
+             mark the j-transaction write-set ABORTED
+             nextValidation.setMin(j+1) 
+             goto execute
 
-    otherwise if nextPrelimExecution <= n             # execute
-        j := nextPrelimExecution.increment() ; if j > n, go back to loop
-        execute j-transaction
-        nextValidation.setMmin(j) 
+     otherwise if nextPrelimExecution <= n             # schedule execution
+         j := nextPrelimExecution.increment() ; if j > n, go back to loop
+
+     otherwise go back to loop
+
+execute:  
+     (re-)execute j-transaction
+     if the j-transaction write-set contains locations not marked ABORTED
+         nextValidation.setMin(j+1) 
 ```
 
 
