@@ -105,7 +105,7 @@ per thread main loop:
 
     if nextPrelimExecution > n, nextValidation > n, and no task is still running, exit loop
 
-    if nextValidation <= nextPrelimExecution                 # validate
+    if nextValidation < nextPrelimExecution                 # validate
         j := nextValidation.increment() ; if j > nextPrelimExecution, go back to loop
         re-read j-transaction read-set 
         if read-set differs from original read-set of the latest j-transaction execution 
@@ -140,7 +140,7 @@ per thread main loop:
 
     if nextPrelimExecution > n, nextValidation > n, and no task is still running, exit loop
 
-    if nextValidation <= nextPrelimExecution                 # validate
+    if nextValidation < nextPrelimExecution                 # validate
         j := nextValidation.increment() ; if j > nextPrelimExecution, go back to loop
         re-read j-transaction read-set 
         if read-set differs from original read-set of the latest j-transaction execution 
