@@ -18,7 +18,7 @@ The Block-STM parallel executor uses STM to enforce the block pre-order of trans
 This post explains the construction of an efficient parallel execution that preserves block pre-order utilizing two key tenets: 
 
 
-* **MVCC**: An in-memory data structure keeps versioned write-sets, the j-transaction storing values whose version is j. A special value ABORTED may be stored at version j when the latest invocation of j-transaction aborts. A read by k-transaction obtains the latest value recorded by a j-transaction with j &lt; k (or the k-transaction suspends on an ABORTED value and resumes when the value becomes set).  
+* **MVCC**: An in-memory data structure keeps versioned write-sets, the j-transaction storing values whose version is j. A special value ABORTED may be stored at version j when the latest invocation of j-transaction aborts. A read by k-transaction obtains the value recorded by the latest invocation of a j-transaction with the highest j &lt; k (or the k-transaction suspends on an ABORTED value and resumes when the value becomes set).  
 
 
 * **SAFETY(j, k)**: When a j-transaction executes (or re-executes), every k-transaction with index k > j has to (re)validate after the j-transaction completes execution. Validation re-reads the read-set of the k-transaction and compares against the original read-set the k-transaction obtained in its latest execution. If validation fails, the k-transaction needs to re-execute.
