@@ -39,15 +39,15 @@ At a first cut, consider the following scheduler, let’s call it S-1.
 ```
 parallel execute all transactions 1..n
 
-validTo := 0 
+validTo := 1 
 
 validation loop:
-    parallel-do for all j in [ (validTo+1)..n ] :
+    parallel-do for all j in [ validTo..n ] :
         re-read j-transaction read-set 
         if read-set differs from original read-set of the latest j-transaction execution 
             re-execute j-transaction 
         if any j-transaction failed validation
-            update validTo to the minimal failed j-transaction
+            update validTo to j+1, where j is the minimal failed transaction
         otherwise
             exit loop  
 ```
@@ -72,16 +72,16 @@ Replacing the above validation-loop, we write a task-stealing loop at each threa
 ```
 parallel execute all transactions 1..n
 
-validTo.initialize(0)
+validTo.initialize(1)
 
 per thread main loop:
-    if validTo >= n, and no task is still running, exit loop
+    if validTo > n, and no task is still running, exit loop
     j := validTo.increment() ; if j > n, go back to loop 
 
     re-read j-transaction read-set 
     if read-set differs from original read-set of the latest j-transaction execution 
         re-execute j-transaction
-        validTo.setMin(j) 
+        validTo.setMin(j+1) 
 ```
 
 
@@ -89,7 +89,7 @@ The S-2 task-stealing regime is more efficient than the S-1 validation loop, bec
 
 Importantly, SAFETY(j, k) is preserved because upon (re-)execution of a j-transaction it decreased `ValidTo `to j. This guarantees that every k > j will be validated after the j execution. 
 
-Next we tackle the initial transaction execution loop, allowing threads to steal initial execution tasks using another synchronization counter initialExecutionDoneTo that tracks initial transaction invocations. However, rather than waiting for all initial execution to complete to start validation, we will interleave them with validation. This improves performance since early detection of conflicts, especially in low-index transactions, can prevent aborts later. 
+Next we tackle the initial transaction execution loop, allowing threads to steal initial execution tasks using another synchronization counter initialExecutedTo that tracks initial transaction invocations. However, rather than waiting for all initial execution to complete to start validation, we will interleave them with validation. This improves performance since early detection of conflicts, especially in low-index transactions, can prevent aborts later. 
 
 The interleaved scheduler supporting ABORTED is called S-3 and works as follows:
 
@@ -98,26 +98,23 @@ The interleaved scheduler supporting ABORTED is called S-3 and works as follows:
 
 
 ```
-initialExecutionDoneTo.initialize(0) 
-validTo.initialize(0) 
+initialExecutedTo.initialize(1) 
+validTo.initialize(1) 
 
 per thread main loop:
 
-    if initialExecutionDoneTo >= n, validTo >= n, and no task is still running, exit loop
-    needExecution := false
+    if initialExecutedTo > n, validTo > n, and no task is still running, exit loop
 
-    if validTo < initialExecutionDoneTo                 # validate
-        j := validTo.increment() ; if j > initialExecutionDoneTo, go back to loop
+    if validTo < initialExecutedTo                 # validate
+        j := validTo.increment() ; if j > initialExecutedTo, go back to loop
         re-read j-transaction read-set 
         if read-set differs from original read-set of the latest j-transaction execution 
-            needExecution := true
+            re-execute j-transaction
+            validTo.setMin(j+1) 
 
-    otherwise if initialExecutionDoneTo < n             # execute
-        j := initialExecutionDoneTo.increment() ; if j > n, go back to loop
-        needExecution := true
-
-    if needExecution
-        (re-)execute j-transaction
+    otherwise if initialExecutedTo <= n             # execute
+        j := initialExecutedTo.increment() ; if j > n, go back to loop
+        execute j-transaction
         validTo.setMin(j) 
 ```
 
@@ -136,34 +133,31 @@ The final scheduling algorithm, S-4, is captured abstractly in full in under one
 
 
 ```
-initialExecutionDoneTo.initialize(0) 
-validTo.initialize(0) 
+initialExecutedTo.initialize(1) 
+validTo.initialize(1) 
 
 per thread main loop:
 
-    if initialExecutionDoneTo >= n, validTo >= n, and no task is still running, exit loop
-    needExecution := false
+    if initialExecutedTo > n, validTo > n, and no task is still running, exit loop
 
-    if validTo < initialExecutionDoneTo                 # validate
-        j := validTo.increment() ; if j > initialExecutionDoneTo, go back to loop
+    if validTo < initialExecutedTo                 # validate
+        j := validTo.increment() ; if j > initialExecutedTo, go back to loop
         re-read j-transaction read-set 
         if read-set differs from original read-set of the latest j-transaction execution 
             mark the j-transaction write-set ABORTED
-        validTo.setMin(j)
-            needExecution := true
+            validTo.setMmin(j+1) 
+            re-execute j-transaction
+            if the j-transaction write-set contains locations not marked ABORTED
+                validTo.setMmin(j+1) 
 
-    otherwise if initialExecutionDoneTo < n             # execute
-        j := initialExecutionDoneTo.increment() ; if j > n, go back to loop
-        needExecution := true
-
-    if needExecution
-        (re-)execute j-transaction
-        if the j-transaction write-set contains locations not marked ABORTED
-            validTo.setMmin(j) 
+    otherwise if initialExecutedTo < n             # execute
+        j := initialExecutedTo.increment() ; if j > n, go back to loop
+        execute j-transaction
+        validTo.setMmin(j) 
 ```
 
 
 S-4 lets re-validations of k-transactions, k > j,  proceed early while preserving SAFETY(j, k): if a k-transaction validation reads an ABORTED value, it has to wait; and if it reads a value which is not marked ABORTED and the j re-execution overwrites it, the k-transaction will be forced to revalidate again.
 
-S-4 enables essentially unbounded parallelism. It reflects more-or-less faithfully the [Block-STM](https://arxiv.org/pdf/2203.06871.pdf) approach; for details, see the paper (note, the description above uses different names from the paper, e.g., ABORTED replaces “ESTIMATE”, initialExecutionDoneTo replaces “execution_idx”, validTo replaces “validation_idx”). Block-STM has been implemented within the Diem blockchain core ([https://diem/diem](https://diem/diem)) and evaluated on synthetic transaction workload, yielding over 17x speedup on 32 cores under low/modest contention. 
+S-4 enables essentially unbounded parallelism. It reflects more-or-less faithfully the [Block-STM](https://arxiv.org/pdf/2203.06871.pdf) approach; for details, see the paper (note, the description above uses different names from the paper, e.g., ABORTED replaces “ESTIMATE”, initialExecutedTo replaces “execution_idx”, validTo replaces “validation_idx”). Block-STM has been implemented within the Diem blockchain core ([https://diem/diem](https://diem/diem)) and evaluated on synthetic transaction workload, yielding over 17x speedup on 32 cores under low/modest contention. 
 
