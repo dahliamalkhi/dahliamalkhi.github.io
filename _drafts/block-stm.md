@@ -4,13 +4,13 @@ and recently enhanced by Aptos Labs and integrated into [aptos-core](https://git
 
 ## How it all started
 
-The foundation of Block-STM is an approach pioneered in the [Calvin](http://cs.yale.edu/homes/thomson/publications/calvin-sigmod12.pdf) and [Bohm](https://arxiv.org/pdf/1412.2324.pdf) projects in the context of distributed databases. The insightful idea in these projects is to simplify concurrency management by 
-disseminating pre-ordered batches (akin to blocks) of transactions along with pre-estimates of their read- and write- sets. 
+Much of what follows The foundation of Block-STM is 
+
+An approach pioneered in the [Calvin](http://cs.yale.edu/homes/thomson/publications/calvin-sigmod12.pdf) and [Bohm](https://arxiv.org/pdf/1412.2324.pdf) projects in the context of distributed databases is the foundation of much of what follows. The insightful idea in those projects is to simplify concurrency management by disseminating pre-ordered batches (akin to blocks) of transactions along with pre-estimates of their read- and write- sets. 
 Every database partition can then autonomously execute transactions according to the block in pre-order, each transaction
 waiting only for read dependencies on earlier transactions in the block. The [first DiemVM parallel executor](https://github.com/diem/diem/issues/8829) implements this approach but it relies on a static transaction analyzer to pre-estimate read- and write- sets which is time consuming. 
 
-
-Another approach for smart-contract parallelism by [Dickerson et al](https://arxiv.org/abs/1702.04467). That approach harnesses optimistic concurrency control via software transactional memory (STM) to determine a block serialization. The original idea was to pre-execute blocks by one "leader" and disseminate the serialization as a “fork-join” schedule; it removes the reliance on static transaction analysis but requires a leader to pre-execute blocks.
+An approach for smart-contract parallelism by [Dickerson et al](https://arxiv.org/abs/1702.04467) forms a key bridge between traditional concurrency to the blockchain world. That approach harnesses optimistic concurrency control via software transactional memory (STM) to determine a block serialization. The original idea was to pre-execute blocks by one "leader" and disseminate the resulting serialization as a “fork-join” schedule; it removes the reliance on static transaction analysis but requires a leader to pre-execute blocks.
 
 The Block-STM parallel executor combines the pre-ordered block idea with STM to enforce the block pre-order of transactions on-the-fly, completely removing the need to pre-disseminate an execution schedule or pre-compute transaction dependencies, while guaranteeing repeatability.
 
