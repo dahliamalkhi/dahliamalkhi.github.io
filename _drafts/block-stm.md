@@ -31,11 +31,11 @@ Together, MVCC and SAFETY(j, k) suffice to guarantee safety and liveness no matt
 
 ## Scheduling
 
-It remains to focus on devising an efficient schedule for parallelizing execution and validations. We will construct an effective scheduling strategy gradually in four steps; readers may skip to “S-4” at the bottom, where the full scheduling strategy is described in under 20 lines of pseudo-code, and come back here as needed for a step-by-step construction. 
+It remains to focus on devising an efficient schedule for parallelizing execution and validations. We will construct an effective scheduling strategy gradually, starting with a correct but inefficient strawman and gradually improving it in four steps. Readers may skip directly to “S-4” at the bottom, where the full scheduling strategy is described in under 20 lines of pseudo-code, and come back here as needed for a step-by-step construction. 
 
  
 
-At a first cut, consider the following scheduler, let’s call it S-1.
+At a first cut, consider the following strawman scheduler, S-1.
 
 
 ## **S-1:**
@@ -68,7 +68,7 @@ However, both the execution and validation loops are logically centrally coordin
 
  
 
-Replacing the above validation-loop, we write a task-stealing loop at each thread, resulting the following scheduler called S-2:
+Replacing the above validation-loop, we write a task-stealing loop at each thread, resulting the following strawman scheduler, S-2:
 
 
 ## **S-2:**
@@ -98,7 +98,7 @@ Concurrent task stealing creates a challenge since multiple *incarnations* of th
 
 Next we tackle the preliminary transaction execution loop, allowing threads to steal preliminary execution tasks using another synchronization counter nextPrelimExecution that tracks preliminary transaction invocations. However, rather than waiting for all preliminary execution to complete to start validation, we will interleave them with validation. This improves performance since early detection of conflicts, especially in low-index transactions, can prevent aborts later. 
 
-The interleaved scheduler supporting ABORTED is called S-3 and works as follows:
+A strawman scheduler, S-3, that supports interleaved execution/validation and dependency managements utilizing ABORTED tagging, works as follows:
 
 
 ## **S-3:**
@@ -136,7 +136,7 @@ The first is an extremely simple dependency tracking (no graphs or partial order
 
 The second one increases re-validation parallelism. When a transaction aborts, rather than waiting for it to complete re-execution, it decreases nextValidation immediately; then if the re-execution writes to a (new) location which is not marked ABORTED, ValidTo is decreased again when the re-execution completes. 
 
-The final scheduling algorithm, S-4, is captured abstractly in full in under one page as follows:
+The final scheduling algorithm presented here, S-4, is captured abstractly in full in under one page as follows:
 
 
 ## **S-4:**
