@@ -28,7 +28,7 @@ This post explains the construction of an efficient parallel execution that pres
 * **VALID(j, k)**: When a j-transaction executes (or re-executes), every k-transaction with index k > j has to (re)validate after the j-transaction completes execution. Validation re-reads the read-set of the k-transaction and compares against the original read-set the k-transaction obtained in its latest execution. If validation fails, the k-transaction needs to re-execute.
 
 No matter what scheduling policy is used, so long as execution and validation tasks are eventually dispatched,
-MVCC and VALID(j, k) jointly suffice to guarantee safety and liveness. For example, a crude strawman scheduling strategy guaranteeing VALID(j, k), S-1, first optimistically executes all transactions in parallel, second iteratively validates/re-executes all transactions optimistically in parallel. Safety follows directly from VALID(j, k) because a k-transaction gets validated after all j-transactions, j &lt; k, are finalized. Liveness follows by induction. Initially transaction 1 is guaranteed to pass validation successfully and not require re-execution. Once transactions 1..j have successfully validated, the next invocation of transaction j+1 will pass validation successfully and not require re-execution.
+**MVCC** and **VALID(j, k)** jointly suffice to guarantee safety and liveness. For example, a crude strawman scheduling strategy guaranteeing **VALID(j, k)**, S-1, first optimistically executes all transactions in parallel. Second, it iteratively validates/re-executes all transactions optimistically in parallel. Safety follows directly from **VALID(j, k)** because a k-transaction gets validated after all j-transactions, j &lt; k, are finalized. Liveness follows by induction. Initially transaction 1 is guaranteed to pass validation successfully and not require re-execution. Once transactions 1..j have successfully validated, the next invocation of transaction j+1 will pass validation successfully and not require re-execution.
 
 ## Scheduling
 
@@ -93,9 +93,9 @@ per thread main loop:
 
 The S-2 task-stealing regime is more efficient than the S-1 validation loop, because it decreases `nextValidation` immediately upon validation failure, allowing higher index re-validations to commence. For example, in the scenario above, when the validation of 4 fails, re-validation of 5..10 will start right away, 7 will fail validation and re-execute only once, and similarly 8. 
 
-Importantly, VALID(j, k) is preserved because upon (re-)execution of a j-transaction it decreases `ValidTo` to j. This guarantees that every k > j will be validated after the j execution. 
+Importantly, **VALID(j, k)** is preserved because upon (re-)execution of a j-transaction it decreases `ValidTo` to j. This guarantees that every k > j will be validated after the j execution. 
 
-Concurrent task stealing creates a challenge since multiple *incarnations* of the same transaction validation or execution tasks may occur simultaneously. Recall that MVCC requires that a read by a k-transaction should obtain the value recorded by the latest invocation of a j-transaction with the highest j &lt; k. This requires to synchronize transaction invocations, such that MVCC returns the **highest incarnation** value recorded by a transaction. A simple solution is to use a per-transaction atomic incarnation synchronizer, which also allows optimizations like preventing stale incarnations from recording values (for details, see the paper).
+Concurrent task stealing creates a challenge since multiple *incarnations* of the same transaction validation or execution tasks may occur simultaneously. Recall that **MVCC** requires that a read by a k-transaction should obtain the value recorded by the latest invocation of a j-transaction with the highest j &lt; k. This requires to synchronize transaction invocations, such that **MVCC** returns the **highest incarnation** value recorded by a transaction. A simple solution is to use a per-transaction atomic incarnation synchronizer, which also allows optimizations like preventing stale incarnations from recording values (for details, see the paper).
 
 Next we tackle the preliminary transaction execution loop, allowing threads to steal preliminary execution tasks using another synchronization counter nextPrelimExecution that tracks preliminary transaction invocations. However, rather than waiting for all preliminary execution to complete to start validation, we will interleave them with validation. This improves performance since early detection of conflicts, especially in low-index transactions, can prevent aborts later. 
 
@@ -133,7 +133,7 @@ Interleaving preliminary executions in S-3 with validations avoids unnecessary w
 
 The last improvement step consists of two important improvements.
 
-The first is an extremely simple dependency tracking (no graphs or partial orders) that considerably reduces aborts. When a j-transaction aborts, the write-set of its latest invocation is marked ABORTED. Since MVCC already supported the ABORTED mark, a higher-index k-transaction reading from a location in this write-set will delay until the j-transaction completes re-executing.
+The first is an extremely simple dependency tracking (no graphs or partial orders) that considerably reduces aborts. When a j-transaction aborts, the write-set of its latest invocation is marked ABORTED. Since **MVCC** already supported the ABORTED mark, a higher-index k-transaction reading from a location in this write-set will delay until the j-transaction completes re-executing.
 
 The second one increases re-validation parallelism. When a transaction aborts, rather than waiting for it to complete re-execution, it decreases nextValidation immediately; then if the re-execution writes to a (new) location which is not marked ABORTED, ValidTo is decreased again when the re-execution completes. 
 
@@ -171,7 +171,7 @@ execute:
 ```
 
 
-S-4 lets re-validations of k-transactions, k > j,  proceed early while preserving VALID(j, k): if a k-transaction validation reads an ABORTED value, it has to wait; and if it reads a value which is not marked ABORTED and the j re-execution overwrites it, the k-transaction will be forced to revalidate again.
+S-4 lets re-validations of k-transactions, k > j,  proceed early while preserving **VALID(j, k)**: if a k-transaction validation reads an ABORTED value, it has to wait; and if it reads a value which is not marked ABORTED and the j re-execution overwrites it, the k-transaction will be forced to revalidate again.
 
 S-4 enables essentially unbounded parallelism. It reflects more-or-less faithfully the [Block-STM](https://arxiv.org/pdf/2203.06871.pdf) approach; for details, see the paper (note, the description above uses different names from the paper, e.g., ABORTED replaces “ESTIMATE”, nextPrelimExecution replaces “execution_idx”, nextValidation replaces “validation_idx”). Block-STM has been implemented within the Diem blockchain core ([https://diem/diem](https://diem/diem)) and evaluated on synthetic transaction workload, yielding over 17x speedup on 32 cores under low/modest contention. 
 
