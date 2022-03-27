@@ -22,7 +22,7 @@ The Block-STM parallel executor combines the pre-ordered block idea with optimis
 The construction of parallel execution that preserves block pre-order revolves around two key tenets: 
 
 
-* **MVCC**: An in-memory data structure keeps versioned write-sets, the j-transaction storing values whose version is j. A special value ABORTED may be stored at version j when the latest invocation of j-transaction aborts. A read by k-transaction obtains the value recorded by the latest invocation of a j-transaction with the highest j &lt; k. If this value is marked ABORTED, the k-transaction suspends and resumes when the value becomes set.  
+* **MVCC**: An in-memory data structure keeps versioned write-sets, the j-transaction storing values whose version is j. A special value `ABORTED` may be stored at version j when the latest invocation of j-transaction aborts. A read by k-transaction obtains the value recorded by the latest invocation of a j-transaction with the highest j &lt; k. If this value is marked `ABORTED`, the k-transaction suspends and resumes when the value becomes set.  
 
 
 * **VALID(j, k)**: When a j-transaction executes (or re-executes), every k-transaction with index k > j has to (re)validate after the j-transaction completes execution. Validation re-reads the read-set of the k-transaction and compares against the original read-set the k-transaction obtained in its latest execution. If validation fails, the k-transaction needs to re-execute.
@@ -133,12 +133,12 @@ Interleaving preliminary executions in S-3 with validations avoids unnecessary w
 
 The last improvement step consists of two important improvements.
 
-The first is an extremely simple dependency tracking (no graphs or partial orders) that considerably reduces aborts. When a j-transaction aborts, its write-set is marked ABORTED. Since **MVCC** already supports the ABORTED mark, any higher-index k-transaction reading from a location in this write-set will delay until the j-transaction completes re-executing.
+The first is an extremely simple dependency tracking (no graphs or partial orders) that considerably reduces aborts. When a j-transaction aborts, its write-set is marked `ABORTED`. Since **MVCC** already supports the `ABORTED` mark, any higher-index k-transaction reading from a location in this write-set will delay until the j-transaction completes re-executing.
 
-The second one increases re-validation parallelism. When a transaction aborts, rather than waiting for it to complete re-execution, it decreases `nextValidation` immediately; then, if the re-execution writes to a (new) location which is not marked ABORTED, `ValidTo` is decreased again when the re-execution completes. 
+The second one increases re-validation parallelism. When a transaction aborts, rather than waiting for it to complete re-execution, it decreases `nextValidation` immediately; then, if the re-execution writes to a (new) location which is not marked `ABORTED`, `ValidTo` is decreased again when the re-execution completes. 
 
 The final scheduling algorithm S-4, 
-that supports interleaved execution/validation and dependency managements utilizing ABORTED tagging,
+that supports interleaved execution/validation and dependency managements utilizing `ABORTED` tagging,
 is captured in full in under one page as follows:
 
 ## **S-4:**
@@ -156,7 +156,7 @@ per thread main loop:
          j := nextValidation.increment() ; if j >= nextPrelimExecution, go back to loop
          re-read j-transaction read-set 
          if read-set differs from original read-set of the latest j-transaction execution 
-             mark the j-transaction write-set ABORTED
+             mark the j-transaction write-set `ABORTED`
              nextValidation.setMin(j+1) 
              goto execute
 
@@ -167,12 +167,12 @@ per thread main loop:
 
 execute:  
      (re-)execute j-transaction
-     if the j-transaction write-set contains locations not marked ABORTED
+     if the j-transaction write-set contains locations not marked `ABORTED`
          nextValidation.setMin(j+1) 
 ```
 
 
-S-4 lets re-validations of k-transactions, k > j,  proceed early while preserving **VALID(j, k)**: if a k-transaction validation reads an ABORTED value, it has to wait; and if it reads a value which is not marked ABORTED and the j re-execution overwrites it, the k-transaction will be forced to revalidate again.
+S-4 lets re-validations of k-transactions, k > j,  proceed early while preserving **VALID(j, k)**: if a k-transaction validation reads an `ABORTED` value, it has to wait; and if it reads a value which is not marked `ABORTED` and the j re-execution overwrites it, the k-transaction will be forced to revalidate again.
 
-S-4 enables essentially unbounded parallelism. It reflects more-or-less faithfully the [Block-STM](https://arxiv.org/pdf/2203.06871.pdf) approach; for details, see the paper (note, the description above uses different names from the paper, e.g., ABORTED replaces “ESTIMATE”, nextPrelimExecution replaces “execution_idx”, nextValidation replaces “validation_idx”). Block-STM has been implemented within the Diem blockchain core ([https://diem/diem](https://diem/diem)) and evaluated on synthetic transaction workload, yielding over 17x speedup on 32 cores under low/modest contention. 
+S-4 enables essentially unbounded parallelism. It reflects more-or-less faithfully the [Block-STM](https://arxiv.org/pdf/2203.06871.pdf) approach; for details, see the paper (note, the description above uses different names from the paper, e.g., `ABORTED` replaces “ESTIMATE”, `nextPrelimExecution` replaces “execution_idx”, `nextValidation` replaces “validation_idx”). Block-STM has been implemented within the Diem blockchain core ([https://diem/diem](https://diem/diem)) and evaluated on synthetic transaction workloads, yielding over 17x speedup on 32 cores under low/modest contention. 
 
