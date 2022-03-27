@@ -156,7 +156,7 @@ per thread main loop:
          j := nextValidation.increment() ; if j >= nextPrelimExecution, go back to loop
          re-read j-transaction read-set 
          if read-set differs from original read-set of the latest j-transaction execution 
-             mark the j-transaction write-set `ABORTED`
+             mark the j-transaction write-set ABORTED
              nextValidation.setMin(j+1) 
              goto execute
 
@@ -167,7 +167,7 @@ per thread main loop:
 
 execute:  
      (re-)execute j-transaction
-     if the j-transaction write-set contains locations not marked `ABORTED`
+     if the j-transaction write-set contains locations not marked ABORTED
          nextValidation.setMin(j+1) 
 ```
 
