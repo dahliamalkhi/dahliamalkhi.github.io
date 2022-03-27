@@ -46,7 +46,6 @@ At a first cut, consider the following strawman scheduler, S-1.
 Phase 1:                # execution
     parallel execute all transactions 1..n
 
-
 Phase 2:                # validation
     validation loop:
         parallel-do for all j in [ nextValidation..n ] :
@@ -77,18 +76,20 @@ Replacing the above validation-loop in phase 2 with a task-stealing loop results
 
 
 ```
-parallel execute all transactions 1..n
+Phase 1:                # execution
+    parallel execute all transactions 1..n
 
-nextValidation.initialize(2)
+Phase 2:                # validation
+    nextValidation.initialize(2)
 
-per thread main loop:
-    if nextValidation > n, and no task is still running, exit loop
-    j := nextValidation.increment() ; if j > n, go back to loop 
+    per thread main loop:
+        if nextValidation > n, and no task is still running, exit loop
+        j := nextValidation.increment() ; if j > n, go back to loop 
 
-    re-read tx-j read-set 
-    if read-set differs from original read-set of the latest tx-j execution 
-        re-execute tx-j
-        nextValidation.setMin(j+1) 
+        re-read tx-j read-set 
+        if read-set differs from original read-set of the latest tx-j execution 
+            re-execute tx-j
+            nextValidation.setMin(j+1) 
 ```
 
 
