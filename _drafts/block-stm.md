@@ -22,7 +22,7 @@ The Block-STM parallel executor combines the pre-ordered block idea with optimis
 The construction of parallel execution that preserves block pre-order revolves around two key tenets: 
 
 
-* **MVCC**: An in-memory data structure keeps versioned write-sets, the j-transaction storing values whose version is j. A special value ABORTED may be stored at version j when the latest invocation of j-transaction aborts. A read by k-transaction obtains the value recorded by the latest invocation of a j-transaction with the highest j &lt; k (the k-transaction suspends on an ABORTED value and resumes when the value becomes set).  
+* **MVCC**: An in-memory data structure keeps versioned write-sets, the j-transaction storing values whose version is j. A special value ABORTED may be stored at version j when the latest invocation of j-transaction aborts. A read by k-transaction obtains the value recorded by the latest invocation of a j-transaction with the highest j &lt; k. If this value is marked ABORTED, the k-transaction suspends and resumes when the value becomes set.  
 
 
 * **VALID(j, k)**: When a j-transaction executes (or re-executes), every k-transaction with index k > j has to (re)validate after the j-transaction completes execution. Validation re-reads the read-set of the k-transaction and compares against the original read-set the k-transaction obtained in its latest execution. If validation fails, the k-transaction needs to re-execute.
