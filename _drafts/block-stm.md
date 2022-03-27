@@ -33,7 +33,7 @@ A read by tx-k obtains the value recorded by the latest invocation of tx-j with 
 A special value `ABORTED` may be stored at version j when the latest invocation of tx-j aborts. 
 If tx-k reads this value, it suspends and resumes when the value becomes set.  
 
-**VALID(j, k)** is implemented by a scheduler. When tx-j executes (or re-executes), every tx-k with index k > j has to (re)validate after the tx-j completes execution. Validation re-reads the read-set of the tx-k and compares against the original read-set the tx-k obtained in its latest execution. If validation fails, tx-k re-executes.
+**VALID(j, k)** is implemented by a scheduler. When tx-j executes (or re-executes), every tx-k with index k > j is scheduled for (re)validation after tx-j completes execution. Validation re-reads the read-set of the tx-k and compares against the original read-set that tx-k obtained in its latest execution. If validation fails, tx-k re-executes.
 
 ## Scheduling
 
