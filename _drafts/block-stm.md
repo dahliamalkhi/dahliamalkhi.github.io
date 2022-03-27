@@ -21,15 +21,19 @@ The Block-STM parallel executor combines the pre-ordered block idea with optimis
 The construction of a parallel execution schedule that preserves a block pre-order tx-1, tx-2, ..., tx-n, utilizes two key key principles: 
 
 * **MVCC**: tx-k read will obtain the latest value recorded by the highest tx-j, j < k
-* **SAFETY(j, k)**: tx-k will validate after the executions of tx-1 .. tx-(k-1) have finalized
+* **VALID(j, k)**: tx-k will validate after the executions of tx-1 .. tx-(k-1) have finalized
 
 
 These two principles jointly 
 suffice to guarantee safety and liveness no matter what scheduling policy is used, so long as required execution and validation tasks are eventually dispatched. Safety follows because a tx-k gets validated after all tx-j, j &lt; k, are finalized. Liveness follows by induction. Initially transaction 1 is guaranteed to pass validation successfully and not require re-execution. Once transactions 1..j have successfully validated, the next invocation of transaction j+1 will pass validation successfully and not require re-execution.
 
-**MVCC** is achieved via a simple multi-version in-memory data structure that keeps versioned write-sets, tx-j storing values whose version is j. A special value ABORTED may be stored at version j when the latest invocation of tx-j aborts. A read by tx-k obtains the value recorded by the latest invocation of a tx-j with the highest j &lt; k (the tx-k suspends on an ABORTED value and resumes when the value becomes set).  
+**MVCC** is achieved via a simple multi-version in-memory data structure that keeps versioned write-sets, tx-j recording values whose version is j. 
+A read by tx-k obtains the value recorded by the latest invocation of tx-j with the highest j &lt; 
 
-**SAFETY(j, k)** is implemented by a scheduler. When a tx-j executes (or re-executes), every tx-k with index k > j has to (re)validate after the tx-j completes execution. Validation re-reads the read-set of the tx-k and compares against the original read-set the tx-k obtained in its latest execution. If validation fails, the tx-k needs to re-execute.
+A special value `ABORTED` may be stored at version j when the latest invocation of tx-j aborts. 
+If tx-k reads this value, it suspends and resumes when the value becomes set.  
+
+**VALID(j, k)** is implemented by a scheduler. When tx-j executes (or re-executes), every tx-k with index k > j has to (re)validate after the tx-j completes execution. Validation re-reads the read-set of the tx-k and compares against the original read-set the tx-k obtained in its latest execution. If validation fails, tx-k re-executes.
 
 ## Scheduling
 
@@ -136,7 +140,7 @@ Interleaving preliminary executions in S-3 with validations avoids unnecessary w
 
 The last improvement step consists of two important improvements.
 
-The first is an extremely simple dependency tracking (no graphs or partial orders) that considerably reduces aborts. When a tx-j aborts, the write-set of its latest invocation is marked ABORTED. Since MVCC already supported the ABORTED mark, a higher-index tx-k reading from a location in this write-set will delay until the tx-j completes re-executing.
+The first is an extremely simple dependency tracking (no graphs or partial orders) that considerably reduces aborts. When a tx-j aborts, the write-set of its latest invocation is marked `ABORTED`. Since MVCC already supported the `ABORTED` mark, a higher-index tx-k reading from a location in this write-set will delay until the tx-j completes re-executing.
 
 The second one increases re-validation parallelism. When a transaction aborts, rather than waiting for it to complete re-execution, it decreases `nextValidation` immediately; then, if the re-execution writes to a (new) location which is not marked `ABORTED`, `ValidTo` is decreased again when the re-execution completes. 
 
