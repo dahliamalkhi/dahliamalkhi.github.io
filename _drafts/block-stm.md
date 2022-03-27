@@ -129,7 +129,7 @@ execute:
     nextValidation.setMin(j+1) 
 ```
 
-Interleaving preliminary executions in S-3 with validations avoids unnecessary work executing transactions with higher index than aborted ones. For example, in the running scenario above, a batch of preliminary executions may contain transaction 1..4. Validations will be scheduled immediately when their execution completes. When transaction 4 aborts and re-executes, no higher transaction execution will have been wasted. 
+Interleaving preliminary executions in S-3 with validations avoids unnecessary work executing transactions with higher index than aborted ones. For example, in the running scenario above, a batch of preliminary executions may contain transaction 1..4. Validations will be scheduled immediately when their execution completes. When the 4-transaction aborts and re-executes, no higher transaction execution will have been wasted. 
 
 The last improvement step consists of two important improvements.
 
