@@ -33,7 +33,7 @@ A read by tx-k obtains the value recorded by the latest invocation of tx-j with 
 A special value `ABORTED` may be stored at version j when the latest invocation of tx-j aborts. 
 If tx-k reads this value, it suspends and resumes when the value becomes set.  
 
-**VALID(j, k)** is implemented by a scheduler. When tx-j executes (or re-executes), every tx-k with index k > j is scheduled for (re)validation after tx-j completes execution. Validation re-reads the read-set of the tx-k and compares against the original read-set that tx-k obtained in its latest execution. If validation fails, tx-k re-executes.
+**VALID(j, k)** is implemented by a scheduler. For each j, every tx-k with index k > j is scheduled for (re)validation after tx-j completes (re-)execution. Validation re-reads the read-set of the tx-k and compares against the original read-set that tx-k obtained in its latest execution. If validation fails, tx-k re-executes.
 
 ## Scheduling
 
@@ -72,7 +72,7 @@ For example, say that a block has ten transactions 1..10, and transaction pairs 
 It is quite easy to see that the S-1 validation loop ends after at most n iterations, because in each iteration, nextValidation advances by at least 1. 
 
 However, both the execution and validation loops are logically centrally coordinated. The first improvement is to get rid of central coordination in phase 2 by having threads *steal* validation tasks. Coordinating task-stealing is done 
-using a single synchronization counter `nextValidation` that supports atomic procedures `ValidTo.increment() { oldVal := ValidTo; increment ValidTo; return oldVal } `and `ValidTo.setMin(val) { ValidTo := min(val, ValidTo) }. `
+using a single synchronization counter `nextValidation` that supports atomic procedures `nextValidation.increment() { oldVal := nextValidation; increment nextValidation; return oldVal } `and `nextValidation.setMin(val) { nextValidation := min(val, nextValidation) }. `
 
 Replacing the above validation-loop in phase 2 with a task-stealing loop results the following strawman scheduler, S-2:
 
@@ -100,11 +100,11 @@ Phase 2:                # validation
 
 The S-2 task-stealing regime is more efficient than the S-1 validation loop, because it decreases `nextValidation` immediately upon validation failure, allowing higher index re-validations to commence. For example, in the scenario above, when the validation of 4 fails, re-validation of 5..10 will start right away, 7 will fail validation and re-execute only once, and similarly 8. 
 
-Importantly, **VALID(j, k)** is preserved because upon (re-)execution of a tx-j it decreases `ValidTo` to j. This guarantees that every k > j will be validated after the j execution. 
+Importantly, **VALID(j, k)** is preserved because upon (re-)execution of a tx-j it decreases `nextValidation` to j. This guarantees that every k > j will be validated after the j execution. 
 
-Concurrent task stealing creates a challenge since multiple *incarnations* of the same transaction validation or execution tasks may occur simultaneously. Recall that **MVCC** requires that a read by a tx-k should obtain the value recorded by the latest invocation of a tx-j with the highest j &lt; k. This requires to synchronize transaction invocations, such that **MVCC** returns the **highest incarnation** value recorded by a transaction. A simple solution is to use a petx-r atomic incarnation synchronizer that prevents stale incarnations from recording values.
+Concurrent task stealing creates a challenge since multiple *incarnations* of the same transaction validation or execution tasks may occur simultaneously. Recall that **MVCC** requires that a read by a tx-k should obtain the value recorded by the latest invocation of a tx-j with the highest j &lt; k. This requires to synchronize transaction invocations, such that **MVCC** returns the **highest incarnation** value recorded by a transaction. A simple solution is to use a x-r atomic incarnation synchronizer that prevents stale incarnations from recording values.
 
-Next we tackle the preliminary transaction execution loop, allowing threads to steal preliminary execution tasks using another synchronization counter `nextPrelimExecution` that tracks preliminary transaction invocations. However, rather than waiting for all preliminary execution to complete to start validation, we will interleave them with validation. This improves performance since early detection of conflicts, especially in low-index transactions, can prevent aborts later. 
+Next, we remove the two phases altogether, removing the preliminary transaction execution loop and allowing threads to steal preliminary execution tasks simultaneously with validations. Execution task stealing is managed using another synchronization counter `nextPrelimExecution`. Validation stealing only waits for corresponding tasks to complete, rather than waiting for all preliminary execution to complete. This improves performance since early detection of conflicts, especially in low-index transactions, can prevent aborts later. 
 
 A strawman scheduler, S-3, that supports interleaved execution/validation works as follows:
 
@@ -140,9 +140,9 @@ Interleaving preliminary executions in S-3 with validations avoids unnecessary w
 
 The last improvement step consists of two important improvements.
 
-The first is an extremely simple dependency tracking (no graphs or partial orders) that considerably reduces aborts. When a tx-j aborts, the write-set of its latest invocation is marked `ABORTED`. Since MVCC already supported the `ABORTED` mark, a higher-index tx-k reading from a location in this write-set will delay until the tx-j completes re-executing.
+The first is an extremely simple dependency tracking (no graphs or partial orders) that considerably reduces aborts. When a tx-j aborts, the write-set of its latest invocation is marked `ABORTED`. MVCC supports the `ABORTED` mark guaranteeing that a higher-index tx-k reading from a location in this write-set will delay until the tx-j completes re-executing.
 
-The second one increases re-validation parallelism. When a transaction aborts, rather than waiting for it to complete re-execution, it decreases `nextValidation` immediately; then, if the re-execution writes to a (new) location which is not marked `ABORTED`, `ValidTo` is decreased again when the re-execution completes. 
+The second one increases re-validation parallelism. When a transaction aborts, rather than waiting for it to complete re-execution, it decreases `nextValidation` immediately; then, if the re-execution writes to a (new) location which is not marked `ABORTED`, `nextValidation` is decreased again when the re-execution completes. 
 
 The final scheduling algorithm S-4, 
 that supports interleaved execution/validation and dependency managements utilizing `ABORTED` tagging,
