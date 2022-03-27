@@ -19,7 +19,7 @@ The Block-STM parallel executor combines the pre-ordered block idea with optimis
 
 ## Overview
 
-This post explains the construction of an efficient parallel execution that preserves block pre-order utilizing two key tenets: 
+The construction of an efficient parallel execution that preserves block pre-order revolves around two key tenets: 
 
 
 * **MVCC**: An in-memory data structure keeps versioned write-sets, the j-transaction storing values whose version is j. A special value ABORTED may be stored at version j when the latest invocation of j-transaction aborts. A read by k-transaction obtains the value recorded by the latest invocation of a j-transaction with the highest j &lt; k (the k-transaction suspends on an ABORTED value and resumes when the value becomes set).  
