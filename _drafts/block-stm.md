@@ -48,32 +48,29 @@ Phase 1:                # execution
 
 
 Phase 2:                # validation
-
-nextValidation := 2 
-validation loop:
-    parallel-do for all j in [ nextValidation..n ] :
-        re-read tx-j read-set 
-        if read-set differs from original read-set of the latest tx-j execution 
-            re-execute tx-j 
-        if any tx-j failed validation
-            update nextValidation to j+1, where j is the minimal failed transaction
-        otherwise
-            exit loop  
+    validation loop:
+        parallel-do for all j in [ nextValidation..n ] :
+            re-read tx-j read-set 
+            if read-set differs from original read-set of the latest tx-j execution 
+                re-execute tx-j 
+            if any tx-j failed validation
+                update nextValidation to j+1, where j is the minimal failed transaction
+            otherwise
+                exit loop  
 ```
 
 
-The S-1 schedule has two phases. Phase 1 executes all transactions optimistically in parallel. Phase 2 repeatedly validates all pending validations in parallel, re-executing transations that fail.
+The S-1 schedule has two phases. Phase 1 executes all transactions optimistically in parallel. Phase 2 repeatedly validates all remaining validations in parallel, re-executing transations that fail.
 The first iteration validates all transactions; some may fail validation and will be re-executed. The next iteration re-validates all transactions higher than the lowest failing index; some may fail and re-execute. And so on, until there are no more validation failures. 
 
 For example, say that a block has ten transactions 1..10, and transaction pairs (1,4), (4,7) and (7,8) are conflicting. The first iteration of the validation-loop performs validations of 2..10; the validations of 4, 7 and 8 will fail. The second iteration re-validates 5..10 and 7, 8 fail. In a third iteration, 7..10 re-validate and 8 fails. Finally in a fourth iteration, validations 8..10 succeed.
 
 It is quite easy to see that the S-1 validation loop ends after at most n iterations, because in each iteration, nextValidation advances by at least 1. 
 
-However, both the execution and validation loops are logically centrally coordinated. The first improvement is to get rid of the centrally coordinated validation-loop using a single synchronization counter `nextValidation` that supports atomic procedures `ValidTo.increment() { oldVal := ValidTo; increment ValidTo; return oldVal } `and `ValidTo.setMin(val) { ValidTo := min(val, ValidTo) }. `
+However, both the execution and validation loops are logically centrally coordinated. The first improvement is to get rid of central coordination in phase 2 by having threads *steal* validation tasks. Coordinating task-stealing is done 
+using a single synchronization counter `nextValidation` that supports atomic procedures `ValidTo.increment() { oldVal := ValidTo; increment ValidTo; return oldVal } `and `ValidTo.setMin(val) { ValidTo := min(val, ValidTo) }. `
 
- 
-
-Replacing the above validation-loop, we write a task-stealing loop at each thread, resulting the following strawman scheduler, S-2:
+Replacing the above validation-loop in phase 2 with a task-stealing loop results the following strawman scheduler, S-2:
 
 
 ## **S-2:**
