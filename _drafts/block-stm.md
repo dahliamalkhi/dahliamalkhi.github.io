@@ -99,7 +99,7 @@ Concurrent task stealing creates a challenge since multiple *incarnations* of th
 
 Next we tackle the preliminary transaction execution loop, allowing threads to steal preliminary execution tasks using another synchronization counter `nextPrelimExecution` that tracks preliminary transaction invocations. However, rather than waiting for all preliminary execution to complete to start validation, we will interleave them with validation. This improves performance since early detection of conflicts, especially in low-index transactions, can prevent aborts later. 
 
-A strawman scheduler, S-3, that supports interleaved execution/validation and dependency managements utilizing ABORTED tagging, works as follows:
+A strawman scheduler, S-3, that supports interleaved execution/validation works as follows:
 
 
 ## **S-3:**
@@ -129,16 +129,17 @@ execute:
     nextValidation.setMin(j+1) 
 ```
 
-Interleaving preliminary executions in S-3 with validations avoids unnecessary work executing transactions that succeed aborted ones. For example, in the running scenario above, a batch of preliminary executions may contain transaction 1..4. Validations will be scheduled immediately when their execution completes. When the 4-transaction aborts and re-executes, no higher transaction execution will have been wasted. 
+Interleaving preliminary executions in S-3 with validations avoids unnecessary work executing transactions with higher index than aborted ones. For example, in the running scenario above, a batch of preliminary executions may contain transaction 1..4. Validations will be scheduled immediately when their execution completes. When transaction 4 aborts and re-executes, no higher transaction execution will have been wasted. 
 
 The last improvement step consists of two important improvements.
 
-The first is an extremely simple dependency tracking (no graphs or partial orders) that considerably reduces aborts. When a j-transaction aborts, the write-set of its latest invocation is marked ABORTED. Since **MVCC** already supported the ABORTED mark, a higher-index k-transaction reading from a location in this write-set will delay until the j-transaction completes re-executing.
+The first is an extremely simple dependency tracking (no graphs or partial orders) that considerably reduces aborts. When a j-transaction aborts, its write-set is marked ABORTED. Since **MVCC** already supports the ABORTED mark, any higher-index k-transaction reading from a location in this write-set will delay until the j-transaction completes re-executing.
 
-The second one increases re-validation parallelism. When a transaction aborts, rather than waiting for it to complete re-execution, it decreases nextValidation immediately; then if the re-execution writes to a (new) location which is not marked ABORTED, ValidTo is decreased again when the re-execution completes. 
+The second one increases re-validation parallelism. When a transaction aborts, rather than waiting for it to complete re-execution, it decreases `nextValidation` immediately; then, if the re-execution writes to a (new) location which is not marked ABORTED, `ValidTo` is decreased again when the re-execution completes. 
 
-The final scheduling algorithm presented here, S-4, is captured abstractly in full in under one page as follows:
-
+The final scheduling algorithm S-4, 
+that supports interleaved execution/validation and dependency managements utilizing ABORTED tagging,
+is captured in full in under one page as follows:
 
 ## **S-4:**
 
