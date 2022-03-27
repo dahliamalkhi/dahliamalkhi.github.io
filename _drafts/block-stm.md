@@ -29,7 +29,6 @@ suffice to guarantee safety and liveness no matter what scheduling policy is use
 **MVCC** is achieved via a simple multi-version in-memory data structure that keeps versioned write-sets, tx-j storing values whose version is j. A special value ABORTED may be stored at version j when the latest invocation of tx-j aborts. A read by tx-k obtains the value recorded by the latest invocation of a tx-j with the highest j &lt; k (the tx-k suspends on an ABORTED value and resumes when the value becomes set).  
 
 **SAFETY(j, k)** is implemented by a scheduler. When a tx-j executes (or re-executes), every tx-k with index k > j has to (re)validate after the tx-j completes execution. Validation re-reads the read-set of the tx-k and compares against the original read-set the tx-k obtained in its latest execution. If validation fails, the tx-k needs to re-execute.
->>>>>>> Stashed changes
 
 ## Scheduling
 
