@@ -20,8 +20,8 @@ The Block-STM parallel executor combines the pre-ordered block idea with optimis
 
 The construction of a parallel execution schedule that preserves a block pre-order tx-1, tx-2, ..., tx-n, utilizes two key key principles: 
 
-* **MVCC**: tx-k read will obtain the latest value recorded by the highest tx-j, j < k
-* **VALID(j, k)**: tx-k will validate after the executions of tx-1 .. tx-(k-1) have finalized
+* **MVCC**: A read by tx-k will obtain the latest value recorded by the highest tx-j, j < k
+* **VALID(j, k)**: A validation of tx-k will be performd after the executions of tx-1 .. tx-(k-1) have finalized
 
 
 These two principles jointly 
