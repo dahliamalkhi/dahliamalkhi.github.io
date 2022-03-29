@@ -24,6 +24,7 @@ tx-1, tx-2, ..., tx-n. Transactions consist of smart-contract code that reads an
 An example serving as a running example throughout this post is a block B consisting of ten transactions tx-1, tx-2, ..., tx-10, tx-j reading from mememory location M[j mod 3] and writing to location M[j mod 4]: 
 
 ```
+tx-j:
 { 
     if (read M[j mod 3] > 0) 
         M[j mod 4] := M[j mod 3] + 1 
