@@ -19,12 +19,12 @@ The Block-STM parallel executor combines the pre-ordered block idea with optimis
 ## Overview
 
 The focus of this work is an input block containing a pre-ordered sequence of transactions
-tx-1, tx-2, ..., tx-n. Transactions consist of smart-contract code that reads and writes to shared memory. 
+TX1, TX2, ..., TXn. Transactions consist of smart-contract code that reads and writes to shared memory. 
 
-An example serving as a running example throughout this post is a block B consisting of ten transactions tx-1, tx-2, ..., tx-10, tx-j reading from mememory location M[j mod 3] and writing to location M[j mod 4]: 
+An example serving as a running example throughout this post is a block B consisting of ten transactions TX1, TX2, ..., TX10, TXj reading from mememory location M[j mod 3] and writing to location M[j mod 4]: 
 
 ```
-tx-j:
+TXj:
 { 
     if (read M[j mod 3] > 0) 
         M[j mod 4] := M[j mod 3] + 1 
@@ -33,33 +33,33 @@ tx-j:
 
 A transaction execution results in a read-set and a write-set. The read-set consists of pairs, a memory location and the transaction that wrote it. The write-set consists of pairs, a memory location and a value, that the transaction would record if it became committed.
 
-In a sequential execution, a read by tx-k from a particular memory location obtains the value writted by the highest tx-j, where j < k, to the location; or the initial value at that memory location when the block execution started if none. We denote this dependency as tx-k &larr; tx-j. 
-For example, in a sequential execution of B, tx[1] reads M[1] and writes M[1], respectively; tx-4 reads M[1] and writes M[0], hence 
-tx-4 &larr; tx-1; 
-tx-5 &larr; tx-2; 
-tx-6 &larr; tx-4; 
-tx-7 &larr; tx-5; 
-tx-8 &larr; tx-6; 
-tx-9 &larr; tx-8; 
-tx-10 &larr; tx-5. 
+In a sequential execution, a read by TXk from a particular memory location obtains the value writted by the highest TXj, where j < k, to the location; or the initial value at that memory location when the block execution started if none. We denote this dependency as TXk &larr; TXj. 
+For example, in a sequential execution of B, tx[1] reads M[1] and writes M[1], respectively; TX4 reads M[1] and writes M[0], hence 
+TX4 &larr; TX1; 
+TX5 &larr; TX2; 
+TX6 &larr; TX4; 
+TX7 &larr; TX5; 
+TX8 &larr; TX6; 
+TX9 &larr; TX8; 
+TX10 &larr; TX5. 
 
 The goal is to enable parallel execution that preserves a block pre-order, namely,
 results in exactly the same read/write sets as a sequential execution. 
 This is accomplished via optimistic execution, followed by validation that may lead to a commit or abort/re-execute. The strategy for supporting efficient optimism revolves around two mechanisms, validation and multi-version concurrency control:
 
-* **VALID(j, k)**: For every j,k, such that j < k, a validation of tx-k is performed after tx-j executes (or re-executes).
-* **MVCC**: Whenever tx-k executes (speculatively), a read by tx-k obtains the value recorded so far by the highest transaction tx-j preceding it, i.e., where j < k. Higher transactions tx-l, where l > k, do not intefer with tx-k. 
+* **VALID(j, k)**: For every j,k, such that j < k, a validation of TXk is performed after TXj executes (or re-executes).
+* **MVCC**: Whenever TXk executes (speculatively), a read by TXk obtains the value recorded so far by the highest transaction TXj preceding it, i.e., where j < k. Higher transactions TXl, where l > k, do not intefer with TXk. 
 
 Jointly, these two principles 
-suffice to guarantee both safety and liveness no matter what scheduling policy is used, so long as required execution and validation tasks are eventually dispatched. Safety follows because a tx-k gets validated after all tx-j, j &lt; k, are finalized. Liveness follows by induction. Initially transaction 1 is guaranteed to pass validation successfully and not require re-execution. Once transactions 1..j have successfully validated, the next invocation of transaction j+1 will pass validation successfully and not require re-execution.
+suffice to guarantee both safety and liveness no matter what scheduling policy is used, so long as required execution and validation tasks are eventually dispatched. Safety follows because a TXk gets validated after all TXj, j &lt; k, are finalized. Liveness follows by induction. Initially transaction 1 is guaranteed to pass validation successfully and not require re-execution. Once transactions 1..j have successfully validated, the next invocation of transaction j+1 will pass validation successfully and not require re-execution.
 
-**MVCC** is achieved via a simple multi-version in-memory data structure that keeps versioned write-sets, tx-j recording values whose version is j. 
-A read by tx-k obtains the value recorded by the latest invocation of tx-j with the highest j &lt; 
+**MVCC** is achieved via a simple multi-version in-memory data structure that keeps versioned write-sets, TXj recording values whose version is j. 
+A read by TXk obtains the value recorded by the latest invocation of TXj with the highest j &lt; 
 
-A special value `ABORTED` may be stored at version j when the latest invocation of tx-j aborts. 
-If tx-k reads this value, it suspends and resumes when the value becomes set.  
+A special value `ABORTED` may be stored at version j when the latest invocation of TXj aborts. 
+If TXk reads this value, it suspends and resumes when the value becomes set.  
 
-**VALID(j, k)** is implemented by a scheduler. For each j, every tx-k with index k > j is scheduled for (re)validation after tx-j completes (re-)execution. Validation re-reads the read-set of the tx-k and compares against the original read-set that tx-k obtained in its latest execution. If validation fails, tx-k re-executes.
+**VALID(j, k)** is implemented by a scheduler. For each j, every TXk with index k > j is scheduled for (re)validation after TXj completes (re-)execution. Validation re-reads the read-set of the TXk and compares against the original read-set that TXk obtained in its latest execution. If validation fails, TXk re-executes.
 
 ## Scheduling
 
@@ -80,10 +80,10 @@ Phase 1:                # execution
 Phase 2:                # validation
     validation loop:
         parallel-do for all j in [ nextValidation..n ] :
-            re-read tx-j read-set 
-            if read-set differs from original read-set of the latest tx-j execution 
-                re-execute tx-j 
-            if any tx-j failed validation
+            re-read TXj read-set 
+            if read-set differs from original read-set of the latest TXj execution 
+                re-execute TXj 
+            if any TXj failed validation
                 update nextValidation to j+1, where j is the minimal failed transaction
             otherwise
                 exit loop  
@@ -117,18 +117,18 @@ Phase 2:                # validation
         if nextValidation > n, and no task is still running, exit loop
         j := nextValidation.increment() ; if j > n, go back to loop 
 
-        re-read tx-j read-set 
-        if read-set differs from original read-set of the latest tx-j execution 
-            re-execute tx-j
+        re-read TXj read-set 
+        if read-set differs from original read-set of the latest TXj execution 
+            re-execute TXj
             nextValidation.setMin(j+1) 
 ```
 
 
 The S-2 task-stealing regime is more efficient than the S-1 validation loop, because it decreases `nextValidation` immediately upon validation failure, allowing higher index re-validations to commence. For example, in the scenario above, when the validation of 4 fails, re-validation of 5..10 will start right away, 7 will fail validation and re-execute only once, and similarly 8. 
 
-Importantly, **VALID(j, k)** is preserved because upon (re-)execution of a tx-j it decreases `nextValidation` to j. This guarantees that every k > j will be validated after the j execution. 
+Importantly, **VALID(j, k)** is preserved because upon (re-)execution of a TXj it decreases `nextValidation` to j. This guarantees that every k > j will be validated after the j execution. 
 
-Concurrent task stealing creates a challenge since multiple *incarnations* of the same transaction validation or execution tasks may occur simultaneously. Recall that **MVCC** requires that a read by a tx-k should obtain the value recorded by the latest invocation of a tx-j with the highest j &lt; k. This requires to synchronize transaction invocations, such that **MVCC** returns the **highest incarnation** value recorded by a transaction. A simple solution is to use a x-r atomic incarnation synchronizer that prevents stale incarnations from recording values.
+Concurrent task stealing creates a challenge since multiple *incarnations* of the same transaction validation or execution tasks may occur simultaneously. Recall that **MVCC** requires that a read by a TXk should obtain the value recorded by the latest invocation of a TXj with the highest j &lt; k. This requires to synchronize transaction invocations, such that **MVCC** returns the **highest incarnation** value recorded by a transaction. A simple solution is to use a x-r atomic incarnation synchronizer that prevents stale incarnations from recording values.
 
 Next, we remove the two phases altogether, removing the preliminary transaction execution loop and allowing threads to steal preliminary execution tasks simultaneously with validations. Execution task stealing is managed using another synchronization counter `nextPrelimExecution`. Validation stealing only waits for corresponding tasks to complete, rather than waiting for all preliminary execution to complete. This improves performance since early detection of conflicts, especially in low-index transactions, can prevent aborts later. 
 
@@ -148,8 +148,8 @@ per thread main loop:
 
     if nextValidation < nextPrelimExecution                 # schedule validation
         j := nextValidation.increment() ; if j >= nextPrelimExecution, go back to loop
-        re-read tx-j read-set 
-        if read-set differs from original read-set of the latest tx-j execution 
+        re-read TXj read-set 
+        if read-set differs from original read-set of the latest TXj execution 
             goto execute
 
     otherwise if nextPrelimExecution <= n             # schedule execution
@@ -158,15 +158,15 @@ per thread main loop:
     otherwise go back to loop
 
 execute:
-    (re-)execute tx-j
+    (re-)execute TXj
     nextValidation.setMin(j+1) 
 ```
 
-Interleaving preliminary executions in S-3 with validations avoids unnecessary work executing transactions that succeed aborted ones. For example, in the running scenario above, a batch of preliminary executions may contain transaction 1..4. Validations will be scheduled immediately when their execution completes. When the tx-4 aborts and re-executes, no higher transaction execution will have been wasted. 
+Interleaving preliminary executions in S-3 with validations avoids unnecessary work executing transactions that succeed aborted ones. For example, in the running scenario above, a batch of preliminary executions may contain transaction 1..4. Validations will be scheduled immediately when their execution completes. When the TX4 aborts and re-executes, no higher transaction execution will have been wasted. 
 
 The last improvement step consists of two important improvements.
 
-The first is an extremely simple dependency tracking (no graphs or partial orders) that considerably reduces aborts. When a tx-j aborts, the write-set of its latest invocation is marked `ABORTED`. MVCC supports the `ABORTED` mark guaranteeing that a higher-index tx-k reading from a location in this write-set will delay until the tx-j completes re-executing.
+The first is an extremely simple dependency tracking (no graphs or partial orders) that considerably reduces aborts. When a TXj aborts, the write-set of its latest invocation is marked `ABORTED`. MVCC supports the `ABORTED` mark guaranteeing that a higher-index TXk reading from a location in this write-set will delay until the TXj completes re-executing.
 
 The second one increases re-validation parallelism. When a transaction aborts, rather than waiting for it to complete re-execution, it decreases `nextValidation` immediately; then, if the re-execution writes to a (new) location which is not marked `ABORTED`, `nextValidation` is decreased again when the re-execution completes. 
 
@@ -187,9 +187,9 @@ per thread main loop:
 
      if nextValidation < nextPrelimExecution                 # schedule validation
          j := nextValidation.increment() ; if j >= nextPrelimExecution, go back to loop
-         re-read tx-j read-set 
-         if read-set differs from original read-set of the latest tx-j execution 
-             mark the tx-j write-set ABORTED
+         re-read TXj read-set 
+         if read-set differs from original read-set of the latest TXj execution 
+             mark the TXj write-set ABORTED
              nextValidation.setMin(j+1) 
              goto execute
 
@@ -199,13 +199,13 @@ per thread main loop:
      otherwise go back to loop
 
 execute:  
-     (re-)execute tx-j
-     if the tx-j write-set contains locations not marked ABORTED
+     (re-)execute TXj
+     if the TXj write-set contains locations not marked ABORTED
          nextValidation.setMin(j+1) 
 ```
 
 
-S-4 lets re-validations of tx-k, k > j,  proceed early while preserving **VALID(j, k)**: if a tx-k validation reads an `ABORTED` value, it has to wait; and if it reads a value which is not marked `ABORTED` and the j re-execution overwrites it, the tx-k will be forced to revalidate again.
+S-4 lets re-validations of TXk, k > j,  proceed early while preserving **VALID(j, k)**: if a TXk validation reads an `ABORTED` value, it has to wait; and if it reads a value which is not marked `ABORTED` and the j re-execution overwrites it, the TXk will be forced to revalidate again.
 
 S-4 enables essentially unbounded parallelism. It reflects more-or-less faithfully the [Block-STM](https://arxiv.org/pdf/2203.06871.pdf) approach; for details, see the paper (note, the description above uses different names from the paper, e.g., `ABORTED` replaces “ESTIMATE”, `nextPrelimExecution` replaces “execution_idx”, `nextValidation` replaces “validation_idx”). Block-STM has been implemented within the Diem blockchain core ([https://github.com/diem/](https://github.com/diem/)) and evaluated on synthetic transaction workloads, yielding over 17x speedup on 32 cores under low/modest contention. 
 
