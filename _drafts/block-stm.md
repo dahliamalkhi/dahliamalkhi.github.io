@@ -18,14 +18,39 @@ The Block-STM parallel executor combines the pre-ordered block idea with optimis
 
 ## Overview
 
-The construction of a parallel execution schedule that preserves a block pre-order tx-1, tx-2, ..., tx-n, utilizes two key key principles: 
+The focus of this work is an input block containing a pre-ordered sequence of transactions
+tx-1, tx-2, ..., tx-n. Transactions consist of smart-contract code that reads and writes to shared memory. 
 
-* **MVCC**: A read by tx-k obtains the latest value recorded by the highest tx-j, j < k
-* **VALID(j, k)**: A validation of tx-k is performd after the executions of tx-1 .. tx-(k-1) have finalized
+An example serving as a running example throughout this post is a block B consisting of ten transactions tx-1, tx-2, ..., tx-10, tx-j reading from mememory location M[j mod 3] and writing to location M[j mod 4]: 
 
+```
+{ 
+    if (read M[j mod 3] > 0) 
+        M[j mod 4] := M[j mod 3] + 1 
+}
+```
 
-These two principles jointly 
-suffice to guarantee safety and liveness no matter what scheduling policy is used, so long as required execution and validation tasks are eventually dispatched. Safety follows because a tx-k gets validated after all tx-j, j &lt; k, are finalized. Liveness follows by induction. Initially transaction 1 is guaranteed to pass validation successfully and not require re-execution. Once transactions 1..j have successfully validated, the next invocation of transaction j+1 will pass validation successfully and not require re-execution.
+A transaction execution results in a read-set and a write-set. The read-set consists of pairs, a memory location and the transaction that wrote it. The write-set consists of pairs, a memory location and a value, that the transaction would record if it became committed.
+
+In a sequential execution, a read by tx-k from a particular memory location obtains the value writted by the highest tx-j, where j < k, to the location; or the initial value at the memory location when the block execution started if none. We denote this dependency as tx-k <-- tx-j. 
+For example, in a sequential execution of B, tx[1] reads M[1] and writes M[1], respectively; tx-4 reads M[1] and writes M[0], hence 
+tx-4 <-- tx-1; 
+tx-5 <-- tx-2; 
+tx-6 <-- tx-4; 
+tx-7 <-- tx-5; 
+tx-8 <-- tx-6; 
+tx-9 <-- tx-8; 
+tx-10 <-- tx-5. 
+
+The goal is to enable parallel execution that preserves a block pre-order, namely,
+results in exactly the same read/write sets as a sequential execution. 
+This is accomplished via optimistic execution, followed by validation that may lead to a commit or abort/re-execute. The strategy for supporting efficient optimism revolves around two mechanisms, validation and multi-version concurrency control:
+
+* **VALID(j, k)**: For every j,k, such that j < k, a validation of tx-k is performed after tx-j executes (or re-executes).
+* **MVCC**: Whenever tx-k executes (speculatively), a read by tx-k obtains the value recorded so far by the highest transaction tx-j preceding it, i.e., where j < k. Higher transactions tx-l, where l > k, do not intefer with tx-k. 
+
+Jointly, these two principles 
+suffice to guarantee both safety and liveness no matter what scheduling policy is used, so long as required execution and validation tasks are eventually dispatched. Safety follows because a tx-k gets validated after all tx-j, j &lt; k, are finalized. Liveness follows by induction. Initially transaction 1 is guaranteed to pass validation successfully and not require re-execution. Once transactions 1..j have successfully validated, the next invocation of transaction j+1 will pass validation successfully and not require re-execution.
 
 **MVCC** is achieved via a simple multi-version in-memory data structure that keeps versioned write-sets, tx-j recording values whose version is j. 
 A read by tx-k obtains the value recorded by the latest invocation of tx-j with the highest j &lt; 
