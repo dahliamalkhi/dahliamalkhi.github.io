@@ -33,15 +33,15 @@ tx-j:
 
 A transaction execution results in a read-set and a write-set. The read-set consists of pairs, a memory location and the transaction that wrote it. The write-set consists of pairs, a memory location and a value, that the transaction would record if it became committed.
 
-In a sequential execution, a read by tx-k from a particular memory location obtains the value writted by the highest tx-j, where j < k, to the location; or the initial value at the memory location when the block execution started if none. We denote this dependency as tx-k <-- tx-j. 
+In a sequential execution, a read by tx-k from a particular memory location obtains the value writted by the highest tx-j, where j < k, to the location; or the initial value at that memory location when the block execution started if none. We denote this dependency as tx-k &larr; tx-j. 
 For example, in a sequential execution of B, tx[1] reads M[1] and writes M[1], respectively; tx-4 reads M[1] and writes M[0], hence 
-tx-4 <-- tx-1; 
-tx-5 <-- tx-2; 
-tx-6 <-- tx-4; 
-tx-7 <-- tx-5; 
-tx-8 <-- tx-6; 
-tx-9 <-- tx-8; 
-tx-10 <-- tx-5. 
+tx-4 &larr; tx-1; 
+tx-5 &larr; tx-2; 
+tx-6 &larr; tx-4; 
+tx-7 &larr; tx-5; 
+tx-8 &larr; tx-6; 
+tx-9 &larr; tx-8; 
+tx-10 &larr; tx-5. 
 
 The goal is to enable parallel execution that preserves a block pre-order, namely,
 results in exactly the same read/write sets as a sequential execution. 
