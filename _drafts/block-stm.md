@@ -21,7 +21,7 @@ The Block-STM parallel executor combines the pre-ordered block idea with optimis
 The focus of this work is an input block containing a pre-ordered sequence of transactions
 TX1, TX2, ..., TXn. Transactions consist of smart-contract code that reads and writes to shared memory. 
 
-An example serving as a running example throughout this post is a block B consisting of ten transactions TX1, TX2, ..., TX10, TXj reading from mememory location M[j mod 3] and writing to location M[j mod 4]: 
+An example serving as a running example throughout this post is a block B consisting of ten transactions TX1-TX10, TXj reading from mememory location M[j mod 3] and writing to location M[j mod 4]: 
 
 ```
 TXj:
@@ -34,7 +34,7 @@ TXj:
 A transaction execution results in a read-set and a write-set. The read-set consists of pairs, a memory location and the transaction that wrote it. The write-set consists of pairs, a memory location and a value, that the transaction would record if it became committed.
 
 In a sequential execution, a read by TXk from a particular memory location obtains the value writted by the highest TXj, where j < k, to the location; or the initial value at that memory location when the block execution started if none. We denote this dependency as TXk &larr; TXj. 
-For example, in a sequential execution of B, tx[1] reads M[1] and writes M[1], respectively; TX4 reads M[1] and writes M[0], hence 
+For example, in a sequential execution of B, TX1 reads M[1] and writes M[1], respectively; TX4 reads M[1] and writes M[0], hence 
 TX4 &larr; TX1; 
 TX5 &larr; TX2; 
 TX6 &larr; TX4; 
@@ -51,10 +51,10 @@ This is accomplished via optimistic execution, followed by validation that may l
 * **MVCC**: Whenever TXk executes (speculatively), a read by TXk obtains the value recorded so far by the highest transaction TXj preceding it, i.e., where j < k. Higher transactions TXl, where l > k, do not intefer with TXk. 
 
 Jointly, these two principles 
-suffice to guarantee both safety and liveness no matter what scheduling policy is used, so long as required execution and validation tasks are eventually dispatched. Safety follows because a TXk gets validated after all TXj, j &lt; k, are finalized. Liveness follows by induction. Initially transaction 1 is guaranteed to pass validation successfully and not require re-execution. Once transactions 1..j have successfully validated, the next invocation of transaction j+1 will pass validation successfully and not require re-execution.
+suffice to guarantee both safety and liveness no matter what scheduling policy is used, so long as required execution and validation tasks are eventually dispatched. Safety follows because a TXk gets validated after all TXj, j &lt; k, are finalized. Liveness follows by induction. Initially transaction 1 is guaranteed to pass validation successfully and not require re-execution. Once transactions TX1-TXj have successfully validated, the next invocation of transaction j+1 will pass validation successfully and not require re-execution.
 
 **MVCC** is achieved via a simple multi-version in-memory data structure that keeps versioned write-sets, TXj recording values whose version is j. 
-A read by TXk obtains the value recorded by the latest invocation of TXj with the highest j &lt; 
+A read by TXk obtains the value recorded by the latest invocation of TXj with the highest j &lt; k.
 
 A special value `ABORTED` may be stored at version j when the latest invocation of TXj aborts. 
 If TXk reads this value, it suspends and resumes when the value becomes set.  
@@ -93,7 +93,7 @@ Phase 2:                # validation
 The S-1 schedule has two phases. Phase 1 executes all transactions optimistically in parallel. Phase 2 repeatedly validates all remaining validations in parallel, re-executing transations that fail.
 The first iteration validates all transactions; some may fail validation and will be re-executed. The next iteration re-validates all transactions higher than the lowest failing index; some may fail and re-execute. And so on, until there are no more validation failures. 
 
-For example, say that a block has ten transactions 1..10, and transaction pairs (1,4), (4,7) and (7,8) are conflicting. The first iteration of the validation-loop performs validations of 2..10; the validations of 4, 7 and 8 will fail. The second iteration re-validates 5..10 and 7, 8 fail. In a third iteration, 7..10 re-validate and 8 fails. Finally in a fourth iteration, validations 8..10 succeed.
+In our example block B, the first iteration of Phase 2 performs validations of TX2-TX10; the validations of 4-10 will all fail and re-execute. The second iteration re-validates 5-10 and 6-10 will fail/re-execute. In a third iteration, 7-10 re-validate and 8-9 fail. Two more iterations will fail/re-execute 9 and succeed, respectively.
 
 It is quite easy to see that the S-1 validation loop ends after at most n iterations, because in each iteration, nextValidation advances by at least 1. 
 
@@ -124,7 +124,7 @@ Phase 2:                # validation
 ```
 
 
-The S-2 task-stealing regime is more efficient than the S-1 validation loop, because it decreases `nextValidation` immediately upon validation failure, allowing higher index re-validations to commence. For example, in the scenario above, when the validation of 4 fails, re-validation of 5..10 will start right away, 7 will fail validation and re-execute only once, and similarly 8. 
+The S-2 task-stealing regime is more efficient than the S-1 validation loop, because it decreases `nextValidation` immediately upon validation failure, allowing higher index re-validations to commence. For example, in the scenario above, first the validation of 4 fails, then 6 gets (re-)validated, potentially saving 6 from re-executing twice.
 
 Importantly, **VALID(j, k)** is preserved because upon (re-)execution of a TXj it decreases `nextValidation` to j. This guarantees that every k > j will be validated after the j execution. 
 
@@ -162,7 +162,7 @@ execute:
     nextValidation.setMin(j+1) 
 ```
 
-Interleaving preliminary executions in S-3 with validations avoids unnecessary work executing transactions that succeed aborted ones. For example, in the running scenario above, a batch of preliminary executions may contain transaction 1..4. Validations will be scheduled immediately when their execution completes. When the TX4 aborts and re-executes, no higher transaction execution will have been wasted. 
+Interleaving preliminary executions in S-3 with validations avoids unnecessary work executing transactions that succeed aborted ones. For example, in the running scenario above, a batch of preliminary executions may contain transaction 1-4. Validations will be scheduled immediately when their execution completes. When the 4 aborts and re-executes, no higher transaction execution will have been wasted. 
 
 The last improvement step consists of two important improvements.
 
