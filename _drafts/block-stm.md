@@ -42,8 +42,10 @@ The transactions in block B form the following dependencies:
 
 
 The goal is to enable parallel execution that preserves a block pre-order, namely,
-results in exactly the same read/write sets as a sequential execution. 
-This is accomplished via optimistic execution, followed by validation that may lead to a commit or abort/re-execute. The strategy for supporting efficient optimism revolves around two mechanisms, validation and multi-version concurrency control:
+results in exactly the same read/write sets as a sequential execution. Block-STM uses an optimistic approach, executing tranascations greedily and optimistically in parallel, and then validating their read-set. 
+Validation may lead to a commit or to abort/re-execute. 
+
+Supporting efficient optimism revolves around maintaining two principles:
 
 * **VALID(j, k)**: For every j,k, such that j < k, a validation of TXk is performed after TXj executes (or re-executes).
 * **MVCC**: Whenever TXk executes (speculatively), a read by TXk obtains the value recorded so far by the highest transaction TXj preceding it, i.e., where j < k. Higher transactions TXl, where l > k, do not intefer with TXk. 
