@@ -87,9 +87,13 @@ The first iteration validates all transactions; some may fail validation and wil
 Recall our example block B, with dependencies TX1 &rarr; TX4 &rarr; TX6 &rarr; TX8 &rarr; TX9, TX2 &rarr; TX5 &rarr; { TX7 , TX10 }. Phase 2 will perform the following iterations:
 
 > validation of TX2-TX10; 4-10 fail and re-execute 
+
 > validation of TX5-TX10; 6-10 fail and re-execute 
+
 > validation of TX7-TX10; 8-9 fail and re-execute 
+
 > validation of TX8-TX10; 9 fail and re-execute 
+
 > validation of TX10; all succeed
 
 It is quite easy to see that the S-1 validation loop satisfies VALIDAFTER(j,k), because in each iteration, nextValidation is determined by the lowest validation abort.  However, both the execution and validation loops are logically centrally coordinated. 
@@ -126,10 +130,15 @@ The S-2 task-stealing regime is more efficient than the S-1 validation loop, bec
 Using our running example block B, Phase 2 can make progress with 2 CPUs causing transactions to re-execute only once:
 
 > validation of TX2-TX3; all succeed
+
 > validation of TX4-TX5; both fail and re-execute, `nextValidaton` set to 5
+
 > validation of TX5-TX6; 5 succeeds, 6 fails and re-executes, `nextValidaton` set to 7
+
 > validation of TX7-TX8; both fail and re-execute, `nextValidaton` set to 8
+
 > validation of TX8-TX9; 8 succeeds, 9 fails and re-executes, `nextValidaton` set to 9
+
 > validation of TX9-TX10; both succeed
 
 Importantly, **VALIDAFTER(j, k)** is preserved because upon (re-)execution of a TXj it decreases `nextValidation` to j. This guarantees that every k > j will be validated after the j execution. 
