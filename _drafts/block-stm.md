@@ -20,21 +20,12 @@ The Block-STM parallel executor combines the pre-ordered block idea with optimis
 
 The focus of this work is an input block containing a pre-ordered sequence of transactions
 TX1, TX2, ..., TXn. Transactions consist of smart-contract code that reads and writes to shared memory. 
-
-An example serving as a running example throughout this post is a block B consisting of ten transactions TX1-TX10, TXj reading from mememory location M[j mod 3] and writing to location M[j mod 4]: 
-
-```
-TXj:
-{ 
-    if (read M[j mod 3] > 0) 
-        M[j mod 4] := M[j mod 3] + 1 
-}
-```
-
 A transaction execution results in a read-set and a write-set. The read-set consists of pairs, a memory location and the transaction that wrote it. The write-set consists of pairs, a memory location and a value, that the transaction would record if it became committed.
 
 In a sequential execution, a read by TXk from a particular memory location obtains the value writted by the highest TXj, where j < k, to the location; or the initial value at that memory location when the block execution started if none. We denote this dependency as TXj &rarr; TXk. 
-The transactions in block B form the following dependencies:
+
+An example serving as a running example throughout this post is a block B consisting of ten transactions TX1-TX10, 
+with the following read/write dependencies:
 
   TX1 &rarr; TX4 &rarr; TX6 &rarr; TX8 &rarr; TX9   
 
