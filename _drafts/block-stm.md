@@ -127,7 +127,7 @@ Phase 2:                # validation
 
 The S-2 task-stealing regime is more efficient than the S-1 validation loop, because it decreases `nextValidation` immediately upon validation failure, allowing higher index re-validations to commence. 
 
-Using our running example block B, Phase 2 can make progress with 2 CPUs causing transactions to re-execute only once:
+Using our running example block B, Phase 2 can make progress with just 2 CPUs causing transactions to re-execute only once:
 
 > validation of TX2-TX3; all succeed
 
@@ -143,7 +143,7 @@ Using our running example block B, Phase 2 can make progress with 2 CPUs causing
 
 Importantly, **VALIDAFTER(j, k)** is preserved because upon (re-)execution of a TXj it decreases `nextValidation` to j. This guarantees that every k > j will be validated after the j execution. 
 
-Concurrent task stealing creates a challenge since multiple *incarnations* of the same transaction validation or execution tasks may occur simultaneously. Recall that **READLAST** requires that a read by a TXk should obtain the value recorded by the latest invocation of a TXj with the highest j &lt; k. This requires to synchronize transaction invocations, such that **READLAST** returns the **highest incarnation** value recorded by a transaction. A simple solution is to use a x-r atomic incarnation synchronizer that prevents stale incarnations from recording values.
+Preserving **READLAST** is more challenging due to concurrent task stealing, since multiple *incarnations* of the same transaction validation or execution tasks may occur simultaneously. Recall that **READLAST** requires that a read by a TXk should obtain the value recorded by the latest invocation of a TXj with the highest j &lt; k. This requires to synchronize transaction invocations, such that **READLAST** returns the **highest incarnation** value recorded by a transaction. A simple solution is to use per-transaction atomic incarnation synchronizer that prevents stale incarnations from recording values.
 
 Next, we remove the two phases altogether, removing the preliminary transaction execution loop and allowing threads to steal preliminary execution tasks simultaneously with validations. Execution task stealing is managed using another synchronization counter `nextPrelimExecution`. Validation stealing only waits for corresponding tasks to complete, rather than waiting for all preliminary execution to complete. This improves performance since early detection of conflicts, especially in low-index transactions, can prevent aborts later. 
 
