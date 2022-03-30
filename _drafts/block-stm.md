@@ -36,9 +36,9 @@ A transaction execution results in a read-set and a write-set. The read-set cons
 In a sequential execution, a read by TXk from a particular memory location obtains the value writted by the highest TXj, where j < k, to the location; or the initial value at that memory location when the block execution started if none. We denote this dependency as TXj &rarr; TXk. 
 The transactions in block B form the following dependencies:
 
-TX1 &rarr; TX4 &rarr; TX6 &rarr; TX8 &rarr; TX9   
+  TX1 &rarr; TX4 &rarr; TX6 &rarr; TX8 &rarr; TX9   
 
-TX2 &rarr; TX5 &rarr; TX7 , TX10 
+  TX2 &rarr; TX5 &rarr; { TX7 , TX10 }
 
 
 The goal is to enable parallel execution that preserves a block pre-order, namely,
