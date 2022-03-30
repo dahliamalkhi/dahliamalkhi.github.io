@@ -27,9 +27,9 @@ In a sequential execution, a read by TXk from a particular memory location obtai
 An example serving as a running example throughout this post is a block B consisting of ten transactions TX1-TX10, 
 with the following read/write dependencies:
 
-  TX1 &rarr; TX4 &rarr; TX6 &rarr; TX8 &rarr; TX9   
+> TX1 &rarr; TX4 &rarr; TX6 &rarr; TX8 &rarr; TX9   
 
-  TX2 &rarr; TX5 &rarr; { TX7 , TX10 }
+> TX2 &rarr; TX5 &rarr; { TX7 , TX10 }
 
 
 The goal is to enable parallel execution that preserves a block pre-order, namely,
