@@ -84,11 +84,17 @@ Phase 2:                # validation
 The S-1 schedule has two phases. Phase 1 executes all transactions optimistically in parallel. Phase 2 repeatedly validates all remaining validations in parallel, re-executing transations that fail.
 The first iteration validates all transactions; some may fail validation and will be re-executed. The next iteration re-validates all transactions higher than the lowest failing index; some may fail and re-execute. And so on, until there are no more validation failures. 
 
-In our example block B, the first iteration of Phase 2 performs validations of TX2-TX10; the validations of 4-10 will all fail and re-execute. The second iteration re-validates 5-10 and 6-10 will fail/re-execute. In a third iteration, 7-10 re-validate and 8-9 fail. Two more iterations will fail/re-execute 9 and succeed, respectively.
+Recall our example block B, with dependencies TX1 &rarr; TX4 &rarr; TX6 &rarr; TX8 &rarr; TX9, TX2 &rarr; TX5 &rarr; { TX7 , TX10 }. Phase 2 will perform the following iterations:
 
-It is quite easy to see that the S-1 validation loop ends after at most n iterations, because in each iteration, nextValidation advances by at least 1. 
+> validation of TX2-TX10; 4-10 fail and re-execute 
+> validation of TX5-TX10; 6-10 fail and re-execute 
+> validation of TX7-TX10; 8-9 fail and re-execute 
+> validation of TX8-TX10; 9 fail and re-execute 
+> validation of TX10; all succeed
 
-However, both the execution and validation loops are logically centrally coordinated. The first improvement is to get rid of central coordination in phase 2 by having threads *steal* validation tasks. Coordinating task-stealing is done 
+It is quite easy to see that the S-1 validation loop satisfies VALIDAFTER(j,k), because in each iteration, nextValidation is determined by the lowest validation abort.  However, both the execution and validation loops are logically centrally coordinated. 
+
+The first improvement is to get rid of central coordination in phase 2 by having threads *steal* validation tasks. Coordinating task-stealing is done 
 using a single synchronization counter `nextValidation` that supports atomic procedures `nextValidation.increment() { oldVal := nextValidation; increment nextValidation; return oldVal } `and `nextValidation.setMin(val) { nextValidation := min(val, nextValidation) }. `
 
 Replacing the above validation-loop in phase 2 with a task-stealing loop results the following strawman scheduler, S-2:
@@ -115,7 +121,16 @@ Phase 2:                # validation
 ```
 
 
-The S-2 task-stealing regime is more efficient than the S-1 validation loop, because it decreases `nextValidation` immediately upon validation failure, allowing higher index re-validations to commence. For example, in the scenario above, first the validation of 4 fails, then 6 gets (re-)validated, potentially saving 6 from re-executing twice.
+The S-2 task-stealing regime is more efficient than the S-1 validation loop, because it decreases `nextValidation` immediately upon validation failure, allowing higher index re-validations to commence. 
+
+Using our running example block B, Phase 2 can make progress with 2 CPUs causing transactions to re-execute only once:
+
+> validation of TX2-TX3; all succeed
+> validation of TX4-TX5; both fail and re-execute, `nextValidaton` set to 5
+> validation of TX5-TX6; 5 succeeds, 6 fails and re-executes, `nextValidaton` set to 7
+> validation of TX7-TX8; both fail and re-execute, `nextValidaton` set to 8
+> validation of TX8-TX9; 8 succeeds, 9 fails and re-executes, `nextValidaton` set to 9
+> validation of TX9-TX10; both succeed
 
 Importantly, **VALIDAFTER(j, k)** is preserved because upon (re-)execution of a TXj it decreases `nextValidation` to j. This guarantees that every k > j will be validated after the j execution. 
 
