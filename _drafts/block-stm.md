@@ -28,7 +28,7 @@ that preserves a block pre-order, namely, it results in exactly the same read/wr
 More specifically, 
 in a sequential execution, a read by TXk from a particular memory location obtains the value writted by the highest TXj, where j < k, to the location, if exists; or the initial value at that memory location when the block execution started, if none. 
 
-An example serving as a running example throughout this post is a block B consisting of ten transactions TX1-TX10, each TXj doing `{ M[j mod 4] := M[j mod 4] + 1 }`. If TXk reads in a sequential execution a value written by TXj
+A scenario serving as a running example throughout this post is a block B consisting of ten transactions TX1-TX10, each TXj doing `{ M[j mod 4] := M[j mod 4] + 1 }`. If in a sequential execution, TXk reads a value written by TXj,
 we denote this as a read/write dependency TXj &rarr; TXk. 
 B has the following read/write dependencies:
 
@@ -36,19 +36,19 @@ B has the following read/write dependencies:
 
 > TX2 &rarr; TX5 &rarr; { TX7 , TX10 }
 
-A parallel execution must guarantee that transactions read values adhering to these dependencies.
+A parallel execution must guarantee that all transactions indeed read values adhering to these dependencies.
 Block-STM uses an optimistic approach, executing tranascations greedily and optimistically in parallel and then validating their read-set, 
 potentially causing abort/re-execute. 
 
 Correct optimism revolves around maintaining two principles:
 
 * **VALIDAFTER(j, k)**: For every j,k, such that j < k, a validation of TXk is performed after TXj executes (or re-executes).
-* **READLAST**: Whenever TXk executes (speculatively), a read by TXk obtains the value recorded so far by the highest transaction TXj preceding it, i.e., where j < k. Higher transactions TXl, where l > k, do not intefer with TXk. 
+* **READLAST(k)**: Whenever TXk executes (speculatively), a read by TXk obtains the value recorded so far by the highest transaction TXj preceding it, i.e., where j < k. Higher transactions TXl, where l > k, do not intefer with TXk. 
 
 Jointly, these two principles 
 suffice to guarantee both safety and liveness no matter what scheduling policy is used, so long as required execution and validation tasks are eventually dispatched. Safety follows because a TXk gets validated after all TXj, j &lt; k, are finalized. Liveness follows by induction. Initially transaction 1 is guaranteed to pass validation successfully and not require re-execution. Once transactions TX1-TXj have successfully validated, the next invocation of transaction j+1 will pass validation successfully and not require re-execution.
 
-**READLAST** is achieved via a simple multi-version in-memory data structure that keeps versioned write-sets, TXj recording values whose version is j. 
+**READLAST(k)** is achieved via a simple multi-version in-memory data structure that keeps versioned write-sets, TXj recording values whose version is j. 
 A read by TXk obtains the value recorded by the latest invocation of TXj with the highest j &lt; k.
 
 A special value `ABORTED` may be stored at version j when the latest invocation of TXj aborts. 
@@ -147,7 +147,7 @@ Using our running example block B, Phase 2 can make progress with just 2 CPUs ca
 
 Importantly, **VALIDAFTER(j, k)** is preserved because upon (re-)execution of a TXj it decreases `nextValidation` to j. This guarantees that every k > j will be validated after the j execution. 
 
-Preserving **READLAST** is more challenging due to concurrent task stealing, since multiple *incarnations* of the same transaction validation or execution tasks may occur simultaneously. Recall that **READLAST** requires that a read by a TXk should obtain the value recorded by the latest invocation of a TXj with the highest j &lt; k. This requires to synchronize transaction invocations, such that **READLAST** returns the highest incarnation value recorded by a transaction. A simple solution is to use per-transaction atomic incarnation synchronizer that prevents stale incarnations from recording values.
+Preserving **READLAST(k)** is more challenging due to concurrent task stealing, since multiple *incarnations* of the same transaction validation or execution tasks may occur simultaneously. Recall that **READLAST(k)** requires that a read by a TXk should obtain the value recorded by the latest invocation of a TXj with the highest j &lt; k. This requires to synchronize transaction invocations, such that **READLAST(k)** returns the highest incarnation value recorded by a transaction. A simple solution is to use per-transaction atomic incarnation synchronizer that prevents stale incarnations from recording values.
 
 Next, we remove the two phases altogether, removing the preliminary transaction execution loop and allowing threads to steal preliminary execution tasks simultaneously with validations. Execution task stealing is managed using another synchronization counter `nextPrelimExecution`. Validation stealing only waits for corresponding tasks to complete, rather than waiting for all preliminary execution to complete. This improves performance since early detection of conflicts, especially in low-index transactions, can prevent aborts later. 
 
@@ -185,7 +185,7 @@ Interleaving preliminary executions in S-3 with validations avoids unnecessary w
 
 The last improvement step consists of two important improvements.
 
-The first is an extremely simple dependency tracking (no graphs or partial orders) that considerably reduces aborts. When a TXj aborts, the write-set of its latest invocation is marked `ABORTED`. READLAST supports the `ABORTED` mark guaranteeing that a higher-index TXk reading from a location in this write-set will delay until the TXj completes re-executing.
+The first is an extremely simple dependency tracking (no graphs or partial orders) that considerably reduces aborts. When a TXj aborts, the write-set of its latest invocation is marked `ABORTED`. READLAST(k) supports the `ABORTED` mark guaranteeing that a higher-index TXk reading from a location in this write-set will delay until the TXj completes re-executing.
 
 The second one increases re-validation parallelism. When a transaction aborts, rather than waiting for it to complete re-execution, it decreases `nextValidation` immediately; then, if the re-execution writes to a (new) location which is not marked `ABORTED`, `nextValidation` is decreased again when the re-execution completes. 
 
