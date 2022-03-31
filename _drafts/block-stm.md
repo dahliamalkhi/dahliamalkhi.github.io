@@ -91,7 +91,7 @@ Recall our example block B, with dependencies TX1 &rarr; TX4 &rarr; TX6 &rarr; T
 Phase 1:
 > parallel execution of all transactions
 
-Phase 1:
+Phase 2:
 > parallel validation of all transactions; 4-10 fail and re-execute 
 
 > parallel validation of all transactions; 6-10 fail and re-execute 
