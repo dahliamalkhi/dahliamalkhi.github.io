@@ -102,12 +102,12 @@ Recall our example block B, with dependencies TX1 &rarr; TX4 &rarr; TX6 &rarr; T
 
 > parallel validation of TX10; all succeed
 
-It is quite easy to see that the S-1 validation loop satisfies VALIDAFTER(j,k), because in each iteration, nextValidation is determined by the lowest validation abort.  However, both the execution and validation loops are logically centrally coordinated. 
+It is quite easy to see that the S-1 validation loop satisfies VALIDAFTER(j,k), because at the end of each iteration, nextValidation is determined by the lowest validation abort.  However, the full validation in each iteration of the validation loop is wasteful.
 
-The first improvement is to get rid of central coordination in phase 2 by having threads *steal* validation tasks. Coordinating task-stealing is done 
-using a single synchronization counter `nextValidation` that supports atomic procedures `nextValidation.increment() { oldVal := nextValidation; increment nextValidation; return oldVal } `and `nextValidation.setMin(val) { nextValidation := min(val, nextValidation) }. `
+The first improvement is to replace phase 2 with a parallel task-*stealing* regime, coordinated
+via a single synchronization counter `nextValidation` that supports atomic procedures `nextValidation.increment() { oldVal := nextValidation; increment nextValidation; return oldVal } `and `nextValidation.setMin(val) { nextValidation := min(val, nextValidation) }. `
 
-Replacing the above validation-loop in phase 2 with a task-stealing loop results the following strawman scheduler, S-2:
+Replacing the validation-loop in phase 2 with a task-stealing loop results the following strawman scheduler, S-2:
 
 
 ## **S-2:**
