@@ -190,7 +190,7 @@ execution of TXj:
 
 S-3 lets re-validations of TXk, k > j,  proceed early while preserving **VALIDAFTER(j, k)**: if a TXk validation reads an `ABORTED` value, it has to wait; and if it reads a value which is not marked `ABORTED` and the j re-execution overwrites it, the TXk will be forced to revalidate again.
 
-## Summary 
+## Conclusion
 
 Block-STM enables essentially unbounded parallelism. S-3 reflects more-or-less faithfully the [Block-STM](https://arxiv.org/pdf/2203.06871.pdf) approach; for details, see the paper (note, the description above uses different names from the paper, e.g., `ABORTED` replaces “ESTIMATE”, `nextPrelimExecution` replaces “execution_idx”, `nextValidation` replaces “validation_idx”). Block-STM has been implemented within the Diem blockchain core ([https://github.com/diem/](https://github.com/diem/)) and evaluated on synthetic transaction workloads, yielding over 17x speedup on 32 cores under low/modest contention. 
 
