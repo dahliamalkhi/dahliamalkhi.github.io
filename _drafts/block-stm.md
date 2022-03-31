@@ -221,7 +221,7 @@ per thread: repeat
          j := nextValidation.increment() ; if j < nextPrelimExecution, validate TXj
 
     # if available, steal next execution task
-     otherwise if nextPrelimExecution <= n             # schedule execution
+     otherwise if nextPrelimExecution <= n
          j := nextPrelimExecution.increment() ; if j <= n, execute TXj
 
 until nextPrelimExecution > n, nextValidation > n, and no task is still running
