@@ -124,15 +124,16 @@ nextValidation.initialize(2)
 # Phase 2: validation
 
 per thread: repeat 
-    j := nextValidation.increment() ; if j > n, go back to loop 
-    validate TXj
+    # if available, steal the next validation task
+    j := nextValidation.increment() 
+    if j <= n, validate TXj
 until nextValidation > n and no task is still running
 
 validation of TXj:
-        re-read TXj read-set 
-        if read-set differs from original read-set of the latest TXj execution 
-            re-execute TXj
-            nextValidation.setMin(j+1) 
+    re-read TXj read-set 
+    if read-set differs from original read-set of the latest TXj execution 
+        re-execute TXj
+        nextValidation.setMin(j+1) 
 ```
 
 
@@ -173,10 +174,15 @@ nextPrelimExecution.initialize(1)
 nextValidation.initialize(2) 
 
 per thread: repeat
-    if nextValidation < nextPrelimExecution           # schedule validation
+
+    # if available, steal next validation task
+    if nextValidation < nextPrelimExecution
         j := nextValidation.increment() ; if j < nextPrelimExecution, validate TXj
-    otherwise if nextPrelimExecution <= n             # schedule execution
+
+    # if available, steal next execution task
+    otherwise if nextPrelimExecution <= n
         j := nextPrelimExecution.increment() ; if j <= n, execute TXj
+
 until nextPrelimExecution > n, nextValidation > n, and no task is still running
 
 validation of TXj:
@@ -209,10 +215,15 @@ nextPrelimExecution.initialize(1)
 nextValidation.initialize(2) 
 
 per thread: repeat
-     if nextValidation < nextPrelimExecution                 # schedule validation
+
+    # if available, steal next validation task
+     if nextValidation < nextPrelimExecution 
          j := nextValidation.increment() ; if j < nextPrelimExecution, validate TXj
+
+    # if available, steal next execution task
      otherwise if nextPrelimExecution <= n             # schedule execution
          j := nextPrelimExecution.increment() ; if j <= n, execute TXj
+
 until nextPrelimExecution > n, nextValidation > n, and no task is still running
 
 validation of TXj:
