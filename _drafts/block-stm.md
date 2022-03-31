@@ -73,36 +73,36 @@ Phase 1:                # execution
     parallel execute all transactions 1..n
 
 Phase 2:                # validation
-    validation loop:
-        parallel-do for all j in [ nextValidation..n ] :
-            re-read TXj read-set 
-            if read-set differs from original read-set of the latest TXj execution 
-                re-execute TXj 
-            if any TXj failed validation
-                update nextValidation to j+1, where j is the minimal failed transaction
-            otherwise
-                exit loop  
+    repeat
+        parallel validate all transactions
+    until all validations pass
+
+Validation of Txj:
+    re-read TXj read-set 
+    if read-set differs from original read-set of the latest TXj execution 
+        re-execute TXj 
 ```
 
 
-The S-1 schedule has two phases. Phase 1 executes all transactions optimistically in parallel. Phase 2 repeatedly validates all remaining validations in parallel, re-executing transations that fail.
-The first iteration validates all transactions; some may fail validation and will be re-executed. The next iteration re-validates all transactions higher than the lowest failing index; some may fail and re-execute. And so on, until there are no more validation failures. 
+The S-1 schedule has two phases. Phase 1 executes all transactions optimistically in parallel. Phase 2 repeatedly validates all transactions in parallel, re-executing those that fail, until there are no more validation failures. 
 
-Recall our example block B, with dependencies TX1 &rarr; TX4 &rarr; TX6 &rarr; TX8 &rarr; TX9, TX2 &rarr; TX5 &rarr; { TX7 , TX10 }. Phase 1 will execute all transactions optimistically with as much parallelism as available in the systems. Phase 2 will perform the following iterations:
+Recall our example block B, with dependencies TX1 &rarr; TX4 &rarr; TX6 &rarr; TX8 &rarr; TX9, TX2 &rarr; TX5 &rarr; { TX7 , TX10 }. S-1 will perform the following steps:
 
-> parallel execution of TX1-TX10; 
+Phase 1:
+> parallel execution of all transactions
 
-> parallel validation of TX2-TX10; 4-10 fail and re-execute 
+Phase 1:
+> parallel validation of all transactions; 4-10 fail and re-execute 
 
-> parallel validation of TX5-TX10; 6-10 fail and re-execute 
+> parallel validation of all transactions; 6-10 fail and re-execute 
 
-> parallel validation of TX7-TX10; 8-9 fail and re-execute 
+> parallel validation of all transactions; 8-9 fail and re-execute 
 
-> parallel validation of TX8-TX10; 9 fail and re-execute 
+> parallel validation of all transactions; 9 fail and re-execute 
 
-> parallel validation of TX10; all succeed
+> parallel validation of all transactions; all succeed
 
-It is quite easy to see that the S-1 validation loop satisfies VALIDAFTER(j,k), because at the end of each iteration, nextValidation is determined by the lowest validation abort.  However, the full validation in each iteration of the validation loop is wasteful.
+It is quite easy to see that the S-1 validation loop satisfies VALIDAFTER(j,k) because every transaction is validate after previous executions complete.  However, the full validation in each iteration of the validation loop is wasteful.
 
 The first improvement is to replace phase 2 with a parallel task-*stealing* regime, coordinated
 via a single synchronization counter `nextValidation` that supports atomic procedures `nextValidation.increment() { oldVal := nextValidation; increment nextValidation; return oldVal } `and `nextValidation.setMin(val) { nextValidation := min(val, nextValidation) }. `
@@ -120,10 +120,12 @@ Phase 1:                # execution
 Phase 2:                # validation
     nextValidation.initialize(2)
 
-    per thread main loop:
-        if nextValidation > n, and no task is still running, exit loop
+    repeat 
         j := nextValidation.increment() ; if j > n, go back to loop 
+        validate TXj
+    until nextValidation > n and no task is still running
 
+Validation of TXj:
         re-read TXj read-set 
         if read-set differs from original read-set of the latest TXj execution 
             re-execute TXj
@@ -131,9 +133,13 @@ Phase 2:                # validation
 ```
 
 
-The S-2 task-stealing regime is more efficient than the S-1 validation loop, because it decreases `nextValidation` immediately upon validation failure, allowing higher index re-validations to commence. 
+The S-2 task-stealing regime is more efficient than the S-1 validation loop, because it 
+decreases `nextValidation` immediately upon validation failure, allowing higher index re-validations to commence. With task stealing, it is hard to predict an exact execution transcript, it depends on the latency and interleaving of validation and execution tasks. A possible execution with 2 threads may result in the following transcript:
 
-Using our running example block B, Phase 2 can make progress with just 2 CPUs causing transactions to re-execute only once:
+Phase 1:
+> parallel execution of all transactions, 2 at a time
+
+Phase 2:
 
 > validation of TX2-TX3; all succeed
 
