@@ -88,17 +88,19 @@ Phase 2:                # validation
 The S-1 schedule has two phases. Phase 1 executes all transactions optimistically in parallel. Phase 2 repeatedly validates all remaining validations in parallel, re-executing transations that fail.
 The first iteration validates all transactions; some may fail validation and will be re-executed. The next iteration re-validates all transactions higher than the lowest failing index; some may fail and re-execute. And so on, until there are no more validation failures. 
 
-Recall our example block B, with dependencies TX1 &rarr; TX4 &rarr; TX6 &rarr; TX8 &rarr; TX9, TX2 &rarr; TX5 &rarr; { TX7 , TX10 }. Phase 2 will perform the following iterations:
+Recall our example block B, with dependencies TX1 &rarr; TX4 &rarr; TX6 &rarr; TX8 &rarr; TX9, TX2 &rarr; TX5 &rarr; { TX7 , TX10 }. Phase 1 will execute all transactions optimistically with as much parallelism as available in the systems. Phase 2 will perform the following iterations:
 
-> validation of TX2-TX10; 4-10 fail and re-execute 
+> parallel execution of TX1-TX10; 
 
-> validation of TX5-TX10; 6-10 fail and re-execute 
+> parallel validation of TX2-TX10; 4-10 fail and re-execute 
 
-> validation of TX7-TX10; 8-9 fail and re-execute 
+> parallel validation of TX5-TX10; 6-10 fail and re-execute 
 
-> validation of TX8-TX10; 9 fail and re-execute 
+> parallel validation of TX7-TX10; 8-9 fail and re-execute 
 
-> validation of TX10; all succeed
+> parallel validation of TX8-TX10; 9 fail and re-execute 
+
+> parallel validation of TX10; all succeed
 
 It is quite easy to see that the S-1 validation loop satisfies VALIDAFTER(j,k), because in each iteration, nextValidation is determined by the lowest validation abort.  However, both the execution and validation loops are logically centrally coordinated. 
 
