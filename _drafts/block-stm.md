@@ -18,25 +18,29 @@ The Block-STM parallel executor combines the pre-ordered block idea with optimis
 
 ## Overview
 
-The focus of this work is an input block containing a pre-ordered sequence of transactions
-TX1, TX2, ..., TXn. Transactions consist of smart-contract code that reads and writes to shared memory. 
-A transaction execution results in a read-set and a write-set. The read-set consists of pairs, a memory location and the transaction that wrote it. The write-set consists of pairs, a memory location and a value, that the transaction would record if it became committed.
+Block-STM is a parallel execution engine for smart contracts, built around the principles of Software Transactional Memory. 
+Transactions are grouped in blocks, each block containing a pre-ordered sequence of transactions
+TX1, TX2, ..., TXn. Transactions consist of smart-contract code that reads and writes to shared memory and their
+execution results in a read-set and a write-set: the read-set consists of pairs, a memory location and the transaction that wrote it; the write-set consists of pairs, a memory location and a value, that the transaction would record if it became committed.
 
-In a sequential execution, a read by TXk from a particular memory location obtains the value writted by the highest TXj, where j < k, to the location; or the initial value at that memory location when the block execution started if none. We denote this dependency as TXj &rarr; TXk. 
+A parallel execution of the block must yield the same deterministic outcome 
+that preserves a block pre-order, namely, it results in exactly the same read/write sets as a sequential execution. 
+More specifically, 
+in a sequential execution, a read by TXk from a particular memory location obtains the value writted by the highest TXj, where j < k, to the location, if exists; or the initial value at that memory location when the block execution started, if none. 
 
-An example serving as a running example throughout this post is a block B consisting of ten transactions TX1-TX10, 
-with the following read/write dependencies:
+An example serving as a running example throughout this post is a block B consisting of ten transactions TX1-TX10, each TXj doing `{ M[j mod 4] := M[j mod 4] + 1 }`. If TXk reads in a sequential execution a value written by TXj
+we denote this as a read/write dependency TXj &rarr; TXk. 
+B has the following read/write dependencies:
 
 > TX1 &rarr; TX4 &rarr; TX6 &rarr; TX8 &rarr; TX9   
 
 > TX2 &rarr; TX5 &rarr; { TX7 , TX10 }
 
+A parallel execution must guarantee that transactions read values adhering to these dependencies.
+Block-STM uses an optimistic approach, executing tranascations greedily and optimistically in parallel and then validating their read-set, 
+potentially causing abort/re-execute. 
 
-The goal is to enable parallel execution that preserves a block pre-order, namely,
-results in exactly the same read/write sets as a sequential execution. Block-STM uses an optimistic approach, executing tranascations greedily and optimistically in parallel, and then validating their read-set. 
-Validation may lead to a commit or to abort/re-execute. 
-
-Supporting efficient optimism revolves around maintaining two principles:
+Correct optimism revolves around maintaining two principles:
 
 * **VALIDAFTER(j, k)**: For every j,k, such that j < k, a validation of TXk is performed after TXj executes (or re-executes).
 * **READLAST**: Whenever TXk executes (speculatively), a read by TXk obtains the value recorded so far by the highest transaction TXj preceding it, i.e., where j < k. Higher transactions TXl, where l > k, do not intefer with TXk. 
