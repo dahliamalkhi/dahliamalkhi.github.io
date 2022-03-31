@@ -123,17 +123,20 @@ nextValidation.initialize(2)
 
 # Phase 2: validation
 
-per thread: repeat 
+per thread main loop: 
+repeat {
     # if available, steal the next validation task
     j := nextValidation.increment() 
     if j <= n, validate TXj
-until nextValidation > n and no task is still running
+} until nextValidation > n and no task is still running
 
 validation of TXj:
+{
     re-read TXj read-set 
     if read-set differs from original read-set of the latest TXj execution 
         re-execute TXj
         nextValidation.setMin(j+1) 
+}
 ```
 
 
@@ -173,7 +176,8 @@ A strawman scheduler, S-3, that supports interleaved execution/validation works 
 nextPrelimExecution.initialize(1) 
 nextValidation.initialize(2) 
 
-per thread: repeat
+per thread main loop: 
+repeat {
 
     # if available, steal next validation task
     if nextValidation < nextPrelimExecution
@@ -183,16 +187,20 @@ per thread: repeat
     otherwise if nextPrelimExecution <= n
         j := nextPrelimExecution.increment() ; if j <= n, execute TXj
 
-until nextPrelimExecution > n, nextValidation > n, and no task is still running
+} until nextPrelimExecution > n, nextValidation > n, and no task is still running
 
 validation of TXj:
+{
     re-read TXj read-set 
     if read-set differs from original read-set of the latest TXj execution 
         execute TXj
+}
 
 execution of TXj:
+{
     (re-)execute TXj
     nextValidation.setMin(j+1) 
+}
 ```
 
 Interleaving preliminary executions in S-3 with validations avoids unnecessary work executing transactions that follow aborted transactions. For example, in the running scenario using block B, a batch of preliminary executions may contain transaction TX1-TX4. Validations will be scheduled immediately when their execution completes. When the TX4 aborts and re-executes, no higher transaction execution will have been wasted. 
@@ -214,7 +222,8 @@ is captured in full in under one page as follows:
 nextPrelimExecution.initialize(1) 
 nextValidation.initialize(2) 
 
-per thread: repeat
+per thread main loop: 
+repeat {
 
     # if available, steal next validation task
      if nextValidation < nextPrelimExecution 
@@ -224,19 +233,23 @@ per thread: repeat
      otherwise if nextPrelimExecution <= n
          j := nextPrelimExecution.increment() ; if j <= n, execute TXj
 
-until nextPrelimExecution > n, nextValidation > n, and no task is still running
+} until nextPrelimExecution > n, nextValidation > n, and no task is still running
 
 validation of TXj:
-     re-read TXj read-set 
-     if read-set differs from original read-set of the latest TXj execution 
-         mark the TXj write-set ABORTED
-         nextValidation.setMin(j+1) 
-         execute TXj
+{
+    re-read TXj read-set 
+    if read-set differs from original read-set of the latest TXj execution 
+        mark the TXj write-set ABORTED
+        nextValidation.setMin(j+1) 
+        execute TXj
+}
 
 execution of TXj:  
-     (re-)execute TXj
-     if the TXj write-set contains locations not marked ABORTED
-         nextValidation.setMin(j+1) 
+{
+    (re-)execute TXj
+    if the TXj write-set contains locations not marked ABORTED
+        nextValidation.setMin(j+1) 
+}
 ```
 
 
