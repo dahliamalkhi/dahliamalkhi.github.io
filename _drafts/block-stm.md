@@ -69,15 +69,17 @@ At a first cut, consider the following strawman scheduler, S-1.
 
 
 ```
-Phase 1:                # execution
-    parallel execute all transactions 1..n
+# Phase 1: execution
 
-Phase 2:                # validation
-    repeat
-        parallel validate all transactions
-    until all validations pass
+parallel execute all transactions 1..n
 
-Validation of Txj:
+# Phase 2: validation
+
+repeat
+    parallel validate all transactions
+until all validations pass
+
+validation of TXj:
     re-read TXj read-set 
     if read-set differs from original read-set of the latest TXj execution 
         re-execute TXj 
@@ -114,17 +116,19 @@ Replacing the validation-loop in phase 2 with a task-stealing loop results the f
 
 
 ```
-Phase 1:                # execution
-    parallel execute all transactions 1..n
-    nextValidation.initialize(2)
+# Phase 1: execution
 
-Phase 2:                # validation
-    each thread repeat 
-        j := nextValidation.increment() ; if j > n, go back to loop 
-        validate TXj
-    until nextValidation > n and no task is still running
+parallel execute all transactions 1..n
+nextValidation.initialize(2)
 
-Validation of TXj:
+# Phase 2: validation
+
+per thread: repeat 
+    j := nextValidation.increment() ; if j > n, go back to loop 
+    validate TXj
+until nextValidation > n and no task is still running
+
+validation of TXj:
         re-read TXj read-set 
         if read-set differs from original read-set of the latest TXj execution 
             re-execute TXj
