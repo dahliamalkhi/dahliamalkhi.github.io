@@ -116,11 +116,10 @@ Replacing the validation-loop in phase 2 with a task-stealing loop results the f
 ```
 Phase 1:                # execution
     parallel execute all transactions 1..n
-
-Phase 2:                # validation
     nextValidation.initialize(2)
 
-    repeat 
+Phase 2:                # validation
+    each thread repeat 
         j := nextValidation.increment() ; if j > n, go back to loop 
         validate TXj
     until nextValidation > n and no task is still running
@@ -169,27 +168,24 @@ A strawman scheduler, S-3, that supports interleaved execution/validation works 
 nextPrelimExecution.initialize(1) 
 nextValidation.initialize(2) 
 
-per thread main loop:
-
-    if nextPrelimExecution > n, nextValidation > n, and no task is still running, exit loop
-
-    if nextValidation < nextPrelimExecution                 # schedule validation
-        j := nextValidation.increment() ; if j >= nextPrelimExecution, go back to loop
-        re-read TXj read-set 
-        if read-set differs from original read-set of the latest TXj execution 
-            goto execute
-
+per thread: repeat
+    if nextValidation < nextPrelimExecution           # schedule validation
+        j := nextValidation.increment() ; if j < nextPrelimExecution, validate TXj
     otherwise if nextPrelimExecution <= n             # schedule execution
-        j := nextPrelimExecution.increment() ; if j > n, go back to loop
+        j := nextPrelimExecution.increment() ; if j <= n, execute TXj
+until nextPrelimExecution > n, nextValidation > n, and no task is still running
 
-    otherwise go back to loop
+validation of TXj:
+    re-read TXj read-set 
+    if read-set differs from original read-set of the latest TXj execution 
+        execute TXj
 
-execute:
+execution of TXj:
     (re-)execute TXj
     nextValidation.setMin(j+1) 
 ```
 
-Interleaving preliminary executions in S-3 with validations avoids unnecessary work executing transactions that succeed aborted ones. For example, in the running scenario above, a batch of preliminary executions may contain transaction 1-4. Validations will be scheduled immediately when their execution completes. When the 4 aborts and re-executes, no higher transaction execution will have been wasted. 
+Interleaving preliminary executions in S-3 with validations avoids unnecessary work executing transactions that follow aborted transactions. For example, in the running scenario using block B, a batch of preliminary executions may contain transaction TX1-TX4. Validations will be scheduled immediately when their execution completes. When the TX4 aborts and re-executes, no higher transaction execution will have been wasted. 
 
 The last improvement step consists of two important improvements.
 
@@ -208,24 +204,21 @@ is captured in full in under one page as follows:
 nextPrelimExecution.initialize(1) 
 nextValidation.initialize(2) 
 
-per thread main loop:
-
-     if nextPrelimExecution > n, nextValidation > n, and no task is still running, exit loop
-
+per thread: repeat
      if nextValidation < nextPrelimExecution                 # schedule validation
-         j := nextValidation.increment() ; if j >= nextPrelimExecution, go back to loop
-         re-read TXj read-set 
-         if read-set differs from original read-set of the latest TXj execution 
-             mark the TXj write-set ABORTED
-             nextValidation.setMin(j+1) 
-             goto execute
-
+         j := nextValidation.increment() ; if j < nextPrelimExecution, validate TXj
      otherwise if nextPrelimExecution <= n             # schedule execution
-         j := nextPrelimExecution.increment() ; if j > n, go back to loop
+         j := nextPrelimExecution.increment() ; if j <= n, execute TXj
+until nextPrelimExecution > n, nextValidation > n, and no task is still running
 
-     otherwise go back to loop
+validation of TXj:
+     re-read TXj read-set 
+     if read-set differs from original read-set of the latest TXj execution 
+         mark the TXj write-set ABORTED
+         nextValidation.setMin(j+1) 
+         execute TXj
 
-execute:  
+execution of TXj:  
      (re-)execute TXj
      if the TXj write-set contains locations not marked ABORTED
          nextValidation.setMin(j+1) 
