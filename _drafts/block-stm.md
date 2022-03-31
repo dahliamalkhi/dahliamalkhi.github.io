@@ -58,35 +58,29 @@ If TXk reads this value, it suspends and resumes when the value becomes set.
 
 ## Scheduling
 
-It remains to focus on devising an efficient schedule for parallelizing execution and validations. We will construct an effective scheduling strategy gradually, starting with a correct but inefficient strawman and gradually improving it in four steps. Readers may skip directly to “S-4” at the bottom, where the full scheduling strategy is described in under 20 lines of pseudo-code, and come back here as needed for a step-by-step construction. 
+It remains to focus on devising an efficient schedule for parallelizing execution and validations. We will construct an effective scheduling strategy gradually, starting with a correct but inefficient strawman and gradually improving it in three steps. Readers may skip directly to “S-3” at the bottom, where the full scheduling strategy is described in under 20 lines of pseudo-code, and come back here as needed for a step-by-step construction. 
 
  
 
-At a first cut, consider the following strawman scheduler, S-1.
-
+At a first cut, consider a strawman scheduler, S-1, using a *master* that coordinates work by parallel threads.
 
 ## **S-1:**
 
 
 ```
-# Phase 1: execution
+# Phase 1: 
+execute all TX’s optimistically in parallel
 
-parallel execute all transactions 1..n
-
-# Phase 2: validation
-
+# Phase 2: 
 repeat
-    parallel validate all transactions
+    validate all TX's optimistically in parallel:
+        compare read-set to original
+        if fail, re-execute
 until all validations pass
 
-validation of TXj:
-    re-read TXj read-set 
-    if read-set differs from original read-set of the latest TXj execution 
-        re-execute TXj 
 ```
 
-
-The S-1 schedule has two phases. Phase 1 executes all transactions optimistically in parallel. Phase 2 repeatedly validates all transactions in parallel, re-executing those that fail, until there are no more validation failures. 
+S-1 operates in two centrally-coordinated two phases. Phase 1 executes all transactions optimistically in parallel. Phase 2 repeatedly validates all transactions optimistically in parallel, re-executing those that fail, until there are no more validation failures. 
 
 Recall our example block B, with dependencies TX1 &rarr; TX4 &rarr; TX6 &rarr; TX8 &rarr; TX9, TX2 &rarr; TX5 &rarr; { TX7 , TX10 }. S-1 will perform the following steps:
 
@@ -104,79 +98,18 @@ Phase 2:
 
 > parallel validation of all transactions; all succeed
 
-It is quite easy to see that the S-1 validation loop satisfies VALIDAFTER(j,k) because every transaction is validate after previous executions complete.  However, the full validation in each iteration of the validation loop is wasteful.
+It is quite easy to see that the S-1 validation loop satisfies VALIDAFTER(j,k) because every transaction is validate after previous executions complete.  However, the full execution in Phase 1 and full validation in each iteration of Phase 2 are wasteful.
 
-The first improvement is to replace phase 2 with a parallel task-*stealing* regime, coordinated
-via a single synchronization counter `nextValidation` that supports atomic procedures `nextValidation.increment() { oldVal := nextValidation; increment nextValidation; return oldVal } `and `nextValidation.setMin(val) { nextValidation := min(val, nextValidation) }. `
+The first improvement is to replace both phases with parallel task-*stealing* by threads. Stealing is coordinated
+via a single synchronization counter per task type, `nextPrelimExecution` and `nextValidation`, each initialized to 1 and supporting atomic procedures `x.increment() { oldVal := x; increment x; return oldVal } `and `x.setMin(val) { x := min(val, x) }. `
 
-Replacing the validation-loop in phase 2 with a task-stealing loop results the following strawman scheduler, S-2:
+The following strawman scheduler, S-2, utilizes a task stealing regime:
 
 
 ## **S-2:**
 
-
 ```
-# Phase 1: execution
-
-parallel execute all transactions 1..n
-nextValidation.initialize(2)
-
-# Phase 2: validation
-
-per thread main loop: 
-repeat {
-    # if available, steal the next validation task
-    j := nextValidation.increment() 
-    if j <= n, validate TXj
-} until nextValidation > n and no task is still running
-
-validation of TXj:
-{
-    re-read TXj read-set 
-    if read-set differs from original read-set of the latest TXj execution 
-        re-execute TXj
-        nextValidation.setMin(j+1) 
-}
-```
-
-
-The S-2 task-stealing regime is more efficient than the S-1 validation loop, because it 
-decreases `nextValidation` immediately upon validation failure, allowing higher index re-validations to commence. With task stealing, it is hard to predict an exact execution transcript, it depends on the latency and interleaving of validation and execution tasks. A possible execution with 2 threads may result in the following transcript:
-
-Phase 1:
-> parallel execution of all transactions, 2 at a time
-
-Phase 2:
-
-> validation of TX2-TX3; all succeed
-
-> validation of TX4-TX5; both fail and re-execute, `nextValidaton` set to 5
-
-> validation of TX5-TX6; 5 succeeds, 6 fails and re-executes, `nextValidaton` set to 7
-
-> validation of TX7-TX8; both fail and re-execute, `nextValidaton` set to 8
-
-> validation of TX8-TX9; 8 succeeds, 9 fails and re-executes, `nextValidaton` set to 9
-
-> validation of TX9-TX10; both succeed
-
-Importantly, **VALIDAFTER(j, k)** is preserved because upon (re-)execution of a TXj it decreases `nextValidation` to j. This guarantees that every k > j will be validated after the j execution. 
-
-Preserving **READLAST(k)** is more challenging due to concurrent task stealing, since multiple *incarnations* of the same transaction validation or execution tasks may occur simultaneously. Recall that **READLAST(k)** requires that a read by a TXk should obtain the value recorded by the latest invocation of a TXj with the highest j &lt; k. This requires to synchronize transaction invocations, such that **READLAST(k)** returns the highest incarnation value recorded by a transaction. A simple solution is to use per-transaction atomic incarnation synchronizer that prevents stale incarnations from recording values.
-
-Next, we remove the two phases altogether, removing the preliminary transaction execution loop and allowing threads to steal preliminary execution tasks simultaneously with validations. Execution task stealing is managed using another synchronization counter `nextPrelimExecution`. Validation stealing only waits for corresponding tasks to complete, rather than waiting for all preliminary execution to complete. This improves performance since early detection of conflicts, especially in low-index transactions, can prevent aborts later. 
-
-A strawman scheduler, S-3, that supports interleaved execution/validation works as follows:
-
-
-## **S-3:**
-
-
-```
-nextPrelimExecution.initialize(1) 
-nextValidation.initialize(2) 
-
-per thread main loop: 
+# per thread main loop: 
 repeat {
 
     # if available, steal next validation task
@@ -189,21 +122,37 @@ repeat {
 
 } until nextPrelimExecution > n, nextValidation > n, and no task is still running
 
-validation of TXj:
-{
-    re-read TXj read-set 
-    if read-set differs from original read-set of the latest TXj execution 
-        execute TXj
+validation of TXj {
+    compare read-set to original
+    if fail, re-execute
 }
 
-execution of TXj:
-{
+execution of TXj {
     (re-)execute TXj
     nextValidation.setMin(j+1) 
 }
 ```
 
-Interleaving preliminary executions in S-3 with validations avoids unnecessary work executing transactions that follow aborted transactions. For example, in the running scenario using block B, a batch of preliminary executions may contain transaction TX1-TX4. Validations will be scheduled immediately when their execution completes. When the TX4 aborts and re-executes, no higher transaction execution will have been wasted. 
+
+Interleaving preliminary executions in S-3 with validations avoids unnecessary work executing transactions that follow aborted transactions. For example, in the running scenario using block B, a batch of preliminary executions may contain transaction TX1-TX4. Validations will be scheduled immediately when their execution completes. When the TX4 aborts and re-executes, no higher transaction execution will have been wasted. Validation via 
+task-stealing is laso more efficient than because it 
+decreases `nextValidation` immediately upon validation failure, allowing higher index re-validations to commence. 
+
+With task stealing, it is hard to predict an exact execution transcript, it depends on the latency and interleaving of validation and execution tasks. A possible execution with 2 threads may result in the following transcript:
+
+> parallel execution and validation of TX2-TX3 succeed
+
+> parallel execution and validation of TX4-TX5 succeed
+
+> parallel execution and validation of TX6-TX7 succeed
+
+> parallel execution and validation of TX8-TX9; 8 succeeds, 9 fails, `nextValidaton` set to 10
+
+> parallel execution and validation of TX9-TX10 succeed
+
+Importantly, **VALIDAFTER(j, k)** is preserved because upon (re-)execution of a TXj it decreases `nextValidation` to j. This guarantees that every k > j will be validated after the j execution. 
+
+Preserving **READLAST(k)** is more challenging due to concurrent task stealing, since multiple *incarnations* of the same transaction validation or execution tasks may occur simultaneously. Recall that **READLAST(k)** requires that a read by a TXk should obtain the value recorded by the latest invocation of a TXj with the highest j &lt; k. This requires to synchronize transaction invocations, such that **READLAST(k)** returns the highest incarnation value recorded by a transaction. A simple solution is to use per-transaction atomic incarnation synchronizer that prevents stale incarnations from recording values.
 
 The last improvement step consists of two important improvements.
 
@@ -211,29 +160,15 @@ The first is an extremely simple dependency tracking (no graphs or partial order
 
 The second one increases re-validation parallelism. When a transaction aborts, rather than waiting for it to complete re-execution, it decreases `nextValidation` immediately; then, if the re-execution writes to a (new) location which is not marked `ABORTED`, `nextValidation` is decreased again when the re-execution completes. 
 
-The final scheduling algorithm S-4, 
-that supports interleaved execution/validation and dependency managements utilizing `ABORTED` tagging,
-is captured in full in under one page as follows:
+The final scheduling algorithm S-3, has the same main loop body, but validation and execution 
+support dependency managements via `ABORTED` tagging and early re-validation by decreasing `nextValidation` upon abort:
 
-## **S-4:**
+## **S-3:**
 
 
 ```
-nextPrelimExecution.initialize(1) 
-nextValidation.initialize(2) 
-
-per thread main loop: 
-repeat {
-
-    # if available, steal next validation task
-     if nextValidation < nextPrelimExecution 
-         j := nextValidation.increment() ; if j < nextPrelimExecution, validate TXj
-
-    # if available, steal next execution task
-     otherwise if nextPrelimExecution <= n
-         j := nextPrelimExecution.increment() ; if j <= n, execute TXj
-
-} until nextPrelimExecution > n, nextValidation > n, and no task is still running
+# per thread main loop, same as S-2
+...
 
 validation of TXj:
 {
@@ -253,7 +188,7 @@ execution of TXj:
 ```
 
 
-S-4 lets re-validations of TXk, k > j,  proceed early while preserving **VALIDAFTER(j, k)**: if a TXk validation reads an `ABORTED` value, it has to wait; and if it reads a value which is not marked `ABORTED` and the j re-execution overwrites it, the TXk will be forced to revalidate again.
+S-3 lets re-validations of TXk, k > j,  proceed early while preserving **VALIDAFTER(j, k)**: if a TXk validation reads an `ABORTED` value, it has to wait; and if it reads a value which is not marked `ABORTED` and the j re-execution overwrites it, the TXk will be forced to revalidate again.
 
-S-4 enables essentially unbounded parallelism. It reflects more-or-less faithfully the [Block-STM](https://arxiv.org/pdf/2203.06871.pdf) approach; for details, see the paper (note, the description above uses different names from the paper, e.g., `ABORTED` replaces “ESTIMATE”, `nextPrelimExecution` replaces “execution_idx”, `nextValidation` replaces “validation_idx”). Block-STM has been implemented within the Diem blockchain core ([https://github.com/diem/](https://github.com/diem/)) and evaluated on synthetic transaction workloads, yielding over 17x speedup on 32 cores under low/modest contention. 
+S-3 enables essentially unbounded parallelism. It reflects more-or-less faithfully the [Block-STM](https://arxiv.org/pdf/2203.06871.pdf) approach; for details, see the paper (note, the description above uses different names from the paper, e.g., `ABORTED` replaces “ESTIMATE”, `nextPrelimExecution` replaces “execution_idx”, `nextValidation` replaces “validation_idx”). Block-STM has been implemented within the Diem blockchain core ([https://github.com/diem/](https://github.com/diem/)) and evaluated on synthetic transaction workloads, yielding over 17x speedup on 32 cores under low/modest contention. 
 
