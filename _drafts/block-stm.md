@@ -1,3 +1,5 @@
+# Block-STM: Smart-contract Processing Acceleration 
+
 [Block-STM](https://arxiv.org/pdf/2203.06871.pdf) is an exciting technology that accelerates smart-contract execution, emanating from the Diem project
 and recently enhanced by Aptos Labs and integrated into [aptos-core](https://github.com/aptos-labs/aptos-core). 
 
@@ -16,7 +18,7 @@ Those approaches remove the reliance on static transaction analysis but require 
 
 The Block-STM parallel executor combines the pre-ordered block idea with optimistic STM to enforce the block pre-order of transactions on-the-fly, completely removing the need to pre-disseminate an execution schedule or pre-compute transaction dependencies, while guaranteeing repeatability.
 
-## Overview
+## Block-STM Overview
 
 Block-STM is a parallel execution engine for smart contracts, built around the principles of Software Transactional Memory. 
 Transactions are grouped in blocks, each block containing a pre-ordered sequence of transactions
@@ -165,8 +167,8 @@ The first is an extremely simple dependency tracking (no graphs or partial order
 
 The second one increases re-validation parallelism. When a transaction aborts, rather than waiting for it to complete re-execution, it decreases `nextValidation` immediately; then, if the re-execution writes to a (new) location which is not marked `ABORTED`, `nextValidation` is decreased again when the re-execution completes. 
 
-The final scheduling algorithm S-3, has the same main loop body, but validation and execution 
-support dependency managements via `ABORTED` tagging and early re-validation by decreasing `nextValidation` upon abort:
+The final scheduling algorithm S-3, has the same main loop body at S-2 with executions 
+supporting dependency managements via `ABORTED` tagging, and with early re-validation enabled by decreasing `nextValidation` upon abort:
 
 ## **S-3:**
 
@@ -192,8 +194,12 @@ execution of TXj:
 }
 ```
 
+S-3 enhances efficiency through simple, on-the-fly dependency management using the `ABORTED` tag. For example, in an execution of block B with three threads as above, TX9 will wait for re-execution of TX8 instead of failing validation and re-exeuting:
 
-When TXj fails, S-3 lets re-validations of TXk, k > j,  proceed early while preserving **VALIDAFTER(j, k)**: if a TXk validation reads an `ABORTED` value, it has to wait; and if it reads a value which is not marked `ABORTED` and the TXj re-execution overwrites it, then TXk will be forced to revalidate again.
+> parallel execution/validation of TX8-TX10; 8,10 execute, 9 suspends for 8 and resumes, all validations succeed 
+
+The reason S-3 preserves **VALIDAFTER(j, k)** is subtle. Suppose that TXj &rarr; TXk.
+Recall, when TXj fails, S-3 lets (re-)validations of TXk, k > j, proceed before TXj completes re-execution. There are two possible cases. If a TXk-validation reads an `ABORTED` value of TXj, it will wait for TXj to complete; and if it reads a value which is not marked `ABORTED` and the TXj re-execution overwrites it, then TXk will be forced to revalidate again.
 
 ## Conclusion
 
