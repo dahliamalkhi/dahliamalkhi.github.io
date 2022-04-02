@@ -29,7 +29,8 @@ that preserves a block pre-order, namely, it results in exactly the same read/wr
 More specifically, we denote by TXj &rarr; TXk 
 if TXk reads from a memory location that TXj writes in a sequential execution, 
 where j < k is the highest preceding transaction writing to this location. 
-A parallel execution must guarantee that TXk reads the value(s) written by TXj, TXj &rarr; TXk, 
+A parallel execution must guarantee that all transactions indeed read values adhering to these dependencies. 
+That is, when TXk reads from memory, it must obtain the value(s) written by TXj, TXj &rarr; TXk, if a dependency exists;
 or the initial value at that memory location when the block execution started, if none. 
 
 **A running example:**
