@@ -31,6 +31,7 @@ where j < k is the highest preceding transaction writing to this location.
 A parallel execution must guarantee that TXk reads the value(s) written by TXj, TXj &rarr; TXk, 
 or the initial value at that memory location when the block execution started, if none. 
 
+### Running example:
 A scenario serving as a running example throughout this post is a block B consisting of ten transactions TX1-TX10. If
 each TXj performs the code `{ M[j mod 4] := M[j mod 4] + 1 }` then 
 B has the following read/write dependencies:
