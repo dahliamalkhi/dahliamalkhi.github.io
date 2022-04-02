@@ -51,7 +51,7 @@ Correct optimism revolves around maintaining two principles:
 * **READLAST(k)**: Whenever TXk executes (speculatively), a read by TXk obtains the value recorded so far by the highest transaction TXj preceding it, i.e., where j < k. Higher transactions TXl, where l > k, do not intefer with TXk. 
 
 Jointly, these two principles 
-suffice to guarantee both safety and liveness no matter what scheduling policy is used, so long as required execution and validation tasks are eventually dispatched. Safety follows because a TXk gets validated after all TXj, j &lt; k, are finalized. Liveness follows by induction. Initially transaction 1 is guaranteed to pass validation successfully and not require re-execution. Once transactions TX1-TXj have successfully validated, the next invocation of transaction j+1 will pass validation successfully and not require re-execution.
+suffice to guarantee both safety and liveness no matter what scheduling policy is used, so long as pending execution and validation tasks are eventually dispatched. Safety follows because a TXk gets validated after all TXj, j &lt; k, are finalized. Liveness follows by induction. Initially transaction 1 is guaranteed to pass validation successfully and not require re-execution. After transactions TX1-TXj have successfully validated, a (re-)execution of transaction j+1 will pass validation successfully and not require re-execution.
 
 **READLAST(k)** is achieved via a simple multi-version in-memory data structure that keeps versioned write-sets, TXj recording values whose version is j. 
 A read by TXk obtains the value recorded by the latest invocation of TXj with the highest j &lt; k.
@@ -59,7 +59,7 @@ A read by TXk obtains the value recorded by the latest invocation of TXj with th
 A special value `ABORTED` may be stored at version j when the latest invocation of TXj aborts. 
 If TXk reads this value, it suspends and resumes when the value becomes set.  
 
-**VALIDAFTER(j, k)** is implemented by a scheduler. For each j, every TXk with index k > j is scheduled for (re)validation after TXj completes (re-)execution. Validation re-reads the read-set of the TXk and compares against the original read-set that TXk obtained in its latest execution. If validation fails, TXk re-executes.
+**VALIDAFTER(j, k)** is implemented by a scheduler. For each j, after TXj completes a (re-)execution, the scheduler dispatched every TXk with index k > j for (re)validation. Validation re-reads the read-set of the TXk and compares against the original read-set that TXk obtained in its latest execution. If validation fails, TXk re-executes.
 
 ## Scheduling
 
@@ -198,7 +198,7 @@ When TXj fails, S-3 lets re-validations of TXk, k > j,  proceed early while pres
 ## Conclusion
 
 Through a careful combination of simple, known techniques and applying them to a pre-ordered block of transactions that commit in a bulk, 
-Block-STM enables effective speedup of smart contract processing through parallelism. 
-Block-STM has been implemented within the Diem blockchain core ([https://github.com/diem/](https://github.com/diem/)) and evaluated on synthetic transaction workloads, yielding over 17x speedup on 32 cores under low/modest contention. 
+Block-STM enables effective speedup of smart contract processing through parallelism. Simplicity is a virtue of Block-STM, not a failing, enabling a robust and stable implementation. 
+Block-STM has been integrated within the Diem blockchain core ([https://github.com/diem/](https://github.com/diem/)) and evaluated on synthetic transaction workloads, yielding over 17x speedup on 32 cores under low/modest contention. 
 
 >> *Disclaimer: The description above reflects more-or-less faithfully the [Block-STM](https://arxiv.org/pdf/2203.06871.pdf) approach; for details, see the paper (note, the description above uses different names from the paper, e.g., `ABORTED` replaces “ESTIMATE”, `nextPrelimExecution` replaces “execution_idx”, `nextValidation` replaces “validation_idx”).*
