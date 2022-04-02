@@ -25,11 +25,14 @@ execution results in a read-set and a write-set: the read-set consists of pairs,
 
 A parallel execution of the block must yield the same deterministic outcome 
 that preserves a block pre-order, namely, it results in exactly the same read/write sets as a sequential execution. 
-More specifically, 
-in a sequential execution, a read by TXk from a particular memory location obtains the value writted by the highest TXj, where j < k, to the location, if exists; or the initial value at that memory location when the block execution started, if none. 
+More specifically, we denote by TXj &rarr; TXk 
+if TXk reads from a memory location that TXj writes in a sequential execution, 
+where j < k is the highest preceding transaction writing to this location. 
+A parallel execution must guarantee that TXk reads the value(s) written by TXj, TXj &rarr; TXk, 
+or the initial value at that memory location when the block execution started, if none. 
 
-A scenario serving as a running example throughout this post is a block B consisting of ten transactions TX1-TX10, each TXj doing `{ M[j mod 4] := M[j mod 4] + 1 }`. If in a sequential execution, TXk reads a value written by TXj,
-we denote this as a read/write dependency TXj &rarr; TXk. 
+A scenario serving as a running example throughout this post is a block B consisting of ten transactions TX1-TX10. If
+each TXj performs the code `{ M[j mod 4] := M[j mod 4] + 1 }` then 
 B has the following read/write dependencies:
 
 > TX1 &rarr; TX4 &rarr; TX6 &rarr; TX8 &rarr; TX9   
@@ -196,4 +199,4 @@ Through a careful combination of simple, known techniques and applying them to a
 Block-STM enables effective speedup of smart contract processing through parallelism. 
 Block-STM has been implemented within the Diem blockchain core ([https://github.com/diem/](https://github.com/diem/)) and evaluated on synthetic transaction workloads, yielding over 17x speedup on 32 cores under low/modest contention. 
 
->>> *Disclaimer: The description above reflects more-or-less faithfully the [Block-STM](https://arxiv.org/pdf/2203.06871.pdf) approach; for details, see the paper (note, the description above uses different names from the paper, e.g., `ABORTED` replaces “ESTIMATE”, `nextPrelimExecution` replaces “execution_idx”, `nextValidation` replaces “validation_idx”).*
+>> *Disclaimer: The description above reflects more-or-less faithfully the [Block-STM](https://arxiv.org/pdf/2203.06871.pdf) approach; for details, see the paper (note, the description above uses different names from the paper, e.g., `ABORTED` replaces “ESTIMATE”, `nextPrelimExecution` replaces “execution_idx”, `nextValidation` replaces “validation_idx”).*
