@@ -196,6 +196,10 @@ execution of TXj:
 
 S-3 enhances efficiency through simple, on-the-fly dependency management using the `ABORTED` tag. For example, in an execution of block B with three threads as above, TX9 will wait for re-execution of TX8 instead of failing validation and re-exeuting:
 
+> ...
+
+> parallel execution/validation of TX6-TX8; 6,7 succeed, 8 fails, `nextValidation` set to 9
+
 > parallel execution/validation of TX8-TX10; 8,10 execute, 9 suspends for 8 and resumes, all validations succeed 
 
 The reason S-3 preserves **VALIDAFTER(j, k)** is subtle. Suppose that TXj &rarr; TXk.
