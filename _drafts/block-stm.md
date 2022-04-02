@@ -23,6 +23,7 @@ Transactions are grouped in blocks, each block containing a pre-ordered sequence
 TX1, TX2, ..., TXn. Transactions consist of smart-contract code that reads and writes to shared memory and their
 execution results in a read-set and a write-set: the read-set consists of pairs, a memory location and the transaction that wrote it; the write-set consists of pairs, a memory location and a value, that the transaction would record if it became committed.
 
+**Block pre-order:**
 A parallel execution of the block must yield the same deterministic outcome 
 that preserves a block pre-order, namely, it results in exactly the same read/write sets as a sequential execution. 
 More specifically, we denote by TXj &rarr; TXk 
@@ -31,7 +32,7 @@ where j < k is the highest preceding transaction writing to this location.
 A parallel execution must guarantee that TXk reads the value(s) written by TXj, TXj &rarr; TXk, 
 or the initial value at that memory location when the block execution started, if none. 
 
-### Running example:
+**A running example:**
 A scenario serving as a running example throughout this post is a block B consisting of ten transactions TX1-TX10. If
 each TXj performs the code `{ M[j mod 4] := M[j mod 4] + 1 }` then 
 B has the following read/write dependencies:
@@ -40,10 +41,9 @@ B has the following read/write dependencies:
 
 > TX2 &rarr; TX5 &rarr; { TX7 , TX10 }
 
-A parallel execution must guarantee that all transactions indeed read values adhering to these dependencies.
+**Correctness:**
 Block-STM uses an optimistic approach, executing tranascations greedily and optimistically in parallel and then validating their read-set, 
 potentially causing abort/re-execute. 
-
 Correct optimism revolves around maintaining two principles:
 
 * **VALIDAFTER(j, k)**: For every j,k, such that j < k, a validation of TXk is performed after TXj executes (or re-executes).
