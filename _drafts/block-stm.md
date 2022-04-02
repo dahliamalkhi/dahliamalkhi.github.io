@@ -67,7 +67,7 @@ It remains to focus on devising an efficient schedule for parallelizing executio
 
  
 
-At a first cut, consider a strawman scheduler, S-1, using a *master* that coordinates work by parallel threads.
+At a first cut, consider a strawman scheduler, S-1, implicitly assuming a master/worker regime where a master coordinates work by parallel threads.
 
 ## **S-1:**
 
@@ -85,7 +85,7 @@ until all validations pass
 
 ```
 
-S-1 operates in two centrally-coordinated two phases. Phase 1 executes all transactions optimistically in parallel. Phase 2 repeatedly validates all transactions optimistically in parallel, re-executing those that fail, until there are no more validation failures. 
+S-1 operates in two master-coordinated phases. Phase 1 executes all transactions optimistically in parallel. Phase 2 repeatedly validates all transactions optimistically in parallel, re-executing those that fail, until there are no more validation failures. 
 
 Recall our example block B, with dependencies TX1 &rarr; TX4 &rarr; TX6 &rarr; TX8 &rarr; TX9, TX2 &rarr; TX5 &rarr; { TX7 , TX10 }. S-1 will perform the following steps:
 
@@ -103,10 +103,10 @@ Phase 2:
 
 > parallel validation of all transactions; all succeed
 
-It is quite easy to see that the S-1 validation loop satisfies VALIDAFTER(j,k) because every transaction is validate after previous executions complete.  However, the full execution in Phase 1 and full validation in each iteration of Phase 2 are wasteful.
+It is quite easy to see that the S-1 validation loop satisfies VALIDAFTER(j,k) because every transaction is validated after previous executions complete.  However, it is quite wasteful in resources, each loop fully executing/validating all transactions.
 
-The first improvement is to replace both phases with parallel task-*stealing* by threads. Stealing is coordinated
-via a single synchronization counter per task type, `nextPrelimExecution` and `nextValidation`, each initialized to 1 and supporting atomic procedures `x.increment() { oldVal := x; increment x; return oldVal } `and `x.setMin(val) { x := min(val, x) }. `
+The first improvement is to replace both phases with parallel task-*stealing* by threads. Using the insight from S-1, we distinguish between a preliminary execution (correponding to phase 1) and re-execution (following a validation abort).  Stealing is coordinated
+via two synchronization counters, one per task type, `nextPrelimExecution` (initially 1) and `nextValidation` (initially 2). Synchronizers support atomic procedures `x.increment() { oldVal := x; increment x; return oldVal } `and `x.setMin(val) { x := min(val, x) }. `
 
 The following strawman scheduler, S-2, utilizes a task stealing regime:
 
@@ -139,25 +139,25 @@ execution of TXj {
 ```
 
 
-Interleaving preliminary executions in S-3 with validations avoids unnecessary work executing transactions that follow aborted transactions. For example, in the running scenario using block B, a batch of preliminary executions may contain transaction TX1-TX4. Validations will be scheduled immediately when their execution completes. When the TX4 aborts and re-executes, no higher transaction execution will have been wasted. Validation via 
-task-stealing is laso more efficient than because it 
-decreases `nextValidation` immediately upon validation failure, allowing higher index re-validations to commence. 
+Interleaving preliminary executions with validations avoids unnecessary work executing transactions that might follow aborted transactions. For example, in the running scenario using block B, validating TX4 immediately causes re-execution, hence higher transactions may not need to abort/re-execute. 
 
-With task stealing, it is hard to predict an exact execution transcript, it depends on the latency and interleaving of validation and execution tasks. A possible execution with 2 threads may result in the following transcript:
+With task stealing, it is hard to lay out an exact execution script in advance because it depends on real-time latency and interleaving of validation and execution tasks. A possible execution with 3 threads may result in the following transcript:
 
-> parallel execution and validation of TX2-TX3 succeed
+> parallel execution/validation of TX2-TX4; 2,3 succeed, 4 fails, `nextValidation` set to 5
 
-> parallel execution and validation of TX4-TX5 succeed
+> parallel execution/validation of TX4-TX6; 4,5 succeed, 6 fails, `nextValidation` set to 7
 
-> parallel execution and validation of TX6-TX7 succeed
+> parallel execution/validation of TX6-TX8; 6,7 succeed, 8 fails, `nextValidation` set to 9
 
-> parallel execution and validation of TX8-TX9; 8 succeeds, 9 fails, `nextValidaton` set to 10
+> parallel execution/validation of TX8-TX10; 8,10 succeed, 9 fails, `nextValidation` set to 10
 
-> parallel execution and validation of TX9-TX10 succeed
+> parallel execution/validation of TX9-TX10; succeed
 
-Importantly, **VALIDAFTER(j, k)** is preserved because upon (re-)execution of a TXj it decreases `nextValidation` to j. This guarantees that every k > j will be validated after the j execution. 
+Note that, despite the high-contention B scenario, this execution achieves almost optimal latency and incurs only transaction re-executions only once.
 
-Preserving **READLAST(k)** is more challenging due to concurrent task stealing, since multiple *incarnations* of the same transaction validation or execution tasks may occur simultaneously. Recall that **READLAST(k)** requires that a read by a TXk should obtain the value recorded by the latest invocation of a TXj with the highest j &lt; k. This requires to synchronize transaction invocations, such that **READLAST(k)** returns the highest incarnation value recorded by a transaction. A simple solution is to use per-transaction atomic incarnation synchronizer that prevents stale incarnations from recording values.
+Importantly, **VALIDAFTER(j, k)** is preserved because upon (re-)execution of a TXj, it decreases `nextValidation` to j+1. This guarantees that every k > j will be validated after the j execution. 
+
+Preserving **READLAST(k)** requires care due to concurrent task stealing, since multiple *incarnations* of the same transaction validation or execution tasks may occur simultaneously. Recall that **READLAST(k)** requires that a read by a TXk should obtain the value recorded by the latest invocation of a TXj with the highest j &lt; k. This requires to synchronize transaction invocations, such that **READLAST(k)** returns the highest incarnation value recorded by a transaction. A simple solution is to use per-transaction atomic incarnation synchronizer that prevents stale incarnations from recording values.
 
 The last improvement step consists of two important improvements.
 
@@ -197,7 +197,7 @@ When TXj fails, S-3 lets re-validations of TXk, k > j,  proceed early while pres
 
 ## Conclusion
 
-Through a careful combination of simple, known techniques and applying them to a pre-ordered block of transactions that commit in a bulk, 
+Through a careful combination of simple, known techniques and applying them to a pre-ordered block of transactions that commit at a bulk, 
 Block-STM enables effective speedup of smart contract processing through parallelism. Simplicity is a virtue of Block-STM, not a failing, enabling a robust and stable implementation. 
 Block-STM has been integrated within the Diem blockchain core ([https://github.com/diem/](https://github.com/diem/)) and evaluated on synthetic transaction workloads, yielding over 17x speedup on 32 cores under low/modest contention. 
 
