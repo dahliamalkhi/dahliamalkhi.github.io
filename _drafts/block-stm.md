@@ -70,7 +70,8 @@ If TXk reads this value, it suspends and resumes when the value becomes set.
 
 ## Scheduling
 
-It remains to focus on devising an efficient schedule for parallelizing execution and validations. We will construct an effective scheduling strategy gradually, starting with a correct but inefficient strawman and gradually improving it in three steps. Readers may skip directly to “S-3” at the bottom, where the full scheduling strategy is described in under 20 lines of pseudo-code, and come back here as needed for a step-by-step construction. 
+It remains to focus on devising an efficient schedule for parallelizing execution and validations. We will construct an effective scheduling strategy gradually, starting with a correct but inefficient strawman and gradually improving it in three steps. The full scheduling strategy is 
+described in under 20 lines of pseudo-code. 
 
  
 
