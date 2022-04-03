@@ -1,4 +1,4 @@
-# Block-STM: Smart-contract Processing Acceleration 
+# Block-STM: Accelerating Smart-contract Processing 
 
 [Block-STM](https://arxiv.org/pdf/2203.06871.pdf) is an exciting technology that accelerates smart-contract execution, emanating from the Diem project
 and recently enhanced by Aptos Labs and integrated into [aptos-core](https://github.com/aptos-labs/aptos-core). 
@@ -42,7 +42,6 @@ each TXj performs the code `{ M[j mod 4] := M[j mod 4] + 1 }` then
 B has the following read/write dependencies:
 
 > TX1 &rarr; TX4 &rarr; TX6 &rarr; TX8 &rarr; TX9   
-
 > TX2 &rarr; TX5 &rarr; { TX7 , TX10 }
 
 **Correctness:**
@@ -92,18 +91,13 @@ S-1 operates in two master-coordinated phases. Phase 1 executes all transactions
 
 Recall our example block B, with dependencies TX1 &rarr; TX4 &rarr; TX6 &rarr; TX8 &rarr; TX9, TX2 &rarr; TX5 &rarr; { TX7 , TX10 }. S-1 will perform the following steps:
 
-Phase 1:
+> Phase 1:
 > parallel execution of all transactions
-
-Phase 2:
+> Phase 2:
 > parallel validation of all transactions; 4-10 fail and re-execute 
-
 > parallel validation of all transactions; 6-10 fail and re-execute 
-
 > parallel validation of all transactions; 8-9 fail and re-execute 
-
 > parallel validation of all transactions; 9 fail and re-execute 
-
 > parallel validation of all transactions; all succeed
 
 It is quite easy to see that the S-1 validation loop satisfies VALIDAFTER(j,k) because every transaction is validated after previous executions complete.  However, it is quite wasteful in resources, each loop fully executing/validating all transactions.
@@ -147,13 +141,9 @@ Interleaving preliminary executions with validations avoids unnecessary work exe
 With task stealing, it is hard to lay out an exact execution script in advance because it depends on real-time latency and interleaving of validation and execution tasks. A possible execution with 3 threads may result in the following transcript:
 
 > parallel execution/validation of TX2-TX4; 2,3 succeed, 4 fails, `nextValidation` set to 5
-
 > parallel execution/validation of TX4-TX6; 4,5 succeed, 6 fails, `nextValidation` set to 7
-
 > parallel execution/validation of TX6-TX8; 6,7 succeed, 8 fails, `nextValidation` set to 9
-
 > parallel execution/validation of TX8-TX10; 8,10 succeed, 9 fails, `nextValidation` set to 10
-
 > parallel execution/validation of TX9-TX10; 9,10 succeed
 
 Note that, despite the high-contention B scenario, this execution achieves almost optimal latency and incurs re-executions only once.
@@ -200,11 +190,8 @@ An execution driven by S-3 with three threads may avoid re-executions incurred i
 In this potential scenario, S-3 achieves very close to optimal scheduling with only a single abort:
 
 > parallel execution/validation of TX2-TX4; 2,3 succeed, 4 fails, `nextValidation` set to 5
-
 > parallel execution/validation of TX4-TX6; 4,5 execute, 6 suspends for 4 and resumes, all validations succeed
-
 > parallel execution/validation of TX7-TX9; 7,8 succeed, 9 fails, `nextValidation` set to 10
-
 > parallel execution/validation of TX9-TX10; 9,10 succeed 
 
 
