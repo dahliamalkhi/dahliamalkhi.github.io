@@ -17,6 +17,7 @@ A later work [OptSmart 2021](https://arxiv.org/abs/2102.04875) adds read/write-s
 Those approaches remove the reliance on static transaction analysis but require a leader to pre-execute blocks.
 
 The Block-STM parallel executor combines the pre-ordered block idea with optimistic STM to enforce the block pre-order of transactions on-the-fly, completely removing the need to pre-disseminate an execution schedule or pre-compute transaction dependencies, while guaranteeing repeatability.
+It can therefore inderoperate with existing blockchains, benefitting nodes that operate Block-STM independently by accelerating their own block processing.
 
 ## Block-STM Overview
 
