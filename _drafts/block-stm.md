@@ -4,7 +4,7 @@
 [Diem project](https://github.com/diem)
 and enhanced by 
 [Aptos Labs](https://github.com/aptos-labs).
-Acceleration interoperates with existing blockchains and can benefit any node that operate Block-STM independently, accelerating their own block processing.
+The acceleration approach can interoperate with any existing blockchain without modifying, benefitting any miner or validator node independently through their own block processing.
 
 ## Background
 
