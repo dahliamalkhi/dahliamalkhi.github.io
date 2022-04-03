@@ -201,7 +201,7 @@ execution of TXj:
 ```
 
 S-3 enhances efficiency through simple, on-the-fly dependency management using the `ABORTED` tag. For our running example of block B, 
-An execution driven by S-3 with three threads may be able to avoid re-executions incurred in S-2 by waiting on an ABORTED mark. 
+An execution driven by S-3 with three threads may be able to avoid several of the re-executions incurred in S-2 by waiting on an ABORTED mark. 
 A possible execution of S-3 may achieve very close to optimal scheduling with only a single abort, shown below.
 
 * possible time steps with 3 threads:
