@@ -75,22 +75,29 @@ described in under 20 lines of pseudo-code.
 
  
 
-At a first cut, consider a strawman scheduler, S-1, implicitly assuming a master/worker regime where a master coordinates work by parallel threads.
+At a first cut, consider a strawman scheduler, S-1, that uses a centralized dispatcher that coordinates work by parallel threads.
 
 ## **S-1:**
 
 
 ```
 # Phase 1: 
-execute all TX’s optimistically in parallel
+dispatch all TX’s for execution in parallel ; wait for completion
 
 # Phase 2: 
-repeat
-    validate all TX's optimistically in parallel:
-        compare read-set to original
-        if fail, re-execute
-until all validations pass
+repeat {
+    dispatch all all TX's for validation in parallel ; wait for completion
+} until all validations pass
 
+validation of TXj {
+    re-read TXj read-set 
+    if read-set differs from original read-set of the latest TXj execution 
+        re-execute
+}
+
+execution of TXj {
+    (re-)execute TXj
+}
 ```
 
 S-1 operates in two master-coordinated phases. Phase 1 executes all transactions optimistically in parallel. Phase 2 repeatedly validates all transactions optimistically in parallel, re-executing those that fail, until there are no more validation failures. 
@@ -131,8 +138,9 @@ repeat {
 } until nextPrelimExecution > n, nextValidation > n, and no task is still running
 
 validation of TXj {
-    compare read-set to original
-    if fail, re-execute
+    re-read TXj read-set 
+    if read-set differs from original read-set of the latest TXj execution 
+        re-execute
 }
 
 execution of TXj {
