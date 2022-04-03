@@ -153,9 +153,9 @@ With task stealing, it is hard to lay out an exact execution script in advance b
 
 > parallel execution/validation of TX8-TX10; 8,10 succeed, 9 fails, `nextValidation` set to 10
 
-> parallel execution/validation of TX9-TX10; succeed
+> parallel execution/validation of TX9-TX10; 9,10 succeed
 
-Note that, despite the high-contention B scenario, this execution achieves almost optimal latency and incurs only transaction re-executions only once.
+Note that, despite the high-contention B scenario, this execution achieves almost optimal latency and incurs re-executions only once.
 
 Importantly, **VALIDAFTER(j, k)** is preserved because upon (re-)execution of a TXj, it decreases `nextValidation` to j+1. This guarantees that every k > j will be validated after the j execution. 
 
@@ -194,13 +194,18 @@ execution of TXj:
 }
 ```
 
-S-3 enhances efficiency through simple, on-the-fly dependency management using the `ABORTED` tag. For example, in an execution of block B with three threads as above, TX9 will wait for re-execution of TX8 instead of failing validation and re-exeuting:
+S-3 enhances efficiency through simple, on-the-fly dependency management using the `ABORTED` tag. For our running example of block B, 
+An execution driven by S-3 with three threads may avoid re-executions incurred in S-2 by waiting on an ABORTED mark. 
+In this potential scenario, S-3 achieves very close to optimal scheduling with only a single abort:
 
-> ...
+> parallel execution/validation of TX2-TX4; 2,3 succeed, 4 fails, `nextValidation` set to 5
 
-> parallel execution/validation of TX6-TX8; 6,7 succeed, 8 fails, `nextValidation` set to 9
+> parallel execution/validation of TX4-TX6; 4,5 execute, 6 suspends for 4 and resumes, all validations succeed
 
-> parallel execution/validation of TX8-TX10; 8,10 execute, 9 suspends for 8 and resumes, all validations succeed 
+> parallel execution/validation of TX7-TX9; 7,8 succeed, 9 fails, `nextValidation` set to 10
+
+> parallel execution/validation of TX9-TX10; 9,10 succeed 
+
 
 The reason S-3 preserves **VALIDAFTER(j, k)** is subtle. Suppose that TXj &rarr; TXk.
 Recall, when TXj fails, S-3 lets (re-)validations of TXk, k > j, proceed before TXj completes re-execution. There are two possible cases. If a TXk-validation reads an `ABORTED` value of TXj, it will wait for TXj to complete; and if it reads a value which is not marked `ABORTED` and the TXj re-execution overwrites it, then TXk will be forced to revalidate again.
