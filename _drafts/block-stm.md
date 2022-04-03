@@ -140,11 +140,11 @@ Interleaving preliminary executions with validations avoids unnecessary work exe
 
 With task stealing, it is hard to lay out an exact timing of tasks during execution in advance, because it depends on real-time latency and interleaving of validation and execution tasks. A possible execution with 3 threads may result in the following time steps:
 
-1. parallel execution/validation of TX2-TX4; 2,3 succeed, 4 fails, `nextValidation` set to 5      
-2. parallel execution/validation of TX4-TX6; 4,5 succeed, 6 fails, `nextValidation` set to 7      
-3. parallel execution/validation of TX6-TX8; 6,7 succeed, 8 fails, `nextValidation` set to 9      
-4. parallel execution/validation of TX8-TX10; 8,10 succeed, 9 fails, `nextValidation` set to 10      
-5. parallel execution/validation of TX9-TX10; 9,10 succeed      
+    1. parallel execution/validation of TX2-TX4; 2,3 succeed, 4 fails, `nextValidation` set to 5      
+    2. parallel execution/validation of TX4-TX6; 4,5 succeed, 6 fails, `nextValidation` set to 7      
+    3. parallel execution/validation of TX6-TX8; 6,7 succeed, 8 fails, `nextValidation` set to 9      
+    4. parallel execution/validation of TX8-TX10; 8,10 succeed, 9 fails, `nextValidation` set to 10      
+    5. parallel execution/validation of TX9-TX10; 9,10 succeed      
 
 Note that, despite the high-contention B scenario, this execution achieves almost optimal latency and incurs re-executions only once.
 
@@ -189,10 +189,10 @@ S-3 enhances efficiency through simple, on-the-fly dependency management using t
 An execution driven by S-3 with three threads may be able to avoid re-executions incurred in S-2 by waiting on an ABORTED mark. 
 A possible execution of S-3 may achieve very close to optimal scheduling with only a single abort, going throung the following time steps:
 
-1. parallel execution/validation of TX2-TX4; 2,3 succeed, 4 fails, `nextValidation` set to 5     
-2. parallel execution/validation of TX4-TX6; 4,5 execute, 6 suspends for 4 and resumes, all validations succeed     
-3. parallel execution/validation of TX7-TX9; 7,8 succeed, 9 fails, `nextValidation` set to 10     
-4. parallel execution/validation of TX9-TX10; 9,10 succeed 
+    1. parallel execution/validation of TX2-TX4; 2,3 succeed, 4 fails, `nextValidation` set to 5     
+    2. parallel execution/validation of TX4-TX6; 4,5 execute, 6 suspends for 4 and resumes, all validations succeed     
+    3. parallel execution/validation of TX7-TX9; 7,8 succeed, 9 fails, `nextValidation` set to 10     
+    4. parallel execution/validation of TX9-TX10; 9,10 succeed 
 
 
 The reason S-3 preserves **VALIDAFTER(j, k)** is subtle. Suppose that TXj &rarr; TXk.
