@@ -91,14 +91,14 @@ S-1 operates in two master-coordinated phases. Phase 1 executes all transactions
 
 Recall our example block B, with dependencies TX1 &rarr; TX4 &rarr; TX6 &rarr; TX8 &rarr; TX9, TX2 &rarr; TX5 &rarr; { TX7 , TX10 }. S-1 will perform the following steps:
 
-> Phase 1:       
-> parallel execution of all transactions       
-> Phase 2:       
-> parallel validation of all transactions; 4-10 fail and re-execute        
-> parallel validation of all transactions; 6-10 fail and re-execute        
-> parallel validation of all transactions; 8-9 fail and re-execute        
-> parallel validation of all transactions; 9 fail and re-execute        
-> parallel validation of all transactions; all succeed 
+* Phase 1:       
+    parallel execution of all transactions       
+* Phase 2:       
+  1. parallel validation of all transactions; 4-10 fail and re-execute        
+  2. parallel validation of all transactions; 6-10 fail and re-execute        
+  3. parallel validation of all transactions; 8-9 fail and re-execute        
+  4. parallel validation of all transactions; 9 fail and re-execute        
+  5. parallel validation of all transactions; all succeed 
 
 It is quite easy to see that the S-1 validation loop satisfies VALIDAFTER(j,k) because every transaction is validated after previous executions complete.  However, it is quite wasteful in resources, each loop fully executing/validating all transactions.
 
@@ -140,11 +140,11 @@ Interleaving preliminary executions with validations avoids unnecessary work exe
 
 With task stealing, it is hard to lay out an exact timing of tasks during execution in advance, because it depends on real-time latency and interleaving of validation and execution tasks. A possible execution with 3 threads may result in the following time steps:
 
-> parallel execution/validation of TX2-TX4; 2,3 succeed, 4 fails, `nextValidation` set to 5      
-> parallel execution/validation of TX4-TX6; 4,5 succeed, 6 fails, `nextValidation` set to 7      
-> parallel execution/validation of TX6-TX8; 6,7 succeed, 8 fails, `nextValidation` set to 9      
-> parallel execution/validation of TX8-TX10; 8,10 succeed, 9 fails, `nextValidation` set to 10      
-> parallel execution/validation of TX9-TX10; 9,10 succeed      
+1. parallel execution/validation of TX2-TX4; 2,3 succeed, 4 fails, `nextValidation` set to 5      
+2. parallel execution/validation of TX4-TX6; 4,5 succeed, 6 fails, `nextValidation` set to 7      
+3. parallel execution/validation of TX6-TX8; 6,7 succeed, 8 fails, `nextValidation` set to 9      
+4. parallel execution/validation of TX8-TX10; 8,10 succeed, 9 fails, `nextValidation` set to 10      
+5. parallel execution/validation of TX9-TX10; 9,10 succeed      
 
 Note that, despite the high-contention B scenario, this execution achieves almost optimal latency and incurs re-executions only once.
 
