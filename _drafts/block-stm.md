@@ -107,16 +107,16 @@ Recall our example block B, with dependencies TX1 &rarr; TX4 &rarr; TX6 &rarr; T
 * Phase 1:       
     parallel execution of all transactions       
 * Phase 2:       
-  1. parallel validation of all transactions; 4-10 fail and re-execute        
-  2. parallel validation of all transactions; 6-10 fail and re-execute        
-  3. parallel validation of all transactions; 8-9 fail and re-execute        
-  4. parallel validation of all transactions; 9 fail and re-execute        
-  5. parallel validation of all transactions; all succeed 
+1. parallel validation of all transactions; 4-10 fail and re-execute        
+2. parallel validation of all transactions; 6-10 fail and re-execute        
+3. parallel validation of all transactions; 8-9 fail and re-execute        
+4. parallel validation of all transactions; 9 fail and re-execute        
+5. parallel validation of all transactions; all succeed 
 
 It is quite easy to see that the S-1 validation loop satisfies VALIDAFTER(j,k) because every transaction is validated after previous executions complete.  However, it is quite wasteful in resources, each loop fully executing/validating all transactions.
 
-The first improvement is to replace both phases with parallel task-*stealing* by threads. Using the insight from S-1, we distinguish between a preliminary execution (correponding to phase 1) and re-execution (following a validation abort).  Stealing is coordinated
-via two synchronization counters, one per task type, `nextPrelimExecution` (initially 1) and `nextValidation` (initially 2). Synchronizers support atomic procedures `x.increment() { oldVal := x; increment x; return oldVal } `and `x.setMin(val) { x := min(val, x) }. `
+The first improvement is to replace both phases with parallel task-*stealing* by threads. Using insight from S-1, we distinguish between a preliminary execution (correponding to phase 1) and re-execution (following a validation abort).  Stealing is coordinated
+via two synchronization counters, one per task type, `nextPrelimExecution` (initially 1) and `nextValidation` (initially 2). Each synchronizer `x` supports atomic procedures `x.increment() { oldVal := x; increment x; return oldVal } `and `x.setMin(val) { x := min(val, x) }. `
 
 The following strawman scheduler, S-2, utilizes a task stealing regime:
 
