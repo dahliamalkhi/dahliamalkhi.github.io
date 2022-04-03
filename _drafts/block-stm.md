@@ -138,7 +138,7 @@ execution of TXj {
 
 Interleaving preliminary executions with validations avoids unnecessary work executing transactions that might follow aborted transactions. For example, in the running scenario using block B, validating TX4 immediately causes re-execution, hence higher transactions may not need to abort/re-execute. 
 
-With task stealing, it is hard to lay out an exact execution script in advance because it depends on real-time latency and interleaving of validation and execution tasks. A possible execution with 3 threads may result in the following transcript:
+With task stealing, it is hard to lay out an exact timing of tasks during execution in advance, because it depends on real-time latency and interleaving of validation and execution tasks. A possible execution with 3 threads may result in the following time steps:
 
 > parallel execution/validation of TX2-TX4; 2,3 succeed, 4 fails, `nextValidation` set to 5      
 > parallel execution/validation of TX4-TX6; 4,5 succeed, 6 fails, `nextValidation` set to 7      
@@ -186,12 +186,12 @@ execution of TXj:
 ```
 
 S-3 enhances efficiency through simple, on-the-fly dependency management using the `ABORTED` tag. For our running example of block B, 
-An execution driven by S-3 with three threads may avoid re-executions incurred in S-2 by waiting on an ABORTED mark. 
-In this potential scenario, S-3 achieves very close to optimal scheduling with only a single abort:
+An execution driven by S-3 with three threads may be able to avoid re-executions incurred in S-2 by waiting on an ABORTED mark. 
+A possible execution of S-3 may achieve very close to optimal scheduling with only a single abort, going throung the following time steps:
 
-> parallel execution/validation of TX2-TX4; 2,3 succeed, 4 fails, `nextValidation` set to 5
-> parallel execution/validation of TX4-TX6; 4,5 execute, 6 suspends for 4 and resumes, all validations succeed
-> parallel execution/validation of TX7-TX9; 7,8 succeed, 9 fails, `nextValidation` set to 10
+> parallel execution/validation of TX2-TX4; 2,3 succeed, 4 fails, `nextValidation` set to 5     
+> parallel execution/validation of TX4-TX6; 4,5 execute, 6 suspends for 4 and resumes, all validations succeed     
+> parallel execution/validation of TX7-TX9; 7,8 succeed, 9 fails, `nextValidation` set to 10     
 > parallel execution/validation of TX9-TX10; 9,10 succeed 
 
 
