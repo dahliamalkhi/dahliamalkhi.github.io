@@ -216,8 +216,8 @@ Recall, when TXj fails, S-3 lets (re-)validations of TXk, k > j, proceed before 
 
 ## Conclusion
 
-Through a careful combination of simple, known techniques and applying them to a pre-ordered block of transactions that commit at a bulk, 
-Block-STM enables effective speedup of smart contract processing through parallelism. Simplicity is a virtue of Block-STM, not a failing, enabling a robust and stable implementation. 
+Through a careful combination of simple, known techniques and applying them to a pre-ordered block of transactions that commit at bulk, 
+Block-STM enables effective speedup of smart contract parallel processing. Simplicity is a virtue of Block-STM, not a failing, enabling a robust and stable implementation. 
 Block-STM has been integrated within the Diem blockchain core ([https://github.com/diem/](https://github.com/diem/)) and evaluated on synthetic transaction workloads, yielding over 17x speedup on 32 cores under low/modest contention. 
 
 >> *Disclaimer: The description above reflects more-or-less faithfully the [Block-STM](https://arxiv.org/pdf/2203.06871.pdf) approach; for details, see the paper (note, the description above uses different names from the paper, e.g., `ABORTED` replaces “ESTIMATE”, `nextPrelimExecution` replaces “execution_idx”, `nextValidation` replaces “validation_idx”).*
