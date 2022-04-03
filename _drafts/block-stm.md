@@ -107,7 +107,6 @@ Recall our example block B, with dependencies TX1 &rarr; TX4 &rarr; TX6 &rarr; T
 * Phase 1:       
     parallel execution of all transactions       
 * Phase 2:       
-
   1. parallel validation of all transactions; 4-10 fail and re-execute        
   2. parallel validation of all transactions; 6-10 fail and re-execute        
   3. parallel validation of all transactions; 8-9 fail and re-execute        
@@ -153,8 +152,9 @@ execution of TXj {
 
 Interleaving preliminary executions with validations avoids unnecessary work executing transactions that might follow aborted transactions. For example, in the running scenario using block B, validating TX4 immediately causes re-execution, hence higher transactions may not need to abort/re-execute. 
 
-With task stealing, it is hard to lay out an exact timing of tasks during execution in advance, because it depends on real-time latency and interleaving of validation and execution tasks. A possible execution with 3 threads may result in the following time steps:
+With task stealing, it is hard to lay out an exact timing of tasks during execution in advance, because it depends on real-time latency and interleaving of validation and execution tasks. Below is a possible execution of S-2 over B with 3 threads.
 
+* Possible time steps with three threads:
   1. parallel execution/validation of TX2-TX4; 2,3 succeed, 4 fails, `nextValidation` set to 5      
   2. parallel execution/validation of TX4-TX6; 4,5 succeed, 6 fails, `nextValidation` set to 7      
   3. parallel execution/validation of TX6-TX8; 6,7 succeed, 8 fails, `nextValidation` set to 9      
@@ -202,8 +202,9 @@ execution of TXj:
 
 S-3 enhances efficiency through simple, on-the-fly dependency management using the `ABORTED` tag. For our running example of block B, 
 An execution driven by S-3 with three threads may be able to avoid re-executions incurred in S-2 by waiting on an ABORTED mark. 
-A possible execution of S-3 may achieve very close to optimal scheduling with only a single abort, going throung the following time steps:
+A possible execution of S-3 may achieve very close to optimal scheduling with only a single abort, shown below.
 
+* possible time steps with 3 threads:
   1. parallel execution/validation of TX2-TX4; 2,3 succeed, 4 fails, `nextValidation` set to 5     
   2. parallel execution/validation of TX4-TX6; 4,5 execute, 6 suspends for 4 and resumes, all validations succeed     
   3. parallel execution/validation of TX7-TX9; 7,8 succeed, 9 fails, `nextValidation` set to 10     
