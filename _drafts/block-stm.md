@@ -44,7 +44,7 @@ or the initial value at that memory location when the block execution started, i
 **A running example:**
 A scenario serving as a running example throughout this post is a block B consisting of ten transactions TX1-TX10. 
 Each TXj performs the code `{ M[j mod 5] := M[j mod 4] + 1 }`, thus
-[//]: # TX1 writes 0 reads 0
+<!--- TX1 writes 0 reads 0 -->
 B has the following read/write dependencies:
 
 > TX1 &rarr; TX4 &rarr; TX6 &rarr; TX8 &rarr; TX9   
