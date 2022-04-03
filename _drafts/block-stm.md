@@ -91,14 +91,14 @@ S-1 operates in two master-coordinated phases. Phase 1 executes all transactions
 
 Recall our example block B, with dependencies TX1 &rarr; TX4 &rarr; TX6 &rarr; TX8 &rarr; TX9, TX2 &rarr; TX5 &rarr; { TX7 , TX10 }. S-1 will perform the following steps:
 
-> Phase 1:
-> parallel execution of all transactions
-> Phase 2:
-> parallel validation of all transactions; 4-10 fail and re-execute 
-> parallel validation of all transactions; 6-10 fail and re-execute 
-> parallel validation of all transactions; 8-9 fail and re-execute 
-> parallel validation of all transactions; 9 fail and re-execute 
-> parallel validation of all transactions; all succeed
+> Phase 1: 
+> parallel execution of all transactions 
+> Phase 2: 
+> parallel validation of all transactions; 4-10 fail and re-execute  
+> parallel validation of all transactions; 6-10 fail and re-execute  
+> parallel validation of all transactions; 8-9 fail and re-execute  
+> parallel validation of all transactions; 9 fail and re-execute  
+> parallel validation of all transactions; all succeed 
 
 It is quite easy to see that the S-1 validation loop satisfies VALIDAFTER(j,k) because every transaction is validated after previous executions complete.  However, it is quite wasteful in resources, each loop fully executing/validating all transactions.
 
