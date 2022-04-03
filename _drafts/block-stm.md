@@ -1,8 +1,7 @@
 # Block-STM: Accelerating Smart-Contract Processing 
 
-[Block-STM](https://arxiv.org/pdf/2203.06871.pdf) is an exciting technology that accelerates smart-contract execution, emanating from the Diem project
-and recently enhanced by Aptos Labs and integrated into [aptos-core](https://github.com/aptos-labs/aptos-core). 
-The technique can interoperate with existing blockchains, benefitting nodes that operate Block-STM independently by accelerating their own block processing.
+[Block-STM](https://arxiv.org/pdf/2203.06871.pdf) is a recently announced technology for accelerating smart-contract execution, emanating from the Diem project and enhanced by Aptos Labs.
+Acceleration interoperates with existing blockchains and can benefit any node that operate Block-STM independently, accelerating their own block processing.
 
 ## Background
 
