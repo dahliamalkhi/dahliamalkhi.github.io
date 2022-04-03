@@ -43,7 +43,8 @@ or the initial value at that memory location when the block execution started, i
 
 **A running example:**
 A scenario serving as a running example throughout this post is a block B consisting of ten transactions TX1-TX10. 
-Each TXj performs the code `{ M[j mod 4] := M[j mod 4] + 1 }`, thus
+Each TXj performs the code `{ M[j mod 5] := M[j mod 4] + 1 }`, thus
+[//] TX1 writes 0 reads 0
 B has the following read/write dependencies:
 
 > TX1 &rarr; TX4 &rarr; TX6 &rarr; TX8 &rarr; TX9   
@@ -205,10 +206,10 @@ An execution driven by S-3 with three threads may be able to avoid several of th
 A possible execution of S-3 may achieve very close to optimal scheduling with only a single abort, shown below.
 
 * possible time steps with 3 threads:
-  1. parallel execution/validation of TX2-TX4; 2,3 succeed, 4 fails, `nextValidation` set to 5     
-  2. parallel execution/validation of TX4-TX6; 4,5 execute, 6 suspends for 4 and resumes, all validations succeed     
-  3. parallel execution/validation of TX7-TX9; 7,8 succeed, 9 fails, `nextValidation` set to 10     
-  4. parallel execution/validation of TX9-TX10; 9,10 succeed 
+  1. parallel execution/validation of TX2-TX4; 2,3 execute/validate, 4 fails validation, `nextValidation` set to 5     
+  2. parallel execution/validation of TX4-TX6; 4,5 execute/validate, 6 suspends on `ABORTED` by 4
+  3. parallel execution/validation of TX6-TX8; 6,7 execute/validate, 8 suspends on `ABORTED` by 6
+  4. parallel execution/validation of TX8-TX10; 9,10 succeed 
 
 
 The reason S-3 preserves **VALIDAFTER(j, k)** is slightly subtle. Suppose that TXj &rarr; TXk.
