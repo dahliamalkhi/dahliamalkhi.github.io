@@ -33,7 +33,10 @@ A parallel execution of the block must yield the same deterministic outcome
 that preserves a block pre-order, namely, it results in exactly the same read/write sets as a sequential execution. 
 If, in a sequential execution, TXk reads a value that TXj wrote, 
 i.e., TXj is the highest transaction preceding TXk that writes to this particular memory location, 
-we denote this by TXj &rarr; TXk. 
+we denote this by:
+
+> TXj &rarr; TXk 
+
 A parallel execution must guarantee that all transactions indeed read values adhering to these dependencies. 
 That is, when TXk reads from memory, it must obtain the value(s) written by TXj, TXj &rarr; TXk, if a dependency exists;
 or the initial value at that memory location when the block execution started, if none. 
