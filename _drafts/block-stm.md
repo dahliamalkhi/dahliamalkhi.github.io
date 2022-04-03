@@ -2,8 +2,9 @@
 
 [Block-STM](https://arxiv.org/pdf/2203.06871.pdf) is an exciting technology that accelerates smart-contract execution, emanating from the Diem project
 and recently enhanced by Aptos Labs and integrated into [aptos-core](https://github.com/aptos-labs/aptos-core). 
+The technique can interoperate with existing blockchains, benefitting nodes that operate Block-STM independently by accelerating their own block processing.
 
-## How it all started
+## Background
 
 An approach pioneered in the [Calvin 2012](http://cs.yale.edu/homes/thomson/publications/calvin-sigmod12.pdf) and [Bohm 2014](https://arxiv.org/pdf/1412.2324.pdf) projects in the context of distributed databases is the foundation of much of what follows. The insightful idea in those projects is to simplify concurrency management by disseminating pre-ordered batches (akin to blocks) of transactions along with pre-estimates of their read- and write- sets. 
 Every database partition can then autonomously execute transactions according to the block pre-order, each transaction
@@ -17,9 +18,8 @@ A later work [OptSmart 2021](https://arxiv.org/abs/2102.04875) adds read/write-s
 Those approaches remove the reliance on static transaction analysis but require a leader to pre-execute blocks.
 
 The Block-STM parallel executor combines the pre-ordered block idea with optimistic STM to enforce the block pre-order of transactions on-the-fly, completely removing the need to pre-disseminate an execution schedule or pre-compute transaction dependencies, while guaranteeing repeatability.
-It can therefore inderoperate with existing blockchains, benefitting nodes that operate Block-STM independently by accelerating their own block processing.
 
-## Block-STM Overview
+## Technical Overview
 
 Block-STM is a parallel execution engine for smart contracts, built around the principles of Software Transactional Memory. 
 Transactions are grouped in blocks, each block containing a pre-ordered sequence of transactions
@@ -140,11 +140,11 @@ Interleaving preliminary executions with validations avoids unnecessary work exe
 
 With task stealing, it is hard to lay out an exact timing of tasks during execution in advance, because it depends on real-time latency and interleaving of validation and execution tasks. A possible execution with 3 threads may result in the following time steps:
 
-    1. parallel execution/validation of TX2-TX4; 2,3 succeed, 4 fails, `nextValidation` set to 5      
-    2. parallel execution/validation of TX4-TX6; 4,5 succeed, 6 fails, `nextValidation` set to 7      
-    3. parallel execution/validation of TX6-TX8; 6,7 succeed, 8 fails, `nextValidation` set to 9      
-    4. parallel execution/validation of TX8-TX10; 8,10 succeed, 9 fails, `nextValidation` set to 10      
-    5. parallel execution/validation of TX9-TX10; 9,10 succeed      
+  1. parallel execution/validation of TX2-TX4; 2,3 succeed, 4 fails, `nextValidation` set to 5      
+  2. parallel execution/validation of TX4-TX6; 4,5 succeed, 6 fails, `nextValidation` set to 7      
+  3. parallel execution/validation of TX6-TX8; 6,7 succeed, 8 fails, `nextValidation` set to 9      
+  4. parallel execution/validation of TX8-TX10; 8,10 succeed, 9 fails, `nextValidation` set to 10      
+  5. parallel execution/validation of TX9-TX10; 9,10 succeed      
 
 Note that, despite the high-contention B scenario, this execution achieves almost optimal latency and incurs re-executions only once.
 
@@ -189,10 +189,10 @@ S-3 enhances efficiency through simple, on-the-fly dependency management using t
 An execution driven by S-3 with three threads may be able to avoid re-executions incurred in S-2 by waiting on an ABORTED mark. 
 A possible execution of S-3 may achieve very close to optimal scheduling with only a single abort, going throung the following time steps:
 
-    1. parallel execution/validation of TX2-TX4; 2,3 succeed, 4 fails, `nextValidation` set to 5     
-    2. parallel execution/validation of TX4-TX6; 4,5 execute, 6 suspends for 4 and resumes, all validations succeed     
-    3. parallel execution/validation of TX7-TX9; 7,8 succeed, 9 fails, `nextValidation` set to 10     
-    4. parallel execution/validation of TX9-TX10; 9,10 succeed 
+  1. parallel execution/validation of TX2-TX4; 2,3 succeed, 4 fails, `nextValidation` set to 5     
+  2. parallel execution/validation of TX4-TX6; 4,5 execute, 6 suspends for 4 and resumes, all validations succeed     
+  3. parallel execution/validation of TX7-TX9; 7,8 succeed, 9 fails, `nextValidation` set to 10     
+  4. parallel execution/validation of TX9-TX10; 9,10 succeed 
 
 
 The reason S-3 preserves **VALIDAFTER(j, k)** is subtle. Suppose that TXj &rarr; TXk.
