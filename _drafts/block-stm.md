@@ -214,10 +214,11 @@ A possible execution of S-3 may achieve very close to optimal scheduling with on
 The reason S-3 preserves **VALIDAFTER(j, k)** is slightly subtle. Suppose that TXj &rarr; TXk.
 Recall, when TXj fails, S-3 lets (re-)validations of TXk, k > j, proceed before TXj completes re-execution. There are two possible cases. If a TXk-validation reads an `ABORTED` value of TXj, it will wait for TXj to complete; and if it reads a value which is not marked `ABORTED` and the TXj re-execution overwrites it, then TXk will be forced to revalidate again.
 
+>> *Disclaimer: The description above reflects more-or-less faithfully the [Block-STM](https://arxiv.org/pdf/2203.06871.pdf) approach; for details, see the paper (note, the description above uses different names from the paper, e.g., `ABORTED` replaces “ESTIMATE”, `nextPrelimExecution` replaces “execution_idx”, `nextValidation` replaces “validation_idx”).*
+
 ## Conclusion
 
 Through a careful combination of simple, known techniques and applying them to a pre-ordered block of transactions that commit at bulk, 
 Block-STM enables effective speedup of smart contract parallel processing. Simplicity is a virtue of Block-STM, not a failing, enabling a robust and stable implementation. 
 Block-STM has been integrated within the Diem blockchain core ([https://github.com/diem/](https://github.com/diem/)) and evaluated on synthetic transaction workloads, yielding over 17x speedup on 32 cores under low/modest contention. 
 
->> *Disclaimer: The description above reflects more-or-less faithfully the [Block-STM](https://arxiv.org/pdf/2203.06871.pdf) approach; for details, see the paper (note, the description above uses different names from the paper, e.g., `ABORTED` replaces “ESTIMATE”, `nextPrelimExecution` replaces “execution_idx”, `nextValidation` replaces “validation_idx”).*
