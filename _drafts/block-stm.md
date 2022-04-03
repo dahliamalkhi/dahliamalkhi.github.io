@@ -42,8 +42,8 @@ That is, when TXk reads from memory, it must obtain the value(s) written by TXj,
 or the initial value at that memory location when the block execution started, if none. 
 
 **A running example:**
-A scenario serving as a running example throughout this post is a block B consisting of ten transactions TX1-TX10. If
-each TXj performs the code `{ M[j mod 4] := M[j mod 4] + 1 }` then 
+A scenario serving as a running example throughout this post is a block B consisting of ten transactions TX1-TX10. 
+Each TXj performs the code `{ M[j mod 4] := M[j mod 4] + 1 }`, thus
 B has the following read/write dependencies:
 
 > TX1 &rarr; TX4 &rarr; TX6 &rarr; TX8 &rarr; TX9   
@@ -60,7 +60,7 @@ Correct optimism revolves around maintaining two principles:
 Jointly, these two principles 
 suffice to guarantee both safety and liveness no matter what scheduling policy is used, so long as pending execution and validation tasks are eventually dispatched. Safety follows because a TXk gets validated after all TXj, j &lt; k, are finalized. Liveness follows by induction. Initially transaction 1 is guaranteed to pass validation successfully and not require re-execution. After transactions TX1-TXj have successfully validated, a (re-)execution of transaction j+1 will pass validation successfully and not require re-execution.
 
-**READLAST(k)** is achieved via a simple multi-version in-memory data structure that keeps versioned write-sets, TXj recording values whose version is j. 
+**READLAST(k)** is achieved via a simple multi-version in-memory data structure that keeps versioned write-sets. A write by TXj is recorded with version j. 
 A read by TXk obtains the value recorded by the latest invocation of TXj with the highest j &lt; k.
 
 A special value `ABORTED` may be stored at version j when the latest invocation of TXj aborts. 
