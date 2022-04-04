@@ -117,14 +117,14 @@ Recall our example block B, with dependencies
 TX1 &rarr; TX2 &rarr; TX3, TX4 &rarr; TX5 &rarr; TX6, TX7 &rarr; TX8 &rarr; TX9.
 With four threads, S-1 will possibly proceed though the following time steps:
 
-* Possible time steps S-1 fgoes through with four threads:
+* Possible time steps S-1 goes through with four threads:
 * Phase 1:       
   1. parallel execution of transactions 1,2,3,4
   2. parallel execution of transactions 5,6,7,8
   3. parallel execution of transactions 9,10
 * Phase 2:       
-  4. parallel validation of transactions 1,2,3,4; 2,3 fail and re-execute        
-  5. parallel validation of transactions 5,6,7,8; 6,8 fail and re-execute        
+  4. parallel validation of transactions 1,2,3,4; 2,3 fail and re-execute
+  5. parallel validation of transactions 5,6,7,8; 6,8 fail and re-execute
   6. parallel validation of transactions 9,10; all succeed
   7. parallel validation of transactions 1,2,3,4; 3 fails and re-executes
   8. parallel validation of transactions 5,6,7,8; all succeed
