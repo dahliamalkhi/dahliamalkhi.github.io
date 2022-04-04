@@ -217,11 +217,13 @@ S-3 enhances efficiency through simple, on-the-fly dependency management using t
 An execution driven by S-3 with four threads may be able to avoid several of the re-executions incurred in S-2 by waiting on an ABORTED mark. 
 Despite the high-contention B scenario, a possible execution of S-3 may achieve very close to optimal scheduling as shown below.
 
+```
 * possible time steps S-3 goes through with four threads:
   1. parallel execution of TX1, TX2, TX3, TX4; validation of TX2, TX3 fail; `nextValidation` set to 3      
   2. parallel execution of TX2, TX5, TX6, TX7; execution of TX3 suspends on `ABORTED` by TX2; validation of TX6 fails; `nextValidation` set to 7
   3. parallel execution of TX3, TX6, TX8, TX9; validation of TX9 fails;`nextValidation` set to 10
   4. parallel execution of TX9, TX10; all validations succeed
+```
 
 The reason S-3 preserves **VALIDAFTER(j, k)** is slightly subtle. Suppose that TXj &rarr; TXk.
 Recall, when TXj fails, S-3 lets (re-)validations of TXk, k > j, proceed before TXj completes re-execution. There are two possible cases. If a TXk-validation reads an `ABORTED` value of TXj, it will wait for TXj to complete; and if it reads a value which is not marked `ABORTED` and the TXj re-execution overwrites it, then TXk will be forced to revalidate again.
