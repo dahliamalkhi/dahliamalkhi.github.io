@@ -165,9 +165,10 @@ execution of TXj {
 ```
 
 
-Interleaving preliminary executions with validations avoids unnecessary work executing transactions that might follow aborted transactions. For example, in the running scenario above, block B, validating TX4 immediately causes re-execution, hence higher transactions may not need to abort/re-execute. 
-
-With task stealing, it is hard to lay out an exact timing of tasks during execution in advance, because it depends on real-time latency and interleaving of validation and execution tasks. Below is a possible execution of S-2 over B with four threads.
+Interleaving preliminary executions with validations avoids unnecessary work executing transactions that might follow aborted transactions. 
+Recall the running scenario above with block B that has dependencies 
+TX1 &rarr; TX2 &rarr; TX3, TX4 &rarr; TX5 &rarr; TX6, TX7 &rarr; TX8 &rarr; TX9.
+It is hard to lay out an exact timing of task teak stealing, because it depends on real-time latency and interleaving of validation and execution tasks. Notwithstanding, below is a possible execution of S-2 over B with four threads.
 
 ```
 Possible time steps S-2 goes through with four threads:
