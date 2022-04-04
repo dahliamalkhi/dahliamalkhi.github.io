@@ -78,7 +78,7 @@ dispatch all TX’s for execution in parallel ; wait for completion
 
 # Phase 2: 
 repeat {
-    dispatch all all TX's for validation in parallel ; wait for completion
+    dispatch all TX's for validation in parallel ; wait for completion
 } until all validations pass
 
 validation of TXj {
