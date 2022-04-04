@@ -168,7 +168,8 @@ execution of TXj {
 Interleaving preliminary executions with validations avoids unnecessary work executing transactions that might follow aborted transactions. 
 Recall the running scenario above with block B that has dependencies 
 TX1 &rarr; TX2 &rarr; TX3, TX4 &rarr; TX5 &rarr; TX6, TX7 &rarr; TX8 &rarr; TX9.
-It is hard to lay out an exact timing of task teak stealing, because it depends on real-time latency and interleaving of validation and execution tasks. Notwithstanding, below is a possible execution of S-2 over B with four threads.
+It is hard to lay out an exact timing of task teak stealing, because it depends on real-time latency and interleaving of validation and execution tasks. Notwithstanding, below is a possible execution of S-2 over B with four threads that exhibits
+fewer (re-)executions and lower overall latency than S-1.
 
 ```
 Possible time steps S-2 goes through with four threads:
@@ -179,7 +180,6 @@ Possible time steps S-2 goes through with four threads:
   5. parallel execution of TX9; all validations succeed
 ```
 
-This (possible) processing of B is better than S-1 because only TX3, TX9 fail validation and re-execute twice, the rest of the transactions re-execute at most once. 
 
 Importantly, **VALIDAFTER(j, k)** is preserved because upon (re-)execution of a TXj, it decreases `nextValidation` to j+1. This guarantees that every k > j will be validated after the j execution. 
 
