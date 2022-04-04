@@ -4,7 +4,7 @@
 [Diem project](https://github.com/diem)
 and enhanced by 
 [Aptos Labs](https://github.com/aptos-labs).
-The acceleration approach interoperates with existing blockchains without requiring modification or adoption by miner/validator nodes, and can benefit a node independently through its own block processing.
+The acceleration approach interoperates with existing blockchains without requiring modification or adoption by miner/validator nodes, and can benefit any node independently when it validates transactions.
 
 ## Background
 
