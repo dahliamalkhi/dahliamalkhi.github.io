@@ -123,9 +123,9 @@ With four threads, S-1 will possibly proceed though the following time steps:
   2. parallel execution of transactions 5,6,7,8
   3. parallel execution of transactions 9,10
 * Phase 2:       
-  4. parallel validation of transactions 1,2,3,4; 2,3 fail and re-execute
-  5. parallel validation of transactions 5,6,7,8; 6,8 fail and re-execute
-  6. parallel validation of transactions 9,10; all succeed
+  1. parallel validation of transactions 1,2,3,4; 2,3 fail and re-execute
+  2. parallel validation of transactions 5,6,7,8; 6,8 fail and re-execute
+  3. parallel validation of transactions 9,10; all succeed
   7. parallel validation of transactions 1,2,3,4; 3 fails and re-executes
   8. parallel validation of transactions 5,6,7,8; all succeed
   9. parallel validation of transactions 9,10; 9 fails and re-executes
