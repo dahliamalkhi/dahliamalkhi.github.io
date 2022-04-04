@@ -56,8 +56,8 @@ B has the following read/write dependencies:
 <!--- TX9 writes M[2] reads M[1] -->
 <!--- TX10 writes M[0] reads M[3] -->
 
-> TX1 &rarr; TX2 &rarr; TX3 
-> TX4 &rarr; TX5 &rarr; TX6 
+> TX1 &rarr; TX2 &rarr; TX3        
+> TX4 &rarr; TX5 &rarr; TX6        
 > TX7 &rarr; TX8 &rarr; TX9 
 
 **Correctness:**
