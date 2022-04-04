@@ -115,16 +115,18 @@ B has the following read/write dependencies:
 
 With four threads, S-1 will possibly proceed though the following time steps:
 
-* Possible time steps S-1 goes through with four threads:
-* Phase 1:       
+```
+Possible time steps S-1 goes through with four threads:
+Phase 1:       
   1. parallel execution of TX1, TX2, TX3, TX4
   2. parallel execution of TX5, TX6, TX7, TX8
   3. parallel execution of TX9, TX10
-* Phase 2:       
+Phase 2:       
   1. parallel validation of all transactions in which TX2, TX3, TX5, TX6 fail and re-execute
   2. continued parallel validation of all transactions in which TX8, TX9 fail and re-execute
   3. parallel validation of all transactions in which TX3, TX6, TX9 fail and re-execute
   4. parallel validation of all transactions in which all succeed
+```
 
 It is quite easy to see that the S-1 validation loop satisfies VALIDAFTER(j,k) because every transaction is validated after previous executions complete.  However, it is quite wasteful in resources, each loop fully executing/validating all transactions.
 
@@ -167,12 +169,14 @@ Interleaving preliminary executions with validations avoids unnecessary work exe
 
 With task stealing, it is hard to lay out an exact timing of tasks during execution in advance, because it depends on real-time latency and interleaving of validation and execution tasks. Below is a possible execution of S-2 over B with four threads.
 
-* Possible time steps S-2 goes through with four threads:
+```
+Possible time steps S-2 goes through with four threads:
   1. parallel execution of TX1, TX2, TX3, TX4; validation of TX2, TX3 fail; `nextValidation` set to 3      
   2. parallel execution of TX2, TX3, TX5, TX6; validation of TX3, TX6 fail; `nextValidation` set to 4      
   3. parallel execution of TX3, TX6, TX7, TX8; validation of TX8 fails; `nextValidation` set to 9      
   4. parallel execution of TX8, TX9, TX10; validation of TX9 fails; `nextValidation` set to 10      
   5. parallel execution of TX9; all validations succeed
+```
 
 This (possible) processing of B is better than S-1 because only TX3, TX9 fail validation and re-execute twice, the rest of the transactions re-execute at most once. 
 
@@ -218,7 +222,7 @@ An execution driven by S-3 with four threads may be able to avoid several of the
 Despite the high-contention B scenario, a possible execution of S-3 may achieve very close to optimal scheduling as shown below.
 
 ```
-* possible time steps S-3 goes through with four threads:
+possible time steps S-3 goes through with four threads:
   1. parallel execution of TX1, TX2, TX3, TX4; validation of TX2, TX3 fail; `nextValidation` set to 3      
   2. parallel execution of TX2, TX5, TX6, TX7; execution of TX3 suspends on `ABORTED` by TX2; validation of TX6 fails; `nextValidation` set to 7
   3. parallel execution of TX3, TX6, TX8, TX9; validation of TX9 fails;`nextValidation` set to 10
