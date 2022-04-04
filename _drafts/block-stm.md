@@ -115,14 +115,21 @@ S-1 operates in two master-coordinated phases. Phase 1 executes all transactions
 
 Recall our example block B, with dependencies 
 TX1 &rarr; TX2 &rarr; TX3, TX4 &rarr; TX5 &rarr; TX6, TX7 &rarr; TX8 &rarr; TX9.
-S-1 will perform the following steps:
+With four threads, S-1 will possibly proceed though the following time steps:
 
+* Possible time steps S-1 fgoes through with four threads:
 * Phase 1:       
-    parallel execution of all transactions       
+  1. parallel execution of transactions 1,2,3,4
+  2. parallel execution of transactions 5,6,7,8
+  3. parallel execution of transactions 9,10
 * Phase 2:       
-  1. parallel validation of all transactions; 2,3,5,6,8,9 fail and re-execute        
-  2. parallel validation of all transactions; 3,6,9 fail and re-execute        
-  3. parallel validation of all transactions; all succeed
+  4. parallel validation of transactions 1,2,3,4; 2,3 fail and re-execute        
+  5. parallel validation of transactions 5,6,7,8; 6,8 fail and re-execute        
+  6. parallel validation of transactions 9,10; all succeed
+  7. parallel validation of transactions 1,2,3,4; 3 fails and re-executes
+  8. parallel validation of transactions 5,6,7,8; all succeed
+  9. parallel validation of transactions 9,10; 9 fails and re-executes
+  10. parallel validation of all transactions; all succeed
 
 It is quite easy to see that the S-1 validation loop satisfies VALIDAFTER(j,k) because every transaction is validated after previous executions complete.  However, it is quite wasteful in resources, each loop fully executing/validating all transactions.
 
@@ -165,7 +172,7 @@ Interleaving preliminary executions with validations avoids unnecessary work exe
 
 With task stealing, it is hard to lay out an exact timing of tasks during execution in advance, because it depends on real-time latency and interleaving of validation and execution tasks. Below is a possible execution of S-2 over B with four threads.
 
-* Possible time steps with four threads:
+* Possible time steps S-2 goes through with four threads:
   1. parallel execution of 1,2,3,4; validation of 2,3,4 fail; `nextValidation` set to 3      
   2. parallel execution of 2,3,4,5; validation of 2,4 succeed, 3,5 fail; `nextValidation` set to 4      
   3. parallel execution of 3,5,6,7; validation of 5 succeeds 6,7 fail; `nextValidation` set to 7      
@@ -213,10 +220,10 @@ execution of TXj:
 ```
 
 S-3 enhances efficiency through simple, on-the-fly dependency management using the `ABORTED` tag. For our running example of block B, 
-An execution driven by S-3 with three threads may be able to avoid several of the re-executions incurred in S-2 by waiting on an ABORTED mark. 
+An execution driven by S-3 with four threads may be able to avoid several of the re-executions incurred in S-2 by waiting on an ABORTED mark. 
 A possible execution of S-3 may achieve very close to optimal scheduling with only a single abort, shown below.
 
-* possible time steps with 3 threads:
+* possible time steps S-3 goes through with four threads:
   1. parallel execution of 1,2,3,4; validation of 2,3 fail; `nextValidation` set to 3      
   2. parallel execution of 2,5,6,7; 3 suspends on `ABORTED` by 2; validation of 6 fails; `nextValidation` set to 7
   3. parallel execution of 3,6,8,9; validation of 9 fails;`nextValidation` set to 10
