@@ -172,7 +172,7 @@ With task stealing, it is hard to lay out an exact timing of tasks during execut
   2. parallel execution of TX2, TX3, TX5, TX6; validation of TX3, TX6 fail; `nextValidation` set to 4      
   3. parallel execution of TX3, TX6, TX7, TX8; validation of TX8 fails; `nextValidation` set to 9      
   4. parallel execution of TX8, TX9, TX10; validation of TX8, TX9 fail; `nextValidation` set to 9      
-  5. parallel execution of TX8, TX9, TX10; validation of TX9 fails; `nextValidation` set to 10      
+  5. parallel execution of TX8, TX9; validation of TX9 fails; `nextValidation` set to 10      
   6. parallel execution of TX9; all validations succeed
 
 Despite the high-contention B scenario, this (possible) processing of B is better than S-1 because only TX3, TX9 fail validation and re-execute twice, the rest of the transactions re-execute at most once. 
@@ -216,7 +216,7 @@ execution of TXj:
 
 S-3 enhances efficiency through simple, on-the-fly dependency management using the `ABORTED` tag. For our running example of block B, 
 An execution driven by S-3 with four threads may be able to avoid several of the re-executions incurred in S-2 by waiting on an ABORTED mark. 
-A possible execution of S-3 may achieve very close to optimal scheduling with only a single abort, shown below.
+A possible execution of S-3 may achieve very close to optimal scheduling as shown below.
 
 * possible time steps S-3 goes through with four threads:
   1. parallel execution of TX1, TX2, TX3, TX4; validation of TX2, TX3 fail; `nextValidation` set to 3      
