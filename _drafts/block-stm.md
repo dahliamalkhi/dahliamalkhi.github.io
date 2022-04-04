@@ -41,25 +41,6 @@ A parallel execution must guarantee that all transactions indeed read values adh
 That is, when TXk reads from memory, it must obtain the value(s) written by TXj, TXj &rarr; TXk, if a dependency exists;
 or the initial value at that memory location when the block execution started, if none. 
 
-**A running example:**
-A scenario serving as a running example throughout this post is a block B consisting of ten transactions TX1-TX10. 
-B has the following read/write dependencies:
-
-<!--- TX1 writes M[0] reads M[3] -->
-<!--- TX2 writes M[1] reads M[0] -->
-<!--- TX3 writes M[2] reads M[1] -->
-<!--- TX4 writes M[0] reads M[3] -->
-<!--- TX5 writes M[1] reads M[0] -->
-<!--- TX6 writes M[2] reads M[1] -->
-<!--- TX7 writes M[0] reads M[3] -->
-<!--- TX8 writes M[1] reads M[0] -->
-<!--- TX9 writes M[2] reads M[1] -->
-<!--- TX10 writes M[0] reads M[3] -->
-
-> TX1 &rarr; TX2 &rarr; TX3        
-> TX4 &rarr; TX5 &rarr; TX6        
-> TX7 &rarr; TX8 &rarr; TX9 
-
 **Correctness:**
 Block-STM uses an optimistic approach, executing tranascations greedily and optimistically in parallel and then validating their read-set, 
 potentially causing abort/re-execute. 
@@ -113,8 +94,25 @@ execution of TXj {
 
 S-1 operates in two master-coordinated phases. Phase 1 executes all transactions optimistically in parallel. Phase 2 repeatedly validates all transactions optimistically in parallel, re-executing those that fail, until there are no more validation failures. 
 
-Recall our example block B, with dependencies 
-TX1 &rarr; TX2 &rarr; TX3, TX4 &rarr; TX5 &rarr; TX6, TX7 &rarr; TX8 &rarr; TX9.
+**A running example:**
+A scenario serving as a running example throughout this post is a block B consisting of ten transactions TX1-TX10. 
+B has the following read/write dependencies:
+
+<!--- TX1 writes M[0] reads M[3] -->
+<!--- TX2 writes M[1] reads M[0] -->
+<!--- TX3 writes M[2] reads M[1] -->
+<!--- TX4 writes M[0] reads M[3] -->
+<!--- TX5 writes M[1] reads M[0] -->
+<!--- TX6 writes M[2] reads M[1] -->
+<!--- TX7 writes M[0] reads M[3] -->
+<!--- TX8 writes M[1] reads M[0] -->
+<!--- TX9 writes M[2] reads M[1] -->
+<!--- TX10 writes M[0] reads M[3] -->
+
+> TX1 &rarr; TX2 &rarr; TX3        
+> TX4 &rarr; TX5 &rarr; TX6        
+> TX7 &rarr; TX8 &rarr; TX9 
+
 With four threads, S-1 will possibly proceed though the following time steps:
 
 * Possible time steps S-1 goes through with four threads:
@@ -165,16 +163,16 @@ execution of TXj {
 ```
 
 
-Interleaving preliminary executions with validations avoids unnecessary work executing transactions that might follow aborted transactions. For example, in the running scenario using block B, validating TX4 immediately causes re-execution, hence higher transactions may not need to abort/re-execute. 
+Interleaving preliminary executions with validations avoids unnecessary work executing transactions that might follow aborted transactions. For example, in the running scenario above, block B, validating TX4 immediately causes re-execution, hence higher transactions may not need to abort/re-execute. 
 
 With task stealing, it is hard to lay out an exact timing of tasks during execution in advance, because it depends on real-time latency and interleaving of validation and execution tasks. Below is a possible execution of S-2 over B with four threads.
 
 * Possible time steps S-2 goes through with four threads:
-  1. parallel execution of TX1, TX2, TX3, TX4; validation of TX2, TX3, TX4 fail; `nextValidation` set to 3      
-  2. parallel execution of TX2, TX3, TX4, TX5; validation of TX3, TX5 fail; `nextValidation` set to 4      
-  3. parallel execution of TX3, TX5, TX6, TX7; validation of TX6, TX7 fail; `nextValidation` set to 7      
-  4. parallel execution of TX6, TX7, TX8, TX9; validation of TX8, TX9 fail; `nextValidation` set to 9      
-  5. parallel execution of TX8, TX9, TX10; validation of TX9 fails; `nextValidation` set to 9      
+  1. parallel execution of TX1, TX2, TX3, TX4; validation of TX2, TX3 fail; `nextValidation` set to 3      
+  2. parallel execution of TX2, TX3, TX5, TX6; validation of TX3, TX6 fail; `nextValidation` set to 4      
+  3. parallel execution of TX3, TX6, TX7, TX8; validation of TX8 fails; `nextValidation` set to 9      
+  4. parallel execution of TX8, TX9, TX10; validation of TX8, TX9 fail; `nextValidation` set to 9      
+  5. parallel execution of TX8, TX9, TX10; validation of TX9 fails; `nextValidation` set to 10      
   6. parallel execution of TX9; all validations succeed
 
 Despite the high-contention B scenario, this (possible) processing of B is better than S-1 because only TX3, TX9 fail validation and re-execute twice, the rest of the transactions re-execute at most once. 
