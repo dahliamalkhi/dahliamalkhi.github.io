@@ -6,6 +6,8 @@ and enhanced by
 [Aptos Labs](https://github.com/aptos-labs).
 The acceleration approach interoperates with existing blockchains without requiring modification or adoption by miner/validator nodes, and can benefit any node independently when it validates transactions.
 
+This post explains Block-STM in simple English accompanied with a running scenario.
+
 ## Background
 
 An approach pioneered in the [Calvin 2012](http://cs.yale.edu/homes/thomson/publications/calvin-sigmod12.pdf) and [Bohm 2014](https://arxiv.org/pdf/1412.2324.pdf) projects in the context of distributed databases is the foundation of much of what follows. The insightful idea in those projects is to simplify concurrency management by disseminating pre-ordered batches (akin to blocks) of transactions along with pre-estimates of their read- and write- sets. 
@@ -84,7 +86,7 @@ repeat {
 validation of TXj {
     re-read TXj read-set 
     if read-set differs from original read-set of the latest TXj execution 
-        re-execute
+        re-execute TXj
 }
 
 execution of TXj {
@@ -111,21 +113,21 @@ B has the following read/write dependencies:
 
 > TX1 &rarr; TX2 &rarr; TX3        
 > TX4 &rarr; TX5 &rarr; TX6        
-> TX7 &rarr; TX8 &rarr; TX9 
+> TX5 &rarr; TX7 &rarr; TX8 &rarr; TX9 
 
 With four threads, S-1 will possibly proceed though the following time steps:
 
 ```
 Possible time steps S-1 goes through with four threads:
 Phase 1:       
-  1. parallel execution of TX1, TX2, TX3, TX4
-  2. parallel execution of TX5, TX6, TX7, TX8
-  3. parallel execution of TX9, TX10
+  1.1. parallel execution of TX1, TX2, TX3, TX4
+  1.2. parallel execution of TX5, TX6, TX7, TX8
+  1.3. parallel execution of TX9, TX10
 Phase 2:       
-  1. parallel validation of all transactions in which TX2, TX3, TX5, TX6 fail and re-execute
-  2. continued parallel validation of all transactions in which TX8, TX9 fail and re-execute
-  3. parallel validation of all transactions in which TX3, TX6, TX9 fail and re-execute
-  4. parallel validation of all transactions in which all succeed
+  2.1. parallel validation of all transactions in which TX2, TX3, TX6, TX7 fail and re-execute
+    2.2. continued parallel validation of all transactions in which TX8 fail and re-execute
+  2.3. parallel validation of all transactions in which TX3, TX8, TX9 fail and re-execute
+  2.4. parallel validation of all transactions in which all succeed
 ```
 
 It is quite easy to see that the S-1 validation loop satisfies VALIDAFTER(j,k) because every transaction is validated after previous executions complete.  However, it is quite wasteful in resources, each loop fully executing/validating all transactions.
