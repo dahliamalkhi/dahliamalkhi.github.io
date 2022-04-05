@@ -221,8 +221,8 @@ Despite the high-contention B scenario, a possible execution of S-3 may achieve 
 ```
 possible time steps S-3 goes through with four threads:
   1. parallel execution of TX1, TX2, TX3, TX4; validation of TX2, TX3, TX4 fail; `nextValidation` set to 3      
-  2. parallel execution of TX2, TX5, TX7, TX8; executions of TX3, TX4, TX6 get suspended on `ABORTED`; `nextValidation` set to 6
-  3. parallel execution of TX3, TX10; executions of TX4, TX6, TX9 are still suspended on `ABORTED`; all validations succeed (for now)
+  2. parallel execution of TX2, TX5, TX7, TX8; executions of TX3, TX4, TX6 are suspended on `ABORTED`; `nextValidation` set to 6
+  3. parallel execution of TX3, TX10; executions of TX4, TX6, TX9 are suspended on `ABORTED`; all validations succeed (for now)
   4. parallel execution of TX4, TX6, TX9; all validations succeed
 ```
 
