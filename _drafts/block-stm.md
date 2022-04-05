@@ -100,20 +100,9 @@ S-1 operates in two master-coordinated phases. Phase 1 executes all transactions
 A scenario serving as a running example throughout this post is a block B consisting of ten transactions TX1-TX10. 
 B has the following read/write dependencies:
 
-<!--- TX1 writes M[0] reads M[3] -->
-<!--- TX2 writes M[1] reads M[0] -->
-<!--- TX3 writes M[2] reads M[1] -->
-<!--- TX4 writes M[0] reads M[3] -->
-<!--- TX5 writes M[1] reads M[0] -->
-<!--- TX6 writes M[2] reads M[1] -->
-<!--- TX7 writes M[0] reads M[3] -->
-<!--- TX8 writes M[1] reads M[0] -->
-<!--- TX9 writes M[2] reads M[1] -->
-<!--- TX10 writes M[0] reads M[3] -->
-
-> TX1 &rarr; TX2 &rarr; TX3        
-> TX4 &rarr; TX5 &rarr; TX6        
-> TX5 &rarr; TX7 &rarr; TX8 &rarr; TX9 
+> TX1 &rarr; TX2 &rarr; TX3 &rarr; TX4                
+> TX3 &rarr; TX6      
+> TX3 &rarr; TX9
 
 With four threads, S-1 will possibly proceed though the following time steps:
 
@@ -124,10 +113,11 @@ Phase 1:
   1.2. parallel execution of TX5, TX6, TX7, TX8
   1.3. parallel execution of TX9, TX10
 Phase 2:       
-  2.1. parallel validation of all transactions in which TX2, TX3, TX6, TX7 fail and re-execute
-    2.2. continued parallel validation of all transactions in which TX8 fail and re-execute
-  2.3. parallel validation of all transactions in which TX3, TX8, TX9 fail and re-execute
-  2.4. parallel validation of all transactions in which all succeed
+  2.1. parallel validation of all transactions in which TX2, TX3, TX4, TX6fail and re-execute
+    2.2. continued parallel validation of all transactions in which TX9 fails and re-executes
+  2.3. parallel validation of all transactions in which TX3, TX4 fail and re-execute
+  2.4. parallel validation of all transactions in which TX4 fails and re-executes
+  2.5. parallel validation of all transactions in which all succeed
 ```
 
 It is quite easy to see that the S-1 validation loop satisfies VALIDAFTER(j,k) because every transaction is validated after previous executions complete.  However, it is quite wasteful in resources, each loop fully executing/validating all transactions.
@@ -157,7 +147,7 @@ repeat {
 validation of TXj {
     re-read TXj read-set 
     if read-set differs from original read-set of the latest TXj execution 
-        re-execute
+        re-execute TXj
 }
 
 execution of TXj {
@@ -169,17 +159,21 @@ execution of TXj {
 
 Interleaving preliminary executions with validations avoids unnecessary work executing transactions that might follow aborted transactions. 
 Recall the running scenario above with block B that has dependencies 
-TX1 &rarr; TX2 &rarr; TX3, TX4 &rarr; TX5 &rarr; TX6, TX7 &rarr; TX8 &rarr; TX9.
-It is hard to lay out an exact timing of task teak stealing, because it depends on real-time latency and interleaving of validation and execution tasks. Notwithstanding, below is a possible execution of S-2 over B with four threads that exhibits
+
+> TX1 &rarr; TX2 &rarr; TX3 &rarr; TX4                
+> TX3 &rarr; TX6      
+> TX3 &rarr; TX9
+
+The timing of task stealing is hard to predict because it depends on real-time latency and interleaving of validation and execution tasks. Notwithstanding, below is a possible execution of S-2 over B with four threads that exhibits
 fewer (re-)executions and lower overall latency than S-1.
 
 ```
 Possible time steps S-2 goes through with four threads:
-  1. parallel execution of TX1, TX2, TX3, TX4; validation of TX2, TX3 fail; `nextValidation` set to 3      
-  2. parallel execution of TX2, TX3, TX5, TX6; validation of TX3, TX6 fail; `nextValidation` set to 4      
-  3. parallel execution of TX3, TX6, TX7, TX8; validation of TX8 fails; `nextValidation` set to 9      
-  4. parallel execution of TX8, TX9, TX10; validation of TX9 fails; `nextValidation` set to 10      
-  5. parallel execution of TX9; all validations succeed
+  1. parallel execution of TX1, TX2, TX3, TX4; validation of TX2, TX3, TX4 fail; `nextValidation` set to 3      
+  2. parallel execution of TX2, TX3, TX4, TX5; validation of TX3, TX4 fail; `nextValidation` set to 4      
+  3. parallel execution of TX3, TX4, TX6, TX7; validation of TX4, TX6 fail; `nextValidation` set to 5      
+  4. parallel execution of TX4, TX6, TX8, TX9; all validations succeed
+  5. parallel execution of TX10; all validations succeed
 ```
 
 
@@ -209,7 +203,7 @@ validation of TXj:
     if read-set differs from original read-set of the latest TXj execution 
         mark the TXj write-set ABORTED
         nextValidation.setMin(j+1) 
-        execute TXj
+        re-execute TXj
 }
 
 execution of TXj:  
@@ -226,10 +220,10 @@ Despite the high-contention B scenario, a possible execution of S-3 may achieve 
 
 ```
 possible time steps S-3 goes through with four threads:
-  1. parallel execution of TX1, TX2, TX3, TX4; validation of TX2, TX3 fail; `nextValidation` set to 3      
-  2. parallel execution of TX2, TX5, TX6, TX7; execution of TX3 suspends on `ABORTED` by TX2; validation of TX6 fails; `nextValidation` set to 7
-  3. parallel execution of TX3, TX6, TX8, TX9; validation of TX9 fails;`nextValidation` set to 10
-  4. parallel execution of TX9, TX10; all validations succeed
+  1. parallel execution of TX1, TX2, TX3, TX4; validation of TX2, TX3, TX4 fail; `nextValidation` set to 3      
+  2. parallel execution of TX2, TX5, TX7, TX8; executions of TX3, TX4, TX6 get suspended on `ABORTED`; `nextValidation` set to 6
+  3. parallel execution of TX3, TX10; executions of TX4, TX6, TX9 are still suspended on `ABORTED`; all validations succeed (for now)
+  4. parallel execution of TX4, TX6, TX9; all validations succeed
 ```
 
 The reason S-3 preserves **VALIDAFTER(j, k)** is slightly subtle. Suppose that TXj &rarr; TXk.
