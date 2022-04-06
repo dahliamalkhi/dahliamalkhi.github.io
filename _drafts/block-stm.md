@@ -12,7 +12,7 @@ This post explains Block-STM in simple English accompanied with a running scenar
 
 An approach pioneered in the [Calvin 2012](http://cs.yale.edu/homes/thomson/publications/calvin-sigmod12.pdf) and [Bohm 2014](https://arxiv.org/pdf/1412.2324.pdf) projects in the context of distributed databases is the foundation of much of what follows. The insightful idea in those projects is to simplify concurrency management by disseminating pre-ordered batches (akin to blocks) of transactions along with pre-estimates of their read- and write- sets. 
 Every database partition can then autonomously execute transactions according to the block pre-order, each transaction
-waiting only for read dependencies on earlier transactions in the block. The [first DiemVM parallel executor](https://github.com/diem/diem/issues/8829) implements this approach but it relies on a static transaction analyzer to pre-estimate read/write-sets which is time consuming. 
+waiting only for read dependencies on earlier transactions in the block. The [first DiemVM parallel executor](https://github.com/diem/diem/issues/8829) implements this approach but it relies on a static transaction analyzer to pre-estimate read/write-sets which is time consuming and can be inexact. 
 
 Another work by [Dickerson et al. 2017](https://arxiv.org/abs/1702.04467)
 provides a link from traditional database concurrency to smart-contract parallelism. In that work, a consensus *leader* (or *miner*) pre-computes a parallel execution serialization by
@@ -44,12 +44,13 @@ That is, when TXk reads from memory, it must obtain the value(s) written by TXj,
 or the initial value at that memory location when the block execution started, if none. 
 
 **Correctness:**
-Block-STM uses an optimistic approach, executing tranascations greedily and optimistically in parallel and then validating their read-set, 
+Block-STM uses an optimistic approach, executing transactions greedily and optimistically in parallel and then validating.
+Validation re-reads the read-set of the TXk and compares against the original read-set that TXk obtained in its latest execution,
 potentially causing abort/re-execute. 
 Correct optimism revolves around maintaining two principles:
 
 * **VALIDAFTER(j, k)**: For every j,k, such that j < k, a validation of TXk is performed after TXj executes (or re-executes).
-* **READLAST(k)**: Whenever TXk executes (speculatively), a read by TXk obtains the value recorded so far by the highest transaction TXj preceding it, i.e., where j < k. Higher transactions TXl, where l > k, do not intefer with TXk. 
+* **READLAST(k)**: Whenever TXk executes (speculatively), a read by TXk obtains the value recorded so far by the highest transaction TXj preceding it, i.e., where j < k. Higher transactions TXl, where l > k, do not interfere with TXk. 
 
 Jointly, these two principles 
 suffice to guarantee both safety and liveness no matter what scheduling policy is used, so long as pending execution and validation tasks are eventually dispatched. Safety follows because a TXk gets validated after all TXj, j &lt; k, are finalized. Liveness follows by induction. Initially transaction 1 is guaranteed to pass validation successfully and not require re-execution. After transactions TX1-TXj have successfully validated, a (re-)execution of transaction j+1 will pass validation successfully and not require re-execution.
@@ -122,7 +123,7 @@ Phase 2:
 
 It is quite easy to see that the S-1 validation loop satisfies VALIDAFTER(j,k) because every transaction is validated after previous executions complete.  However, it is quite wasteful in resources, each loop fully executing/validating all transactions.
 
-The first improvement is to replace both phases with parallel task-*stealing* by threads. Using insight from S-1, we distinguish between a preliminary execution (correponding to phase 1) and re-execution (following a validation abort).  Stealing is coordinated
+The first improvement is to replace both phases with parallel task-*stealing* by threads. Using insight from S-1, we distinguish between a preliminary execution (corresponding to phase 1) and re-execution (following a validation abort).  Stealing is coordinated
 via two synchronization counters, one per task type, `nextPrelimExecution` (initially 1) and `nextValidation` (initially 2). Each synchronizer `x` supports atomic procedures `x.increment() { oldVal := x; increment x; return oldVal } `and `x.setMin(val) { x := min(val, x) }. `
 
 The following strawman scheduler, S-2, utilizes a task stealing regime:
