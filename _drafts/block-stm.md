@@ -45,8 +45,7 @@ or the initial value at that memory location when the block execution started, i
 
 **Correctness:**
 Block-STM uses an optimistic approach, executing transactions greedily and optimistically in parallel and then validating.
-Validation re-reads the read-set of the TXk and compares against the original read-set that TXk obtained in its latest execution,
-potentially causing abort/re-execute. 
+Validation of TXk re-reads the read-set of TXk and compares against the original read-set that TXk obtained in its latest execution. If the comparison fails, TXk aborts and re-executes. 
 Correct optimism revolves around maintaining two principles:
 
 * **VALIDAFTER(j, k)**: For every j,k, such that j < k, a validation of TXk is performed after TXj executes (or re-executes).
@@ -61,7 +60,7 @@ A read by TXk obtains the value recorded by the latest invocation of TXj with th
 A special value `ABORTED` may be stored at version j when the latest invocation of TXj aborts. 
 If TXk reads this value, it suspends and resumes when the value becomes set.  
 
-**VALIDAFTER(j, k)** is implemented by a scheduler. For each j, after TXj completes a (re-)execution, the scheduler dispatched every TXk with index k > j for (re)validation. Validation re-reads the read-set of the TXk and compares against the original read-set that TXk obtained in its latest execution. If validation fails, TXk re-executes.
+**VALIDAFTER(j, k)** is implemented by a scheduler. For each j, after TXj completes a (re-)execution, the scheduler dispatched every TXk with index k > j for (re)validation. 
 
 ## Scheduling
 
