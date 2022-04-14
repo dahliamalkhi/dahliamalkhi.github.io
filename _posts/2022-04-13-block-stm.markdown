@@ -134,7 +134,7 @@ With four threads, a possible execution of S-1 over Block B (recall, TX<sub>1</s
     2. parallel execution of TX<sub>5</sub>, TX<sub>6</sub>, TX<sub>7</sub>, TX<sub>8</sub>    
     3. parallel execution of TX<sub>9</sub>, TX<sub>10</sub>    
 2. Phase 2       
-    1. parallel validation of all transactions in which TX<sub>2</sub>, TX<sub>3</sub>, TX<sub>4</sub>, TX<sub>6fail</sub> and re-execute    
+    1. parallel validation of all transactions in which TX<sub>2</sub>, TX<sub>3</sub>, TX<sub>4</sub>, TX<sub>6</sub> fail and re-execute    
     2. continued parallel validation of all transactions in which TX<sub>9</sub> fails and re-executes    
     3. parallel validation of all transactions in which TX<sub>3</sub>, TX<sub>4</sub> fail and re-execute    
     4. parallel validation of all transactions in which TX<sub>4</sub> fails and re-executes    
