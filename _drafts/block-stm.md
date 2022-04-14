@@ -178,7 +178,6 @@ fewer (re-)executions and lower overall latency than S-1.
 With four threads, a possible execution of S-2 over Block B (recall, TX1 &rarr; TX2 &rarr; TX3 &rarr; {TX4, TX6, TX9}) is as follows:
 
 ```
-
   1. parallel execution of TX1, TX2, TX3, TX4; validation of TX2, TX3, TX4 fail; `nextValidation` set to 3      
   2. parallel execution of TX2, TX3, TX4, TX5; validation of TX3, TX4 fail; `nextValidation` set to 4      
   3. parallel execution of TX3, TX4, TX6, TX7; validation of TX4, TX6 fail; `nextValidation` set to 5      
