@@ -45,7 +45,7 @@ If, in a sequential execution, TX<sub>k</sub> reads a value that TX<sub>j</sub> 
 i.e., TX<sub>j</sub> is the highest transaction preceding TX<sub>k</sub> that writes to this particular memory location, 
 we denote this by:
 
-<pre style="  font-family: 'Avenir', Verdana, sans-serif; font-size: 14px;">
+<pre style="font-size: 14px;">
 TX<sub>j</sub> &rarr; TX<sub>k</sub> 
 </pre>
 
@@ -78,7 +78,7 @@ It remains to focus on devising an efficient schedule for parallelizing executio
 
 **Running example.** The following scenario will be used throughout this post to illustrate the effects of scheduling:
 
-<pre style="font-size: 10px;">
+<pre>
 A block B consisting of ten transactions, 
 TX<sub>1</sub>, TX<sub>2</sub>, ..., TX<sub>10</sub>, with the following read/write dependencies:       
       
@@ -93,7 +93,7 @@ each transaction takes exactly one time-unit, validations take negligible time.
 If we knew the block dependencies in advance, we could schedule 
 an ideal execution with the following time-steps:
 
-<pre style="font-size: 10px;">
+<pre>
 1. parallel execution of TX<sub>1</sub>, TX<sub>5</sub>, TX<sub>6</sub>, TX<sub>7</sub>     
 2. parallel execution of TX<sub>2</sub>, TX<sub>8</sub>, TX<sub>10</sub>     
 3. parallel execution of TX<sub>3</sub>     
