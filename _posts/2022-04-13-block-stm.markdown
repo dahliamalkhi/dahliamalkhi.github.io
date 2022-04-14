@@ -93,10 +93,12 @@ each transaction takes exactly one time-unit, validations take negligible time.
 If we knew the block dependencies in advance, we could schedule 
 an ideal execution with the following time-steps:
 
+<pre style="font-size: 14px;  font-family: 'Avenir', Verdana, sans-serif;">
 1. parallel execution of TX<sub>1</sub>, TX<sub>5</sub>, TX<sub>6</sub>, TX<sub>7</sub>     
 2. parallel execution of TX<sub>2</sub>, TX<sub>8</sub>, TX<sub>10</sub>     
 3. parallel execution of TX<sub>3</sub>     
 4. parallel execution of TX<sub>4</sub>, TX<sub>6</sub>, TX<sub>9</sub>
+</pre>
 
 We now construct an effective scheduling strategy without knowing the dependencies in advance. We present the construction gradually, starting with a correct but inefficient strawman and gradually improving it in three steps. The full scheduling strategy is 
 described in under 20 lines of pseudo-code. 
@@ -129,6 +131,7 @@ S-1 operates in two master-coordinated phases. Phase 1 executes all transactions
 
 With four threads, a possible execution of S-1 over Block B (recall, TX<sub>1</sub> &rarr; TX<sub>2</sub> &rarr; TX<sub>3</sub> &rarr; {TX<sub>4</sub>, TX<sub>6</sub>, TX<sub>9</sub>}) is as follows:
 
+<pre style="font-size: 14px;  font-family: 'Avenir', Verdana, sans-serif;">
 1. **phase 1 starts**. parallel execution of TX<sub>1</sub>, TX<sub>2</sub>, TX<sub>3</sub>, TX<sub>4</sub>    
 2. parallel execution of TX<sub>5</sub>, TX<sub>6</sub>, TX<sub>7</sub>, TX<sub>8</sub>    
 3. parallel execution of TX<sub>9</sub>, TX<sub>10</sub>    
@@ -137,6 +140,7 @@ With four threads, a possible execution of S-1 over Block B (recall, TX<sub>1</s
 6. parallel validation of all transactions in which TX<sub>3</sub>, TX<sub>4</sub> fail and re-execute    
 7. parallel validation of all transactions in which TX<sub>4</sub> fails and re-executes    
 8. parallel validation of all transactions in which all succeed
+</pre>
 
 It is quite easy to see that the S-1 validation loop satisfies VALIDAFTER(j,k) because every transaction is validated after previous executions complete.  However, it is quite wasteful in resources, each loop fully executing/validating all transactions.
 
@@ -180,11 +184,13 @@ fewer (re-)executions and lower overall latency than S-1.
 
 With four threads, a possible execution of S-2 over Block B (recall, TX<sub>1</sub> &rarr; TX<sub>2</sub> &rarr; TX<sub>3</sub> &rarr; {TX<sub>4</sub>, TX<sub>6</sub>, TX<sub>9</sub>}) is as follows:
 
+<pre style="font-size: 14px;  font-family: 'Avenir', Verdana, sans-serif;">
 1. parallel execution of TX<sub>1</sub>, TX<sub>2</sub>, TX<sub>3</sub>, TX<sub>4</sub>; validation of TX<sub>2</sub>, TX<sub>3</sub>, TX<sub>4</sub> fail; `nextValidation` set to 3      
 2. parallel execution of TX<sub>2</sub>, TX<sub>3</sub>, TX<sub>4</sub>, TX<sub>5</sub>; validation of TX<sub>3</sub>, TX<sub>4</sub> fail; `nextValidation` set to 4      
 3. parallel execution of TX<sub>3</sub>, TX<sub>4</sub>, TX<sub>6</sub>, TX<sub>7</sub>; validation of TX<sub>4</sub>, TX<sub>6</sub> fail; `nextValidation` set to 5      
 4. parallel execution of TX<sub>4</sub>, TX<sub>6</sub>, TX<sub>8</sub>, TX<sub>9</sub>; all validations succeed     
 5. parallel execution of TX<sub>10</sub>; all validations succeed
+</pre>
 
 Importantly, **VALIDAFTER(j, k)** is preserved because upon (re-)execution of a TX<sub>j</sub>, it decreases `nextValidation` to j+1. This guarantees that every k > j will be validated after the j execution. 
 
