@@ -147,7 +147,7 @@ The following strawman scheduler, S-2, utilizes a task stealing regime:
 
 ## **S-2**
 
-```
+<code>
 // per thread main loop: 
 repeat {
 
@@ -171,7 +171,7 @@ execution of TX<sub>j</sub> {
     (re-)execute TX<sub>j</sub>
     nextValidation.setMin(j+1) 
 }
-```
+</code>
 
 Interleaving preliminary executions with validations avoids unnecessary work executing transactions that might follow aborted transactions. 
 To illustrate this, we will once again utilize our running example.
