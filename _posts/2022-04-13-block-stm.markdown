@@ -44,10 +44,7 @@ that preserves a block pre-order, namely, it results in exactly the same read/wr
 If, in a sequential execution, TX<sub>k</sub> reads a value that TX<sub>j</sub> wrote, 
 i.e., TX<sub>j</sub> is the highest transaction preceding TX<sub>k</sub> that writes to this particular memory location, 
 we denote this by:
-
-<pre style="font-size: 14px;">
 TX<sub>j</sub> &rarr; TX<sub>k</sub> 
-</pre>
 
 A parallel execution must guarantee that all transactions indeed read values adhering to these dependencies. 
 That is, when TX<sub>k</sub> reads from memory, it must obtain the value(s) written by TX<sub>j</sub>, TX<sub>j</sub> &rarr; TX<sub>k</sub>, if a dependency exists;
@@ -78,7 +75,7 @@ It remains to focus on devising an efficient schedule for parallelizing executio
 
 **Running example.** The following scenario will be used throughout this post to illustrate the effects of scheduling:
 
-<pre>
+<pre style="font-size: 14px;">
 A block B consisting of ten transactions, 
 TX<sub>1</sub>, TX<sub>2</sub>, ..., TX<sub>10</sub>, with the following read/write dependencies:       
       
