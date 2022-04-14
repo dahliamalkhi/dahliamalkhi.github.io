@@ -52,7 +52,7 @@ Correct optimism revolves around maintaining two principles:
 * **READLAST(k)**: Whenever TXk executes (speculatively), a read by TXk obtains the value recorded so far by the highest transaction TXj preceding it, i.e., where j < k. Higher transactions TXl, where l > k, do not interfere with TXk. 
 
 Jointly, these two principles 
-suffice to guarantee both safety and liveness no matter what scheduling policy is used, so long as pending execution and validation tasks are eventually dispatched. Safety follows because a TXk gets validated after all TXj, j &lt; k, are finalized. Liveness follows by induction. Initially transaction 1 is guaranteed to pass validation successfully and not require re-execution. After transactions TX1-TXj have successfully validated, a (re-)execution of transaction j+1 will pass validation successfully and not require re-execution.
+suffice to guarantee both safety and liveness no matter what scheduling policy is used, so long as pending execution and validation tasks are eventually dispatched. Safety follows because a TXk gets validated after all TXj, j &lt; k, are finalized. Liveness follows by induction. Initially transaction 1 is guaranteed to pass validation successfully and not require re-execution. After all transactions from TX1 to TXj have successfully validated, a (re-)execution of transaction j+1 will pass validation successfully and not require re-execution.
 
 **READLAST(k)** is achieved via a simple multi-version in-memory data structure that keeps versioned write-sets. A write by TXj is recorded with version j. 
 A read by TXk obtains the value recorded by the latest invocation of TXj with the highest j &lt; k.
@@ -64,10 +64,27 @@ If TXk reads this value, it suspends and resumes when the value becomes set.
 
 ## Scheduling
 
-It remains to focus on devising an efficient schedule for parallelizing execution and validations. We will construct an effective scheduling strategy gradually, starting with a correct but inefficient strawman and gradually improving it in three steps. The full scheduling strategy is 
-described in under 20 lines of pseudo-code. 
+It remains to focus on devising an efficient schedule for parallelizing execution and validations. 
+The following **running example** will be used throughout this post to illustrate the effects of scheduling:
 
- 
+> A block B consisting of ten transactions, TX1, TX2, ..., TX10, with the following read/write dependencies:       
+>       
+> TX1 &rarr; TX2 &rarr; TX3 &rarr; TX4                
+> TX3 &rarr; TX6      
+> TX3 &rarr; TX9
+
+If we had known these dependencies in advance, we would schedule TX1, TX2, TX3, to execute sequentially on one thread, and in parallel, execute
+{ TX5, TX7, TX8, TX10 } on all other available threads. Once TX3 finishes, we would proceed to execute {TX4, TX6, TX9} in parallel. To illustrate execution timelines, we will illustrate scheduling the running example on four threads running on parallel cores and assume
+each transaction takes exactly one time-unit, validations take negligible time. An ideal execution would go through the following time steps:
+
+```
+1. parallel execution of TX1, TX5, TX6, TX7
+2. parallel execution of TX2, TX8, TX10
+3. parallel execution of TX3
+4. parallel execution of TX4, TX6, TX9
+
+We now construct an effective scheduling strategy without knowing the dependencies in advance. We present the construction gradually, starting with a correct but inefficient strawman and gradually improving it in three steps. The full scheduling strategy is 
+described in under 20 lines of pseudo-code. 
 
 At a first cut, consider a strawman scheduler, S-1, that uses a centralized dispatcher that coordinates work by parallel threads.
 
@@ -96,18 +113,11 @@ execution of TXj {
 
 S-1 operates in two master-coordinated phases. Phase 1 executes all transactions optimistically in parallel. Phase 2 repeatedly validates all transactions optimistically in parallel, re-executing those that fail, until there are no more validation failures. 
 
-**A running example:**
-A scenario serving as a running example throughout this post is a block B consisting of ten transactions TX1-TX10. 
-B has the following read/write dependencies:
-
-> TX1 &rarr; TX2 &rarr; TX3 &rarr; TX4                
-> TX3 &rarr; TX6      
-> TX3 &rarr; TX9
-
-With four threads, S-1 will possibly proceed though the following time steps:
 
 ```
-Possible time steps S-1 goes through with four threads:
+Possible time-steps running S-1 with four threads over Block B,
+TX1 &rarr; TX2 &rarr; TX3 &rarr; {TX4, TX6, TX9}
+
 Phase 1:       
   1.1. parallel execution of TX1, TX2, TX3, TX4
   1.2. parallel execution of TX5, TX6, TX7, TX8
@@ -158,17 +168,14 @@ execution of TXj {
 
 
 Interleaving preliminary executions with validations avoids unnecessary work executing transactions that might follow aborted transactions. 
-Recall the running scenario above with block B that has dependencies 
-
-> TX1 &rarr; TX2 &rarr; TX3 &rarr; TX4                
-> TX3 &rarr; TX6      
-> TX3 &rarr; TX9
-
-The timing of task stealing is hard to predict because it depends on real-time latency and interleaving of validation and execution tasks. Notwithstanding, below is a possible execution of S-2 over B with four threads that exhibits
+To illustrate this, we will once again utilize our running example.
+The timing of task stealing over our running example is hard to predict because it depends on real-time latency and interleaving of validation and execution tasks. Notwithstanding, below is a possible execution of S-2 over B with four threads that exhibits
 fewer (re-)executions and lower overall latency than S-1.
 
 ```
-Possible time steps S-2 goes through with four threads:
+Possible time-steps running S-2 with four threads over Block B, 
+TX1 &rarr; TX2 &rarr; TX3 &rarr; {TX4, TX6, TX9}:
+
   1. parallel execution of TX1, TX2, TX3, TX4; validation of TX2, TX3, TX4 fail; `nextValidation` set to 3      
   2. parallel execution of TX2, TX3, TX4, TX5; validation of TX3, TX4 fail; `nextValidation` set to 4      
   3. parallel execution of TX3, TX4, TX6, TX7; validation of TX4, TX6 fail; `nextValidation` set to 5      
@@ -219,7 +226,9 @@ An execution driven by S-3 with four threads may be able to avoid several of the
 Despite the high-contention B scenario, a possible execution of S-3 may achieve very close to optimal scheduling as shown below.
 
 ```
-possible time steps S-3 goes through with four threads:
+Possible time-steps running S-3 with four threads over Block B, 
+TX1 &rarr; TX2 &rarr; TX3 &rarr; {TX4, TX6, TX9}:
+
   1. parallel execution of TX1, TX2, TX3, TX4; validation of TX2, TX3, TX4 fail; `nextValidation` set to 3      
   2. parallel execution of TX2, TX5, TX7, TX8; executions of TX3, TX4, TX6 are suspended on `ABORTED`; `nextValidation` set to 6
   3. parallel execution of TX3, TX10; executions of TX4, TX6, TX9 are suspended on `ABORTED`; all validations succeed (for now)
