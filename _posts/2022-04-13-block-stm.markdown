@@ -147,7 +147,7 @@ The following strawman scheduler, S-2, utilizes a task stealing regime:
 
 ## **S-2**
 
-<pre style="font-size: 8px;  font-family: "Avenir", Verdana, sans-serif;">
+<pre style="font-size: 8px;  font-family: 'Avenir', Verdana, sans-serif;">
 // per thread main loop: 
 repeat {
 
