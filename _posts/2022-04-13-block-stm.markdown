@@ -78,12 +78,12 @@ It remains to focus on devising an efficient schedule for parallelizing executio
 **Running example.** The following scenario will be used throughout this post to illustrate the effects of scheduling:
 
 <pre style="font-size: 14px;">
-A block B consisting of ten transactions, 
-TX<sub>1</sub>, TX<sub>2</sub>, ..., TX<sub>10</sub>, with the following read/write dependencies:       
+    A block B consisting of ten transactions, 
+    TX<sub>1</sub>, TX<sub>2</sub>, ..., TX<sub>10</sub>, with the following read/write dependencies:       
       
-TX<sub>1</sub> &rarr; TX<sub>2</sub> &rarr; TX<sub>3</sub> &rarr; TX<sub>4</sub>                
-TX<sub>3</sub> &rarr; TX<sub>6</sub>      
-TX<sub>3</sub> &rarr; TX<sub>9</sub>
+    TX<sub>1</sub> &rarr; TX<sub>2</sub> &rarr; TX<sub>3</sub> &rarr; TX<sub>4</sub>                
+    TX<sub>3</sub> &rarr; TX<sub>6</sub>      
+    TX<sub>3</sub> &rarr; TX<sub>9</sub>
 </pre>
 
 To illustrate execution timelines, we will illustrate scheduling the running example on four threads running on parallel cores and assume
