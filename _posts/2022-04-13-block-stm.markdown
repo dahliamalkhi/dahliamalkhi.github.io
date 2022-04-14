@@ -88,10 +88,9 @@ To illustrate execution timelines, we will illustrate scheduling the running exa
 each transaction takes exactly one time-unit, validations take negligible time. 
 
 If we knew the block dependencies in advance, we could schedule 
-an ideal execution with the following time-steps:
+an ideal execution of block B along the following time-steps:
 
 <pre style="font-size: 14px;">
-A block B consisting of ten transactions, 
 1. parallel execution of TX<sub>1</sub>, TX<sub>5</sub>, TX<sub>6</sub>, TX<sub>7</sub>     
 2. parallel execution of TX<sub>2</sub>, TX<sub>8</sub>, TX<sub>10</sub>     
 3. parallel execution of TX<sub>3</sub>     
@@ -127,7 +126,8 @@ execution of TX<sub>j</sub> {
 
 S-1 operates in two master-coordinated phases. Phase 1 executes all transactions optimistically in parallel. Phase 2 repeatedly validates all transactions optimistically in parallel, re-executing those that fail, until there are no more validation failures. 
 
-With four threads, a possible execution of S-1 over Block B (recall, TX<sub>1</sub> &rarr; TX<sub>2</sub> &rarr; TX<sub>3</sub> &rarr; {TX<sub>4</sub>, TX<sub>6</sub>, TX<sub>9</sub>}) is as follows:
+With four threads, a possible execution of S-1 over Block B (recall, TX<sub>1</sub> &rarr; TX<sub>2</sub> &rarr; TX<sub>3</sub> &rarr; {TX<sub>4</sub>, TX<sub>6</sub>, TX<sub>9</sub>}) 
+would proceed along the following time-steps:
 
 <pre style="font-size: 14px;">
 1. phase 1 starts. parallel execution of TX<sub>1</sub>, TX<sub>2</sub>, TX<sub>3</sub>, TX<sub>4</sub>    
@@ -180,7 +180,8 @@ To illustrate this, we will once again utilize our running example.
 The timing of task stealing over our running example is hard to predict because it depends on real-time latency and interleaving of validation and execution tasks. Notwithstanding, below is a possible execution of S-2 over B with four threads that exhibits
 fewer (re-)executions and lower overall latency than S-1.
 
-With four threads, a possible execution of S-2 over Block B (recall, TX<sub>1</sub> &rarr; TX<sub>2</sub> &rarr; TX<sub>3</sub> &rarr; {TX<sub>4</sub>, TX<sub>6</sub>, TX<sub>9</sub>}) is as follows:
+With four threads, a possible execution of S-2 over Block B (recall, TX<sub>1</sub> &rarr; TX<sub>2</sub> &rarr; TX<sub>3</sub> &rarr; {TX<sub>4</sub>, TX<sub>6</sub>, TX<sub>9</sub>}) 
+would proceed along the following time-steps:
 
 <pre style="font-size: 14px;">
 1. parallel execution of TX<sub>1</sub>, TX<sub>2</sub>, TX<sub>3</sub>, TX<sub>4</sub>; validation of TX<sub>2</sub>, TX<sub>3</sub>, TX<sub>4</sub> fail; nextValidation set to 3      
@@ -229,7 +230,8 @@ execution of TX<sub>j</sub>:
 S-3 enhances efficiency through simple, on-the-fly dependency management using the `ABORTED` tag. For our running example of block B, 
 An execution driven by S-3 with four threads may be able to avoid several of the re-executions incurred in S-2 by waiting on an ABORTED mark. 
 Despite the high-contention B scenario, a possible execution of S-3 may achieve very close to optimal scheduling as shown below.
-A possible execution of S-3 over Block B (recall, TX<sub>1</sub> &rarr; TX<sub>2</sub> &rarr; TX<sub>3</sub> &rarr; {TX<sub>4</sub>, TX<sub>6</sub>, TX<sub>9</sub>}) is as follows:
+A possible execution of S-3 over Block B (recall, TX<sub>1</sub> &rarr; TX<sub>2</sub> &rarr; TX<sub>3</sub> &rarr; {TX<sub>4</sub>, TX<sub>6</sub>, TX<sub>9</sub>}) 
+would proceed along the following time-steps:
 
 <pre style="font-size: 14px;">
 1. parallel execution of TX<sub>1</sub>, TX<sub>2</sub>, TX<sub>3</sub>, TX<sub>4</sub>; validation of TX<sub>2</sub>, TX<sub>3</sub>, TX<sub>4</sub> fail; nextValidation set to 3      
