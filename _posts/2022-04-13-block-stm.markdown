@@ -130,15 +130,15 @@ S-1 operates in two master-coordinated phases. Phase 1 executes all transactions
 With four threads, a possible execution of S-1 over Block B (recall, TX<sub>1</sub> &rarr; TX<sub>2</sub> &rarr; TX<sub>3</sub> &rarr; {TX<sub>4</sub>, TX<sub>6</sub>, TX<sub>9</sub>}) is as follows:
 
 * Phase 1       
-    1. parallel execution of TX<sub>1</sub>, TX<sub>2</sub>, TX<sub>3</sub>, TX<sub>4</sub>    
-    2. parallel execution of TX<sub>5</sub>, TX<sub>6</sub>, TX<sub>7</sub>, TX<sub>8</sub>    
-    3. parallel execution of TX<sub>9</sub>, TX<sub>10</sub>    
+1. parallel execution of TX<sub>1</sub>, TX<sub>2</sub>, TX<sub>3</sub>, TX<sub>4</sub>    
+2. parallel execution of TX<sub>5</sub>, TX<sub>6</sub>, TX<sub>7</sub>, TX<sub>8</sub>    
+3. parallel execution of TX<sub>9</sub>, TX<sub>10</sub>    
 * Phase 2       
-    4. parallel validation of all transactions in which TX<sub>2</sub>, TX<sub>3</sub>, TX<sub>4</sub>, TX<sub>6</sub> fail and re-execute    
-    5. continued parallel validation of all transactions in which TX<sub>9</sub> fails and re-executes    
-    6. parallel validation of all transactions in which TX<sub>3</sub>, TX<sub>4</sub> fail and re-execute    
-    7. parallel validation of all transactions in which TX<sub>4</sub> fails and re-executes    
-    8. parallel validation of all transactions in which all succeed
+4. parallel validation of all transactions in which TX<sub>2</sub>, TX<sub>3</sub>, TX<sub>4</sub>, TX<sub>6</sub> fail and re-execute    
+5. continued parallel validation of all transactions in which TX<sub>9</sub> fails and re-executes    
+6. parallel validation of all transactions in which TX<sub>3</sub>, TX<sub>4</sub> fail and re-execute    
+7. parallel validation of all transactions in which TX<sub>4</sub> fails and re-executes    
+8. parallel validation of all transactions in which all succeed
 
 It is quite easy to see that the S-1 validation loop satisfies VALIDAFTER(j,k) because every transaction is validated after previous executions complete.  However, it is quite wasteful in resources, each loop fully executing/validating all transactions.
 
