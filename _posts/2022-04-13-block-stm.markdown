@@ -233,7 +233,9 @@ S-3 enhances efficiency through simple, on-the-fly dependency management using t
 An execution driven by S-3 with four threads may be able to avoid several of the re-executions incurred in S-2 by waiting on an ABORTED mark. 
 Despite the high-contention B scenario, a possible execution of S-3 may achieve very close to optimal scheduling as shown below.
 A possible execution of S-3 over Block B (recall, TX<sub>1</sub> &rarr; TX<sub>2</sub> &rarr; TX<sub>3</sub> &rarr; {TX<sub>4</sub>, TX<sub>6</sub>, TX<sub>9</sub>}) 
-would proceed along the following time-steps:
+would proceed along the following time-steps (depicted in the figure):
+
+![](/images/bstm-scene.png)
 
 <pre style="font-size: 14px;">
     1. parallel execution of TX<sub>1</sub>, TX<sub>2</sub>, TX<sub>3</sub>, TX<sub>4</sub>; validation of TX<sub>2</sub>, TX<sub>3</sub>, TX<sub>4</sub> fail; nextValidation set to 3      
