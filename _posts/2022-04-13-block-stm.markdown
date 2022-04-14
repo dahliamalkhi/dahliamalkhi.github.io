@@ -133,6 +133,7 @@ Phase 1
 1. parallel execution of TX<sub>1</sub>, TX<sub>2</sub>, TX<sub>3</sub>, TX<sub>4</sub>    
 2. parallel execution of TX<sub>5</sub>, TX<sub>6</sub>, TX<sub>7</sub>, TX<sub>8</sub>    
 3. parallel execution of TX<sub>9</sub>, TX<sub>10</sub>    
+
 Phase 2       
 4. parallel validation of all transactions in which TX<sub>2</sub>, TX<sub>3</sub>, TX<sub>4</sub>, TX<sub>6</sub> fail and re-execute    
 5. continued parallel validation of all transactions in which TX<sub>9</sub> fails and re-executes    
