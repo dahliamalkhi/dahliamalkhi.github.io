@@ -65,23 +65,28 @@ If TXk reads this value, it suspends and resumes when the value becomes set.
 ## Scheduling
 
 It remains to focus on devising an efficient schedule for parallelizing execution and validations. 
-The following **running example** will be used throughout this post to illustrate the effects of scheduling:
 
-> A block B consisting of ten transactions, TX1, TX2, ..., TX10, with the following read/write dependencies:       
+**Running example.** The following scenario will be used throughout this post to illustrate the effects of scheduling:
+
+> A block B consisting of ten transactions, 
+> TX1, TX2, ..., TX10, with the following read/write dependencies:       
 >       
 > TX1 &rarr; TX2 &rarr; TX3 &rarr; TX4                
 > TX3 &rarr; TX6      
 > TX3 &rarr; TX9
 
-If we had known these dependencies in advance, we would schedule TX1, TX2, TX3, to execute sequentially on one thread, and in parallel, execute
-{ TX5, TX7, TX8, TX10 } on all other available threads. Once TX3 finishes, we would proceed to execute {TX4, TX6, TX9} in parallel. To illustrate execution timelines, we will illustrate scheduling the running example on four threads running on parallel cores and assume
-each transaction takes exactly one time-unit, validations take negligible time. An ideal execution would go through the following time steps:
+To illustrate execution timelines, we will illustrate scheduling the running example on four threads running on parallel cores and assume
+each transaction takes exactly one time-unit, validations take negligible time. 
+
+If we knew the block dependencies in advance, we could schedule 
+an ideal execution with the following time-steps:
 
 ```
 1. parallel execution of TX1, TX5, TX6, TX7
 2. parallel execution of TX2, TX8, TX10
 3. parallel execution of TX3
 4. parallel execution of TX4, TX6, TX9
+```
 
 We now construct an effective scheduling strategy without knowing the dependencies in advance. We present the construction gradually, starting with a correct but inefficient strawman and gradually improving it in three steps. The full scheduling strategy is 
 described in under 20 lines of pseudo-code. 
