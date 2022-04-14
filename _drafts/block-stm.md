@@ -118,11 +118,9 @@ execution of TXj {
 
 S-1 operates in two master-coordinated phases. Phase 1 executes all transactions optimistically in parallel. Phase 2 repeatedly validates all transactions optimistically in parallel, re-executing those that fail, until there are no more validation failures. 
 
+With four threads, a possible execution of S-1 over Block B (recall, TX1 &rarr; TX2 &rarr; TX3 &rarr; {TX4, TX6, TX9}) is as follows:
 
 ```
-Possible time-steps running S-1 with four threads over Block B,
-TX1 &rarr; TX2 &rarr; TX3 &rarr; {TX4, TX6, TX9}
-
 Phase 1:       
   1.1. parallel execution of TX1, TX2, TX3, TX4
   1.2. parallel execution of TX5, TX6, TX7, TX8
@@ -177,9 +175,9 @@ To illustrate this, we will once again utilize our running example.
 The timing of task stealing over our running example is hard to predict because it depends on real-time latency and interleaving of validation and execution tasks. Notwithstanding, below is a possible execution of S-2 over B with four threads that exhibits
 fewer (re-)executions and lower overall latency than S-1.
 
+With four threads, a possible execution of S-2 over Block B (recall, TX1 &rarr; TX2 &rarr; TX3 &rarr; {TX4, TX6, TX9}) is as follows:
+
 ```
-Possible time-steps running S-2 with four threads over Block B, 
-TX1 &rarr; TX2 &rarr; TX3 &rarr; {TX4, TX6, TX9}:
 
   1. parallel execution of TX1, TX2, TX3, TX4; validation of TX2, TX3, TX4 fail; `nextValidation` set to 3      
   2. parallel execution of TX2, TX3, TX4, TX5; validation of TX3, TX4 fail; `nextValidation` set to 4      
@@ -229,11 +227,9 @@ execution of TXj:
 S-3 enhances efficiency through simple, on-the-fly dependency management using the `ABORTED` tag. For our running example of block B, 
 An execution driven by S-3 with four threads may be able to avoid several of the re-executions incurred in S-2 by waiting on an ABORTED mark. 
 Despite the high-contention B scenario, a possible execution of S-3 may achieve very close to optimal scheduling as shown below.
+A possible execution of S-3 over Block B (recall, TX1 &rarr; TX2 &rarr; TX3 &rarr; {TX4, TX6, TX9}) is as follows:
 
 ```
-Possible time-steps running S-3 with four threads over Block B, 
-TX1 &rarr; TX2 &rarr; TX3 &rarr; {TX4, TX6, TX9}:
-
   1. parallel execution of TX1, TX2, TX3, TX4; validation of TX2, TX3, TX4 fail; `nextValidation` set to 3      
   2. parallel execution of TX2, TX5, TX7, TX8; executions of TX3, TX4, TX6 are suspended on `ABORTED`; `nextValidation` set to 6
   3. parallel execution of TX3, TX10; executions of TX4, TX6, TX9 are suspended on `ABORTED`; all validations succeed (for now)
