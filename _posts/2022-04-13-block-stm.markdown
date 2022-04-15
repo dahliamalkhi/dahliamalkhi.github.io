@@ -146,7 +146,7 @@ A possible execution of S-1 over Block B would proceed along the following time-
     3. parallel execution of TX<sub>9</sub>, TX<sub>10</sub>    
     4. phase 2 starts. parallel validation of all transactions in which TX<sub>2</sub>, TX<sub>3</sub>, TX<sub>4</sub>, TX<sub>6</sub> fail and re-execute    
     5. continued parallel validation of all transactions in which TX<sub>9</sub> fails and re-executes    
-    6. parallel validation of all transactions in which TX<sub>3</sub>, TX<sub>4</sub> fail and re-execute    
+    6. parallel validation of all transactions in which TX<sub>3</sub>, TX<sub>4</sub> , TX<sub>6</sub> fail and re-execute    
     7. parallel validation of all transactions in which TX<sub>4</sub>, TX<sub>6</sub>, TX<sub>9</sub> fail and re-execute    
     8. parallel validation of all transactions in which all succeed
 </pre>
