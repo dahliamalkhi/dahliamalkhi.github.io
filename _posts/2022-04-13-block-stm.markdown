@@ -115,8 +115,8 @@ We present the Block-STM scheduler gradually, starting with a correct but ineffi
 
 At a first cut, consider a strawman scheduler, S-1, that uses a centralized dispatcher that coordinates work by parallel threads.
 
+#### S-1 Algorithm
 <pre style="font-size: 14px;">
-<b>S-1</b>
     // Phase 1: 
     dispatch all TX<sub></sub>’s for execution in parallel ; wait for completion
 
@@ -168,10 +168,10 @@ an atomic
     nextValidation.setMin(j+1) { nextValidation := min(j+1, nextValidation) } 
 </pre>
 
-The following strawman scheduler, S-2, utilizes a task stealing regime:
+The following strawman scheduler, S-2, utilizes a task stealing regime.
 
+#### S-2 Algorithm
 <pre style="font-size: 14px;">
-<b>S-2</b>
     // per thread main loop: 
     repeat {
 
@@ -228,8 +228,9 @@ The second one increases re-validation parallelism. When a transaction aborts, r
 The final scheduling algorithm S-3, has the same main loop body at S-2 with executions 
 supporting dependency managements via `ABORTED` tagging, and with early re-validation enabled by decreasing `nextValidation` upon abort:
 
+#### S-3 Algorithm
+
 <pre style="font-size: 14px;">
-<b>S-3</b>
     // per thread main loop, same as S-2
     ...
 
