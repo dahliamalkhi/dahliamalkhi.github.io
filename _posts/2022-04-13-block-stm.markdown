@@ -40,7 +40,7 @@ Transactions are grouped in blocks, each block containing a pre-ordered sequence
 TX<sub>1</sub>, TX<sub>2</sub>, ..., TX<sub>n</sub>. Transactions consist of smart-contract code that reads and writes to shared memory and their
 execution results in a read-set and a write-set: the read-set consists of pairs, a memory location and the transaction that wrote it; the write-set consists of pairs, a memory location and a value, that the transaction would record if it became committed.
 
-**Block pre-order:**
+## Block pre-order
 A parallel execution of the block must yield the same deterministic outcome 
 that preserves a block pre-order, namely, it results in exactly the same read/write sets as a sequential execution. 
 If, in a sequential execution, TX<sub>k</sub> reads a value that TX<sub>j</sub> wrote, 
@@ -147,7 +147,7 @@ A possible execution of S-1 over Block B would proceed along the following time-
     4. phase 2 starts. parallel validation of all transactions in which TX<sub>2</sub>, TX<sub>3</sub>, TX<sub>4</sub>, TX<sub>6</sub> fail and re-execute    
     5. continued parallel validation of all transactions in which TX<sub>9</sub> fails and re-executes    
     6. parallel validation of all transactions in which TX<sub>3</sub>, TX<sub>4</sub> fail and re-execute    
-    7. parallel validation of all transactions in which TX<sub>4</sub> fails and re-executes    
+    7. parallel validation of all transactions in which TX<sub>4</sub>, TX<sub>6</sub>, TX<sub>9</sub> fail and re-execute    
     8. parallel validation of all transactions in which all succeed
 </pre>
 
