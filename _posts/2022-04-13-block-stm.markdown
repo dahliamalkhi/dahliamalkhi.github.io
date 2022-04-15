@@ -48,7 +48,9 @@ i.e., TX<sub>j</sub> is the highest transaction preceding TX<sub>k</sub> that wr
 we denote this by:
 * TX<sub>j</sub> &rarr; TX<sub>k</sub> 
 
-**Running example.** The following scenario will be used throughout this post to illustrate parallel execution strategies and their effects. 
+### Running example
+
+The following scenario will be used throughout this post to illustrate parallel execution strategies and their effects. 
 
 <pre style="font-size: 14px;">
     A block B consisting of ten transactions, TX<sub>1</sub>, TX<sub>2</sub>, ..., TX<sub>10</sub>, with the following read/write dependencies:       
@@ -71,6 +73,8 @@ an ideal execution of block B along the following time-steps:
     4. parallel execution of TX<sub>4</sub>, TX<sub>6</sub>, TX<sub>9</sub>
 </pre>
 
+### Correctness
+
 What if dependencies are not known in advance? 
 A correct parallel execution must guarantee that all transactions indeed read the values adhering to the block dependencies. 
 That is, when TX<sub>k</sub> reads from memory, it must obtain the value(s) written by TX<sub>j</sub>, TX<sub>j</sub> &rarr; TX<sub>k</sub>, if a dependency exists;
@@ -79,9 +83,6 @@ or the initial value at that memory location when the block execution started, i
 Block-STM ensures this while providing effective parallelism. It employs
 an optimistic approach, executing transactions greedily and optimistically in parallel and then validating.
 Validation of TX<sub>k</sub> re-reads the read-set of TX<sub>k</sub> and compares against the original read-set that TX<sub>k</sub> obtained in its latest execution. If the comparison fails, TX<sub>k</sub> aborts and re-executes. 
-
-
-**Correctness:**
 
 Correct optimism revolves around maintaining two principles:
 
