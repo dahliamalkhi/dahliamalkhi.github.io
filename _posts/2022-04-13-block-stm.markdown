@@ -46,7 +46,10 @@ that preserves a block pre-order, namely, it results in exactly the same read/wr
 If, in a sequential execution, TX<sub>k</sub> reads a value that TX<sub>j</sub> wrote, 
 i.e., TX<sub>j</sub> is the highest transaction preceding TX<sub>k</sub> that writes to this particular memory location, 
 we denote this by:
-* TX<sub>j</sub> &rarr; TX<sub>k</sub> 
+
+<pre style="font-size: 14px;">
+    TX<sub>j</sub> &rarr; TX<sub>k</sub> 
+</pre>
 
 ### Running example
 
