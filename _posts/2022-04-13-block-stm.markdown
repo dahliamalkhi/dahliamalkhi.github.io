@@ -111,11 +111,12 @@ TX<sub>k</sub>, for every k > j, after TX<sub>j</sub> completes (re-)executing.
 It remains to focus on devising an efficient schedule for parallelizing execution and validations. 
 We present the Block-STM scheduler gradually, starting with a correct but inefficient strawman and gradually improving it in three steps. The full scheduling strategy is described in under 20 lines of pseudo-code. 
 
-At a first cut, consider a strawman scheduler, S-1, that uses a centralized dispatcher that coordinates work by parallel threads.
-
 ## **S-1**
 
+At a first cut, consider a strawman scheduler, S-1, that uses a centralized dispatcher that coordinates work by parallel threads.
+
 <pre style="font-size: 14px;">
+<b>S-1</b>
     // Phase 1: 
     dispatch all TX<sub></sub>’s for execution in parallel ; wait for completion
 
@@ -153,7 +154,9 @@ A possible execution of S-1 over Block B would proceed along the following time-
 
 It is quite easy to see that the S-1 validation loop satisfies VALIDAFTER(j,k) because every transaction is validated after previous executions complete.  However, it is quite wasteful in resources, each loop fully executing/validating all transactions.
 
-The first improvement is to replace both phases with parallel task-*stealing* by threads. Using insight from S-1, we distinguish between a preliminary execution (corresponding to phase 1) and re-execution (following a validation abort).  Stealing is coordinated
+## **S-2**
+
+The first improvement, S-2, is to replace both phases with parallel task-*stealing* by threads. Using insight from S-1, we distinguish between a preliminary execution (corresponding to phase 1) and re-execution (following a validation abort).  Stealing is coordinated
 via two synchronization counters, one per task type, `nextPrelimExecution` (initially 1) and `nextValidation` (initially 2). In order to coordinate task stealing, each synchronizer `x` supports an atomic 
 <pre style="font-size: 14px;">
     x.increment() { oldVal := x; increment x; return oldVal } 
@@ -167,9 +170,8 @@ an atomic
 
 The following strawman scheduler, S-2, utilizes a task stealing regime:
 
-## **S-2**
-
 <pre style="font-size: 14px;">
+<b>S-2</b>
     // per thread main loop: 
     repeat {
 
@@ -215,7 +217,9 @@ Importantly, **VALIDAFTER(j, k)** is preserved because upon (re-)execution of a 
 
 Preserving **READLAST(k)** requires care due to concurrent task stealing, since multiple *incarnations* of the same transaction validation or execution tasks may occur simultaneously. Recall that **READLAST(k)** requires that a read by a TX<sub>k</sub> should obtain the value recorded by the latest invocation of a TX<sub>j</sub> with the highest j &lt; k. This requires to synchronize transaction invocations, such that **READLAST(k)** returns the highest incarnation value recorded by a transaction. A simple solution is to use per-transaction atomic incarnation synchronizer that prevents stale incarnations from recording values.
 
-The last improvement step consists of two important improvements.
+## **S-3**
+
+The last improvement step, S-3, consists of two important improvements.
 
 The first is an extremely simple dependency tracking (no graphs or partial orders) that considerably reduces aborts. When a TX<sub>j</sub> aborts, the write-set of its latest invocation is marked `ABORTED`. READLAST(k) supports the `ABORTED` mark guaranteeing that a higher-index TX<sub>k</sub> reading from a location in this write-set will delay until the TX<sub>j</sub> completes re-executing.
 
@@ -224,9 +228,8 @@ The second one increases re-validation parallelism. When a transaction aborts, r
 The final scheduling algorithm S-3, has the same main loop body at S-2 with executions 
 supporting dependency managements via `ABORTED` tagging, and with early re-validation enabled by decreasing `nextValidation` upon abort:
 
-## **S-3**
-
 <pre style="font-size: 14px;">
+<b>S-3</b>
     // per thread main loop, same as S-2
     ...
 
