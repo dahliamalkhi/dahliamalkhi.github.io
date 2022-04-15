@@ -51,8 +51,7 @@ we denote this by:
 **Running example.** The following scenario will be used throughout this post to illustrate parallel execution strategies and their effects. 
 
 <pre style="font-size: 14px;">
-    A block B consisting of ten transactions, 
-    TX<sub>1</sub>, TX<sub>2</sub>, ..., TX<sub>10</sub>, with the following read/write dependencies:       
+    A block B consisting of ten transactions, TX<sub>1</sub>, TX<sub>2</sub>, ..., TX<sub>10</sub>, with the following read/write dependencies:       
       
     TX<sub>1</sub> &rarr; TX<sub>2</sub> &rarr; TX<sub>3</sub> &rarr; TX<sub>4</sub>                
     TX<sub>3</sub> &rarr; TX<sub>6</sub>      
