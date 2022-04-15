@@ -154,9 +154,9 @@ A possible execution of S-1 over Block B would proceed along the following time-
 It is quite easy to see that the S-1 validation loop satisfies VALIDAFTER(j,k) because every transaction is validated after previous executions complete.  However, it is quite wasteful in resources, each loop fully executing/validating all transactions.
 
 The first improvement is to replace both phases with parallel task-*stealing* by threads. Using insight from S-1, we distinguish between a preliminary execution (corresponding to phase 1) and re-execution (following a validation abort).  Stealing is coordinated
-via two synchronization counters, one per task type, `nextPrelimExecution` (initially 1) and `nextValidation` (initially 2). In order to coordinate teask stealing, each synchronizer `x` supports an atomic `x.increment() { oldVal := x; increment x; return oldVal }`. 
+via two synchronization counters, one per task type, `nextPrelimExecution` (initially 1) and `nextValidation` (initially 2). In order to coordinate task stealing, each synchronizer `x` supports an atomic `x.increment() { oldVal := x; increment x; return oldVal }`. 
 
-Each transaction (re-)execution is followed an atomic `nextValidation.setMin(val) { nextValidation := min(val, nextValidation) }`, 
+Each transaction (re-)execution is followed by an atomic `nextValidation.setMin(val) { nextValidation := min(val, nextValidation) }`, 
 guaranteeing validation of all higher transactions.
 
 The following strawman scheduler, S-2, utilizes a task stealing regime:
