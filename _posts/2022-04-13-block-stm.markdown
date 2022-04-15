@@ -159,7 +159,7 @@ via two synchronization counters, one per task type, `nextPrelimExecution` (init
     x.increment() { oldVal := x; increment x; return oldVal } 
 </pre>
 
-Each (re-)execution of TX<sub>j</sub> guarantees that validation of all higher transactions will be dispatched by 
+Each (re-)execution of TX<sub>j</sub> guarantees that validation of all higher transactions will be dispatched by performing
 an atomic
 <pre style="font-size: 14px;">
     nextValidation.setMin(j+1) { nextValidation := min(j+1, nextValidation) } 
