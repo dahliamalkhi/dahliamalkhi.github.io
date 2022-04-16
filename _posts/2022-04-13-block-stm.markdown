@@ -246,7 +246,7 @@ supporting dependency managements via `ABORTED` tagging, and with early re-valid
     execution of TX<sub>j</sub>:  
     {
         (re-)execute TX<sub>j</sub>
-        resume any TX suspended on previously ABORTED write-set 
+        resume every TX suspended on TX<sub>j</sub>'s previously ABORTED write-set 
         if the new write-set contains locations not marked ABORTED
             nextValidation.setMin(j+1) 
     }
