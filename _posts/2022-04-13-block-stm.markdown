@@ -245,9 +245,9 @@ supporting dependency managements via `ABORTED` tagging, and with early re-valid
 
     execution of TX<sub>j</sub>:  
     {
-        (re-)execute TX<sub>j</sub> and resume any TX suspended on TX<sub>j</sub> ABORTED write-set
-
-        if TX<sub>j</sub>'s new write-set contains locations not previously marked ABORTED
+        abortedWS := TX<sub>j</sub>'s previously ABORTED write-set
+        (re-)execute TX<sub>j</sub> and resume any TX suspended on abortedWS
+        if TX<sub>j</sub>'s new write-set contains locations not in abortedWS
             nextValidation.setMin(j+1) 
     }
 </pre>
