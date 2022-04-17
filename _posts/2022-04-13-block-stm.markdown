@@ -206,9 +206,9 @@ With four threads, a possible execution of S-2 over Block B (recall, TX<sub>1</s
 would proceed along the following time-steps:
 
 <pre style="font-size: 14px;">
-    1. parallel execution of TX<sub>1</sub>, TX<sub>2</sub>, TX<sub>3</sub>, TX<sub>4</sub>; read-set validation of TX<sub>2</sub>, TX<sub>3</sub>, TX<sub>4</sub> fail; nextValidation set to 3      
-    2. parallel execution of TX<sub>2</sub>, TX<sub>3</sub>, TX<sub>4</sub>, TX<sub>5</sub>; read-set validation of TX<sub>3</sub>, TX<sub>4</sub> fail; nextValidation set to 4      
-    3. parallel execution of TX<sub>3</sub>, TX<sub>4</sub>, TX<sub>6</sub>, TX<sub>7</sub>; read-set validation of TX<sub>4</sub>, TX<sub>6</sub> fail; nextValidation set to 5      
+    1. parallel execution of TX<sub>1</sub>, TX<sub>2</sub>, TX<sub>3</sub>, TX<sub>4</sub>; read-set validation of TX<sub>2</sub>, TX<sub>3</sub>, TX<sub>4</sub> fail
+    2. parallel execution of TX<sub>2</sub>, TX<sub>3</sub>, TX<sub>4</sub>, TX<sub>5</sub>; read-set validation of TX<sub>3</sub>, TX<sub>4</sub> fail
+    3. parallel execution of TX<sub>3</sub>, TX<sub>4</sub>, TX<sub>6</sub>, TX<sub>7</sub>; read-set validation of TX<sub>4</sub>, TX<sub>6</sub> fail
     4. parallel execution of TX<sub>4</sub>, TX<sub>6</sub>, TX<sub>8</sub>, TX<sub>9</sub>; all read-set validations succeed     
     5. parallel execution of TX<sub>10</sub>; all read-set validations succeed
 </pre>
