@@ -71,8 +71,8 @@ If we knew the above block dependencies in advance, we could schedule
 an ideal execution of block B along the following time-steps:
 
 <pre style="font-size: 14px;">
-    1. parallel execution of TX<sub>1</sub>, TX<sub>5</sub>, TX<sub>6</sub>, TX<sub>7</sub>     
-    2. parallel execution of TX<sub>2</sub>, TX<sub>8</sub>, TX<sub>10</sub>     
+    1. parallel execution of TX<sub>1</sub>, TX<sub>5</sub>, TX<sub>7</sub>, TX<sub>8</sub>     
+    2. parallel execution of TX<sub>2</sub>, TX<sub>10</sub>     
     3. parallel execution of TX<sub>3</sub>     
     4. parallel execution of TX<sub>4</sub>, TX<sub>6</sub>, TX<sub>9</sub>
 </pre>
