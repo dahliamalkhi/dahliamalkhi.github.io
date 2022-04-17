@@ -91,11 +91,11 @@ Validation of TX<sub>k</sub> re-reads the read-set of TX<sub>k</sub> and compare
 Correct optimism revolves around maintaining two principles:
 
 * **READLAST(k)**: Whenever TX<sub>k</sub> executes (speculatively), a read by TX<sub>k</sub> obtains the value recorded so far by the highest transaction TX<sub>j</sub> preceding it, i.e., where j < k. Higher transactions TX<sub>l</sub>, where l > k, do not interfere with TX<sub>k</sub>. 
-* **VALIDAFTER(j, k)**: For every j,k, such that j < k, a validation of TX<sub>k</sub> is performed after TX<sub>j</sub> executes (or re-executes).
+* **VALIDAFTER(j, k)**: For every j,k, such that j < k, a validation of TX<sub>k</sub>'s read-set is performed after TX<sub>j</sub> executes (or re-executes).
 
 Jointly, these two principles 
 suffice to guarantee both safety and liveness no matter how transactions are scheduled.
-Safety follows because a TX<sub>k</sub> gets validated after all TX<sub>j</sub>, j &lt; k, are finalized. Liveness follows by induction. Initially transaction 1 is guaranteed to pass validation successfully and not require re-execution. After all transactions from TX<sub>1</sub> to TX<sub>j</sub> have successfully validated, a (re-)execution of transaction j+1 will pass validation successfully and not require re-execution.
+Safety follows because a TX<sub>k</sub> gets validated after all TX<sub>j</sub>, j &lt; k, are finalized. Liveness follows by induction. Initially transaction 1 is guaranteed to pass read-set validation successfully and not require re-execution. After all transactions from TX<sub>1</sub> to TX<sub>j</sub> have successfully validated, a (re-)execution of transaction j+1 will pass read-set validation successfully and not require re-execution.
 
 **READLAST(k)** is implemented in Block-STM via a simple multi-version in-memory data structure that keeps versioned write-sets. A write by TX<sub>j</sub> is recorded with version j. 
 A read by TX<sub>k</sub> obtains the value recorded by the latest invocation of TX<sub>j</sub> with the highest j &lt; k.
@@ -103,12 +103,12 @@ A read by TX<sub>k</sub> obtains the value recorded by the latest invocation of 
 A special value `ABORTED` may be stored at version j when the latest invocation of TX<sub>j</sub> aborts. 
 If TX<sub>k</sub> reads this value, it suspends and resumes when the value becomes set.  
 
-**VALIDAFTER(j, k)** is implemented by scheduling for each TX<sub>j</sub> a validation of 
+**VALIDAFTER(j, k)** is implemented by scheduling for each TX<sub>j</sub> a read-set validation of 
 TX<sub>k</sub>, for every k > j, after TX<sub>j</sub> completes (re-)executing.
 
 ## Scheduling
 
-It remains to focus on devising an efficient schedule for parallelizing execution and validations. 
+It remains to focus on devising an efficient schedule for parallelizing execution and read-set validations. 
 We present the Block-STM scheduler gradually, starting with a correct but inefficient strawman and gradually improving it in three steps. The full scheduling strategy is described in under 20 lines of pseudo-code. 
 
 ## **S-1**
@@ -122,10 +122,10 @@ At a first cut, consider a strawman scheduler, S-1, that uses a centralized disp
 
     // Phase 2: 
     repeat {
-        dispatch all TX<sub></sub>'s for validation in parallel ; wait for completion
-    } until all validations pass
+        dispatch all TX<sub></sub>'s for read-set validation in parallel ; wait for completion
+    } until all read-set validations pass
 
-    validation of TX<sub>j</sub> {
+    read-set validation of TX<sub>j</sub> {
         re-read TX<sub>j</sub> read-set 
         if read-set differs from original read-set of the latest TX<sub>j</sub> execution 
             re-execute TX<sub>j</sub>
@@ -136,7 +136,7 @@ At a first cut, consider a strawman scheduler, S-1, that uses a centralized disp
     }
 </pre>
 
-S-1 operates in two master-coordinated phases. Phase 1 executes all transactions optimistically in parallel. Phase 2 repeatedly validates all transactions optimistically in parallel, re-executing those that fail, until there are no more validation failures. 
+S-1 operates in two master-coordinated phases. Phase 1 executes all transactions optimistically in parallel. Phase 2 repeatedly validates all transactions optimistically in parallel, re-executing those that fail, until there are no more read-set validation failures. 
 
 Recall our running example, a Block B with dependencies TX<sub>1</sub> &rarr; TX<sub>2</sub> &rarr; TX<sub>3</sub> &rarr; {TX<sub>4</sub>, TX<sub>6</sub>, TX<sub>9</sub>}), running with four threads, each transaction taking one time unit (and neglecting all other computation times).
 A possible execution of S-1 over Block B would proceed along the following time-steps:
@@ -145,11 +145,11 @@ A possible execution of S-1 over Block B would proceed along the following time-
     1. phase 1 starts. parallel execution of TX<sub>1</sub>, TX<sub>2</sub>, TX<sub>3</sub>, TX<sub>4</sub>    
     2. parallel execution of TX<sub>5</sub>, TX<sub>6</sub>, TX<sub>7</sub>, TX<sub>8</sub>    
     3. parallel execution of TX<sub>9</sub>, TX<sub>10</sub>    
-    4. phase 2 starts. parallel validation of all transactions in which TX<sub>2</sub>, TX<sub>3</sub>, TX<sub>4</sub>, TX<sub>6</sub> fail and re-execute    
-    5. continued parallel validation of all transactions in which TX<sub>9</sub> fails and re-executes    
-    6. parallel validation of all transactions in which TX<sub>3</sub>, TX<sub>4</sub>, TX<sub>6</sub> fail and re-execute    
-    7. parallel validation of all transactions in which TX<sub>4</sub>, TX<sub>6</sub>, TX<sub>9</sub> fail and re-execute    
-    8. parallel validation of all transactions in which all succeed
+    4. phase 2 starts. parallel read-set validation of all transactions in which TX<sub>2</sub>, TX<sub>3</sub>, TX<sub>4</sub>, TX<sub>6</sub> fail and re-execute    
+    5. continued parallel read-set validation of all transactions in which TX<sub>9</sub> fails and re-executes    
+    6. parallel read-set validation of all transactions in which TX<sub>3</sub>, TX<sub>4</sub>, TX<sub>6</sub> fail and re-execute    
+    7. parallel read-set validation of all transactions in which TX<sub>4</sub>, TX<sub>6</sub>, TX<sub>9</sub> fail and re-execute    
+    8. parallel read-set validation of all transactions in which all succeed
 </pre>
 
 It is quite easy to see that the S-1 validation loop satisfies VALIDAFTER(j,k) because every transaction is validated after previous executions complete.  However, it is quite wasteful in resources, each loop fully executing/validating all transactions.
@@ -162,7 +162,7 @@ via two synchronization counters, one per task type, `nextPrelimExecution` (init
     x.increment() { oldVal := x; increment x; return oldVal } 
 </pre>
 
-Each (re-)execution of TX<sub>j</sub> guarantees that validation of all higher transactions will be dispatched by performing
+Each (re-)execution of TX<sub>j</sub> guarantees that read-set validation of all higher transactions will be dispatched by performing
 an atomic
 <pre style="font-size: 14px;">
     nextValidation.setMin(j+1) { nextValidation := min(j+1, nextValidation) } 
@@ -175,7 +175,7 @@ The following strawman scheduler, S-2, utilizes a task stealing regime.
     // per thread main loop: 
     repeat {
 
-        // if available, steal next validation task
+        // if available, steal next read-set validation task
         if nextValidation < nextPrelimExecution
             j := nextValidation.increment() ; if j < nextPrelimExecution, validate TX<sub>j</sub>
 
@@ -185,7 +185,7 @@ The following strawman scheduler, S-2, utilizes a task stealing regime.
 
     } until nextPrelimExecution > n, nextValidation > n, and no task is still running
 
-    validation of TX<sub>j</sub> {
+    read-set validation of TX<sub>j</sub> {
         re-read TX<sub>j</sub> read-set 
         if read-set differs from original read-set of the latest TX<sub>j</sub> execution 
             re-execute TX<sub>j</sub>
@@ -206,11 +206,11 @@ With four threads, a possible execution of S-2 over Block B (recall, TX<sub>1</s
 would proceed along the following time-steps:
 
 <pre style="font-size: 14px;">
-    1. parallel execution of TX<sub>1</sub>, TX<sub>2</sub>, TX<sub>3</sub>, TX<sub>4</sub>; validation of TX<sub>2</sub>, TX<sub>3</sub>, TX<sub>4</sub> fail; nextValidation set to 3      
-    2. parallel execution of TX<sub>2</sub>, TX<sub>3</sub>, TX<sub>4</sub>, TX<sub>5</sub>; validation of TX<sub>3</sub>, TX<sub>4</sub> fail; nextValidation set to 4      
-    3. parallel execution of TX<sub>3</sub>, TX<sub>4</sub>, TX<sub>6</sub>, TX<sub>7</sub>; validation of TX<sub>4</sub>, TX<sub>6</sub> fail; nextValidation set to 5      
-    4. parallel execution of TX<sub>4</sub>, TX<sub>6</sub>, TX<sub>8</sub>, TX<sub>9</sub>; all validations succeed     
-    5. parallel execution of TX<sub>10</sub>; all validations succeed
+    1. parallel execution of TX<sub>1</sub>, TX<sub>2</sub>, TX<sub>3</sub>, TX<sub>4</sub>; read-set validation of TX<sub>2</sub>, TX<sub>3</sub>, TX<sub>4</sub> fail; nextValidation set to 3      
+    2. parallel execution of TX<sub>2</sub>, TX<sub>3</sub>, TX<sub>4</sub>, TX<sub>5</sub>; read-set validation of TX<sub>3</sub>, TX<sub>4</sub> fail; nextValidation set to 4      
+    3. parallel execution of TX<sub>3</sub>, TX<sub>4</sub>, TX<sub>6</sub>, TX<sub>7</sub>; read-set validation of TX<sub>4</sub>, TX<sub>6</sub> fail; nextValidation set to 5      
+    4. parallel execution of TX<sub>4</sub>, TX<sub>6</sub>, TX<sub>8</sub>, TX<sub>9</sub>; all read-set validations succeed     
+    5. parallel execution of TX<sub>10</sub>; all read-set validations succeed
 </pre>
 
 Importantly, **VALIDAFTER(j, k)** is preserved because upon (re-)execution of a TX<sub>j</sub>, it decreases `nextValidation` to j+1. This guarantees that every k > j will be validated after the j execution. 
@@ -234,7 +234,7 @@ supporting dependency managements via `ABORTED` tagging, and with early re-valid
     // per thread main loop, same as S-2
     ...
 
-    validation of TX<sub>j</sub>:
+    read-set validation of TX<sub>j</sub>:
     {
         re-read TX<sub>j</sub> read-set 
         if read-set differs from original read-set of the latest TX<sub>j</sub> execution 
@@ -261,10 +261,10 @@ would proceed along the following time-steps (depicted in the figure):
 ![](/images/bstm-scene.png)
 
 <pre style="font-size: 14px;">
-    1. parallel execution of TX<sub>1</sub>, TX<sub>2</sub>, TX<sub>3</sub>, TX<sub>4</sub>; validation of TX<sub>2</sub>, TX<sub>3</sub>, TX<sub>4</sub> fail; nextValidation set to 3      
+    1. parallel execution of TX<sub>1</sub>, TX<sub>2</sub>, TX<sub>3</sub>, TX<sub>4</sub>; read-set validation of TX<sub>2</sub>, TX<sub>3</sub>, TX<sub>4</sub> fail; nextValidation set to 3      
     2. parallel execution of TX<sub>2</sub>, TX<sub>5</sub>, TX<sub>7</sub>, TX<sub>8</sub>; executions of TX<sub>3</sub>, TX<sub>4</sub>, TX<sub>6</sub> are suspended on ABORTED; nextValidation set to 6    
-    3. parallel execution of TX<sub>3</sub>, TX<sub>10</sub>; executions of TX<sub>4</sub>, TX<sub>6</sub>, TX<sub>9</sub> are suspended on ABORTED; all validations succeed (for now)    
-    4. parallel execution of TX<sub>4</sub>, TX<sub>6</sub>, TX<sub>9</sub>; all validations succeed
+    3. parallel execution of TX<sub>3</sub>, TX<sub>10</sub>; executions of TX<sub>4</sub>, TX<sub>6</sub>, TX<sub>9</sub> are suspended on ABORTED; all read-set validations succeed (for now)    
+    4. parallel execution of TX<sub>4</sub>, TX<sub>6</sub>, TX<sub>9</sub>; all read-set validations succeed
 </pre>
 
 The reason S-3 preserves **VALIDAFTER(j, k)** is slightly subtle. Suppose that TX<sub>j</sub> &rarr; TX<sub>k</sub>.
