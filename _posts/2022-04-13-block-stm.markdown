@@ -132,7 +132,7 @@ At a first cut, consider a strawman scheduler, S-1, that uses a centralized disp
     }
 
     execution of TX<sub>j</sub> {
-        (re-)process TX<sub>j</sub>
+        (re-)process TX<sub>j</sub>, generating a read-set and write-set
     }
 </pre>
 
@@ -192,7 +192,7 @@ The following strawman scheduler, S-2, utilizes a task stealing regime.
     }
 
     execution of TX<sub>j</sub> {
-        (re-)process TX<sub>j</sub>
+        (re-)process TX<sub>j</sub>, generating a read-set and write-set
         nextValidation.setMin(j+1) 
     }
 </pre>
@@ -245,9 +245,9 @@ supporting dependency managements via `ABORTED` tagging, and with early re-valid
 
     execution of TX<sub>j</sub>:  
     {
-        (re-)process TX<sub>j</sub>
+        (re-)process TX<sub>j</sub>, generating a read-set and write-set
         resume any TX waiting for TX<sub>j</sub>'s ABORTED write-set
-        if new TX<sub>j</sub> write-set contains locations not marked ABORTED
+        if the new TX<sub>j</sub> write-set contains locations not marked ABORTED
             nextValidation.setMin(j+1) 
     }
 </pre>
