@@ -159,13 +159,21 @@ It is quite easy to see that the S-1 validation loop satisfies VALIDAFTER(j,k) b
 The first improvement step, S-2, is to replace both phases with parallel task-*stealing* by threads. Using insight from S-1, we distinguish between a preliminary execution (corresponding to phase 1) and re-execution (following a validation abort).  Stealing is coordinated
 via two synchronization counters, one per task type, `nextPrelimExecution` (initially 1) and `nextValidation` (initially n+1). In order to coordinate task stealing, each synchronizer `x` supports an atomic 
 <pre style="font-size: 14px;">
-    x.increment() { oldVal := x; increment x; return oldVal } 
+    x.safeincrement(roof) { 
+        if x > roof return n+1
+        oldVal := x; 
+        increment x; 
+        return oldVal 
+    } 
 </pre>
+At any moment in time, each individual transaction can execute or validate on at most one thread, due to a per-transaction mutex.
 
-Each (re-)execution of TX<sub>j</sub> guarantees that read-set validation of all higher transactions will be dispatched by performing
+An (re-)execution of TX<sub>j</sub> guarantees that read-set validation of all higher transactions will be dispatched by performing
 an atomic
 <pre style="font-size: 14px;">
-    nextValidation.setMin(j+1) { nextValidation := min(j+1, nextValidation) } 
+    nextValidation.setMin(j+1) { 
+        nextValidation := min(j+1, nextValidation) 
+    } 
 </pre>
 
 The following strawman scheduler, S-2, utilizes a task stealing regime.
@@ -176,12 +184,17 @@ The following strawman scheduler, S-2, utilizes a task stealing regime.
     repeat {
 
         // if available, steal next read-set validation task
-        if nextValidation < nextPrelimExecution
-            j := nextValidation.increment() ; if j < nextPrelimExecution, validate TX<sub>j</sub>
+        j := nextValidation.safeincrement(nextPrelimExecution-1) 
+        if j < nextPrelimExecution {
+            lock(j) ; validate TX<sub>j</sub> ; unlock(j)
+        }
 
         // if available, steal next execution task
-        otherwise if nextPrelimExecution <= n
-            j := nextPrelimExecution.increment() ; if j <= n, execute TX<sub>j</sub>
+        else {
+            j := nextPrelimExecution.safeincrement(n) 
+            if j <= n 
+                lock(j) ; execute TX<sub>j</sub> ; unlock(j)
+        }
 
     } until nextPrelimExecution > n, nextValidation > n, and no task is still running
 
