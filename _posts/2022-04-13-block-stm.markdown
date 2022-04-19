@@ -282,7 +282,9 @@ would proceed along the following time-steps (depicted in the figure):
 The reason S-3 preserves **VALIDAFTER(j, k)** is slightly subtle. Suppose that TX<sub>j</sub> &rarr; TX<sub>k</sub>.
 Recall, when TX<sub>j</sub> fails, S-3 lets (re-)validations of TX<sub>k</sub>, k > j, proceed before TX<sub>j</sub> completes re-execution. There are two possible cases. If a TX<sub>k</sub>-validation reads an `ABORTED` value of TX<sub>j</sub>, it will wait for TX<sub>j</sub> to complete; and if it reads a value which is not marked `ABORTED` and the TX<sub>j</sub> re-execution overwrites it, then TX<sub>k</sub> will be forced to revalidate again.
 
-> *Disclaimer: The description above reflects more-or-less faithfully the Block-STM approach; for details, see the [paper](https://arxiv.org/pdf/2203.06871.pdf) (note, the description above uses different names from the paper, e.g., `ABORTED` replaces “ESTIMATE”, `nextPrelimExecution` replaces “execution_idx”, `nextValidation` replaces “validation_idx”).*
+> *Disclaimer: The description above reflects more-or-less faithfully the Block-STM approach; for details, see the [paper](https://arxiv.org/pdf/2203.06871.pdf). Also, note the description here uses different names from the paper, e.g., `ABORTED` replaces “ESTIMATE”, `nextPrelimExecution` replaces “execution_idx”, `nextValidation` replaces “validation_idx”.*
+
+> *Acknowledgement: Many thanks to [Zhuolun(Daniel) Xiang](https://www.linkedin.com/in/zhuolun-xiang-b6898ab5/) for pointing out subtle details that helped improve this post.*
 
 ## Conclusion
 
