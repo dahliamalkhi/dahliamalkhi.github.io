@@ -185,9 +185,8 @@ The following strawman scheduler, S-2, utilizes a task stealing regime.
 
         // if available, steal next read-set validation task
         j := nextValidation.safeincrement(nextPrelimExecution-1) 
-        if j < nextPrelimExecution {
+        if j < nextPrelimExecution
             lock(j) ; validate TX<sub>j</sub> ; unlock(j)
-        }
 
         // if available, steal next execution task
         else {
