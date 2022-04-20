@@ -157,22 +157,9 @@ It is quite easy to see that the S-1 validation loop satisfies VALIDAFTER(j,k) b
 ## **S-2**
 
 The first improvement step, S-2, is to replace both phases with parallel task-*stealing* by threads. Using insight from S-1, we distinguish between a preliminary execution (corresponding to phase 1) and re-execution (following a validation abort).  Stealing is coordinated
-via two synchronization counters, one per task type, `nextPrelimExecution` (initially 1) and `nextValidation` (initially n+1). In order to coordinate task stealing, each synchronizer `x` supports an atomic `safeincrement` operation as follows:
-<pre style="font-size: 14px;">
-    x.safeincrement(roof) atomic { 
-        if x > roof return n+1
-        oldVal := x; increment x; return oldVal 
-    } 
-</pre>
+via two synchronization counters, one per task type, `nextPrelimExecution` (initially 1) and `nextValidation` (initially n+1). 
 At any moment in time, each individual transaction can execute or validate on at most one thread, due to a per-transaction mutex.
-
-An (re-)execution of TX<sub>j</sub> guarantees that read-set validation of all higher transactions will be dispatched by performing
-an atomic `setMin` operation as follows:
-<pre style="font-size: 14px;">
-    nextValidation.setMin(j+1) atomic { 
-        nextValidation := min(j+1, nextValidation) 
-    } 
-</pre>
+An (re-)execution of TX<sub>j</sub> guarantees that read-set validation of all higher transactions will be dispatched by decreasing nextValidation back to j+1.
 
 The following strawman scheduler, S-2, utilizes a task stealing regime.
 
@@ -181,17 +168,20 @@ The following strawman scheduler, S-2, utilizes a task stealing regime.
     // per thread main loop: 
     repeat {
 
-        // if available, steal next read-set validation task
-        j := nextValidation.safeincrement(nextPrelimExecution-1) 
-        if j < nextPrelimExecution
+        atomic {
+            if nextValidation < nextPrelimExecution {   // if available, steal next read-set validation task
+                (task, j) := ("validate", nextValidation)
+                nextValidation.increment();
+            } else if nextPrelimExecution <= n {        // if available, steal next execution task
+                (task, j) := ("execute", nextPrelimExecution)
+                nextPrelimExecution.increment();
+        }
+
+        if task = "validate"
             lock(j) ; validate TX<sub>j</sub> ; unlock(j)
 
-        // if available, steal next execution task
-        else {
-            j := nextPrelimExecution.safeincrement(n) 
-            if j <= n 
-                lock(j) ; execute TX<sub>j</sub> ; unlock(j)
-        }
+        else if task = "execute"
+            lock(j) ; execute TX<sub>j</sub> ; unlock(j)
 
     } until nextPrelimExecution > n, nextValidation > n, and no task is still running
 
@@ -203,7 +193,7 @@ The following strawman scheduler, S-2, utilizes a task stealing regime.
 
     execution of TX<sub>j</sub> {
         (re-)process TX<sub>j</sub>, generating a read-set and write-set
-        nextValidation.setMin(j+1) 
+        atomic { nextValidation := min(nextValidation, j+1) }
     }
 </pre>
 
@@ -249,7 +239,7 @@ supporting dependency managements via `ABORTED` tagging, and with early re-valid
         re-read TX<sub>j</sub> read-set 
         if read-set differs from original read-set of the latest TX<sub>j</sub> execution 
             mark the TX<sub>j</sub> write-set ABORTED
-            nextValidation.setMin(j+1) 
+            atomic { nextValidation := min(nextValidation, j+1) }
             re-execute TX<sub>j</sub>
     }
 
@@ -258,7 +248,7 @@ supporting dependency managements via `ABORTED` tagging, and with early re-valid
         (re-)process TX<sub>j</sub>, generating a read-set and write-set
         resume any TX waiting for TX<sub>j</sub>'s ABORTED write-set
         if the new TX<sub>j</sub> write-set contains locations not marked ABORTED
-            nextValidation.setMin(j+1) 
+            atomic { nextValidation := min(nextValidation, j+1) }
     }
 </pre>
 
