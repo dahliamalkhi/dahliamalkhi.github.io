@@ -167,6 +167,8 @@ The following strawman scheduler, S-2, utilizes a task stealing regime.
     // per thread main loop: 
     repeat {
 
+        task := "NA"
+
         // if available, steal next read-set validation task
         atomic { 
             if nextValidation < nextPrelimExecution    
