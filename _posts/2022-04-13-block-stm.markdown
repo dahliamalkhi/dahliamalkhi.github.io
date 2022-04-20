@@ -161,9 +161,7 @@ via two synchronization counters, one per task type, `nextPrelimExecution` (init
 <pre style="font-size: 14px;">
     x.safeincrement(roof) atomic { 
         if x > roof return n+1
-        oldVal := x; 
-        increment x; 
-        return oldVal 
+        oldVal := x; increment x; return oldVal 
     } 
 </pre>
 At any moment in time, each individual transaction can execute or validate on at most one thread, due to a per-transaction mutex.
