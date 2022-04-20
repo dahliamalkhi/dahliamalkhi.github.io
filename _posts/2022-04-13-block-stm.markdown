@@ -274,13 +274,13 @@ would proceed along the following time-steps (depicted in the figure):
 The reason S-3 preserves **VALIDAFTER(j, k)** is slightly subtle. Suppose that TX<sub>j</sub> &rarr; TX<sub>k</sub>.
 Recall, when TX<sub>j</sub> fails, S-3 lets (re-)validations of TX<sub>k</sub>, k > j, proceed before TX<sub>j</sub> completes re-execution. There are two possible cases. If a TX<sub>k</sub>-validation reads an `ABORTED` value of TX<sub>j</sub>, it will wait for TX<sub>j</sub> to complete; and if it reads a value which is not marked `ABORTED` and the TX<sub>j</sub> re-execution overwrites it, then TX<sub>k</sub> will be forced to revalidate again.
 
-> *Disclaimer: The description above reflects more-or-less faithfully the Block-STM approach; for details, see the [paper](https://arxiv.org/pdf/2203.06871.pdf). Also, note the description here uses different names from the paper, e.g., `ABORTED` replaces “ESTIMATE”, `nextPrelimExecution` replaces “execution_idx”, `nextValidation` replaces “validation_idx”.*
-
-> *Acknowledgement: Many thanks to [Zhuolun(Daniel) Xiang](https://www.linkedin.com/in/zhuolun-xiang-b6898ab5/) for pointing out subtle details that helped improve this post.*
-
 ## Conclusion
 
 Through a careful combination of simple, known techniques and applying them to a pre-ordered block of transactions that commit at bulk, 
 Block-STM enables effective speedup of smart contract parallel processing. Simplicity is a virtue of Block-STM, not a failing, enabling a robust and stable implementation. 
 Block-STM has been integrated within the Diem blockchain core ([https://github.com/diem/](https://github.com/diem/)) and evaluated on synthetic transaction workloads, yielding over 17x speedup on 32 cores under low/modest contention. 
+
+> *Disclaimer: The description above reflects more-or-less faithfully the Block-STM approach; for details, see the [paper](https://arxiv.org/pdf/2203.06871.pdf). Also, note the description here uses different names from the paper, e.g., `ABORTED` replaces “ESTIMATE”, `nextPrelimExecution` replaces “execution_idx”, `nextValidation` replaces “validation_idx”.*
+
+> *Acknowledgement: Many thanks to [Zhuolun(Daniel) Xiang](https://www.linkedin.com/in/zhuolun-xiang-b6898ab5/) for pointing out subtle details that helped improve this post.*
 
