@@ -10,7 +10,7 @@ locale                   : "en-US"
 title                    : "Dahlia Malkhi / PhD"
 title_separator          : "-"
 name                     : &name "Dahlia Malkhi"
-description              : &description "Personal homepage of Dahlia Malkhi, Chief Technology Officer at Diem Association"
+description              : &description "Personal homepage of Dahlia Malkhi, Chief Research Officer at Chainlink Labs"
 url                      : https://dahliamalkhi.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "dahliamalkhi/dahliamalkhi.github.io"
@@ -82,7 +82,7 @@ analytics:
 author:
   name             : "Dahlia Malkhi"
   avatar           : "dahliabest.jpg"
-  bio              : "Lead Maintainer of the Diem project"
+  bio              : "Chief Research Officer of Chainlink Labs"
   location         : "California"
   employer         : 
   pubmed           : 
