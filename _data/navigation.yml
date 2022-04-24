@@ -18,8 +18,8 @@ main:
   - title: "Short-bio"
     url: /
 
-  - title: "CV"
-    url: /cv/
+  - title: "Tech-profile"
+    url: /techprofile/
     
   - title: "Publications"
     url: /publications/
