@@ -1,7 +1,7 @@
 ---
 layout: archive
 permalink: /techprofile/
-title: "Tech profile"
+title: "Tech profile -- Dahlia Malkhi"
 excerpt: "dahlia malkhi tech profile"
 author_profile: true
 ---
