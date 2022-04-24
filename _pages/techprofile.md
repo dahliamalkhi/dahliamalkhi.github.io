@@ -24,68 +24,6 @@ keeps track of the rest.
 I was fortunate to bring several scientific results into fruition within leading industrial platforms. 
 Below, I tell the stories of four technologies I participated in creating.
 
-### CorfuDB
-#### Initiator and Technical Lead, at Microsoft 2012 and VMware 2014
-
-In 2012, [Phil Bernstein](https://en.wikipedia.org/wiki/Phil_Bernstein) approached me at Microsoft Research with the following
-observation. RAM has grown cheap/large enough to hold a complete database index
-in memory. Therefore, one can build a fully replicated transaction processing
-engine by storing a database index completely in-memory, persisting index
-modifications to a shared commit-log. 
-His team prototyped an in-memory index called Hyder. 
-The key enabler for this vision would be a reliable, high throughput distributed log, which
-Phil wanted to stripe across an array of SSDs. 
-Unfortunately (yet fotunate for me), the initial design of his distributed
-commit-log was flawed. While fixing the design, I extracted a foundational
-insight that motivated me to establish and lead the
-[CorfuDB project](https://github.com/CorfuDB/CorfuDB).
-
-[CorfuDB](https://dl.acm.org/doi/10.1145/2535930)
-is a database-less database built around a global,
-reliable, high-throughput distributed commit-log. The CorfuDB log serves as the
-source of ground truth around which one builds distributed control-planes for
-large clusters. 
-The key paradigm underlying CorfuDB is the reliable log that operates at high
-throughput. This was the foundational insight I have taken from Hyder. I built
-the first CorfuDB PoC at Microsoft with OS license, and later drove it at VMware to
-production.
-At VMware, CorfuDB serves as the a distributed control-plane for
-[NSX-T](https://shuttletitan.com/nsx-t/nsx-t-management-cluster-benefits-roles-ccp-sharding-and-failure-handling/),
-a leading SDN product that has market volume of over \$1B. 
-At Facebook, CorfuDB was re-engineered in
-[Delos](https://engineering.fb.com/data-center-engineering/delos/), a control plane underlying a dynamic cluster storage backend system. 
-
-You might wonder what happened to Phil's in-memory fully replicated DB. Several years later, it became the backbone of the SQL Azure cloud database.
-
-### Flexible Paxos
-#### Co-inventor, at VMware 2016
-
-In the summer of 2016, I hosted a research intern named Heidi Howard from
-Cambridge, UK. I told her about the CorfuDB protocol and encouraged her to think
-about the performance benefit of separating the sequencer role from the rest of
-the system. The result has been a stunning revelation we named 
-[Flexible Paxos: Quorum Intersection Revisited.](https://arxiv.org/abs/1608.06696):
-
->*Each of the phases of Paxos may use non-intersecting quorums. Only quorums from
-different phases are required to intersect. Majority quorums are not necessary
-as intersection is required only across phases.*
-
-Everyone in the field of distributed systems knows that quorums in Paxos must
-intersect, so what gives? What Heidi observed is that Paxos, which lies at the
-foundation of many production systems, is conservative. Within each of the
-phases of Paxos, it is safe to use disjoint quorums and majority quorums are not
-necessary. Since the second phase of Paxos (replication) is far more common than
-the first phase (leader election), we can use Flexible Paxos to reduce the size
-of commonly used second phase quorums. By no longer requiring replication
-quorums to intersect, we have removed an important limit on scalability. Through
-smart quorum construction and pragmatic system design, we enabled a new breed of
-scalable, resilient and performant consensus algorithms. 
-The algorithmic core of a production scale-out messaging bus at Facebook called
-[LogDevice](https://logdevice.io/docs/Consensus.html) is based on it, 
-as is 
-[the more flexible paxos](http://ssougou.blogspot.com/2016/08/a-more-flexible-paxos.html)
- of YouTube's distributed MySQL backbone.
- 
 ### HotStuff and DiemBFT
 #### Co-Inventor and Technical Lead, at VMware 2016, Diem(Libra) 2019
 
@@ -120,6 +58,70 @@ HotStuff became popular in the blockchain developer community not only due to
 linearity, but (and perhaps mostly) due to its simplicity and developer-friendly design. 
 Diem(Libra) adopted it to drive the blockchain infrastructure, as did (that we know of) Thunder, Celo,
 and Cypherium. 
+
+### Flexible Paxos
+#### Co-inventor, at VMware 2016
+
+In the summer of 2016, I hosted a research intern named Heidi Howard from
+Cambridge, UK. I told her about the CorfuDB protocol and encouraged her to think
+about the performance benefit of separating the sequencer role from the rest of
+the system. The result has been a stunning revelation we named 
+[Flexible Paxos: Quorum Intersection Revisited.](https://arxiv.org/abs/1608.06696):
+
+>*Each of the phases of Paxos may use non-intersecting quorums. Only quorums from
+different phases are required to intersect. Majority quorums are not necessary
+as intersection is required only across phases.*
+
+Everyone in the field of distributed systems knows that quorums in Paxos must
+intersect, so what gives? What Heidi observed is that Paxos, which lies at the
+foundation of many production systems, is conservative. Within each of the
+phases of Paxos, it is safe to use disjoint quorums and majority quorums are not
+necessary. Since the second phase of Paxos (replication) is far more common than
+the first phase (leader election), we can use Flexible Paxos to reduce the size
+of commonly used second phase quorums. By no longer requiring replication
+quorums to intersect, we have removed an important limit on scalability. Through
+smart quorum construction and pragmatic system design, we enabled a new breed of
+scalable, resilient and performant consensus algorithms. 
+The algorithmic core of a production scale-out messaging bus at Facebook called
+[LogDevice](https://logdevice.io/docs/Consensus.html) is based on it, 
+as is 
+[the more flexible paxos](http://ssougou.blogspot.com/2016/08/a-more-flexible-paxos.html)
+ of YouTube's distributed MySQL backbone.
+ 
+
+### CorfuDB
+#### Initiator and Technical Lead, at Microsoft 2012 and VMware 2014
+
+In 2012, [Phil Bernstein](https://en.wikipedia.org/wiki/Phil_Bernstein) approached me at Microsoft Research with the following
+observation. RAM has grown cheap/large enough to hold a complete database index
+in memory. Therefore, one can build a fully replicated transaction processing
+engine by storing a database index completely in-memory, persisting index
+modifications to a shared commit-log. 
+His team prototyped an in-memory index called Hyder. 
+The key enabler for this vision would be a reliable, high throughput distributed log, which
+Phil wanted to stripe across an array of SSDs. 
+Unfortunately (yet fotunate for me), the initial design of his distributed
+commit-log was flawed. While fixing the design, I extracted a foundational
+insight that motivated me to establish and lead the
+[CorfuDB project](https://github.com/CorfuDB/CorfuDB).
+
+[CorfuDB](https://dl.acm.org/doi/10.1145/2535930)
+is a database-less database built around a global,
+reliable, high-throughput distributed commit-log. The CorfuDB log serves as the
+source of ground truth around which one builds distributed control-planes for
+large clusters. 
+The key paradigm underlying CorfuDB is the reliable log that operates at high
+throughput. This was the foundational insight I have taken from Hyder. I built
+the first CorfuDB PoC at Microsoft with OS license, and later drove it at VMware to
+production.
+At VMware, CorfuDB serves as the a distributed control-plane for
+[NSX-T](https://shuttletitan.com/nsx-t/nsx-t-management-cluster-benefits-roles-ccp-sharding-and-failure-handling/),
+a leading SDN product that has market volume of over \$1B. 
+At Facebook, CorfuDB was re-engineered in
+[Delos](https://engineering.fb.com/data-center-engineering/delos/), a control plane underlying a dynamic cluster storage backend system. 
+
+You might wonder what happened to Phil's in-memory fully replicated DB. Several years later, it became the backbone of the SQL Azure cloud database.
+
 
 ### Fairplay
 #### Co-Inventor at Hebrew University of Jerusalem, 2004
