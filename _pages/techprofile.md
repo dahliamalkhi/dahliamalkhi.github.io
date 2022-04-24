@@ -1,6 +1,6 @@
 ---
 layout: archive
-permalink: /tech-profile/
+permalink: /techprofile/
 title: "Tech profile"
 excerpt: "dahlia malkhi tech profile"
 author_profile: true
