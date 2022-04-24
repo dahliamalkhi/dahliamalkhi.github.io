@@ -6,9 +6,8 @@ excerpt: "dahlia malkhi tech profile"
 author_profile: true
 ---
 
-# Dahlia Malkhi
 
-#### Short bio
+## Short bio
 
 A research and innovation lead in broad aspects of reliability and security of distributed systems with focus on blockchains and advances in financial technology.
 Co-inventor of [HotStuff](https://arxiv.org/abs/1803.05069), co-founder and technical co-lead of [VMware blockchain](https://research.vmware.com/projects/vmware-blockchain), co-inventor of [Flexible Paxos](https://arxiv.org/abs/1608.06696) (the technology behind [Log Device](https://logdevice.io/docs/Consensus.html)), creator and tech lead of [CorfuDB](https://github.com/CorfuDB/CorfuDB) (a database-less database driving VMware’s NSX-T distributed control plane), and co-inventor of the [FairPlay project](https://www.cs.huji.ac.il/project/Fairplay/).
