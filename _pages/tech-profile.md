@@ -25,7 +25,8 @@ keeps track of the rest.
 I was fortunate to bring several scientific results into fruition within leading industrial platforms. 
 Below, I tell the stories of four technologies I participated in creating.
 
-### CorfuDB, Initiator and Technical Lead (Microsoft and VMware)
+### CorfuDB
+#### Initiator and Technical Lead, at Microsoft 2012 and VMware 2014
 
 In 2012, [Phil Bernstein](https://en.wikipedia.org/wiki/Phil_Bernstein) approached me at Microsoft Research with the following
 observation. RAM has grown cheap/large enough to hold a complete database index
@@ -57,7 +58,8 @@ At Facebook, CorfuDB was re-engineered in
 
 You might wonder what happened to Phil's in-memory fully replicated DB. Several years later, it became the backbone of the SQL Azure cloud database.
 
-### Flexible Paxos, Co-Inventor (VMware)
+### Flexible Paxos
+#### Co-inventor, at VMware 2016
 
 In the summer of 2016, I hosted a research intern named Heidi Howard from
 Cambridge, UK. I told her about the CorfuDB protocol and encouraged her to think
@@ -85,7 +87,8 @@ as is
 [the more flexible paxos](http://ssougou.blogspot.com/2016/08/a-more-flexible-paxos.html)
  of YouTube's distributed MySQL backbone.
  
-## HotStuff and DiemBFT, Co-Inventor and Technical Lead (VMware,Libra/Diem)
+### HotStuff and DiemBFT
+#### Co-Inventor and Technical Lead, at VMware 2016, Diem(Libra) 2019
 
 Renewed interest in the Blockchain world on scaling and robustifying the long standing problem of
 asynchronous Byzantine Fault Tolerant (BFT) Consensus. 
@@ -119,7 +122,8 @@ linearity, but (and perhaps mostly) due to its simplicity and developer-friendly
 Diem(Libra) adopted it to drive the blockchain infrastructure, as did (that we know of) Thunder, Celo,
 and Cypherium. 
 
-### Fairplay, Co-Inventor (Hebrew University of Jerusalem)
+### Fairplay
+#### Co-Inventor at Hebrew University of Jerusalem, 2004
 
 In 2004, Noam Nisan and I asked ourselves whether cryptographic primitives which
 were considered completely impractical are actually becoming practical. With my 
