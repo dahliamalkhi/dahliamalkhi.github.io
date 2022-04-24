@@ -1,4 +1,5 @@
 ---
+layout: archive
 permalink: /tech-profile/
 title: "Tech profile"
 excerpt: "dahlia malkhi tech profile"
@@ -125,7 +126,6 @@ were considered completely impractical are actually becoming practical. With my
 PhD student Yaron Sella, we implemented the MPC protocol, while Noam supervised
 his grad-students to implement a language that compiles into a binary circuit. 
 The first fully implemented 
-\myref{``Fairplay--A Secure Two-party Computation System''. Dahlia Malkhi, Noam Nisan, Benny Pinkas and Yaron Sella.  In proceedings of the 13th Conference on USENIX Security Symposium, 2004.}
 [Fairplay MPC platform](https://www.cs.huji.ac.il/project/Fairplay/)
 was alive shortly after.
 By 2008, the the millionaires problem, mini auctions, and other problems, could be solved over an
