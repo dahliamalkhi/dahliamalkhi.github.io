@@ -28,9 +28,7 @@ In this post, I will do three things. I will explain the notion of a reliable an
 
 ## Reliable, Causal Broadcast 
 
-<center>
-<img src="/images/FIN/basic-DAG.png" width="500"   />
-</center>
+<img src="/images/FIN/basic-DAG.png" width="500"  class="center"  />
 
 Under the name gossip is a communication substrate for disseminating and processing messages in memory to prepare for a commit consensus decision. 
 The formal requirements from gossip are **Reliability**, 
