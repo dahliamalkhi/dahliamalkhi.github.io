@@ -56,7 +56,7 @@ first responsive BFT solution with a linear view-change.
 Beyond improving communication complexity, HotStuff embodies a minimalist algorithmic framework that bridges between classical BFT solutions and the blockchain world; the entire protocol is captured in less than half a page of pseudo-code.
 HotStuff became popular in the blockchain developer community not only due to
 linearity, but (and perhaps mostly) due to its simplicity and developer-friendly design. 
-Diem(Libra) adopted it to drive the blockchain infrastructure, as did (that we know of) Thunder, Celo,
+Diem(Libra) adopted it to drive the blockchain infrastructure, as did (that we know of) Flow, Celo,
 and Cypherium. 
 
 ### Flexible Paxos
