@@ -1,4 +1,4 @@
-## Away monolithic BFT consensus systems, enter DAG-based BFT consensus
+## Away Monolithic BFT Consensus, enter DAG Transport BFT Consensus
 
 To scale the BFT (Byzantine Fault Tolerant) Consensus core of blockchains,
 prevailing wisdom is to separate between two responsibilities. 
@@ -53,7 +53,7 @@ The main takeaway from Fin is that by separating reliable transaction disseminat
 
 <center>
 
-<img src="/images/Fin/basic-DAG.png" width="500"  class="center"  />
+<img src="/images/FIN/basic-DAG.png" width="500"  class="center"  />
 
   Figure 1: _A layer-by-layer causality DAG. Each node refers to 2F+1 ones in the preceding layer._
 
