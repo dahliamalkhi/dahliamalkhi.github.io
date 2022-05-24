@@ -35,13 +35,9 @@ The main takeaway from Fin is that by separating reliable transaction disseminat
 
 ## DAG Trans: Reliable Causal Broadcast 
 
-<center>
+  <img src="/images/FIN/basic-DAG.png" width="500"  class="center"  />
 
-    <img src="/images/FIN/basic-DAG.png" width="500"  class="center"  />
-
-    Figure 1: _A layer-by-layer causality DAG. Each message refers to 2F+1 ones in the preceding layer._
-
-</center>
+  Figure 1: _A layer-by-layer causality DAG. Each message refers to 2F+1 ones in the preceding layer._
 
 DAG Trans is a reliable, causal broadcast communication substrate for disseminating transactions among N=3F+1 parties.
 It exposes three basic API's, `broadcast()`, `deliver()`, and `setInfo()`. 
