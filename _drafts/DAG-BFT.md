@@ -176,9 +176,11 @@ The protocol **liveness** during periods of synchrony stems from two key mechani
 First, after GST (Global Stabilization Time), 
 i.e., after communication has become synchronous,
 views are inherently synchronized through DAG Trans. 
-For let $Delta$ be an upper bound on communication after GST.
-Once a view `r` with an honest leader is entered by the first honest party, within $2*Delta$, both the leader and all honest parties enter view `r` as well. 
-Within $4*Delta$, the view-r proposal and votes from all honest partes are spread to everyone. 
+For let $\Delta$ be an upper bound on communication after GST.
+Once a view `r` with an honest leader is entered by the first honest party, within $2 * \Delta$, both the leader and all honest parties enter view `r` as well. 
+Within $4 * \Delta$, the view-r proposal and votes from all honest partes are spread to everyone. 
+
+
 
 Second, a future view cannot preempt the current view commit. To start a new view, 
 a leader must collect either 2F+1 view-r _votes_ for the leader proposal, hence commit it; or 2F+1 view-(-r) _expirations_, which is impossible. 
