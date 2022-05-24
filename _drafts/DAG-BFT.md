@@ -28,11 +28,12 @@ In this post, I will first explain the notion of **DAG Trans**, a reliable, caus
 I will then demonstrate the utility of DAG Trans through **Fin**, an extremely simple, one-phase BFT Consensus for the partial synchrony model. 
 I will finish with a note on emerging **DAG Trans riding** BFT Consensus solutions. 
 
-The advant of DAG Trans is that parties can emit messages carrying useful payloads (e.g., transactions), in principle throttled only by network capacity.
+The advant of DAG Trans is that parties can emit messages carrying useful payloads (e.g., transactions). 
+DAG Trans injects into messages references to previous messages and regulates transmissions to saturate network capacity. 
+In this post, we concentrate on a layer-by-layer regime, where each message must refer to a certain number of messages in the preceding layer, as depicted below.
 There is no question that software modularity is advantageous, since
 it removes the Consensus protocol from the critical path of communication. 
-DAG Trans appends to messages only small headers carrying references to previous messages.
-Additionally, most solutions do not rely on DAG Trans in a pure black-box manner.  
+That said, most solutions do not rely on DAG Trans in a pure black-box manner.  
 
 For example, randomized consensus protocols, e.g., DAG-rider and Tusk, inject into the DAG coin-tosses from the consensus protocol. 
 Protocols for the partial synchrony model, e.g., Bullshark, delay message transmissions by the transport according to consensus protocol round timers, 
