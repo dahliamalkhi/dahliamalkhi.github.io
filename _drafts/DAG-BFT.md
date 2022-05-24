@@ -1,122 +1,176 @@
 ## Away monolithic BFT consensus systems, enter DAG-based BFT consensus
 
-To scale BFT (Byzantine Fault Tolerant) Consensus, prevailing wisdom is to
-separate between two responsibilities. The first is message dissemination. A network gossip 
-substrate is responsible for providing reliable and causal dissemination of yet-unconfirmed transactions. 
-It regulates communication and optimizes throughput, but it tracks only causal ordering. The causal order is exposed by the gossip layer to higher layers as a DAG (Direct Acyclic Graph) of messages.
-The second responsibility is a consistency and safety layer. 
-It forms a sequential ordering of transactions and determines a commit finality. It solves consensus utilizing the gossip DAG.
+To scale the BFT (Byzantine Fault Tolerant) Consensus core of blockchains,
+prevailing wisdom is to separate between two responsibilities. 
 
-It is funny how the community made a full circle coming from early distributed consensus systems 
+* The first is reliable Transport for spreading yet-uncomfirmed transactions.
+It regulates communication and optimizes throughput, but it tracks only causal ordering in the form of a DAG (Direct Acyclic Graph).
+
+* The second is forming a sequential ordering of transactions and determining their commit finality. 
+To do this, it must solve BFT Consensus utilizing the DAG.
+
+It is funny how the community made a full circle, from early distributed consensus systems 
 to where we are today. 
-I earned my PhD working alongside pioneers in distributed systems like @Ken Birman, @Danny Dolev, @Rick Schlichting, @Michael Melliar-Smith, @Louis Moser, @Robbert van Rennesse, @Yair Amir, @Idit Keidar, and others. More than two decades ago, distributed systems like Isis, Psync, Trans, Total and Transis, 
-achieved high throughput by building consensus over a causal message ordering substrate.
-Recent interest in scaling the core of BFT Consensus blockchains rekindled this approach in a line of works, e.g., . 
+I earned my PhD more than two decades ago for contributions to scaling reliable distributed systems. 
+Guided by and collbrating with the pioneers, e.g., 
+@Ken Birman, @Danny Dolev, @Rick Schlichting, @Michael Melliar-Smith, @Louis Moser, @Robbert van Rennesse, @Yair Amir, @Idit Keidar, 
+distributed middleware systems like Isis, Psync, Trans, Total and Transis, were designed for high-throughput
+by building consensus over causal message ordering.
+
+Recent interest in scaling blockchains is rekindling interest in this approach carrying with emphasis on Byzantine fault tolerance, e.g., in systems like 
 [HashGraph](https://hedera.com/hh_whitepaper_v2.1-20200815.pdf),
 [Narwal](),
 [DAG-rider](),
-[Bullshark](https://arxiv.org/abs/2201.05677"),
+[Bullshark](https://arxiv.org/abs/2201.05677"), and
 [Sui](). 
 
+In this post, I will first explain the notion of a reliable, causal broadcast Transport.
+I will then demonstrate an extremely simple, one-round BFT Consensus using the causal Transport that I will name Fin. 
+To do this, Fin only requires that the Transport exposes an API `setInfo(v)`, 
+embedding a value v (presumably of interest to the Consensus protocol) inside future transmissions.
+
+I will finish with a note on emerging DAG-riding solutions. 
 There is no question that software modularity is advantageous, though
 most of these solutions do not rely on a DAG in a black-box manner. 
-For example, randomized consensus protocols like DAG-rider and Tusk inject into the DAG coin-tosses from the consensus protocol. Protocols like Bullshark control message emissions according the consensus protocol round timers in order to ensure progress during periods of synchrony. 
+For example, randomized consensus protocols like DAG-rider and Tusk inject into the DAG coin-tosses from the consensus protocol. 
+Protocols like Bullshark control message emissions according the consensus protocol round timers in order to ensure progress during periods of synchrony. 
 In other words, rarely is the case that [all you need is a DAG](https://arxiv.org/abs/2102.08325).
+Like Bullshark, Fin is not a black-box solution, it controls message emissions according to round timers.
 
-In this post, I will do three things. I will explain the notion of a reliable and causal messaging substrate. I will then demonstrate an extremely simple one-round BFT consensus using it. Like Bullshark, it is not a black-box solution, it controls message emissions according to round timers. I will finish with a note on DAG-riders, pure DAG solutions that extract consensus passively and autonomously solely based on the DAG structure, with no extra information exchanged.
+Pure DAG BFT Consensus solutions exists, that extract consensus passively and autonomously solely based on the DAG structure, with no extra information exchanged.
 
+==> Main takeaway: By separating the task of reliably disseminating transactions, DAG-based BFT consensus can be made simple and highly performant.
 
-## Reliable, Causal Broadcast 
+## Reliable, Causal Broadcast Transport 
 
 <center>
 
-<img src="/images/FIN/basic-DAG.png" width="500"  class="center"  />
+<img src="/images/Fin/basic-DAG.png" width="500"  class="center"  />
 
-  _Basic layer-by-layer causality DAG. Each node refers to 2F+1 in preceding layer._
+  Figure 1: _A layer-by-layer causality DAG. Each node refers to 2F+1 ones in the preceding layer._
 
 </center>
 
-Under the name gossip is a communication substrate for disseminating and processing messages in memory to prepare for a commit consensus decision. 
-The formal requirements from gossip are **Reliability**, 
-there are sufficiently many persisted copies of delivered messages to guarantee availability against a threshold of failures. **Causality**, messages are delivered carrying information that reflects their ``happens-before'' causality order. **Integrity**, a message sent by an honest party is eventually delivered.
+A reliable, causal broadcast Transport is a communication substrate for disseminating transactions among N=3F+1 parties.
+A Transport exposes a `broadcast(payload)` API for a party to send a message to other parties.
+A party's upcall `deliver(m)` is triggered when a message `m` can be delivered.
 
-By separating the task of reliably disseminating transactions, 
-DAG-based BFT consensus can be made highly efficient due to several considerations.
+The basic reliability requirements of reliable broadcast are Reliability, Agreement, Validity and Integrity, as follows:
 
-* A message dissemination substrate which is designed outside the consensus critical path can be made
-highly efficient because it can regulate communication
-based on network. 
-* A DAG can continue growing even when consensus slows down, e.g., when a leader is faulty.
-* A good gossip construction may outlive the consensus protocol for
-which it is originally set up for, allowing improvements
-in BFT consensus to be incorporated into existing systems without requiring to change their foundations.
-* Vice versa, a networking substrate may evolve without risk to hurt the subtle logic of BFT
-consensus solutions that use it.
-* Consensus messages are made smaller because consensus needs to handle meta-info only. 
+* **Reliability.** 
+If an honest party delivers a message `m`, then eventually every other honest party delivers `m`.
+For Reliability to be satisfied, sufficiently many copies of `m` must be persisted prior to delivery by any honest party, to guarantee availability against a threshold F of failures. 
 
-There is a very efective way to spread msgs reliably while incorporating causality meta-information.
+* **Agreement.**
+If an honest party delivers a message `m` as the _k'th_ message from `p`,
+and another honest party delivers a message `m'` as the _k'th_ message from `p`,
+then `m = m'`.
 
-Every message carries the following Fields:
-- r - a round number
--
-- self-cert - a certificate carrying 267
-=
+* **Validity.**
+A message sent by an honest party is eventually delivered by all honest parties.
 
-signatures from processes storing a
-copy of the payload
-- causal predecessors - reference to 2ft) hound
-# messages.
-The Mss also carries;
-- payload - message contents that has utility,
-=
-such as transaction requests
-We remark that self-certificates can be tlticiently
-collected in "pull" mode, simultaneously obtaining
-new messages from parties and aek's to own message.
-The mempool protocol creates a global Dna structure;.
+* ** Integrity.**
+If an honest party delivers a message `m` from an honest party `p`, then `p` indeed invoked `broadcast(m)`.
+
+To serve as a transport for BFT Consensus, two additional mechanisms are added. 
+
+* **Meta-information field.**
+To prepare for Consensus decisions, the Transport exposes a additional
+API `setInfo(meta)`. Every broadcast message carries the latest `meta` value invoked in `setInfo(meta)`. 
+Both `payload` and `meta` are opaque for the Transport.
+
+* **Causal dependencies.**
+Every message carries references to the last message its sender has seen from each party, including itself, in the past. 
+For simplicity, this post will restrict the discussion to a layer-by-layer DAG Transport, in which each message except the first layer carries references to at least 2F+1 messages in the preceding layer.
+
+Every delivered message carries the following Fields:
+
+- `info`, a meta information field reserved for the Consensus protocol at sender to inject
+- `payload`, contents such as transaction(s)
+- `predecessors`, references to 2F+1 messages in the preceding layer
+
+The requirement from a causal Transport is as follows:
+
+* **Causality.** 
+If an honest party delivers a message then all messages referenced in `predecessors` have been delivered. Note that transitively, this ensures
+its entire causal history has been delivered.
+
+There is a very efective way to spread msgs reliably while incorporating causality information.
+Message digests are echoed by all parties. When 2F+1 echoes are collected, a message can be delivered. 
+The details of the echo protocol implementation are omitted here. We remark that echo protocols can be streamlined in an extremely effective manner, resulting in high utilization and throughout (see [Narwal](..)).
+
+Such as reliable, causal transaction dissemination 
+can be made highly efficient due to several considerations.
+
+* A message dissemination substrate which is designed outside the consensus critical path
+
+* A layer by layer construction allows the transport to advance at the speed of the fastest 2F+1 active parties with no centralized bottlenecks and with regular, balanced network utilization. There is no need to buffer or retransmit messages farther back than the current layer.
+
+* A DAG can continue growing even when consensus is temporarily blocked from progress, e.g., when a consensus leader is faulty.
+
+* A gossip transport may continue improving independently of any particular consensus protocol for
+which is set up. A good modular design ensure that the transport evolution does not risk the (subtle) logic of BFT consensus built on top of it.
+
+
 
 ## BFT consensus inside the DAG 
 
-Here, we describe an extremely simple in-DAG protocol which is based on PBFT, that has one layer commit rule.
-We call it Fin, a small part of a Bullshark's tail.
+Here, we describe an extremely simple in-DAG protocol which is based on PBFT, that has one round commit rule.
+We call it Fin, a small part of a shark's tail.
 
-Fin protocol rounds correspond to Dna tags 1- 1.
+The Fin protocol works in a view-by-view manner. View numbers are embedded in DAG messages using the `setMeta()` API. We refer to a message `m` as a _view-r message_ if it carries a meta-information field `m.meta = r`.
+Note, Protocol views do *NOT* correspond to DAG layers, but rather, view numbers are explicitly embedded in the meta-information field of messages.
 
-In round r, each party including a pre-determined
-leader, collects 2F+1 or more references to round-(r-1) msgs.
+There is a pre-designated leader for view `r` known to everyone, we will denote it by `leader(r)`.
+At each party `p`, the view `r` protocol works as follows:
 
-* The pre-determined leader emits a proposal carrying refs.
-* Non-leader parties wait for the leader proposal
-for a round -timer RT.
-* if a legitimate proposal is received,
-apart-yÑtamsgcar_rying
-- a ref to leader proposal at round r
-- 26-11 ref's to round-(r-1) msgs
-- a payload with new tx's
-* if a timer expires, the party emits the
-same as above but with no
-leander proposal ref. This implicitly indicates
-a fault/timeout report by the party.
-* At any point when a round has 21--11 ref's
-to a leader proposal <the proposal itself counts as
-one), the proposal and its entire causal history
-becomes committed
+1. **Entering a view.** 
+Upon entering view `r`, party `p` starts a view timer set to expire after a pre-determined view delay RT. 
 
-A leader proposal is legitimate if
-* it is well formatted and signed
-* like any Msg, It carries 2ft ref's to previous
-round and Karrie s a self-certification
-safety follows because if a round r proposal
-=
-becomes committed, then it. is in the canst
-past of 2ft parties, of which 5-+1 are included
-in any future proposal
-after GST
-Lire ness is guarantee#É honest players
-😐a round g whose leader is good
-at most RT-s ahead of the lender.
-This should be the case if RT> 2s by the
-properties of reliable broadcast
+2. **Proposing.** 
+The leader `leader(r)` of view `r` waits to deliver 2F+1 view-(r-1) messages or 2F+1 view-(-(r-1)) messages, and then invokes `setMeta(r)`. 
+  * Thereafter, a transmission by the leader will carry the new view number as indication of _proposing_.
+
+3. **Voting.**
+Each party `p` other than the leader waits to deliver the first view-r message from `leader(r)` and then invokes `setMeta(r)`. 
+  * Thereafter, a transmission by `p` will carry the new view number as indication of _voting_.
+
+4. **Committing.** 
+A commit of a leader proposal at view `r` with its causal past happens if the DAG maintains the following conditions:
+  * A first view-r message from `leader(r)`, denoted `proposal(r)`, exists. 
+  * `proposal(r).predecessors` refers to either 2F+1 view-(r-1) messages or 2F+1 view-(-(r-1)) messages (or r=1).
+  * First view-r messages from 2F+1 parties `p`, each has `predecessors` referring to `proposal(r)`, exist. 
+
+5. **Expiring the view timer.**
+Upon a commit of `proposal(r)` a party disarms the view-r timer.  If the view-r timer expires, a party invokes `setMeta(-r)`. 
+  * Thereafter, a transmission by `p` will carry the new view number as indication of _expiration_.
+
+7. **Advancing to next view.**
+A party enters view `r+1` if the DAG satisfies one condition of the following two:
+  * A commit of `proposal(r)' happens.
+  * View-(-r) messages indicating expirations from 2F+1 parties exist.
+
+It is worthwhile noting that, at no time are transaction broadcast slowed down by the Fin protocol. Rather, Consensus logic is embedded into the DAG structure simply by injecting view numbers into it.
+
+The Causal, Reliable Transport makes arguing about correctness very easy, 
+though a formal proof of correctness is beyond the scope of this post. 
+Briefly, the **safety** of commits is as follows. If ever a view-r proposal becomes committed, 
+then it is in the causal past of 2F+1 parties that voted for it.
+Any future view proposal must refer directly or indirectly to 2F+1 view-r messages, of which F+1 are votes for the committed proposal.
+Hence, any commit of a future view causally follows and transitively commits the view-r proposal. 
+
+The protocol **liveness** stems from two key mechanisms. First, after GST, views are inherently synchronized through the Transport, since all message deliveries by honest parties are within 2*Delta delay of each other. 
+Once a view `r` with an honest leader is entered by the first honest party, within 2*Delta, both the leader and all honest parties enter view `r` as well. 
+Within 4*Delta, the view-r proposal and votes from all honest partes are spread to everyone. 
+Second, a future view cannot preempt the current view commit. To start a new view, 
+a leader must collect either 2F+1 view-r _votes_ for the leader proposal, hence commit it; or 2F+1 view-(-r) _expirations_, which is impossible. 
+
+Fin is modeled after PBFT while removing the complexity of PBFT's view-change, thus supporting regular leader rotation.
+PBFT works in two-phases. The first phase protects against leader equivocation. Building over a causal Transport, non-equivocation is already guaranteed at the transport level. 
+The second phase guards commits by locking votes that transfer to the next view. 
+This is the most subtle ingredient of PBFT. In particular, a new leader proposal must carry a proof of safety composed of 2F+1 
+messages attesting to the highest vote from previous views. 
+In Fin, a leader proposal simply references those 2F+1 messages from the previous view.
 
 ## Pure-DAG Solutions
 
