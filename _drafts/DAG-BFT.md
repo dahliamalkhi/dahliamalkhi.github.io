@@ -125,9 +125,9 @@ which is set up. A good modular design ensure that the transport evolution does 
 
 **Fin** is a simple BFT protocol built uding Trans DAG. 
 Fin is based on PBFT but leveraging Trans DAG, has a one-phase commit rule and an extremely simple leader protocol.
-The name Fin, a small part of a shark's tail, stands for the protocol succinctness, 
+The name Fin, a small part of a shark's tail, stands for the protocol succinctness. 
 
-The Fin protocol works in a view-by-view manner. View numbers are embedded in DAG messages using the `setMeta()` API. We refer to a message `m` as a _view-r message_ if it carries a meta-information field `m.meta = r`.
+The Fin protocol works in a view-by-view manner. View numbers are embedded in DAG messages using the `setInfo()` API. We refer to a message `m` as a _view-r message_ if it carries a meta-information field `m.info = r`.
 Note, Protocol views do *NOT* correspond to DAG layers, but rather, view numbers are explicitly embedded in the meta-information field of messages.
 
 There is a pre-designated leader for view `r` known to everyone, we will denote it by `leader(r)`.
@@ -137,11 +137,11 @@ At each party `p`, the view `r` protocol works as follows:
 Upon entering view `r`, party `p` starts a view timer set to expire after a pre-determined view delay RT. 
 
 2. **Proposing.** 
-The leader `leader(r)` of view `r` waits to deliver 2F+1 view-(r-1) messages or 2F+1 view-(-(r-1)) messages, and then invokes `setMeta(r)`. 
+The leader `leader(r)` of view `r` waits to deliver 2F+1 view-(r-1) messages or 2F+1 view-(-(r-1)) messages, and then invokes `setInfo(r)`. 
   * Thereafter, a transmission by the leader will carry the new view number as indication of _proposing_.
 
 3. **Voting.**
-Each party `p` other than the leader waits to deliver the first view-r message from `leader(r)` and then invokes `setMeta(r)`. 
+Each party `p` other than the leader waits to deliver the first view-r message from `leader(r)` and then invokes `setInfo(r)`. 
   * Thereafter, a transmission by `p` will carry the new view number as indication of _voting_.
 
 4. **Committing.** 
@@ -151,7 +151,7 @@ A commit of a leader proposal at view `r` with its causal past happens if the DA
   * First view-r messages from 2F+1 parties `p`, each has `predecessors` referring to `proposal(r)`, exist. 
 
 5. **Expiring the view timer.**
-Upon a commit of `proposal(r)` a party disarms the view-r timer.  If the view-r timer expires, a party invokes `setMeta(-r)`. 
+Upon a commit of `proposal(r)` a party disarms the view-r timer.  If the view-r timer expires, a party invokes `setInfo(-r)`. 
   * Thereafter, a transmission by `p` will carry the new view number as indication of _expiration_.
 
 7. **Advancing to next view.**
