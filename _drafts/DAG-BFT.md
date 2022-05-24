@@ -50,63 +50,61 @@ The value `v` is opaque to the DAG Trans and presumably of interest to the Conse
 
 The main takeaway from Fin is that by separating reliable transaction dissemination from Consensus, BFT Consensus based on DAG Trans can be made simple and highly performant at the same time.
 
-## Reliable, Causal Broadcast DAG Trans 
+## DAG Trans: Reliable Causal Broadcast 
 
 <center>
 
 <img src="/images/FIN/basic-DAG.png" width="500"  class="center"  />
 
-  Figure 1: _A layer-by-layer causality DAG. Each node refers to 2F+1 ones in the preceding layer._
+  Figure 1: _A layer-by-layer causality DAG. Each message refers to 2F+1 ones in the preceding layer._
 
 </center>
 
-A reliable, causal broadcast DAG Trans is a communication substrate for disseminating transactions among N=3F+1 parties.
-A DAG Trans exposes a `broadcast(payload)` API for a party to send a message to other parties.
-A party's upcall `deliver(m)` is triggered when a message `m` can be delivered.
+DAG Trans is a reliable, causal broadcast communication substrate for disseminating transactions among N=3F+1 parties.
+DAG Trans exposes three basic API's, `broadcast()`, `deliver()`, and `setInfo()`. 
 
-The basic reliability requirements of reliable broadcast are Reliability, Agreement, Validity and Integrity, as follows:
+More specificially, a `broadcast(payload)` API for a party `p` to send a message to other parties.
+A party's upcall `deliver(m)` is triggered when a message `m` can be delivered. 
+To prepare for Consensus decisions, DAG Trans exposes a single additional API `setInfo(meta)`. 
+A message broadcast by a party carries the latest `meta` value invoked in `setInfo(meta)` by the party. 
+
+Messages are delivered carrying a sender's payload and additional meta information that can be inspected upon reception.
+Every delivered message `m` carries the following fields:
+
+- `m.sender`, the sender identity 
+- `m.index`, a delivery index from the sender
+- `m.payload`, contents such as transaction(s)
+- `m.predecessors`, references to the last message its sender has seen from each party, including itself, in the past. In a layer-by-layer construction, it includes references to 2F+1 messages in the preceding layer.
+- `m.info`, a meta information field reserved for the Consensus protocol at sender to inject through `setInfo()`
+
+The basic requirements of reliable broadcast are **Reliability**, **Agreement**, **Validity** and **Integrity**. 
+A **Causality** requirement is added that exposes message dependencies. 
 
 * **Reliability.** 
-If an honest party delivers a message `m`, then eventually every other honest party delivers `m`.
-For Reliability to be satisfied, sufficiently many copies of `m` must be persisted prior to delivery by any honest party, to guarantee availability against a threshold F of failures. 
+If a `deliver(m)` event happens at an honest party, then eventually `deliver(m)` happens at every other honest party.
 
 * **Agreement.**
-If an honest party delivers a message `m` as the _k'th_ message from `p`,
-and another honest party delivers a message `m'` as the _k'th_ message from `p`,
+If a `deliver(m)` happens at an honest party, 
+and `deliver(m')` happens at another honest party, such that 
+`m.sender = m'.sender`, 
+`m.index = m'.index`
 then `m = m'`.
 
 * **Validity.**
-A message sent by an honest party is eventually delivered by all honest parties.
+If an honest party invokes `broadcast(m)` then a `deliver(m)` event eventually happens at all honest parties.
 
-* ** Integrity.**
-If an honest party delivers a message `m` from an honest party `p`, then `p` indeed invoked `broadcast(m)`.
-
-To serve as a transport for BFT Consensus, two additional mechanisms are added. 
-
-* **Meta-information field.**
-To prepare for Consensus decisions, the DAG Trans exposes a additional
-API `setInfo(meta)`. Every broadcast message carries the latest `meta` value invoked in `setInfo(meta)`. 
-Both `payload` and `meta` are opaque for the DAG Trans.
-
-* **Causal dependencies.**
-Every message carries references to the last message its sender has seen from each party, including itself, in the past. 
-For simplicity, this post will restrict the discussion to a layer-by-layer DAG DAG Trans, in which each message except the first layer carries references to at least 2F+1 messages in the preceding layer.
-
-Every delivered message carries the following Fields:
-
-- `info`, a meta information field reserved for the Consensus protocol at sender to inject
-- `payload`, contents such as transaction(s)
-- `predecessors`, references to 2F+1 messages in the preceding layer
-
-The requirement from a causal DAG Trans is as follows:
+* **Integrity.**
+If a `deliver(m)` event happens at an honest party, then `p` indeed invoked `broadcast(m)`.
 
 * **Causality.** 
-If an honest party delivers a message then all messages referenced in `predecessors` have been delivered. Note that transitively, this ensures
-its entire causal history has been delivered.
+If a `deliver(m)` happens at an honest party, 
+then `deliver(d)` events already happened at the party for all messages `d` referenced in `m.predecessors`. 
+Note that by transitively, this ensures its entire causal history has been delivered.
 
 There is a very efective way to spread msgs reliably while incorporating causality information.
 Message digests are echoed by all parties. When 2F+1 echoes are collected, a message can be delivered. 
 The details of the echo protocol implementation are omitted here. We remark that echo protocols can be streamlined in an extremely effective manner, resulting in high utilization and throughout (see [Narwal](..)).
+For Reliability to be satisfied, sufficiently many copies of `m` must be persisted prior to delivery by any honest party, to guarantee availability against a threshold F of failures. 
 
 Such as reliable, causal transaction dissemination 
 can be made highly efficient due to several considerations.
