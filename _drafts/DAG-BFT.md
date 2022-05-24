@@ -91,10 +91,11 @@ and `deliver(m')` happens at another honest party, such that
 then `m = m'`.
 
 * **Validity.**
-If an honest party invokes `broadcast(m)` then a `deliver(m)` event eventually happens at all honest parties.
+If an honest party invokes `broadcast(payload)` then a `deliver(m)` with `m.payload = payload` event eventually happens at all honest parties.
 
 * **Integrity.**
-If a `deliver(m)` event happens at an honest party, then `p` indeed invoked `broadcast(m)`.
+If a `deliver(m)` event happens at an honest party, then `p` indeed invoked `broadcast(payload)` where `m.payload = payload` 
+and the latest `setInfo(meta)` by `p` has `m.info = meta`.
 
 * **Causality.** 
 If a `deliver(m)` happens at an honest party, 
