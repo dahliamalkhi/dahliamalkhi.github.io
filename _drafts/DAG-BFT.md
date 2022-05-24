@@ -9,6 +9,9 @@ It regulates communication and optimizes throughput, but it tracks only causal o
 * The second is forming a sequential ordering of transactions and determining their commit finality. 
 To do this, it must solve BFT Consensus utilizing the DAG.
 
+The advent of DAG Trans is that while solving BFT Consensus, parties spread messages that carry useful payloads (e.g., transactions). 
+Moreover, parties can continue sending messages and the DAG keep growing even when Consensus is stalled. Eventually, when Consensus makes progress, it can succinctly refer to all the messages that accumulated in the DAG and commit them.
+
 It is funny how the community made a full circle, from early distributed consensus systems 
 to where we are today. 
 I earned my PhD more than two decades ago for contributions to scaling reliable distributed systems, 
@@ -27,26 +30,6 @@ Recent interest in scaling blockchains is rekindling interest in this approach, 
 In this post, I will first explain the notion of **DAG Trans**, a reliable, causal broadcast transport that shares a DAG among parties.
 I will then demonstrate the utility of DAG Trans through **Fin**, an extremely simple, one-phase BFT Consensus for the partial synchrony model. 
 I will finish with a note on emerging **DAG Trans riding** BFT Consensus solutions. 
-
-The advant of DAG Trans is that parties can spread messages carrying useful payloads (e.g., transactions), even when other parts of the system are stalled. 
-DAG Trans injects into messages references to previous messages and regulates transmissions to saturate network capacity. 
-In this post, we concentrate on a layer-by-layer regime, where each message must refer to a certain number of messages in the preceding layer, as depicted below.
-There is no question that software modularity is advantageous, since
-it removes the Consensus protocol from the critical path of communication. 
-That said, most solutions do not rely on DAG Trans in a pure black-box manner.  
-
-For example, randomized consensus protocols, e.g., DAG-rider and Tusk, inject into the DAG coin-tosses from the consensus protocol. 
-Protocols for the partial synchrony model, e.g., Bullshark, delay message transmissions by the transport according to consensus protocol round timers, 
-in order to ensure progress during periods of synchrony. 
-The randomized Consensus protocol described in the original Hashgraph whitepaper does use the DAG in a pure manner, but it is too slow. 
-Real life Hashgraph deployments must inject coin tosses to advance quickly during periods of asynchrony, 
-(Say something about the pioneering work in Total? ToTo?)
-
-In other words, rarely is the case that [all you need is a DAG](https://arxiv.org/abs/2102.08325).
-
-To achieve consensus over the DAG Trans, Fin requires only a single API, `setInfo(v)`. 
-Messages emitted by the DAG Trans should carry the value `v` in the latest `setInfo(v)` invokation. 
-The value `v` is opaque to the DAG Trans and presumably of interest to the Consensus protocol.
 
 The main takeaway from Fin is that by separating reliable transaction dissemination from Consensus, BFT Consensus based on DAG Trans can be made simple and highly performant at the same time.
 
@@ -67,6 +50,10 @@ A **Causality** requirement is added that exposes message dependencies.
 
 More specificially, DAG Trans provides a `broadcast(payload)` API for a party `p` to send a message to other parties.
 A party's upcall `deliver(m)` is triggered when a message `m` can be delivered. 
+
+DAG Trans injects into messages references to previous messages and regulates transmissions to saturate network capacity. 
+In this post, we concentrate on a layer-by-layer regime, where each message must refer to a certain number of messages in the preceding layer, as depicted above.
+
 To prepare for Consensus decisions, DAG Trans exposes a single additional API `setInfo(meta)`. 
 A message broadcast by a party carries the latest `meta` value invoked in `setInfo(meta)` by the party. 
 
@@ -178,24 +165,46 @@ i.e., after communication has become synchronous,
 views are inherently synchronized through DAG Trans. 
 For let $\Delta$ be an upper bound on communication after GST.
 Once a view `r` with an honest leader is entered by the first honest party, within $2 * \Delta$, both the leader and all honest parties enter view `r` as well. 
-Within $4 * \Delta$, the view-r proposal and votes from all honest partes are spread to everyone. 
+Within $4 * \Delta$, the view-r proposal and votes from all honest parties are spread to everyone. 
 
+Second, so long as view timers are set to be at least $4 * \Delta$, a future view does not preempt a current view's commit. For in order to start a new view, 
+a leader must collect either 2F+1 view-r _votes_ for the leader proposal, hence commit it; or 2F+1 view-(-r) _expirations_, which is impossible as argued above. 
 
-
-Second, a future view cannot preempt the current view commit. To start a new view, 
-a leader must collect either 2F+1 view-r _votes_ for the leader proposal, hence commit it; or 2F+1 view-(-r) _expirations_, which is impossible. 
-
-Fin is modeled after PBFT while removing the complexity of PBFT's view-change, thus supporting regular leader rotation.
-PBFT works in two-phases. The first phase protects against leader equivocation. Building over a causal DAG Trans, non-equivocation is already guaranteed at the transport level. 
-The second phase guards commits by locking votes that transfer to the next view. 
-This is the most subtle ingredient of PBFT. In particular, a new leader proposal must carry a proof of safety composed of 2F+1 
+Fin is modeled after PBFT while removing the complexity of PBFT's view-change, thus supporting regular leader rotation. 
+View-change is the most subtle ingredient of PBFT. 
+Simplifying PBFT leveraging DAG Trans is achieved in two ways.
+Recall that PBFT works in two-phases. 
+The first phase protects against leader equivocation. Building over DAG Trans, non-equivocation is already guaranteed at the transport level, hence Fin foregoes the first phase. 
+The second phase of PBFT guards commits by parties locking their votes and transferring them to the next view. 
+In particular, a new leader proposal must carry a proof of safety composed of 2F+1 
 messages attesting to the highest vote from previous views. 
 In Fin, a leader proposal simply references those 2F+1 messages from the previous view.
 
-## Pure-DAG Solutions
+## DAG Solutions
+
+(This section is still in progress.)
+
+There is no question that software modularity is advantageous, since
+it removes the Consensus protocol from the critical path of communication. 
+That said, most solutions do not rely on DAG Trans in a pure black-box manner.  
+
+For example, randomized consensus protocols, e.g., DAG-rider and Tusk, inject into the DAG coin-tosses from the consensus protocol. 
+Protocols for the partial synchrony model, e.g., Bullshark, delay message transmissions by the transport according to consensus protocol round timers, 
+in order to ensure progress during periods of synchrony. 
+The randomized Consensus protocol described in the original Hashgraph whitepaper does use the DAG in a pure manner, but it is too slow. 
+Real life Hashgraph deployments must inject coin tosses to advance quickly during periods of asynchrony, 
+(Say something about the pioneering work in Total? ToTo?)
+
+In other words, rarely is the case that [all you need is a DAG](https://arxiv.org/abs/2102.08325).
+
+To achieve consensus over the DAG Trans, Fin requires only a single API, `setInfo(v)`. 
+Messages emitted by the DAG Trans should carry the value `v` in the latest `setInfo(v)` invokation. 
+The value `v` is opaque to the DAG Trans and presumably of interest to the Consensus protocol.
 
 In a pure DAG-rider solution, parties passively analyze the DAG structure and autonomously arrive at commit ordering decisions. 
 No extra messages are exchanged by the consensus protocol nor is it given an opportunity to inject information into the DAG or control message emission. 
+
 Total and Hashgraph's whitepaper algorithm are pure DAG-rider solutions. Both use randomization to solve consensus and both are rather theoretical and may suffer prohibitive latencies.
+
 
 
