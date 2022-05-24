@@ -138,40 +138,48 @@ Upon entering view `r`, party `p` starts a view timer set to expire after a pre-
 
 2. **Proposing.** 
 The leader `leader(r)` of view `r` waits to deliver 2F+1 view-(r-1) messages or 2F+1 view-(-(r-1)) messages, and then invokes `setInfo(r)`. 
-    * Thereafter, the next transmission by the leader will carry the new view number as indication of _proposing_.
+    * Thereafter, the next transmission by the leader will carry the new view number as indication of _proposing_ in view `r`.
 
 3. **Voting.**
 Each party `p` other than the leader waits to deliver the first view-r message from `leader(r)` and then invokes `setInfo(r)`. 
-    * Thereafter, the next transmission by `p` will carry the new view number as indication of _voting_.
+    * Thereafter, the next transmission by `p` will carry the new view number as indication of _voting_ for the view-r proposal.
 
 4. **Committing.** 
 A commit of a leader proposal at view `r` with its causal predecessors happens if the DAG maintains the following conditions:
+
     * A first view-r message from `leader(r)`, denoted `proposal(r)`, exists. 
     * `proposal(r).predecessors` refers to either 2F+1 view-(r-1) messages or 2F+1 view-(-(r-1)) messages (or r=1).
     * First view-r messages from 2F+1 parties `p` exist, each having `predecessors` referring to `proposal(r)`. 
+
 Upon a commit of `proposal(r)`, a party disarms the view-r timer.  
 
 5. **Expiring the view timer.**
 If the view-r timer expires, a party invokes `setInfo(-r)`. 
-    * Thereafter, the next transmission by `p` will carry the new view number as indication of _expiration_.
+    * Thereafter, the next transmission by `p` will carry the negative view number as indication of _expiration_ of `r`.
 
 7. **Advancing to next view.**
-A party enters view `r+1` if the DAG satisfies one condition of the following two:
-    * A commit of `proposal(r)' happens.
-    * View-(-r) messages indicating expirations from 2F+1 parties exist.
+A party enters view `r+1` if the DAG satisfies one of the following two conditions:
+    * A commit of `proposal(r)` happens.
+    * View-(-r) messages indicating view-r expiration from 2F+1 parties exist.
 
-It is worthwhile noting that, at no time are transaction broadcast slowed down by the Fin protocol. Rather, Consensus logic is embedded into the DAG structure simply by injecting view numbers into it.
+It is worthwhile noting that, at no time is transaction broadcast slowed down by the Fin protocol. Rather, Consensus logic is embedded into the DAG structure simply by injecting view numbers into it.
 
-The Causal, Reliable DAG Trans makes arguing about correctness very easy, 
+The reliability and causality properties of DAG Trans makes arguing about correctness very easy, 
 though a formal proof of correctness is beyond the scope of this post. 
-Briefly, the **safety** of commits is as follows. If ever a view-r proposal becomes committed, 
+Briefly, the **safety** of commits is as follows. If ever a view-r proposal `proposal(r)` becomes committed, 
 then it is in the causal past of 2F+1 parties that voted for it.
-Any future view proposal must refer directly or indirectly to 2F+1 view-r messages, of which F+1 are votes for the committed proposal.
-Hence, any commit of a future view causally follows and transitively commits the view-r proposal. 
+Any future view proposal must refer directly or indirectly to 2F+1 view-r messages, of which F+1 are votes for `proposal(r)`.
+Hence, any commit of a future view causally follows (hence, transitively re-commits) `proposal(r)`. 
 
-The protocol **liveness** stems from two key mechanisms. First, after GST, views are inherently synchronized through the DAG Trans, since all message deliveries by honest parties are within 2*Delta delay of each other. 
-Once a view `r` with an honest leader is entered by the first honest party, within 2*Delta, both the leader and all honest parties enter view `r` as well. 
-Within 4*Delta, the view-r proposal and votes from all honest partes are spread to everyone. 
+The protocol **liveness** during periods of synchrony stems from two key mechanisms. 
+
+First, after GST (Global Stabilization Time), 
+i.e., after communication has become synchronous,
+views are inherently synchronized through DAG Trans. 
+For let $Delta$ be an upper bound on communication after GST.
+Once a view `r` with an honest leader is entered by the first honest party, within $2*Delta$, both the leader and all honest parties enter view `r` as well. 
+Within $4*Delta$, the view-r proposal and votes from all honest partes are spread to everyone. 
+
 Second, a future view cannot preempt the current view commit. To start a new view, 
 a leader must collect either 2F+1 view-r _votes_ for the leader proposal, hence commit it; or 2F+1 view-(-r) _expirations_, which is impossible. 
 
