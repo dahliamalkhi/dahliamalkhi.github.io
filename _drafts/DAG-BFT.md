@@ -37,9 +37,9 @@ The main takeaway from Fin is that by separating reliable transaction disseminat
 
 <center>
 
-<img src="/images/FIN/basic-DAG.png" width="500"  class="center"  />
+    <img src="/images/FIN/basic-DAG.png" width="500"  class="center"  />
 
-  Figure 1: _A layer-by-layer causality DAG. Each message refers to 2F+1 ones in the preceding layer._
+    Figure 1: _A layer-by-layer causality DAG. Each message refers to 2F+1 ones in the preceding layer._
 
 </center>
 
