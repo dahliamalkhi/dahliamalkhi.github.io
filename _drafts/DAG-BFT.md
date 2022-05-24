@@ -28,7 +28,7 @@ In this post, I will first explain the notion of **DAG Trans**, a reliable, caus
 I will then demonstrate the utility of DAG Trans through **Fin**, an extremely simple, one-phase BFT Consensus for the partial synchrony model. 
 I will finish with a note on emerging **DAG Trans riding** BFT Consensus solutions. 
 
-The advant of DAG Trans is that parties can emit messages carrying useful payloads (e.g., transactions). 
+The advant of DAG Trans is that parties can spread messages carrying useful payloads (e.g., transactions), even when other parts of the system are stalled. 
 DAG Trans injects into messages references to previous messages and regulates transmissions to saturate network capacity. 
 In this post, we concentrate on a layer-by-layer regime, where each message must refer to a certain number of messages in the preceding layer, as depicted below.
 There is no question that software modularity is advantageous, since
@@ -108,8 +108,7 @@ Message digests are echoed by all parties. When 2F+1 echoes are collected, a mes
 The details of the echo protocol implementation are omitted here. We remark that echo protocols can be streamlined in an extremely effective manner, resulting in high utilization and throughout (see [Narwal](..)).
 For Reliability to be satisfied, sufficiently many copies of `m` must be persisted prior to delivery by any honest party, to guarantee availability against a threshold F of failures. 
 
-Such as reliable, causal transaction dissemination 
-can be made highly efficient due to several considerations.
+Reliable, causal transaction dissemination can be made highly efficient due to several considerations.
 
 * A message dissemination substrate which is designed outside the consensus critical path
 
