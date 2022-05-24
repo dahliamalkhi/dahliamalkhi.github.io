@@ -142,22 +142,23 @@ The leader `leader(r)` of view `r` waits to deliver 2F+1 view-(r-1) messages or 
 
 3. **Voting.**
 Each party `p` other than the leader waits to deliver the first view-r message from `leader(r)` and then invokes `setInfo(r)`. 
-  * Thereafter, a transmission by `p` will carry the new view number as indication of _voting_.
+    * Thereafter, the next transmission by `p` will carry the new view number as indication of _voting_.
 
 4. **Committing.** 
-A commit of a leader proposal at view `r` with its causal past happens if the DAG maintains the following conditions:
-  * A first view-r message from `leader(r)`, denoted `proposal(r)`, exists. 
-  * `proposal(r).predecessors` refers to either 2F+1 view-(r-1) messages or 2F+1 view-(-(r-1)) messages (or r=1).
-  * First view-r messages from 2F+1 parties `p`, each has `predecessors` referring to `proposal(r)`, exist. 
+A commit of a leader proposal at view `r` with its causal predecessors happens if the DAG maintains the following conditions:
+    * A first view-r message from `leader(r)`, denoted `proposal(r)`, exists. 
+    * `proposal(r).predecessors` refers to either 2F+1 view-(r-1) messages or 2F+1 view-(-(r-1)) messages (or r=1).
+    * First view-r messages from 2F+1 parties `p` exist, each having `predecessors` referring to `proposal(r)`. 
+Upon a commit of `proposal(r)`, a party disarms the view-r timer.  
 
 5. **Expiring the view timer.**
-Upon a commit of `proposal(r)` a party disarms the view-r timer.  If the view-r timer expires, a party invokes `setInfo(-r)`. 
-  * Thereafter, a transmission by `p` will carry the new view number as indication of _expiration_.
+If the view-r timer expires, a party invokes `setInfo(-r)`. 
+    * Thereafter, the next transmission by `p` will carry the new view number as indication of _expiration_.
 
 7. **Advancing to next view.**
 A party enters view `r+1` if the DAG satisfies one condition of the following two:
-  * A commit of `proposal(r)' happens.
-  * View-(-r) messages indicating expirations from 2F+1 parties exist.
+    * A commit of `proposal(r)' happens.
+    * View-(-r) messages indicating expirations from 2F+1 parties exist.
 
 It is worthwhile noting that, at no time are transaction broadcast slowed down by the Fin protocol. Rather, Consensus logic is embedded into the DAG structure simply by injecting view numbers into it.
 
