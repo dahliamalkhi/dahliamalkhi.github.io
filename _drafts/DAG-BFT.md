@@ -65,7 +65,7 @@ It exposes three basic API's, `broadcast()`, `deliver()`, and `setInfo()`.
 The basic requirements of reliable broadcast are **Reliability**, **Agreement**, **Validity** and **Integrity**. 
 A **Causality** requirement is added that exposes message dependencies. 
 
-More specificially, a `broadcast(payload)` API for a party `p` to send a message to other parties.
+More specificially, DAG Trans provides a `broadcast(payload)` API for a party `p` to send a message to other parties.
 A party's upcall `deliver(m)` is triggered when a message `m` can be delivered. 
 To prepare for Consensus decisions, DAG Trans exposes a single additional API `setInfo(meta)`. 
 A message broadcast by a party carries the latest `meta` value invoked in `setInfo(meta)` by the party. 
@@ -121,10 +121,11 @@ which is set up. A good modular design ensure that the transport evolution does 
 
 
 
-## BFT consensus inside the DAG 
+## Fin: BFT Consensus Using Trans DAG 
 
-Here, we describe an extremely simple in-DAG protocol which is based on PBFT, that has one round commit rule.
-We call it Fin, a small part of a shark's tail.
+**Fin** is a simple BFT protocol built uding Trans DAG. 
+Fin is based on PBFT but leveraging Trans DAG, has a one-phase commit rule and an extremely simple leader protocol.
+The name Fin, a small part of a shark's tail, stands for the protocol succinctness, 
 
 The Fin protocol works in a view-by-view manner. View numbers are embedded in DAG messages using the `setMeta()` API. We refer to a message `m` as a _view-r message_ if it carries a meta-information field `m.meta = r`.
 Note, Protocol views do *NOT* correspond to DAG layers, but rather, view numbers are explicitly embedded in the meta-information field of messages.
