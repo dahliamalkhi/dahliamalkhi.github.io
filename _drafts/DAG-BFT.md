@@ -61,7 +61,9 @@ The main takeaway from Fin is that by separating reliable transaction disseminat
 </center>
 
 DAG Trans is a reliable, causal broadcast communication substrate for disseminating transactions among N=3F+1 parties.
-DAG Trans exposes three basic API's, `broadcast()`, `deliver()`, and `setInfo()`. 
+It exposes three basic API's, `broadcast()`, `deliver()`, and `setInfo()`. 
+The basic requirements of reliable broadcast are **Reliability**, **Agreement**, **Validity** and **Integrity**. 
+A **Causality** requirement is added that exposes message dependencies. 
 
 More specificially, a `broadcast(payload)` API for a party `p` to send a message to other parties.
 A party's upcall `deliver(m)` is triggered when a message `m` can be delivered. 
@@ -77,8 +79,7 @@ Every delivered message `m` carries the following fields:
 - `m.predecessors`, references to the last message its sender has seen from each party, including itself, in the past. In a layer-by-layer construction, it includes references to 2F+1 messages in the preceding layer.
 - `m.info`, a meta information field reserved for the Consensus protocol at sender to inject through `setInfo()`
 
-The basic requirements of reliable broadcast are **Reliability**, **Agreement**, **Validity** and **Integrity**. 
-A **Causality** requirement is added that exposes message dependencies. 
+DAG Trans satisfies the following requirements:
 
 * **Reliability.** 
 If a `deliver(m)` event happens at an honest party, then eventually `deliver(m)` happens at every other honest party.
