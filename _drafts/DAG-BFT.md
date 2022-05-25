@@ -35,10 +35,10 @@ and
 were designed for high-throughput by building consensus over causal message ordering (!).
 Recent interest in scaling blockchains is rekindling interest in this approach with emphasis on Byzantine fault tolerance, e.g., in systems like 
 [HashGraph](https://hedera.com/hh_whitepaper_v2.1-20200815.pdf),
-[Narwal](),
-[DAG-rider](),
+[Narwal](https://arxiv.org/abs/2105.11827),
+[DAG-rider](https://arxiv.org/abs/2102.08325),
 [Bullshark](https://arxiv.org/abs/2201.05677"), and
-[Sui](). 
+[Sui](https://medium.com/mysten-labs/announcing-narwhal-tusk-open-source-3721135abfc3). 
 
 In this post, I will first explain the notion of **DAG Trans**, a reliable, causal broadcast transport that shares a DAG among parties.
 I will then demonstrate the utility of DAG Trans through **Fin**, an extremely simple, one-phase BFT Consensus for the partial synchrony model. 
@@ -270,7 +270,7 @@ Total and Hashgraph's whitepaper algorithm are pure DAG-rider solutions. Both us
 
 * _"Preserving and Using Context Information in Interprocess Communication"_, Peterson, Buchholz and Schlichting, 1989. [[Psync]](https://dl.acm.org/doi/10.1145/65000.65001)
 
-* _"Broadcast Protocols for Distributed Systems"_, Melliar-Smith, Moser and Agrawals, 1990. [[Trans and Total]](https://ieeexplore.ieee.org/document/80121?tp=&signout=success)
+* _"Broadcast Protocols for Distributed Systems"_, Melliar-Smith, Moser and Agrawala, 1990. [[Trans and Total]](https://ieeexplore.ieee.org/document/80121?tp=&signout=success)
 
 * _"Total Ordering Algorithms"_, Moser, Melliar-Smith and Agrawala, 1991. [[Total (short version)]](https://dl.acm.org/doi/10.1145/327164.327298)
 
@@ -280,12 +280,12 @@ Total and Hashgraph's whitepaper algorithm are pure DAG-rider solutions. Both us
 
 * _"The Transis approach to high availability cluster communication"_, Dolev and Malkhi, 1996. [[Transis]](https://dahliamalkhi.github.io/files/Transis-CACM1994.pdf)
 
-* [HashGraph](https://hedera.com/hh_whitepaper_v2.1-20200815.pdf)
+* _"Hedera: A Public Hashgraph Network & Governing Council"_, Baird, Harman, and Madsen, whitepaper v.2.1., 2020. [[Hedera HashGraph]](https://hedera.com/hh_whitepaper_v2.1-20200815.pdf)
 
-* [Narwal]()
+* _"Narwhal and Tusk: A DAG-based Mempool and Efficient BFT Consensus"_, Danezis, Kokoris-Kogias, Sonnino, and Spiegelman, 2021. [[Narwal and Tusk]](https://arxiv.org/abs/2105.11827)
 
-* [DAG-rider]()
+* _"All You Need is DAG"_, Keidar, Kokoris-Kogias, Naor, and Spiegelman, 2021. [[DAG-rider]](https://arxiv.org/abs/2102.08325)
 
-* [Bullshark](https://arxiv.org/abs/2201.05677")
+* _"Bullshark: DAG BFT Protocols Made Practical"_, Spiegelman, Giridharan, Sonnino, and Kokoris-Kogias, 2022. [[Bullshark]](https://arxiv.org/abs/2201.05677")
 
-* [Sui]() 
+* _"Announcing Narwhal and Tusk Open Source"_, Mysten Labs, 2022. [[Sui]](https://medium.com/mysten-labs/announcing-narwhal-tusk-open-source-3721135abfc3) 
