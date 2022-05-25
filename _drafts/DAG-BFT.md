@@ -144,18 +144,39 @@ We refer to a message `m` as a _"view-r message"_ if it carries a meta-informati
 Note, protocol views do *NOT* correspond to DAG layers, but rather, view numbers are explicitly embedded in the meta-information field of messages.
 
 There is a pre-designated leader for view `r`, denoted `leader(r)`, which is known to everyone.
-`leader(r)` proposes in view `r` simply by setting int meta-information value to `r` via `setInfo(r)`. 
+`leader(r)` proposes in view `r` simply by setting its meta-information value to `r` via `setInfo(r)`. 
 The next broadcast transmitted by the leader is interpreted as `proposal(r)`. 
 The proposal implicitly extends the sequence of transactions with the transitive causal predecessors of `proposal(r)`. 
 
 In the figure below, `leader(k)` is party 1 and its first message in view-r is on layer k denoted with a full yellow oval, 
 indicating it is `proposal(r)`. 
 
-Parties 2 and 4 vote for `proposal(r)` by advancing their view to `r` in layer k+1, denoted with striped yellow ovals. `proposal(r)` now has the required quorum of votes (including the leader's implicit vote), and it becomes committed.
+When a party receives `proposal(k)`, it advances the meta-information value to `r` view `setInfo(r)`. 
+The next broadcast transmitted by the party is interpreted as voting for `proposal(r)`. 
+
+Below, parties 2 and 4 both vote for `proposal(r)` by advancing their view to `r` in layer k+1, denoted with striped yellow ovals. `proposal(r)` now has the required quorum of 2F+1 votes (including the leader's implicit vote), and it becomes committed.
+
+When a party sees 2F+1 votes in view `r` it enters view `r+1`.
+The progress of view `r+1` is similar, with a leader proposal on layer k+2 and votes for it in layer k+3.
 
   <img src="/images/FIN/propose-commit.png" width="500"  class="center"  />
 
-  **_Figure 2:_** _proposals and votes in view `r` and `r+1`, both committes._
+  **_Figure 2:_** _proposals and votes in view `r` and `r+1`, both committed._
+
+If `leader(r)` is faulty or disconnected, parties will eventually time out and set their meta-information to `-r`. 
+Their next broadcasts are interpreted as reporting a failure of view `r`, enabling view `r+1` to start. 
+
+In the figure below, the first view-r message by `leader(r)` on layer k does not arrive in time, denoted with a full red oval. 
+Parties 2, 3, 4 report this by setting their meta-information to `-r`, denoted as striped red ovals in layer k+1.
+
+At layer k+2, the leader of view `r+1` posts a messages that has meta-information set to `r+1`, and taken as `proposal(r+1)`. 
+Note that this message has in its causal past messages carrying `-r` values, hence faulty view have utility in advancing the global 
+sequence of transaction like any other.
+
+  <img src="/images/FIN/propose-commit.png" width="500"  class="center"  />
+
+  **_Figure 3:_** _a faulty view `r` and recovery in view `r+1`._
+
 
 ### Fin Analysis
 
