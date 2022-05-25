@@ -100,11 +100,21 @@ The details of the echo protocol implementation are omitted here. We remark that
 Fin is inspired by PBFT but leverages Trans DAG to have a one-phase commit rule and an extremely simple leader protocol.
 The name Fin, a small organ of an aquatic creature that controls is stirring, stands for the protocol succinctness and its central role in blockchains. 
 
-The Fin protocol works in a view-by-view manner. View numbers are embedded in DAG messages using the `setInfo()` API. We refer to a message `m` as a _"view-r message"_ if it carries a meta-information field `m.info = r`.
+The Fin protocol works in a view-by-view manner. 
+View numbers are embedded in DAG messages using the `setInfo()` API. 
+We refer to a message `m` as a _"view-r message"_ if it carries a meta-information field `m.info = r`.
 Note, protocol views do *NOT* correspond to DAG layers, but rather, view numbers are explicitly embedded in the meta-information field of messages.
 
 There is a pre-designated leader for view `r`, denoted `leader(r)`, which is known to everyone.
-At each party `p`, the protocol for view `r` works as follows:
+
+`leader(r)` proposes in view `r` simply by setting int meta-information value to `r` via `setInfo(r)`. The next broadcast transmitted by the leader is interpreted as a proposal denoted `proposal(r)`. The proposal implicitly extends the sequence of transactions with the transitive causal predecessors of `proposal(r)`. 
+
+Below, `leader(k)` is process 1. Its first message in view-r indicated with a full yellow oval is `proposal(r)`. It becomes committed
+
+
+The protocol for view `r` at each party `p` works as described in the frame below. 
+
+<pre style="font-size: 14px;">
 
 1. **Entering a view.** 
 Upon entering view `r`, party `p` starts a view timer set to expire after a pre-determined view delay. 
@@ -134,6 +144,7 @@ If the view-r timer expires, a party invokes `setInfo(-r)`.
 A party enters view `r+1` if the DAG satisfies one of the following two conditions:
     * A commit of `proposal(r)` happens.
     * View-(-r) messages indicating view-r expiration from 2F+1 parties exist.
+</pre>
 
 It is worthwhile noting that, at no time is transaction broadcast slowed down by the Fin protocol. Rather, Consensus logic is embedded into the DAG structure simply by injecting view numbers into it.
 
