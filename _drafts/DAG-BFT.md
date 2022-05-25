@@ -113,31 +113,31 @@ The pseudo-code for `view(r)` at each party `p` is given in the frame below and 
 <pre style="font-size: 14px;">
 
 1. <b>Entering a view. </b>
-  Upon entering view(r), party p starts a view timer set to expire after a pre-determined view delay. 
+   Upon entering view(r), party p starts a view timer set to expire after a pre-determined view delay. 
 
 2. <b>Proposing. </b>
-  The leader leader(r) of view(r) waits to deliver 2F+1 view(r-1) messages or 2F+1 view(-(r-1)) messages, and then invokes setInfo(r). 
+   The leader leader(r) of view(r) waits to deliver 2F+1 view(r-1) messages or 2F+1 view(-(r-1)) messages, and then invokes setInfo(r). 
      Thereafter, the next transmission by the leader will carry the new view number as indication of proposing in view(r).
 
 3. <b>Voting.</b>
-  Each party p other than the leader waits to deliver the first view(r) message from leader(r) and then invokes setInfo(r). 
+   Each party p other than the leader waits to deliver the first view(r) message from leader(r) and then invokes setInfo(r). 
      Thereafter, the next transmission by p will carry the new view number as indication of voting for the view(r) proposal.
 
 4. <b>Committing. </b>
-  A commit of a leader proposal at view(r) with its causal predecessors happens if the DAG maintains the following three conditions:
+   A commit of a leader proposal at view(r) with its causal predecessors happens if the DAG maintains the following three conditions:
 
      (i) A first view(r) message from leader(r), denoted proposal(r), exists. 
      (ii) proposal(r).predecessors refers to either 2F+1 view(r-1) messages or 2F+1 view(-(r-1)) messages (or r=1).
      (iii) First view(r) messages from 2F+1 parties p exist, each having predecessors referring to proposal(r). 
 
-  Upon a commit of proposal(r), a party disarms the view(r) timer.  
+   Upon a commit of proposal(r), a party disarms the view(r) timer.  
 
 5. <b>Expiring the view timer.</b>
-  If the view(r) timer expires, a party invokes setInfo(-r). 
+   If the view(r) timer expires, a party invokes setInfo(-r). 
      Thereafter, the next transmission by p will carry the negative view number as indication of expiration of r.
 
 7. <b>Advancing to next view.</b>
-  A party enters view(r+1) if the DAG satisfies one of the following two conditions:
+   A party enters view(r+1) if the DAG satisfies one of the following two conditions:
      (i) A commit of proposal(r) happens.
      (ii) view(-r) messages indicating view(r) expiration from 2F+1 parties exist.
 </pre>
@@ -272,3 +272,13 @@ Total and Hashgraph's whitepaper algorithm are pure DAG-rider solutions. Both us
 * _"Early Delivery Totally Ordered Multicast in Asynchronous Environments"_, Dolev, Kramer and Malki, 1993. [[ToTo]](https://dahliamalkhi.github.io/files/Multicast-FTCS1993.pdf)
 
 * _"The Transis approach to high availability cluster communication"_, Dolev and Malkhi, 1996. [[Transis]](https://dahliamalkhi.github.io/files/Transis-CACM1994.pdf)
+
+* [HashGraph](https://hedera.com/hh_whitepaper_v2.1-20200815.pdf)
+
+* [Narwal]()
+
+* [DAG-rider]()
+
+* [Bullshark](https://arxiv.org/abs/2201.05677")
+
+* [Sui]() 
