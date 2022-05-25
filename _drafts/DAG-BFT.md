@@ -44,7 +44,7 @@ In this post, I will first explain the notion of **DAG Trans**, a reliable, caus
 I will then demonstrate the utility of DAG Trans through **Fin**, an extremely simple, one-phase BFT Consensus for the partial synchrony model. 
 I will finish with a note on emerging **DAG Trans riding** BFT Consensus solutions. 
 
-Fin is not a full-fledged BFT Consensus system design, rather, the main takeaway from it is that **by separating reliable transaction dissemination from Consensus, BFT Consensus based on DAG Trans can be made simple and highly performant at the same time**.
+Fin is meant for demonstration purposes, not as a full-fledged BFT Consensus system design. The main takeaway from Fin is that **by separating reliable transaction dissemination from Consensus, BFT Consensus based on DAG Trans can be made simple and highly performant at the same time**.
 
 ## DAG Trans: Reliable Causal Broadcast 
 
