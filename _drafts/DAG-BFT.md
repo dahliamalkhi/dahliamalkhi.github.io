@@ -101,7 +101,7 @@ Fin is inspired by PBFT but leverages Trans DAG to have a one-phase commit rule 
 The name Fin, a small part of aquatic creatures that controls stirring, stands for the protocol succinctness and its central role in blockchains (and also from the fact that DAT Trans scenarios below look like swarms of fish). 
 
 ### Fin Pseudo-code
-The pseudo-code for view `r` at each party `p` is given in the frame below and explained after it. 
+The pseudo-code for view-r at each party `p` is given in the frame below and explained after it. 
 
 <pre style="font-size: 14px;">
 
@@ -140,15 +140,15 @@ The pseudo-code for view `r` at each party `p` is given in the frame below and e
 The Fin protocol works in a view-by-view manner. 
 
 View numbers are embedded in DAG messages using the `setInfo()` API. 
-We refer to a message `m` as a _"view-r message"_ if it carries a meta-information field `m.info = r`.
+We refer to a message `m` as a _"`view-r` message"_ if it carries a meta-information field `m.info = r`.
 Note, protocol views do *NOT* correspond to DAG layers, but rather, view numbers are explicitly embedded in the meta-information field of messages.
 
-There is a pre-designated leader for view `r`, denoted `leader(r)`, which is known to everyone.
-`leader(r)` proposes in view `r` simply by setting its meta-information value to `r` via `setInfo(r)`. 
+There is a pre-designated leader for `view-r`, denoted `leader(r)`, which is known to everyone.
+`leader(r)` proposes in `view-r` simply by setting its meta-information value to `r` via `setInfo(r)`. 
 The next broadcast transmitted by the leader is interpreted as `proposal(r)`. 
 The proposal implicitly extends the sequence of transactions with the transitive causal predecessors of `proposal(r)`. 
 
-In the figure below, `leader(r)` is party 1 and its first message in view-r is on layer k denoted with a full yellow oval, 
+In the figure below, `leader(r)` is party 1 and its first message in `view-r` is on layer k denoted with a full yellow oval, 
 indicating it is `proposal(r)`. 
 
 When a party receives `proposal(r)`, it advances the meta-information value to `r` view `setInfo(r)`. 
@@ -156,34 +156,34 @@ The next broadcast transmitted by the party is interpreted as voting for `propos
 
 Below, parties 2 and 4 both vote for `proposal(r)` by advancing their view to `r` in layer k+1, denoted with striped yellow ovals. `proposal(r)` now has the required quorum of 2F+1 votes (including the leader's implicit vote), and it becomes committed.
 
-When a party sees 2F+1 votes in view `r` it enters view `r+1`.
-The progress of view `r+1` is similar, with party 2 as `leader(r+1)`, its proposal on layer k+2 and votes for it in layer k+3.
+When a party sees 2F+1 votes in `view-r` it enters `view-(r+1)`.
+The progress of `view-(r+1)` is similar, with party 2 as `leader(r+1)`, its proposal on layer k+2 and votes for it in layer k+3.
 
   <img src="/images/FIN/propose-commit.png" width="500"  class="center"  />
 
-  **_Figure 2:_** _proposals and votes in view `r` and `r+1`, both committed._
+  **_Figure 2:_** _proposals and votes in `view-r` and `view-(r+1)`, both committed._
 
 If `leader(r)` is faulty or disconnected, parties will eventually time out and set their meta-information to `-r`. 
-Their next broadcasts are interpreted as reporting a failure of view `r`, enabling view `r+1` to start. 
+Their next broadcasts are interpreted as reporting a failure of `view-r`, enabling `view-(r+1)` to start. 
 
-In the figure below, the first view-r message by `leader(r)` on layer k does not arrive in time, denoted with a full red oval. 
+In the figure below, the first `view-r` message by `leader(r)` on layer k does not arrive in time, denoted with a full red oval. 
 Parties 2, 3, 4 report this by setting their meta-information to `-r`, denoted as striped red ovals in layer k+1.
 
-At layer k+2, the leader of view `r+1` posts a messages that has meta-information set to `r+1`, and taken as `proposal(r+1)`. 
+At layer k+2, the leader of `view-(r+1)` posts a messages that has meta-information set to `r+1`, and taken as `proposal(r+1)`. 
 Note that this message has in its causal past messages carrying `-r` values, hence faulty view have utility in advancing the global 
 sequence of transaction like any other.
 
   <img src="/images/FIN/faulty-leader.png" width="500"  class="center"  />
 
-  **_Figure 3:_** _a faulty view `r` and recovery in view `r+1`._
+  **_Figure 3:_** _a faulty `view-r` and recovery in `view-(r+1)`._
 
 
 A slightly more complex scenario is depicted below. Here, `leader(r)` emits `proposal(r)` in layer k that receives a vote by party 2 in layer k+1.
-However, the proposal is too slow to arrive at parties 3 and 4, and both parties report a view failure in layer k+1. There is no quorum enabling a commit in view `r`, nor entering view `r+1` yet. Eventually, party 2 also times out and reports a failure of view `r` in layer k+2. This enables view `r+1` to start and from here on, the progress of the view is similar to the above.
+However, the proposal is too slow to arrive at parties 3 and 4, and both parties report a view failure in layer k+1. There is no quorum enabling a commit in `view-r`, nor entering `view-(r+1)` yet. Eventually, party 2 also times out and reports a failure of `view-r` in layer k+2. This enables `view-(r+1)` to start and from here on, the progress of the view is similar to the above.
 
   <img src="/images/FIN/faulty-leader2.png" width="500"  class="center"  />
 
-  **_Figure 3:_** _a partially faulty view `r` and recovery in view `r+1`._
+  **_Figure 3:_** _a partially faulty `view-r` and recovery in `view-(r+1)`._
 
 
 ### Fin Analysis
@@ -195,9 +195,9 @@ Rather, Consensus logic is embedded into the DAG structure simply by injecting v
 
 The reliability and causality properties of DAG Trans makes arguing about correctness very easy, 
 though a formal proof of correctness is beyond the scope of this post. 
-Briefly, the **safety** of commits is as follows. If ever a view-r proposal `proposal(r)` becomes committed, 
+Briefly, the **safety** of commits is as follows. If ever a `view-r` proposal `proposal(r)` becomes committed, 
 then it is in the causal past of 2F+1 parties that voted for it.
-Any future view proposal must refer directly or indirectly to 2F+1 view-r messages, of which F+1 are votes for `proposal(r)`.
+Any future view proposal must refer directly or indirectly to 2F+1 `view-r` messages, of which F+1 are votes for `proposal(r)`.
 Hence, any commit of a future view causally follows (hence, transitively re-commits) `proposal(r)`. 
 
 The protocol **liveness** during periods of synchrony stems from two key mechanisms. 
@@ -206,11 +206,11 @@ First, after GST (Global Stabilization Time),
 i.e., after communication has become synchronous,
 views are inherently synchronized through DAG Trans. 
 For let $\Delta$ be an upper bound on communication after GST.
-Once a view `r` with an honest leader is entered by the first honest party, within $2 * \Delta$, both the leader and all honest parties enter view `r` as well. 
-Within $4 * \Delta$, the view-r proposal and votes from all honest parties are spread to everyone. 
+Once a `view-r` with an honest leader is entered by the first honest party, within $2 * \Delta$, both the leader and all honest parties enter `view-r` as well. 
+Within $4 * \Delta$, the `view-r` proposal and votes from all honest parties are spread to everyone. 
 
 Second, so long as view timers are set to be at least $4 * \Delta$, a future view does not preempt a current view's commit. For in order to start a new view, 
-a leader must collect either 2F+1 view-r _votes_ for the leader proposal, hence commit it; or 2F+1 view-(-r) _expirations_, which is impossible as argued above. 
+a leader must collect either 2F+1 `view-r` _votes_ for the leader proposal, hence commit it; or 2F+1 view-(-r) _expirations_, which is impossible as argued above. 
 
 Fin is modeled after PBFT while removing the complexity of PBFT's view-change, thus supporting regular leader rotation. 
 View-change is the most subtle ingredient of PBFT. 
