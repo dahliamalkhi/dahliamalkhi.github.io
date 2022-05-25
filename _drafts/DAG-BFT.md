@@ -180,7 +180,7 @@ At layer k+4, the leader of `view(r+2)` posts a messages that has meta-informati
 Note that this message has in its causal past messages carrying `-(r+1)` meta-information. 
 Hence, faulty views have utility in advancing the global sequence of transaction, just like any other view.
 
-  <img src="/images/FIN/faulty-leader.png" width="650"  class="center"  />
+  <img src="/images/FIN/faulty-leader.png" width="700"  class="center"  />
 
   **_Figure 3:_** _a faulty `view(r+1)` and recovery in `view(r+2)`._
 
@@ -188,7 +188,7 @@ Hence, faulty views have utility in advancing the global sequence of transaction
 A slightly more complex scenario is depicted in **Figure 4** below. Here, `leader(r+1)` emits `proposal(r+1)` in layer k+2 that receives one vote by party 2 in layer k+3.
 However, the proposal is too slow to arrive at parties 3 and 4, and both parties report a view failure in layer k+3. There is no quorum enabling a commit in `view(r+1)`, nor entering `view(r+2)`. Eventually, party 2 also times out and reports a failure of `view(r+1)` in layer k+4. This enables `view(r+3)` to start and from here on, the progress of the view is similar to the above.
 
-  <img src="/images/FIN/faulty-leader2.png" width="750"  class="center"  />
+  <img src="/images/FIN/faulty-leader2.png" width="800"  class="center"  />
 
   **_Figure 4:_** _a partially faulty `view(r+1)` and recovery in `view(r+2)`._
 
