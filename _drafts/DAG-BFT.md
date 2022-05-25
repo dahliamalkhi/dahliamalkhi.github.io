@@ -98,7 +98,7 @@ The details of the echo protocol implementation are omitted here. We remark that
 
 **Fin** is a simple BFT protocol built using Trans DAG. 
 Fin is inspired by PBFT but leverages Trans DAG to have a one-phase commit rule and an extremely simple leader protocol.
-The name Fin, a small organ of an aquatic creature that controls is stirring, stands for the protocol succinctness and its central role in blockchains. 
+The name Fin, a small part of aquatic creatures that controls stirring, stands for the protocol succinctness and its central role in blockchains (and also from the fact that DAT Trans scenarios below look like swarms of fish). 
 
 ### Fin Pseudo-code
 The pseudo-code for view `r` at each party `p` is given in the frame below and explained after it. 
@@ -176,6 +176,14 @@ sequence of transaction like any other.
   <img src="/images/FIN/faulty-leader.png" width="500"  class="center"  />
 
   **_Figure 3:_** _a faulty view `r` and recovery in view `r+1`._
+
+
+A slightly more complex scenario is depicted below. Here, `leader(r)` emits `proposal(r)` in layer k that receives a vote by party 2 in layer k+1.
+However, the proposal is too slow to arrive at parties 3 and 4, and both parties report a view failure in layer k+1. There is no quorum enabling a commit in view `r`, nor entering view `r+1` yet. Eventually, party 2 also times out and reports a failure of view `r` in layer k+2. This enables view `r+1` to start and from here on, the progress of the view is similar to the above.
+
+  <img src="/images/FIN/faulty-leader2.png" width="500"  class="center"  />
+
+  **_Figure 3:_** _a partially faulty view `r` and recovery in view `r+1`._
 
 
 ### Fin Analysis
