@@ -19,7 +19,14 @@ to where we are today.
 I earned my PhD more than two decades ago for contributions to scaling reliable distributed systems, 
 Guided by, and collbrating with, pioneers in the field, including
 @Ken Birman, @Danny Dolev, @Rick Schlichting, @Michael Melliar-Smith, @Louis Moser, @Robbert van Rennesse, @Yair Amir, @Idit Keidar.
-The distributed middleware systems  of that time, e.g., Isis, Psync, Trans, Total and Transis, were designed for high-throughput
+The distributed middleware systems  of that time, e.g., 
+Isis, 
+Psync, 
+[Trans](https://ieeexplore.ieee.org/document/80121?tp=&signout=success), 
+[Total](https://dl.acm.org/doi/10.1145/327164.327298)
+and 
+[Transis](https://dahliamalkhi.github.io/files/Transis-CACM1994.pdf), 
+were designed for high-throughput
 by building consensus over causal message ordering (!).
 Recent interest in scaling blockchains is rekindling interest in this approach with emphasis on Byzantine fault tolerance, e.g., in systems like 
 [HashGraph](https://hedera.com/hh_whitepaper_v2.1-20200815.pdf),
@@ -252,9 +259,9 @@ Total and Hashgraph's whitepaper algorithm are pure DAG-rider solutions. Both us
 
 ## Reading list
 
-*. _"Byzantine-resilient Total Ordering Algorithms"_, Moser and Melliar Smith, 1999. [Total](https://www.sciencedirect.com/science/article/pii/S0890540198927705)
+* _"Byzantine-resilient Total Ordering Algorithms"_, Moser and Melliar Smith, 1999. [Total](https://www.sciencedirect.com/science/article/pii/S0890540198927705)
 
-*. _"Total Ordering Algorithms"_, Moser, Melliar-Smith and Agrawala, 1991. [Total](https://dl.acm.org/doi/10.1145/327164.327298)
+* _"Total Ordering Algorithms"_, Moser, Melliar-Smith and Agrawala, 1991. [Total](https://dl.acm.org/doi/10.1145/327164.327298)
 
 * _"Broadcast Protocols for Distributed Systems"_, Melliar-Smith, Moser and Agrawals, 1990. [Trans and Total](https://ieeexplore.ieee.org/document/80121?tp=&signout=success)
 
