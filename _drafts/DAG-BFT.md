@@ -269,6 +269,6 @@ Total and Hashgraph's whitepaper algorithm are pure DAG-rider solutions. Both us
 
 * _"Broadcast Protocols for Distributed Systems"_, Melliar-Smith, Moser and Agrawals, 1990. [[Trans and Total]](https://ieeexplore.ieee.org/document/80121?tp=&signout=success)
 
-* _"Early Delivery Totally Ordered Multicast in Asynchronous Environments"_, Dolev, Kramer and Malki, 1993, [[ToTo]](https://dahliamalkhi.github.io/files/Multicast-FTCS1993.pdf)
+* _"Early Delivery Totally Ordered Multicast in Asynchronous Environments"_, Dolev, Kramer and Malki, 1993. [[ToTo]](https://dahliamalkhi.github.io/files/Multicast-FTCS1993.pdf)
 
 * _"The Transis approach to high availability cluster communication"_, Dolev and Malkhi, 1996. [[Transis]](https://dahliamalkhi.github.io/files/Transis-CACM1994.pdf)
