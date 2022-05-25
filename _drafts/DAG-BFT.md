@@ -117,11 +117,11 @@ The pseudo-code for view `r` at each party `p` is given in the frame below and e
      Thereafter, the next transmission by p will carry the new view number as indication of voting for the view-r proposal.
 
 4. <b>Committing. </b>
-  A commit of a leader proposal at view r with its causal predecessors happens if the DAG maintains the following conditions:
+  A commit of a leader proposal at view r with its causal predecessors happens if the DAG maintains the following three conditions:
 
-     A first view-r message from leader(r), denoted proposal(r), exists. 
-     proposal(r).predecessors refers to either 2F+1 view-(r-1) messages or 2F+1 view-(-(r-1)) messages (or r=1).
-     First view-r messages from 2F+1 parties p exist, each having predecessors referring to proposal(r). 
+     (i) A first view-r message from leader(r), denoted proposal(r), exists. 
+     (ii) proposal(r).predecessors refers to either 2F+1 view-(r-1) messages or 2F+1 view-(-(r-1)) messages (or r=1).
+     (iii) First view-r messages from 2F+1 parties p exist, each having predecessors referring to proposal(r). 
 
   Upon a commit of proposal(r), a party disarms the view-r timer.  
 
@@ -131,8 +131,8 @@ The pseudo-code for view `r` at each party `p` is given in the frame below and e
 
 7. <b>Advancing to next view.</b>
   A party enters view r+1 if the DAG satisfies one of the following two conditions:
-     A commit of proposal(r) happens.
-     View-(-r) messages indicating view-r expiration from 2F+1 parties exist.
+     (i) A commit of proposal(r) happens.
+     (ii) View-(-r) messages indicating view-r expiration from 2F+1 parties exist.
 </pre>
 
 ### Fin Protocol Description
