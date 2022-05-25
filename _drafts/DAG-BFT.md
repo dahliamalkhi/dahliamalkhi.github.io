@@ -35,7 +35,7 @@ and
 were designed for high-throughput by building consensus over causal message ordering (!).
 Recent interest in scaling blockchains is rekindling interest in this approach with emphasis on Byzantine fault tolerance, e.g., in systems like 
 [HashGraph](https://hedera.com/hh_whitepaper_v2.1-20200815.pdf),
-[Narwal](https://arxiv.org/abs/2105.11827),
+[Narwhal](https://arxiv.org/abs/2105.11827),
 [DAG-rider](https://arxiv.org/abs/2102.08325),
 [Bullshark](https://arxiv.org/abs/2201.05677"), and
 [Sui](https://medium.com/mysten-labs/announcing-narwhal-tusk-open-source-3721135abfc3). 
@@ -104,7 +104,7 @@ Note that by transitively, this ensures its entire causal history has been deliv
 For Reliability to be satisfied, sufficiently many copies of `m` must be persisted prior to delivery by any honest party, to guarantee availability against a threshold F of failures. 
 There is a very effective way to spread messages reliably while incorporating causality information.
 Message digests are echoed by all parties. When 2F+1 echoes are collected, a message can be delivered. 
-The details of the echo protocol implementation are omitted here. We remark that echo protocols can be streamlined, resulting in high utilization and throughout (see [Narwal](..)).
+The details of the echo protocol implementation are omitted here. We remark that echo protocols can be streamlined, resulting in high utilization and throughout (see [Narwhal](..)).
 
 ## Fin: BFT Consensus Using Trans DAG 
 
@@ -240,6 +240,28 @@ In Fin, a leader proposal simply references those 2F+1 messages from the previou
 
 (This section is still in progress.)
 
+Narwhal is a DAG transport after which DAG Trans is modeled.
+
+Narwhal-HS is a BFT protocol based on [HotStuff]() for the partial synchrony model,
+in which Narwhal is used as a "mempool". 
+In order to drive consensus decisions, 
+Narwhal-HS adds messages outside Narwhal, 
+using the DAG only for spreading transactions.
+
+DAG-Rider and Tusk build randomized BFT consensus "riding" on Narwhal for the asynchronous model, 
+not exchanging any messages outside the Narwhal protocol. 
+These protocols are "zero overhead" over the DAG, but
+Narwhal transmissions are blocked until DAG-Rider (Tusk) injects input values every fourth (second) transmission.
+
+DAG-Rider is designed around "waves". 
+In DAG-Rider, each wave consists of 4 DAG layers, at the end of which a leader is elected in retrospect uniformly at random, having constant probability of its proposal becoming committed.
+Tusk improves with a 3-layer wave and in overlapping the last layer of each wave with the first one of the next wave.
+
+To achieve consensus over the DAG Trans, Fin requires only injecting values into transmissions in a non-blocking manner via `setInfo(v)`. 
+DAG Trans message transmission does in not blocked by Fin. Once a `setInfo(v)` invocation completes, future
+emissions by the DAG Trans carry the value `v` in the latest `setInfo(v)` invocation. 
+The value `v` is opaque to the DAG Trans and is of interest to the Consensus protocol.
+
 There is no question that software modularity is advantageous, since
 it removes the Consensus protocol from the critical path of communication. 
 That said, most solutions do not rely on DAG Trans in a pure black-box manner.  
@@ -253,10 +275,6 @@ Real life Hashgraph deployments must inject coin tosses to advance quickly durin
 
 In other words, rarely is the case that [all you need is a DAG](https://arxiv.org/abs/2102.08325).
 
-To achieve consensus over the DAG Trans, Fin requires only a single API, `setInfo(v)`. 
-Messages emitted by the DAG Trans should carry the value `v` in the latest `setInfo(v)` invokation. 
-The value `v` is opaque to the DAG Trans and presumably of interest to the Consensus protocol.
-
 In a pure DAG-rider solution, parties passively analyze the DAG structure and autonomously arrive at commit ordering decisions. 
 No extra messages are exchanged by the consensus protocol nor is it given an opportunity to inject information into the DAG or control message emission. 
 
@@ -265,6 +283,8 @@ Total and Hashgraph's whitepaper algorithm are pure DAG-rider solutions. Both us
 
 
 ## Reading list
+
+Pre-blockchains era:
 
 * _"Exploiting Virtual Synchrony in Distributed Systems"_, Birman and Joseph, 1987. [[Isis]](https://dl.acm.org/doi/10.1145/37499.37515)
 
@@ -280,9 +300,13 @@ Total and Hashgraph's whitepaper algorithm are pure DAG-rider solutions. Both us
 
 * _"The Transis approach to high availability cluster communication"_, Dolev and Malkhi, 1996. [[Transis]](https://dahliamalkhi.github.io/files/Transis-CACM1994.pdf)
 
+Blockchain era:
+
 * _"Hedera: A Public Hashgraph Network & Governing Council"_, Baird, Harman, and Madsen, whitepaper v.2.1., 2020. [[Hedera HashGraph]](https://hedera.com/hh_whitepaper_v2.1-20200815.pdf)
 
-* _"Narwhal and Tusk: A DAG-based Mempool and Efficient BFT Consensus"_, Danezis, Kokoris-Kogias, Sonnino, and Spiegelman, 2021. [[Narwal and Tusk]](https://arxiv.org/abs/2105.11827)
+* Aleph [TODO]
+
+* _"Narwhal and Tusk: A DAG-based Mempool and Efficient BFT Consensus"_, Danezis, Kokoris-Kogias, Sonnino, and Spiegelman, 2021. [[Narwhal and Tusk]](https://arxiv.org/abs/2105.11827)
 
 * _"All You Need is DAG"_, Keidar, Kokoris-Kogias, Naor, and Spiegelman, 2021. [[DAG-rider]](https://arxiv.org/abs/2102.08325)
 
