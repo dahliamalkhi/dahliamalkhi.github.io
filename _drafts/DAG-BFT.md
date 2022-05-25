@@ -170,15 +170,15 @@ The progress of `view(r+1)` is similar, with party 2 as `leader(r+1)`, its propo
 
   **_Figure 2:_** _proposals and votes in `view(r)` and `view(r+1)`, both committed._
 
-If `leader(r)` is faulty or disconnected, parties will eventually time out and set their meta-information to `-r`. 
-Their next broadcasts are interpreted as reporting a failure of `view(r)`, enabling `view(r+1)` to start. 
+If the leader of a view is faulty or disconnected, parties will eventually time out and set their meta-information to minus the view-numver, e.g., `-(r+1)` for a failure of `view(r+1)` . 
+Their next broadcasts are interpreted as reporting a failure of `view(r+1)`, enabling `view(r+2)` to start. 
 
-In the figure below, the first `view(r)` message by `leader(r)` on layer k does not arrive in time, denoted with a full red oval. 
-Parties 2, 3, 4 report this by setting their meta-information to `-r`, denoted as striped red ovals in layer k+1.
+In the figure below, the first `view(r+1)` message by `leader(r)+1` on layer k+2 does not arrive, denoted as a missing oval. 
+Parties 2, 3, 4 report this by setting their meta-information to `-(r+1)`, denoted as striped red ovals in layer k+3.
 
-At layer k+2, the leader of `view(r+1)` posts a messages that has meta-information set to `r+1`, and taken as `proposal(r+1)`. 
-Note that this message has in its causal past messages carrying `-r` values, hence faulty view have utility in advancing the global 
-sequence of transaction like any other.
+At layer k+4, the leader of `view(r+2)` posts a messages that has meta-information set to `r+2`, taken as `proposal(r+2)`. 
+Note that this message has in its causal past messages carrying `-(r+1)` meta-information. 
+Hence, faulty views have utility in advancing the global sequence of transaction, just like any other view.
 
   <img src="/images/FIN/faulty-leader.png" width="500"  class="center"  />
 
