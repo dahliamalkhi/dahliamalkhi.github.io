@@ -100,51 +100,64 @@ The details of the echo protocol implementation are omitted here. We remark that
 Fin is inspired by PBFT but leverages Trans DAG to have a one-phase commit rule and an extremely simple leader protocol.
 The name Fin, a small organ of an aquatic creature that controls is stirring, stands for the protocol succinctness and its central role in blockchains. 
 
-The Fin protocol works in a view-by-view manner. 
-View numbers are embedded in DAG messages using the `setInfo()` API. 
-We refer to a message `m` as a _"view-r message"_ if it carries a meta-information field `m.info = r`.
-Note, protocol views do *NOT* correspond to DAG layers, but rather, view numbers are explicitly embedded in the meta-information field of messages.
-
-There is a pre-designated leader for view `r`, denoted `leader(r)`, which is known to everyone.
-
-`leader(r)` proposes in view `r` simply by setting int meta-information value to `r` via `setInfo(r)`. The next broadcast transmitted by the leader is interpreted as a proposal denoted `proposal(r)`. The proposal implicitly extends the sequence of transactions with the transitive causal predecessors of `proposal(r)`. 
-
-Below, `leader(k)` is process 1. Its first message in view-r indicated with a full yellow oval is `proposal(r)`. It becomes committed
-
-
-The protocol for view `r` at each party `p` works as described in the frame below. 
+### Fin Pseudo-code
+The pseudo-code for view `r` at each party `p` is given in the frame below and explained after it. 
 
 <pre style="font-size: 14px;">
 
-1. Entering a view. 
-Upon entering view r, party p starts a view timer set to expire after a pre-determined view delay. 
+1. <b>Entering a view. </b>
+  Upon entering view r, party p starts a view timer set to expire after a pre-determined view delay. 
 
-2. Proposing. 
-The leader leader(r) of view r waits to deliver 2F+1 view-(r-1) messages or 2F+1 view-(-(r-1)) messages, and then invokes setInfo(r). 
+2. <b>Proposing. </b>
+  The leader leader(r) of view r waits to deliver 2F+1 view-(r-1) messages or 2F+1 view-(-(r-1)) messages, and then invokes setInfo(r). 
      Thereafter, the next transmission by the leader will carry the new view number as indication of proposing in view r.
 
-3. Voting.
-Each party p other than the leader waits to deliver the first view-r message from leader(r) and then invokes setInfo(r). 
+3. <b>Voting.</b>
+  Each party p other than the leader waits to deliver the first view-r message from leader(r) and then invokes setInfo(r). 
      Thereafter, the next transmission by p will carry the new view number as indication of voting for the view-r proposal.
 
-4. Committing. 
-A commit of a leader proposal at view r with its causal predecessors happens if the DAG maintains the following conditions:
+4. <b>Committing. </b>
+  A commit of a leader proposal at view r with its causal predecessors happens if the DAG maintains the following conditions:
 
      A first view-r message from leader(r), denoted proposal(r), exists. 
      proposal(r).predecessors refers to either 2F+1 view-(r-1) messages or 2F+1 view-(-(r-1)) messages (or r=1).
      First view-r messages from 2F+1 parties p exist, each having predecessors referring to proposal(r). 
 
-Upon a commit of proposal(r), a party disarms the view-r timer.  
+  Upon a commit of proposal(r), a party disarms the view-r timer.  
 
-5. Expiring the view timer.
-If the view-r timer expires, a party invokes setInfo(-r). 
+5. <b>Expiring the view timer.</b>
+  If the view-r timer expires, a party invokes setInfo(-r). 
      Thereafter, the next transmission by p will carry the negative view number as indication of expiration of r.
 
 7. <b>Advancing to next view.</b>
-A party enters view r+1 if the DAG satisfies one of the following two conditions:
+  A party enters view r+1 if the DAG satisfies one of the following two conditions:
      A commit of proposal(r) happens.
      View-(-r) messages indicating view-r expiration from 2F+1 parties exist.
 </pre>
+
+### Fin Protocol Description
+
+The Fin protocol works in a view-by-view manner. 
+
+View numbers are embedded in DAG messages using the `setInfo()` API. 
+We refer to a message `m` as a _"view-r message"_ if it carries a meta-information field `m.info = r`.
+Note, protocol views do *NOT* correspond to DAG layers, but rather, view numbers are explicitly embedded in the meta-information field of messages.
+
+There is a pre-designated leader for view `r`, denoted `leader(r)`, which is known to everyone.
+`leader(r)` proposes in view `r` simply by setting int meta-information value to `r` via `setInfo(r)`. 
+The next broadcast transmitted by the leader is interpreted as `proposal(r)`. 
+The proposal implicitly extends the sequence of transactions with the transitive causal predecessors of `proposal(r)`. 
+
+In the figure below, `leader(k)` is party 1 and its first message in view-r is on layer k denoted with a full yellow oval, 
+indicating it is `proposal(r)`. 
+
+Parties 2 and 4 vote for `proposal(r)` by advancing their view to `r` in layer k+1, denoted with striped yellow ovals. `proposal(r)` now has the required quorum of votes (including the leader's implicit vote), and it becomes committed.
+
+  <img src="/images/FIN/propose-commit.png" width="500"  class="center"  />
+
+  **_Figure 2:_** _proposals and votes in view `r` and `r+1`, both committes._
+
+### Fin Analysis
 
 It is worthwhile noting that, at no time is transaction broadcast slowed down by the Fin protocol. Rather, Consensus logic is embedded into the DAG structure simply by injecting view numbers into it.
 
