@@ -101,7 +101,7 @@ Fin is inspired by PBFT but leverages Trans DAG to have a one-phase commit rule 
 The name Fin, a small part of aquatic creatures that controls stirring, stands for the protocol succinctness and its central role in blockchains (and also from the fact that DAT Trans scenarios below look like swarms of fish). 
 
 ### Fin Pseudo-code
-The pseudo-code for view(r) at each party `p` is given in the frame below and explained after it. 
+The pseudo-code for `view(r)` at each party `p` is given in the frame below and explained after it. 
 
 <pre style="font-size: 14px;">
 
@@ -132,7 +132,7 @@ The pseudo-code for view(r) at each party `p` is given in the frame below and ex
 7. <b>Advancing to next view.</b>
   A party enters view(r+1) if the DAG satisfies one of the following two conditions:
      (i) A commit of proposal(r) happens.
-     (ii) View-(-r) messages indicating view(r) expiration from 2F+1 parties exist.
+     (ii) view(-r) messages indicating view(r) expiration from 2F+1 parties exist.
 </pre>
 
 ### Fin Protocol Description
@@ -210,7 +210,7 @@ Once a `view(r)` with an honest leader is entered by the first honest party, wit
 Within $4 * \Delta$, the `view(r)` proposal and votes from all honest parties are spread to everyone. 
 
 Second, so long as view timers are set to be at least $4 * \Delta$, a future view does not preempt a current view's commit. For in order to start a new view, 
-a leader must collect either 2F+1 `view(r)` _votes_ for the leader proposal, hence commit it; or 2F+1 view(-r) _expirations_, which is impossible as argued above. 
+a leader must collect either 2F+1 `view(r)` _votes_ for the leader proposal, hence commit it; or 2F+1 `view(-r)` _expirations_, which is impossible as argued above. 
 
 Fin is modeled after PBFT while removing the complexity of PBFT's view-change, thus supporting regular leader rotation. 
 View-change is the most subtle ingredient of PBFT. 
