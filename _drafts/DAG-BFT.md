@@ -173,14 +173,17 @@ At layer k+2, the leader of view `r+1` posts a messages that has meta-informatio
 Note that this message has in its causal past messages carrying `-r` values, hence faulty view have utility in advancing the global 
 sequence of transaction like any other.
 
-  <img src="/images/FIN/propose-commit.png" width="500"  class="center"  />
+  <img src="/images/FIN/faulty-leader.png" width="500"  class="center"  />
 
   **_Figure 3:_** _a faulty view `r` and recovery in view `r+1`._
 
 
 ### Fin Analysis
 
-It is worthwhile noting that, at no time is transaction broadcast slowed down by the Fin protocol. Rather, Consensus logic is embedded into the DAG structure simply by injecting view numbers into it.
+Fin is minimally integrated into DAG Trans, simply setting a context field periodically.
+Importantly, 
+at no time is transaction broadcast slowed down by the Fin protocol. 
+Rather, Consensus logic is embedded into the DAG structure simply by injecting view numbers into it.
 
 The reliability and causality properties of DAG Trans makes arguing about correctness very easy, 
 though a formal proof of correctness is beyond the scope of this post. 
