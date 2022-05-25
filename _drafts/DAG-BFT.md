@@ -1,4 +1,4 @@
-## Away Monolithic BFT Consensus, enter DAG Transport BFT Consensus
+## Away with Monolithic BFT Consensus; Enter DAG Transport BFT Consensus
 
 To scale the BFT (Byzantine Fault Tolerant) Consensus core of blockchains,
 prevailing wisdom is to separate between two responsibilities. 
@@ -10,7 +10,9 @@ It regulates communication and optimizes throughput, but it tracks only causal o
 To do this, it must solve BFT Consensus utilizing the DAG.
 
 The advent of DAG Trans is that while solving BFT Consensus, parties spread messages that carry useful payloads (e.g., transactions). 
-Moreover, parties can continue sending messages and the DAG keep growing even when Consensus is stalled. Eventually, when Consensus makes progress, it can succinctly refer to all the messages that accumulated in the DAG and commit them.
+A BFT Consensus protocol can periodically commit batches from the DAG by merely referring to the leaves of the DAG. 
+Moreover, parties can continue sending messages and the DAG keep growing even when Consensus is stalled. 
+Eventually, when Consensus makes progress, it can commit the latest batch of accumulated messages from the DAG. 
 
 It is funny how the community made a full circle, from early distributed consensus systems 
 to where we are today. 
@@ -19,8 +21,7 @@ Guided by, and collbrating with, pioneers in the field, including
 @Ken Birman, @Danny Dolev, @Rick Schlichting, @Michael Melliar-Smith, @Louis Moser, @Robbert van Rennesse, @Yair Amir, @Idit Keidar.
 The distributed middleware systems  of that time, e.g., Isis, Psync, Trans, Total and Transis, were designed for high-throughput
 by building consensus over causal message ordering (!).
-
-Recent interest in scaling blockchains is rekindling interest in this approach, but with emphasis on Byzantine fault tolerance, e.g., in systems like 
+Recent interest in scaling blockchains is rekindling interest in this approach with emphasis on Byzantine fault tolerance, e.g., in systems like 
 [HashGraph](https://hedera.com/hh_whitepaper_v2.1-20200815.pdf),
 [Narwal](),
 [DAG-rider](),
@@ -39,19 +40,21 @@ The main takeaway from Fin is that by separating reliable transaction disseminat
 
   **_Figure 1:_** _A layer-by-layer causality DAG. Each message refers to 2F+1 ones in the preceding layer._
 
-DAG Trans is a reliable, causal broadcast communication substrate for disseminating transactions among N=3F+1 parties.
-It exposes three basic API's, `broadcast()`, `deliver()`, and `setInfo()`. 
-The basic requirements of reliable broadcast are **Reliability**, **Agreement**, **Validity** and **Integrity**. 
-A **Causality** requirement is added that exposes message dependencies. 
+DAG Trans is a reliable, causal broadcast communication substrate for disseminating transactions among N=3F+1 parties, at most F of which are presumed Byzantine faulty and the rest are honest.
+The substrate exposes three basic API's, `broadcast()`, `deliver()`, and `setInfo()`. 
+In a nutshell, DAG Trans guarantees that all parties deliver the same ordered sequence of messages by each sender and exposes a causal-ordering relationship among them. These properties are described below as **Reliability**, **Agreement**, **Validity**, **Integrity**, 
+and **Causality**. 
 
-More specificially, DAG Trans provides a `broadcast(payload)` API for a party `p` to send a message to other parties.
+More specifically, DAG Trans provides a `broadcast(payload)` API for a party `p` to send a message to other parties.
 A party's upcall `deliver(m)` is triggered when a message `m` can be delivered. 
 
-DAG Trans injects into messages references to previous messages and regulates transmissions to saturate network capacity. 
-In this post, we concentrate on a layer-by-layer regime, where each message must refer to a certain number of messages in the preceding layer, as depicted above.
+Each message must refer to a certain number of preceding messages.
+In this post, we concentrate on a layer-by-layer regime, where in each layer, a messages refers 
+to a certain number of messages in the preceding layer, as depicted above.
+The layer-by-layer design regulates transmissions so as to saturate network capacity. 
 
 To prepare for Consensus decisions, DAG Trans exposes a single additional API `setInfo(meta)`. 
-A message broadcast by a party carries the latest `meta` value invoked in `setInfo(meta)` by the party. 
+When a party invokes `broadcast()`, the message carries the latest `meta` value invoked in `setInfo(meta)` by the party. 
 
 Messages are delivered carrying a sender's payload and additional meta information that can be inspected upon reception.
 Every delivered message `m` carries the following fields:
@@ -86,29 +89,16 @@ If a `deliver(m)` happens at an honest party,
 then `deliver(d)` events already happened at the party for all messages `d` referenced in `m.predecessors`. 
 Note that by transitively, this ensures its entire causal history has been delivered.
 
-There is a very efective way to spread msgs reliably while incorporating causality information.
-Message digests are echoed by all parties. When 2F+1 echoes are collected, a message can be delivered. 
-The details of the echo protocol implementation are omitted here. We remark that echo protocols can be streamlined in an extremely effective manner, resulting in high utilization and throughout (see [Narwal](..)).
 For Reliability to be satisfied, sufficiently many copies of `m` must be persisted prior to delivery by any honest party, to guarantee availability against a threshold F of failures. 
-
-Reliable, causal transaction dissemination can be made highly efficient due to several considerations.
-
-* A message dissemination substrate which is designed outside the consensus critical path
-
-* A layer by layer construction allows the transport to advance at the speed of the fastest 2F+1 active parties with no centralized bottlenecks and with regular, balanced network utilization. There is no need to buffer or retransmit messages farther back than the current layer.
-
-* A DAG can continue growing even when consensus is temporarily blocked from progress, e.g., when a consensus leader is faulty.
-
-* A gossip transport may continue improving independently of any particular consensus protocol for
-which is set up. A good modular design ensure that the transport evolution does not risk the (subtle) logic of BFT consensus built on top of it.
-
-
+There is a very effective way to spread messages reliably while incorporating causality information.
+Message digests are echoed by all parties. When 2F+1 echoes are collected, a message can be delivered. 
+The details of the echo protocol implementation are omitted here. We remark that echo protocols can be streamlined, resulting in high utilization and throughout (see [Narwal](..)).
 
 ## Fin: BFT Consensus Using Trans DAG 
 
-**Fin** is a simple BFT protocol built uding Trans DAG. 
-Fin is based on PBFT but leveraging Trans DAG, has a one-phase commit rule and an extremely simple leader protocol.
-The name Fin, a small part of a shark's tail, stands for the protocol succinctness. 
+**Fin** is a simple BFT protocol built using Trans DAG. 
+Fin is inspired by PBFT but leverages Trans DAG to have a one-phase commit rule and an extremely simple leader protocol.
+The name Fin, a small organ of an aquatic creature that controls is stirring, stands for the protocol succinctness and its central role in blockchains. 
 
 The Fin protocol works in a view-by-view manner. View numbers are embedded in DAG messages using the `setInfo()` API. We refer to a message `m` as a _"view-r message"_ if it carries a meta-information field `m.info = r`.
 Note, protocol views do *NOT* correspond to DAG layers, but rather, view numbers are explicitly embedded in the meta-information field of messages.
