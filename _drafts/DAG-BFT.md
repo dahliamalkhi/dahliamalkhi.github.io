@@ -20,8 +20,8 @@ I earned my PhD more than two decades ago for contributions to scaling reliable 
 Guided by, and collbrating with, pioneers in the field, including
 @Ken Birman, @Danny Dolev, @Rick Schlichting, @Michael Melliar-Smith, @Louis Moser, @Robbert van Rennesse, @Yair Amir, @Idit Keidar.
 The distributed middleware systems  of that time, e.g., 
-Isis, 
-Psync, 
+[Isis](https://dl.acm.org/doi/10.1145/37499.37515), 
+[Psync](https://dl.acm.org/doi/10.1145/65000.65001), 
 [Trans](https://ieeexplore.ieee.org/document/80121?tp=&signout=success), 
 [Total](https://dl.acm.org/doi/10.1145/327164.327298)
 and 
@@ -258,6 +258,10 @@ Total and Hashgraph's whitepaper algorithm are pure DAG-rider solutions. Both us
 
 
 ## Reading list
+
+* _"Exploiting Virtual Synchrony in Distributed Systems"_, Birman and Joseph, 1987. [Isis](https://dl.acm.org/doi/10.1145/37499.37515)
+
+* _"Preserving and Using Context Information in Interprocess Communication"_, Peterson, Buchholz and Schlichting, 1989. [Psync](https://dl.acm.org/doi/10.1145/65000.65001)
 
 * _"Byzantine-resilient Total Ordering Algorithms"_, Moser and Melliar Smith, 1999. [Total](https://www.sciencedirect.com/science/article/pii/S0890540198927705)
 
