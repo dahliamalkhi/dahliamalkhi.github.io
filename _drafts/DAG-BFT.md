@@ -263,11 +263,11 @@ Total and Hashgraph's whitepaper algorithm are pure DAG-rider solutions. Both us
 
 * _"Preserving and Using Context Information in Interprocess Communication"_, Peterson, Buchholz and Schlichting, 1989. [[Psync]](https://dl.acm.org/doi/10.1145/65000.65001)
 
-* _"Byzantine-resilient Total Ordering Algorithms"_, Moser and Melliar Smith, 1999. [[Total]](https://www.sciencedirect.com/science/article/pii/S0890540198927705)
-
-* _"Total Ordering Algorithms"_, Moser, Melliar-Smith and Agrawala, 1991. [[Total]](https://dl.acm.org/doi/10.1145/327164.327298)
-
 * _"Broadcast Protocols for Distributed Systems"_, Melliar-Smith, Moser and Agrawals, 1990. [[Trans and Total]](https://ieeexplore.ieee.org/document/80121?tp=&signout=success)
+
+* _"Total Ordering Algorithms"_, Moser, Melliar-Smith and Agrawala, 1991. [[Total (short version)]](https://dl.acm.org/doi/10.1145/327164.327298)
+
+* _"Byzantine-resilient Total Ordering Algorithms"_, Moser and Melliar Smith, 1999. [[Total]](https://www.sciencedirect.com/science/article/pii/S0890540198927705)
 
 * _"Early Delivery Totally Ordered Multicast in Asynchronous Environments"_, Dolev, Kramer and Malki, 1993. [[ToTo]](https://dahliamalkhi.github.io/files/Multicast-FTCS1993.pdf)
 
