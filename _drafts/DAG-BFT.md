@@ -3,7 +3,7 @@
 To scale the BFT (Byzantine Fault Tolerant) Consensus core of blockchains,
 prevailing wisdom is to separate between two responsibilities. 
 
-* The first is reliable DAG Trans for spreading yet-uncomfirmed transactions.
+* The first is reliable DAG Trans for spreading yet-unconfirmed transactions.
 It regulates communication and optimizes throughput, but it tracks only causal ordering in the form of a DAG (Direct Acyclic Graph).
 
 * The second is forming a sequential ordering of transactions and determining their commit finality. 
@@ -14,20 +14,25 @@ A BFT Consensus protocol can periodically commit batches from the DAG by merely 
 Moreover, parties can continue sending messages and the DAG keep growing even when Consensus is stalled. 
 Eventually, when Consensus makes progress, it can commit the latest batch of accumulated messages from the DAG. 
 
-It is funny how the community made a full circle, from early distributed consensus systems 
-to where we are today. 
+It is funny how the community made a full circle, from early distributed consensus systems to where we are today. 
 I earned my PhD more than two decades ago for contributions to scaling reliable distributed systems, 
-Guided by, and collbrating with, pioneers in the field, including
-@Ken Birman, @Danny Dolev, @Rick Schlichting, @Michael Melliar-Smith, @Louis Moser, @Robbert van Rennesse, @Yair Amir, @Idit Keidar.
-The distributed middleware systems  of that time, e.g., 
+Guided by and collaborating with pioneers in the field, including
+@Ken Birman, 
+@Danny Dolev, 
+@Rick Schlichting, 
+@Michael Melliar-Smith, 
+@Louis Moser, 
+@Robbert van Rennesse, 
+@Yair Amir, 
+@Idit Keidar.
+Distributed middleware systems of that time, e.g., 
 [Isis](https://dl.acm.org/doi/10.1145/37499.37515), 
 [Psync](https://dl.acm.org/doi/10.1145/65000.65001), 
 [Trans](https://ieeexplore.ieee.org/document/80121?tp=&signout=success), 
 [Total](https://dl.acm.org/doi/10.1145/327164.327298)
 and 
 [Transis](https://dahliamalkhi.github.io/files/Transis-CACM1994.pdf), 
-were designed for high-throughput
-by building consensus over causal message ordering (!).
+were designed for high-throughput by building consensus over causal message ordering (!).
 Recent interest in scaling blockchains is rekindling interest in this approach with emphasis on Byzantine fault tolerance, e.g., in systems like 
 [HashGraph](https://hedera.com/hh_whitepaper_v2.1-20200815.pdf),
 [Narwal](),
@@ -39,7 +44,7 @@ In this post, I will first explain the notion of **DAG Trans**, a reliable, caus
 I will then demonstrate the utility of DAG Trans through **Fin**, an extremely simple, one-phase BFT Consensus for the partial synchrony model. 
 I will finish with a note on emerging **DAG Trans riding** BFT Consensus solutions. 
 
-The main takeaway from Fin is that by separating reliable transaction dissemination from Consensus, BFT Consensus based on DAG Trans can be made simple and highly performant at the same time.
+Fin is not a full-fledged BFT Consensus system design, rather, the main takeaway from it is that **by separating reliable transaction dissemination from Consensus, BFT Consensus based on DAG Trans can be made simple and highly performant at the same time**.
 
 ## DAG Trans: Reliable Causal Broadcast 
 
@@ -181,7 +186,7 @@ At layer k+4, the leader of `view(r+2)` posts a messages that has meta-informati
 Note that this message has in its causal past messages carrying `-(r+1)` meta-information. 
 Hence, faulty views have utility in advancing the global sequence of transaction, just like any other view.
 
-  <img src="/images/FIN/faulty-leader.png" width="700"  class="center"  />
+  <img src="/images/FIN/faulty-leader.png" width="750"  class="center"  />
 
   **_Figure 3:_** _a faulty `view(r+1)` and recovery in `view(r+2)`._
 
@@ -190,7 +195,7 @@ A slightly more complex scenario is depicted in **Figure 4** below.
 Here, `leader(r+1)` emits `proposal(r+1)` in layer k+2 that receives one vote by party 1 in layer k+3.
 However, the proposal is too slow to arrive at parties 3 and 4, and both parties report a view failure in layer k+3. There is no quorum enabling a commit in `view(r+1)`, nor entering `view(r+2)`. Eventually, party 1 also times out and reports a failure of `view(r+1)` in layer k+4. This enables `view(r+3)` to start and from here on, the progress of the view is similar to the above.
 
-  <img src="/images/FIN/faulty-leader2.png" width="800"  class="center"  />
+  <img src="/images/FIN/faulty-leader2.png" width="850"  class="center"  />
 
   **_Figure 4:_** _a partially faulty `view(r+1)` and recovery in `view(r+2)`._
 
