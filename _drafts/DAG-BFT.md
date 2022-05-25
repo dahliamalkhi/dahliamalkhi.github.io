@@ -180,7 +180,7 @@ At layer k+4, the leader of `view(r+2)` posts a messages that has meta-informati
 Note that this message has in its causal past messages carrying `-(r+1)` meta-information. 
 Hence, faulty views have utility in advancing the global sequence of transaction, just like any other view.
 
-  <img src="/images/FIN/faulty-leader.png" width="500"  class="center"  />
+  <img src="/images/FIN/faulty-leader.png" width="700"  class="center"  />
 
   **_Figure 3:_** _a faulty `view(r)` and recovery in `view(r+1)`._
 
