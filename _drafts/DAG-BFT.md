@@ -173,7 +173,8 @@ The progress of `view(r+1)` is similar, with party 2 as `leader(r+1)`, its propo
 If the leader of a view is faulty or disconnected, parties will eventually time out and set their meta-information to minus the view-numver, e.g., `-(r+1)` for a failure of `view(r+1)` . 
 Their next broadcasts are interpreted as reporting a failure of `view(r+1)`, enabling `view(r+2)` to start. 
 
-In **Figure 3** below, the first view, `view(r)`, proceeds normally. However, no message marked `view(r+1)` by `leader(r)+1` arrives, denoted as a missing oval on layer k+2. 
+In **Figure 3** below, the first view, `view(r)`, proceeds normally. 
+However, no message marked `view(r+1)` by `leader(r+1)` arrives, denoted as a missing oval on layer k+2. 
 Parties 2, 3, 4 report this by setting their meta-information to `-(r+1)`, denoted as striped red ovals in layer k+3.
 
 At layer k+4, the leader of `view(r+2)` posts a messages that has meta-information set to `r+2`, taken as `proposal(r+2)`. 
@@ -185,7 +186,8 @@ Hence, faulty views have utility in advancing the global sequence of transaction
   **_Figure 3:_** _a faulty `view(r+1)` and recovery in `view(r+2)`._
 
 
-A slightly more complex scenario is depicted in **Figure 4** below. Here, `leader(r+1)` emits `proposal(r+1)` in layer k+2 that receives one vote by party 2 in layer k+3.
+A slightly more complex scenario is depicted in **Figure 4** below. 
+Here, `leader(r+1)` emits `proposal(r+1)` in layer k+2 that receives one vote by party 2 in layer k+3.
 However, the proposal is too slow to arrive at parties 3 and 4, and both parties report a view failure in layer k+3. There is no quorum enabling a commit in `view(r+1)`, nor entering `view(r+2)`. Eventually, party 2 also times out and reports a failure of `view(r+1)` in layer k+4. This enables `view(r+3)` to start and from here on, the progress of the view is similar to the above.
 
   <img src="/images/FIN/faulty-leader2.png" width="800"  class="center"  />
