@@ -140,7 +140,7 @@ Upon a commit of proposal(r), a party disarms the view-r timer.
 If the view-r timer expires, a party invokes setInfo(-r). 
      Thereafter, the next transmission by p will carry the negative view number as indication of expiration of r.
 
-7. Advancing to next view.
+7. <b>Advancing to next view.</b>
 A party enters view r+1 if the DAG satisfies one of the following two conditions:
      A commit of proposal(r) happens.
      View-(-r) messages indicating view-r expiration from 2F+1 parties exist.
