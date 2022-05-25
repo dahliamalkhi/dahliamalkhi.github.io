@@ -116,34 +116,34 @@ The protocol for view `r` at each party `p` works as described in the frame belo
 
 <pre style="font-size: 14px;">
 
-1. **Entering a view.** 
-Upon entering view `r`, party `p` starts a view timer set to expire after a pre-determined view delay. 
+1. Entering a view. 
+Upon entering view r, party p starts a view timer set to expire after a pre-determined view delay. 
 
-2. **Proposing.** 
-The leader `leader(r)` of view `r` waits to deliver 2F+1 view-(r-1) messages or 2F+1 view-(-(r-1)) messages, and then invokes `setInfo(r)`. 
-    * Thereafter, the next transmission by the leader will carry the new view number as indication of _proposing_ in view `r`.
+2. Proposing. 
+The leader leader(r) of view r waits to deliver 2F+1 view-(r-1) messages or 2F+1 view-(-(r-1)) messages, and then invokes setInfo(r). 
+     Thereafter, the next transmission by the leader will carry the new view number as indication of proposing in view r.
 
-3. **Voting.**
-Each party `p` other than the leader waits to deliver the first view-r message from `leader(r)` and then invokes `setInfo(r)`. 
-    * Thereafter, the next transmission by `p` will carry the new view number as indication of _voting_ for the view-r proposal.
+3. Voting.
+Each party p other than the leader waits to deliver the first view-r message from leader(r) and then invokes setInfo(r). 
+     Thereafter, the next transmission by p will carry the new view number as indication of voting for the view-r proposal.
 
-4. **Committing.** 
-A commit of a leader proposal at view `r` with its causal predecessors happens if the DAG maintains the following conditions:
+4. Committing. 
+A commit of a leader proposal at view r with its causal predecessors happens if the DAG maintains the following conditions:
 
-    * A first view-r message from `leader(r)`, denoted `proposal(r)`, exists. 
-    * `proposal(r).predecessors` refers to either 2F+1 view-(r-1) messages or 2F+1 view-(-(r-1)) messages (or r=1).
-    * First view-r messages from 2F+1 parties `p` exist, each having `predecessors` referring to `proposal(r)`. 
+     A first view-r message from leader(r), denoted proposal(r), exists. 
+     proposal(r).predecessors refers to either 2F+1 view-(r-1) messages or 2F+1 view-(-(r-1)) messages (or r=1).
+     First view-r messages from 2F+1 parties p exist, each having predecessors referring to proposal(r). 
 
-Upon a commit of `proposal(r)`, a party disarms the view-r timer.  
+Upon a commit of proposal(r), a party disarms the view-r timer.  
 
-5. **Expiring the view timer.**
-If the view-r timer expires, a party invokes `setInfo(-r)`. 
-    * Thereafter, the next transmission by `p` will carry the negative view number as indication of _expiration_ of `r`.
+5. Expiring the view timer.
+If the view-r timer expires, a party invokes setInfo(-r). 
+     Thereafter, the next transmission by p will carry the negative view number as indication of expiration of r.
 
-7. **Advancing to next view.**
-A party enters view `r+1` if the DAG satisfies one of the following two conditions:
-    * A commit of `proposal(r)` happens.
-    * View-(-r) messages indicating view-r expiration from 2F+1 parties exist.
+7. Advancing to next view.
+A party enters view r+1 if the DAG satisfies one of the following two conditions:
+     A commit of proposal(r) happens.
+     View-(-r) messages indicating view-r expiration from 2F+1 parties exist.
 </pre>
 
 It is worthwhile noting that, at no time is transaction broadcast slowed down by the Fin protocol. Rather, Consensus logic is embedded into the DAG structure simply by injecting view numbers into it.
