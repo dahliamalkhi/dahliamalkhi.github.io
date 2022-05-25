@@ -148,16 +148,16 @@ There is a pre-designated leader for view `r`, denoted `leader(r)`, which is kno
 The next broadcast transmitted by the leader is interpreted as `proposal(r)`. 
 The proposal implicitly extends the sequence of transactions with the transitive causal predecessors of `proposal(r)`. 
 
-In the figure below, `leader(k)` is party 1 and its first message in view-r is on layer k denoted with a full yellow oval, 
+In the figure below, `leader(r)` is party 1 and its first message in view-r is on layer k denoted with a full yellow oval, 
 indicating it is `proposal(r)`. 
 
-When a party receives `proposal(k)`, it advances the meta-information value to `r` view `setInfo(r)`. 
+When a party receives `proposal(r)`, it advances the meta-information value to `r` view `setInfo(r)`. 
 The next broadcast transmitted by the party is interpreted as voting for `proposal(r)`. 
 
 Below, parties 2 and 4 both vote for `proposal(r)` by advancing their view to `r` in layer k+1, denoted with striped yellow ovals. `proposal(r)` now has the required quorum of 2F+1 votes (including the leader's implicit vote), and it becomes committed.
 
 When a party sees 2F+1 votes in view `r` it enters view `r+1`.
-The progress of view `r+1` is similar, with a leader proposal on layer k+2 and votes for it in layer k+3.
+The progress of view `r+1` is similar, with party 2 as `leader(r+1)`, its proposal on layer k+2 and votes for it in layer k+3.
 
   <img src="/images/FIN/propose-commit.png" width="500"  class="center"  />
 
