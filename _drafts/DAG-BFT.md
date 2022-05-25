@@ -106,18 +106,18 @@ The pseudo-code for view `r` at each party `p` is given in the frame below and e
 <pre style="font-size: 14px;">
 
 1. <b>Entering a view. </b>
-  Upon entering view r, party p starts a view timer set to expire after a pre-determined view delay. 
+  Upon entering view-r, party p starts a view timer set to expire after a pre-determined view delay. 
 
 2. <b>Proposing. </b>
-  The leader leader(r) of view r waits to deliver 2F+1 view-(r-1) messages or 2F+1 view-(-(r-1)) messages, and then invokes setInfo(r). 
-     Thereafter, the next transmission by the leader will carry the new view number as indication of proposing in view r.
+  The leader leader(r) of view-r waits to deliver 2F+1 view-(r-1) messages or 2F+1 view-(-(r-1)) messages, and then invokes setInfo(r). 
+     Thereafter, the next transmission by the leader will carry the new view number as indication of proposing in view-r.
 
 3. <b>Voting.</b>
   Each party p other than the leader waits to deliver the first view-r message from leader(r) and then invokes setInfo(r). 
      Thereafter, the next transmission by p will carry the new view number as indication of voting for the view-r proposal.
 
 4. <b>Committing. </b>
-  A commit of a leader proposal at view r with its causal predecessors happens if the DAG maintains the following three conditions:
+  A commit of a leader proposal at view-r with its causal predecessors happens if the DAG maintains the following three conditions:
 
      (i) A first view-r message from leader(r), denoted proposal(r), exists. 
      (ii) proposal(r).predecessors refers to either 2F+1 view-(r-1) messages or 2F+1 view-(-(r-1)) messages (or r=1).
@@ -130,7 +130,7 @@ The pseudo-code for view `r` at each party `p` is given in the frame below and e
      Thereafter, the next transmission by p will carry the negative view number as indication of expiration of r.
 
 7. <b>Advancing to next view.</b>
-  A party enters view r+1 if the DAG satisfies one of the following two conditions:
+  A party enters view-(r+1) if the DAG satisfies one of the following two conditions:
      (i) A commit of proposal(r) happens.
      (ii) View-(-r) messages indicating view-r expiration from 2F+1 parties exist.
 </pre>
