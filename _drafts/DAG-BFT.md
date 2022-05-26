@@ -184,7 +184,7 @@ Below, party 4 votes for `proposal(r)` by advancing its view to `r` in layer k+1
 When a party sees 2F+1 votes in `view(r)` it enters `view(r+1)`.
 In the scenario below, `view(r+1)` has party 2 as `leader(r+1)`, and its proposal on layer k+3 receives a quorum of votes by layer k+4.
 
-  <img src="/images/FIN/propose-commit.png" width="500"  class="center"  />
+  <img src="/images/FIN/propose-commit.png" width="700"  class="center"  />
 
   **_Figure 2:_** _proposals and votes in `view(r)` and `view(r+1)`, both committed._
 
