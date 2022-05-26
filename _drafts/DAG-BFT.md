@@ -42,7 +42,7 @@ several publications of the ACM SIGOPS,
 
 Recent interest in scaling blockchains is rekindling interest in this approach with emphasis on Byzantine fault tolerance, e.g., in systems like 
 [HashGraph](https://hedera.com/hh_whitepaper_v2.1-20200815.pdf),
-[Narwhal](https://arxiv.org/abs/2105.11827),
+[Narwhal & Tusk](https://arxiv.org/abs/2105.11827),
 [DAG-rider](https://arxiv.org/abs/2102.08325),
 [Bullshark](https://arxiv.org/abs/2201.05677"), and
 [Sui](https://medium.com/mysten-labs/announcing-narwhal-tusk-open-source-3721135abfc3). 
@@ -52,10 +52,6 @@ I will then demonstrate the utility of DAG Trans through **Fin**, a new BFT Cons
 I will finish with a note on emerging **DAG riding** BFT Consensus solutions. 
 
 ## DAG Trans: Reliable Causal Broadcast 
-
-Fin is quite possibly the simplest and the most efficient DAG-riding BFT Consensus solution for the partial synchrony model. It operates
-with a single propose-vote commit rule embedded into the DAG. 
-Fin is meant for demonstration purposes, not as a full-fledged BFT Consensus system design. The main takeaway from Fin is that **by separating reliable transaction dissemination from Consensus, BFT Consensus based on DAG Trans can be made simple and highly performant at the same time**.
 
   <img src="/images/FIN/basic-DAG.png" width="500"  class="center"  />
 
@@ -117,17 +113,18 @@ The details of the echo protocol implementation are omitted here. We remark that
 
 ## Fin: BFT Consensus Using Trans DAG 
 
-**Fin** is quite possibly the simplest and fastest BFT Consensus solution for the partial synchrony model using Trans DAG. 
-Fin operates in a view-by-view manner. 
-Views are a single phase: a leader proposes, parties vote, and commit happens when 2F+1 (**note, I think F+1 is enough!**) votes are collected. 
+**Fin** is quite possibly the simplest and the most efficient DAG-riding BFT Consensus solution for the partial synchrony model. 
+
+Fin operates in a view-by-view manner, with a single phase propose-vote commit rule embedded into the DAG: a leader proposes, parties vote, and commit happens when 2F+1 (**note, I think F+1 is enough!**) votes are collected. 
 Advancing to the next view is enabled by 2F+1 votes or 2F+1 timeouts. 
 Proposals, votes, and timeouts are injected into the DAG at any time, independent of layers, 
 simply by updating a view number through `setInfo()`.
 
 That's the whole protocol in two sentences.
-
 Fin is inspired by PBFT but leverages Trans DAG to have a one-phase commit rule and an extremely simple leader protocol.
-The name Fin, a small part of aquatic creatures that controls stirring, stands for the protocol succinctness and its central role in blockchains (and also from the fact that DAT Trans scenarios below look like swarms of fish). 
+Fin is meant for demonstration purposes, not as a full-fledged BFT Consensus system design. The main takeaway from Fin is that **by separating reliable transaction dissemination from Consensus, BFT Consensus based on DAG Trans can be made simple and highly performant at the same time**.
+
+The name Fin, a small part of aquatic creatures that controls stirring, stands for the protocol succinctness and its central role in blockchains (and also from the fact that DAG Trans scenarios below look like swarms of fish). 
 
 ### Fin Pseudo-code
 The pseudo-code for `view(r)` at each party `p` is given in the frame below and explained after it. 
