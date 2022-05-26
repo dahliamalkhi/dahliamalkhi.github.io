@@ -33,7 +33,12 @@ Distributed middleware systems of that time, e.g.,
 and 
 [Transis](https://dahliamalkhi.github.io/files/Transis-CACM1994.pdf), 
 were designed for high-throughput by building consensus over causal message ordering (!).
-The ACM Operating Systems Reviews journal ran in 199? [an issue dedicated to causally and totally ordered communication]().
+This topic was so much in the spotlight that 
+During 1993-1994, a debate over the _usefulness of causal and totally ordered communication_ carried into
+several publications of the ACM Operating Systems Reviews journal,
+[[CATOCS]](https://dl.acm.org/doi/10.1145/173668.168623)
+[[Response 1 to CATOCS]](https://dl.acm.org/doi/10.1145/164853.164859)
+[[Response 2 to CATOCS]](https://dl.acm.org/doi/10.1145/164853.164858).
 
 Recent interest in scaling blockchains is rekindling interest in this approach with emphasis on Byzantine fault tolerance, e.g., in systems like 
 [HashGraph](https://hedera.com/hh_whitepaper_v2.1-20200815.pdf),
@@ -335,9 +340,9 @@ Pre-blockchains era:
 
 * _"Understanding the Limitations of Causally and Totally Ordered Communication"_, Cheriton and Skeen, 1993. [[CATOCS]](https://dl.acm.org/doi/10.1145/173668.168623)
 
-* _"Why Bother with CATOCS?"_, Van Renesse, 1993. [[Response 1 to CATOCS]](https://dl.acm.org/doi/pdf/10.1145/164853.164859)
+* _"Why Bother with CATOCS?"_, Van Renesse, 1994. [[Response 1 to CATOCS]](https://dl.acm.org/doi/10.1145/164853.164859)
 
-* _"A Response to Cheriton and Skeen's Criticism of Causal and Totally Ordered Communication"_, Birman, 1993. [[Response 2 to CATOCS]](https://dl.acm.org/doi/10.1145/164853.164858)
+* _"A Response to Cheriton and Skeen's Criticism of Causal and Totally Ordered Communication"_, Birman, 1994. [[Response 2 to CATOCS]](https://dl.acm.org/doi/10.1145/164853.164858)
 
 Blockchain era:
 
