@@ -112,7 +112,15 @@ The details of the echo protocol implementation are omitted here. We remark that
 
 ## Fin: BFT Consensus Using Trans DAG 
 
-**Fin** is a simple BFT protocol built using Trans DAG. 
+**Fin** is quite possibly the simplest and fastest BFT Consensus solution for the partial synchrony model using Trans DAG. 
+Fin operates in a view-by-view manner. 
+Views are a single phase: a leader proposes, parties vote, and commit happens when 2F+1 (**note, I think F+1 is enough!**) votes are collected. 
+Advancing to the next view is enabled by 2F+1 votes or 2F+1 timeouts. 
+Proposals, votes, and timeouts are injected into the DAG at any time, independent of layers, 
+simply by updating a view number through `setInfo()`.
+
+That's the whole protocol in two sentences.
+
 Fin is inspired by PBFT but leverages Trans DAG to have a one-phase commit rule and an extremely simple leader protocol.
 The name Fin, a small part of aquatic creatures that controls stirring, stands for the protocol succinctness and its central role in blockchains (and also from the fact that DAT Trans scenarios below look like swarms of fish). 
 
@@ -180,12 +188,13 @@ In the scenario below, `view(r+1)` has party 2 as `leader(r+1)`, and its proposa
 
   **_Figure 2:_** _proposals and votes in `view(r)` and `view(r+1)`, both committed._
 
-If the leader of a view is faulty or disconnected, parties will eventually time out and set their meta-information to minus the view-numver, e.g., `-(r+1)` for a failure of `view(r+1)` . 
-Their next broadcasts are interpreted as reporting a failure of `view(r+1)`, enabling `view(r+2)` to start. 
+If the leader of a view is faulty or disconnected, parties will eventually time out and set their meta-information to minus the view-number, e.g., `-(r+1)` for a failure of `view(r+1)` . 
+Their next broadcasts are interpreted as reporting a failure of `view(r+1)`. 
+When a party sees 2F+1 reports that `view(r+1)` is faulty it enters `view(r+2)`. 
 
-In **Figure 3** below, the first view, `view(r)`, proceeds normally. 
-However, no message marked `view(r+1)` by `leader(r+1)` arrives, denoted as a missing oval on layer k+2. 
-Parties 1, 3, 4 report this by setting their meta-information to `-(r+1)`, denoted as striped red ovals in layer k+3.
+In **Figure 3** below, the first view `view(r)` proceeds normally. 
+However, no message marked `view(r+1)` by `leader(r+1)` arrives, showing as a missing oval on layer k+2. 
+Parties 1, 3, 4 report this by setting their meta-information to `-(r+1)`, showing as striped red ovals in layer k+3.
 
 At layer k+4, the leader of `view(r+2)` posts a messages that has meta-information set to `r+2`, taken as `proposal(r+2)`. 
 Note that this message has in its causal past messages carrying `-(r+1)` meta-information. 
