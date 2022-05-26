@@ -262,10 +262,10 @@ using the DAG only for spreading transactions.
 
 [DAG-Rider](https://arxiv.org/abs/2102.08325) and
 [Tusk](https://arxiv.org/abs/2105.11827)
-build randomized BFT Consensus "riding" on Narwhal for the asynchronous model, 
-not exchanging any messages outside the Narwhal protocol. 
-These protocols are "zero message overhead" over the DAG, but
-Narwhal transmissions are blocked until DAG-Rider (Tusk) injects input values every fourth (second) transmission.
+build randomized BFT Consensus for the asynchronous model "riding" on Narwhal, 
+These protocols are "zero message overhead" over the DAG, as in not exchanging any messages outside the Narwhal protocol.
+However, DAG-Rider (Tusk) must inject input value every 4 (2) layers, 
+which means that Narwhal transmissions are blocked on Consensus protocol actions.
 
 DAG-Rider is designed around "waves". 
 In DAG-Rider, each wave consists of 4 DAG layers, at the end of which a leader is elected in retrospect uniformly at random, having constant probability of its proposal becoming committed.
