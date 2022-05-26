@@ -3,7 +3,7 @@
 To scale the BFT (Byzantine Fault Tolerant) Consensus core of blockchains,
 prevailing wisdom is to separate between two responsibilities. 
 
-* The first is reliable Transport for spreading yet-unconfirmed transactions.
+* The first is a Transport for reliably spreading yet-unconfirmed transactions.
 It regulates communication and optimizes throughput, but it tracks only causal ordering in the form of a DAG (Direct Acyclic Graph).
 
 * The second is forming a sequential ordering of transactions and determining their commit finality. 
@@ -49,13 +49,13 @@ Recent interest in scaling blockchains is rekindling interest in this approach w
 
 In this post, I will first explain the notion of **DAG Trans**, a reliable, causal broadcast transport that shares a DAG among parties.
 I will then demonstrate the utility of DAG Trans through **Fin**, a new BFT Consensus for the partial synchrony model designed to ride on Trans DAG. 
-I will finish with a note on emerging **DAG Trans riding** BFT Consensus solutions. 
+I will finish with a note on emerging **DAG riding** BFT Consensus solutions. 
+
+## DAG Trans: Reliable Causal Broadcast 
 
 Fin is quite possibly the simplest and the most efficient DAG-riding BFT Consensus solution for the partial synchrony model. It operates
 with a single propose-vote commit rule embedded into the DAG. 
 Fin is meant for demonstration purposes, not as a full-fledged BFT Consensus system design. The main takeaway from Fin is that **by separating reliable transaction dissemination from Consensus, BFT Consensus based on DAG Trans can be made simple and highly performant at the same time**.
-
-## DAG Trans: Reliable Causal Broadcast 
 
   <img src="/images/FIN/basic-DAG.png" width="500"  class="center"  />
 
