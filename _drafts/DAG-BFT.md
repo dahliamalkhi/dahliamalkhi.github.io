@@ -285,21 +285,18 @@ That's the whole protocol in two sentences, and proposals, votes, and timeouts c
 There is no question that software modularity is advantageous, since
 it removes the Consensus protocol from the critical path of communication. 
 That said, most solutions do not rely on DAG Trans in a pure black-box manner.  
-
-For example, randomized Consensus protocols, e.g., DAG-rider and Tusk, inject into the DAG coin-tosses from the Consensus protocol. 
+As discussed above, randomized Consensus protocols, e.g.,  DAG-rider and Tusk, inject into the DAG coin-tosses from the Consensus protocol. 
 Protocols for the partial synchrony model, e.g., Bullshark, delay message transmissions by the transport according to Consensus protocol round timers, 
 in order to ensure progress during periods of synchrony. 
-The randomized Consensus protocol described in the original Hashgraph whitepaper does use the DAG in a pure manner, but it is too slow. 
-Real life Hashgraph deployments must inject coin tosses to advance quickly during periods of asynchrony, 
-(Say something about the pioneering work in Total? ToTo?)
 
 In other words, rarely is the case that [all you need is a DAG](https://arxiv.org/abs/2102.08325).
 
+Fin finds a sweet-spot in that it injects values into future emissions in a non-intrusive, non-blocking manner.
+
 In a pure DAG-rider solution, parties passively analyze the DAG structure and autonomously arrive at commit ordering decisions. 
 No extra messages are exchanged by the Consensus protocol nor is it given an opportunity to inject information into the DAG or control message emission. 
-
 Total and Hashgraph's whitepaper algorithm are pure DAG-rider solutions. Both use randomization to solve Consensus and both are rather theoretical and may suffer prohibitive latencies.
-
+[TODO:] say something about Aleph? Trans? ToTo?
 
 
 ## Reading list
