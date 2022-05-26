@@ -123,7 +123,7 @@ simply by updating a view number through `setInfo()`.
 Fin is inspired by PBFT but leverages Trans DAG to have a one-phase commit rule and an extremely simple leader protocol.
 Fin is meant for demonstration purposes, not as a full-fledged BFT Consensus system design. The main takeaway from Fin is that **by separating reliable transaction dissemination from Consensus, BFT Consensus based on DAG Trans can be made simple and highly performant at the same time**.
 
-The name Fin, a small part of aquatic creatures that controls stirring, stands for the protocol succinctness and its central role in blockchains (and also from the fact that DAG Trans scenarios below look like swarms of fish). 
+The name Fin, a small part of aquatic creatures that controls stirring, stands for the protocol succinctness and its central role in blockchains (and also because the DAG Trans scenarios below look like swarms of fish, and DAG in Hebrew means fish). 
 
 ### Fin Pseudo-code
 The pseudo-code for `view(r)` at each party `p` is given in the frame below and explained after it. 
@@ -216,7 +216,7 @@ However, the proposal is too slow to arrive at parties 3 and 4, and both parties
 
 ### Fin Analysis
 
-Fin is minimally integrated into DAG Trans, simply setting a context field periodically.
+Fin is minimally integrated into DAG Trans, simply setting the meta-information field periodically.
 Importantly, 
 at no time is transaction broadcast slowed down by the Fin protocol. 
 Rather, Consensus logic is embedded into the DAG structure simply by injecting view numbers into it.
