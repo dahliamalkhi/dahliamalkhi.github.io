@@ -242,32 +242,52 @@ In Fin, a leader proposal simply references those 2F+1 messages from the previou
 
 Narwhal is a DAG transport after which DAG Trans is modeled.
 
-Narwhal-HS is a BFT protocol based on [HotStuff]() for the partial synchrony model,
+Narwhal-HS is a BFT Consensus protocol based on [HotStuff]() for the partial synchrony model,
 in which Narwhal is used as a "mempool". 
-In order to drive consensus decisions, 
+In order to drive Consensus decisions, 
 Narwhal-HS adds messages outside Narwhal, 
 using the DAG only for spreading transactions.
 
-DAG-Rider and Tusk build randomized BFT consensus "riding" on Narwhal for the asynchronous model, 
+DAG-Rider and Tusk build randomized BFT Consensus "riding" on Narwhal for the asynchronous model, 
 not exchanging any messages outside the Narwhal protocol. 
-These protocols are "zero overhead" over the DAG, but
+These protocols are "zero message overhead" over the DAG, but
 Narwhal transmissions are blocked until DAG-Rider (Tusk) injects input values every fourth (second) transmission.
 
 DAG-Rider is designed around "waves". 
 In DAG-Rider, each wave consists of 4 DAG layers, at the end of which a leader is elected in retrospect uniformly at random, having constant probability of its proposal becoming committed.
 Tusk improves with a 3-layer wave and in overlapping the last layer of each wave with the first one of the next wave.
 
-To achieve consensus over the DAG Trans, Fin requires only injecting values into transmissions in a non-blocking manner via `setInfo(v)`. 
-DAG Trans message transmission does in not blocked by Fin. Once a `setInfo(v)` invocation completes, future
-emissions by the DAG Trans carry the value `v` in the latest `setInfo(v)` invocation. 
+Bullshark builds BFT Consensus riding on Narwhal for the partial synchrony model.
+It is also a "zero message overhead" protocol over the DAG, but due to a rigid wave-by-wave structure, 
+Narwhal transmissions are blocked by timers that are internal to the Consensus protocol.
+Bullshark is designed with 8-layer waves driving commit, each layer serving a different function in the protocol.
+
+Fin builds BFT Consensus riding on DAG Trans for the partial synchrony model with zero message overhead and no transmission blocking whatsoever.
+To achieve Consensus over the DAG Trans, Fin requires only injecting values into transmissions in a non-blocking manner via `setInfo(v)`. 
+Once a `setInfo(v)` invocation completes, future emissions by the DAG Trans carry the value `v` in the latest `setInfo(v)` invocation. 
 The value `v` is opaque to the DAG Trans and is of interest to the Consensus protocol.
+
+In terms of protocol design, Fin is extremely simple. 
+Fin views are a single phase: a leader proposes, parties vote, and commit happens if 2F+1 votes are collected. 
+Advancing to the next view is enabled by 2F+1 votes or 2F+1 timeouts. 
+That's the whole protocol in two sentences, and proposals, votes, and timeouts can be injected into the DAG at any time, independent of the layer structure. 
+
+
+| Protocol | Model | Message overhead | Blocking on External Input | Layers to Commit | 
+| :---:    | :---: | :---:            | :---:                      | :---: |
+| Narwhal-HS | partial-synchrony | yes | no | N/A | 
+| DAG-Rider | asynchronous | no | yes | 4 |
+| Tusk | asynchronous | no | yes | 2-3 |
+| Bullshark | partial-synchrony | no | yes | 8 |
+| Fin | partial-synchrony | no | no | 2 (floating) |
+
 
 There is no question that software modularity is advantageous, since
 it removes the Consensus protocol from the critical path of communication. 
 That said, most solutions do not rely on DAG Trans in a pure black-box manner.  
 
-For example, randomized consensus protocols, e.g., DAG-rider and Tusk, inject into the DAG coin-tosses from the consensus protocol. 
-Protocols for the partial synchrony model, e.g., Bullshark, delay message transmissions by the transport according to consensus protocol round timers, 
+For example, randomized Consensus protocols, e.g., DAG-rider and Tusk, inject into the DAG coin-tosses from the Consensus protocol. 
+Protocols for the partial synchrony model, e.g., Bullshark, delay message transmissions by the transport according to Consensus protocol round timers, 
 in order to ensure progress during periods of synchrony. 
 The randomized Consensus protocol described in the original Hashgraph whitepaper does use the DAG in a pure manner, but it is too slow. 
 Real life Hashgraph deployments must inject coin tosses to advance quickly during periods of asynchrony, 
@@ -276,9 +296,9 @@ Real life Hashgraph deployments must inject coin tosses to advance quickly durin
 In other words, rarely is the case that [all you need is a DAG](https://arxiv.org/abs/2102.08325).
 
 In a pure DAG-rider solution, parties passively analyze the DAG structure and autonomously arrive at commit ordering decisions. 
-No extra messages are exchanged by the consensus protocol nor is it given an opportunity to inject information into the DAG or control message emission. 
+No extra messages are exchanged by the Consensus protocol nor is it given an opportunity to inject information into the DAG or control message emission. 
 
-Total and Hashgraph's whitepaper algorithm are pure DAG-rider solutions. Both use randomization to solve consensus and both are rather theoretical and may suffer prohibitive latencies.
+Total and Hashgraph's whitepaper algorithm are pure DAG-rider solutions. Both use randomization to solve Consensus and both are rather theoretical and may suffer prohibitive latencies.
 
 
 
