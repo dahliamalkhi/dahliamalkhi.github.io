@@ -121,7 +121,7 @@ Proposals, votes, and timeouts are injected into the DAG at any time, independen
 simply by updating a view number through `setInfo()`.
 
 Fin is inspired by PBFT but leverages Trans DAG to have a one-phase commit rule and an extremely simple leader protocol.
-The main takeaway from Fin is that **by separating reliable transaction dissemination from Consensus, BFT Consensus based on DAG Trans can be made simple and highly performant at the same time**.
+Fin is meant for demonstration purposes, not as a full-fledged BFT Consensus system design. The main takeaway from Fin is that **by separating reliable transaction dissemination from Consensus, BFT Consensus based on DAG Trans can be made simple and highly performant at the same time**.
 
 The name Fin, a small part of aquatic creatures that controls stirring, stands for the protocol succinctness and its central role in blockchains (and also from the fact that DAG Trans scenarios below look like swarms of fish). 
 
@@ -143,8 +143,7 @@ The pseudo-code for `view(r)` at each party `p` is given in the frame below and 
 
 4. <b>Committing. </b>
    A commit of a leader proposal at view(r) with its causal predecessors happens if the DAG maintains the following three conditions:
-
-     (i) A first view(r) message from leader(r), denoted proposal(r), exists. 
+(i) A first view(r) message from leader(r), denoted proposal(r), exists. 
      (ii) proposal(r).predecessors refers to either 2F+1 view(r-1) messages or 2F+1 view(-(r-1)) messages (or r=1).
      (iii) First view(r) messages from 2F+1 parties p exist, each having predecessors referring to proposal(r). 
 
@@ -180,10 +179,10 @@ When a party receives `proposal(r)`, it advances the meta-information value to `
 The next broadcast transmitted by the party is interpreted as voting for `proposal(r)`. 
 A proposal that has a quorum of 2F+1 votes is considered **committed**.
 
-Below, parties 2 and 4 both vote for `proposal(r)` by advancing their view to `r` in layer k+1, denoted with striped yellow ovals. `proposal(r)` now has the required quorum of 2F+1 votes (including the leader's implicit vote), and it becomes committed.
+Below, party 4 votes for `proposal(r)` by advancing its view to `r` in layer k+1, denoted with a striped yellow oval; party 3 does the same at layer k+2. `proposal(r)` now has the required quorum of 2F+1 votes (including the leader's implicit vote), and it becomes committed.
 
 When a party sees 2F+1 votes in `view(r)` it enters `view(r+1)`.
-In the scenario below, `view(r+1)` has party 2 as `leader(r+1)`, and its proposal on layer k+2 receives a quorum of votes in layer k+3.
+In the scenario below, `view(r+1)` has party 2 as `leader(r+1)`, and its proposal on layer k+3 receives a quorum of votes by layer k+4.
 
   <img src="/images/FIN/propose-commit.png" width="500"  class="center"  />
 
