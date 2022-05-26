@@ -120,9 +120,8 @@ Advancing to the next view is enabled by 2F+1 votes or 2F+1 timeouts.
 Proposals, votes, and timeouts are injected into the DAG at any time, independent of layers, 
 simply by updating a view number through `setInfo()`.
 
-That's the whole protocol in two sentences.
 Fin is inspired by PBFT but leverages Trans DAG to have a one-phase commit rule and an extremely simple leader protocol.
-Fin is meant for demonstration purposes, not as a full-fledged BFT Consensus system design. The main takeaway from Fin is that **by separating reliable transaction dissemination from Consensus, BFT Consensus based on DAG Trans can be made simple and highly performant at the same time**.
+The main takeaway from Fin is that **by separating reliable transaction dissemination from Consensus, BFT Consensus based on DAG Trans can be made simple and highly performant at the same time**.
 
 The name Fin, a small part of aquatic creatures that controls stirring, stands for the protocol succinctness and its central role in blockchains (and also from the fact that DAG Trans scenarios below look like swarms of fish). 
 
