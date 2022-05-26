@@ -330,4 +330,4 @@ Blockchain era:
 
 * _"Bullshark: DAG BFT Protocols Made Practical"_, Spiegelman, Giridharan, Sonnino, and Kokoris-Kogias, 2022. [[Bullshark]](https://arxiv.org/abs/2201.05677")
 
-* _"Announcing Narwhal and Tusk Open Source"_, Mysten Labs, 2022. [[Sui]](https://medium.com/mysten-labs/announcing-narwhal-tusk-open-source-3721135abfc3) 
+* _"Announcing Narwhal and Tusk Open Source"_, Mysten Labs, 2022. [[Sui]](https://medium.com/mysten-labs/announcing-narwhal-tusk-open-source-3721135abfc3)
