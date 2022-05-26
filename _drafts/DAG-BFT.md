@@ -267,10 +267,6 @@ These protocols are "zero message overhead" over the DAG, as in not exchanging a
 However, DAG-Rider (Tusk) must inject input value every 4 (2) layers, 
 which means that Narwhal transmissions are blocked on Consensus protocol actions.
 
-DAG-Rider is designed around "waves". 
-In DAG-Rider, each wave consists of 4 DAG layers, at the end of which a leader is elected in retrospect uniformly at random, having constant probability of its proposal becoming committed.
-Tusk improves with a 3-layer wave and in overlapping the last layer of each wave with the first one of the next wave.
-
 [Bullshark](https://arxiv.org/abs/2201.05677")
 builds BFT Consensus riding on Narwhal for the partial synchrony model.
 It is also a "zero message overhead" protocol over the DAG, but due to a rigid wave-by-wave structure, 
@@ -282,10 +278,10 @@ To achieve Consensus over the DAG Trans, Fin requires only injecting values into
 Once a `setInfo(v)` invocation completes, future emissions by the DAG Trans carry the value `v` in the latest `setInfo(v)` invocation. 
 The value `v` is opaque to the DAG Trans and is of interest to the Consensus protocol.
 
-In terms of protocol design, Fin is extremely simple. 
-Fin views are a single phase: a leader proposes, parties vote, and commit happens if 2F+1 votes are collected. 
-Advancing to the next view is enabled by 2F+1 votes or 2F+1 timeouts. 
-That's the whole protocol in two sentences, and proposals, votes, and timeouts can be injected into the DAG at any time, independent of the layer structure. 
+In terms of protocol design, all of the above solutions are relatively succinct, but arguably, Fin is the simplest.
+DAG-Rider, Tusk and Bullshark are multi-stage protocols embedded into DAG multi-layer "waves" (4 layers in DAG-Rider, 2-3 in Tusk, 8 in Bullshark).
+Each layer is used for a different stage in the Consensus protocol, with a potential commit happening at the last layer. 
+Fin is single-stage, and timeouts can be injected into the DAG at any time, independent of the layer structure. 
 
 
 | Protocol | Model | Message overhead | Blocking on External Input | Layers to Commit | 
