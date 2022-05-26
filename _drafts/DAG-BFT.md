@@ -334,9 +334,9 @@ Pre-blockchains era:
 
 * _"Byzantine-resilient Total Ordering Algorithms"_, Moser and Melliar Smith, 1999. [[Total]](https://www.sciencedirect.com/science/article/pii/S0890540198927705)
 
-* _"Early Delivery Totally Ordered Multicast in Asynchronous Environments"_, Dolev, Kramer and Malki, 1993. [[ToTo]](https://dahliamalkhi.github.io/files/Multicast-FTCS1993.pdf)
-
 * _"Transis: A Communication System for High Availability"_, Amir, Dolev, Kramer, Malkhi, 1992. [[Transis]](https://ieeexplore.ieee.org/document/243613)
+
+* _"Early Delivery Totally Ordered Multicast in Asynchronous Environments"_, Dolev, Kramer and Malki, 1993. [[ToTo]](https://dahliamalkhi.github.io/files/Multicast-FTCS1993.pdf)
 
 * _"Understanding the Limitations of Causally and Totally Ordered Communication"_, Cheriton and Skeen, 1993. [[CATOCS]](https://dl.acm.org/doi/10.1145/173668.168623)
 
