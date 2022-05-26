@@ -31,10 +31,10 @@ Distributed middleware systems of that time, e.g.,
 [Trans](https://ieeexplore.ieee.org/document/80121?tp=&signout=success), 
 [Total](https://dl.acm.org/doi/10.1145/327164.327298)
 and 
-[Transis](https://dahliamalkhi.github.io/files/Transis-CACM1994.pdf), 
+[Transis](https://ieeexplore.ieee.org/document/243613), 
 were designed for high-throughput by building consensus over causal message ordering (!).
-This topic was so much in the spotlight that 
-During 1993-1994, a debate over the _usefulness of causal and totally ordered communication_ carried into
+This topic was so much in the spotlight that during 1993-1994,
+a debate over the _usefulness of causal and totally ordered communication_ carried into
 several publications of the ACM Operating Systems Reviews journal,
 [[CATOCS]](https://dl.acm.org/doi/10.1145/173668.168623)
 [[Response 1 to CATOCS]](https://dl.acm.org/doi/10.1145/164853.164859)
@@ -336,7 +336,7 @@ Pre-blockchains era:
 
 * _"Early Delivery Totally Ordered Multicast in Asynchronous Environments"_, Dolev, Kramer and Malki, 1993. [[ToTo]](https://dahliamalkhi.github.io/files/Multicast-FTCS1993.pdf)
 
-* _"The Transis approach to high availability cluster communication"_, Dolev and Malkhi, 1996. [[Transis]](https://dahliamalkhi.github.io/files/Transis-CACM1994.pdf)
+* _"Transis: A Communication System for High Availability"_, Amir, Dolev, Kramer, Malkhi, 1992. [[Transis]](https://ieeexplore.ieee.org/document/243613)
 
 * _"Understanding the Limitations of Causally and Totally Ordered Communication"_, Cheriton and Skeen, 1993. [[CATOCS]](https://dl.acm.org/doi/10.1145/173668.168623)
 
