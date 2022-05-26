@@ -289,7 +289,7 @@ As discussed above, randomized Consensus protocols, e.g.,  DAG-rider and Tusk, i
 Protocols for the partial synchrony model, e.g., Bullshark, delay message transmissions by the transport according to Consensus protocol round timers, 
 in order to ensure progress during periods of synchrony. 
 
-In other words, rarely is the case that [all you need is a DAG](https://arxiv.org/abs/2102.08325).
+In other words, rarely is the case that [all you need is DAG](https://arxiv.org/abs/2102.08325).
 
 Fin finds a sweet-spot in that it injects values into future emissions in a non-intrusive, non-blocking manner.
 
