@@ -236,19 +236,19 @@ In particular, a new leader proposal must carry a proof of safety composed of 2F
 messages attesting to the highest vote from previous views. 
 In Fin, a leader proposal simply references those 2F+1 messages from the previous view.
 
-## DAG Solutions
+## DAG-based Solutions
 
-(This section is still in progress.)
+[Narwhal](https://arxiv.org/abs/2105.11827) is a DAG transport after which DAG Trans is modeled.
 
-Narwhal is a DAG transport after which DAG Trans is modeled.
-
-Narwhal-HS is a BFT Consensus protocol based on [HotStuff]() for the partial synchrony model,
+[Narwhal-HS](https://arxiv.org/abs/2105.11827) is a BFT Consensus protocol based on [HotStuff]() for the partial synchrony model,
 in which Narwhal is used as a "mempool". 
 In order to drive Consensus decisions, 
 Narwhal-HS adds messages outside Narwhal, 
 using the DAG only for spreading transactions.
 
-DAG-Rider and Tusk build randomized BFT Consensus "riding" on Narwhal for the asynchronous model, 
+[DAG-Rider](https://arxiv.org/abs/2102.08325) and
+[Tusk](https://arxiv.org/abs/2105.11827)
+build randomized BFT Consensus "riding" on Narwhal for the asynchronous model, 
 not exchanging any messages outside the Narwhal protocol. 
 These protocols are "zero message overhead" over the DAG, but
 Narwhal transmissions are blocked until DAG-Rider (Tusk) injects input values every fourth (second) transmission.
@@ -257,7 +257,8 @@ DAG-Rider is designed around "waves".
 In DAG-Rider, each wave consists of 4 DAG layers, at the end of which a leader is elected in retrospect uniformly at random, having constant probability of its proposal becoming committed.
 Tusk improves with a 3-layer wave and in overlapping the last layer of each wave with the first one of the next wave.
 
-Bullshark builds BFT Consensus riding on Narwhal for the partial synchrony model.
+[Bullshark](https://arxiv.org/abs/2201.05677")
+builds BFT Consensus riding on Narwhal for the partial synchrony model.
 It is also a "zero message overhead" protocol over the DAG, but due to a rigid wave-by-wave structure, 
 Narwhal transmissions are blocked by timers that are internal to the Consensus protocol.
 Bullshark is designed with 8-layer waves driving commit, each layer serving a different function in the protocol.
@@ -275,10 +276,14 @@ That's the whole protocol in two sentences, and proposals, votes, and timeouts c
 
 | Protocol | Model | Message overhead | Blocking on External Input | Layers to Commit | 
 | :---:    | :---: | :---:            | :---:                      | :---: |
-| Narwhal-HS | partial-synchrony | yes | no | N/A | 
-| DAG-Rider | asynchronous | no | yes | 4 |
-| Tusk | asynchronous | no | yes | 2-3 |
-| Bullshark | partial-synchrony | no | yes | 8 |
+| Hedera | ? | ? | ? | ? |
+| Aleph | ? | ? | ? | ? |
+| Total | ? | ? | ? | ? |
+| ToTo | ? | ? | ? | ? |
+| [Narwhal-HS](https://arxiv.org/abs/2105.11827) | partial-synchrony | yes | no | N/A | 
+| [DAG-Rider](https://arxiv.org/abs/2102.08325) | asynchronous | no | yes | 4 |
+| [Tusk](https://arxiv.org/abs/2105.11827) | asynchronous | no | yes | 2-3 |
+| [Bullshark](https://arxiv.org/abs/2201.05677") | partial-synchrony | no | yes | 8 |
 | Fin | partial-synchrony | no | no | 2 (floating) |
 
 
