@@ -333,6 +333,12 @@ Pre-blockchains era:
 
 * _"The Transis approach to high availability cluster communication"_, Dolev and Malkhi, 1996. [[Transis]](https://dahliamalkhi.github.io/files/Transis-CACM1994.pdf)
 
+* _"Understanding the Limitations of Causally and Totally Ordered Communication"_, Cheriton and Skeen, 1993. [[CATOCS]](https://dl.acm.org/doi/10.1145/173668.168623)
+
+* _"Why Bother with CATOCS?"_, Van Renesse, 1993. [[Response 1 to CATOCS]](https://dl.acm.org/doi/pdf/10.1145/164853.164859)
+
+* _"A Response to Cheriton and Skeen's Criticism of Causal and Totally Ordered Communication"_, Birman, 1993. [[Response 2 to CATOCS]](https://dl.acm.org/doi/10.1145/164853.164858)
+
 Blockchain era:
 
 * _"Hedera: A Public Hashgraph Network & Governing Council"_, Baird, Harman, and Madsen, whitepaper v.2.1., 2020. [[Hedera HashGraph]](https://hedera.com/hh_whitepaper_v2.1-20200815.pdf)
