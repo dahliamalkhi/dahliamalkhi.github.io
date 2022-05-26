@@ -1,18 +1,18 @@
-## Away with Monolithic BFT Consensus; Enter DAG Transport BFT Consensus
+## Away with Monolithic BFT Consensus; Enter DAG-based BFT Consensus
 
 To scale the BFT (Byzantine Fault Tolerant) Consensus core of blockchains,
 prevailing wisdom is to separate between two responsibilities. 
 
-* The first is reliable DAG Trans for spreading yet-unconfirmed transactions.
+* The first is reliable Transport for spreading yet-unconfirmed transactions.
 It regulates communication and optimizes throughput, but it tracks only causal ordering in the form of a DAG (Direct Acyclic Graph).
 
 * The second is forming a sequential ordering of transactions and determining their commit finality. 
-To do this, it must solve BFT Consensus utilizing the DAG.
+To do this, it must solve BFT Consensus utilizing the Transport DAG.
 
-The advent of DAG Trans is that while solving BFT Consensus, parties spread messages that carry useful payloads (e.g., transactions). 
+The advent of building Consensus over a DAG Transport ("DAG Trans") is that while solving BFT Consensus, parties spread messages that carry useful payloads (e.g., transactions). 
 A BFT Consensus protocol can periodically commit batches from the DAG by merely referring to the leaves of the DAG. 
-Moreover, parties can continue sending messages and the DAG keep growing even when Consensus is stalled. 
-Eventually, when Consensus makes progress, it can commit the latest batch of accumulated messages from the DAG. 
+Moreover, parties can continue sending messages and the DAG keep growing even when Consensus is stalled, e.g., when a Consensus leader is faulty, 
+and later commit the messages accumulated in the DAG. 
 
 It is funny how the community made a full circle, from early distributed consensus systems to where we are today. 
 I earned my PhD more than two decades ago for contributions to scaling reliable distributed systems, 
@@ -33,6 +33,8 @@ Distributed middleware systems of that time, e.g.,
 and 
 [Transis](https://dahliamalkhi.github.io/files/Transis-CACM1994.pdf), 
 were designed for high-throughput by building consensus over causal message ordering (!).
+The ACM Operating Systems Reviews journal ran in 199? [an issue dedicated to causally and totally ordered communication]().
+
 Recent interest in scaling blockchains is rekindling interest in this approach with emphasis on Byzantine fault tolerance, e.g., in systems like 
 [HashGraph](https://hedera.com/hh_whitepaper_v2.1-20200815.pdf),
 [Narwhal](https://arxiv.org/abs/2105.11827),
@@ -41,9 +43,11 @@ Recent interest in scaling blockchains is rekindling interest in this approach w
 [Sui](https://medium.com/mysten-labs/announcing-narwhal-tusk-open-source-3721135abfc3). 
 
 In this post, I will first explain the notion of **DAG Trans**, a reliable, causal broadcast transport that shares a DAG among parties.
-I will then demonstrate the utility of DAG Trans through **Fin**, an extremely simple, one-phase BFT Consensus for the partial synchrony model. 
+I will then demonstrate the utility of DAG Trans through **Fin**, a new BFT Consensus for the partial synchrony model designed to ride on Trans DAG. 
 I will finish with a note on emerging **DAG Trans riding** BFT Consensus solutions. 
 
+Fin is quite possibly the simplest and the most efficient DAG-riding BFT Consensus solution for the partial synchrony model. It operates
+with a single propose-vote commit rule embedded into the DAG. 
 Fin is meant for demonstration purposes, not as a full-fledged BFT Consensus system design. The main takeaway from Fin is that **by separating reliable transaction dissemination from Consensus, BFT Consensus based on DAG Trans can be made simple and highly performant at the same time**.
 
 ## DAG Trans: Reliable Causal Broadcast 
@@ -165,11 +169,12 @@ indicating it is `proposal(r)`.
 
 When a party receives `proposal(r)`, it advances the meta-information value to `r` view `setInfo(r)`. 
 The next broadcast transmitted by the party is interpreted as voting for `proposal(r)`. 
+A proposal that has a quorum of 2F+1 votes is considered **committed**.
 
 Below, parties 2 and 4 both vote for `proposal(r)` by advancing their view to `r` in layer k+1, denoted with striped yellow ovals. `proposal(r)` now has the required quorum of 2F+1 votes (including the leader's implicit vote), and it becomes committed.
 
 When a party sees 2F+1 votes in `view(r)` it enters `view(r+1)`.
-The progress of `view(r+1)` is similar, with party 2 as `leader(r+1)`, its proposal on layer k+2 and votes for it in layer k+3.
+In the scenario below, `view(r+1)` has party 2 as `leader(r+1)`, and its proposal on layer k+2 receives a quorum of votes in layer k+3.
 
   <img src="/images/FIN/propose-commit.png" width="500"  class="center"  />
 
