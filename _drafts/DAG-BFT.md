@@ -48,8 +48,9 @@ Recent interest in scaling blockchains is rekindling interest in this approach w
 [Sui](https://medium.com/mysten-labs/announcing-narwhal-tusk-open-source-3721135abfc3). 
 
 In this post, I will first explain the notion of **DAG Trans**, a reliable, causal broadcast transport that shares a DAG among parties.
-I will then demonstrate the utility of DAG Trans through **Fin**, a new BFT Consensus, developed by the research team at @Chainlink Labs, for the partial synchrony model designed to ride on Trans DAG. 
-I will finish with a note on emerging **DAG riding** BFT Consensus solutions. 
+I will then demonstrate the utility of DAG Trans through **Fin**, a new DAG-riding BFT Consensus for the partial synchrony model,
+currently being developed by the research team at @Chainlink Labs. 
+I will finish with a note on emerging **DAG-riding** BFT Consensus solutions. 
 
 ## DAG Trans: Reliable Causal Broadcast 
 
