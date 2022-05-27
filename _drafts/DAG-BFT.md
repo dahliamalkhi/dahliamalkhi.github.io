@@ -179,10 +179,11 @@ When a party receives `proposal(r)`, it advances the meta-information value to `
 The next broadcast transmitted by the party is interpreted as voting for `proposal(r)`. 
 A proposal that has a quorum of 2F+1 votes is considered **committed**.
 
-Below, party 4 votes for `proposal(r)` by advancing its view to `r` in layer k+1, denoted with a striped yellow oval; party 3 does the same at layer k+2. `proposal(r)` now has the required quorum of 2F+1 votes (including the leader's implicit vote), and it becomes committed.
+Below, parties 3 and 4 vote for `proposal(r)` by advancing their view to `r` in layer k+1, denoted with striped yellow ovals. `proposal(r)` now has the required quorum of 2F+1 votes (including the leader's implicit vote), and it becomes committed.
 
 When a party sees 2F+1 votes in `view(r)` it enters `view(r+1)`.
-In the scenario below, `view(r+1)` has party 2 as `leader(r+1)`, and its proposal on layer k+3 receives a quorum of votes by layer k+4.
+In the scenario below, `view(r+1)` has party 2 as `leader(r+1)`. 
+This view demonstrates that votes may arrive at different layers, party 3 voting at layer k+3, 1 and 4 at layer k+4, at which point `proposal(r+1)` has the necessary quorum of 2F+1 to become committed. Meanwhile, messages keep spreading transaction and the DAG keeps growing.
 
   <img src="/images/FIN/propose-commit.png" width="750"  class="center"  />
 
