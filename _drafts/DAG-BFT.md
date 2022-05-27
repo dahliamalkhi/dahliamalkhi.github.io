@@ -185,7 +185,7 @@ When a party sees 2F+1 votes in `view(r)` it enters `view(r+1)`.
 In the scenario below, `view(r+1)` has party 2 as `leader(r+1)`. 
 This view demonstrates that votes may arrive at different layers, party 3 voting at layer k+3, 1 and 4 at layer k+4, at which point `proposal(r+1)` has the necessary quorum of 2F+1 to become committed. Meanwhile, messages keep spreading transaction and the DAG keeps growing.
 
-  <img src="/images/FIN/propose-commit.png" width="750"  class="center"  />
+  <img src="/images/FIN/propose-commit.png" width="650"  class="center"  />
 
   **_Figure 2:_** _proposals and votes in `view(r)` and `view(r+1)`, both committed._
 
