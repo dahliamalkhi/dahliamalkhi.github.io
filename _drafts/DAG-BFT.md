@@ -112,7 +112,7 @@ There is a very effective way to spread messages reliably while incorporating ca
 Message digests are echoed by all parties. When 2F+1 echoes are collected, a message can be delivered. 
 The details of the echo protocol implementation are omitted here. We remark that echo protocols can be streamlined, resulting in high utilization and throughout (see [Narwhal](..)).
 
-### Temporary Disconnection and Reconnection 
+#### Temporary Disconnection and Reconnection 
 
 [TODO] add a note on skipping layers when parties should do if they become temporarily disconnected and reconnect to the DAG: Bascially allow parties to refer to their past messages across skipped layers, that's all.
 
