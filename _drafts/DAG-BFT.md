@@ -182,8 +182,14 @@ A proposal that has a quorum of 2F+1 votes is considered **committed**.
 Below, parties 3 and 4 vote for `proposal(r)` by advancing their view to `r` in layer k+1, denoted with striped yellow ovals. `proposal(r)` now has the required quorum of 2F+1 votes (including the leader's implicit vote), and it becomes committed.
 
 When a party sees 2F+1 votes in `view(r)` it enters `view(r+1)`.
-In the scenario below, `view(r+1)` has party 2 as `leader(r+1)`. 
-This view demonstrates that votes may arrive at different layers, party 3 voting at layer k+3, 1 and 4 at layer k+4, at which point `proposal(r+1)` has the necessary quorum of 2F+1 to become committed. Meanwhile, messages keep spreading transaction and the DAG keeps growing.
+
+An important feature of Fin is that votes may arrive at different layers without slowing down progress. 
+Layers meanwhile fill with useful messages that may become committed at the next view.
+
+This feature is demonstrated in the scenario below at `view(r+1)`.
+The view has party 2 as `leader(r+1)`, party 3 voting at layer k+3, and parties 1 and 4 at layer k+4.
+After layer k+4, `proposal(r+1)` has the necessary quorum of 2F+1 to become committed. 
+Meanwhile, layers k+2, k+3 and k+4 fill with messages that may become committed at the next view.
 
   <img src="/images/FIN/propose-commit.png" width="625"  class="center"  />
 
