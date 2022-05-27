@@ -148,7 +148,7 @@ The pseudo-code for `view(r)` at each party `p` is given in the frame below and 
 
 4. <b>Committing. </b>
    A commit of a leader proposal at view(r) with its causal predecessors happens if the DAG maintains the following three conditions:
-(i) A first view(r) message from leader(r), denoted proposal(r), exists. 
+     (i) A first view(r) message from leader(r), denoted proposal(r), exists. 
      (ii) proposal(r).predecessors refers to either 2F+1 view(r-1) messages or 2F+1 view(-(r-1)) messages (or r=1).
      (iii) First view(r) messages from 2F+1 parties p exist, each having predecessors referring to proposal(r). 
 
