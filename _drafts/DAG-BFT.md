@@ -54,9 +54,8 @@ I will finish with a note on emerging **DAG-riding** BFT Consensus solutions.
 
 ## DAG Trans: Reliable Causal Broadcast 
 
-  <span id="Figure-DAG">
+  <span id="Figure-DAG"> </span>
   **_Figure: DAG Trans._** 
-  </span>
   <img src="/images/FIN/basic-DAG.png" width="500"  class="center"  />
 
   _A layer-by-layer causality DAG. Each message refers to 2F+1 ones in the preceding layer._ 
