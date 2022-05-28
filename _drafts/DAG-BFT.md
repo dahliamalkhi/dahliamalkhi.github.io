@@ -123,9 +123,11 @@ a reconnecting party would be require to backfill every layer it missed with mes
 To address this, we allow parties to refer to their own preceding message across (skipped) layers, as depicted in [**Figure: Disconnect**](#Figure-Disconnect) below.
 
   <span id="Figure-Disconnect"></span>
+
   <img src="/images/FIN/basic-DAG2.png" width="500"  class="center"  />
 
-  **_Figure: Disconnect._** _A temporary disconnect of party 4 and a later reconnect._ 
+  **_Figure: Disconnect._** 
+  _A temporary disconnect of party 4 and a later reconnect._ 
 
 **Fin** is quite possibly the simplest and the most efficient DAG-riding BFT Consensus solution for the partial synchrony model. 
 
@@ -206,9 +208,11 @@ After layer k+4, `proposal(r+1)` has the necessary quorum of 2F+1 to become comm
 Meanwhile, layers k+2, k+3 and k+4 fill with messages that may become committed at the next view.
 
   <span id="Figure-Commit"></span>
+
   <img src="/images/FIN/propose-commit.png" width="625"  class="center"  />
 
-  **_Figure: Commit._** _Proposals and votes in `view(r)` and `view(r+1)`, both committed._
+  **_Figure: Commit._** 
+  _Proposals and votes in `view(r)` and `view(r+1)`, both committed._
 
 If the leader of a view is faulty or disconnected, parties will eventually time out and set their meta-information to minus the view-number, e.g., `-(r+1)` for a failure of `view(r+1)` . 
 Their next broadcasts are interpreted as reporting a failure of `view(r+1)`. 
@@ -223,9 +227,11 @@ Note that this message has in its causal past messages carrying `-(r+1)` meta-in
 Hence, faulty views have utility in advancing the global sequence of transaction, just like any other view.
 
   <span id="Figure-Fault"></span>
+
   <img src="/images/FIN/faulty-leader.png" width="750"  class="center"  />
 
-  **_Figure: Fault._** _A faulty `view(r+1)` and recovery in `view(r+2)`._
+  **_Figure: Fault._** 
+  _A faulty `view(r+1)` and recovery in `view(r+2)`._
 
 
 A slightly more complex scenario is depicted in [**Figure: Partial-Fault**](#Figure-Partial-Fault) below. 
@@ -233,9 +239,11 @@ Here, `leader(r+1)` emits `proposal(r+1)` in layer k+2 that receives one vote by
 However, the proposal is too slow to arrive at parties 3 and 4, and both parties report a view failure in layer k+3. There is no quorum enabling a commit in `view(r+1)`, nor entering `view(r+2)`. Eventually, party 1 also times out and reports a failure of `view(r+1)` in layer k+4. This enables `view(r+3)` to start and from here on, the progress of the view is similar to the above.
 
   <span id="Figure-Partial-Fault"></span>
+
   <img src="/images/FIN/faulty-leader2.png" width="850"  class="center"  />
 
-  **_Figure: Partial-Fault._** _A partially faulty `view(r+1)` and recovery in `view(r+2)`._ 
+  **_Figure: Partial-Fault._** 
+  _A partially faulty `view(r+1)` and recovery in `view(r+2)`._ 
 
 
 ### Fin Analysis
