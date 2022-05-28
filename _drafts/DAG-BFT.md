@@ -131,7 +131,7 @@ Therefore, parties are allowed to refer to their own preceding message across (s
 
 **Fin** is quite possibly the simplest and the most efficient DAG-riding BFT Consensus solution for the partial synchrony model. 
 
-Fin operates in a view-by-view manner, with a single phase propose-vote commit rule embedded into the DAG: a leader proposes, parties vote, and commit happens when 2F+1 (**note, I think F+1 is enough!**) votes are collected. 
+Fin operates in a view-by-view manner, with a single phase propose-vote commit rule embedded into the DAG: a leader proposes, parties vote, and commit happens when 2F+1 votes are collected. 
 Advancing to the next view is enabled by 2F+1 votes or 2F+1 timeouts. 
 Proposals, votes, and timeouts are injected into the DAG at any time, independent of layers, 
 simply by updating a view number through `setInfo()`.
