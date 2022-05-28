@@ -56,9 +56,7 @@ I will finish with a note on emerging **DAG-riding** BFT Consensus solutions.
 
   <img src="/images/FIN/basic-DAG.png" width="500"  class="center"  />
 
-  <a href="#Figure-DAG">
-  **_Figure: DAG Trans._** _A layer-by-layer causality DAG. Each message refers to 2F+1 ones in the preceding layer._
-  </a>
+  **_Figure: DAG Trans._** _A layer-by-layer causality DAG. Each message refers to 2F+1 ones in the preceding layer._ <span id="Figure-DAG"></span>
 
 DAG Trans is a reliable, causal broadcast communication substrate for disseminating transactions among N=3F+1 parties, at most F of which are presumed Byzantine faulty and the rest are honest.
 The substrate exposes three basic API's, `broadcast()`, `deliver()`, and `setInfo()`. 
@@ -123,8 +121,7 @@ To address this, we allow parties to refer to their own preceding message across
 
   <img src="/images/FIN/basic-DAG2.png" width="500"  class="center"  />
 
-  **_Figure: Disconnect._** _A temporary disconnect of party 4 and a later reconnect._ 
-  <span id="Figure-Disconnect"></span>
+  **_Figure: Disconnect._** _A temporary disconnect of party 4 and a later reconnect._ <span id="Figure-Disconnect"></span>
 
 **Fin** is quite possibly the simplest and the most efficient DAG-riding BFT Consensus solution for the partial synchrony model. 
 
@@ -206,9 +203,8 @@ Meanwhile, layers k+2, k+3 and k+4 fill with messages that may become committed 
 
   <img src="/images/FIN/propose-commit.png" width="625"  class="center"  />
 
-  <a href="#Figure-Commit">
   **_Figure: Commit._** _Proposals and votes in `view(r)` and `view(r+1)`, both committed._
-  </a>
+  <span id="Figure-Commit"></span>
 
 If the leader of a view is faulty or disconnected, parties will eventually time out and set their meta-information to minus the view-number, e.g., `-(r+1)` for a failure of `view(r+1)` . 
 Their next broadcasts are interpreted as reporting a failure of `view(r+1)`. 
@@ -224,9 +220,7 @@ Hence, faulty views have utility in advancing the global sequence of transaction
 
   <img src="/images/FIN/faulty-leader.png" width="750"  class="center"  />
 
-  <a href="#Figure-Fault">
-  **_Figure: Fault._** _A faulty `view(r+1)` and recovery in `view(r+2)`._
-  </a>
+  **_Figure: Fault._** _A faulty `view(r+1)` and recovery in `view(r+2)`._ <span id="Figure-Fault"></span>
 
 
 A slightly more complex scenario is depicted in [**Figure: Partial-Fault**](#Figure-Partial-Fault) below. 
@@ -235,9 +229,7 @@ However, the proposal is too slow to arrive at parties 3 and 4, and both parties
 
   <img src="/images/FIN/faulty-leader2.png" width="850"  class="center"  />
 
-  <a href="#Figure-Partial-Fault">
-  **_Figure: Partial-Fault._** _A partially faulty `view(r+1)` and recovery in `view(r+2)`._
-  </a>
+  **_Figure: Partial-Fault._** _A partially faulty `view(r+1)` and recovery in `view(r+2)`._ <span id="Figure-Partial-Fault"></span>
 
 
 ### Fin Analysis
