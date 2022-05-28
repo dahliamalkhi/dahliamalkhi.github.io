@@ -327,14 +327,13 @@ Fin is single-stage, and timeouts can be injected into the DAG at any time, inde
 
 
 | Protocol | Model | External Msgs | Layered DAG | Blocking     | Layers to Commit | 
-| :--- | :--- | :--- | :---: | :--: | :--- |
+| :--- | :--- | :--- | :--- | :-- | :--- |
 | [Total](https://www.sciencedirect.com/science/article/pii/S0890540198927705) | asynchronous | none | no | no | eventual |
-| [ToTo](https://dahliamalkhi.github.io/files/Multicast-FTCS1993.pdf) | asynch., crash | none | no | no | eventual |
 | [Hedera HashGraph](https://hedera.com/hh_whitepaper_v2.1-20200815.pdf) | asynchronous | none | no | no | eventual |
-| [Aleph](https://arxiv.org/pdf/1908.05156.pdf) | asynchronous | no | ? | ? | eventual |
+| [Aleph](https://arxiv.org/pdf/1908.05156.pdf) | asynchronous | no | yes | yes (coin input) | expected constant |
 | [Narwhal-HS](https://arxiv.org/abs/2105.11827) | partial-synchrony | yes | yes | no | N/A | 
 | [DAG-Rider](https://arxiv.org/abs/2102.08325) | asynchronous | none | yes | yes (coin input) | 4 |
-| [Tusk](https://arxiv.org/abs/2105.11827) | asynchronous | none | yes | yes  (coin input) | 2-3 |
+| [Tusk](https://arxiv.org/abs/2105.11827) | asynchronous | none | yes | yes  (coin input) | expected constant |
 | [Bullshark](https://arxiv.org/abs/2201.05677") | partial-synchrony | none | yes | yes (timers) | 8 |
 | Fin | partial-synchrony | none | yes | no | 2 (floating) |
 
