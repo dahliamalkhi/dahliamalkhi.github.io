@@ -332,15 +332,15 @@ Fin is single-stage, and timeouts can be injected into the DAG at any time, inde
 | Total | ? | ? | ? | ? |
 | ToTo | ? | ? | ? | ? |
 | [Narwhal-HS](https://arxiv.org/abs/2105.11827) | partial-synchrony | yes | no | N/A | 
-| [DAG-Rider](https://arxiv.org/abs/2102.08325) | asynchronous | no | yes | 4 |
-| [Tusk](https://arxiv.org/abs/2105.11827) | asynchronous | no | yes | 2-3 |
-| [Bullshark](https://arxiv.org/abs/2201.05677") | partial-synchrony | no | yes | 8 |
+| [DAG-Rider](https://arxiv.org/abs/2102.08325) | asynchronous | no | yes | 4 (rigid) |
+| [Tusk](https://arxiv.org/abs/2105.11827) | asynchronous | no | yes | 2-3 (rigid) |
+| [Bullshark](https://arxiv.org/abs/2201.05677") | partial-synchrony | no | yes | 8 (rigid) |
 | Fin | partial-synchrony | no | no | 2 (floating) |
 
 
 There is no question that software modularity is advantageous, since
 it removes the Consensus protocol from the critical path of communication.
-That said, most solutions do not rely on DAG Trans in a pure black-box manner.
+That said, most solutions do not rely on a DAG-based transport in a pure black-box manner.
 As discussed above, randomized Consensus protocols, e.g.,  DAG-rider and Tusk, inject into the DAG coin-tosses from the Consensus protocol. 
 Protocols for the partial synchrony model, e.g., Bullshark, 
 delay message transmissions by the transport according to Consensus protocol round timers, 
