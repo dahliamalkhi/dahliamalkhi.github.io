@@ -325,8 +325,7 @@ Each layer is used for a different stage in the Consensus protocol, with a poten
 Fin is single-stage, and timeouts can be injected into the DAG at any time, independent of the layer structure. 
 
 
-| Protocol | Model | overhead | Layers block | Layers | 
-| | | overhead | on Consensus Input | to Commit | 
+| Protocol | Model | Message overhead | Layers block | Layers to commit | 
 | :---:    | :---: | :---:            | :---:                      | :---: |
 | Hedera | ? | ? | ? | ? |
 | Aleph | ? | ? | ? | ? |
