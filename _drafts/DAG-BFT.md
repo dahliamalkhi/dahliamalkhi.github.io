@@ -54,10 +54,12 @@ I will finish with a note on emerging **DAG-riding** BFT Consensus solutions.
 
 ## DAG Trans: Reliable Causal Broadcast 
 
-  <span id="Figure-DAG"></span>
+  <span id="Figure-DAG">
+  **_Figure: DAG Trans._** 
+  </span>
   <img src="/images/FIN/basic-DAG.png" width="500"  class="center"  />
 
-  **_Figure: DAG Trans._** _A layer-by-layer causality DAG. Each message refers to 2F+1 ones in the preceding layer._ 
+  _A layer-by-layer causality DAG. Each message refers to 2F+1 ones in the preceding layer._ 
 
 DAG Trans is a reliable, causal broadcast communication substrate for disseminating transactions among N=3F+1 parties, at most F of which are presumed Byzantine faulty and the rest are honest.
 The substrate exposes three basic API's, `broadcast()`, `deliver()`, and `setInfo()`. 
@@ -111,14 +113,14 @@ Note that by transitively, this ensures its entire causal history has been deliv
 For Reliability to be satisfied, sufficiently many copies of `m` must be persisted prior to delivery by any honest party, to guarantee availability against a threshold F of failures. 
 There is a very effective way to spread messages reliably while incorporating causality information.
 Message digests are echoed by all parties. When 2F+1 echoes are collected, a message can be delivered. 
-The details of the echo protocol implementation are omitted here. We remark that echo protocols can be streamlined, resulting in high utilization and throughout (see [Narwhal](..)).
+The details of the echo protocol implementation are omitted here. We remark that echo protocols can be streamlined, resulting in high utilization and throughout (see [Narwhal](https://arxiv.org/abs/2105.11827)).
 
 #### A Note on Temporary Disconnections
 
 Sometimes, a party may become temporarily disconnected. When is reconnects back, the DAG might have grown many layers without it.
 The Trans DAG rules above require a sender to refer to its own previous transmissions only at immediately preceding layers. Hence, 
 a reconnecting party would be require to backfill every layer it missed with messages that everyone has to catch up with, which is undesirable. 
-To address this, we allow parties to refer to their own preceding message across (skipped) layers, as depicted in [**Figure: Disconnect**](#Figure-Disconnect) below..
+To address this, we allow parties to refer to their own preceding message across (skipped) layers, as depicted in [**Figure: Disconnect**](#Figure-Disconnect) below.
 
   <span id="Figure-Disconnect"></span>
   <img src="/images/FIN/basic-DAG2.png" width="500"  class="center"  />
