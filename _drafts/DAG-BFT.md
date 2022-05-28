@@ -69,13 +69,12 @@ and **Causality**.
 More specifically, DAG Trans provides a `broadcast(payload)` API for a party `p` to send a message to other parties.
 A party's upcall `deliver(m)` is triggered when a message `m` can be delivered. 
 
-Each message must refer to a certain number of preceding messages.
-In this post, we concentrate on a layer-by-layer regime, where in each layer, a messages refers 
-to a certain number of messages in the preceding layer, as depicted in [**Figure: DAG Trans**](#Figure-DAG) above.
+In this post, we concentrate on a layer-by-layer regime, where in each layer each party is allowed to post only one message, as depicted in [**Figure: DAG Trans**](#Figure-DAG) above. 
 The layer-by-layer design regulates transmissions so as to saturate network capacity. 
+In this regime, each message must refer to a certain number of messages in the preceding layer and to the sender's own preceding message.
 
 To prepare for Consensus decisions, DAG Trans exposes a single additional API `setInfo(meta)`. 
-When a party invokes `broadcast()`, the message carries the latest `meta` value invoked in `setInfo(meta)` by the party. 
+Whenever a party invokes `broadcast()`, the transmitted message carries the latest `meta` value invoked in `setInfo(meta)` by the party. 
 
 Messages are delivered carrying a sender's payload and additional meta information that can be inspected upon reception.
 Every delivered message `m` carries the following fields:
@@ -83,8 +82,8 @@ Every delivered message `m` carries the following fields:
 - `m.sender`, the sender identity 
 - `m.index`, a delivery index from the sender
 - `m.payload`, contents such as transaction(s)
-- `m.predecessors`, references to the last message its sender has seen from each party, including itself, in the past. In a layer-by-layer construction, it includes references to 2F+1 messages in the preceding layer.
-- `m.info`, a meta information field reserved for the Consensus protocol at sender to inject through `setInfo()`
+- `m.predecessors`, references to messages sender has seen from other parties, including itself. In a layer-by-layer construction, it includes references to 2F+1 messages in the preceding layer.
+- `m.info`, a meta information field reserved for the Consensus protocol to inject through `setInfo()`
 
 DAG Trans satisfies the following requirements:
 
@@ -110,17 +109,16 @@ If a `deliver(m)` happens at an honest party,
 then `deliver(d)` events already happened at the party for all messages `d` referenced in `m.predecessors`. 
 Note that by transitively, this ensures its entire causal history has been delivered.
 
-For Reliability to be satisfied, sufficiently many copies of `m` must be persisted prior to delivery by any honest party, to guarantee availability against a threshold F of failures. 
 There is a very effective way to spread messages reliably while incorporating causality information.
-Message digests are echoed by all parties. When 2F+1 echoes are collected, a message can be delivered. 
+For Reliability to be satisfied, sufficiently many copies of `m` must be persisted prior to delivery by any honest party, to guarantee availability against a threshold F of failures. 
+To this end, message digests are echoed by all parties. When 2F+1 echoes are collected, a message can be delivered. 
 The details of the echo protocol implementation are omitted here. We remark that echo protocols can be streamlined, resulting in high utilization and throughout (see [Narwhal](https://arxiv.org/abs/2105.11827)).
 
 #### A Note on Temporary Disconnections
 
 Sometimes, a party may become temporarily disconnected. When is reconnects back, the DAG might have grown many layers without it.
-The Trans DAG rules above require a sender to refer to its own previous transmissions only at immediately preceding layers. Hence, 
-a reconnecting party would be require to backfill every layer it missed with messages that everyone has to catch up with, which is undesirable. 
-To address this, we allow parties to refer to their own preceding message across (skipped) layers, as depicted in [**Figure: Disconnect**](#Figure-Disconnect) below.
+It is undesirable that a reconnecting party would be required to backfill every layer it missed with messages that everyone has to catch up with.
+Therefore, parties are allowed to refer to their own preceding message across (skipped) layers, as depicted in [**Figure: Disconnect**](#Figure-Disconnect) below. 
 
   <span id="Figure-Disconnect"></span>
 
@@ -128,6 +126,8 @@ To address this, we allow parties to refer to their own preceding message across
 
   **_Figure: Disconnect._** 
   _A temporary disconnect of party 4 and a later reconnect._ 
+
+## Fin
 
 **Fin** is quite possibly the simplest and the most efficient DAG-riding BFT Consensus solution for the partial synchrony model. 
 
@@ -142,7 +142,8 @@ Fin is meant for demonstration purposes, not as a full-fledged BFT Consensus sys
 The name Fin, a small part of aquatic creatures that controls stirring, stands for the protocol succinctness and its central role in blockchains (and also because the DAG Trans scenarios below look like swarms of fish, and DAG in Hebrew means fish). 
 
 ### Fin Pseudo-code
-The pseudo-code for `view(r)` at each party `p` is given in the frame below and explained after it. 
+
+The pseudo-code for `view(r)` at each party `p` is given in the frame below, and a verbal explanation is providing below it. 
 
 <pre style="font-size: 14px;">
 
@@ -158,12 +159,19 @@ The pseudo-code for `view(r)` at each party `p` is given in the frame below and 
      Thereafter, the next transmission by p will carry the new view number as indication of voting for the view(r) proposal.
 
 4. <b>Committing. </b>
-   A commit of a leader proposal at view(r) with its causal predecessors happens if the DAG maintains the following three conditions:
+   A commit of a leader proposal at view(r) happens if the DAG maintains the following three conditions:
      (i) A first view(r) message from leader(r), denoted proposal(r), exists. 
      (ii) proposal(r).predecessors refers to either 2F+1 view(r-1) messages or 2F+1 view(-(r-1)) messages (or r=1).
      (iii) First view(r) messages from 2F+1 parties p exist, each having predecessors referring to proposal(r). 
 
    Upon a commit of proposal(r), a party disarms the view(r) timer.  
+
+   4.1. <b>Ordering. </b>
+
+   When `proposal(r)` commits, its causal predecessors which succeed the latest possibly committed proposal are appended to the totally ordered sequence of committed messages.
+   Most precisely, let `r' < r` be the highest index such that `proposal(r')` has F+1 votes among the causal predecessors of `proposal(r)`.
+   First, `proposal(r')` is (recursively) appended to the committed sequence of messages.
+   Then, all causal predecessors of `proposal(r)` which have not been committed already are appended to the sequence.
 
 5. <b>Expiring the view timer.</b>
    If the view(r) timer expires, a party invokes setInfo(-r). 
