@@ -55,11 +55,11 @@ I will finish with a note on emerging **DAG-riding** BFT Consensus solutions.
 ## DAG Trans: Reliable Causal Broadcast 
 
   <span id="Figure-DAG"> </span>
-  **_Figure: DAG Trans._** 
-  _A layer-by-layer causality DAG. Each message refers to 2F+1 ones in the preceding layer._ 
 
   <img src="/images/FIN/basic-DAG.png" width="500"  class="center"  />
 
+  **_Figure: DAG Trans._** 
+  _A layer-by-layer causality DAG. Each message refers to 2F+1 ones in the preceding layer._ 
 
 DAG Trans is a reliable, causal broadcast communication substrate for disseminating transactions among N=3F+1 parties, at most F of which are presumed Byzantine faulty and the rest are honest.
 The substrate exposes three basic API's, `broadcast()`, `deliver()`, and `setInfo()`. 
