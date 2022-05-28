@@ -326,12 +326,12 @@ Each layer is used for a different stage in the Consensus protocol, with a poten
 Fin is single-stage, and timeouts can be injected into the DAG at any time, independent of the layer structure. 
 
 
-| Protocol | Model                   | Message Outside DAG | Layered DAG | Blocking     | Layers to commit | 
-| :---:    | :---:                   | :---:            | :---:       |              | :---:            |
-| Total    | asynchronous            | none             | no          | no           | eventual              |
-| ToTo     | asynch., crash          | none             | no          | no           | eventual              |
-| Hedera   | asynchronous            | ?                | ?           | ?            | eventual                |
-| [Aleph](https://arxiv.org/pdf/1908.05156.pdf)     | asynchronous | ?                | eventual          | ?            | eventual                |
+| Protocol | Model | Msgs Outside DAG | Layered DAG | Blocking     | Layers to Commit | 
+| :--- | :--- | :--- | :---: | :--: | :--- |
+| [Total](https://www.sciencedirect.com/science/article/pii/S0890540198927705) | asynchronous | none | no | no | eventual |
+| [ToTo](https://dahliamalkhi.github.io/files/Multicast-FTCS1993.pdf) | asynch., crash | none | no | no | eventual |
+| [Hedera HashGraph](https://hedera.com/hh_whitepaper_v2.1-20200815.pdf) | asynchronous | none | no | no | eventual |
+| [Aleph](https://arxiv.org/pdf/1908.05156.pdf) | asynchronous | no | ? | ? | eventual |
 | [Narwhal-HS](https://arxiv.org/abs/2105.11827) | partial-synchrony | yes | no | N/A | 
 | [DAG-Rider](https://arxiv.org/abs/2102.08325) | asynchronous | none | yes | 4 |
 | [Tusk](https://arxiv.org/abs/2105.11827) | asynchronous | none | yes | 2-3 |
