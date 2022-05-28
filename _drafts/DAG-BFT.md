@@ -166,7 +166,7 @@ The pseudo-code for `view(r)` at each party `p` is given in the frame below, and
 
    Upon a commit of proposal(r), a party disarms the view(r) timer.  
 
-   4.1. <b>Ordering. </b>
+   4.1. <b>Ordering commits. </b>
 
    When `proposal(r)` commits, its causal predecessors which succeed the latest possibly committed proposal are appended to the totally ordered sequence of committed messages.
    Most precisely, let `r' < r` be the highest index such that `proposal(r')` has F+1 votes among the causal predecessors of `proposal(r)`.
@@ -193,14 +193,15 @@ Note, protocol views do *NOT* correspond to DAG layers, but rather, view numbers
 
 There is a pre-designated leader for `view(r)`, denoted `leader(r)`, which is known to everyone.
 `leader(r)` proposes in `view(r)` simply by setting its meta-information value to `r` via `setInfo(r)`. 
-The next broadcast transmitted by the leader is interpreted as `proposal(r)`. 
+Thereafter, transmissions by the leader will carry the new view number. 
+The first `view-r` message by the leader carrying `view(r) is interpreted as `proposal(r)`. 
 The proposal implicitly extends the sequence of transactions with the transitive causal predecessors of `proposal(r)`. 
 
 In [**Figure: Commit**](#Figure-Commit) below, `leader(r)` is party 1 and its first message in `view(r)` is on layer k denoted with a full yellow oval, 
 indicating it is `proposal(r)`. 
 
 When a party receives `proposal(r)`, it advances the meta-information value to `r` view `setInfo(r)`. 
-The next broadcast transmitted by the party is interpreted as voting for `proposal(r)`. 
+Thereafter, transmissions by the party will carry the new view number and be interpreted as voting for `proposal(r)`. 
 A proposal that has a quorum of 2F+1 votes is considered **committed**.
 
 Below, parties 3 and 4 vote for `proposal(r)` by advancing their view to `r` in layer k+1, denoted with striped yellow ovals. `proposal(r)` now has the required quorum of 2F+1 votes (including the leader's implicit vote), and it becomes committed.
@@ -212,7 +213,7 @@ Layers meanwhile fill with useful messages that may become committed at the next
 
 This feature is demonstrated in the scenario below at `view(r+1)`.
 The view has party 2 as `leader(r+1)`, party 3 voting at layer k+3, and parties 1 and 4 at layer k+4.
-After layer k+4, `proposal(r+1)` has the necessary quorum of 2F+1 to become committed. 
+After layer k+4, `proposal(r+1)` has the necessary quorum of 2F+1 of votes to become committed. 
 Meanwhile, layers k+2, k+3 and k+4 fill with messages that may become committed at the next view.
 
   <span id="Figure-Commit"></span>
