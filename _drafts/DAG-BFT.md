@@ -112,9 +112,12 @@ There is a very effective way to spread messages reliably while incorporating ca
 Message digests are echoed by all parties. When 2F+1 echoes are collected, a message can be delivered. 
 The details of the echo protocol implementation are omitted here. We remark that echo protocols can be streamlined, resulting in high utilization and throughout (see [Narwhal](..)).
 
-#### Temporary Disconnection and Reconnection 
+#### A Note on Temporary Disconnections
 
-[TODO] add a note on skipping layers when parties should do if they become temporarily disconnected and reconnect to the DAG: Bascially allow parties to refer to their past messages across skipped layers, that's all.
+Sometimes a party may becomes temporarily disconnected. When is reconnects back, the DAG may have grown many layers without it.
+The Trans DAG rules above require a sender to refers to its own previous transmission and at the same time constrain messages to refer to messages in the immediately preceding layer. 
+This leaves a reconnecting party with the duty of backfilling every layer it missed with a message that no one else refers to.
+To address this, we allow parties to refer to their own preceding message across (skipped) layers.
 
 ## Fin: BFT Consensus Using Trans DAG 
 
