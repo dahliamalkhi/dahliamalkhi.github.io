@@ -326,12 +326,14 @@ Each layer is used for a different stage in the Consensus protocol, with a poten
 Fin is single-stage, and timeouts can be injected into the DAG at any time, independent of the layer structure. 
 
 
-| Protocol | Model                   | Message overhead | Layered DAG | Blocking     | Layers to commit | 
+| Protocol | Model                   | Message Outside DAG | Layered DAG | Blocking     | Layers to commit | 
 | :---:    | :---:                   | :---:            | :---:       |              | :---:            |
-| Total    | asynchronous            | none             | no          | no           | N/A              |
-| ToTo     | asynch., crash          | none             | no          | no           | N/A              |
-| Hedera   | ?                       | ?                | ?           | ?            | ?                |
-| [Aleph](https://arxiv.org/pdf/1908.05156.pdf)    | asynchronous | ?                | no | ?            | ?                |
+| Total    | asynchronous            | none             | no          | no           | eventual              |
+| ToTo     | asynch., crash          | none             | no          | no           | eventual              |
+| Hedera   
+           | asynchronous            | ?                | ?           | ?            | eventual                |
+| [Aleph](https://arxiv.org/pdf/1908.05156.pdf)     
+           | asynchronous | ?                | eventual          | ?            | eventual                |
 | [Narwhal-HS](https://arxiv.org/abs/2105.11827) | partial-synchrony | yes | no | N/A | 
 | [DAG-Rider](https://arxiv.org/abs/2102.08325) | asynchronous | none | yes | 4 |
 | [Tusk](https://arxiv.org/abs/2105.11827) | asynchronous | none | yes | 2-3 |
