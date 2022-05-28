@@ -123,9 +123,7 @@ To address this, we allow parties to refer to their own preceding message across
 
   <img src="/images/FIN/basic-DAG2.png" width="500"  class="center"  />
 
-  <a href="#Figure-Disconnect">
-  **_Figure: Disconnect._** _A temporary disconnect of party 4 and a later reconnect._
-  </a>
+  **_Figure: Disconnect._** _A temporary disconnect of party 4 and a later reconnect._ <span id="Figure-Disconnect"></span>
 
 **Fin** is quite possibly the simplest and the most efficient DAG-riding BFT Consensus solution for the partial synchrony model. 
 
