@@ -330,7 +330,7 @@ Fin is single-stage, and timeouts can be injected into the DAG at any time, inde
 | :--- | :--- | :--- | :--- | :-- | :--- |
 | [Total](https://www.sciencedirect.com/science/article/pii/S0890540198927705) | asynchronous | none | no | no | eventual |
 | [Hedera HashGraph](https://hedera.com/hh_whitepaper_v2.1-20200815.pdf) | asynchronous | none | no | no | eventual |
-| [Aleph](https://arxiv.org/pdf/1908.05156.pdf) | asynchronous | no | yes | yes (coin input) | expected constant |
+| [Aleph](https://arxiv.org/pdf/1908.05156.pdf) | asynchronous | none | yes | yes (coin input) | expected constant |
 | [Narwhal-HS](https://arxiv.org/abs/2105.11827) | partial-synchrony | yes | yes | no | N/A | 
 | [DAG-Rider](https://arxiv.org/abs/2102.08325) | asynchronous | none | yes | yes (coin input) | 4 |
 | [Tusk](https://arxiv.org/abs/2105.11827) | asynchronous | none | yes | yes  (coin input) | expected constant |
