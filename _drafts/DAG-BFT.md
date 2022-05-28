@@ -171,7 +171,8 @@ The pseudo-code for `view(r)` at each party `p` is given in the frame below, and
    If `proposal(r)` commits, messages are appended to the committed sequence as follows. 
    First, among `proposal(r)`'s causal predecessors, the highest `proposal(r')` that has F+1 votes is
    (recursively) ordered. 
-   After it, remaining causal predecessors of `proposal(r)` which have not yet been ordered are appended to the committed sequence.
+   After it, remaining causal predecessors of `proposal(r)` which have not yet been ordered are appended to the committed sequence
+   (within this batch, ordering can be done using any deterministic rule to linearize the partial ordering into a total ordering.)
 
 5. <b>Expiring the view timer.</b>
    If the view(r) timer expires, a party invokes setInfo(-r). 
@@ -325,17 +326,17 @@ Each layer is used for a different stage in the Consensus protocol, with a poten
 Fin is single-stage, and timeouts can be injected into the DAG at any time, independent of the layer structure. 
 
 
-| Protocol | Model | Message overhead | Layers block | Layers to commit | 
-| :---:    | :---: | :---:            | :---:                      | :---: |
-| Hedera | ? | ? | ? | ? |
-| Aleph | ? | ? | ? | ? |
-| Total | ? | ? | ? | ? |
-| ToTo | ? | ? | ? | ? |
+| Protocol | Model                   | Message overhead | Layered DAG | Blocking     | Layers to commit | 
+| :---:    | :---:                   | :---:            | :---:       |              | :---:            |
+| Total    | asynchronous            | none             | no          | no           | N/A              |
+| ToTo     | asynch., crash          | none             | no          | no           | N/A              |
+| Hedera   | ?                       | ?                | ?           | ?            | ?                |
+| [Aleph](https://arxiv.org/pdf/1908.05156.pdf)    | asynchronous | ?                | no | ?            | ?                |
 | [Narwhal-HS](https://arxiv.org/abs/2105.11827) | partial-synchrony | yes | no | N/A | 
-| [DAG-Rider](https://arxiv.org/abs/2102.08325) | asynchronous | no | yes | 4 |
-| [Tusk](https://arxiv.org/abs/2105.11827) | asynchronous | no | yes | 2-3 |
-| [Bullshark](https://arxiv.org/abs/2201.05677") | partial-synchrony | no | yes | 8 |
-| Fin | partial-synchrony | no | no | 2 (floating) |
+| [DAG-Rider](https://arxiv.org/abs/2102.08325) | asynchronous | none | yes | 4 |
+| [Tusk](https://arxiv.org/abs/2105.11827) | asynchronous | none | yes | 2-3 |
+| [Bullshark](https://arxiv.org/abs/2201.05677") | partial-synchrony | none | yes | 8 |
+| Fin | partial-synchrony | none | no | 2 (floating) |
 
 
 There is no question that software modularity is advantageous, since
@@ -350,9 +351,18 @@ In other words, rarely is the case that [all you need is DAG](https://arxiv.org/
 
 Fin finds a sweet-spot in that it injects values into future emissions in a non-intrusive, non-blocking manner.
 
-In a pure DAG-rider solution, parties passively analyze the DAG structure and autonomously arrive at commit ordering decisions. 
-No extra messages are exchanged by the Consensus protocol nor is it given an opportunity to inject information into the DAG or control message emission. 
-Total and Hashgraph's whitepaper algorithm are pure DAG-rider solutions. Both use randomization to solve Consensus and both are rather theoretical and may suffer prohibitive latencies.
+In a pure DAG-rider solution,
+no extra messages are exchanged by the Consensus protocol nor is it given an opportunity to inject information into the DAG or control message emission. 
+Parties passively analyze the DAG structure and autonomously arrive at commit ordering decisions,
+even though the DAG is delivered to parties incrementally and in potentially different order.
+
+[Total](https://www.sciencedirect.com/science/article/pii/S0890540198927705) and
+[ToTo](https://dahliamalkhi.github.io/files/Multicast-FTCS1993.pdf)
+ are pre- blockchain era, pure DAG-rider total ordering protocols for the asynchronous model. 
+They are designed without regulating DAG layers, and without injecting random coin-flips to cope with asynchrony. 
+As a result, they are quite complex and their liveness depends on network behavior. 
+
+and Hashgraph's whitepaper algorithm are pure DAG-rider solutions. Both use randomization to solve Consensus and both are rather theoretical and may suffer prohibitive latencies.
 [TODO:] say something about Aleph? Trans? ToTo?
 
 
@@ -384,7 +394,9 @@ Blockchain era:
 
 * _"Hedera: A Public Hashgraph Network & Governing Council"_, Baird, Harman, and Madsen, whitepaper v.2.1., 2020. [[Hedera HashGraph]](https://hedera.com/hh_whitepaper_v2.1-20200815.pdf)
 
-* Aleph [TODO]
+* _"Aleph: Efficient Atomic Broadcast in Asynchronous Networks with Byzantine Nodes"_, Gągol, Leśniak, Straszak, and Świętek. [[Aleph]](https://arxiv.org/pdf/1908.05156.pdf)
+
+* _"Blockmania: from Block DAGs to Consensus"_. Danezis and Hrycyszyn, 2018. [[Blockmania]](https://arxiv.org/abs/1809.01620).
 
 * _"Narwhal and Tusk: A DAG-based Mempool and Efficient BFT Consensus"_, Danezis, Kokoris-Kogias, Sonnino, and Spiegelman, 2021. [[Narwhal and Tusk]](https://arxiv.org/abs/2105.11827)
 
