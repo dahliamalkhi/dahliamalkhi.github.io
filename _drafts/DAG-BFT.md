@@ -56,7 +56,9 @@ I will finish with a note on emerging **DAG-riding** BFT Consensus solutions.
 
   <img src="/images/FIN/basic-DAG.png" width="500"  class="center"  />
 
-  **_Figure 1:_** _A layer-by-layer causality DAG. Each message refers to 2F+1 ones in the preceding layer._
+  <a href="#Figure-DAG">
+  **_Figure: DAG Trans._** _A layer-by-layer causality DAG. Each message refers to 2F+1 ones in the preceding layer._
+  </a>
 
 DAG Trans is a reliable, causal broadcast communication substrate for disseminating transactions among N=3F+1 parties, at most F of which are presumed Byzantine faulty and the rest are honest.
 The substrate exposes three basic API's, `broadcast()`, `deliver()`, and `setInfo()`. 
@@ -68,7 +70,7 @@ A party's upcall `deliver(m)` is triggered when a message `m` can be delivered.
 
 Each message must refer to a certain number of preceding messages.
 In this post, we concentrate on a layer-by-layer regime, where in each layer, a messages refers 
-to a certain number of messages in the preceding layer, as depicted in **Figure 1** above.
+to a certain number of messages in the preceding layer, as depicted in [**Figure: DAG Trans**](#Figure-DAG) above.
 The layer-by-layer design regulates transmissions so as to saturate network capacity. 
 
 To prepare for Consensus decisions, DAG Trans exposes a single additional API `setInfo(meta)`. 
@@ -114,12 +116,16 @@ The details of the echo protocol implementation are omitted here. We remark that
 
 #### A Note on Temporary Disconnections
 
-Sometimes a party may becomes temporarily disconnected. When is reconnects back, the DAG may have grown many layers without it.
-The Trans DAG rules above require a sender to refers to its own previous transmission and at the same time constrain messages to refer to messages in the immediately preceding layer. 
-This leaves a reconnecting party with the duty of backfilling every layer it missed with a message that no one else refers to.
-To address this, we allow parties to refer to their own preceding message across (skipped) layers.
+Sometimes, a party may become temporarily disconnected. When is reconnects back, the DAG might have grown many layers without it.
+The Trans DAG rules above require a sender to refer to its own previous transmissions only at immediately preceding layers. Hence, 
+a reconnecting party would be require to backfill every layer it missed with messages that everyone has to catch up with, which is undesirable. 
+To address this, we allow parties to refer to their own preceding message across (skipped) layers, as depicted in [**Figure: Disconnect**](#Figure-Disconnect) below..
 
-## Fin: BFT Consensus Using Trans DAG 
+  <img src="/images/FIN/basic-DAG2.png" width="500"  class="center"  />
+
+  <a href="#Figure-Disconnect">
+  **_Figure: Disconnect._** _A temporary disconnect of party 4 and a later reconnect._
+  </a>
 
 **Fin** is quite possibly the simplest and the most efficient DAG-riding BFT Consensus solution for the partial synchrony model. 
 
@@ -180,7 +186,7 @@ There is a pre-designated leader for `view(r)`, denoted `leader(r)`, which is kn
 The next broadcast transmitted by the leader is interpreted as `proposal(r)`. 
 The proposal implicitly extends the sequence of transactions with the transitive causal predecessors of `proposal(r)`. 
 
-In the **Figure 2** below, `leader(r)` is party 1 and its first message in `view(r)` is on layer k denoted with a full yellow oval, 
+In [**Figure: Commit**](#Figure-Commit) below, `leader(r)` is party 1 and its first message in `view(r)` is on layer k denoted with a full yellow oval, 
 indicating it is `proposal(r)`. 
 
 When a party receives `proposal(r)`, it advances the meta-information value to `r` view `setInfo(r)`. 
@@ -201,13 +207,15 @@ Meanwhile, layers k+2, k+3 and k+4 fill with messages that may become committed 
 
   <img src="/images/FIN/propose-commit.png" width="625"  class="center"  />
 
-  **_Figure 2:_** _proposals and votes in `view(r)` and `view(r+1)`, both committed._
+  <a href="#Figure-Commit">
+  **_Figure: Commit._** _Proposals and votes in `view(r)` and `view(r+1)`, both committed._
+  </a>
 
 If the leader of a view is faulty or disconnected, parties will eventually time out and set their meta-information to minus the view-number, e.g., `-(r+1)` for a failure of `view(r+1)` . 
 Their next broadcasts are interpreted as reporting a failure of `view(r+1)`. 
 When a party sees 2F+1 reports that `view(r+1)` is faulty it enters `view(r+2)`. 
 
-In **Figure 3** below, the first view `view(r)` proceeds normally. 
+In [**Figure: Fault**](#Figure-Fault) below, the first view `view(r)` proceeds normally. 
 However, no message marked `view(r+1)` by `leader(r+1)` arrives, showing as a missing oval on layer k+2. 
 Parties 1, 3, 4 report this by setting their meta-information to `-(r+1)`, showing as striped red ovals in layer k+3.
 
@@ -217,16 +225,20 @@ Hence, faulty views have utility in advancing the global sequence of transaction
 
   <img src="/images/FIN/faulty-leader.png" width="750"  class="center"  />
 
-  **_Figure 3:_** _a faulty `view(r+1)` and recovery in `view(r+2)`._
+  <a href="#Figure-Fault">
+  **_Figure: Fault._** _A faulty `view(r+1)` and recovery in `view(r+2)`._
+  </a>
 
 
-A slightly more complex scenario is depicted in **Figure 4** below. 
+A slightly more complex scenario is depicted in [**Figure: Partial-Fault**](#Figure-Partial-Fault) below. 
 Here, `leader(r+1)` emits `proposal(r+1)` in layer k+2 that receives one vote by party 1 in layer k+3.
 However, the proposal is too slow to arrive at parties 3 and 4, and both parties report a view failure in layer k+3. There is no quorum enabling a commit in `view(r+1)`, nor entering `view(r+2)`. Eventually, party 1 also times out and reports a failure of `view(r+1)` in layer k+4. This enables `view(r+3)` to start and from here on, the progress of the view is similar to the above.
 
   <img src="/images/FIN/faulty-leader2.png" width="850"  class="center"  />
 
-  **_Figure 4:_** _a partially faulty `view(r+1)` and recovery in `view(r+2)`._
+  <a href="#Figure-Partial-Fault">
+  **_Figure: Partial-Fault._** _A partially faulty `view(r+1)` and recovery in `view(r+2)`._
+  </a>
 
 
 ### Fin Analysis
