@@ -325,16 +325,17 @@ Each layer is used for a different stage in the Consensus protocol, with a poten
 Fin is single-stage, and timeouts can be injected into the DAG at any time, independent of the layer structure. 
 
 
-| Protocol | Model | Message overhead | Blocking on Consensus Input | Layers to Commit | 
+| Protocol | Model | overhead | Layers block | Layers | 
+| | | overhead | on Consensus Input | to Commit | 
 | :---:    | :---: | :---:            | :---:                      | :---: |
 | Hedera | ? | ? | ? | ? |
 | Aleph | ? | ? | ? | ? |
 | Total | ? | ? | ? | ? |
 | ToTo | ? | ? | ? | ? |
 | [Narwhal-HS](https://arxiv.org/abs/2105.11827) | partial-synchrony | yes | no | N/A | 
-| [DAG-Rider](https://arxiv.org/abs/2102.08325) | asynchronous | no | yes | 4 (rigid) |
-| [Tusk](https://arxiv.org/abs/2105.11827) | asynchronous | no | yes | 2-3 (rigid) |
-| [Bullshark](https://arxiv.org/abs/2201.05677") | partial-synchrony | no | yes | 8 (rigid) |
+| [DAG-Rider](https://arxiv.org/abs/2102.08325) | asynchronous | no | yes | 4 |
+| [Tusk](https://arxiv.org/abs/2105.11827) | asynchronous | no | yes | 2-3 |
+| [Bullshark](https://arxiv.org/abs/2201.05677") | partial-synchrony | no | yes | 8 |
 | Fin | partial-synchrony | no | no | 2 (floating) |
 
 
