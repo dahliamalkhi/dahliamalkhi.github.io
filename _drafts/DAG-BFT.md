@@ -1,4 +1,4 @@
-  <img src="/images/FIN/basic-DAG.png" width="500"  class="center"  />
+  <img src="/images/FIN/cover.png" width="850"  class="center"  />
 
 ## Away with Monolithic BFT Consensus; Enter DAG-based BFT Consensus
 
