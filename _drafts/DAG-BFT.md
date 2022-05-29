@@ -49,15 +49,14 @@ DAG-based BFT protocols like
 [DAG-rider](https://arxiv.org/abs/2102.08325), and
 [Bullshark](https://arxiv.org/abs/2201.05677").
 
-In post 1/3, I will explain the notion of 
-[**DAG Trans**](#DAG-Trans), a reliable, causal broadcast transport that shares a DAG among parties. 
-In post 2/3, I will demonstrate the utility of DAG Trans through 
-[**Fin**](#FIN), 
+In [**DAG Trans**](#DAG-Trans), 
+I will explain the notion of a reliable, causal broadcast transport that shares a DAG among parties. 
+In [**Fin**](#FIN), 
+I will demonstrate the utility of DAG Trans through Fin,
 quite possibly the simplest and the most efficient novel DAG-riding BFT Consensus solution for the partial synchrony model, 
 which the research team at @Chainlink Labs will be developing. 
-In post 3/3, 
+In [**DAG-riding**](#DAG-Riding), 
 I will finish with a note on 
-[**DAG-riding**](#DAG-Riding), 
 BFT Consensus solutions that build on [**DAG Trans**](#DAG-Trans). 
 
 For further reading, see [**DAG-Based BFT Consensus Reading list**](#DAG-Reading).
