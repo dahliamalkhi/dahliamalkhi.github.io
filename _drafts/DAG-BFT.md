@@ -68,7 +68,7 @@ contains notes on BFT Consensus solutions that build on DAG Trans.
 
   <span id="Figure-DAG"> </span>
 
-  <img src="/images/FIN/basic-DAG.png" width="600"  class="center"  />
+  <img src="/images/FIN/basic-DAG.png" width="700"  class="center"  />
 
   **_Figure: DAG Trans._** 
   _A layer-by-layer causality DAG. Each message refers to 2F+1 ones in the preceding layer._ 
@@ -134,7 +134,7 @@ Therefore, parties are allowed to refer to their own preceding message across (s
 
   <span id="Figure-Disconnect"></span>
 
-  <img src="/images/FIN/basic-DAG2.png" width="600"  class="center"  />
+  <img src="/images/FIN/basic-DAG2.png" width="700"  class="center"  />
 
   **_Figure: Disconnect._** 
   _A temporary disconnect of party 4 and a later reconnect._ 
