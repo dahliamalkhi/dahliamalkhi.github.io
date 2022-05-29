@@ -17,14 +17,14 @@ and later commit the messages accumulated in the DAG.
 It is funny how the community made a full circle, from early distributed consensus systems to where we are today. 
 I earned my PhD more than two decades ago for contributions to scaling reliable distributed systems, 
 guided by and collaborating with pioneers of the field, including
-@Ken Birman, 
-@Danny Dolev, 
-@Rick Schlichting, 
-@Michael Melliar-Smith, 
-@Louis Moser, 
-@Robbert van Rennesse, 
-@Yair Amir, 
-@Idit Keidar.
+[Ken Birman](https://www.linkedin.com/in/ken-birman-3661a0/), 
+[Danny Dolev](https://www.linkedin.com/in/danny-dolev-723aa616/), 
+[Rick Schlichting](https://www.linkedin.com/in/rick-schlichting-6519487a/), 
+[Michael Melliar-Smith](https://engineering.ucsb.edu/people/p-michael-melliar-smith), 
+[Louis Moser](https://engineering.ucsb.edu/people/louise-moser), 
+[Robbert van Rennesse](https://www.linkedin.com/in/rvanren/), 
+[Yair Amir](https://www.linkedin.com/in/yair-amir-61b58/), 
+[Idit Keidar](https://www.linkedin.com/in/idit-keidar-9033287/).
 Distributed middleware systems of that time, e.g., 
 [Isis](https://dl.acm.org/doi/10.1145/37499.37515), 
 [Psync](https://dl.acm.org/doi/10.1145/65000.65001), 
