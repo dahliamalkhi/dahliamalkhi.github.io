@@ -181,7 +181,7 @@ The pseudo-code for `view(r)` at each party `p` is given in the frame below, and
    If the view(r) timer expires, a party invokes setInfo(-r). 
      Thereafter, the next transmission by p will carry the negative view number as indication of expiration of r.
 
-7. <b>Advancing to next view.</b>
+6. <b>Advancing to next view.</b>
    A party enters view(r+1) if the DAG satisfies one of the following two conditions:
      (i) A commit of proposal(r) happens.
      (ii) view(-r) messages indicating view(r) expiration from 2F+1 parties exist.
