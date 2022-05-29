@@ -308,7 +308,7 @@ using the DAG only for spreading transactions.
 [DAG-Rider](https://arxiv.org/abs/2102.08325) and
 [Tusk](https://arxiv.org/abs/2105.11827)
 build randomized BFT Consensus for the asynchronous model "riding" on Narwhal, 
-These protocols are "zero message overhead" over the DAG, as in not exchanging any messages outside the Narwhal protocol.
+These protocols are "zero message overhead" over the DAG, not exchanging any messages outside the Narwhal protocol.
 However, DAG-Rider (Tusk) must inject input value every 4 (2) layers, 
 which means that Narwhal transmissions are blocked on Consensus protocol actions.
 
@@ -318,15 +318,16 @@ It is also a "zero message overhead" protocol over the DAG, but due to a rigid w
 Narwhal transmissions are blocked by timers that are internal to the Consensus protocol.
 Bullshark is designed with 8-layer waves driving commit, each layer serving a different function in the protocol.
 
-Fin builds BFT Consensus riding on DAG Trans for the partial synchrony model with zero message overhead and no transmission blocking whatsoever.
-To achieve Consensus over the DAG Trans, Fin requires only injecting values into transmissions in a non-blocking manner via `setInfo(v)`. 
+Fin builds BFT Consensus riding on DAG Trans for the partial synchrony model with "zero message overhead".
+Uniquely, it incurs no transmission blocking whatsoever.
+To achieve Consensus over DAG Trans, Fin requires only injecting values into transmissions in a non-blocking manner via `setInfo(v)`. 
 Once a `setInfo(v)` invocation completes, future emissions by the DAG Trans carry the value `v` in the latest `setInfo(v)` invocation. 
 The value `v` is opaque to the DAG Trans and is of interest to the Consensus protocol.
 
 In terms of protocol design, all of the above solutions are relatively succinct, but arguably, Fin is the simplest.
 DAG-Rider, Tusk and Bullshark are multi-stage protocols embedded into DAG multi-layer "waves" (4 layers in DAG-Rider, 2-3 in Tusk, 8 in Bullshark).
 Each layer is used for a different stage in the Consensus protocol, with a potential commit happening at the last layer. 
-Fin is single-stage, and timeouts can be injected into the DAG at any time, independent of the layer structure. 
+Fin is single-stage, and view numbers can be injected into the DAG at any time, independent of the layer structure. 
 
 
 | Protocol | Model | External Msgs | Layered DAG | Blocking     | Layers to Commit | 
