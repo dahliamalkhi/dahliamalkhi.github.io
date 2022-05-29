@@ -34,7 +34,7 @@ and
 [Transis](https://ieeexplore.ieee.org/document/243613), 
 were designed for high-throughput by building consensus over causal message ordering (!).
 This topic was so much in the spotlight that during 1993-1994,
-a debate over the _usefulness of causal and totally ordered communication_ carried into
+a debate over the _usefulness of CATOCS (causal and totally ordered communication)_ carried into
 several publications of the ACM SIGOPS,
 [[CATOCS]](https://dl.acm.org/doi/10.1145/173668.168623)
 [[Response 1 to CATOCS]](https://dl.acm.org/doi/10.1145/164853.164859)
