@@ -1,4 +1,4 @@
-  <img src="/images/FIN/cover.png" width="650"  class="center"  />
+  <img src="/images/FIN/cover.png" width="750"  class="center"  />
 
 ## Away with Monolithic BFT Consensus; Enter DAG-based BFT Consensus
 
@@ -68,7 +68,7 @@ contains notes on BFT Consensus solutions that build on DAG Trans.
 
   <span id="Figure-DAG"> </span>
 
-  <img src="/images/FIN/basic-DAG.png" width="500"  class="center"  />
+  <img src="/images/FIN/basic-DAG.png" width="600"  class="center"  />
 
   **_Figure: DAG Trans._** 
   _A layer-by-layer causality DAG. Each message refers to 2F+1 ones in the preceding layer._ 
@@ -134,7 +134,7 @@ Therefore, parties are allowed to refer to their own preceding message across (s
 
   <span id="Figure-Disconnect"></span>
 
-  <img src="/images/FIN/basic-DAG2.png" width="500"  class="center"  />
+  <img src="/images/FIN/basic-DAG2.png" width="600"  class="center"  />
 
   **_Figure: Disconnect._** 
   _A temporary disconnect of party 4 and a later reconnect._ 
@@ -233,7 +233,7 @@ Meanwhile, layers k+2, k+3 and k+4 fill with messages that may become committed 
 
   <span id="Figure-Commit"></span>
 
-  <img src="/images/FIN/propose-commit.png" width="625"  class="center"  />
+  <img src="/images/FIN/propose-commit.png" width="725"  class="center"  />
 
   **_Figure: Commit._** 
   _Proposals and votes in `view(r)` and `view(r+1)`, both committed._
@@ -252,7 +252,7 @@ Hence, faulty views have utility in advancing the global sequence of transaction
 
   <span id="Figure-Fault"></span>
 
-  <img src="/images/FIN/faulty-leader.png" width="750"  class="center"  />
+  <img src="/images/FIN/faulty-leader.png" width="800"  class="center"  />
 
   **_Figure: Fault._** 
   _A faulty `view(r+1)` and recovery in `view(r+2)`._
