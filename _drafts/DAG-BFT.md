@@ -264,7 +264,7 @@ However, the proposal is too slow to arrive at parties 3 and 4, and both parties
 
   <span id="Figure-Partial-Fault"></span>
 
-  <img src="/images/FIN/faulty-leader2.png" width="850"  class="center"  />
+  <img src="/images/FIN/faulty-leader2.png" width="800"  class="center"  />
 
   **_Figure: Partial-Fault._** 
   _A partially faulty `view(r+1)` and recovery in `view(r+2)`._ 
