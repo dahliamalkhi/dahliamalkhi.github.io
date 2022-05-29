@@ -7,10 +7,10 @@ prevailing wisdom is to separate between two responsibilities.
 It regulates communication and optimizes throughput, but it tracks only causal ordering in the form of a DAG (Direct Acyclic Graph).
 
 * The second is forming a sequential commit ordering of transactions. 
-It must solve BFT Consensus utilizing the transport DAG.
+It solves BFT Consensus utilizing the DAG.
 
-The advent of building Consensus over a DAG transport is that while solving BFT Consensus, parties spread messages that carry useful payloads (e.g., transactions). 
-A BFT Consensus protocol can periodically commit batches from the DAG, incurring a tiny cost over the spreading of transactions. 
+The advent of building Consensus over a DAG transport is that each message in the DAG spreads useful payloads (transactions).
+Each time a party sends a message with transactions, it also contributes at no cost (or a tiny additional cost) to forming a Consensus total ordering of committed transactions.
 Moreover, parties can continue sending messages and the DAG keep growing even when Consensus is stalled, e.g., when a Consensus leader is faulty, 
 and later commit the messages accumulated in the DAG. 
 
