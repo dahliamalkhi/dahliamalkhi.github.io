@@ -1,3 +1,5 @@
+  <img src="/images/FIN/basic-DAG.png" width="500"  class="center"  />
+
 ## Away with Monolithic BFT Consensus; Enter DAG-based BFT Consensus
 
 To scale the BFT (Byzantine Fault Tolerant) Consensus core of blockchains,
