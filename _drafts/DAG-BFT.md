@@ -119,7 +119,7 @@ The details of the echo protocol implementation are omitted here. We remark that
 
 #### A Note on Temporary Disconnections
 
-Sometimes, a party may become temporarily disconnected. When is reconnects back, the DAG might have grown many layers without it.
+Sometimes, a party may become temporarily disconnected. When it reconnects back, the DAG might have grown many layers without it.
 It is undesirable that a reconnecting party would be required to backfill every layer it missed with messages that everyone has to catch up with.
 Therefore, parties are allowed to refer to their own preceding message across (skipped) layers, as depicted in [**Figure: Disconnect**](#Figure-Disconnect) below. 
 
