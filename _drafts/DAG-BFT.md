@@ -3,14 +3,14 @@
 To scale the BFT (Byzantine Fault Tolerant) Consensus core of blockchains,
 prevailing wisdom is to separate between two responsibilities. 
 
-* The first is a Transport for reliably spreading yet-unconfirmed transactions.
+* The first is a transport for reliably spreading yet-unconfirmed transactions.
 It regulates communication and optimizes throughput, but it tracks only causal ordering in the form of a DAG (Direct Acyclic Graph).
 
-* The second is forming a sequential ordering of transactions and determining their commit finality. 
-To do this, it must solve BFT Consensus utilizing the Transport DAG.
+* The second is forming a sequential commit ordering of transactions. 
+It must solve BFT Consensus utilizing the transport DAG.
 
-The advent of building Consensus over a DAG Transport ("DAG Trans") is that while solving BFT Consensus, parties spread messages that carry useful payloads (e.g., transactions). 
-A BFT Consensus protocol can periodically commit batches from the DAG by merely referring to the leaves of the DAG. 
+The advent of building Consensus over a DAG transport is that while solving BFT Consensus, parties spread messages that carry useful payloads (e.g., transactions). 
+A BFT Consensus protocol can periodically commit batches from the DAG, incurring a tiny cost over the spreading of transactions. 
 Moreover, parties can continue sending messages and the DAG keep growing even when Consensus is stalled, e.g., when a Consensus leader is faulty, 
 and later commit the messages accumulated in the DAG. 
 
@@ -48,7 +48,8 @@ Recent interest in scaling blockchains is rekindling interest in this approach w
 [Sui](https://medium.com/mysten-labs/announcing-narwhal-tusk-open-source-3721135abfc3). 
 
 In this post, I will first explain the notion of **DAG Trans**, a reliable, causal broadcast transport that shares a DAG among parties.
-I will then demonstrate the utility of DAG Trans through **Fin**, a new DAG-riding BFT Consensus for the partial synchrony model,
+I will then demonstrate the utility of DAG Trans through **Fin**, 
+quite possibly the simplest and the most efficient DAG-riding BFT Consensus solution for the partial synchrony model, 
 which the research team at @Chainlink Labs will be developing. 
 I will finish with a note on emerging **DAG-riding** BFT Consensus solutions. 
 
