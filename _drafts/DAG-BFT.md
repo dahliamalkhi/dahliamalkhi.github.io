@@ -348,8 +348,6 @@ in order to ensure progress during periods of synchrony.
 
 In other words, rarely is the case that [all you need is DAG](https://arxiv.org/abs/2102.08325).
 
-Fin finds a sweet-spot in that it injects values into future emissions in a non-intrusive, non-blocking manner.
-
 In a pure DAG-rider solution,
 no extra messages are exchanged by the Consensus protocol nor is it given an opportunity to inject information into the DAG or control message emission. 
 Parties passively analyze the DAG structure and autonomously arrive at commit ordering decisions,
@@ -358,11 +356,15 @@ even though the DAG is delivered to parties incrementally and in potentially dif
 [Total](https://www.sciencedirect.com/science/article/pii/S0890540198927705) and
 [ToTo](https://dahliamalkhi.github.io/files/Multicast-FTCS1993.pdf)
 are pre- blockchain era, pure DAG-rider total ordering protocols for the asynchronous model. 
-They are designed without regulating DAG layers, and without injecting random coin-flips to cope with asynchrony. 
-As a result, they are quite complex and their liveness depends on network behavior. 
 [Swirlds Hashgraph](https://www.swirlds.com/downloads/SWIRLDS-TR-2016-01.pdf)
 is the only post- blockchain era, pure DAG-rider solution to our knowledge. 
-It makes use of hard to predict bits within messages pseudo-random coin tosses in order to drive randomized Consensus.
+It makes use of bits within messages as pseudo-random coin tosses in order to drive randomized Consensus.
+All of the above pure DAG protocols are designed without regulating DAG layers, and without injecting external common coin-flips to cope with asynchrony. 
+As a result, they are both quite complex and their convergence slow. 
+
+Fin finds a sweet-spot in that -- albeit not being a pure DAG-rider -- it is a simple fast DAG-based protocol that injects values 
+into in a non-intrusive manner.
+
 
 ## Reading list
 
