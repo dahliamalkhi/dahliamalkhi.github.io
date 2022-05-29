@@ -55,8 +55,8 @@ This post is organized as follows:
 * The first section, [**DAG Trans**](#DAG-Trans), 
 explains the notion of a reliable, causal broadcast transport that shares a DAG among parties. 
 * The second section, [**Fin**](#FIN), 
-demonstrates the utility of DAG Trans through Fin,
-quite possibly the simplest and the most efficient novel DAG-riding BFT Consensus solution for the partial synchrony model, 
+demonstrates the utility of DAG Trans through **Fin,
+quite possibly the simplest and the most efficient novel DAG-riding BFT Consensus solution for the partial synchrony model**, 
 which the research team at @Chainlink Labs will be developing. 
 * The third section, [**DAG-riding**](#DAG-Riding), 
 contains notes on BFT Consensus solutions that build on DAG Trans. 
