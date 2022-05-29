@@ -366,7 +366,7 @@ It makes use of bits within messages as pseudo-random coin tosses in order to dr
 All of the above pure DAG protocols are designed without regulating DAG layers, and without injecting external common coin-flips to cope with asynchrony. 
 As a result, they are both quite complex and their convergence slow. 
 
-Fin finds a sweet-spot in that -- albeit not being a pure DAG-rider -- it is a simple and fast DAG-based protocol, that injects values 
+Fin finds a sweet-spot: albeit not being a pure DAG-rider, it is a simple and fast DAG-based protocol, that injects values 
 into the DAG in a non-intrusive manner.
 
 
