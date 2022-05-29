@@ -40,17 +40,19 @@ several publications of the ACM SIGOPS,
 [[Response 1 to CATOCS]](https://dl.acm.org/doi/10.1145/164853.164859)
 [[Response 2 to CATOCS]](https://dl.acm.org/doi/10.1145/164853.164858).
 
-Recent interest in scaling blockchains is rekindling interest in this approach with emphasis on Byzantine fault tolerance, e.g., in systems like 
-[Hedera](https://hedera.com/hh_whitepaper_v2.1-20200815.pdf),
-[Aleph](https://alephzero.org/blog/recycling-the-agreement-distributed-consensus-on-dags/), and
-[Sui](https://medium.com/mysten-labs/announcing-narwhal-tusk-open-source-3721135abfc3), 
-[Aptos](https://medium.com/aptoslabs/the-aptos-vision-1028ac56676e)
+Recent interest in scaling blockchains is rekindling interest in this approach with emphasis on Byzantine fault tolerance, e.g., in 
+DAG-based BFT protocols like
+[Swirlds hashgraph](https://www.swirlds.com/downloads/SWIRLDS-TR-2016-01.pdf),
+[Aleph](https://arxiv.org/pdf/1908.05156.pdf),
+[Narwhal & Tusk](https://arxiv.org/abs/2105.11827),
+[DAG-rider](https://arxiv.org/abs/2102.08325), and
+[Bullshark](https://arxiv.org/abs/2201.05677").
 
 In this post, I will first explain the notion of **DAG Trans**, a reliable, causal broadcast transport that shares a DAG among parties.
 I will then demonstrate the utility of DAG Trans through **Fin**, 
 quite possibly the simplest and the most efficient DAG-riding BFT Consensus solution for the partial synchrony model, 
 which the research team at @Chainlink Labs will be developing. 
-I will finish with a note on emerging **DAG-riding** BFT Consensus solutions. 
+I will finish with a note on **DAG-riding** BFT Consensus solutions. 
 
 ## DAG Trans: Reliable Causal Broadcast 
 
