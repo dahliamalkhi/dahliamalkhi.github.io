@@ -41,7 +41,7 @@ several publications of the ACM SIGOPS,
 [[Response 2 to CATOCS]](https://dl.acm.org/doi/10.1145/164853.164858).
 
 Recent interest in scaling blockchains is rekindling interest in this approach with emphasis on Byzantine fault tolerance, e.g., in systems like 
-[HashGraph](https://hedera.com/hh_whitepaper_v2.1-20200815.pdf),
+[Swirlds hashgraph](https://www.swirlds.com/downloads/SWIRLDS-TR-2016-01.pdf),
 [Narwhal & Tusk](https://arxiv.org/abs/2105.11827),
 [DAG-rider](https://arxiv.org/abs/2102.08325),
 [Bullshark](https://arxiv.org/abs/2201.05677"), and
@@ -329,10 +329,10 @@ Fin is single-stage, and timeouts can be injected into the DAG at any time, inde
 | Protocol | Model | External Msgs | Layered DAG | Blocking     | Layers to Commit | 
 | :--- | :--- | :--- | :--- | :-- | :--- |
 | [Total](https://www.sciencedirect.com/science/article/pii/S0890540198927705) | asynchronous | none | no | no | eventual |
-| [Hedera HashGraph](https://hedera.com/hh_whitepaper_v2.1-20200815.pdf) | asynchronous | none | no | no | eventual |
+| [Swirlds Hashgraph](https://www.swirlds.com/downloads/SWIRLDS-TR-2016-01.pdf) | asynchronous | none | no | no | eventual |
 | [Aleph](https://arxiv.org/pdf/1908.05156.pdf) | asynchronous | none | yes | yes (coin input) | expected constant |
 | [Narwhal-HS](https://arxiv.org/abs/2105.11827) | partial-synchrony | yes | yes | no | N/A | 
-| [DAG-Rider](https://arxiv.org/abs/2102.08325) | asynchronous | none | yes | yes (coin input) | 4 |
+| [DAG-Rider](https://arxiv.org/abs/2102.08325) | asynchronous | none | yes | yes (coin input) | expected constant |
 | [Tusk](https://arxiv.org/abs/2105.11827) | asynchronous | none | yes | yes  (coin input) | expected constant |
 | [Bullshark](https://arxiv.org/abs/2201.05677") | partial-synchrony | none | yes | yes (timers) | 8 |
 | Fin | partial-synchrony | none | yes | no | 2 (floating) |
@@ -357,13 +357,12 @@ even though the DAG is delivered to parties incrementally and in potentially dif
 
 [Total](https://www.sciencedirect.com/science/article/pii/S0890540198927705) and
 [ToTo](https://dahliamalkhi.github.io/files/Multicast-FTCS1993.pdf)
- are pre- blockchain era, pure DAG-rider total ordering protocols for the asynchronous model. 
+are pre- blockchain era, pure DAG-rider total ordering protocols for the asynchronous model. 
 They are designed without regulating DAG layers, and without injecting random coin-flips to cope with asynchrony. 
 As a result, they are quite complex and their liveness depends on network behavior. 
-
-and Hashgraph's whitepaper algorithm are pure DAG-rider solutions. Both use randomization to solve Consensus and both are rather theoretical and may suffer prohibitive latencies.
-[TODO:] say something about Aleph? Trans? ToTo?
-
+[Swirlds Hashgraph](https://www.swirlds.com/downloads/SWIRLDS-TR-2016-01.pdf)
+is the only post- blockchain era, pure DAG-rider solution to our knowledge. 
+It makes use of hard to predict bits within messages pseudo-random coin tosses in order to drive randomized Consensus.
 
 ## Reading list
 
@@ -391,11 +390,11 @@ Pre-blockchains era:
 
 Blockchain era:
 
-* _"Hedera: A Public Hashgraph Network & Governing Council"_, Baird, Harman, and Madsen, whitepaper v.2.1., 2020. [[Hedera HashGraph]](https://hedera.com/hh_whitepaper_v2.1-20200815.pdf)
-
-* _"Aleph: Efficient Atomic Broadcast in Asynchronous Networks with Byzantine Nodes"_, Gągol, Leśniak, Straszak, and Świętek. [[Aleph]](https://arxiv.org/pdf/1908.05156.pdf)
+* _"Hedera: A Public Hashgraph Network & Governing Council"_, Baird, 2016. [[SWIRLDS Hashgraph]](https://hedera.com/hh_whitepaper_v2.1-20200815.pdf)
 
 * _"Blockmania: from Block DAGs to Consensus"_. Danezis and Hrycyszyn, 2018. [[Blockmania]](https://arxiv.org/abs/1809.01620).
+
+* _"Aleph: Efficient Atomic Broadcast in Asynchronous Networks with Byzantine Nodes"_, Gągol, Leśniak, Straszak, and Świętek, 2019. [[Aleph]](https://arxiv.org/pdf/1908.05156.pdf)
 
 * _"Narwhal and Tusk: A DAG-based Mempool and Efficient BFT Consensus"_, Danezis, Kokoris-Kogias, Sonnino, and Spiegelman, 2021. [[Narwhal and Tusk]](https://arxiv.org/abs/2105.11827)
 
