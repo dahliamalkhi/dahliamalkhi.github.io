@@ -233,7 +233,7 @@ Meanwhile, layers k+2, k+3 and k+4 fill with messages that may become committed 
 
   <span id="Figure-Commit"></span>
 
-  <img src="/images/FIN/propose-commit.png" width="725"  class="center"  />
+  <img src="/images/FIN/propose-commit.png" width="775"  class="center"  />
 
   **_Figure: Commit._** 
   _Proposals and votes in `view(r)` and `view(r+1)`, both committed._
