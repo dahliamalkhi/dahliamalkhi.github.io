@@ -16,7 +16,7 @@ and later commit the messages accumulated in the DAG.
 
 It is funny how the community made a full circle, from early distributed consensus systems to where we are today. 
 I earned my PhD more than two decades ago for contributions to scaling reliable distributed systems, 
-Guided by and collaborating with pioneers in the field, including
+guided by and collaborating with pioneers of the field, including
 @Ken Birman, 
 @Danny Dolev, 
 @Rick Schlichting, 
