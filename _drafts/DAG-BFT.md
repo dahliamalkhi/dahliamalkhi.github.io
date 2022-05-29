@@ -50,7 +50,7 @@ DAG-based BFT protocols like
 
 In this post, I will first explain the notion of **DAG Trans**, a reliable, causal broadcast transport that shares a DAG among parties.
 I will then demonstrate the utility of DAG Trans through **Fin**, 
-quite possibly the simplest and the most efficient DAG-riding BFT Consensus solution for the partial synchrony model, 
+quite possibly the simplest and the most efficient novel DAG-riding BFT Consensus solution for the partial synchrony model, 
 which the research team at @Chainlink Labs will be developing. 
 I will finish with a note on **DAG-riding** BFT Consensus solutions. 
 
