@@ -41,11 +41,10 @@ several publications of the ACM SIGOPS,
 [[Response 2 to CATOCS]](https://dl.acm.org/doi/10.1145/164853.164858).
 
 Recent interest in scaling blockchains is rekindling interest in this approach with emphasis on Byzantine fault tolerance, e.g., in systems like 
-[Swirlds hashgraph](https://www.swirlds.com/downloads/SWIRLDS-TR-2016-01.pdf),
-[Narwhal & Tusk](https://arxiv.org/abs/2105.11827),
-[DAG-rider](https://arxiv.org/abs/2102.08325),
-[Bullshark](https://arxiv.org/abs/2201.05677"), and
-[Sui](https://medium.com/mysten-labs/announcing-narwhal-tusk-open-source-3721135abfc3). 
+[Hedera](https://hedera.com/hh_whitepaper_v2.1-20200815.pdf),
+[Aleph](https://alephzero.org/blog/recycling-the-agreement-distributed-consensus-on-dags/), and
+[Sui](https://medium.com/mysten-labs/announcing-narwhal-tusk-open-source-3721135abfc3), 
+[Aptos](https://medium.com/aptoslabs/the-aptos-vision-1028ac56676e)
 
 In this post, I will first explain the notion of **DAG Trans**, a reliable, causal broadcast transport that shares a DAG among parties.
 I will then demonstrate the utility of DAG Trans through **Fin**, 
