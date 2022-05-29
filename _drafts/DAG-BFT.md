@@ -394,7 +394,7 @@ Pre-blockchains era:
 
 Blockchain era:
 
-* _"Hedera: A Public Hashgraph Network & Governing Council"_, Baird, 2016. [[SWIRLDS Hashgraph]](https://hedera.com/hh_whitepaper_v2.1-20200815.pdf)
+* _"The Swirlds Hashgraph Consensus Algorithm: Fair, Fast, Byzantine Fault Tolerance"_, Baird, 2016. [[Swirlds Hashgraph]](https://www.swirlds.com/downloads/SWIRLDS-TR-2016-01.pdf) | asynchronous | none | no | no | eventual |
 
 * _"Blockmania: from Block DAGs to Consensus"_. Danezis and Hrycyszyn, 2018. [[Blockmania]](https://arxiv.org/abs/1809.01620).
 
