@@ -51,9 +51,9 @@ DAG-based BFT protocols like
 [DAG-rider](https://arxiv.org/abs/2102.08325), and
 [Bullshark](https://arxiv.org/abs/2201.05677").
 
-If you are like me, you might feel that all the above solutions are a bit overdone, since a DAG already solves ninety percent of the BFT Consensus problem by supporting reliable, causally ordered broadcast.
+If you are like me, you might feel that the above solutions are a bit overdone, since the DAG already solves ninety percent of the BFT Consensus problem by supporting reliable, causally ordered broadcast.
 In this post, I will provide a simple --
-quite possibly the simplest -- and the most efficient DAG-riding BFT Consensus solution, **Fin**, for the partial synchrony model. 
+quite possibly the simplest and the most efficient -- DAG-riding BFT Consensus solution, **Fin**, for the partial synchrony model. 
 In Fin, views consists of a proposal followed by 2F+1 votes to commit, the most straight-forward protocol you can imagine.
 Both proposals and votes are cast by parties simply by setting a single value inside messages. 
 Importantly and uniquely, Fin does not put Consensus in the critical path of DAG Trans transmissions,
@@ -64,7 +64,7 @@ explains the notion of a reliable, causal broadcast transport that shares a DAG 
 
 * The second section, [**Fin**](#FIN), 
 demonstrates the utility of DAG Trans through **Fin**,
-a one-phase BFT, non-blocking DAG-riding protocol for the partial synchrony model.
+a BFT solution which is one-phase, non-blocking, DAG-riding and designed for the partial synchrony model.
 
 * The third section, [**DAG-riding**](#DAG-Riding), 
 contains comparison notes on DAG-based BFT Consensus solutions. 
