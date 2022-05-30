@@ -55,7 +55,7 @@ If you are like me, you might feel that these solutions are a bit overdone, sinc
 In this post, I will provide a simple --
 quite possibly the simplest and the most efficient -- DAG-riding BFT Consensus solution, **Fin**, for the partial synchrony model. 
 In Fin, views consist of a proposal followed by 2F+1 votes to commit, the most straight-forward protocol you can imagine.
-Both proposals and votes are cast by parties simply by setting a single value inside messages. 
+Both proposals and votes are cast by parties simply setting a single value inside messages. 
 Importantly and uniquely, DAG transmissions are never blocked on such values being injected, 
 thus Fin operates without hampering DAG throughput whatsoever. 
 
@@ -225,7 +225,7 @@ In [**Figure: Commit**](#Figure-Commit) below, `leader(r)` is party 1 and its fi
 indicating it is `proposal(r)`. 
 
 When a party receives `proposal(r)`, it advances the meta-information value to `r` view `setInfo(r)`. 
-Thereafter, transmissions by the party will carry the new view number and be interpreted as voting for `proposal(r)`. 
+Thereafter, transmissions by the party will carry the new view number and the first of them be interpreted as voting for `proposal(r)`. 
 A proposal that has a quorum of 2F+1 votes is considered **committed**.
 
 Below, parties 3 and 4 vote for `proposal(r)` by advancing their view to `r` in layer k+1, denoted with striped yellow ovals. `proposal(r)` now has the required quorum of 2F+1 votes (including the leader's implicit vote), and it becomes committed.
