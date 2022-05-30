@@ -51,16 +51,25 @@ DAG-based BFT protocols like
 [DAG-rider](https://arxiv.org/abs/2102.08325), and
 [Bullshark](https://arxiv.org/abs/2201.05677").
 
-This post is organized as follows:
+If you are like me, you might feel that all the above solutions are a bit overdone, since a DAG already solves ninety percent of the BFT Consensus problem by supporting reliable, causally ordered broadcast.
+In this post, I will provide a simple --
+quite possibly the simplest -- and the most efficient DAG-riding BFT Consensus solution, **Fin**, for the partial synchrony model. 
+In Fin, views consists of a proposal followed by 2F+1 votes to commit, the most straight-forward protocol you can imagine.
+Both proposals and votes are cast by parties simply by setting a single value inside messages. 
+Importantly and uniquely, Fin does not put Consensus in the critical path of DAG Trans transmissions,
+thus operates without hampering DAG growth whatsoever. 
+
 * The first section, [**DAG Trans**](#DAG-Trans), 
 explains the notion of a reliable, causal broadcast transport that shares a DAG among parties. 
+
 * The second section, [**Fin**](#FIN), 
-demonstrates the utility of DAG Trans through **Fin,
-quite possibly the simplest and the most efficient novel DAG-riding BFT Consensus solution for the partial synchrony model**, 
-which the research team at @Chainlink Labs will be developing. 
+demonstrates the utility of DAG Trans through **Fin**,
+a one-phase BFT, non-blocking DAG-riding protocol for the partial synchrony model.
+
 * The third section, [**DAG-riding**](#DAG-Riding), 
-contains notes on BFT Consensus solutions that build on DAG Trans. 
-* Further reading materials are listed in [**DAG-Based BFT Consensus Reading list**](#DAG-Reading).
+contains comparison notes on DAG-based BFT Consensus solutions. 
+
+* Further reading materials are listed in [**DAG-based BFT Consensus Reading list**](#DAG-Reading).
 
 
 <span id="DAG-Trans"> </span>
@@ -385,7 +394,7 @@ into the DAG in a non-intrusive manner.
 
 
 <span id="DAG-Reading"></span>
-## DAG-Based BFT Consensus: Reading list
+## DAG-based BFT Consensus: Reading list
 
 Pre-blockchains era:
 
