@@ -1,4 +1,4 @@
-  <img src="/images/FIN/cover.png" width="750"  class="center"  />
+  <img src="/images/FIN/propose-commit.png" width="750"  class="center"  />
 
 ## Away with Monolithic BFT Consensus; Enter DAG-based BFT Consensus
 
