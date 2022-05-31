@@ -167,7 +167,7 @@ Therefore, parties are allowed to refer to their own preceding message across (s
 Fin operates in a view-by-view manner, each view consisting of a propose-vote commit rule embedded into the DAG: 
 a leader proposes, parties vote, and commit happens when 2F+1 votes are collected. 
 There is no need to worry about a leader equivocating, because Trans DAG prevents equivocation,
-and there is no need for a leader to justify it proposal because it is inherently justified through the proposal's causal history within the DAG.
+and there is no need for a leader to justify its proposal because it is inherently justified through the proposal's causal history within the DAG.
 Advancing to the next view is enabled by 2F+1 votes or 2F+1 timeouts. 
 This guarantees that if a proposal becomes committed, the next (justified) leader proposal contains F+1 references to it. 
 Importantly, proposals, votes, and timeouts are injected into the DAG at any time, independent of layers, 
