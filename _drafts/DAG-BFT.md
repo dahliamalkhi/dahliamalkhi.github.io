@@ -102,7 +102,7 @@ A party's upcall `deliver(m)` is triggered when a message `m` can be delivered.
 
 Each message must refer to a certain number of preceding messages including the sender's own preceding message.
 Transports are often constructed in layer-by-layer regime, as depicted in [**Figure: DAG Trans**](#Figure-DAG) above. In this regime, each sender is allowed one message per layer, and a message may refer only to messages in the layer preceding it.
-Layering is done so as to regulate transmissions and saturate network capacity, but better be separate from the BFT Consensus protocol.
+Layering is done so as to regulate transmissions and saturate network capacity, but these considerations are orthogonal to the BFT Consensus protocol. As we shall see below, Fin ignores a layer structure of DAG Trans, if exists.
 
 To prepare for Consensus decisions, DAG Trans exposes a single additional API `setInfo(meta)`. 
 Whenever a party invokes `broadcast()`, the transmitted message carries the latest `meta` value invoked in `setInfo(meta)` by the party. 
