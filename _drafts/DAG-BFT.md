@@ -89,7 +89,7 @@ contains comparison notes on DAG-based BFT Consensus solutions.
   <img src="/images/FIN/basic-DAG.png" width="750"  class="center"  />
 
   **_Figure: DAG Trans._** 
-  _A layer-by-layer causality DAG. Each message refers to 2F+1 ones in the preceding layer._ 
+  _A causality graph of messages, each message "fin" refers to preceding messages._ 
 
 DAG Trans is a reliable, causal broadcast communication substrate for disseminating transactions among N=3F+1 parties, at most F of which are presumed Byzantine faulty and the rest are honest.
 The substrate exposes three basic API's, `broadcast()`, `deliver()`, and `setInfo()`. 
@@ -99,9 +99,8 @@ and **Causality**.
 More specifically, DAG Trans provides a `broadcast(payload)` API for a party `p` to send a message to other parties.
 A party's upcall `deliver(m)` is triggered when a message `m` can be delivered. 
 
-In this post, we concentrate on a layer-by-layer regime, where in each layer each party is allowed to post only one message, as depicted in [**Figure: DAG Trans**](#Figure-DAG) above. 
-The layer-by-layer design regulates transmissions so as to saturate network capacity. 
-In this regime, each message must refer to a certain number of messages in the preceding layer and to the sender's own preceding message.
+Each message must refer to a certain number of preceding messages including the sender's own preceding message
+Transports are often constructed in layer-by-layer regime in order to regulate transmissions and saturate network capacity, as depicted in [**Figure: DAG Trans**](#Figure-DAG) above. In this regime, each sender is allowed one message per layer, and a message may refer only to messages in the layer preceding it.
 
 To prepare for Consensus decisions, DAG Trans exposes a single additional API `setInfo(meta)`. 
 Whenever a party invokes `broadcast()`, the transmitted message carries the latest `meta` value invoked in `setInfo(meta)` by the party. 
@@ -112,7 +111,7 @@ Every delivered message `m` carries the following fields:
 - `m.sender`, the sender identity 
 - `m.index`, a delivery index from the sender
 - `m.payload`, contents such as transaction(s)
-- `m.predecessors`, references to messages sender has seen from other parties, including itself. In a layer-by-layer construction, it includes references to 2F+1 messages in the preceding layer.
+- `m.predecessors`, references to messages sender has seen from other parties, including itself. In a layer-by-layer construction, it includes references to messages in the preceding layer.
 - `m.info`, a meta information field reserved for the Consensus protocol to inject through `setInfo()`
 
 DAG Trans satisfies the following requirements:
@@ -144,7 +143,7 @@ For Reliability to be satisfied, sufficiently many copies of `m` must be persist
 To this end, message digests are echoed by all parties. When 2F+1 echoes are collected, a message can be delivered. 
 The details of the echo protocol implementation are omitted here. We remark that echo protocols can be streamlined, resulting in high utilization and throughout (see [Narwhal](https://arxiv.org/abs/2105.11827)).
 
-#### A Note on Temporary Disconnections
+#### Layers and Temporary Disconnections
 
 Sometimes, a party may become temporarily disconnected. When it reconnects back, the DAG might have grown many layers without it.
 It is undesirable that a reconnecting party would be required to backfill every layer it missed with messages that everyone has to catch up with.
@@ -229,24 +228,22 @@ Thereafter, transmissions by the leader will carry the new view number.
 The first `view-r` message by the leader carrying `view(r) is interpreted as `proposal(r)`. 
 The proposal implicitly extends the sequence of transactions with the transitive causal predecessors of `proposal(r)`. 
 
-In [**Figure: Commit**](#Figure-Commit) below, `leader(r)` is party 1 and its first message in `view(r)` is on layer k denoted with a full yellow oval, 
+In [**Figure: Commit**](#Figure-Commit) below, `leader(r)` is party 1 and its first message in `view(r)` is denoted with a full yellow oval, 
 indicating it is `proposal(r)`. 
 
 When a party receives `proposal(r)`, it advances the meta-information value to `r` view `setInfo(r)`. 
 Thereafter, transmissions by the party will carry the new view number and the first of them be interpreted as voting for `proposal(r)`. 
 A proposal that has a quorum of 2F+1 votes is considered **committed**.
 
-Below, parties 3 and 4 vote for `proposal(r)` by advancing their view to `r` in layer k+1, denoted with striped yellow ovals. `proposal(r)` now has the required quorum of 2F+1 votes (including the leader's implicit vote), and it becomes committed.
+Below, parties 3 and 4 vote for `proposal(r)` by advancing their view to `r`, denoted with striped yellow ovals. `proposal(r)` now has the required quorum of 2F+1 votes (including the leader's implicit vote), and it becomes committed.
 
 When a party sees 2F+1 votes in `view(r)` it enters `view(r+1)`.
 
-An important feature of Fin is that votes may arrive at different layers without slowing down progress. 
-Layers meanwhile fill with useful messages that may become committed at the next view.
-
-This feature is demonstrated in the scenario below at `view(r+1)`.
-The view has party 2 as `leader(r+1)`, party 3 voting at layer k+3, and parties 1 and 4 at layer k+4.
-After layer k+4, `proposal(r+1)` has the necessary quorum of 2F+1 of votes to become committed. 
-Meanwhile, layers k+2, k+3 and k+4 fill with messages that may become committed at the next view.
+An important feature of Fin is that votes may arrive without slowing down progress. 
+The DAG meanwhile fill with useful messages that may become committed at the next view.
+This feature is demonstrated in the scenario below at `view(r+1)` that has party 2 as `leader(r+1)`.
+Once `proposal(r+1)` has the necessary quorum of 2F+1 of votes, it becomes committed. 
+Meanwhile, the DAG fills with messages that may become committed at the next view.
 
   <span id="Figure-Commit"></span>
 
@@ -260,10 +257,10 @@ Their next broadcasts are interpreted as reporting a failure of `view(r+1)`.
 When a party sees 2F+1 reports that `view(r+1)` is faulty it enters `view(r+2)`. 
 
 In [**Figure: Fault**](#Figure-Fault) below, the first view `view(r)` proceeds normally. 
-However, no message marked `view(r+1)` by `leader(r+1)` arrives, showing as a missing oval on layer k+2. 
-Parties 1, 3, 4 report this by setting their meta-information to `-(r+1)`, showing as striped red ovals in layer k+3.
+However, no message marked `view(r+1)` by `leader(r+1)` arrives, showing as a missing oval. 
+Parties 1, 3, 4 report this by setting their meta-information to `-(r+1)`, showing as striped red ovals.
 
-At layer k+4, the leader of `view(r+2)` posts a messages that has meta-information set to `r+2`, taken as `proposal(r+2)`. 
+After 2F+1 reports are collected, the leader of `view(r+2)` posts a messages that has meta-information set to `r+2`, taken as `proposal(r+2)`. 
 Note that this message has in its causal past messages carrying `-(r+1)` meta-information. 
 Hence, faulty views have utility in advancing the global sequence of transaction, just like any other view.
 
@@ -276,8 +273,9 @@ Hence, faulty views have utility in advancing the global sequence of transaction
 
 
 A slightly more complex scenario is depicted in [**Figure: Partial-Fault**](#Figure-Partial-Fault) below. 
-Here, `leader(r+1)` emits `proposal(r+1)` in layer k+2 that receives one vote by party 1 in layer k+3.
-However, the proposal is too slow to arrive at parties 3 and 4, and both parties report a view failure in layer k+3. There is no quorum enabling a commit in `view(r+1)`, nor entering `view(r+2)`. Eventually, party 1 also times out and reports a failure of `view(r+1)` in layer k+4. This enables `view(r+2)` to start. `view(r+2)` is similar to the scenario in [**Figure: Fault**](#Figure-Fault) above, except that when `proposal(r+2)` commits, it indirectly commits `proposal(r+1)`. 
+Here, `leader(r+1)` emits `proposal(r+1)` that receives one vote by party 1.
+However, the proposal is too slow to arrive at parties 3 and 4, and both parties report a view failure.
+There is no quorum enabling a commit in `view(r+1)`, nor entering `view(r+2)`. Eventually, party 1 also times out and reports a failure of `view(r+1)`. This enables `view(r+2)` to start. `view(r+2)` is similar to the scenario in [**Figure: Fault**](#Figure-Fault) above, except that when `proposal(r+2)` commits, it indirectly commits `proposal(r+1)`. 
 
   <span id="Figure-Partial-Fault"></span>
 
