@@ -359,7 +359,7 @@ Each layer is purpose-build for a different step in the Consensus protocol, with
 Fin is single-phase, and view numbers can be injected into the DAG at any time, independent of the layer structure. 
 
 
-| Protocol | Model | External Msgs | Layered DAG | Blocking DAG    | Latency in rounds | 
+| Protocol | Model | External msgs used | DAG must be layered | Transmission blocking | Latency in rounds | 
 | :--- | :--- | :--- | :--- | :-- | :--- |
 | [Total](https://www.sciencedirect.com/science/article/pii/S0890540198927705) | asynchronous | none | no | no | eventual |
 | [Swirlds Hashgraph](https://www.swirlds.com/downloads/SWIRLDS-TR-2016-01.pdf) | asynchronous | none | no | no | eventual |
@@ -368,7 +368,7 @@ Fin is single-phase, and view numbers can be injected into the DAG at any time, 
 | [DAG-Rider](https://arxiv.org/abs/2102.08325) | asynchronous | none | yes | yes (coin input) | expected 4 |
 | [Tusk](https://arxiv.org/abs/2105.11827) | asynchronous | none | yes | yes  (coin input) | expected 3 |
 | [Bullshark](https://arxiv.org/abs/2201.05677") | partial-synchrony | none | yes | yes (timers) | 8 |
-| Fin | partial-synchrony | none | yes | no | 2 |
+| Fin | partial-synchrony | none | no | no | 2 |
 
 
 There is no question that software modularity is advantageous, since
