@@ -89,7 +89,7 @@ contains comparison notes on DAG-based BFT Consensus solutions.
 
   <img src="/images/FIN/basic-DAG.png" width="750"  class="center"  />
 
-  **_Figure 1: DAG Trans._** 
+  **_Figure 1:_** 
   _A causality graph of messages, each message "fin" refers to preceding messages._ 
 
 DAG Trans is a reliable, causal broadcast communication substrate for disseminating transactions among N=3F+1 parties, at most F of which are presumed Byzantine faulty and the rest are honest.
@@ -155,7 +155,7 @@ Therefore, parties are allowed to refer to their own preceding message across (s
 
   <img src="/images/FIN/basic-DAG2.png" width="750"  class="center"  />
 
-  **_Figure 2: Disconnect._** 
+  **_Figure 2:_** 
   _A temporary disconnect of party 4 and a later reconnect._ 
 
 
@@ -251,7 +251,7 @@ Meanwhile, the DAG fills with messages that may become committed at the next vie
 
   <img src="/images/FIN/propose-commit.png" width="750"  class="center"  />
 
-  **_Figure 3: Commit._** 
+  **_Figure 3:_** 
   _Proposals and votes in `view(r)` and `view(r+1)`, both committed._
 
 If the leader of a view is faulty or disconnected, parties will eventually time out and set their meta-information to minus the view-number, e.g., `-(r+1)` for a failure of `view(r+1)` . 
@@ -270,7 +270,7 @@ Hence, faulty views have utility in advancing the global sequence of transaction
 
   <img src="/images/FIN/faulty-leader.png" width="750"  class="center"  />
 
-  **_Figure 4: Fault._** 
+  **_Figure 4:_** 
   _A faulty `view(r+1)` and recovery in `view(r+2)`._
 
 
@@ -283,7 +283,7 @@ There is no quorum enabling a commit in `view(r+1)`, nor entering `view(r+2)`. E
 
   <img src="/images/FIN/faulty-leader2.png" width="750"  class="center"  />
 
-  **_Figure 5: Partial-Fault._** 
+  **_Figure 5:_** 
   _A partially faulty `view(r+1)` and recovery in `view(r+2)`._ 
 
 
@@ -294,14 +294,14 @@ Importantly,
 at no time is transaction broadcast slowed down by the Fin protocol. 
 Rather, Consensus logic is embedded into the DAG structure simply by injecting view numbers into it.
 
-The reliability and causality properties of DAG Trans makes arguing about correctness very easy, 
+**Safety.** The reliability and causality properties of DAG Trans makes arguing about correctness very easy, 
 though a formal proof of correctness is beyond the scope of this post. 
-Briefly, the **safety** of commits is as follows. If ever a `view(r)` proposal `proposal(r)` becomes committed, 
+Briefly, the safety of commits is as follows. If ever a `view(r)` proposal `proposal(r)` becomes committed, 
 then it is in the causal past of 2F+1 parties that voted for it.
 Any future view proposal must refer directly or indirectly to 2F+1 `view(r)` messages, of which F+1 are votes for `proposal(r)`.
 Hence, any commit of a future view causally follows (hence, transitively re-commits) `proposal(r)`. 
 
-The protocol **liveness** during periods of synchrony stems from two key mechanisms. 
+**Liveness.** The protocol liveness during periods of synchrony stems from two key mechanisms. 
 
 First, after GST (Global Stabilization Time), 
 i.e., after communication has become synchronous,
