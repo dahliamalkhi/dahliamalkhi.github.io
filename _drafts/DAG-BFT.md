@@ -103,8 +103,8 @@ Each message must refer to a certain number of preceding messages including the 
 To prepare for Consensus decisions, DAG Trans exposes a single additional API `setInfo(meta)`. 
 Whenever a party invokes `broadcast()`, the transmitted message carries the latest `meta` value invoked in `setInfo(meta)` by the party. 
 
-**Layer-by-layer construction.** Transports are often constructed in layer-by-layer regime, as depicted in [**Figure: DAG Trans**](#Figure-DAG) above. In this regime, each sender is allowed one message per layer, and a message may refer only to messages in the layer preceding it.
-Layering is done so as to regulate transmissions and saturate network capacity, but these considerations are orthogonal to the BFT Consensus protocol. As we shall see below, Fin ignores a layer structure of DAG Trans, if exists.
+  **Layer-by-layer construction.** Transports are often constructed in layer-by-layer regime, as depicted in [**Figure: DAG Trans**](#Figure-DAG) above. In this regime, each sender is allowed one message per layer, and a message may refer only to messages in the layer preceding it.
+  Layering is done so as to regulate transmissions and saturate network capacity, but these considerations are orthogonal to the BFT Consensus protocol. As we shall see below, Fin ignores a layer structure of DAG Trans, if exists.
 
 Messages are delivered carrying a sender's payload and additional meta information that can be inspected upon reception.
 Every delivered message `m` carries the following fields:
@@ -112,7 +112,8 @@ Every delivered message `m` carries the following fields:
 - `m.sender`, the sender identity 
 - `m.index`, a delivery index from the sender
 - `m.payload`, contents such as transaction(s)
-- `m.predecessors`, references to messages sender has seen from other parties, including itself. In a layer-by-layer construction, it includes references to messages in the preceding layer.
+- `m.predecessors`, references to messages sender has seen from other parties, including itself. 
+     - In a layer-by-layer construction, it includes references to messages in the preceding layer.
 - `m.info`, a meta information field reserved for the Consensus protocol to inject through `setInfo()`
 
 DAG Trans satisfies the following requirements:
