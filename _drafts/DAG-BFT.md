@@ -276,7 +276,7 @@ Hence, faulty views have utility in advancing the global sequence of transaction
 
 A slightly more complex scenario is depicted in [**Figure: Partial-Fault**](#Figure-Partial-Fault) below. 
 Here, `leader(r+1)` emits `proposal(r+1)` in layer k+2 that receives one vote by party 1 in layer k+3.
-However, the proposal is too slow to arrive at parties 3 and 4, and both parties report a view failure in layer k+3. There is no quorum enabling a commit in `view(r+1)`, nor entering `view(r+2)`. Eventually, party 1 also times out and reports a failure of `view(r+1)` in layer k+4. This enables `view(r+2)` to start and from here on, the progress of the view is similar to the above.
+However, the proposal is too slow to arrive at parties 3 and 4, and both parties report a view failure in layer k+3. There is no quorum enabling a commit in `view(r+1)`, nor entering `view(r+2)`. Eventually, party 1 also times out and reports a failure of `view(r+1)` in layer k+4. This enables `view(r+2)` to start. `view(r+2)` is similar to the scenario in [**Figure: Fault**](#Figure-Fault) above, except that when `proposal(r+2)` commits, it indirectly commits `proposal(r+1)`. 
 
   <span id="Figure-Partial-Fault"></span>
 
