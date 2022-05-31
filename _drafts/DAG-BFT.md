@@ -294,23 +294,25 @@ Importantly,
 at no time is transaction broadcast slowed down by the Fin protocol. 
 Rather, Consensus logic is embedded into the DAG structure simply by injecting view numbers into it.
 
-**Safety.** The reliability and causality properties of DAG Trans makes arguing about correctness very easy, 
+The reliability and causality properties of DAG Trans makes arguing about correctness very easy, 
 though a formal proof of correctness is beyond the scope of this post. 
-Briefly, the safety of commits is as follows. If ever a `view(r)` proposal `proposal(r)` becomes committed, 
+
+* **Safety.** 
+  Briefly, the safety of commits is as follows. If ever a `view(r)` proposal `proposal(r)` becomes committed, 
 then it is in the causal past of 2F+1 parties that voted for it.
 Any future view proposal must refer directly or indirectly to 2F+1 `view(r)` messages, of which F+1 are votes for `proposal(r)`.
 Hence, any commit of a future view causally follows (hence, transitively re-commits) `proposal(r)`. 
 
-**Liveness.** The protocol liveness during periods of synchrony stems from two key mechanisms. 
+* **Liveness.** The protocol liveness during periods of synchrony stems from two key mechanisms. 
 
-First, after GST (Global Stabilization Time), 
+  First, after GST (Global Stabilization Time), 
 i.e., after communication has become synchronous,
 views are inherently synchronized through DAG Trans. 
 For let $\Delta$ be an upper bound on communication after GST.
 Once a `view(r)` with an honest leader is entered by the first honest party, within $2 * \Delta$, both the leader and all honest parties enter `view(r)` as well. 
 Within $4 * \Delta$, the `view(r)` proposal and votes from all honest parties are spread to everyone. 
 
-Second, so long as view timers are set to be at least $4 * \Delta$, a future view does not preempt a current view's commit. For in order to start a new view, 
+  Second, so long as view timers are set to be at least $4 * \Delta$, a future view does not preempt a current view's commit. For in order to start a new view, 
 a leader must collect either 2F+1 `view(r)` _votes_ for the leader proposal, hence commit it; or 2F+1 `view(-r)` _expirations_, which is impossible as argued above. 
 
 Fin is modeled after PBFT while removing the complexity of PBFT's view-change, thus supporting regular leader rotation. 
