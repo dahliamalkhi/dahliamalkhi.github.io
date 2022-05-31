@@ -51,7 +51,8 @@ DAG-based BFT protocols like
 [DAG-rider](https://arxiv.org/abs/2102.08325), and
 [Bullshark](https://arxiv.org/abs/2201.05677").
 If you are like me, you might feel that these solutions are a bit overdone:
-they all contain multiple purpose-built DAG layers, and in all of them DAG transmissions are blocked on input from the Consensus protocol, potentially hampering throughput. 
+they all contain multiple purpose-built DAG layers, and furthermore,
+DAG transmissions are blocked on input needed for specific layers from the Consensus protocol, potentially hampering throughput. 
 Since the DAG already solves ninety percent of the BFT Consensus problem by supporting reliable, causally ordered broadcast, it seems that we should be able to do better.
 
 In this post, I will illustrate a simple --
