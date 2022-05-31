@@ -61,12 +61,11 @@ Both proposals and votes are cast by parties simply setting a single value insid
 Importantly and uniquely, DAG transmissions are never blocked on such values being injected, 
 thus Fin operates without hampering DAG throughput whatsoever. 
 
-
 Fin is meant for pedagogical purposes, not as a full-fledged BFT Consensus system design. The main takeaway from Fin is that **by separating reliable transaction dissemination from Consensus, BFT Consensus based on DAG Trans can be made simple and highly performant at the same time**.
 
 The name Fin, a small part of aquatic creatures that controls stirring, stands for the protocol succinctness and its central role in blockchains (and also because the DAG Trans scenarios depicted below look like swarms of fish, and DAG in Hebrew means fish). 
 
-This post is organized as follows.
+This post is organized as follows:
 
 * The first section, [**DAG Trans**](#DAG-Trans), 
 explains the notion of a reliable, causal broadcast transport that shares a DAG among parties. 
@@ -163,10 +162,13 @@ Therefore, parties are allowed to refer to their own preceding message across (s
 
 **Fin** is quite possibly the simplest and the most efficient DAG-riding BFT Consensus solution for the partial synchrony model. 
 
-Fin is inspired by PBFT but leverages Trans DAG to have a one-phase commit rule and an extremely simple leader protocol.
-Fin operates in a view-by-view manner, with a single phase propose-vote commit rule embedded into the DAG: a leader proposes, parties vote, and commit happens when 2F+1 votes are collected. 
+Fin operates in a view-by-view manner, each view consisting of a propose-vote commit rule embedded into the DAG: 
+a leader proposes, parties vote, and commit happens when 2F+1 votes are collected. 
+There is no need to worry about a leader equivocating, because Trans DAG prevents equivocation,
+and there is no need for a leader to justify it proposal because it is inherently justified through the proposal's causal history within the DAG.
 Advancing to the next view is enabled by 2F+1 votes or 2F+1 timeouts. 
-Proposals, votes, and timeouts are injected into the DAG at any time, independent of layers, 
+This guarantees that if a proposal becomes committed, the next (justified) leader proposal contains F+1 references to it. 
+Importantly, proposals, votes, and timeouts are injected into the DAG at any time, independent of layers, 
 simply by updating a view number through `setInfo()`.
 
 ### Fin Pseudo-code
