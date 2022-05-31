@@ -65,7 +65,7 @@ thus Fin operates without hampering DAG throughput whatsoever.
 
 Fin is meant for pedagogical purposes, not as a full-fledged BFT Consensus system design. The main takeaway from Fin is that by separating reliable transaction dissemination from Consensus, BFT Consensus based on DAG Trans can be made simple and highly performant at the same time.
 
-The name Fin, a small part of aquatic creatures that controls stirring, stands for the protocol succinctness and its central role in blockchains (and also because the DAG Trans scenarios depicted below look like swarms of fish, and DAG in Hebrew means fish). 
+The name Fin, a small part of aquatic creatures that controls stirring, stands for the protocol succinctness and its central role in blockchains (and also because the scenarios depicted below look like swarms of fish, and DAG in Hebrew means fish). 
 
 The post is organized as follows:
 
