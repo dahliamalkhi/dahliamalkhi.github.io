@@ -1,6 +1,6 @@
   <img src="/images/FIN/propose-commit.png" width="750"  class="center"  />
 
-## Away with Monolithic BFT Consensus; Enter DAG-based BFT Consensus
+## Away Monolithic BFT Consensus; Enter DAG-based BFT Consensus
 
 To scale the BFT (Byzantine Fault Tolerant) Consensus core of blockchains,
 prevailing wisdom is to separate between two responsibilities. 
@@ -51,9 +51,10 @@ DAG-based BFT protocols like
 [DAG-rider](https://arxiv.org/abs/2102.08325), and
 [Bullshark](https://arxiv.org/abs/2201.05677").
 If you are like me, you might feel that these solutions are a bit overdone:
-they all contain multiple purpose-built DAG layers, and furthermore,
+they contain multiple purpose-built DAG layers, and furthermore,
 DAG transmissions are blocked on input needed for specific layers from the Consensus protocol, potentially hampering throughput. 
-Since the DAG already solves ninety percent of the BFT Consensus problem by supporting reliable, causally ordered broadcast, it seems that we should be able to do better.
+Since the DAG already solves ninety percent of the BFT Consensus problem by supporting reliable,
+causally ordered broadcast, it seems that we should be able to do simpler/better.
 
 **In this post, I will illustrate a simple --
 quite possibly the simplest and the most efficient -- DAG-riding BFT Consensus solution, _Fin_, for the partial synchrony model.**
