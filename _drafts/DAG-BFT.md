@@ -200,10 +200,10 @@ The pseudo-code for `view(r)` at each party `p` is given in the frame below, and
 
    4.1. <b>Ordering commits. </b>
 
-   If `proposal(r)` commits, messages are appended to the committed sequence as follows. 
-   First, among `proposal(r)`'s causal predecessors, the highest `proposal(r')` that has F+1 votes is
+   If proposal(r) commits, messages are appended to the committed sequence as follows. 
+   First, among proposal(r)'s causal predecessors, the highest proposal(r') that has F+1 votes is
    (recursively) ordered. 
-   After it, remaining causal predecessors of `proposal(r)` which have not yet been ordered are appended to the committed sequence
+   After it, remaining causal predecessors of proposal(r) which have not yet been ordered are appended to the committed sequence
    (within this batch, ordering can be done using any deterministic rule to linearize the partial ordering into a total ordering.)
 
 5. <b>Expiring the view timer.</b>
