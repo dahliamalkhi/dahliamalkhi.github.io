@@ -325,7 +325,7 @@ In Fin, a leader proposal simply references those 2F+1 messages from the previou
 <span id="DAG-Riding"></span>
 ## DAG-based Solutions
 
-[Narwhal](https://arxiv.org/abs/2105.11827) is a DAG transport after which DAG Trans is modeled.
+[Narwhal](https://arxiv.org/abs/2105.11827) is a DAG transport after which DAG Trans is modeled. It has a layer-by-layer structure, each layer having at most one message per sender and referring to 2F+1 messages in the preceding layer.
 
 [Narwhal-HS](https://arxiv.org/abs/2105.11827) is a BFT Consensus protocol based on [HotStuff]() for the partial synchrony model,
 in which Narwhal is used as a "mempool". 
@@ -337,14 +337,15 @@ using the DAG only for spreading transactions.
 [Tusk](https://arxiv.org/abs/2105.11827)
 build randomized BFT Consensus for the asynchronous model "riding" on Narwhal, 
 These protocols are "zero message overhead" over the DAG, not exchanging any messages outside the Narwhal protocol.
-However, DAG-Rider (Tusk) must inject input value every 4 (2) layers, 
+DAG-Rider (Tusk) is structured with purpose-built DAG layers grouped into "waves" of 4 (2) layers each. 
+The Consensus protocol must inject input value every wave, 
 which means that Narwhal transmissions are blocked on Consensus protocol actions.
 
 [Bullshark](https://arxiv.org/abs/2201.05677")
 builds BFT Consensus riding on Narwhal for the partial synchrony model.
 It is also a "zero message overhead" protocol over the DAG, but due to a rigid wave-by-wave structure, 
 Narwhal transmissions are blocked by timers that are internal to the Consensus protocol.
-Bullshark is designed with 8-layer waves driving commit, each layer serving a different function in the protocol.
+Bullshark is designed with 8-layer waves driving commit, each layer purpose-built to serve a different step in the protocol.
 
 Fin builds BFT Consensus riding on DAG Trans for the partial synchrony model with "zero message overhead".
 Uniquely, it incurs no transmission blocking whatsoever.
@@ -354,11 +355,11 @@ The value `v` is opaque to the DAG Trans and is of interest to the Consensus pro
 
 In terms of protocol design, all of the above solutions are relatively succinct, but arguably, Fin is the simplest.
 DAG-Rider, Tusk and Bullshark are multi-stage protocols embedded into DAG multi-layer "waves" (4 layers in DAG-Rider, 2-3 in Tusk, 8 in Bullshark).
-Each layer is used for a different stage in the Consensus protocol, with a potential commit happening at the last layer. 
-Fin is single-stage, and view numbers can be injected into the DAG at any time, independent of the layer structure. 
+Each layer is purpose-build for a different step in the Consensus protocol, with a potential commit happening at the last layer. 
+Fin is single-phase, and view numbers can be injected into the DAG at any time, independent of the layer structure. 
 
 
-| Protocol | Model | External Msgs | Layered DAG | Blocking     | Layers to Commit | 
+| Protocol | Model | External Msgs | Layered DAG | Blocking DAG    | Commit latency in rounds | 
 | :--- | :--- | :--- | :--- | :-- | :--- |
 | [Total](https://www.sciencedirect.com/science/article/pii/S0890540198927705) | asynchronous | none | no | no | eventual |
 | [Swirlds Hashgraph](https://www.swirlds.com/downloads/SWIRLDS-TR-2016-01.pdf) | asynchronous | none | no | no | eventual |
