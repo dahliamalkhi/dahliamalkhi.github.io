@@ -329,9 +329,9 @@ In Fin, a leader proposal simply references those 2F+1 messages from the previou
 
 Last, we remark about Fin's communication complexity. 
 
-* **DAG message cost:**: In order for DAG messages to be delivered reliably, it must implement reliable broadcast.
-This incurs either per message a quadratic number of messages carried over authenticated channels, or a quadratic number of signature verifications. 
-In either case, the quadratic cost may be amortized by pipelining, driving it is practice to (almost) linear per message.
+* **DAG message cost**: In order for DAG messages to be delivered reliably, it must implement reliable broadcast.
+This incurs either a quadratic number of messages carried over authenticated channels, or a quadratic number of signature verifications, per broadcast. 
+In either case, the quadratic cost may be amortized by pipelining, driving it is practice to (almost) linear per broadcast.
 
 * **Commit message cost**: Fin sends n broadcast messages, a proposal and votes, per decision. 
 A decision commits the causal history of the proposal, consisting of (at least) a linear number of messages. Moreover, each message may carry multiple transaction in its payload.
