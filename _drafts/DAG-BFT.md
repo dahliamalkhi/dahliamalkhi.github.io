@@ -67,6 +67,8 @@ Fin is meant for pedagogical purposes, not as a full-fledged BFT Consensus syste
 
 The name Fin, a small part of aquatic creatures that controls stirring, stands for the protocol succinctness and its central role in blockchains (and also because the scenarios depicted below look like swarms of fish, and DAG in Hebrew means fish). 
 
+  <img src="/images/FIN/fish.png" />
+
 The post is organized as follows:
 
 * The first section, [**DAG Trans**](#DAG-Trans), 
