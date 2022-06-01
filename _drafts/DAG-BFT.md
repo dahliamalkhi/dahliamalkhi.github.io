@@ -316,15 +316,28 @@ Within $4 * \Delta$, the `view(r)` proposal and votes from all honest parties ar
 a leader must collect either 2F+1 `view(r)` _votes_ for the leader proposal, hence commit it; or 2F+1 `view(-r)` _expirations_, which is impossible as argued above. 
 
 Fin is modeled after PBFT while removing the complexity of PBFT's view-change, thus supporting regular leader rotation. 
-View-change is the most subtle ingredient of PBFT. 
 Simplifying PBFT leveraging DAG Trans is achieved in two ways.
 Recall that PBFT works in two-phases. 
 The first phase protects against leader equivocation. Building over DAG Trans, non-equivocation is already guaranteed at the transport level, hence Fin foregoes the first phase. 
 The second phase of PBFT guards commits by parties locking their votes and transferring them to the next view. 
-In particular, a new leader proposal must carry a proof of safety composed of 2F+1 
+View-change is the most subtle ingredient of PBFT; 
+in particular, a new leader proposal must carry a proof of safety composed of 2F+1 
 messages attesting to the highest vote from previous views. 
 In Fin, a leader proposal simply references those 2F+1 messages from the previous view.
 
+Last, we remark about Fin's communication complexity. 
+
+* **DAG message cost:**: In order for DAG messages to be delivered reliably, it must implement reliable broadcast.
+This incurs either per message a quadratic number of messages carried over authenticated channels, or a quadratic number of signature verifications. 
+In either case, the quadratic cost may be amortized by pipelining, driving it is practice to (almost) linear per message.
+
+* **Commit message cost**: Fin sends n broadcast messages, a proposal and votes, per decision. 
+A decision commits the causal history of the proposal, consisting of (at least) a linear number of messages. Moreover, each message may carry multiple transaction in its payload.
+As a result, in practice the commit cost is amortized over many transactions.
+
+* **Commit latency**: The commit latency in terms of DAG messages is 2, one proposal followed by votes.
+
+Protocols for the partial synchrony model have unbounded worst case by nature, hence, we concentrate on the costs incurred during steady state when a leader is honest and communication with it is synchronous:
 
 <span id="DAG-Riding"></span>
 ## DAG-based Solutions
@@ -363,7 +376,7 @@ Each layer is purpose-build for a different step in the Consensus protocol, with
 Fin is single-phase, and view numbers can be injected into the DAG at any time, independent of the layer structure. 
 
 
-| Protocol | Model | External messages used | DAG must be layered | Transmission blocking | Latency in rounds | 
+| Protocol | Model | External messages used | DAG must be layered | Transmission blocking | Commit latency in DAG rounds | 
 | :--- | :--- | :--- | :--- | :-- | :--- |
 | [Total](https://www.sciencedirect.com/science/article/pii/S0890540198927705) | asynchronous | none | no | no | eventual |
 | [Swirlds Hashgraph](https://www.swirlds.com/downloads/SWIRLDS-TR-2016-01.pdf) | asynchronous | none | no | no | eventual |
