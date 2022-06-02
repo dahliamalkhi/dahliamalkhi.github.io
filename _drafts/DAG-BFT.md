@@ -89,7 +89,7 @@ contains comparison notes on DAG-based BFT Consensus solutions.
 
   <span id="Figure-DAG"> </span>
 
-  <img src="/images/FIN/basic-DAG.png" width="750"  class="center"  />
+  <img src="/images/FIN/SWARMING.png" />
 
   **_Figure 1:_** 
   _A causality graph of messages, each message "fin" refers to preceding messages._ 
