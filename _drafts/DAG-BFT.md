@@ -92,7 +92,9 @@ contains comparison notes on DAG-based BFT Consensus solutions.
   <img src="/images/FIN/SWARMING.png" />
 
   **_Figure 1:_** 
-  _The construction of a reliable, causal DAG. Each messages is guaranteed un-equivocal and available through 2F+1 acknowledgements. Messages carry causal references to preceding messages._ 
+  _The construction of a reliable, causal DAG. 
+  Each messages is guaranteed to be unequivocal and available through 2F+1 acknowledgements. 
+  Messages carry causal references to preceding messages._ 
 
 DAG Trans is a reliable, causal broadcast communication substrate for disseminating transactions among N=3F+1 parties, at most F of which are presumed Byzantine faulty and the rest are honest.
 The substrate exposes three basic API's, `broadcast()`, `deliver()`, and `setInfo()`. 
