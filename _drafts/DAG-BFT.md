@@ -81,10 +81,10 @@ The name Fin, a small part of aquatic creatures that controls stirring, stands f
 
   <img src="/images/FIN/fish.png" />
 
-* The third section, [**DAG-riding**](#DAG-Riding), 
+* The third section, [**DAG Riding**](#DAG-Riding), 
 contains comparison notes on DAG-based BFT Consensus solutions. 
 
-* Further reading materials are listed in [**DAG-based BFT Consensus Reading list**](#DAG-Reading).
+* Further reading materials are listed in [**DAG-based BFT Consensus: Reading list**](#DAG-Reading).
 
 
 <span id="DAG-Trans"> </span>
@@ -151,7 +151,7 @@ If a `deliver(m)` happens at an honest party,
 then `deliver(d)` events already happened at the party for all messages `d` referenced in `m.predecessors`. 
 Note that by transitively, this ensures its entire causal history has been delivered.
 
-#### setInfo: An API for Injecting Consensus Protocol Input
+#### setInfo(): An API for Injecting Consensus Protocol Input
 
 To prepare for Consensus decisions, DAG-T implementations usually expose an API allowing the Consensus protocol to inject input into the DAG. 
 The is no commonly accepted standard for doing this in the literature. 
