@@ -35,7 +35,7 @@ Distributed middleware systems of that time, e.g.,
 and 
 [Transis](https://ieeexplore.ieee.org/document/243613), 
 were designed for high-throughput by building consensus over causal message ordering (!).
-The debate over the _usefulness of CATOCS (causal and totally ordered communication)_ was so intense that
+The debate over the usefulness of CATOCS (Causal and Totally Ordered Communication) was so intense that
 Cheriton and Skeen published a position paper
 about it, [[CATOCS, 1993]](https://dl.acm.org/doi/10.1145/173668.168623), 
 followed by Birman's [[response 1 to CATOCS, 1994]](https://dl.acm.org/doi/10.1145/164853.164859)
