@@ -43,7 +43,7 @@ and Van Renesse's [[response 2 to CATOCS, 1994]](https://dl.acm.org/doi/10.1145/
 
 Recent interest in scaling blockchains appears to settle this dispute in favor of the DAG-based approach. 
 
-A myriad of leading blockchain projects build innovative, high-throughput DAG-based BFT protocols, including
+A myriad of leading blockchain projects are building high-throughput DAG-based BFT protocols, including
 [Swirlds hashgraph](https://www.swirlds.com/downloads/SWIRLDS-TR-2016-01.pdf),
 [Blockmania](https://arxiv.org/abs/1809.01620),
 [Aleph](https://arxiv.org/pdf/1908.05156.pdf),
