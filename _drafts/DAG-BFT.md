@@ -149,7 +149,17 @@ Note that by transitively, this ensures its entire causal history has been deliv
 
 #### setInfo: An API for Injecting Consensus Protocol Input
 
-To prepare for Consensus decisions, DAG-T usually exposes an API allowing the Consensus protocol to inject input into the DAG. 
+To prepare for Consensus decisions, DAG-T implementations usually expose an API allowing the Consensus protocol to inject input into the DAG. 
+The is no commonly accepted standard for doing this in the literature. 
+All existing DAG-T APIs block message transmissions, invoking a call to the Consensus protocol to provide input such as regular coin tosses 
+(e.g., in 
+[Aleph](https://arxiv.org/pdf/1908.05156.pdf), 
+[Narwhal](https://arxiv.org/abs/2105.11827)).
+[DAG-rider](https://arxiv.org/abs/2102.08325)DAG-rider,
+[Bullshark](https://arxiv.org/abs/2201.05677")),
+or worse, waiting for Consensus protocol permission to transmit messages based on timers (
+[Bullshark](https://arxiv.org/abs/2201.05677").
+
 Here we introduce a minimally-invasive, non-blocking API `setInfo(meta)`: 
 Whenever a party invokes `broadcast()`, the transmitted message simply carries the latest `meta` value it has previously invoked in `setInfo(meta)`. 
 
@@ -203,7 +213,7 @@ Therefore, parties are allowed to refer to their own preceding message across (s
 
 Fin operates in a view-by-view manner, each view consisting of a propose-vote commit rule embedded into the DAG: 
 a leader proposes, parties vote, and commit happens when 2F+1 votes are collected. 
-There is no need to worry about a leader equivocating, because Trans DAG prevents equivocation,
+There is no need to worry about a leader equivocating, because DAG-T prevents equivocation,
 and there is no need for a leader to justify its proposal because it is inherently justified through the proposal's causal history within the DAG.
 Advancing to the next view is enabled by 2F+1 votes or 2F+1 timeouts. 
 This guarantees that if a proposal becomes committed, the next (justified) leader proposal contains F+1 references to it. 
