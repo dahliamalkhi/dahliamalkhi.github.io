@@ -41,7 +41,8 @@ about it, [[CATOCS, 1993]](https://dl.acm.org/doi/10.1145/173668.168623),
 followed by Birman's [[response 1 to CATOCS, 1994]](https://dl.acm.org/doi/10.1145/164853.164859)
 and Van Renesse's [[response 2 to CATOCS, 1994]](https://dl.acm.org/doi/10.1145/164853.164858).
 
-Recent interest in scaling blockchains settles this dispute in favor of the DAG-based approach. 
+Recent interest in scaling blockchains appears to settle this dispute in favor of the DAG-based approach. 
+
 A myriad of leading blockchain projects build innovative, high-throughput DAG-based BFT protocols, including
 [Swirlds hashgraph](https://www.swirlds.com/downloads/SWIRLDS-TR-2016-01.pdf),
 [Blockmania](https://arxiv.org/abs/1809.01620),
@@ -49,24 +50,24 @@ A myriad of leading blockchain projects build innovative, high-throughput DAG-ba
 [Narwhal & Tusk](https://arxiv.org/abs/2105.11827),
 [DAG-rider](https://arxiv.org/abs/2102.08325), and
 [Bullshark](https://arxiv.org/abs/2201.05677").
-If you are like me, you might feel that these solutions are a bit overdone:
-they contain multiple purpose-built DAG layers, and furthermore,
-DAG transmissions are blocked on input needed for specific layers from the Consensus protocol, potentially hampering throughput. 
-Since the DAG already solves ninety percent of the BFT Consensus problem by supporting reliable,
-causally ordered broadcast, it seems that we should be able to do simpler/better.
+However, if you are like me, you might feel that these solutions are a bit overdone:
+they contain multiple purpose-built DAG layers, and worse,
+DAG transmissions must wait for input needed regularly from the Consensus protocol. 
 
-**In this post, I will illustrate a simple --
-quite possibly the simplest and the most efficient -- DAG-riding BFT Consensus solution, _Fin_, for the partial synchrony model.**
-Fin views consist of a proposal followed by 2F+1 votes to commit, the most straight-forward protocol you can imagine.
-Both proposals and votes are cast by parties simply setting a single value inside messages. 
-Importantly and uniquely, DAG transmissions are never blocked on such values being injected, 
-thus Fin operates without hampering DAG throughput whatsoever. 
+The DAG already solves ninety percent of the BFT Consensus problem by supporting reliable,
+causally ordered broadcast, so it seems that we should be able to do simpler/better.
+**In this post, I will illustrate a simple spin 
+on DAG-based BFT Consensus protocols -- referred to as Fin --
+quite possibly the simplest and the most efficient way to embed BFT Consensus in a DAG.**
+The focus is on a view-by-view design that guarantees Consensus decisions when the network is stable.
+A view consists of a proposal followed by 2F+1 votes to commit, the most straight-forward protocol you can imagine.
+Specifically, 
+Both proposals and votes are cast by parties simply injecting a single value inside messages, 
+but the DAG never waits for such values. 
 
-Fin is meant for pedagogical purposes, not as a full-fledged BFT Consensus system design. The main takeaway from Fin is that by separating reliable transaction dissemination from Consensus, BFT Consensus based on DAG-T can be made simple and highly performant at the same time.
-
-The name Fin, a small part of aquatic creatures that controls stirring, stands for the protocol succinctness and its central role in blockchains (and also because the scenarios depicted below look like swarms of fish, and DAG in Hebrew means fish). 
-
-  <img src="/images/FIN/fish.png" />
+This post is meant for pedagogical purposes, not as a full-fledged BFT Consensus system design. 
+The main takeaway from Fin is that by separating reliable transaction dissemination from Consensus, 
+BFT Consensus based on a DAG can be made simple and highly performant at the same time.
 
 The post is organized as follows:
 
@@ -76,6 +77,9 @@ explains the notion of a reliable, causal broadcast transport that shares a DAG 
 * The second section, [**Fin**](#FIN), 
 demonstrates the utility of DAG-T through **Fin**,
 a BFT solution which is one-phase, non-blocking, DAG-riding and designed for the partial synchrony model.
+The name Fin, a small part of aquatic creatures that controls stirring, stands for the protocol succinctness and its central role in blockchains (and also because the scenarios depicted below look like swarms of fish, and DAG in Hebrew means fish). 
+
+  <img src="/images/FIN/fish.png" />
 
 * The third section, [**DAG-riding**](#DAG-Riding), 
 contains comparison notes on DAG-based BFT Consensus solutions. 
