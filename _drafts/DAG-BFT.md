@@ -96,7 +96,7 @@ contains comparison notes on DAG-based BFT Consensus solutions.
   Messages carry causal references to preceding messages._ 
 
 DAG-T is a transport substrate for disseminating transactions reliably and in causal order.
-The lifetime of transaction dissemination in DAG-T is captured in [**Figure 1**] above: 
+The lifetime of transaction dissemination in DAG-T is captured in [**Figure 1**](#Figure-DAG) above: 
 
 1. Parties send messages that contain blocks of transactions and have direct utility. 
 2. Each message carries references to previously delivered messages. 
