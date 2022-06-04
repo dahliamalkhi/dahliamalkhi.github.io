@@ -183,9 +183,7 @@ see below [further reading](#DAG-based-BFT-Consensus:-Reading-list).
 
 #### Layers and Temporary Disconnections
 
-When message `m` is delivered carrying information about predecessors:
-     - In a layer-by-layer construction, it includes references to messages in the preceding layer.
-
+In a layer-by-layer construction, a message includes references to messages in the preceding layer.
 Sometimes, a party may become temporarily disconnected. When it reconnects back, the DAG might have grown many layers without it.
 It is undesirable that a reconnecting party would be required to backfill every layer it missed with messages that everyone has to catch up with.
 Therefore, parties are allowed to refer to their own preceding message across (skipped) layers, as depicted in [**Figure 2**](#Figure-Disconnect) below. 
