@@ -35,15 +35,14 @@ Distributed middleware systems of that time, e.g.,
 and 
 [Transis](https://ieeexplore.ieee.org/document/243613), 
 were designed for high-throughput by building consensus over causal message ordering (!).
-This topic was so much in the spotlight that during 1993-1994,
-a debate over the _usefulness of CATOCS (causal and totally ordered communication)_ carried into
-several publications of the ACM SIGOPS,
-[[CATOCS]](https://dl.acm.org/doi/10.1145/173668.168623)
-[[Response 1 to CATOCS]](https://dl.acm.org/doi/10.1145/164853.164859)
-[[Response 2 to CATOCS]](https://dl.acm.org/doi/10.1145/164853.164858).
+The debate over the _usefulness of CATOCS (causal and totally ordered communication)_ was so intense that
+Cheriton and Skeen published a position paper
+about it, [[CATOCS, 1993]](https://dl.acm.org/doi/10.1145/173668.168623), 
+followed by Birman's [[response 1 to CATOCS, 1994]](https://dl.acm.org/doi/10.1145/164853.164859)
+and Van Renesse's [[response 2 to CATOCS, 1994]](https://dl.acm.org/doi/10.1145/164853.164858).
 
-Recent interest in scaling blockchains is rekindling interest in this approach with emphasis on Byzantine fault tolerance, e.g., in 
-DAG-based BFT protocols like
+Recent interest in scaling blockchains settles this dispute in favor of the DAG-based approach. 
+A myriad of leading blockchain projects build innovative, high-throughput DAG-based BFT protocols, including
 [Swirlds hashgraph](https://www.swirlds.com/downloads/SWIRLDS-TR-2016-01.pdf),
 [Blockmania](https://arxiv.org/abs/1809.01620),
 [Aleph](https://arxiv.org/pdf/1908.05156.pdf),
@@ -63,7 +62,7 @@ Both proposals and votes are cast by parties simply setting a single value insid
 Importantly and uniquely, DAG transmissions are never blocked on such values being injected, 
 thus Fin operates without hampering DAG throughput whatsoever. 
 
-Fin is meant for pedagogical purposes, not as a full-fledged BFT Consensus system design. The main takeaway from Fin is that by separating reliable transaction dissemination from Consensus, BFT Consensus based on DAG Trans can be made simple and highly performant at the same time.
+Fin is meant for pedagogical purposes, not as a full-fledged BFT Consensus system design. The main takeaway from Fin is that by separating reliable transaction dissemination from Consensus, BFT Consensus based on DAG-T can be made simple and highly performant at the same time.
 
 The name Fin, a small part of aquatic creatures that controls stirring, stands for the protocol succinctness and its central role in blockchains (and also because the scenarios depicted below look like swarms of fish, and DAG in Hebrew means fish). 
 
@@ -71,11 +70,11 @@ The name Fin, a small part of aquatic creatures that controls stirring, stands f
 
 The post is organized as follows:
 
-* The first section, [**DAG Trans**](#DAG-Trans), 
+* The first section, [**DAG-T**](#DAG-Trans), 
 explains the notion of a reliable, causal broadcast transport that shares a DAG among parties. 
 
 * The second section, [**Fin**](#FIN), 
-demonstrates the utility of DAG Trans through **Fin**,
+demonstrates the utility of DAG-T through **Fin**,
 a BFT solution which is one-phase, non-blocking, DAG-riding and designed for the partial synchrony model.
 
 * The third section, [**DAG-riding**](#DAG-Riding), 
@@ -85,7 +84,7 @@ contains comparison notes on DAG-based BFT Consensus solutions.
 
 
 <span id="DAG-Trans"> </span>
-## DAG Trans: A Reliable Causal Broadcast Transport
+## DAG-T: A Reliable Causal Broadcast Transport
 
   <span id="Figure-DAG"> </span>
 
@@ -96,31 +95,36 @@ contains comparison notes on DAG-based BFT Consensus solutions.
   Each messages is guaranteed to be unequivocal and available through 2F+1 acknowledgements. 
   Messages carry causal references to preceding messages._ 
 
-DAG Trans is a reliable, causal broadcast communication substrate for disseminating transactions among N=3F+1 parties, at most F of which are presumed Byzantine faulty and the rest are honest.
-The substrate exposes three basic API's, `broadcast()`, `deliver()`, and `setInfo()`. 
-In a nutshell, DAG Trans guarantees that all parties deliver the same ordered sequence of messages by each sender and exposes a causal-ordering relationship among them. These properties are described below as **Reliability**, **Agreement**, **Validity**, **Integrity**, 
+DAG-T is a transport substrate for disseminating transactions reliably and in causal order.
+The lifetime of transaction dissemination in DAG-T is captured in [**Figure 1**] above: 
+
+1. Parties send messages that contain blocks of transactions and have direct utility. 
+2. Each message carries references to previously delivered messages. 
+These references become a backbone of a causally ordered directed acyclic graph (DAG) structure.
+3. In order for messages to be "delivered", parties exchange acknowledgements about messages they receive. 
+A message is delivered to a party when it is known that the message and all its predecessors 
+have been received and persisted by a quorum of parties,
+guaranteeing that they can be recovered.
+4. Parties insert delivered messages into a local DAG that they independently analyse to determine
+a Consensus total ordering of messages, without sending extra messages. 
+
+In a nutshell, DAG-T guarantees that all parties deliver the same ordered sequence of messages by each sender and exposes a causal-ordering relationship among them. These properties are described below as **Reliability**, **Agreement**, **Validity**, **Integrity**, 
 and **Causality**. 
 
-More specifically, DAG Trans provides a `broadcast(payload)` API for a party `p` to send a message to other parties.
+More specifically, the DAG-T substrate exposes two basic API's, `broadcast()` and `deliver()`. 
+`broadcast(payload)` is an API for a party `p` to send a message to other parties.
 A party's upcall `deliver(m)` is triggered when a message `m` can be delivered. 
-Each message must refer to a certain number of preceding messages including the sender's own preceding message.
-To prepare for Consensus decisions, DAG Trans exposes a single additional API `setInfo(meta)`. 
-Whenever a party invokes `broadcast()`, the transmitted message carries the latest `meta` value invoked in `setInfo(meta)` by the party. 
-
-  **Layer-by-layer construction.** Transports are often constructed in layer-by-layer regime, as depicted in [**Figure 1**](#Figure-DAG) above. In this regime, each sender is allowed one message per layer, and a message may refer only to messages in the layer preceding it.
-  Layering is done so as to regulate transmissions and saturate network capacity, but these considerations are orthogonal to the BFT Consensus protocol. As we shall see below, Fin ignores a layer structure of DAG Trans, if exists.
-
+Each message may refer to preceding messages including the sender's own preceding message.
 Messages are delivered carrying a sender's payload and additional meta information that can be inspected upon reception.
-Every delivered message `m` carries the following fields:
 
-- `m.sender`, the sender identity 
-- `m.index`, a delivery index from the sender
-- `m.payload`, contents such as transaction(s)
-- `m.predecessors`, references to messages sender has seen from other parties, including itself. 
-     - In a layer-by-layer construction, it includes references to messages in the preceding layer.
-- `m.info`, a meta information field reserved for the Consensus protocol to inject through `setInfo()`
+> Every delivered message `m` carries the following fields:
+> 
+> - `m.sender`, the sender identity 
+> - `m.index`, a delivery index from the sender
+> - `m.payload`, contents such as transaction(s)
+> - `m.predecessors`, references to messages sender has seen from other parties, including itself. 
 
-DAG Trans satisfies the following requirements:
+DAG-T satisfies the following requirements:
 
 * **Reliability.** 
 If a `deliver(m)` event happens at an honest party, then eventually `deliver(m)` happens at every other honest party.
@@ -144,12 +148,42 @@ If a `deliver(m)` happens at an honest party,
 then `deliver(d)` events already happened at the party for all messages `d` referenced in `m.predecessors`. 
 Note that by transitively, this ensures its entire causal history has been delivered.
 
-There is a very effective way to spread messages reliably while incorporating causality information.
-For Reliability to be satisfied, sufficiently many copies of `m` must be persisted prior to delivery by any honest party, to guarantee availability against a threshold F of failures. 
-To this end, message digests are echoed by all parties. When 2F+1 echoes are collected, a message can be delivered. 
-The details of the echo protocol implementation are omitted here. We remark that echo protocols can be streamlined, resulting in high utilization and throughout (see [Narwhal](https://arxiv.org/abs/2105.11827)).
+#### setInfo: An API for Injecting Consensus Protocol Input
+
+To prepare for Consensus decisions, DAG-T usually exposes an API allowing the Consensus protocol to inject input into the DAG. 
+Here we introduce a minimally-invasive, non-blocking API `setInfo(meta)`: 
+Whenever a party invokes `broadcast()`, the transmitted message simply carries the latest `meta` value it has previously invoked in `setInfo(meta)`. 
+Accordingly, every delivered message `m` carries the following additional field:
+- `m.info`, a meta information field reserved for the Consensus protocol to inject through `setInfo()`
+
+#### Implementing DAG-T
+
+There are various ways to implement DAG-T
+among N=3F+1 parties, at most F of which are presumed Byzantine faulty and the rest are honest.
+
+The key mechanism for reliability and non-equivocation is for parties to echo a digest of the first index-j message they receive from another party . 
+When 2F+1 echoes are collected, a message can be delivered. 
+There are two ways to echo, one is using broadcast over authenticated point-2-point channels, the other using cryptographic signatures.
+
+Transports are often constructed in layer-by-layer regime.
+In this regime, each sender is allowed one message per layer, and a message may refer only to messages in the layer preceding it.
+Layering is done so as to regulate transmissions and saturate network capacity,
+as demonstrated by various projects, including 
+[Blockmania](https://arxiv.org/abs/1809.01620),
+[Aleph](https://arxiv.org/pdf/1908.05156.pdf), 
+and
+[Narwhal](https://arxiv.org/abs/2105.11827)).
+
+Layering and other implementation considerations are orthogonal to the BFT Consensus protocol. 
+As we shall see below, Fin ignores a layer structure of DAG-T, if exists.
+Here, we only care about the abstract API and properties that DAG-T provides. 
+For further information on DAG implementations,
+see below [further reading](#DAG-based-BFT-Consensus:-Reading-list). 
 
 #### Layers and Temporary Disconnections
+
+When message `m` is delivered carrying information about predecessors:
+     - In a layer-by-layer construction, it includes references to messages in the preceding layer.
 
 Sometimes, a party may become temporarily disconnected. When it reconnects back, the DAG might have grown many layers without it.
 It is undesirable that a reconnecting party would be required to backfill every layer it missed with messages that everyone has to catch up with.
@@ -293,12 +327,12 @@ There is no quorum enabling a commit in `view(r+1)`, nor entering `view(r+2)`. E
 
 ### Fin Analysis
 
-Fin is minimally integrated into DAG Trans, simply setting the meta-information field periodically.
+Fin is minimally integrated into DAG-T, simply setting the meta-information field periodically.
 Importantly, 
 at no time is transaction broadcast slowed down by the Fin protocol. 
 Rather, Consensus logic is embedded into the DAG structure simply by injecting view numbers into it.
 
-The reliability and causality properties of DAG Trans makes arguing about correctness very easy, 
+The reliability and causality properties of DAG-T makes arguing about correctness very easy, 
 though a formal proof of correctness is beyond the scope of this post. 
 
 * **Safety.** 
@@ -311,7 +345,7 @@ Hence, any commit of a future view causally follows (hence, transitively re-comm
 
   First, after GST (Global Stabilization Time), 
 i.e., after communication has become synchronous,
-views are inherently synchronized through DAG Trans. 
+views are inherently synchronized through DAG-T. 
 For let $\Delta$ be an upper bound on communication after GST.
 Once a `view(r)` with an honest leader is entered by the first honest party, within $2 * \Delta$, both the leader and all honest parties enter `view(r)` as well. 
 Within $4 * \Delta$, the `view(r)` proposal and votes from all honest parties are spread to everyone. 
@@ -320,9 +354,9 @@ Within $4 * \Delta$, the `view(r)` proposal and votes from all honest parties ar
 a leader must collect either 2F+1 `view(r)` _votes_ for the leader proposal, hence commit it; or 2F+1 `view(-r)` _expirations_, which is impossible as argued above. 
 
 Fin is modeled after PBFT while removing the complexity of PBFT's view-change, thus supporting regular leader rotation. 
-Simplifying PBFT leveraging DAG Trans is achieved in two ways.
+Simplifying PBFT leveraging DAG-T is achieved in two ways.
 Recall that PBFT works in two-phases. 
-The first phase protects against leader equivocation. Building over DAG Trans, non-equivocation is already guaranteed at the transport level, hence Fin foregoes the first phase. 
+The first phase protects against leader equivocation. Building over DAG-T, non-equivocation is already guaranteed at the transport level, hence Fin foregoes the first phase. 
 The second phase of PBFT guards commits by parties locking their votes and transferring them to the next view. 
 View-change is the most subtle ingredient of PBFT; 
 in particular, a new leader proposal must carry a proof of safety composed of 2F+1 
@@ -346,7 +380,7 @@ Protocols for the partial synchrony model have unbounded worst case by nature, h
 <span id="DAG-Riding"></span>
 ## DAG-based Solutions
 
-[Narwhal](https://arxiv.org/abs/2105.11827) is a DAG transport after which DAG Trans is modeled. It has a layer-by-layer structure, each layer having at most one message per sender and referring to 2F+1 messages in the preceding layer.
+[Narwhal](https://arxiv.org/abs/2105.11827) is a DAG transport after which DAG-T is modeled. It has a layer-by-layer structure, each layer having at most one message per sender and referring to 2F+1 messages in the preceding layer.
 
 [Narwhal-HS](https://arxiv.org/abs/2105.11827) is a BFT Consensus protocol based on [HotStuff]() for the partial synchrony model,
 in which Narwhal is used as a "mempool". 
@@ -368,11 +402,11 @@ It is also a "zero message overhead" protocol over the DAG, but due to a rigid w
 Narwhal transmissions are blocked by timers that are internal to the Consensus protocol.
 Bullshark is designed with 8-layer waves driving commit, each layer purpose-built to serve a different step in the protocol.
 
-Fin builds BFT Consensus riding on DAG Trans for the partial synchrony model with "zero message overhead".
+Fin builds BFT Consensus riding on DAG-T for the partial synchrony model with "zero message overhead".
 Uniquely, it incurs no transmission blocking whatsoever.
-To achieve Consensus over DAG Trans, Fin requires only injecting values into transmissions in a non-blocking manner via `setInfo(v)`. 
-Once a `setInfo(v)` invocation completes, future emissions by the DAG Trans carry the value `v` in the latest `setInfo(v)` invocation. 
-The value `v` is opaque to the DAG Trans and is of interest to the Consensus protocol.
+To achieve Consensus over DAG-T, Fin requires only injecting values into transmissions in a non-blocking manner via `setInfo(v)`. 
+Once a `setInfo(v)` invocation completes, future emissions by the DAG-T carry the value `v` in the latest `setInfo(v)` invocation. 
+The value `v` is opaque to the DAG-T and is of interest to the Consensus protocol.
 
 In terms of protocol design, all of the above solutions are relatively succinct, but arguably, Fin is the simplest.
 DAG-Rider, Tusk and Bullshark are multi-stage protocols embedded into DAG multi-layer "waves" (4 layers in DAG-Rider, 2-3 in Tusk, 8 in Bullshark).
