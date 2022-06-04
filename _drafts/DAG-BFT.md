@@ -58,7 +58,7 @@ The DAG already solves ninety percent of the BFT Consensus problem by supporting
 causally ordered broadcast, so it seems that we should be able to do simpler/better.
 **In this post, I will illustrate a simple spin 
 on DAG-based BFT Consensus protocols -- referred to as Fin --
-quite possibly the simplest and the most efficient way to embed BFT Consensus in a DAG.**
+quite possibly the simplest way to embed BFT Consensus in a DAG.**
 The focus is on a view-by-view design that guarantees Consensus decisions when the network is stable.
 A view consists of a proposal followed by 2F+1 votes to commit, the most straight-forward protocol you can imagine.
 Specifically, 
@@ -214,7 +214,7 @@ Therefore, parties are allowed to refer to their own preceding message across (s
 <span id="FIN"></span>
 ## Fin
 
-**Fin** is quite possibly the simplest and the most efficient DAG-riding BFT Consensus solution for the partial synchrony model. 
+**Fin** is quite possibly the simplest DAG-riding BFT Consensus solution for the partial synchrony model. 
 
 Fin operates in a view-by-view manner, each view consisting of a propose-vote commit rule embedded into the DAG: 
 a leader proposes, parties vote, and commit happens when 2F+1 votes are collected. 
@@ -414,10 +414,11 @@ which means that Narwhal transmissions are blocked on Consensus protocol actions
 builds BFT Consensus riding on Narwhal for the partial synchrony model.
 It is also a "zero message overhead" protocol over the DAG, but due to a rigid wave-by-wave structure, 
 Narwhal transmissions are blocked by timers that are internal to the Consensus protocol.
+This can significantly hamper throughput when a leader is faulty or slow. 
 Bullshark is designed with 8-layer waves driving commit, each layer purpose-built to serve a different step in the protocol.
 
 Fin builds BFT Consensus riding on DAG-T for the partial synchrony model with "zero message overhead".
-Uniquely, it incurs no transmission blocking whatsoever.
+Uniquely, it incurs no transmission delaying whatsoever.
 To achieve Consensus over DAG-T, Fin requires only injecting values into transmissions in a non-blocking manner via `setInfo(v)`. 
 Once a `setInfo(v)` invocation completes, future emissions by the DAG-T carry the value `v` in the latest `setInfo(v)` invocation. 
 The value `v` is opaque to the DAG-T and is of interest to the Consensus protocol.
@@ -428,15 +429,15 @@ Each layer is purpose-build for a different step in the Consensus protocol, with
 Fin is single-phase, and view numbers can be injected into the DAG at any time, independent of the layer structure. 
 
 
-| Protocol | Model | External messages used | DAG must be layered | Transmission blocking | Commit latency in DAG rounds | 
+| Protocol | Model | External messages used | DAG must be layered | Transmission blocking | Commit latency in DAG rounds during synchrony | 
 | :--- | :--- | :--- | :--- | :-- | :--- |
 | [Total](https://www.sciencedirect.com/science/article/pii/S0890540198927705) | asynchronous | none | no | no | eventual |
 | [Swirlds Hashgraph](https://www.swirlds.com/downloads/SWIRLDS-TR-2016-01.pdf) | asynchronous | none | no | no | eventual |
 | [Aleph](https://arxiv.org/pdf/1908.05156.pdf) | asynchronous | none | yes | yes (coin input) | expected constant |
 | [Narwhal-HS](https://arxiv.org/abs/2105.11827) | partial-synchrony | yes | yes | no | 3 | 
-| [DAG-Rider](https://arxiv.org/abs/2102.08325) | asynchronous | none | yes | yes (coin input) | expected constant (4?) |
-| [Tusk](https://arxiv.org/abs/2105.11827) | asynchronous | none | yes | yes  (coin input) | expected constant (3?) |
-| [Bullshark](https://arxiv.org/abs/2201.05677") | partial-synchrony | none | yes | yes (timers) | 8 |
+| [DAG-Rider](https://arxiv.org/abs/2102.08325) | asynchronous | none | yes | yes (coin input) | expected constant $\times 4$ (wave size) |
+| [Tusk](https://arxiv.org/abs/2105.11827) | asynchronous | none | yes | yes  (coin input) | expected constant $\times 2$ (wave size) |
+| [Bullshark](https://arxiv.org/abs/2201.05677") | partial-synchrony | none | yes | yes (timers) | 2-8 |
 | Fin | partial-synchrony | none | no | no | 2 |
 
 
