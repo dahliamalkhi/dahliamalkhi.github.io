@@ -140,8 +140,7 @@ then `m = m'`.
 If an honest party invokes `broadcast(payload)` then a `deliver(m)` with `m.payload = payload` event eventually happens at all honest parties.
 
 * **Integrity.**
-If a `deliver(m)` event happens at an honest party, then `p` indeed invoked `broadcast(payload)` where `m.payload = payload` 
-and the latest `setInfo(meta)` by `p` has `m.info = meta`.
+If a `deliver(m)` event happens at an honest party, then `p` indeed invoked `broadcast(payload)` where `m.payload = payload`.
 
 * **Causality.** 
 If a `deliver(m)` happens at an honest party, 
@@ -153,8 +152,10 @@ Note that by transitively, this ensures its entire causal history has been deliv
 To prepare for Consensus decisions, DAG-T usually exposes an API allowing the Consensus protocol to inject input into the DAG. 
 Here we introduce a minimally-invasive, non-blocking API `setInfo(meta)`: 
 Whenever a party invokes `broadcast()`, the transmitted message simply carries the latest `meta` value it has previously invoked in `setInfo(meta)`. 
-Accordingly, every delivered message `m` carries the following additional field:
-- `m.info`, a meta information field reserved for the Consensus protocol to inject through `setInfo()`
+
+> Accordingly, every delivered message `m` carries an additional field
+> set by its sender `m.sender` in the latest `setInfo(meta)`:
+> - `m.info`, a meta information field reserved for the Consensus protocol to inject through `setInfo()`
 
 #### Implementing DAG-T
 
