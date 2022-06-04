@@ -151,13 +151,14 @@ Note that by transitively, this ensures its entire causal history has been deliv
 
 To prepare for Consensus decisions, DAG-T implementations usually expose an API allowing the Consensus protocol to inject input into the DAG. 
 The is no commonly accepted standard for doing this in the literature. 
-All existing DAG-T APIs block message transmissions, invoking a call to the Consensus protocol to provide input such as regular coin tosses 
+Existing DAG-T APIs are blocking message transmissions. 
+Such APIs must regularly ask the Consensus protocol to provide input to embed in transmissions, such as coin tosses 
 (e.g., in 
 [Aleph](https://arxiv.org/pdf/1908.05156.pdf), 
 [Narwhal](https://arxiv.org/abs/2105.11827)).
 [DAG-rider](https://arxiv.org/abs/2102.08325)DAG-rider,
 [Bullshark](https://arxiv.org/abs/2201.05677")),
-or worse, waiting for Consensus protocol permission to transmit messages based on timers (
+or worse, they ask for the Consensus protocol permission to transmit messages based on timers (e.g., 
 [Bullshark](https://arxiv.org/abs/2201.05677").
 
 Here we introduce a minimally-invasive, non-blocking API `setInfo(meta)`: 
