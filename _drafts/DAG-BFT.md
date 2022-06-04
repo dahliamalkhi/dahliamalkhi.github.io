@@ -160,7 +160,7 @@ Such APIs must regularly ask the Consensus protocol to provide input to embed in
 (e.g., in 
 [Aleph](https://arxiv.org/pdf/1908.05156.pdf), 
 [Narwhal](https://arxiv.org/abs/2105.11827)).
-[DAG-rider](https://arxiv.org/abs/2102.08325)DAG-rider,
+[DAG-rider](https://arxiv.org/abs/2102.08325),
 [Bullshark](https://arxiv.org/abs/2201.05677")),
 or worse, they ask for the Consensus protocol permission to transmit messages based on timers (e.g., 
 [Bullshark](https://arxiv.org/abs/2201.05677").
@@ -214,7 +214,7 @@ Therefore, parties are allowed to refer to their own preceding message across (s
 <span id="FIN"></span>
 ## Fin
 
-**Fin** is quite possibly the simplest DAG-riding BFT Consensus solution for the partial synchrony model. 
+**Fin** is quite possibly the simplest DAG-based BFT Consensus solution for the partial synchrony model. 
 
 Fin operates in a view-by-view manner, each view consisting of a propose-vote commit rule embedded into the DAG: 
 a leader proposes, parties vote, and commit happens when 2F+1 votes are collected. 
@@ -451,24 +451,22 @@ in order to ensure progress during periods of synchrony.
 
 In other words, rarely is the case that [all you need is DAG](https://arxiv.org/abs/2102.08325).
 
-In a pure DAG-rider solution,
+In a pure-DAG solution,
 no extra messages are exchanged by the Consensus protocol nor is it given an opportunity to inject information into the DAG or control message emission. 
 Parties passively analyze the DAG structure and autonomously arrive at commit ordering decisions,
 even though the DAG is delivered to parties incrementally and in potentially different order.
 
 [Total](https://www.sciencedirect.com/science/article/pii/S0890540198927705) and
 [ToTo](https://dahliamalkhi.github.io/files/Multicast-FTCS1993.pdf)
-are pre- blockchain era, pure DAG-rider total ordering protocols for the asynchronous model. 
+are pre- blockchain era, pure-DAG total ordering protocols for the asynchronous model. 
 [Swirlds Hashgraph](https://www.swirlds.com/downloads/SWIRLDS-TR-2016-01.pdf)
-is the only blockchain era, pure DAG-rider solution to our knowledge. 
+is the only blockchain era, pure-DAG solution to our knowledge. 
 It makes use of bits within messages as pseudo-random coin-tosses in order to drive randomized Consensus.
 All of the above pure DAG protocols are designed without regulating DAG layers, and without injecting external common coin-tosses to cope with asynchrony. 
 As a result, they are both quite complex and their convergence slow. 
 
-Fin finds a sweet-spot: albeit not being a pure DAG-rider, it is a simple and fast DAG-based protocol, that injects values 
+Fin finds a sweet-spot: albeit not being a pure-DAG protocol, it is a simple and fast DAG-based protocol, that injects values 
 into the DAG in a non-intrusive manner.
-
-
 
 <span id="DAG-Reading"></span>
 ## DAG-based BFT Consensus: Reading list
