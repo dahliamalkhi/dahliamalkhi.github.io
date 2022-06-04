@@ -156,7 +156,7 @@ Note that by transitively, this ensures its entire causal history has been deliv
 To prepare for Consensus decisions, DAG-T implementations usually expose an API allowing the Consensus protocol to inject input into the DAG. 
 The is no commonly accepted standard for doing this in the literature. 
 Existing DAG-T APIs are blocking message transmissions. 
-Such APIs must regularly ask the Consensus protocol to provide input to embed in transmissions, such as coin tosses 
+Such APIs must regularly ask the Consensus protocol to provide input to embed in transmissions, such as coin-tosses 
 (e.g., in 
 [Aleph](https://arxiv.org/pdf/1908.05156.pdf), 
 [Narwhal](https://arxiv.org/abs/2105.11827)).
@@ -433,10 +433,10 @@ Fin is single-phase, and view numbers can be injected into the DAG at any time, 
 | :--- | :--- | :--- | :--- | :-- | :--- |
 | [Total](https://www.sciencedirect.com/science/article/pii/S0890540198927705) | asynchronous | none | no | no | eventual |
 | [Swirlds Hashgraph](https://www.swirlds.com/downloads/SWIRLDS-TR-2016-01.pdf) | asynchronous | none | no | no | eventual |
-| [Aleph](https://arxiv.org/pdf/1908.05156.pdf) | asynchronous | none | yes | yes (coin input) | expected constant |
+| [Aleph](https://arxiv.org/pdf/1908.05156.pdf) | asynchronous | none | yes | yes (coin-tosses) | expected constant |
 | [Narwhal-HS](https://arxiv.org/abs/2105.11827) | partial-synchrony | yes | yes | no | 3 | 
-| [DAG-Rider](https://arxiv.org/abs/2102.08325) | asynchronous | none | yes | yes (coin input) | expected constant $\times$ wave size (4) |
-| [Tusk](https://arxiv.org/abs/2105.11827) | asynchronous | none | yes | yes  (coin input) | expected constant $\times$ wave size (2) |
+| [DAG-Rider](https://arxiv.org/abs/2102.08325) | asynchronous | none | yes | yes (coin-tosses) | expected constant $\times$ wave size (4) |
+| [Tusk](https://arxiv.org/abs/2105.11827) | asynchronous | none | yes | yes  (coin-tosses) | expected constant $\times$ wave size (2) |
 | [Bullshark](https://arxiv.org/abs/2201.05677") | partial-synchrony | none | yes | yes (timers) | 2 |
 | Fin | partial-synchrony | none | no | no | 2 |
 
@@ -444,7 +444,7 @@ Fin is single-phase, and view numbers can be injected into the DAG at any time, 
 There is no question that software modularity is advantageous, since
 it removes the Consensus protocol from the critical path of communication.
 That said, most solutions do not rely on a DAG-based transport in a pure black-box manner.
-As discussed above, randomized Consensus protocols, e.g.,  DAG-rider and Tusk, inject into the DAG coin-tosses from the Consensus protocol. 
+As discussed above, randomized Consensus protocols, e.g.,  DAG-rider and Tusk, inject into the DAG randomized coin-tosses from the Consensus protocol. 
 Protocols for the partial synchrony model, e.g., Bullshark, 
 delay message transmissions by the transport according to Consensus protocol round timers, 
 in order to ensure progress during periods of synchrony. 
@@ -461,8 +461,8 @@ even though the DAG is delivered to parties incrementally and in potentially dif
 are pre- blockchain era, pure DAG-rider total ordering protocols for the asynchronous model. 
 [Swirlds Hashgraph](https://www.swirlds.com/downloads/SWIRLDS-TR-2016-01.pdf)
 is the only blockchain era, pure DAG-rider solution to our knowledge. 
-It makes use of bits within messages as pseudo-random coin tosses in order to drive randomized Consensus.
-All of the above pure DAG protocols are designed without regulating DAG layers, and without injecting external common coin-flips to cope with asynchrony. 
+It makes use of bits within messages as pseudo-random coin-tosses in order to drive randomized Consensus.
+All of the above pure DAG protocols are designed without regulating DAG layers, and without injecting external common coin-tosses to cope with asynchrony. 
 As a result, they are both quite complex and their convergence slow. 
 
 Fin finds a sweet-spot: albeit not being a pure DAG-rider, it is a simple and fast DAG-based protocol, that injects values 
