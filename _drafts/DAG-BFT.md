@@ -28,7 +28,7 @@ referred to as **Fin**.
 Fin operates precisely as you might expect
 and is quite possibly the simplest way to embed BFT Consensus in a DAG:
 occasionally, a leader marks a position in the DAG a "proposal", 
-2F+1 **(Note, I believe F+1 suffice) confirm the proposal, 
+2F+1 out of 3F+1 participants **(Note, I believe F+1 suffice) vote to confirm the proposal, 
 and everything preceding the proposal becomes committed.
 Both proposals and votes are cast by simply injecting into transmissions a single value -- a view number -- 
 which the DAG transport never has to wait for. 
