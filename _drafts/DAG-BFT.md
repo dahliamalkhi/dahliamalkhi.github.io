@@ -402,8 +402,8 @@ though a formal proof of correctness is beyond the scope of this post.
 * **Safety.** 
   Briefly, the safety of commits is as follows. If ever a `view(r)` proposal `proposal(r)` becomes committed, 
 then it is in the causal past of 2F+1 parties that voted for it.
-Any future view proposal must refer directly or indirectly to 2F+1 `view(r)` messages (votes or complaints), of which F+1 are votes for `proposal(r)`.
-Hence, any commit of a future view causally follows (hence, transitively re-commits) `proposal(r)`. 
+A proposal in any future view must refer directly or indirectly to 2F+1 `view(r)` messages (votes or complaints), of which F+1 are votes for `proposal(r)`.
+A commit in such a future view causally follows F+1 votes for `proposal(r)`, hence, it (re-)commits it. 
 
 * **Liveness.** The protocol liveness during periods of synchrony stems from two key mechanisms. 
 
