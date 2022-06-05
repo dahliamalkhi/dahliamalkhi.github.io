@@ -1,6 +1,6 @@
   <img src="/images/FIN/cover.png" width="600"  class="center"  />
 
-# Away with Monolithic BFT Consensus; Welcome DAG-based BFT Consensus
+# Evolution of BFT Consensus: Away with Monolithic, Welcome DAG
 
 ## Synopsis
 
