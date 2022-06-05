@@ -37,7 +37,7 @@ The main takeaway from Fin is that by separating reliable transaction disseminat
 BFT Consensus based on a DAG can be made simple and highly performant at the same time.
 
 <pre style="font-size: 9px;">
-* DAG - Direct Acyclic Graph
+<sup>*</sup> DAG - Direct Acyclic Graph
 ** BFT -- Byzantine Fault Tolerant
 </pre>
 
