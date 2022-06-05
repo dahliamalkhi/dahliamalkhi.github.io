@@ -119,7 +119,7 @@ The name Fin, a small part of aquatic creatures that controls stirring, stands f
 
   <img src="/images/FIN/fish.png" />
 
-* The third section, [**DAG Riding**](#DAG-Riding), 
+* The third section, [**DAG-based Solutions**](#DAG-Riding), 
 contains comparison notes on DAG-based BFT Consensus solutions. 
 
 * Further reading materials are listed in [**DAG-based BFT Consensus: Reading list**](#DAG-Reading).
