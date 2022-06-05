@@ -30,7 +30,9 @@ on DAG-based BFT (Byzantine Fault Tolerant) Consensus protocols,
 referred to as **Fin**.
 Fin operates precisely as you might expect
 and is quite possibly the simplest way to embed BFT (Byzantine Fault Tolerant) Consensus in a DAG.
-It is meant for pedagogical purposes, not as a full-fledged BFT Consensus system design. 
+It is also extremely efficient: when the network in stable, it requires only two network latencies to reach consensus on all the transactions that have accumulated in the DAG. 
+
+Fin is meant for pedagogical purposes, not as a full-fledged BFT Consensus system design. 
 The main takeaway from Fin is that by separating reliable transaction dissemination from Consensus, 
 BFT Consensus based on a DAG can be made simple and highly performant at the same time.
 
