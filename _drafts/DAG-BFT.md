@@ -6,7 +6,7 @@
 
 Emerging Proof-of-Stake blockchains achieve high transaction throughput 
 by spreading transactions reliably as fast as the network can carry them and accumulating them in a 
-DAG (Direct Acyclic Graph). 
+DAG*. 
 Then, participants interpret their DAG locally without exchanging more messages 
 and determine a total ordering of accumulated transactions.
 
@@ -26,15 +26,20 @@ are considerably more complex.
 
 
 In this post, I will illustrate a simple spin 
-on DAG-based BFT (Byzantine Fault Tolerant) Consensus protocols,
+on DAG-based BFT\*\* Consensus protocols,
 referred to as **Fin**.
 Fin operates precisely as you might expect
-and is quite possibly the simplest way to embed BFT (Byzantine Fault Tolerant) Consensus in a DAG.
+and is quite possibly the simplest way to embed BFT Consensus in a DAG.
 It is also extremely efficient: when the network in stable, it requires only two network latencies to reach consensus on all the transactions that have accumulated in the DAG. 
 
 Fin is meant for pedagogical purposes, not as a full-fledged BFT Consensus system design. 
 The main takeaway from Fin is that by separating reliable transaction dissemination from Consensus, 
 BFT Consensus based on a DAG can be made simple and highly performant at the same time.
+
+<pre style="font-size: 9px;">
+* DAG - Direct Acyclic Graph
+** BFT -- Byzantine Fault Tolerant
+</pre>
 
 ## Introduction
 
