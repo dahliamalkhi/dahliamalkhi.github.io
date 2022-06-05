@@ -6,7 +6,7 @@
 
 Emerging Proof-of-Stake blockchains achieve high transaction throughput 
 by spreading transactions reliably as fast as the network can carry them and accumulating them in a 
-DAG*. 
+DAG<sup>*</sup>. 
 Then, participants interpret their DAG locally without exchanging more messages 
 and determine a total ordering of accumulated transactions.
 
