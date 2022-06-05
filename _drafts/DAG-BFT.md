@@ -223,7 +223,7 @@ Whenever a party invokes `broadcast()`, the transmitted message simply carries t
 There are various ways to implement DAG-T
 among N=3F+1 parties, at most F of which are presumed Byzantine faulty and the rest are honest.
 
-The key mechanism for reliability and non-equivocation is for parties to echo a digest of the first message they receive from a sender with a particular index. 
+**Echoing.** The key mechanism for reliability and non-equivocation is for parties to echo a digest of the first message they receive from a sender with a particular index. 
 When 2F+1 echoes are collected, the message can be delivered. 
 There are two ways to echo, one is all-to-all broadcast over authenticated point-to-point channels
 a la [Bracha Broadcast](https://core.ac.uk/download/pdf/82523202.pdf);
@@ -235,7 +235,7 @@ which is anyway the minimum necessary to spread the message.
 **Layering.** Transports are often constructed in layer-by-layer regime, as depicted in [**Figure 2**](#Figure-Disconnect) below. 
 In this regime, each sender is allowed one message per layer, and a message may refer only to messages in the layer preceding it.
 Layering is done so as to regulate transmissions and saturate network capacity,
-and has been demonstrated effective by various projects, including 
+and has been demonstrated to be highly effective by various projects, including 
 [Blockmania](https://arxiv.org/abs/1809.01620),
 [Aleph](https://arxiv.org/pdf/1908.05156.pdf), 
 and
@@ -357,14 +357,14 @@ Meanwhile, the DAG fills with messages that may become committed at the next vie
   _Proposals and votes in `view(r)` and `view(r+1)`, both committed._
 
 If the leader of a view is faulty or disconnected, parties will eventually time out and set their meta-information to minus the view-number, e.g., `-(r+1)` for a failure of `view(r+1)` . 
-Their next broadcasts are interpreted as reporting a failure of `view(r+1)`. 
-When a party sees 2F+1 reports that `view(r+1)` is faulty it enters `view(r+2)`. 
+Their next broadcasts are interpreted as complaining there is no progress in `view(r+1)`. 
+When a party sees 2F+1 complaints about `view(r+1)`, it enters `view(r+2)`. 
 
 In [**Figure 4**](#Figure-Fault) below, the first view `view(r)` proceeds normally. 
 However, no message marked `view(r+1)` by `leader(r+1)` arrives, showing as a missing oval. 
-Parties 1, 3, 4 report this by setting their meta-information to `-(r+1)`, showing as striped red ovals.
+Parties 1, 3, 4 complain about this by setting their meta-information to `-(r+1)`, showing as striped red ovals.
 
-After 2F+1 reports are collected, the leader of `view(r+2)` posts a messages that has meta-information set to `r+2`, taken as `proposal(r+2)`. 
+After 2F+1 complaints are collected, the leader of `view(r+2)` posts a messages that has meta-information set to `r+2`, taken as `proposal(r+2)`. 
 Note that this message has in its causal past messages carrying `-(r+1)` meta-information. 
 Hence, faulty views have utility in advancing the global sequence of transaction, just like any other view.
 
@@ -378,8 +378,8 @@ Hence, faulty views have utility in advancing the global sequence of transaction
 
 A slightly more complex scenario is depicted in [**Figure 5**](#Figure-Partial-Fault) below. 
 Here, `leader(r+1)` emits `proposal(r+1)` that receives one vote by party 1.
-However, the proposal is too slow to arrive at parties 3 and 4, and both parties report a view failure.
-There is no quorum enabling a commit in `view(r+1)`, nor entering `view(r+2)`. Eventually, party 1 also times out and reports a failure of `view(r+1)`. This enables `view(r+2)` to start. `view(r+2)` is similar to the scenario in [**Figure 4**](#Figure-Fault) above, except that when `proposal(r+2)` commits, it indirectly commits `proposal(r+1)`. 
+However, the proposal is too slow to arrive at parties 3 and 4, and both parties complain about a view failure.
+There is no quorum enabling a commit in `view(r+1)`, nor entering `view(r+2)`. Eventually, party 1 also times out and complains about `view(r+1)`. This enables `view(r+2)` to start. `view(r+2)` is similar to the scenario in [**Figure 4**](#Figure-Fault) above, except that when `proposal(r+2)` commits, it indirectly commits `proposal(r+1)`. 
 
   <span id="Figure-Partial-Fault"></span>
 
@@ -402,7 +402,7 @@ though a formal proof of correctness is beyond the scope of this post.
 * **Safety.** 
   Briefly, the safety of commits is as follows. If ever a `view(r)` proposal `proposal(r)` becomes committed, 
 then it is in the causal past of 2F+1 parties that voted for it.
-Any future view proposal must refer directly or indirectly to 2F+1 `view(r)` messages, of which F+1 are votes for `proposal(r)`.
+Any future view proposal must refer directly or indirectly to 2F+1 `view(r)` messages (votes or complaints), of which F+1 are votes for `proposal(r)`.
 Hence, any commit of a future view causally follows (hence, transitively re-commits) `proposal(r)`. 
 
 * **Liveness.** The protocol liveness during periods of synchrony stems from two key mechanisms. 
@@ -463,10 +463,10 @@ which means that Narwhal transmissions are blocked on Consensus protocol actions
 
 [Bullshark](https://arxiv.org/abs/2201.05677")
 builds BFT Consensus riding on Narwhal for the partial synchrony model.
-It is also a "zero message overhead" protocol over the DAG, but due to a rigid wave-by-wave structure, 
+It is designed with 8-layer waves driving commit, each layer purpose-built to serve a different step in the protocol.
+Bullshark is a "zero message overhead" protocol over the DAG, but due to a rigid wave-by-wave structure, 
 Narwhal transmissions are blocked by timers that are internal to the Consensus protocol.
-This can significantly hamper throughput when a leader is faulty or slow. 
-Bullshark is designed with 8-layer waves driving commit, each layer purpose-built to serve a different step in the protocol.
+This defies the whole purpose of separating the DAG transport from consensus, and could hamper throughput when a leader is faulty or slow. 
 
 Fin builds BFT Consensus riding on DAG-T for the partial synchrony model with "zero message overhead".
 Uniquely, it incurs no transmission delaying whatsoever.
