@@ -30,7 +30,7 @@ and is quite possibly the simplest way to embed BFT Consensus in a DAG:
 occasionally, a leader marks a position in the DAG a "proposal", 
 2F+1 out of 3F+1 participants **(Note, I believe F+1 suffice)** "vote" to confirm the proposal, 
 and everything preceding the proposal becomes committed.
-Both proposals and votes are cast by simply injecting into transmissions a single value -- a view number -- 
+Both proposals and votes are cast simply by injecting into transmissions a single value -- a view number -- 
 which the DAG transport never has to wait for. 
 Fin is also extremely efficient: when the network in stable, it requires only two network latencies to reach consensus on all the transactions that have accumulated in the DAG. 
 
@@ -107,7 +107,7 @@ A view works precisely as you might expect:
 occasionally, a leader marks a position in the DAG a "proposal", 
 2F+1 **(Note, I believe F+1 suffice)** "vote" to confirm the proposal, 
 and everything preceding the proposal becomes committed.
-Both proposals and votes are cast by simply injecting into transmissions a single value -- a view number -- 
+Both proposals and votes are cast simply by injecting into transmissions a single value -- a view number -- 
 which the DAG transport never has to wait for. 
 
 This post is meant for pedagogical purposes, not as a full-fledged BFT Consensus system design. 
