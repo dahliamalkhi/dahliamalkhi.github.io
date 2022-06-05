@@ -230,7 +230,7 @@ a la [Bracha Broadcast](https://core.ac.uk/download/pdf/82523202.pdf);
 the other is converge-cast with cryptographic signatures
 a la [Rampart](https://dl.acm.org/doi/10.1145/191177.191194).
 In either case, echoing can be streamlined so the amortized per-message communication is linear,
-the minimum necessary to spread the message. 
+which is anyway the minimum necessary to spread the message. 
 
 Transports are often constructed in layer-by-layer regime.
 In this regime, each sender is allowed one message per layer, and a message may refer only to messages in the layer preceding it.
