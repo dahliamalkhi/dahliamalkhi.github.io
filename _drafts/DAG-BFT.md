@@ -38,7 +38,7 @@ BFT Consensus based on a DAG can be made simple and highly performant at the sam
 
 <pre style="font-size: 9px;">
 <sup>*</sup> DAG - Direct Acyclic Graph
-** BFT -- Byzantine Fault Tolerant
+<sup>**</sup> BFT -- Byzantine Fault Tolerant
 </pre>
 
 ## Introduction
