@@ -1,6 +1,40 @@
   <img src="/images/FIN/cover.png" width="600"  class="center"  />
 
-## Away Monolithic BFT Consensus; Enter DAG-based BFT Consensus
+# Away with Monolithic BFT Consensus; Welcome DAG-based BFT Consensus
+
+## Synopsis
+
+Emerging Proof-of-Stake blockchains achieve high transaction throughput 
+by spreading transactions reliably as fast as the network can carry them and accumulating them in a 
+DAG (Direct Acyclic Graph). 
+Then, participants interpret their DAG locally without exchanging more messages 
+and determine a total ordering of accumulated transactions.
+
+Given a DAG substrate that provides reliable and causally-ordered transaction dissemination,
+it seems that reaching consensus on total ordering should be really simple:
+occasionally a leader would mark a position in the DAG a "proposal", 
+others would confirm the proposal, 
+and then everything preceding the proposal would become committed.
+Yet, systems built using a DAG, such as
+[Swirlds Hashgraph](https://www.swirlds.com/downloads/SWIRLDS-TR-2016-01.pdf),
+[Aleph](https://arxiv.org/pdf/1908.05156.pdf),
+[Narwhal-HS](https://arxiv.org/abs/2105.11827),
+[DAG-Rider](https://arxiv.org/abs/2102.08325),
+[Tusk](https://arxiv.org/abs/2105.11827), and
+[Bullshark](https://arxiv.org/abs/2201.05677"),
+are considerably more complex. 
+
+
+In this post, I will illustrate a simple spin 
+on DAG-based BFT (Byzantine Fault Tolerant) Consensus protocols,
+referred to as **Fin**.
+Fin operates precisely as you might expect
+and is quite possibly the simplest way to embed BFT (Byzantine Fault Tolerant) Consensus in a DAG.
+It is meant for pedagogical purposes, not as a full-fledged BFT Consensus system design. 
+The main takeaway from Fin is that by separating reliable transaction dissemination from Consensus, 
+BFT Consensus based on a DAG can be made simple and highly performant at the same time.
+
+## Introduction
 
 To scale the BFT (Byzantine Fault Tolerant) Consensus core of blockchains,
 prevailing wisdom is to separate between two responsibilities. 
@@ -51,19 +85,21 @@ A myriad of leading blockchain projects are being built using DAG-based BFT prot
 [DAG-rider](https://arxiv.org/abs/2102.08325), and
 [Bullshark](https://arxiv.org/abs/2201.05677").
 However, if you are like me, you might feel that these solutions are a bit overdone:
-they contain multiple purpose-built DAG layers, and worse,
-DAG transmissions must wait for input needed regularly from the Consensus protocol. 
+they contain multiple purpose-built DAG layers, and for specific layers to advance,
+DAG transmissions must wait for input or timers from the Consensus protocol. 
 
 The DAG already solves ninety percent of the BFT Consensus problem by supporting reliable,
 causally ordered broadcast, so it seems that we should be able to do simpler/better.
 **In this post, I will illustrate a simple spin 
 on DAG-based BFT Consensus protocols -- referred to as Fin --
 quite possibly the simplest way to embed BFT Consensus in a DAG.**
-The focus is on a view-by-view design that guarantees Consensus decisions when the network is stable.
-A view consists of a proposal followed by 2F+1 votes to commit, the most straight-forward protocol you can imagine.
-Specifically, 
-Both proposals and votes are cast by parties simply injecting a single value inside messages, 
-but the DAG never waits for such values. 
+Fin operates in a view-by-view manner that guarantees Consensus progress when the network is stable.
+A view works precisely as you might expect:
+occasionally, a leader marks a position in the DAG a "proposal", 
+2F+1 **(Note, I believe F+1 suffice) confirm the proposal, 
+and everything preceding the proposal becomes committed.
+Both proposals and votes are cast by simply injecting into transmissions a single value -- a view number -- 
+which the DAG substrate never has to wait for. 
 
 This post is meant for pedagogical purposes, not as a full-fledged BFT Consensus system design. 
 The main takeaway from Fin is that by separating reliable transaction dissemination from Consensus, 
@@ -76,7 +112,7 @@ explains the notion of a reliable, causal broadcast transport that shares a DAG 
 
 * The second section, [**Fin**](#FIN), 
 demonstrates the utility of DAG-T through **Fin**,
-a BFT solution which is one-phase, non-blocking, DAG-riding and designed for the partial synchrony model.
+a BFT solution which is one-phase, non-blocking, DAG-based and designed for the partial synchrony model.
 The name Fin, a small part of aquatic creatures that controls stirring, stands for the protocol succinctness and its central role in blockchains (and also because the scenarios depicted below look like swarms of fish, and DAG in Hebrew means fish). 
 
   <img src="/images/FIN/fish.png" />
@@ -96,15 +132,15 @@ contains comparison notes on DAG-based BFT Consensus solutions.
 
   **_Figure 1:_** 
   _The construction of a reliable, causal DAG. 
-  Each messages is guaranteed to be unequivocal and available through 2F+1 acknowledgements. 
-  Messages carry causal references to preceding messages._ 
+  Messages carry causal references to preceding messages. 
+  Each messages is guaranteed to be unequivocal and available through 2F+1 acknowledgements._
 
 DAG-T is a transport substrate for disseminating transactions reliably and in causal order.
 The lifetime of transaction dissemination in DAG-T is captured in [**Figure 1**](#Figure-DAG) above: 
 
 1. Parties send messages that contain blocks of transactions and have direct utility. 
 2. Each message carries references to previously delivered messages. 
-These references become a backbone of a causally ordered directed acyclic graph (DAG) structure.
+These references become the backbone of a causally ordered directed acyclic graph (DAG) structure.
 3. In order for messages to be "delivered", parties exchange acknowledgements about messages they receive. 
 A message is delivered to a party when it is known that the message and all its predecessors 
 have been received and persisted by a quorum of parties,
@@ -179,7 +215,10 @@ among N=3F+1 parties, at most F of which are presumed Byzantine faulty and the r
 
 The key mechanism for reliability and non-equivocation is for parties to echo a digest of the first index-j message they receive from another party . 
 When 2F+1 echoes are collected, a message can be delivered. 
-There are two ways to echo, one is using broadcast over authenticated point-2-point channels, the other using cryptographic signatures.
+There are two ways to echo, one is using broadcast over authenticated point-2-point channels
+a la [Bracha Broadcast](https://core.ac.uk/download/pdf/82523202.pdf);
+the other is using cryptographic signatures
+a la [Rampart](https://dl.acm.org/doi/10.1145/191177.191194).
 
 Transports are often constructed in layer-by-layer regime.
 In this regime, each sender is allowed one message per layer, and a message may refer only to messages in the layer preceding it.
@@ -475,6 +514,8 @@ Pre-blockchains era:
 
 * _"Exploiting Virtual Synchrony in Distributed Systems"_, Birman and Joseph, 1987. [[Isis]](https://dl.acm.org/doi/10.1145/37499.37515)
 
+* _"Asynchronous Byzantine Agreement Protocols"_, Bracha, 1987. [[Bracha Broadcast]](https://core.ac.uk/download/pdf/82523202.pdf)
+
 * _"Preserving and Using Context Information in Interprocess Communication"_, Peterson, Buchholz and Schlichting, 1989. [[Psync]](https://dl.acm.org/doi/10.1145/65000.65001)
 
 * _"Broadcast Protocols for Distributed Systems"_, Melliar-Smith, Moser and Agrawala, 1990. [[Trans and Total]](https://ieeexplore.ieee.org/document/80121?tp=&signout=success)
@@ -493,6 +534,8 @@ Pre-blockchains era:
 
 * _"A Response to Cheriton and Skeen's Criticism of Causal and Totally Ordered Communication"_, Birman, 1994. [[Response 2 to CATOCS]](https://dl.acm.org/doi/10.1145/164853.164858)
 
+* "Secure Agreement Protocols: Reliable and Atomic Group Multicast in Rampart"_, Reiter, 1994. [[Rampart]](https://dl.acm.org/doi/10.1145/191177.191194).
+
 Blockchain era:
 
 * _"The Swirlds Hashgraph Consensus Algorithm: Fair, Fast, Byzantine Fault Tolerance"_, Baird, 2016. [[Swirlds Hashgraph]](https://www.swirlds.com/downloads/SWIRLDS-TR-2016-01.pdf)
@@ -506,5 +549,4 @@ Blockchain era:
 * _"All You Need is DAG"_, Keidar, Kokoris-Kogias, Naor, and Spiegelman, 2021. [[DAG-rider]](https://arxiv.org/abs/2102.08325)
 
 * _"Bullshark: DAG BFT Protocols Made Practical"_, Spiegelman, Giridharan, Sonnino, and Kokoris-Kogias, 2022. [[Bullshark]](https://arxiv.org/abs/2201.05677")
-
 
