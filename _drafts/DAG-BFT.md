@@ -222,9 +222,9 @@ among N=3F+1 parties, at most F of which are presumed Byzantine faulty and the r
 
 The key mechanism for reliability and non-equivocation is for parties to echo a digest of the first index-j message they receive from another party . 
 When 2F+1 echoes are collected, a message can be delivered. 
-There are two ways to echo, one is using broadcast over authenticated point-2-point channels
+There are two ways to echo, one is all-to-all broadcast over authenticated point-to-point channels
 a la [Bracha Broadcast](https://core.ac.uk/download/pdf/82523202.pdf);
-the other is using cryptographic signatures
+the other is converge-cast with cryptographic signatures
 a la [Rampart](https://dl.acm.org/doi/10.1145/191177.191194).
 
 Transports are often constructed in layer-by-layer regime.
