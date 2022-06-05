@@ -232,23 +232,16 @@ a la [Rampart](https://dl.acm.org/doi/10.1145/191177.191194).
 In either case, echoing can be streamlined so the amortized per-message communication is linear,
 which is anyway the minimum necessary to spread the message. 
 
-Transports are often constructed in layer-by-layer regime.
+**Layering.** Transports are often constructed in layer-by-layer regime, as depicted in [**Figure 2**](#Figure-Disconnect) below. 
 In this regime, each sender is allowed one message per layer, and a message may refer only to messages in the layer preceding it.
 Layering is done so as to regulate transmissions and saturate network capacity,
-as demonstrated by various projects, including 
+and has been demonstrated effective by various projects, including 
 [Blockmania](https://arxiv.org/abs/1809.01620),
 [Aleph](https://arxiv.org/pdf/1908.05156.pdf), 
 and
 [Narwhal](https://arxiv.org/abs/2105.11827)).
 
-Layering and other implementation considerations are orthogonal to the BFT Consensus protocol. 
-As we shall see below, Fin ignores a layer structure of DAG-T, if exists.
-Here, we only care about the abstract API and properties that DAG-T provides. 
-For further information on DAG implementations,
-see below [further reading](#DAG-based-BFT-Consensus:-Reading-list). 
-
-#### Layers and Temporary Disconnections
-
+**Layering and Temporary Disconnections.**
 In a layer-by-layer construction, a message includes references to messages in the preceding layer.
 Sometimes, a party may become temporarily disconnected. When it reconnects back, the DAG might have grown many layers without it.
 It is undesirable that a reconnecting party would be required to backfill every layer it missed with messages that everyone has to catch up with.
@@ -260,6 +253,12 @@ Therefore, parties are allowed to refer to their own preceding message across (s
 
   **_Figure 2:_** 
   _A temporary disconnect of party 4 and a later reconnect._ 
+
+Layering and other implementation considerations are orthogonal to the BFT Consensus protocol. 
+As we shall see below, Fin ignores a layer structure of DAG-T, if exists.
+Here, we only care about the abstract API and properties that DAG-T provides. 
+For further information on DAG implementations,
+see below [further reading](#DAG-based-BFT-Consensus:-Reading-list). 
 
 
 <span id="FIN"></span>
