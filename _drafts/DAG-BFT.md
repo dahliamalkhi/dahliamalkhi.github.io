@@ -220,7 +220,7 @@ Whenever a party invokes `broadcast()`, the transmitted message simply carries t
 There are various ways to implement DAG-T
 among N=3F+1 parties, at most F of which are presumed Byzantine faulty and the rest are honest.
 
-The key mechanism for reliability and non-equivocation is for parties to echo a digest of the first index-j message they receive from another party . 
+The key mechanism for reliability and non-equivocation is for parties to echo a digest of the first message they receive from a sender with a particular index. 
 When 2F+1 echoes are collected, a message can be delivered. 
 There are two ways to echo, one is all-to-all broadcast over authenticated point-to-point channels
 a la [Bracha Broadcast](https://core.ac.uk/download/pdf/82523202.pdf);
