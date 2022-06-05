@@ -10,7 +10,7 @@ DAG<sup>*</sup>.
 Then, participants interpret their DAG locally without exchanging more messages 
 and determine a total ordering of accumulated transactions.
 
-Given a DAG substrate that provides reliable and causally-ordered transaction dissemination,
+Given a DAG transport that provides reliable and causally-ordered transaction dissemination,
 it seems that reaching consensus on total ordering should be really simple:
 occasionally a leader would mark a position in the DAG a "proposal", 
 others would confirm the proposal, 
@@ -106,7 +106,7 @@ occasionally, a leader marks a position in the DAG a "proposal",
 2F+1 **(Note, I believe F+1 suffice) confirm the proposal, 
 and everything preceding the proposal becomes committed.
 Both proposals and votes are cast by simply injecting into transmissions a single value -- a view number -- 
-which the DAG substrate never has to wait for. 
+which the DAG transport never has to wait for. 
 
 This post is meant for pedagogical purposes, not as a full-fledged BFT Consensus system design. 
 The main takeaway from Fin is that by separating reliable transaction dissemination from Consensus, 
@@ -158,7 +158,7 @@ a Consensus total ordering of messages, without sending extra messages.
 In a nutshell, DAG-T guarantees that all parties deliver the same ordered sequence of messages by each sender and exposes a causal-ordering relationship among them. These properties are described below as **Reliability**, **Agreement**, **Validity**, **Integrity**, 
 and **Causality**. 
 
-More specifically, the DAG-T substrate exposes two basic API's, `broadcast()` and `deliver()`. 
+More specifically, the DAG-T transport substrate exposes two basic API's, `broadcast()` and `deliver()`. 
 `broadcast(payload)` is an API for a party `p` to send a message to other parties.
 A party's upcall `deliver(m)` is triggered when a message `m` can be delivered. 
 Each message may refer to preceding messages including the sender's own preceding message.
@@ -416,7 +416,8 @@ a leader must collect either 2F+1 `view(r)` _votes_ for the leader proposal, hen
 Fin is modeled after PBFT while removing the complexity of PBFT's view-change, thus supporting regular leader rotation. 
 Simplifying PBFT leveraging DAG-T is achieved in two ways.
 Recall that PBFT works in two-phases. 
-The first phase protects against leader equivocation. Building over DAG-T, non-equivocation is already guaranteed at the transport level, hence Fin foregoes the first phase. 
+The first phase protects against leader equivocation. 
+Building over DAG-T, non-equivocation is already guaranteed at the transport level, hence Fin foregoes the first phase. 
 The second phase of PBFT guards commits by parties locking their votes and transferring them to the next view. 
 View-change is the most subtle ingredient of PBFT; 
 in particular, a new leader proposal must carry a proof of safety composed of 2F+1 
@@ -489,7 +490,7 @@ Fin is single-phase, and view numbers can be injected into the DAG at any time, 
 
 There is no question that software modularity is advantageous, since
 it removes the Consensus protocol from the critical path of communication.
-That said, most solutions do not rely on a DAG-based transport in a pure black-box manner.
+That said, most solutions do not rely on a DAG transport in a pure black-box manner.
 As discussed above, randomized Consensus protocols, e.g.,  DAG-rider and Tusk, inject into the DAG randomized coin-tosses from the Consensus protocol. 
 Protocols for the partial synchrony model, e.g., Bullshark, 
 delay message transmissions by the transport according to Consensus protocol round timers, 
