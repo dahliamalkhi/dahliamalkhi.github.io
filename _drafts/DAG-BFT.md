@@ -39,8 +39,9 @@ The main takeaway is that by separating reliable transaction dissemination from 
 BFT Consensus based on a DAG can be made simple and highly performant at the same time.
 
 <pre style="font-size: 9px;">
-<sup>*</sup> DAG - Direct Acyclic Graph
-<sup>**</sup> BFT -- Byzantine Fault Tolerant
+Acronyms:
+  <sup>*</sup> DAG - Direct Acyclic Graph
+  <sup>**</sup> BFT -- Byzantine Fault Tolerant
 </pre>
 
 ## Introduction
