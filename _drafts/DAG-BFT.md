@@ -26,7 +26,7 @@ are considerably more complex.
 
 
 In this post, I will illustrate a simple spin 
-on DAG-based BFT\*\* Consensus protocols,
+on DAG-based BFT<sup>**</sup> Consensus protocols,
 referred to as **Fin**.
 Fin operates precisely as you might expect
 and is quite possibly the simplest way to embed BFT Consensus in a DAG.
