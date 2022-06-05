@@ -11,10 +11,7 @@ Then, participants interpret their DAG locally without exchanging more messages
 and determine a total ordering of accumulated transactions.
 
 Given a DAG transport that provides reliable and causally-ordered transaction dissemination,
-it seems that reaching consensus on total ordering should be really simple:
-occasionally a leader would mark a position in the DAG a "proposal", 
-others would confirm the proposal, 
-and then everything preceding the proposal would become committed.
+it seems that reaching consensus on total ordering should be really simple.
 Yet, systems built using a DAG, such as
 [Swirlds Hashgraph](https://www.swirlds.com/downloads/SWIRLDS-TR-2016-01.pdf),
 [Aleph](https://arxiv.org/pdf/1908.05156.pdf),
@@ -22,18 +19,23 @@ Yet, systems built using a DAG, such as
 [DAG-Rider](https://arxiv.org/abs/2102.08325),
 [Tusk](https://arxiv.org/abs/2105.11827), and
 [Bullshark](https://arxiv.org/abs/2201.05677"),
-are considerably more complex. 
+are quite complex. 
 
 
 In this post, I will illustrate a simple spin 
 on DAG-based BFT<sup>**</sup> Consensus protocols,
 referred to as **Fin**.
 Fin operates precisely as you might expect
-and is quite possibly the simplest way to embed BFT Consensus in a DAG.
-It is also extremely efficient: when the network in stable, it requires only two network latencies to reach consensus on all the transactions that have accumulated in the DAG. 
+and is quite possibly the simplest way to embed BFT Consensus in a DAG:
+occasionally, a leader marks a position in the DAG a "proposal", 
+2F+1 **(Note, I believe F+1 suffice) confirm the proposal, 
+and everything preceding the proposal becomes committed.
+Both proposals and votes are cast by simply injecting into transmissions a single value -- a view number -- 
+which the DAG transport never has to wait for. 
+Fin is also extremely efficient: when the network in stable, it requires only two network latencies to reach consensus on all the transactions that have accumulated in the DAG. 
 
-Fin is meant for pedagogical purposes, not as a full-fledged BFT Consensus system design. 
-The main takeaway from Fin is that by separating reliable transaction dissemination from Consensus, 
+This post is meant for pedagogical purposes, not as a full-fledged BFT Consensus system design. 
+The main takeaway is that by separating reliable transaction dissemination from Consensus, 
 BFT Consensus based on a DAG can be made simple and highly performant at the same time.
 
 <pre style="font-size: 9px;">
