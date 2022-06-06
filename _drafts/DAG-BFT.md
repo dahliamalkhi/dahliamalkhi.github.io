@@ -420,17 +420,6 @@ Within $4 * \Delta$, the `view(r)` proposal and votes from all honest parties ar
   Second, so long as view timers are set to be at least $4 * \Delta$, a future view does not preempt a current view's commit. For in order to start a new view, 
 a leader must collect either 2F+1 `view(r)` _votes_ for the leader proposal, hence commit it; or 2F+1 `view(-r)` _expirations_, which is impossible as argued above. 
 
-Fin is modeled after PBFT while removing the complexity of PBFT's view-change, thus supporting regular leader rotation. 
-Simplifying PBFT leveraging DAG-T is achieved in two ways.
-Recall that PBFT works in two-phases. 
-The first phase protects against leader equivocation. 
-Building over DAG-T, non-equivocation is already guaranteed at the transport level, hence Fin foregoes the first phase. 
-The second phase of PBFT guards commits by parties locking their votes and transferring them to the next view. 
-View-change is the most subtle ingredient of PBFT; 
-in particular, a new leader proposal must carry a proof of safety composed of 2F+1 
-messages attesting to the highest vote from previous views. 
-In Fin, a leader proposal simply references those 2F+1 messages from the previous view.
-
 Last, we remark about Fin's communication complexity. 
 
 * **DAG message cost**: In order for DAG messages to be delivered reliably, it must implement reliable broadcast.
