@@ -539,7 +539,7 @@ Pre-blockchains era:
 
 * _"A Response to Cheriton and Skeen's Criticism of Causal and Totally Ordered Communication"_, Birman, 1994. [[Response 2 to CATOCS]](https://dl.acm.org/doi/10.1145/164853.164858)
 
-* "Secure Agreement Protocols: Reliable and Atomic Group Multicast in Rampart"_, Reiter, 1994. [[Rampart]](https://dl.acm.org/doi/10.1145/191177.191194).
+* _"Secure Agreement Protocols: Reliable and Atomic Group Multicast in Rampart"_, Reiter, 1994. [[Rampart]](https://dl.acm.org/doi/10.1145/191177.191194).
 
 Blockchain era:
 
