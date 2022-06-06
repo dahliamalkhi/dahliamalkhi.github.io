@@ -142,7 +142,7 @@ contains comparison notes on DAG-based BFT Consensus solutions.
 
   **_Figure 1:_** 
   _The construction of a reliable, causal DAG. 
-  Messages carry causal references to preceding messages. 
+  Messages carry causal references to preceding messages and a local 'info' value. 
   Each messages is guaranteed to be unequivocal and available through 2F+1 acknowledgements._
 
 DAG-T is a transport substrate for disseminating transactions reliably and in causal order.
@@ -151,6 +151,7 @@ The lifetime of transaction dissemination in DAG-T is captured in [**Figure 1**]
 1. Parties send messages that contain blocks of transactions and have direct utility. 
 2. Each message carries references to previously delivered messages. 
 These references become the backbone of a causally ordered directed acyclic graph (DAG) structure.
+Messages also include a meta-information field `info` set in `setInfo()` as explained below.
 3. In order for messages to be "delivered", parties exchange acknowledgements about messages they receive. 
 A message is delivered to a party when it is known that the message and all its predecessors 
 have been received and persisted by a quorum of parties,
@@ -173,9 +174,9 @@ Messages are delivered carrying a sender's payload and additional meta informati
 > - `m.index`, a delivery index from the sender
 > - `m.payload`, contents such as transaction(s)
 > - `m.predecessors`, references to messages sender has seen from other parties, including itself. 
+> - `m.info`, a local meta-information field, explained below in [setInfo()](#setInfo).
 
 DAG-T satisfies the following requirements:
-
 * **Reliability.** 
 If a `deliver(m)` event happens at an honest party, then eventually `deliver(m)` happens at every other honest party.
 
@@ -196,7 +197,9 @@ If a `deliver(m)` event happens at an honest party, then `p` indeed invoked `bro
 If a `deliver(m)` happens at an honest party, 
 then `deliver(d)` events already happened at the party for all messages `d` referenced in `m.predecessors`. 
 Note that by transitively, this ensures its entire causal history has been delivered.
+Disconnect
 
+  <span id="setInfo"></span>
 #### setInfo(): A Non-Blocking API for Injecting Consensus Protocol Input
 
 To prepare for Consensus decisions, DAG-T implementations usually expose APIs allowing the Consensus protocol to inject input into the DAG. 
