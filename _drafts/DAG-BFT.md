@@ -142,7 +142,7 @@ contains comparison notes on DAG-based BFT Consensus solutions.
 
   **_Figure 1:_** 
   _The construction of a reliable, causal DAG. 
-  Messages carry causal references to preceding messages and a local 'info' value. 
+  Messages carry causal references to preceding messages and a local `info` value. 
   Each messages is guaranteed to be unequivocal and available through 2F+1 acknowledgements._
 
 DAG-T is a transport substrate for disseminating transactions reliably and in causal order.
