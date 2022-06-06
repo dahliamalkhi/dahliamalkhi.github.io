@@ -22,10 +22,10 @@ Yet, systems built using a DAG, such as
 are quite complex. 
 
 
-In this post, I will illustrate a simple spin 
-on DAG-based BFT<sup>**</sup> Consensus protocols,
-referred to as **Fin**.
-Fin operates precisely as you might expect
+In this post, I will illustrate that 
+DAG-based BFT<sup>**</sup> Consensus can be simple and highly efficient at the same time.
+An algorithmic foundation, referred to as **Fin**,
+operates precisely as you might expect
 and is quite possibly the simplest way to embed BFT Consensus in a DAG:
 occasionally, a leader marks a position in the DAG a "proposal", 
 2F+1 out of 3F+1 participants **(Note, I believe F+1 suffice)** "vote" to confirm the proposal, 
@@ -61,7 +61,7 @@ Moreover, parties can continue sending messages and the DAG keep growing even wh
 and later commit the messages accumulated in the DAG. 
 
 It is funny how the community made a full circle, from early distributed consensus systems to where we are today. 
-I earned my PhD more than two decades ago for contributions to scaling reliable distributed systems, 
+I earned my PhD more than two decades ago for contributions to [scaling reliable distributed systems](https://www.cs.huji.ac.il/labs/transis/), 
 guided by and collaborating with pioneers of the field, including
 [Ken Birman](https://www.linkedin.com/in/ken-birman-3661a0/), 
 [Danny Dolev](https://www.linkedin.com/in/danny-dolev-723aa616/), 
