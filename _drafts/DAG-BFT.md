@@ -378,7 +378,8 @@ Hence, faulty views have utility in advancing the global sequence of transaction
 
 A slightly more complex scenario is depicted in [**Figure 5**](#Figure-Partial-Fault) below. 
 Here, `leader(r+1)` emits `proposal(r+1)` that is too slow to arrive and parties 1, 3 and 4, complain about a view failure.
-This enables `view(r+2)` to start and progress to commit `proposal(r+2)`.  When `proposal(r+2)` commits, it indirectly commits `proposal(r+1)`. 
+This enables `view(r+2)` to start and progress to commit `proposal(r+2)`.  When `proposal(r+2)` commits, 
+in this scenario it happens to indirectly commits `proposal(r+1)`. 
 
   <span id="Figure-Partial-Fault"></span>
 
