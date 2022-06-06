@@ -386,7 +386,7 @@ in this scenario it happens to indirectly commits `proposal(r+1)`.
   <img src="/images/FIN/faulty-leader2.png" width="750"  class="center"  />
 
   **_Figure 5:_** 
-  _A partially faulty `view(r+1)` and recovery in `view(r+2)`._ 
+  _A partially faulty `view(r+1)` being indirectly committed in `view(r+2)`._ 
 
 
 ### Fin Analysis
