@@ -405,7 +405,7 @@ then it is in the causal past of 2F+1 parties that voted for it.
 A proposal in any future view must refer directly or indirectly to 2F+1 `view(r)` messages (votes or complaints), of which F+1 are votes for `proposal(r)`.
 A commit in such a future view causally follows F+1 votes for `proposal(r)`, hence, it (re-)commits it. 
 
-Note that when `proposal(r)` commits, it may cause a proposal in a lower view, `proposal(r')`, where `r' < r`, to become committed for the first time. 
+  Note that when `proposal(r)` commits, it may cause a proposal in a lower view, `proposal(r')`, where `r' < r`, to become committed for the first time. 
 Safety holds because future commits will order `proposal(r)` and its causal past recursively.
 
 * **Liveness.** The protocol liveness during periods of synchrony stems from two key mechanisms. 
@@ -420,19 +420,20 @@ Within $4 * \Delta$, the `view(r)` proposal and votes from all honest parties ar
   Second, so long as view timers are set to be at least $4 * \Delta$, a future view does not preempt a current view's commit. For in order to start a new view, 
 a leader must collect either 2F+1 `view(r)` _votes_ for the leader proposal, hence commit it; or 2F+1 `view(-r)` _expirations_, which is impossible as argued above. 
 
-Last, we remark about Fin's communication complexity. 
+We now remark about Fin's communication complexity. 
+Protocols for the partial synchrony model have unbounded worst case by nature, hence, we concentrate on the costs incurred during steady state when a leader is honest and communication with it is synchronous:
 
 * **DAG message cost**: In order for DAG messages to be delivered reliably, it must implement reliable broadcast.
 This incurs either a quadratic number of messages carried over authenticated channels, or a quadratic number of signature verifications, per broadcast. 
-In either case, the quadratic cost may be amortized by pipelining, driving it is practice to (almost) linear per broadcast.
+In either case, the quadratic cost may be amortized by pipelining, driving it is practice to (almost) linear per message.
 
-* **Commit message cost**: Fin sends n broadcast messages, a proposal and votes, per decision. 
-A decision commits the causal history of the proposal, consisting of (at least) a linear number of messages. Moreover, each message may carry multiple transaction in its payload.
+* **Commit message cost**: Fin sends 3F+1 broadcast messages, a proposal and votes, per decision. 
+A decision commits the causal history of the proposal, consisting of (at least) a linear number of messages. 
+Moreover, each message may carry multiple transaction in its payload.
 As a result, in practice the commit cost is amortized over many transactions.
 
 * **Commit latency**: The commit latency in terms of DAG messages is 2, one proposal followed by votes.
 
-Protocols for the partial synchrony model have unbounded worst case by nature, hence, we concentrate on the costs incurred during steady state when a leader is honest and communication with it is synchronous:
 
 <span id="DAG-Riding"></span>
 ## DAG-based Solutions
