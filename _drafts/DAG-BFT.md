@@ -377,9 +377,8 @@ Hence, faulty views have utility in advancing the global sequence of transaction
 
 
 A slightly more complex scenario is depicted in [**Figure 5**](#Figure-Partial-Fault) below. 
-Here, `leader(r+1)` emits `proposal(r+1)` that receives one vote by party 1.
-However, the proposal is too slow to arrive at parties 3 and 4, and both parties complain about a view failure.
-There is no quorum enabling a commit in `view(r+1)`, nor entering `view(r+2)`. Eventually, party 1 also times out and complains about `view(r+1)`. This enables `view(r+2)` to start. `view(r+2)` is similar to the scenario in [**Figure 4**](#Figure-Fault) above, except that when `proposal(r+2)` commits, it indirectly commits `proposal(r+1)`. 
+Here, `leader(r+1)` emits `proposal(r+1)` that is too slow to arrive and parties 1, 3 and 4, complain about a view failure.
+This enables `view(r+2)` to start and progress to commit `proposal(r+2)`.  When `proposal(r+2)` commits, it indirectly commits `proposal(r+1)`. 
 
   <span id="Figure-Partial-Fault"></span>
 
@@ -404,6 +403,9 @@ though a formal proof of correctness is beyond the scope of this post.
 then it is in the causal past of 2F+1 parties that voted for it.
 A proposal in any future view must refer directly or indirectly to 2F+1 `view(r)` messages (votes or complaints), of which F+1 are votes for `proposal(r)`.
 A commit in such a future view causally follows F+1 votes for `proposal(r)`, hence, it (re-)commits it. 
+
+Note that when `proposal(r)` commits, it may cause a proposal in a lower view, `proposal(r')`, where `r' < r`, to become committed for the first time. 
+Safety holds because future commits will order `proposal(r)` and its causal past recursively.
 
 * **Liveness.** The protocol liveness during periods of synchrony stems from two key mechanisms. 
 
