@@ -391,7 +391,7 @@ in this scenario it happens to indirectly commits `proposal(r+1)`.
 
 ### Fin Analysis
 
-Fin is minimally integrated into DAG-T, simply setting the meta-information field periodically.
+Fin is minimally integrated into DAG-T, simply setting the meta-information field occasionally.
 Importantly, 
 at no time is transaction broadcast slowed down by the Fin protocol. 
 Rather, Consensus logic is embedded into the DAG structure simply by injecting view numbers into it.
