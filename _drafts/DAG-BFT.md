@@ -32,7 +32,7 @@ occasionally, a leader marks a position in the DAG a "proposal",
 and everything preceding the proposal becomes committed.
 Both proposals and votes are cast simply by injecting into transmissions a single value -- a view number -- 
 which the DAG transport never has to wait for. 
-Fin is also extremely efficient: when the network in stable, it requires only two network latencies to reach consensus on all the transactions that have accumulated in the DAG. 
+Fin is also extremely efficient: when the network is stable, it requires only two network latencies to reach consensus on all the transactions that have accumulated in the DAG. 
 
 This post is meant for pedagogical purposes, not as a full-fledged BFT Consensus system design. 
 The main takeaway is that by separating reliable transaction dissemination from Consensus, 
