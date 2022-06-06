@@ -24,7 +24,7 @@ are quite complex.
 
 In this post, I will illustrate that 
 DAG-based BFT<sup>**</sup> Consensus can be simple and highly efficient at the same time.
-An algorithmic foundation, referred to as **Fin**,
+An algorithmic foundation -- referred to as **Fin** --
 operates precisely as you might expect
 and is quite possibly the simplest way to embed BFT Consensus in a DAG:
 occasionally, a leader marks a position in the DAG a "proposal", 
