@@ -151,7 +151,7 @@ The lifetime of transaction dissemination in DAG-T is captured in [**Figure 1**]
 1. Parties send messages that contain blocks of transactions and have direct utility. 
 2. Each message carries references to previously delivered messages. 
 These references become the backbone of a causally ordered directed acyclic graph (DAG) structure.
-Messages also include a meta-information field `info` set in [`setInfo()` explained below](#setInfo).
+Messages also include a meta-information field `info` set in [`setInfo()`, explained below](#setInfo).
 3. In order for messages to be "delivered", parties exchange acknowledgements about messages they receive. 
 A message is delivered to a party when it is known that the message and all its predecessors 
 have been received and persisted by a quorum of parties,
