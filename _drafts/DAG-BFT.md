@@ -270,14 +270,17 @@ see below [further reading](#DAG-based-BFT-Consensus:-Reading-list).
 
 **Fin** is quite possibly the simplest DAG-based BFT Consensus solution for the partial synchrony model. 
 
-Fin operates in a view-by-view manner, each view consisting of a propose-vote commit rule embedded into the DAG: 
-a leader proposes, parties vote, and commit happens when 2F+1 **(Note: I believe F+1 suffice)** votes are collected. 
-There is no need to worry about a leader equivocating, because DAG-T prevents equivocation,
-and there is no need for a leader to justify its proposal because it is inherently justified through the proposal's causal history within the DAG.
-Advancing to the next view is enabled by 2F+1 votes or 2F+1 timeouts. 
-This guarantees that if a proposal becomes committed, the next (justified) leader proposal contains F+1 **(Note: accordingly, 1)** references to it. 
-Importantly, proposals, votes, and timeouts are injected into the DAG at any time, independent of layers, 
+
+It operates in a view-by-view manner, each view consisting of proposals, votes, and complaints embedded inside the DAG: 
+Importantly, proposals, votes, and complaints are injected into the DAG at any time, independent of layers, 
 simply by updating a view number through `setInfo()`.
+
+In each view, a leader proposes, parties vote, and commit happens when 2F+1 **(Note: I believe F+1 suffice)** votes are collected. 
+The reason this simply commit-logic is safe is because
+there is no need to worry about a leader equivocating, because DAG-T prevents equivocation,
+and there is no need for a leader to justify its proposal because it is inherently justified through the proposal's causal history within the DAG.
+Advancing to the next view is enabled by 2F+1 votes or 2F+1 complaints. 
+This guarantees that if a proposal becomes committed, the next (justified) leader proposal contains F+1 **(Note: accordingly, 1)** references to it. 
 
 ### Fin Pseudo-code
 
