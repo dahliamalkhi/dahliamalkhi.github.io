@@ -24,7 +24,7 @@ Yet, systems built using a DAG, such as
 [Bullshark](https://arxiv.org/abs/2201.05677"),
 are quite complex. 
 
-Here, a simple and efficient DAG-based BFT<sup>**</sup> Consensus -- referred to as **Fin** --
+Here, a simple and efficient DAG-based BFT<sup>**</sup> Consensus algorithm -- referred to as **Fin** --
 is described.
 Fin operates precisely as you might expect
 and is quite possibly the simplest way to embed BFT Consensus in a DAG:
