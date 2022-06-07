@@ -273,7 +273,7 @@ Importantly, proposals, votes, and complaints are injected into the DAG at any t
 simply by updating a view number through `setInfo()`.
 
 In each view, a leader proposes, parties vote, and commit happens when 2F+1 **(Note: I believe F+1 suffice)** votes are collected. 
-The reason this simply commit-logic is safe is because
+The reason this simple commit-logic is safe is because
 there is no need to worry about a leader equivocating, because DAG-T prevents equivocation,
 and there is no need for a leader to justify its proposal because it is inherently justified through the proposal's causal history within the DAG.
 Advancing to the next view is enabled by 2F+1 votes or 2F+1 complaints. 
