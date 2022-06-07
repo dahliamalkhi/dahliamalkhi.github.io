@@ -203,17 +203,17 @@ Disconnect
 #### setInfo(): A Non-Blocking API for Injecting Consensus Protocol Input
 
 To prepare for Consensus decisions, DAG-T implementations usually expose APIs allowing the Consensus protocol to inject input into the DAG. 
-There is no commonly accepted standard for doing this in the literature. 
 
+There is no commonly accepted standard for doing this in the literature. 
 Several existing DAG-T APIs are integrated with the DAG structure (layers) in such as way that they block transmissions,
 waiting for Consensus input. 
 Such APIs regularly upcall the Consensus protocol to provide input, e.g. coin-tosses,
 [Aleph](https://arxiv.org/pdf/1908.05156.pdf), 
-[Narwhal](https://arxiv.org/abs/2105.11827)),
+[Narwhal](https://arxiv.org/abs/2105.11827),
 [DAG-rider](https://arxiv.org/abs/2102.08325),
-[Bullshark](https://arxiv.org/abs/2201.05677"));
+[Bullshark](https://arxiv.org/abs/2201.05677");
 or they wait for Consensus protocol permission to transmit messages based on timers, e.g., 
-[Bullshark](https://arxiv.org/abs/2201.05677".
+[Bullshark](https://arxiv.org/abs/2201.05677").
 
 Here we introduce a minimally-invasive, non-blocking API `setInfo(x)`, that works as follows. 
 When a party invokes `setInfo(x)`, the DAG-T transports records the value `x` for its internal use. 
@@ -513,7 +513,8 @@ are pre- blockchain era, pure-DAG total ordering protocols for the asynchronous 
 [Swirlds Hashgraph](https://www.swirlds.com/downloads/SWIRLDS-TR-2016-01.pdf)
 is the only blockchain era, pure-DAG solution to our knowledge. 
 It makes use of bits within messages as pseudo-random coin-tosses in order to drive randomized Consensus.
-All of the above pure DAG protocols are designed without regulating DAG layers, and without injecting external common coin-tosses to cope with asynchrony. 
+All of the above pure DAG protocols are designed without regulating DAG layers,
+and without injecting external common coin-tosses to cope with asynchrony. 
 As a result, they are both quite complex and their convergence slow. 
 
 Fin finds a sweet-spot: albeit not being a pure-DAG protocol, it is a simple and fast DAG-based protocol, that injects values 
