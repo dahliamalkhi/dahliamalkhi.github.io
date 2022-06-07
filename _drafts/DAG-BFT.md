@@ -30,9 +30,10 @@ Fin is quite possibly the simplest way to embed BFT Consensus in a DAG:
 occasionally, a leader marks a position in the DAG a "proposal", 
 2F+1 out of 3F+1 participants **(Note, I believe F+1 suffice)** "vote" to confirm the proposal, 
 and everything preceding the proposal becomes committed.
-Both proposals and votes are cast simply by injecting into transmissions a single value -- a view number -- 
-which the DAG transport never has to wait for. 
-Fin is also extremely efficient: when the network is stable, it requires only two network latencies to reach consensus on all the transactions that have accumulated in the DAG. 
+Both proposals and votes are cast simply by injecting into transmissions a single value, a view number.
+Importantly, the DAG transport never waits for view numbers, it embeds in transmissions whatever value it already has. 
+Fin is also extremely efficient:
+when the network is stable, it requires only two network latencies to reach consensus on all the transactions that have accumulated in the DAG. 
 
 This post is meant for pedagogical purposes, not as a full-fledged BFT Consensus system design. 
 The main takeaway is that by separating reliable transaction dissemination from Consensus, 
@@ -108,12 +109,10 @@ A view works precisely as you might expect:
 occasionally, a leader marks a position in the DAG a "proposal", 
 2F+1 **(Note, I believe F+1 suffice)** "vote" to confirm the proposal, 
 and everything preceding the proposal becomes committed.
-Both proposals and votes are cast simply by injecting into transmissions a single value -- a view number -- 
-which the DAG transport never has to wait for. 
-
-This post is meant for pedagogical purposes, not as a full-fledged BFT Consensus system design. 
-The main takeaway from Fin is that by separating reliable transaction dissemination from Consensus, 
-BFT Consensus based on a DAG can be made simple and highly performant at the same time.
+Both proposals and votes are cast simply by injecting into transmissions a single value, a view number.
+Importantly, the DAG transport never waits for view numbers, it embeds in transmissions whatever value it already has. 
+Fin is also extremely efficient:
+when the network is stable, it requires only two network latencies to reach consensus on all the transactions that have accumulated in the DAG. 
 
 The post is organized as follows:
 
