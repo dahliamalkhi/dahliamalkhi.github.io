@@ -198,10 +198,10 @@ Disconnect
   <span id="setInfo"></span>
 #### A Non-Blocking API for Injecting Consensus Protocol Input -- `setInfo()`
 
-To prepare for Consensus decisions, DAG-T implementations usually expose APIs allowing the Consensus protocol to inject input into the DAG. 
+To prepare for Consensus decisions, DAG transports usually expose APIs allowing the Consensus protocol to inject input into the DAG. 
 
 There is no commonly accepted standard for doing this in the literature. 
-Several existing DAG-T APIs are integrated with the DAG structure (layers) in such as way that they block transmissions,
+Several existing APIs are integrated with the DAG structure (layers) in such as way that they block transmissions
 waiting for Consensus input. 
 Such APIs regularly upcall the Consensus protocol to provide input, e.g. coin-tosses
 ([Aleph](https://arxiv.org/pdf/1908.05156.pdf), 
