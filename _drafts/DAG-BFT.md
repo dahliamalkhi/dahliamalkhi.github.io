@@ -90,8 +90,8 @@ a myriad of leading blockchain projects are being built using DAG-based BFT prot
 [Narwhal & Tusk](https://arxiv.org/abs/2105.11827),
 [DAG-rider](https://arxiv.org/abs/2102.08325), and
 [Bullshark](https://arxiv.org/abs/2201.05677").
-If you are like me, you might feel that these solutions are a bit complex:
-There are different layers in the DAG serving different steps in Consensus,
+Still, if you are like me, you might feel that these solutions are a bit complex:
+there are different layers in the DAG serving different steps in Consensus,
 and the DAG actually has to wait for Consensus steps/timers to spread transactions.
 
 Since the DAG already solves ninety percent of the BFT Consensus problem by supporting reliable,
