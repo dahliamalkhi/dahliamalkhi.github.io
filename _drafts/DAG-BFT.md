@@ -26,15 +26,8 @@ are quite complex.
 
 Here, a simple and efficient DAG-based BFT<sup>**</sup> Consensus algorithm -- referred to as **Fin** --
 is described.
-Fin is quite possibly the simplest way to embed BFT Consensus in a DAG:
-occasionally, a leader marks a position in the DAG a "proposal", 
-2F+1 out of 3F+1 participants **(Note, I believe F+1 suffice)** "vote" to confirm the proposal, 
-and everything preceding the proposal becomes committed.
-Both proposals and votes completely ignore the DAG structure,
-they are cast by injecting a single value (a view number) anywhere.
-Importantly, the DAG transport never waits for view numbers,
-it embeds in transmissions whatever latest value it was given.
-Fin is extremely efficient:
+Fin is quite possibly the simplest way to embed BFT Consensus in a DAG, and still is extremely efficient.
+It operates in a view-by-view manner that guarantees Consensus progress when the network is stable;
 when the network is stable, it requires only two network latencies to reach consensus on all the transactions that have accumulated in the DAG. 
 
 This post is meant for pedagogical purposes, not as a full-fledged BFT Consensus system design. 
@@ -96,23 +89,24 @@ a myriad of leading blockchain projects are being built using DAG-based BFT prot
 [Narwhal & Tusk](https://arxiv.org/abs/2105.11827),
 [DAG-rider](https://arxiv.org/abs/2102.08325), and
 [Bullshark](https://arxiv.org/abs/2201.05677").
-If you are like me, you might feel that these solutions are a bit complex.
+If you are like me, you might feel that these solutions are a bit complex:
 There are different layers in the DAG serving different steps in Consensus,
 and the DAG actually has to wait for Consensus steps/timers to spread transactions.
 
 Since the DAG already solves ninety percent of the BFT Consensus problem by supporting reliable,
 causally ordered broadcast, it seems that we should be able to do simpler/better.
-**In this post, I will illustrate a simple spin 
-on DAG-based BFT Consensus protocols -- referred to as Fin --
-quite possibly the simplest way to embed BFT Consensus in a DAG.**
-Fin operates in a view-by-view manner that guarantees Consensus progress when the network is stable.
-A view works precisely as you might expect:
-occasionally, a leader marks a position in the DAG a "proposal", 
-2F+1 **(Note, I believe F+1 suffice)** "vote" to confirm the proposal, 
+**Fin** demonstrates a simple, efficient
+DAG-based BFT Consensus, 
+quite possibly the simplest way to embed BFT Consensus in a DAG.
+It operates in a view-by-view manner that guarantees Consensus progress when the network is stable.
+In each view, a leader marks a position in the DAG a "proposal", 
+2F+1 out of 3F+1 participants **(Note, I believe F+1 suffice)** "vote" to confirm the proposal, 
 and everything preceding the proposal becomes committed.
-Both proposals and votes are cast simply by injecting into transmissions a single value, a view number.
-Importantly, the DAG transport never waits for view numbers, it embeds in transmissions whatever value it already has. 
-Fin is also extremely efficient:
+Both proposals and votes completely ignore the DAG structure,
+they are cast by injecting a single value (a view number) anywhere.
+Importantly, the DAG transport never waits for view numbers,
+it embeds in transmissions whatever latest value it was given.
+Fin is extremely efficient:
 when the network is stable, it requires only two network latencies to reach consensus on all the transactions that have accumulated in the DAG. 
 
 The post is organized as follows:
