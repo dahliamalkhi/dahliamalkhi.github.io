@@ -57,8 +57,8 @@ It regulates communication and optimizes throughput, but it tracks only causal o
 It solves BFT Consensus utilizing the DAG.
 
 The advent of building Consensus over a DAG transport is that each message in the DAG spreads useful payloads (transactions).
-Each time a party sends a message with transactions, it also contributes at no cost (or a tiny additional cost) to forming a Consensus total ordering of committed transactions.
-Moreover, parties can continue sending messages and the DAG keep growing even when Consensus is stalled, e.g., when a Consensus leader is faulty, 
+Each time a party sends a message with transactions, it also contributes at no cost to forming a Consensus total ordering of committed transactions.
+In principle, parties can continue sending messages and the DAG keep growing even when Consensus is stalled, e.g., when a Consensus leader is faulty, 
 and later commit the messages accumulated in the DAG. 
 
 It is funny how the community made a full circle, from early distributed consensus systems to where we are today. 
@@ -86,21 +86,20 @@ about it, [[CATOCS, 1993]](https://dl.acm.org/doi/10.1145/173668.168623),
 followed by Birman's [[response 1 to CATOCS, 1994]](https://dl.acm.org/doi/10.1145/164853.164859)
 and Van Renesse's [[response 2 to CATOCS, 1994]](https://dl.acm.org/doi/10.1145/164853.164858).
 
-Recent interest in scaling blockchains appears to settle this dispute in favor of the DAG-based approach. 
-
-A myriad of leading blockchain projects are being built using DAG-based BFT protocols high-throughput, such as
+Recent interest in scaling blockchains appears to settle this dispute in favor of the DAG-based approach: 
+a myriad of leading blockchain projects are being built using DAG-based BFT protocols high-throughput, including
 [Swirlds hashgraph](https://www.swirlds.com/downloads/SWIRLDS-TR-2016-01.pdf),
 [Blockmania](https://arxiv.org/abs/1809.01620),
 [Aleph](https://arxiv.org/pdf/1908.05156.pdf),
 [Narwhal & Tusk](https://arxiv.org/abs/2105.11827),
 [DAG-rider](https://arxiv.org/abs/2102.08325), and
 [Bullshark](https://arxiv.org/abs/2201.05677").
-However, if you are like me, you might feel that these solutions are a bit overdone:
-they contain multiple purpose-built DAG layers, and for specific layers to advance,
-DAG transmissions must wait for input or timers from the Consensus protocol. 
+If you are like me, you might feel that these solutions are a bit complex.
+There are different layers in the DAG serving different steps in Consensus,
+and the DAG actually has to wait for Consensus steps/timers to spread transactions.
 
-The DAG already solves ninety percent of the BFT Consensus problem by supporting reliable,
-causally ordered broadcast, so it seems that we should be able to do simpler/better.
+Since the DAG already solves ninety percent of the BFT Consensus problem by supporting reliable,
+causally ordered broadcast, it seems that we should be able to do simpler/better.
 **In this post, I will illustrate a simple spin 
 on DAG-based BFT Consensus protocols -- referred to as Fin --
 quite possibly the simplest way to embed BFT Consensus in a DAG.**
