@@ -215,8 +215,9 @@ or they wait for Consensus protocol permission to transmit messages, e.g., based
 ([Bullshark](https://arxiv.org/abs/2201.05677")).
 
 Here we introduce a minimally-invasive, non-blocking API `setInfo(x)`, that works as follows. 
-When a party invokes `setInfo(x)`, the DAG-T transports records the value `x` for its internal use. 
-Whenever `broadcast()` is invoked, DAG-T injects the then current value `x`, as has been last recorded in `setInfo(x)`. 
+When a party invokes `setInfo(x)`, the DAG-T transport records the value `x` for its internal use. 
+Whenever `broadcast()` is invoked, DAG-T injects the then current value `x`, whatever has been last recorded in `setInfo(x)`. 
+Importantly, DAG-T never waits for `setInfo`, it embeds in transmissions whatever value it already has. 
 
 #### Implementing DAG-T
 
@@ -397,7 +398,8 @@ in this scenario it happens to indirectly commits `proposal(r+1)`.
 Fin is minimally integrated into DAG-T, simply setting the meta-information field occasionally.
 Importantly, 
 at no time is transaction broadcast slowed down by the Fin protocol. 
-Rather, Consensus logic is embedded into the DAG structure simply by injecting view numbers into it.
+Consensus logic is embedded into the DAG structure simply by injecting view numbers into it.
+Importantly, the DAG transport never waits for view numbers, it embeds in transmissions whatever value it already has. 
 
 The reliability and causality properties of DAG-T makes arguing about correctness very easy, 
 though a formal proof of correctness is beyond the scope of this post. 
