@@ -207,13 +207,13 @@ To prepare for Consensus decisions, DAG-T implementations usually expose APIs al
 There is no commonly accepted standard for doing this in the literature. 
 Several existing DAG-T APIs are integrated with the DAG structure (layers) in such as way that they block transmissions,
 waiting for Consensus input. 
-Such APIs regularly upcall the Consensus protocol to provide input, e.g. coin-tosses (
-[Aleph](https://arxiv.org/pdf/1908.05156.pdf), 
+Such APIs regularly upcall the Consensus protocol to provide input, e.g. coin-tosses
+([Aleph](https://arxiv.org/pdf/1908.05156.pdf), 
 [Narwhal](https://arxiv.org/abs/2105.11827),
 [DAG-rider](https://arxiv.org/abs/2102.08325),
 [Bullshark](https://arxiv.org/abs/2201.05677"));
-or they wait for Consensus protocol permission to transmit messages, e.g., based on timers (  
-[Bullshark](https://arxiv.org/abs/2201.05677")).
+or they wait for Consensus protocol permission to transmit messages, e.g., based on timers
+([Bullshark](https://arxiv.org/abs/2201.05677")).
 
 Here we introduce a minimally-invasive, non-blocking API `setInfo(x)`, that works as follows. 
 When a party invokes `setInfo(x)`, the DAG-T transports records the value `x` for its internal use. 
