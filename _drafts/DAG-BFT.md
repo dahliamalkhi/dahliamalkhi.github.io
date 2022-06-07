@@ -96,6 +96,7 @@ and the DAG actually has to wait for Consensus steps/timers to spread transactio
 
 Since the DAG already solves ninety percent of the BFT Consensus problem by supporting reliable,
 causally ordered broadcast, it seems that we should be able to do simpler/better.
+
 **Fin** demonstrates a simple, efficient
 DAG-based BFT Consensus, 
 quite possibly the simplest way to embed BFT Consensus in a DAG.
