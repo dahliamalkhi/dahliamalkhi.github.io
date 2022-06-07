@@ -170,7 +170,7 @@ Messages are delivered carrying a sender's payload and additional meta informati
 > - `m.index`, a delivery index from the sender
 > - `m.payload`, contents such as transaction(s)
 > - `m.predecessors`, references to messages sender has seen from other parties, including itself. 
-> - `m.info`, a local meta-information field, explained below in [setInfo()](#setInfo).
+> - `m.info`, a local meta-information field, set in [`setInfo()`, explained below](#setInfo).
 
 DAG-T satisfies the following requirements:
 * **Reliability.** 
@@ -196,7 +196,7 @@ Note that by transitively, this ensures its entire causal history has been deliv
 Disconnect
 
   <span id="setInfo"></span>
-#### setInfo(): A Non-Blocking API for Injecting Consensus Protocol Input
+#### A Non-Blocking API for Injecting Consensus Protocol Input -- `setInfo()`
 
 To prepare for Consensus decisions, DAG-T implementations usually expose APIs allowing the Consensus protocol to inject input into the DAG. 
 
