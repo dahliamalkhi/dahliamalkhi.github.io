@@ -26,8 +26,7 @@ are quite complex.
 
 Here, a simple and efficient DAG-based BFT<sup>**</sup> Consensus algorithm -- referred to as **Fin** --
 is described.
-Fin operates precisely as you might expect
-and is quite possibly the simplest way to embed BFT Consensus in a DAG:
+Fin is quite possibly the simplest way to embed BFT Consensus in a DAG:
 occasionally, a leader marks a position in the DAG a "proposal", 
 2F+1 out of 3F+1 participants **(Note, I believe F+1 suffice)** "vote" to confirm the proposal, 
 and everything preceding the proposal becomes committed.
