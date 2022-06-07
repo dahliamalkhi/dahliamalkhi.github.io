@@ -103,12 +103,12 @@ It operates in a view-by-view manner that guarantees Consensus progress when the
 In each view, a leader marks a position in the DAG a "proposal", 
 2F+1 out of 3F+1 participants **(Note, I believe F+1 suffice)** "vote" to confirm the proposal, 
 and everything preceding the proposal becomes committed.
+Thus, only two network latencies are required to reach consensus on all the transactions that have accumulated in the DAG. 
+
 Both proposals and votes completely ignore the DAG structure,
-they are cast by injecting a single value (a view number) anywhere.
+they are cast by injecting a single value (a view number) anywhere within the DAG.
 Importantly, the DAG transport never waits for view numbers,
 it embeds in transmissions whatever latest value it was given.
-Fin is extremely efficient:
-when the network is stable, it requires only two network latencies to reach consensus on all the transactions that have accumulated in the DAG. 
 
 The post is organized as follows:
 
