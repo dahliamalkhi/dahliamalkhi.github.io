@@ -219,9 +219,6 @@ Here we introduce a minimally-invasive, non-blocking API `setInfo(x)`, that work
 When a party invokes `setInfo(x)`, the DAG-T transports records the value `x` for its internal use. 
 Whenever `broadcast()` is invoked, DAG-T injects the then current value `x`, as has been last recorded in `setInfo(x)`. 
 
-> Accordingly, every delivered message `m` carries an additional field `m.info`.
-> The value of `m.info` is determined by the latest `setInfo(x)` call by the sender `m.sender`.
-
 #### Implementing DAG-T
 
 There are various ways to implement DAG-T
