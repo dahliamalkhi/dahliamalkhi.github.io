@@ -106,9 +106,10 @@ In each view, a leader marks a position in the DAG a "proposal",
 and everything preceding the proposal becomes committed.
 Thus, only two network latencies are required to reach consensus on all the transactions that have accumulated in the DAG. 
 
-Both proposals and votes completely ignore the DAG structure,
+Importantly, 
+both proposals and votes completely ignore the DAG structure,
 they are cast by injecting a single value (a view number) anywhere within the DAG.
-Importantly, the DAG transport never waits for view numbers,
+The DAG transport never waits for view numbers,
 it embeds in transmissions whatever latest value it was given.
 
 The post is organized as follows:
