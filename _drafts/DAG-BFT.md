@@ -5,7 +5,7 @@
 ## Synopsis
 
 I found a really simple way to embed Consensus inside a DAG<sup>*</sup>,
-which is at the same time highly efficient.
+which at the same time, is highly efficient.
 
 Emerging Proof-of-Stake blockchains achieve high transaction throughput 
 by spreading transactions reliably as fast as the network can carry them and accumulating them in a 
