@@ -217,7 +217,7 @@ or they wait for Consensus protocol permission to transmit messages, e.g., based
 
 Here we introduce a minimally-invasive, non-blocking API `setInfo(x)`, that works as follows. 
 When a party invokes `setInfo(x)`, the DAG-T transports records the value `x` for its internal use. 
-Whenever `broadcast()` is invoked, DAG-T injects the current value `x` which it has last recorded in `setInfo(x)`. 
+Whenever `broadcast()` is invoked, DAG-T injects the then current value `x`, as has been last recorded in `setInfo(x)`. 
 
 > Accordingly, every delivered message `m` carries an additional field `m.info`.
 > The value of `m.info` is determined by the latest `setInfo(x)` call by the sender `m.sender`.
