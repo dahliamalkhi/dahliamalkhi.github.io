@@ -27,8 +27,9 @@ are quite complex.
 Here, a simple and efficient DAG-based BFT<sup>**</sup> Consensus algorithm -- referred to as **Fin** --
 is described.
 Fin is quite possibly the simplest way to embed BFT Consensus in a DAG, yet it is extremely efficient.
-It operates in a view-by-view manner that guarantees Consensus that when the network is stable,
+It operates in a view-by-view manner that guarantees that when the network is stable,
 only two network latencies are required to reach consensus on all the transactions that have accumulated in the DAG. 
+Importantly, the DAG never has to wait for Consensus steps/timers to spread transactions.
 
 This post is meant for pedagogical purposes, not as a full-fledged BFT Consensus system design. 
 The main takeaway is that by separating reliable transaction dissemination from Consensus, 
