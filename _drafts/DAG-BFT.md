@@ -30,9 +30,11 @@ Fin is quite possibly the simplest way to embed BFT Consensus in a DAG:
 occasionally, a leader marks a position in the DAG a "proposal", 
 2F+1 out of 3F+1 participants **(Note, I believe F+1 suffice)** "vote" to confirm the proposal, 
 and everything preceding the proposal becomes committed.
-Both proposals and votes are cast simply by injecting into transmissions a single value, a view number.
-Importantly, the DAG transport never waits for view numbers, it embeds in transmissions whatever value it already has. 
-Fin is also extremely efficient:
+Both proposals and votes completely ignore the DAG structure,
+they are cast by injecting a single value (a view number) anywhere.
+Importantly, the DAG transport never waits for view numbers,
+it embeds in transmissions whatever latest value it was given.
+Fin is extremely efficient:
 when the network is stable, it requires only two network latencies to reach consensus on all the transactions that have accumulated in the DAG. 
 
 This post is meant for pedagogical purposes, not as a full-fledged BFT Consensus system design. 
@@ -80,9 +82,9 @@ Distributed middleware systems of that time, e.g.,
 and 
 [Transis](https://ieeexplore.ieee.org/document/243613), 
 were designed for high-throughput by building consensus over causal message ordering (!).
-The debate over the usefulness of CATOCS (Causal and Totally Ordered Communication) was so intense that
-Cheriton and Skeen published a position paper
-about it, [[CATOCS, 1993]](https://dl.acm.org/doi/10.1145/173668.168623), 
+An intense debate ensued over the usefulness of CATOCS (Causal and Totally Ordered Communication),
+leading Cheriton and Skeen to publish a position paper about it, 
+[[CATOCS, 1993]](https://dl.acm.org/doi/10.1145/173668.168623), 
 followed by Birman's [[response 1 to CATOCS, 1994]](https://dl.acm.org/doi/10.1145/164853.164859)
 and Van Renesse's [[response 2 to CATOCS, 1994]](https://dl.acm.org/doi/10.1145/164853.164858).
 
