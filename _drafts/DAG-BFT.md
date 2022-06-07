@@ -15,7 +15,7 @@ and determine a total ordering of accumulated transactions.
 
 Given a DAG transport that provides reliable and causally-ordered transaction dissemination,
 it seems that reaching consensus on total ordering should be really simple.
-Yet, systems built using a DAG, such as
+Still, systems built using a DAG, such as
 [Swirlds Hashgraph](https://www.swirlds.com/downloads/SWIRLDS-TR-2016-01.pdf),
 [Aleph](https://arxiv.org/pdf/1908.05156.pdf),
 [Narwhal-HS](https://arxiv.org/abs/2105.11827),
@@ -26,7 +26,7 @@ are quite complex.
 
 Here, a simple and efficient DAG-based BFT<sup>**</sup> Consensus algorithm -- referred to as **Fin** --
 is described.
-Fin is quite possibly the simplest way to embed BFT Consensus in a DAG, and still is extremely efficient.
+Fin is quite possibly the simplest way to embed BFT Consensus in a DAG, yet it is extremely efficient.
 It operates in a view-by-view manner that guarantees Consensus progress when the network is stable;
 when the network is stable, it requires only two network latencies to reach consensus on all the transactions that have accumulated in the DAG. 
 
