@@ -4,9 +4,12 @@
 
 ## Synopsis
 
+I found a really simple way to embed Consensus inside a DAG<sup>*</sup>,
+which is at the same time highly efficient.
+
 Emerging Proof-of-Stake blockchains achieve high transaction throughput 
 by spreading transactions reliably as fast as the network can carry them and accumulating them in a 
-DAG<sup>*</sup>. 
+DAG. 
 Then, participants interpret their DAG locally without exchanging more messages 
 and determine a total ordering of accumulated transactions.
 
@@ -21,11 +24,9 @@ Yet, systems built using a DAG, such as
 [Bullshark](https://arxiv.org/abs/2201.05677"),
 are quite complex. 
 
-
-In this post, I will illustrate that 
-DAG-based BFT<sup>**</sup> Consensus can be simple and highly efficient at the same time.
-An algorithmic foundation -- referred to as **Fin** --
-operates precisely as you might expect
+Here, a simple and efficient DAG-based BFT<sup>**</sup> Consensus -- referred to as **Fin** --
+is described.
+Fin operates precisely as you might expect
 and is quite possibly the simplest way to embed BFT Consensus in a DAG:
 occasionally, a leader marks a position in the DAG a "proposal", 
 2F+1 out of 3F+1 participants **(Note, I believe F+1 suffice)** "vote" to confirm the proposal, 
