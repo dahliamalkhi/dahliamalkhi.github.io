@@ -105,7 +105,6 @@ In each view, a leader marks a position in the DAG a "proposal",
 2F+1 out of 3F+1 participants **(Note, I believe F+1 suffice)** "vote" to confirm the proposal, 
 and everything preceding the proposal becomes committed.
 Thus, only two network latencies are required to reach consensus on all the transactions that have accumulated in the DAG. 
-
 Importantly, 
 both proposals and votes completely ignore the DAG structure,
 they are cast by injecting a single value (a view number) anywhere within the DAG.
