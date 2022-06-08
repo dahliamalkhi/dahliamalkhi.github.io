@@ -24,9 +24,9 @@ Still, systems built using a DAG, such as
 [Bullshark](https://arxiv.org/abs/2201.05677"),
 are quite complex. 
 
-Here, a simple and efficient DAG-based BFT<sup>**</sup> Consensus algorithm -- referred to as **Fin** --
+Here, a simple and efficient DAG-based BFT<sup>**</sup> Consensus embedding -- referred to as **Fin** --
 is described.
-Fin is quite possibly the simplest way to embed BFT Consensus in a DAG, yet it is extremely efficient.
+Fin is quite possibly the simplest way to build BFT Consensus in a DAG, yet it is extremely efficient.
 It operates in a view-by-view manner that guarantees that when the network is stable,
 only two network latencies are required to reach consensus on all the transactions that have accumulated in the DAG. 
 Importantly, the DAG never has to wait for Consensus steps/timers to spread transactions.
@@ -102,7 +102,7 @@ DAG-based BFT Consensus,
 quite possibly the simplest way to embed BFT Consensus in a DAG.
 It operates in a view-by-view manner that guarantees Consensus progress when the network is stable.
 In each view, a leader marks a position in the DAG a "proposal", 
-2F+1 out of 3F+1 participants **(Note, I believe F+1 suffice)** "vote" to confirm the proposal, 
+F+1 out of 3F+1 participants "vote" to confirm the proposal, 
 and everything preceding the proposal becomes committed.
 Thus, only two network latencies are required to reach consensus on all the transactions that have accumulated in the DAG. 
 Importantly, 
@@ -264,90 +264,57 @@ see below [further reading](#DAG-based-BFT-Consensus:-Reading-list).
 
 **Fin** is quite possibly the simplest DAG-based BFT Consensus solution for the partial synchrony model. 
 
+**View, proposal, votes and complaints.**
+Fin operates in a view-by-view manner, each view consisting of proposals, votes, and complaints embedded inside the DAG. 
+Importantly, proposals, votes, and complaints are injected into the DAG at any time, independent of layers.
+Likewise, protocol views do *NOT* correspond to DAG layers, but rather, view numbers are explicitly embedded in the meta-information field of messages.
+This property is a key tenet of the DAG/Consensus separation, allowing the DAG to continue spreading transactions with Cosensus completely out of the critical path.
 
-It operates in a view-by-view manner, each view consisting of proposals, votes, and complaints embedded inside the DAG: 
-Importantly, proposals, votes, and complaints are injected into the DAG at any time, independent of layers, 
-simply by updating a view number through `setInfo()`.
+The only meta information Consensus injects into the DAG through the `setInfo()` API is view numbers:
 
-In each view, a leader proposes, parties vote, and commit happens when 2F+1 **(Note: I believe F+1 suffice)** votes are collected. 
+* A message `m` that carries `m.info = r` is referred to as a view(r) message. 
+* The first view(r)-message from the leader of view(r) is referred to as `proposal(r)`
+* The first view(r)-message from a party is referred to as `vote(r)` (note, `proposal(r)` by the leader is also `vote(r)`)
+* The first view(-(r))-message from a party is referred to as `compaint(r)`
+* A `proposal(r)` is "justified" if `proposal(r).predecessors` refers to either F+1 `vote(r-1)` messages or 2F+1 `complaint(r-1)` messages (or r=1)
+* A `vote(r)` is "justified" if `proposal(r).predecessors` refers to a justified `proposal(r)` and does not refer to `complaint(r)` by the same sender
+
+In each view, a leader proposes, parties vote, and commit happens when F+1 votes are collected. 
 The reason this simple commit-logic is safe is because
 there is no need to worry about a leader equivocating, because DAG-T prevents equivocation,
 and there is no need for a leader to justify its proposal because it is inherently justified through the proposal's causal history within the DAG.
-Advancing to the next view is enabled by 2F+1 votes or 2F+1 complaints. 
-This guarantees that if a proposal becomes committed, the next (justified) leader proposal contains F+1 **(Note: accordingly, 1)** references to it. 
+Advancing to the next view is enabled by F+1 votes or 2F+1 complaints. 
+This guarantees that if a proposal becomes committed, the next (justified) leader proposal contains a reference to it. 
 
-### Fin Pseudo-code
+The full protocol is decribed in pseudo-code in [Fin Pseudo-Code](#Fin-in-Psuedo-code). A step by step scenarios walkthrough is provided next.
 
-The pseudo-code for `view(r)` at each party `p` is given in the frame below, and a verbal explanation is providing below it. 
+### Scenario-by-scenario Walkthrough
 
-<pre style="font-size: 14px;">
-
-1. <b>Entering a view. </b>
-   Upon entering view(r), party p starts a view timer set to expire after a pre-determined view delay. 
-
-2. <b>Proposing. </b>
-   The leader leader(r) of view(r) waits to deliver 2F+1 view(r-1) messages or 2F+1 view(-(r-1)) messages, and then invokes setInfo(r). 
-     Thereafter, the next transmission by the leader will carry the new view number as indication of proposing in view(r).
-
-3. <b>Voting.</b>
-   Each party p other than the leader waits to deliver the first view(r) message from leader(r) and then invokes setInfo(r). 
-     Thereafter, the next transmission by p will carry the new view number as indication of voting for the view(r) proposal.
-
-4. <b>Committing. </b>
-   A commit of a leader proposal at view(r) happens if the DAG maintains the following three conditions:
-     (i) A first view(r) message from leader(r), denoted proposal(r), exists. 
-     (ii) proposal(r).predecessors refers to either 2F+1 view(r-1) messages or 2F+1 view(-(r-1)) messages (or r=1).
-     (iii) First view(r) messages from 2F+1 parties p exist, each having predecessors referring to proposal(r). 
-
-   Upon a commit of proposal(r), a party disarms the view(r) timer.  
-
-   4.1. <b>Ordering commits. </b>
-
-   If proposal(r) commits, messages are appended to the committed sequence as follows. 
-   First, among proposal(r)'s causal predecessors, the highest proposal(r') that has F+1 votes is
-   (recursively) ordered. 
-   After it, remaining causal predecessors of proposal(r) which have not yet been ordered are appended to the committed sequence
-   (within this batch, ordering can be done using any deterministic rule to linearize the partial ordering into a total ordering.)
-
-5. <b>Expiring the view timer.</b>
-   If the view(r) timer expires, a party invokes setInfo(-r). 
-     Thereafter, the next transmission by p will carry the negative view number as indication of expiration of r.
-
-6. <b>Advancing to next view.</b>
-   A party enters view(r+1) if the DAG satisfies one of the following two conditions:
-     (i) A commit of proposal(r) happens.
-     (ii) view(-r) messages indicating view(r) expiration from 2F+1 parties exist.
-</pre>
-
-### Fin Protocol Description
-
-The Fin protocol works in a view-by-view manner. 
-
-View numbers are embedded in DAG messages using the `setInfo()` API. 
-We refer to a message `m` as a _"`view(r)` message"_ if it carries a meta-information field `m.info = r`.
-Note, protocol views do *NOT* correspond to DAG layers, but rather, view numbers are explicitly embedded in the meta-information field of messages.
-
-There is a pre-designated leader for `view(r)`, denoted `leader(r)`, which is known to everyone.
-`leader(r)` proposes in `view(r)` simply by setting its meta-information value to `r` via `setInfo(r)`. 
+**Happy path scenario.**
+Each `view(r)` has a pre-designated leader, denoted `leader(r)`, which is known to everyone.
+`leader(r)` proposes in `view(r)` by setting its meta-information value to `r` via `setInfo(r)`. 
 Thereafter, transmissions by the leader will carry the new view number. 
 The first `view-r` message by the leader carrying `view(r) is interpreted as `proposal(r)`. 
 The proposal implicitly extends the sequence of transactions with the transitive causal predecessors of `proposal(r)`. 
 
-In [**Figure 3**](#Figure-Commit) below, `leader(r)` is party 1 and its first message in `view(r)` is denoted with a full yellow oval, 
+In [**Figure 3**](#Figure-Commit) below, 
+`leader(r)` is party 1 and its first message in `view(r)` is denoted with a full yellow oval, 
 indicating it is `proposal(r)`. 
 
 When a party receives `proposal(r)`, it advances the meta-information value to `r` view `setInfo(r)`. 
-Thereafter, transmissions by the party will carry the new view number and the first of them be interpreted as voting for `proposal(r)`. 
-A proposal that has a quorum of 2F+1 votes is considered **committed**.
+Thereafter, transmissions by the party will carry the new view number and the first of them be interpreted as `vote(r)` for `proposal(r)`. 
+A proposal that has a quorum of F+1 votes is considered **committed**.
 
-Below, parties 3 and 4 vote for `proposal(r)` by advancing their view to `r`, denoted with striped yellow ovals. `proposal(r)` now has the required quorum of 2F+1 votes (including the leader's implicit vote), and it becomes committed.
+In [**Figure 3**](#Figure-Commit) below, 
+party 3 votes for `proposal(r)` by advancing its view to `r`, denoted with a striped yellow oval. `proposal(r)` now has the required quorum of F+1 votes (including the leader's implicit vote), and it becomes committed.
 
-When a party sees 2F+1 votes in `view(r)` it enters `view(r+1)`.
+When a party sees F+1 votes in `view(r)` it enters `view(r+1)`.
 
 An important feature of Fin is that votes may arrive without slowing down progress. 
 The DAG meanwhile fill with useful messages that may become committed at the next view.
 This feature is demonstrated in the scenario below at `view(r+1)` that has party 2 as `leader(r+1)`.
-Once `proposal(r+1)` has the necessary quorum of 2F+1 of votes, it becomes committed. 
+A vote for `proposal(r)` arrives at a later layer of the DAG,
+and the `proposal(r+1)` has the necessary quorum of F+1 of votes and becomes committed. 
 Meanwhile, the DAG fills with messages that may become committed at the next view.
 
   <span id="Figure-Commit"></span>
@@ -357,8 +324,9 @@ Meanwhile, the DAG fills with messages that may become committed at the next vie
   **_Figure 3:_** 
   _Proposals and votes in `view(r)` and `view(r+1)`, both committed._
 
+**Scenario with a faulty leader.**
 If the leader of a view is faulty or disconnected, parties will eventually time out and set their meta-information to minus the view-number, e.g., `-(r+1)` for a failure of `view(r+1)` . 
-Their next broadcasts are interpreted as complaining there is no progress in `view(r+1)`. 
+Their next broadcasts are interpreted as complaining that there is no progress in `view(r+1)`. 
 When a party sees 2F+1 complaints about `view(r+1)`, it enters `view(r+2)`. 
 
 In [**Figure 4**](#Figure-Fault) below, the first view `view(r)` proceeds normally. 
@@ -366,8 +334,8 @@ However, no message marked `view(r+1)` by `leader(r+1)` arrives, showing as a mi
 Parties 1, 3, 4 complain about this by setting their meta-information to `-(r+1)`, showing as striped red ovals.
 
 After 2F+1 complaints are collected, the leader of `view(r+2)` posts a messages that has meta-information set to `r+2`, taken as `proposal(r+2)`. 
-Note that this message has in its causal past messages carrying `-(r+1)` meta-information. 
-Hence, faulty views have utility in advancing the global sequence of transaction, just like any other view.
+Note that this proposal refers in its causal to complaints and all other `view(r+1)` transmissions.
+Hence, faulty views have utility in spreading transactions, just like any other view.
 
   <span id="Figure-Fault"></span>
 
@@ -377,10 +345,11 @@ Hence, faulty views have utility in advancing the global sequence of transaction
   _A faulty `view(r+1)` and recovery in `view(r+2)`._
 
 
+**Scenario with a slow leader.**
 A slightly more complex scenario is depicted in [**Figure 5**](#Figure-Partial-Fault) below. 
 Here, `leader(r+1)` emits `proposal(r+1)` that is too slow to arrive and parties 1, 3 and 4, complain about a view failure.
 This enables `view(r+2)` to start and progress to commit `proposal(r+2)`.  When `proposal(r+2)` commits, 
-in this scenario it happens to indirectly commits `proposal(r+1)`. 
+in this scenario it causally follows `proposal(r)` hence it indirectly commits it.
 
   <span id="Figure-Partial-Fault"></span>
 
@@ -388,6 +357,45 @@ in this scenario it happens to indirectly commits `proposal(r+1)`.
 
   **_Figure 5:_** 
   _A belated proposal in `view(r+1)` being indirectly committed in `view(r+2)`._ 
+
+### Fin in Pseudo-code
+
+<pre style="font-size: 14px;">
+
+Party p performs the following operaitons for view(r):
+
+1. <b>Entering a view. </b>
+   Upon entering view(r), party p starts a view timer set to expire after a pre-determined view delay. 
+
+2. <b>Proposing. </b>
+   The leader leader(r) of view(r) waits to deliver F+1 vote(r-1) messages or 2F+1 complaint(r-1) messages, and then invokes setInfo(r). 
+     Thereafter, the next transmission by the leader will carry the new view number, hence become proposal(r) (as well as vote(r)).
+
+3. <b>Voting.</b>
+   Each party p other than the leader waits to deliver proposal(r) from leader(r) and then invokes setInfo(r). 
+     Thereafter, the next transmission by p will carry the new view number, hence become vote(r) for the leader's proposal.
+
+4. <b>Committing. </b>
+   A justified proposal(r) becomes committed if F+1 justified vote(r) messages are delivered.
+   Upon a commit of proposal(r), a party disarms the view(r) timer.  
+
+   4.1. <b>Ordering commits. </b>
+
+   If proposal(r) commits, messages are appended to the committed sequence as follows. 
+   First, among proposal(r)'s causal predecessors, the highest justified proposal(r') is
+   (recursively) ordered. 
+   After it, remaining causal predecessors of proposal(r) which have not yet been ordered are appended to the committed sequence
+   (within this batch, ordering can be done using any deterministic rule to linearize the partial ordering into a total ordering.)
+
+5. <b>Expiring the view timer.</b>
+   If the view(r) timer expires, a party invokes setInfo(-r). 
+     Thereafter, the next transmission by p will carry the negative view number, hence become complaint(r), an indication of expiration of r.
+
+6. <b>Advancing to next view.</b>
+   A party enters view(r+1) if the DAG satisfies one of the following two conditions:
+     (i) A commit of proposal(r) happens.
+     (ii) 2F+1 complaint(r) messages are delivered.
+</pre>
 
 
 ### Fin Analysis
@@ -402,12 +410,15 @@ The reliability and causality properties of DAG-T makes arguing about correctnes
 though a formal proof of correctness is beyond the scope of this post. 
 
 * **Safety.** 
-  Briefly, the safety of commits is as follows. If ever a `view(r)` proposal `proposal(r)` becomes committed, 
-then it is in the causal past of 2F+1 parties that voted for it.
-A proposal in any future view must refer directly or indirectly to 2F+1 `view(r)` messages (votes or complaints), of which F+1 are votes for `proposal(r)`.
-A commit in such a future view causally follows F+1 votes for `proposal(r)`, hence, it (re-)commits it. 
+  Briefly, the safety of commits is as follows. If ever `proposal(r)` becomes committed, 
+then it is in the causal past of F+1 parties that voted for it.
+A justified proposal of any higher view 
+must refer directly or indirectly to F+1 `vote(r)` messages, 
+or to 2F+1 justified `complaint(r)` messages of which one follows a `vote(r)`.
+In either case, a commit in such a future view causally follows 
+a vote for `proposal(r)`, hence, it (re-)commits it. 
 
-  Note that when `proposal(r)` commits, it may cause a proposal in a lower view, `proposal(r')`, where `r' < r`, to become committed for the first time. 
+Conversely, when `proposal(r)` commits, it may cause a proposal in a lower view, `proposal(r')`, where `r' < r`, to become committed for the first time. 
 Safety holds because future commits will order `proposal(r)` and its causal past recursively.
 
 * **Liveness.** The protocol liveness during periods of synchrony stems from two key mechanisms. 
@@ -416,11 +427,15 @@ Safety holds because future commits will order `proposal(r)` and its causal past
 i.e., after communication has become synchronous,
 views are inherently synchronized through DAG-T. 
 For let $\Delta$ be an upper bound on communication after GST.
-Once a `view(r)` with an honest leader is entered by the first honest party, within $2 * \Delta$, both the leader and all honest parties enter `view(r)` as well. 
+Once a `view(r)` with an honest leader is entered by the first honest party, 
+within $2 * \Delta$, 
+all the messages seen by party `p` are delivered by both the leader and all other honest parties. 
+Hence, within $2 * \Delta$, all honest parties enter `view(r)` as well. 
 Within $4 * \Delta$, the `view(r)` proposal and votes from all honest parties are spread to everyone. 
 
-  Second, so long as view timers are set to be at least $4 * \Delta$, a future view does not preempt a current view's commit. For in order to start a new view, 
-a leader must collect either 2F+1 `view(r)` _votes_ for the leader proposal, hence commit it; or 2F+1 `view(-r)` _expirations_, which is impossible as argued above. 
+  Second, so long as view timers are set to be at least $4 * \Delta$, a future view does not preempt a current view's commit. 
+For in order to start a future view, 
+its leader must collect either F+1 `vote`(r)` messages, hence commit `proposal(r)`; or 2F+1 `complaint(r)` expiration notes, which is impossible as argued above. 
 
 We now remark about Fin's communication complexity. 
 Protocols for the partial synchrony model have unbounded worst case by nature, hence, we concentrate on the costs incurred during steady state when a leader is honest and communication with it is synchronous:
@@ -461,7 +476,8 @@ builds BFT Consensus riding on Narwhal for the partial synchrony model.
 It is designed with 8-layer waves driving commit, each layer purpose-built to serve a different step in the protocol.
 Bullshark is a "zero message overhead" protocol over the DAG, but due to a rigid wave-by-wave structure, 
 Narwhal transmissions are blocked by timers that are internal to the Consensus protocol.
-This defies the whole purpose of separating the DAG transport from consensus, and could hamper throughput when a leader is faulty or slow. 
+This defies the whole purpose of separating the DAG transport from consensus and does not let the DAG continue spreading transactions
+when a leader is faulty or slow. 
 
 Fin builds BFT Consensus riding on DAG-T for the partial synchrony model with "zero message overhead".
 Uniquely, it incurs no transmission delaying whatsoever.
