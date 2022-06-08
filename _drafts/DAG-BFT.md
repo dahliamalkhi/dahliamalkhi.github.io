@@ -302,7 +302,7 @@ In [**Figure 3**](#Figure-Commit) below,
 `leader(r)` is party 1 and its first message in `view(r)` is denoted with a full yellow oval, 
 indicating it is `proposal(r)`. 
 
-When a party receives `proposal(r)`, it advances the meta-information value to `r` view `setInfo(r)`. 
+When a party receives `proposal(r)`, it advances the meta-information value to `r` via `setInfo(r)`. 
 Thereafter, transmissions by the party will carry the new view number and the first of them be interpreted as `vote(r)` for `proposal(r)`. 
 A proposal that has a quorum of F+1 votes is considered **committed**.
 
@@ -312,11 +312,11 @@ party 3 votes for `proposal(r)` by advancing its view to `r`, denoted with a str
 When a party sees F+1 votes in `view(r)` it enters `view(r+1)`.
 
 An important feature of Fin is that votes may arrive without slowing down progress. 
-The DAG meanwhile fill with useful messages that may become committed at the next view.
+The DAG meanwhile fills with useful messages that may become committed at the next view.
 This feature is demonstrated in the scenario below at `view(r+1)` that has party 2 as `leader(r+1)`.
-A vote for `proposal(r)` arrives at a later layer of the DAG,
-and the `proposal(r+1)` has the necessary quorum of F+1 of votes and becomes committed. 
-Meanwhile, the DAG fills with messages that may become committed at the next view.
+A vote for `proposal(r)` arrives at a later layer of the DAG enabling a commit.
+Until `proposal(r+1)` has the necessary quorum of F+1 of votes and becomes committed, 
+the DAG fills with messages that may become committed at the next view.
 
   <span id="Figure-Commit"></span>
 
