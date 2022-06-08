@@ -4,7 +4,7 @@
 
 ## Synopsis
 
-I found a really simple way to embed Consensus inside a DAG<sup>*</sup>,
+I found a really simple way to embed Consensus inside a DAG (Direct Acyclic Graph),
 which at the same time, is highly efficient.
 
 Emerging Proof-of-Stake blockchains achieve high transaction throughput 
@@ -24,7 +24,7 @@ Still, systems built using a DAG, such as
 [Bullshark](https://arxiv.org/abs/2201.05677"),
 are quite complex. 
 
-Here, a simple and efficient DAG-based BFT<sup>**</sup> Consensus embedding -- referred to as **Fin** --
+Here, a simple and efficient DAG-based BFT (Byzantine Fault Tolerant) Consensus embedding -- referred to as **Fin** --
 is described.
 Fin is quite possibly the simplest way to build BFT Consensus in a DAG, yet it is extremely efficient.
 It operates in a view-by-view manner that guarantees that when the network is stable,
@@ -34,12 +34,6 @@ Importantly, the DAG never has to wait for Consensus steps/timers to spread tran
 This post is meant for pedagogical purposes, not as a full-fledged BFT Consensus system design. 
 The main takeaway is that by separating reliable transaction dissemination from Consensus, 
 BFT Consensus based on a DAG can be made simple and highly performant at the same time.
-
-<pre style="font-size: 9px;">
-Acronyms:
-  <sup>*</sup> DAG - Direct Acyclic Graph
-  <sup>**</sup> BFT -- Byzantine Fault Tolerant
-</pre>
 
 ## Introduction
 
