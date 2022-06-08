@@ -28,7 +28,7 @@ Here, a simple and efficient DAG-based BFT<sup>**</sup> Consensus embedding -- r
 is described.
 Fin is quite possibly the simplest way to build BFT Consensus in a DAG, yet it is extremely efficient.
 It operates in a view-by-view manner that guarantees that when the network is stable,
-only two network latencies are required to reach consensus on all the transactions that have accumulated in the DAG. 
+only two broadcast latencies are required to reach consensus on all the transactions that have accumulated in the DAG. 
 Importantly, the DAG never has to wait for Consensus steps/timers to spread transactions.
 
 This post is meant for pedagogical purposes, not as a full-fledged BFT Consensus system design. 
@@ -104,7 +104,7 @@ It operates in a view-by-view manner that guarantees Consensus progress when the
 In each view, a leader marks a position in the DAG a "proposal", 
 F+1 out of 3F+1 participants "vote" to confirm the proposal, 
 and everything preceding the proposal becomes committed.
-Thus, only two network latencies are required to reach consensus on all the transactions that have accumulated in the DAG. 
+Thus, only two broadcast latencies are required to reach consensus on all the transactions that have accumulated in the DAG. 
 Importantly, 
 both proposals and votes completely ignore the DAG structure,
 they are cast by injecting a single value (a view number) anywhere within the DAG.
