@@ -4,12 +4,11 @@
 
 ## Synopsis
 
-I found a really simple way to embed Consensus inside a DAG (Direct Acyclic Graph),
+I found a really simple way to explain how to embed Consensus inside a DAG (Direct Acyclic Graph),
 which at the same time, is highly efficient.
 
 Emerging Proof-of-Stake blockchains achieve high transaction throughput 
-by spreading transactions reliably as fast as the network can carry them and accumulating them in a 
-DAG. 
+by spreading transactions reliably as fast as the network can carry them and accumulating them in a DAG. 
 Then, participants interpret their DAG locally without exchanging more messages 
 and determine a total ordering of accumulated transactions.
 
