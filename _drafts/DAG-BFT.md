@@ -364,7 +364,7 @@ Party p performs the following operaitons for view(r):
 
 2. <b>Proposing. </b>
    The leader leader(r) of view(r) waits to deliver F+1 vote(r-1) messages or 2F+1 complaint(r-1) messages, and then invokes setInfo(r). 
-     Thereafter, the next transmission by the leader will carry the new view number, hence become proposal(r) (as well as vote(r)).
+     Thereafter, the next transmission by the leader will carry the new view number, hence become proposal(r) (as well as its vote(r)).
 
 3. <b>Voting.</b>
    Each party p other than the leader waits to deliver proposal(r) from leader(r) and then invokes setInfo(r). 
@@ -407,8 +407,8 @@ though a formal proof of correctness is beyond the scope of this post.
   Briefly, the safety of commits is as follows. If ever `proposal(r)` becomes committed, 
 then it is in the causal past of F+1 parties that voted for it.
 A justified proposal of any higher view 
-must refer directly or indirectly to F+1 `vote(r)` messages, 
-or to 2F+1 justified `complaint(r)` messages of which one follows a `vote(r)`.
+must refer (directly or indirectly) to F+1 `vote(r)` messages, 
+or to 2F+1 justified `complaint(r)` messages of which one follows a `proposal(r)`.
 In either case, a commit in such a future view causally follows 
 a vote for `proposal(r)`, hence, it (re-)commits it. 
 
