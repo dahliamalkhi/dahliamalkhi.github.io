@@ -295,7 +295,7 @@ A step by step scenarios walkthrough is provided next.
 Each `view(r)` has a pre-designated leader, denoted `leader(r)`, which is known to everyone.
 `leader(r)` proposes in `view(r)` by setting its meta-information value to `r` via `setInfo(r)`. 
 Thereafter, transmissions by the leader will carry the new view number. 
-The first `view-r` message by the leader carrying `view(r) is interpreted as `proposal(r)`. 
+The first `view(r)` message by the leader is interpreted as `proposal(r)`. 
 The proposal implicitly extends the sequence of transactions with the transitive causal predecessors of `proposal(r)`. 
 
 In [**Figure 3**](#Figure-Commit) below, 
