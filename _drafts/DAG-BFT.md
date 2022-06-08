@@ -264,7 +264,6 @@ see below [further reading](#DAG-based-BFT-Consensus:-Reading-list).
 
 **Fin** is quite possibly the simplest DAG-based BFT Consensus solution for the partial synchrony model. 
 
-**View, proposal, votes and complaints.**
 Fin operates in a view-by-view manner, each view consisting of proposals, votes, and complaints embedded inside the DAG. 
 Importantly, proposals, votes, and complaints are injected into the DAG at any time, independent of layers.
 Likewise, protocol views do *NOT* correspond to DAG layers, but rather, view numbers are explicitly embedded in the meta-information field of messages.
@@ -274,11 +273,12 @@ The only meta information Consensus injects into the DAG through the `setInfo()`
 
 * A message `m` that carries `m.info = r` is referred to as a view(r) message. 
 * The first view(r)-message from the leader of view(r) is referred to as `proposal(r)`
-* The first view(r)-message from a party is referred to as `vote(r)` (note, `proposal(r)` by the leader is also `vote(r)`)
+* The first view(r)-message from a party is referred to as `vote(r)` (note, `proposal(r)` by the leader is also its `vote(r)`)
 * The first view(-(r))-message from a party is referred to as `compaint(r)`
-* A `proposal(r)` is "justified" if `proposal(r).predecessors` refers to either F+1 `vote(r-1)` messages or 2F+1 `complaint(r-1)` messages (or r=1)
+* A `proposal(r)` is "justified" if `proposal(r).predecessors` refers to either F+1 justified `vote(r-1)` messages or 2F+1 `complaint(r-1)` messages (or r=1)
 * A `vote(r)` is "justified" if `proposal(r).predecessors` refers to a justified `proposal(r)` and does not refer to `complaint(r)` by the same sender
 
+In a nutshell, Fix operates as follows.
 In each view, a leader proposes, parties vote, and commit happens when F+1 votes are collected. 
 The reason this simple commit-logic is safe is because
 there is no need to worry about a leader equivocating, because DAG-T prevents equivocation,
@@ -286,7 +286,8 @@ and there is no need for a leader to justify its proposal because it is inherent
 Advancing to the next view is enabled by F+1 votes or 2F+1 complaints. 
 This guarantees that if a proposal becomes committed, the next (justified) leader proposal contains a reference to it. 
 
-The full protocol is decribed in pseudo-code in [Fin Pseudo-Code](#Fin-in-Psuedo-code). A step by step scenarios walkthrough is provided next.
+The full protocol is decribed in pseudo-code below in [Fin Pseudo-Code](#Fin-in-Psuedo-code). 
+A step by step scenarios walkthrough is provided next.
 
 ### Scenario-by-scenario Walkthrough
 
