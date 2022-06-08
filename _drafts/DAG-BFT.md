@@ -310,15 +310,15 @@ The DAG meanwhile fills with useful messages that may become committed at the ne
 This feature is demonstrated in the scenario below at `view(r+1)`.
 The view has party 2 as `leader(r+1)` proposing `proposal(r+1)`, but
 `vote(r+1)` messages do not arrive at the layer immediately following the proposal, only later.
-Until `proposal(r+1)` has the necessary quorum of F+1 of votes and becomes committed, 
-the DAG fills with messages that may become committed at the next view.
+No worries! Until `proposal(r+1)` has the necessary quorum of F+1 of votes and becomes committed, 
+the DAG keeps filling with messages that may become committed at the next view, e.g., `view(r+1)`.
 
   <span id="Figure-Commit"></span>
 
   <img src="/images/FIN/propose-commit.png" width="750"  class="center"  />
 
   **_Figure 3:_** 
-  _Proposals and votes in `view(r)` and `view(r+1)`, both committed._
+  _Proposals, votes, and commits in `view(r)`, `view(r+1)`, `view(r+2)`._
 
 **Scenario with a faulty leader.**
 If the leader of a view is faulty or disconnected, parties will eventually time out and set their meta-information to minus the view-number, e.g., `-(r+1)` for a failure of `view(r+1)` . 
