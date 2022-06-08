@@ -337,7 +337,7 @@ Parties 1, 3, 4 complain about this by setting their meta-information to `-(r+1)
 
 After 2F+1 complaints are collected, the leader of `view(r+2)` posts a messages that has meta-information set to `r+2`, taken as `proposal(r+2)`. 
 Note that this proposal refers in its causal to complaints and all other `view(r+1)` transmissions.
-Hence, faulty views have utility in spreading transactions, just like any other view.
+Hence, faulty views have utility in spreading transactions.
 
   <span id="Figure-Fault"></span>
 
@@ -351,7 +351,7 @@ Hence, faulty views have utility in spreading transactions, just like any other 
 A slightly more complex scenario is depicted in [**Figure 5**](#Figure-Partial-Fault) below. 
 Here, `leader(r+1)` emits `proposal(r+1)` that is too slow to arrive and parties 1, 3 and 4, complain about a view failure.
 This enables `view(r+2)` to start and progress to commit `proposal(r+2)`.  When `proposal(r+2)` commits, 
-in this scenario it causally follows `proposal(r)` hence it indirectly commits it.
+in this scenario it causally follows `proposal(r+1)` hence it indirectly commits it.
 
   <span id="Figure-Partial-Fault"></span>
 
