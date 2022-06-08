@@ -436,7 +436,7 @@ Within $4 * \Delta$, the `view(r)` proposal and votes from all honest parties ar
 
   Second, so long as view timers are set to be at least $4 * \Delta$, a future view does not preempt a current view's commit. 
 For in order to start a future view, 
-its leader must collect either F+1 `vote`(r) messages, hence commit `proposal(r)`; or 2F+1 `complaint(r)` expiration notes, which is impossible as argued above. 
+its leader must collect either F+1 `vote(r)` messages, hence commit `proposal(r)`; or 2F+1 `complaint(r)` expiration messages, which is impossible as argued above. 
 
 We now remark about Fin's communication complexity. 
 Protocols for the partial synchrony model have unbounded worst case by nature, hence, we concentrate on the costs incurred during steady state when a leader is honest and communication with it is synchronous:
