@@ -384,8 +384,7 @@ Party p performs the following operaitons for view(r):
    4.1. <b>Ordering commits. </b>
 
    If proposal(r) commits, messages are appended to the committed sequence as follows. 
-   First, among proposal(r)'s causal predecessors, the highest justified proposal(r') is
-   (recursively) ordered. 
+   First, among proposal(r)'s causal predecessors, the highest justified proposal(r') is (recursively) ordered. 
    After it, remaining causal predecessors of proposal(r) which have not yet been ordered are appended to the committed sequence
    (within this batch, ordering can be done using any deterministic rule to linearize the partial ordering into a total ordering.)
 
