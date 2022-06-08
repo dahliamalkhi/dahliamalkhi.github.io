@@ -313,8 +313,9 @@ When a party sees F+1 votes in `view(r)` it enters `view(r+1)`.
 
 An important feature of Fin is that votes may arrive without slowing down progress. 
 The DAG meanwhile fills with useful messages that may become committed at the next view.
-This feature is demonstrated in the scenario below at `view(r+1)` that has party 2 as `leader(r+1)`.
-A vote for `proposal(r)` arrives at a later layer of the DAG enabling a commit.
+This feature is demonstrated in the scenario below at `view(r+1)`.
+The view has party 2 as `leader(r+1)` proposing `proposal(r+1)`, but
+`vote(r+1)` messages do not arrive at the layer immediately following the proposal, only later.
 Until `proposal(r+1)` has the necessary quorum of F+1 of votes and becomes committed, 
 the DAG fills with messages that may become committed at the next view.
 
