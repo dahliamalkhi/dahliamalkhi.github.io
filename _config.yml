@@ -81,7 +81,7 @@ analytics:
 # Site Author
 author:
   name             : "Dahlia Malkhi"
-  avatar           : "dahliabest.jpg"
+  avatar           : "/images/dahliabest.jpg"
   bio              : "Chief Research Officer of Chainlink Labs"
   location         : "California"
   employer         : 
