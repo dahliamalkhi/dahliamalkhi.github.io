@@ -2,6 +2,8 @@
 title: '"Concurrency" Book is Here'
 date: 2019-10-24
 permalink: /posts/2019/10/concurrency-book/
+header: 
+  teaser: "/images/lam.jpg"
 tags:
   - concurrency
   - turing

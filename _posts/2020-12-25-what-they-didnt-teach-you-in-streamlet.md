@@ -2,6 +2,8 @@
 title: 'What They Did not Teach you in Streamlet'
 date: 2020-12-25
 permalink: /posts/2020/12/what-they-didnt-teach-you-in-streamlet/
+header:
+  teaser: "/images/streamlet1.png"
 tags:
   - BFT
   - consensus
