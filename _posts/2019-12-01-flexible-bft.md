@@ -2,6 +2,8 @@
 title: 'Flexible Byzantine Fault Tolerance'
 date: 2019-12-01
 permalink: /posts/2019/9/flexible-bft/
+header: 
+  teaser: "/images/compare.png"
 tags:
   - consensus
   - BFT
@@ -30,7 +32,7 @@ Finally, if the administrator assumptions are incorrect, client commits are unsa
 
 In our recent work, we present “Flexible Byzantine Fault Tolerance” to address the above problems. Flexible BFT separates the fault model from the solution. Replicas execute a set of instructions while each client decides whether a transaction is committed based on her own beliefs and assumptions. Clients in Flexible BFT specify (i) the fault threshold they need to tolerate, and (ii) whether they believe in synchrony (and if yes, the maximum network delay bound). For example, one instance of Flexible BFT can support a client that requires a combination of 20% Byzantine faults and 30% alive-but-corrupt faults, while simultaneously supporting another client who requires tolerance against 10% Byzantine faults and 50% alive-but-corrupt faults, and a third client who believes in synchrony and requires 33% Byzantine and 33% alive-but-corrupt tolerance. Interestingly, a partially synchronous (resp. synchronous) client can tolerate more than one-third (resp. one-half) faults. The fraction of Byzantine faults are still lower than one-third (resp. one-half) and thus classical lower bounds are not violated.  
 
-![](/images/singlecurve.png)
+![](/images/single-curve.png)
 
 Flexible BFT is a family of protocols where the administrator picks one instance in this family and that instance supports a set of heterogeneous clients. The figure above shows the heterogeneity in clients that can be supported by one instance of the Flexible BFT family. A point on the plot represents the fault in terms of the fraction of Byzantine and the fraction of total faults that can be supported. The three clients described in the example earlier are just three points on this plot. Here’s how we interpret a colored region:
 
