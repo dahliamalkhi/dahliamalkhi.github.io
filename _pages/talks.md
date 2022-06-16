@@ -6,11 +6,10 @@ author_profile: true
 ---
 
 -   "Connecting Blockchains and the World", summer 2022.
-    - ETH
-    - EPFL 
-    - [UC Berkeley RISE/Sky seminar](https://rise.cs.berkeley.edu/events/)
-    - [Imperial College London, LSDS seminar](https://lsds.doc.ic.ac.uk/seminars)
-
+    -  ETH
+    -  EPFL 
+    -  [UC Berkeley RISE/Sky seminar](https://rise.cs.berkeley.edu/events/)
+    -  [Imperial College London, LSDS seminar](https://lsds.doc.ic.ac.uk/seminars)
 
     - Abstract: 
 
