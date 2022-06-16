@@ -11,7 +11,7 @@ author_profile: true
     - [UC Berkeley RISE/Sky seminar](https://rise.cs.berkeley.edu/events/)
     - [Imperial College London, LSDS seminar](https://lsds.doc.ic.ac.uk/seminars)
 
-    <centering> Abstract: </centering>
+    > <centering> Abstract: </centering>
 
     What would it take for blockchains to enable people and businesses everywhere better, trusted and innovative financial foundations?
 
