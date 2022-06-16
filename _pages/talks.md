@@ -5,7 +5,7 @@ permalink: /talks/
 author_profile: true
 ---
 
--   "Connecting Blockchains and the World", summer 2022.
+-   "Connecting Blockchains and the World", summer 2022, [[UC Berkeley RISE/Sky seminar](https://rise.cs.berkeley.edu/events/)], [[Imperial College London, LSDS seminar](https://lsds.doc.ic.ac.uk/seminars)], ETH, EPFL
     > Abstract: 
     >
     > What would it take for blockchains to enable people and businesses everywhere better, trusted and innovative financial foundations?
@@ -14,10 +14,6 @@ author_profile: true
     > 
     > In the second part, I switch gears and talk about my current role as chief research officer at Chainlink Labs. Chainlink enables smart contracts to interact with the real world and to reduce trust in centralized intermediaries. I provide a glimpse into Chainlink Labs technology and a research outlook. 
 
-    -  [UC Berkeley RISE/Sky seminar](https://rise.cs.berkeley.edu/events/)
-    -  [Imperial College London, LSDS seminar](https://lsds.doc.ic.ac.uk/seminars)
-    -  ETH
-    -  EPFL
 
 -   "Tech Transfer Stories and Takeaways", [Cornell CS fall colloqium](https://www.cs.cornell.edu/content/tech-transfer-stories-and-takeaways)
 -   [DISC 2011 keynote](http://www.disc-conference.org/wp/disc2021/program/) ["Tech Transfer Stories and Takeaways"](https://drops.dagstuhl.de/opus/volltexte/2021/14804/pdf/LIPIcs-DISC-2021-2.pdf) [[video]](https://www.youtube.com/watch?v=9RRUQHymcJA)
