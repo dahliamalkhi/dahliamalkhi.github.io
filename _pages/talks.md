@@ -5,17 +5,17 @@ permalink: /talks/
 author_profile: true
 ---
 
--   "Connecting Blockchains and the World", summer 2022. 
-
-[[UC Berkeley RISE/Sky seminar](https://rise.cs.berkeley.edu/events/)], [[Imperial College London, LSDS seminar](https://lsds.doc.ic.ac.uk/seminars)], ETH, EPFL
+-   "Connecting Blockchains and the World" 
 
 &emsp;&emsp; _What would it take for blockchains to enable people and businesses everywhere better, trusted and innovative financial foundations?
 In the first part of the presentation, I briefly recall the Diem story, June 2018-January 2022. I joined the Diem project (it was named Libra back then) in 2019 as CTO and stayed until its closing. I explain the stablecoin structure Diem built over a purpose-built blockchain.
 In the second part, I switch gears and talk about my current role as chief research officer at Chainlink Labs. Chainlink enables smart contracts to interact with the real world and to reduce trust in centralized intermediaries. I provide a glimpse into Chainlink Labs technology and a research outlook._
 
--   "Tech Transfer Stories and Takeaways", fall 2021.
+summer 2022  [[UC Berkeley RISE/Sky seminar](https://rise.cs.berkeley.edu/events/)], [[Imperial College London, LSDS seminar](https://lsds.doc.ic.ac.uk/seminars)], ETH, EPFL
 
-[[IEEE TCDP Outstanding Technical Achievement Award keynote at ICDCS 2021]](https://icdcs2021.us/keynotes.html), 
+-   "Tech Transfer Stories and Takeaways". 
+
+fall 2021 [[IEEE TCDP Outstanding Technical Achievement Award keynote at ICDCS 2021]](https://icdcs2021.us/keynotes.html), 
 [[Cornell CS fall colloqium]](https://www.cs.cornell.edu/content/tech-transfer-stories-and-takeaways), 
 [[DISC 2011 keynote]](http://www.disc-conference.org/wp/disc2021/program/) [[DISC 2011 video]](https://www.youtube.com/watch?v=9RRUQHymcJA)
 
@@ -26,12 +26,12 @@ arena, and more specifically, they revolve around the state-machine-replication 
 hope that the take-aways from the experience of building foundations for these systems may be of
 interest and value to everyone, no matter the discipline._
 
--   Several invited presentations about the Libra technology, 2020.
+-   Several invited presentations about the Libra technology. 
  
-[[UC Davis ExpoLab]](https://expolab.org/ecs189f-fall-2020/speakers.html) [[video]](https://www.youtube.com/watch?v=WR7K3adIqbI&feature=youtu.be&ab_channel=ExpoLabatUCDavis),
-[[CMU ECE]](https://ece.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=83b2040d-b937-4889-831e-ac6401292548),
+[[UC Davis ExpoLab 2020]](https://expolab.org/ecs189f-fall-2020/speakers.html) [[video]](https://www.youtube.com/watch?v=WR7K3adIqbI&feature=youtu.be&ab_channel=ExpoLabatUCDavis),
+[[CMU ECE 2020]](https://ece.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=83b2040d-b937-4889-831e-ac6401292548),
 [[ACM AFT'20]](https://aft.acm.org/program-2020),
-[[UZH Blockchain Center Summer School]](https://www.blockchain.uzh.ch/events/summer-school-deep-dive-into-blockchain/),
+[[UZH Blockchain Center Summer School 2020]](https://www.blockchain.uzh.ch/events/summer-school-deep-dive-into-blockchain/),
 [[DSN'20]](https://dsn2020.webs.upv.es/final-program/keynotes/),
 [[TPBC'20]](https://eventum.upf.edu/51585/detail/theory-and-practice-of-blockchains-online-weekly-seminar-series-.html), [[TPBC'20 video]](https://www.youtube.com/watch?v=S9oPB9j-UZU&feature=youtu.be),
 [[FAB'20]](https://scfab.github.io/2020/index.html),
