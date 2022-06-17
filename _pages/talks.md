@@ -48,7 +48,7 @@ interest and value to everyone, no matter the discipline._
 
 &emsp;&emsp; _In this presentation, I introduce the 
 [Flexible BFT](https://arxiv.org/abs/1904.10067)
-approach, a joint work with Kartik Nayak and Ling Ren:
+approach, a joint work with Kartik Nayak and Ling Ren.
 Byzantine Fault Tolerant (BFT) protocols designed for building replicated services collapse
 if deployed under settings that differ from the fault model they are designed for.
 Flexible BFT is a new approach for BFT consensus solution design revolving around
