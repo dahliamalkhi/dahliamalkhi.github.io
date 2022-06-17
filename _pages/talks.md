@@ -32,7 +32,7 @@ interest and value to everyone, no matter the discipline._
 [[UC Davis ExpoLab 2020]](https://expolab.org/ecs189f-fall-2020/speakers.html) [[video]](https://www.youtube.com/watch?v=WR7K3adIqbI&feature=youtu.be&ab_channel=ExpoLabatUCDavis)<br>
 [[CMU ECE 2020]](https://ece.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=83b2040d-b937-4889-831e-ac6401292548)<br>
 [[ACM AFT'20 keynote]](https://aft.acm.org/program-2020)<br>
-[[UZH Blockchain Center Summer School 2020]](https://www.blockchain.uzh.ch/events/summer-school-deep-dive-into-blockchain/)<br>
+[[UZH Blockchain Center Summer School 2020, invited speaker]](https://www.blockchain.uzh.ch/events/summer-school-deep-dive-into-blockchain/)<br>
 [[DSN'20 keynote]](https://dsn2020.webs.upv.es/final-program/keynotes/)<br>
 [[TPBC'20  invited speaker]](https://eventum.upf.edu/51585/detail/theory-and-practice-of-blockchains-online-weekly-seminar-series-.html) [[TPBC'20 video]](https://www.youtube.com/watch?v=S9oPB9j-UZU&feature=youtu.be)<br>
 [[FAB'20 invited speaker]](https://scfab.github.io/2020/index.html)<br>
