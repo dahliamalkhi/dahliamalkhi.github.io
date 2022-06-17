@@ -5,7 +5,7 @@ permalink: /talks/
 author_profile: true
 ---
 
--   **Connecting Blockchains and the World**.<br>
+**Connecting Blockchains and the World**.<br>
 [[UC Berkeley RISE/Sky seminar, summer 2022, invited speaker]](https://rise.cs.berkeley.edu/events/)<br>
  [[Imperial College London LSDS seminar, summer 2022, invited speaker]](https://lsds.doc.ic.ac.uk/seminars)<br>
  [ETH and EPFL, summer 2022]
@@ -15,7 +15,9 @@ author_profile: true
 In the first part of the presentation, I briefly recall the Diem story, June 2018-January 2022. I joined the Diem project (it was named Libra back then) in 2019 as CTO and stayed until its closing. I explain the stablecoin structure Diem built over a purpose-built blockchain.
 In the second part, I switch gears and talk about my current role as chief research officer at Chainlink Labs. Chainlink enables smart contracts to interact with the real world and to reduce trust in centralized intermediaries. I provide a glimpse into Chainlink Labs technology and a research outlook._
 
--   **Tech Transfer Stories and Takeaways**. <br>
+---
+
+**Tech Transfer Stories and Takeaways**. <br>
 [[IEEE TCDP Outstanding Technical Achievement Award keynote at ICDCS 2021]](https://icdcs2021.us/keynotes.html) <br>
 [[Cornell CS colloqium 2021 invited speaker]](https://www.cs.cornell.edu/content/tech-transfer-stories-and-takeaways) <br>
 [[DISC 2021 keynote]](http://www.disc-conference.org/wp/disc2021/program/) [[DISC 2021 video]](https://www.youtube.com/watch?v=9RRUQHymcJA)
@@ -28,7 +30,9 @@ hope that the take-aways from the experience of building foundations for these s
 interest and value to everyone, no matter the discipline._
 
 
--   Invited presentations about the **Libra technology**. <br>
+---
+
+Invited presentations about the **Libra technology**. <br>
 [[UC Davis ExpoLab 2020]](https://expolab.org/ecs189f-fall-2020/speakers.html) [[video]](https://www.youtube.com/watch?v=WR7K3adIqbI&feature=youtu.be&ab_channel=ExpoLabatUCDavis)<br>
 [[CMU ECE 2020]](https://ece.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=83b2040d-b937-4889-831e-ac6401292548)<br>
 [[ACM AFT'20 keynote]](https://aft.acm.org/program-2020)<br>
@@ -38,7 +42,9 @@ interest and value to everyone, no matter the discipline._
 [[FAB'20 invited speaker]](https://scfab.github.io/2020/index.html)<br>
 [[ITA 2020 invited speaker]](https://ita.ucsd.edu/ws/schedule2020/#d_5) 
 
-- **Flexible BFT and New Approaches in Byzantine Fault Tolerance**.<br>
+---
+
+**Flexible BFT and New Approaches in Byzantine Fault Tolerance**.<br>
 [[Chicago booth Cryptocurrencies and Blockchains Conference, 2019, invited speaker]](https://bfi.uchicago.edu/event/cryptocurrencies-and-blockchains-conference/)<br>
 [[Richard M. Karp Distinguished Lecture 2019]](https://simons.berkeley.edu/rmklectures2019-fall-3)<br>
 [[CES 2019, invited speaker]](https://cryptoeconomicsystems.pubpub.org/)<br>
@@ -57,7 +63,9 @@ resilience to higher corruption levels than possible in a pure Byzantine fault m
 Second, Flexible BFT separates between the fault model and the solution,
 supporting in the same protocol synchronous and asynchronous beliefs, as well as varying resilience thresholds._
 
--   **Blockchains in the Lens of BFT and HotStuff**.<br>
+---
+
+**Blockchains in the Lens of BFT and HotStuff**.<br>
 [[Northeastern University Khoury Distinguished Lecture Series, 2019]](https://www.khoury.northeastern.edu/event/distinguished-speaker-blockchains-in-the-lens-of-bft/)<br>
 [[Swiss Blockchain Winter School, Feb 2019, invited speaker]](https://blockchainschool.epfl.ch/)<br>
 [[Gerald M. Masson Distinguished Lecture Series, Johns Hopkins University, 2018]](https://www.cs.jhu.edu/news-events/gerald-m-masson-distinguished-lecture-series/) <br>
@@ -74,6 +82,8 @@ a
 [[BEATCS fall 2017 tutorial]](http://bulletin.eatcs.org/index.php/beatcs/article/view/506), 
 and culminating with the introduction of the HotStuff algorithm 
 [[HotStuff-PODC2019]](https://arxiv.org/abs/1803.05069)._
+
+---
 
 -   *"BFT Reconfiguration",* [[Swiss Blockchain Summer School 2017]](https://blockchain-summer.epfl.ch/)
 -   *"Beyond Paxos"*, [[BIRS workshop 11/2016]](http://www.birs.ca/events/2016/5-day-workshops/16w5152/videos/watch/201611290900-Malkhi.html)
