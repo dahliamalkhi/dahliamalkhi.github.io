@@ -5,7 +5,7 @@ permalink: /talks/
 author_profile: true
 ---
 
--   **Connecting Blockchains and the World**.
+-   **Connecting Blockchains and the World**.<br>
 [[UC Berkeley RISE/Sky seminar, summer 2022]](https://rise.cs.berkeley.edu/events/), [[Imperial College London LSDS seminar, summer 2022]](https://lsds.doc.ic.ac.uk/seminars), [ETH and EPFL, summer 2022]
 
 
