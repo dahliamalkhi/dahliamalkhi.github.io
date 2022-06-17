@@ -85,21 +85,21 @@ and culminating with the introduction of the HotStuff algorithm
 
 ---
 
--   *"BFT Reconfiguration",* [[Swiss Blockchain Summer School 2017]](https://blockchain-summer.epfl.ch/)
--   *"Beyond Paxos"*, [[BIRS workshop 11/2016]](http://www.birs.ca/events/2016/5-day-workshops/16w5152/videos/watch/201611290900-Malkhi.html)
+-   *"BFT Reconfiguration",* [[Swiss Blockchain Summer School 2017, invited speaker]](https://blockchain-summer.epfl.ch/)
+-   *"Beyond Paxos"*, [[BIRS workshop 11/2016, invited speaker]](http://www.birs.ca/events/2016/5-day-workshops/16w5152/videos/watch/201611290900-Malkhi.html)
 -   *"Randomized Gossip Methods: From Grapevine to SWIM"*, 
-[[PWL Conference 2016]](http://pwlconf.org)
+[[PWL Conference 2016, invited speaker]](http://pwlconf.org)
 [[PWL conf 2016 video]](https://youtu.be/Gxf5glthqrk?list=PLGRqfvsPiRShwIXMA5P3WR_9LgBOAdvw4) 
 
--   *''Foundations of Reliable Distributed Systems in Practice'',* at [[Women in Theory 2016]](https://womenintheory.wordpress.com/)
+-   *''Foundations of Reliable Distributed Systems in Practice'',* at [[Women in Theory 2016, invited speaker]](https://womenintheory.wordpress.com/)
 -   "*CorfuDB: Transactional Data Services over a Shared Log", *at [[Princeton Distinguished Colloquium Series, fall 2014]](https://www.cs.princeton.edu/events/event/corfudb-transactional-data-services-over-shared-log)*
--   *"What happens when distributed systems go elastic?",* at *[[SSS  '12]](https://cs.uwaterloo.ca/conferences/sss2012/index.html)*
--   "*CORFU: Going Beyond Paxos",* at *[[DISC 2011]](http://disc2011.dis.uniroma1.it/keynote.php?lang=eng)*
--   "*CORFU: Transactional Storage at the Speed of* Flash", at *[[LADIS '2011]](http://ladisworkshop.org/node/12)*
+-   *"What happens when distributed systems go elastic?",* at *[[SSS  '12, keynote]](https://cs.uwaterloo.ca/conferences/sss2012/index.html)*
+-   "*CORFU: Going Beyond Paxos",* at *[[DISC 2011, keynote]](http://disc2011.dis.uniroma1.it/keynote.php?lang=eng)*
+-   "*CORFU: Transactional Storage at the Speed of* Flash", at *[[LADIS '2011, invited speaker]](http://ladisworkshop.org/node/12)*
 -   "*Backend Consistency for Large-Scale Live Services",* at *[[IPTPS '10]](http://www.usenix.org/events/iptps10/)*
 -   "*Dynamic Reconfiguration in Distributed Systems",* at *[[TADDS 2010]](http://ccom.uprrp.edu/DISC2010/workshops.html)*
--   "*Virtually Synchronous Paxos",* at *[[A 30-Year Perspective on Replication]](http://www.inf.usi.ch/30YearsOfReplication/program.html)*
--   "*FairPlay - A Secure Two-Party Computation System",* at *[[SMP 2004]](http://www.zurich.ibm.com/~cca/smp2004/)*
--   "*Locality Aware network Solutions",* at *[[WDAS 2004]](http://lsirwww.epfl.ch/wdas2004/)*
--   "*From Byzantine Agreement to Practical Survivability",* at *[[RCDS 2002]](http://www.jaist.ac.jp/~defago/RCDS_2002/)*
+-   "*Virtually Synchronous Paxos",* at *[[A 30-Year Perspective on Replication, invited speaker]](http://www.inf.usi.ch/30YearsOfReplication/program.html)*
+-   "*FairPlay - A Secure Two-Party Computation System",* at *[[SMP 2004, keynote]](http://www.zurich.ibm.com/~cca/smp2004/)*
+-   "*Locality Aware network Solutions",* at *[[WDAS 2004, invited speaker]](http://lsirwww.epfl.ch/wdas2004/)*
+-   "*From Byzantine Agreement to Practical Survivability",* at *[[RCDS 2002, keynote]](http://www.jaist.ac.jp/~defago/RCDS_2002/)*
 
