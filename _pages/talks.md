@@ -43,7 +43,7 @@ interest and value to everyone, no matter the discipline._
 [Flexible BFT](https://arxiv.org/abs/1904.10067)
 approach, a joint work with Kartik Nayak and Ling Ren._
 
-_Byzantine Fault Tolerant (BFT) protocols designed for building replicated services collapse
+&emsp;&emsp; _Byzantine Fault Tolerant (BFT) protocols designed for building replicated services collapse
 if deployed under settings that differ from the fault model they are designed for.
 Flexible BFT is a new approach for BFT consensus solution design revolving around
 two pillars. First, flexible BFT introduces a new fault model that allows
