@@ -6,7 +6,7 @@ author_profile: true
 ---
 
 -   "Connecting Blockchains and the World", summer 2022, [[UC Berkeley RISE/Sky seminar](https://rise.cs.berkeley.edu/events/)], [[Imperial College London, LSDS seminar](https://lsds.doc.ic.ac.uk/seminars)], ETH, EPFL
-> &emsp;&emsp;     Abstract
+&emsp;> &emsp;&emsp;     Abstract
 >
 > &emsp; What would it take for blockchains to enable people and businesses everywhere better, trusted and innovative financial foundations?
 >
