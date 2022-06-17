@@ -57,14 +57,14 @@ resilience to higher corruption levels than possible in a pure Byzantine fault m
 Second, Flexible BFT separates between the fault model and the solution,
 supporting in the same protocol synchronous and asynchronous beliefs, as well as varying resilience thresholds._
 
--   **Blockchains in the Lens of BFT**.<br>
+-   **Blockchains in the Lens of BFT and HotStuff**.<br>
 [[Khoury Distinguished Lecture Series, Northeastern, 2019]](https://www.khoury.northeastern.edu/event/distinguished-speaker-blockchains-in-the-lens-of-bft/),<br>
+[[Swiss Blockchain Winter School, Feb 2019]](https://blockchainschool.epfl.ch/),<br>
 [[Gerald M. Masson Distinguished Lecture Series, Johns Hopkins University, 2018]](https://www.cs.jhu.edu/news-events/gerald-m-masson-distinguished-lecture-series/), <br>
 [[Usenix ATC '18]](https://www.usenix.org/conference/atc18/presentation/malkhi), <br>
 [[BITCOIN '18]](https://fc18.ifca.ai/bitcoin/index.html),<br> 
 [[Tsinghua-Cornell Blockchain Winter School 2017]](http://iiis.tsinghua.edu.cn/en/show-6611-1.html)
 
--   *"Three-Step BFT Replication Rule"**,** at [Swiss Blockchain Winter School, Feb 2019](https://blockchainschool.epfl.ch/)*
 -   *"BFT Reconfiguration",* at  [Swiss Blockchain Summer School 2017](https://blockchain-summer.epfl.ch/)
 -   [Beyond Paxos, BIRS workshop 11/2016](http://www.birs.ca/events/2016/5-day-workshops/16w5152/videos/watch/201611290900-Malkhi.html)
 -   [*"Randomized Gossip Methods: From Grapevine to SWIM"*](https://youtu.be/Gxf5glthqrk?list=PLGRqfvsPiRShwIXMA5P3WR_9LgBOAdvw4), at [PWL Conference 2016](http://pwlconf.org)
