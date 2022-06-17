@@ -58,7 +58,7 @@ Second, Flexible BFT separates between the fault model and the solution,
 supporting in the same protocol synchronous and asynchronous beliefs, as well as varying resilience thresholds._
 
 -   **Blockchains in the Lens of BFT and HotStuff**.<br>
-[[Khoury Distinguished Lecture Series, Northeastern, 2019]](https://www.khoury.northeastern.edu/event/distinguished-speaker-blockchains-in-the-lens-of-bft/)<br>
+[[Northeastern University Khoury Distinguished Lecture Series, 2019]](https://www.khoury.northeastern.edu/event/distinguished-speaker-blockchains-in-the-lens-of-bft/)<br>
 [[Swiss Blockchain Winter School, Feb 2019, invited speaker]](https://blockchainschool.epfl.ch/)<br>
 [[Gerald M. Masson Distinguished Lecture Series, Johns Hopkins University, 2018]](https://www.cs.jhu.edu/news-events/gerald-m-masson-distinguished-lecture-series/) <br>
 [[Usenix ATC '18, keynote]](https://www.usenix.org/conference/atc18/presentation/malkhi) <br>
