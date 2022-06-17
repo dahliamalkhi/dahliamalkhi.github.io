@@ -5,15 +5,15 @@ permalink: /talks/
 author_profile: true
 ---
 
--   "Connecting Blockchains and the World" 
+-   **Connecting Blockchains and the World**.
 
 &emsp;&emsp; _What would it take for blockchains to enable people and businesses everywhere better, trusted and innovative financial foundations?
 In the first part of the presentation, I briefly recall the Diem story, June 2018-January 2022. I joined the Diem project (it was named Libra back then) in 2019 as CTO and stayed until its closing. I explain the stablecoin structure Diem built over a purpose-built blockchain.
 In the second part, I switch gears and talk about my current role as chief research officer at Chainlink Labs. Chainlink enables smart contracts to interact with the real world and to reduce trust in centralized intermediaries. I provide a glimpse into Chainlink Labs technology and a research outlook._
 
-[[UC Berkeley RISE/Sky seminar, summer 2022]](https://rise.cs.berkeley.edu/events/), [[Imperial College London, LSDS seminar, summer 2022]](https://lsds.doc.ic.ac.uk/seminars), [ETH and EPFL, summer 2022]
+[[UC Berkeley RISE/Sky seminar, summer 2022]](https://rise.cs.berkeley.edu/events/), [[Imperial College London LSDS seminar, summer 2022]](https://lsds.doc.ic.ac.uk/seminars), [ETH and EPFL, summer 2022]
 
--   "Tech Transfer Stories and Takeaways". 
+-   **Tech Transfer Stories and Takeaways**. 
 
 &emsp;&emsp; _In this talk, I share impressions from several industrial research project experiences that reached
 production and became part of successful products. I will go through four stories of how these
@@ -26,7 +26,7 @@ interest and value to everyone, no matter the discipline._
 [[Cornell CS colloqium 2021]](https://www.cs.cornell.edu/content/tech-transfer-stories-and-takeaways), 
 [[DISC 2021 keynote]](http://www.disc-conference.org/wp/disc2021/program/) [[DISC 2021 video]](https://www.youtube.com/watch?v=9RRUQHymcJA)
 
--   Several invited presentations about the Libra technology. 
+-   Invited presentations about the **Libra technology**. 
  
 [[UC Davis ExpoLab 2020]](https://expolab.org/ecs189f-fall-2020/speakers.html) [[video]](https://www.youtube.com/watch?v=WR7K3adIqbI&feature=youtu.be&ab_channel=ExpoLabatUCDavis),
 [[CMU ECE 2020]](https://ece.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=83b2040d-b937-4889-831e-ac6401292548),
@@ -37,12 +37,28 @@ interest and value to everyone, no matter the discipline._
 [[FAB'20]](https://scfab.github.io/2020/index.html),
 [[ITA 2020]](https://ita.ucsd.edu/ws/schedule2020/#d_5) 
 
--   "New Approaches in BFT", [Chicago booth Cryptocurrencies and Blockchains Conference](https://bfi.uchicago.edu/event/cryptocurrencies-and-blockchains-conference/)
--   "Byzantine Fault Tolerance meets Flexibility", [Richard M. Karp Distinguished Lecture](https://simons.berkeley.edu/rmklectures2019-fall-3), November 2019
--   "Beyond Classical BFT Approaches", [CES 2019](https://cryptoeconomicsystems.pubpub.org/)
--   "Flexible BFT", at [BC '19](https://crypto.iacr.org/2019/affevents/blockchain/page.html)
--   *"Flexible BFT: Separating BFT Protocol Design from the Fault Model" , at [Tokenomics 2019](http://tokenomics2019.org/infoattendees/invitedspeakers)*
--   *"Flexible Byzantine Fault Tolerance"*, at [she256 conference 2019](https://www.recolor.io/) , [[video]](https://youtu.be/4np_2K8WNPU?t=4297)
+- **Flexible BFT, New Approaches in Byzantine Fault Tolerance**.
+
+&emsp;&emsp; _In this presentation, I introduce the 
+[Flexible BFT](https://arxiv.org/abs/1904.10067)
+approach, a joint work with Kartik Nayak and Ling Ren. 
+
+Byzantine Fault Tolerant (BFT) protocols designed for building replicated services collapse
+if deployed under settings that differ from the fault model they are designed for.
+
+Flexible BFT is a new approach for BFT consensus solution design revolving around
+two pillars. First, flexible BFT introduces a new fault model that allows
+resilience to higher corruption levels than possible in a pure Byzantine fault model.
+Second, Flexible BFT separates between the fault model and the solution,
+supporting in the same protocol synchronous and asynchronous beliefs, as well as varying resilience thresholds._
+
+[[Chicago booth Cryptocurrencies and Blockchains Conference, 2019]](https://bfi.uchicago.edu/event/cryptocurrencies-and-blockchains-conference/),
+[[Richard M. Karp Distinguished Lecture 2019]](https://simons.berkeley.edu/rmklectures2019-fall-3),
+[[CES 2019]](https://cryptoeconomicsystems.pubpub.org/),
+[[BC '19]](https://crypto.iacr.org/2019/affevents/blockchain/page.html),
+[[Tokenomics 2019]](http://tokenomics2019.org/infoattendees/invitedspeakers),
+[[she256 conference 2019]](https://www.recolor.io/) , [[she 256 video]](https://youtu.be/4np_2K8WNPU?t=4297)
+
 -   *"Blockchains in the Lens of BFT", at [Khoury Distinguished Lecture Series, March 2019](https://www.khoury.northeastern.edu/event/distinguished-speaker-blockchains-in-the-lens-of-bft/)*
 -   *"Three-Step BFT Replication Rule"**,** at [Swiss Blockchain Winter School, Feb 2019](https://blockchainschool.epfl.ch/)*
 -   *"BFT in the lens of Blockchains and Blockchains in the lens of BFT", [Gerald M. Masson Distinguished Lecture Series, Johns Hopkins University](https://www.cs.jhu.edu/news-events/gerald-m-masson-distinguished-lecture-series/)* , Oct 2018
