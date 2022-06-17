@@ -7,9 +7,9 @@ author_profile: true
 
 -   "Connecting Blockchains and the World", summer 2022, [[UC Berkeley RISE/Sky seminar](https://rise.cs.berkeley.edu/events/)], [[Imperial College London, LSDS seminar](https://lsds.doc.ic.ac.uk/seminars)], ETH, EPFL
 
-&emsp;&emsp; &emsp;&emsp;     _Abstract
+&emsp;&emsp; &emsp;&emsp;_Abstract_
 
-&emsp;&emsp; What would it take for blockchains to enable people and businesses everywhere better, trusted and innovative financial foundations?
+&emsp;&emsp; _What would it take for blockchains to enable people and businesses everywhere better, trusted and innovative financial foundations?_
 
 &emsp;&emsp; In the first part of the presentation, I briefly recall the Diem story, June 2018-January 2022. I joined the Diem project (it was named Libra back then) in 2019 as CTO and stayed until its closing. I explain the stablecoin structure Diem built over a purpose-built blockchain.
 
