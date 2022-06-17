@@ -11,7 +11,7 @@ author_profile: true
 In the first part of the presentation, I briefly recall the Diem story, June 2018-January 2022. I joined the Diem project (it was named Libra back then) in 2019 as CTO and stayed until its closing. I explain the stablecoin structure Diem built over a purpose-built blockchain.
 In the second part, I switch gears and talk about my current role as chief research officer at Chainlink Labs. Chainlink enables smart contracts to interact with the real world and to reduce trust in centralized intermediaries. I provide a glimpse into Chainlink Labs technology and a research outlook._
 
-Summer 2022:  [[UC Berkeley RISE/Sky seminar](https://rise.cs.berkeley.edu/events/)], [[Imperial College London, LSDS seminar](https://lsds.doc.ic.ac.uk/seminars)], ETH, EPFL
+Summer 2022:  [[UC Berkeley RISE/Sky seminar]](https://rise.cs.berkeley.edu/events/), [[Imperial College London, LSDS seminar]](https://lsds.doc.ic.ac.uk/seminars), ETH, EPFL
 
 -   "Tech Transfer Stories and Takeaways". 
 
@@ -23,8 +23,8 @@ hope that the take-aways from the experience of building foundations for these s
 interest and value to everyone, no matter the discipline._
 
 Fall 2021: [[IEEE TCDP Outstanding Technical Achievement Award keynote at ICDCS 2021]](https://icdcs2021.us/keynotes.html), 
-[[Cornell CS fall colloqium]](https://www.cs.cornell.edu/content/tech-transfer-stories-and-takeaways), 
-[[DISC 2011 keynote]](http://www.disc-conference.org/wp/disc2021/program/) [[DISC 2011 video]](https://www.youtube.com/watch?v=9RRUQHymcJA)
+[[Cornell CS colloqium 2021]](https://www.cs.cornell.edu/content/tech-transfer-stories-and-takeaways), 
+[[DISC 2021 keynote]](http://www.disc-conference.org/wp/disc2021/program/) [[DISC 2021 video]](https://www.youtube.com/watch?v=9RRUQHymcJA)
 
 -   Several invited presentations about the Libra technology. 
  
