@@ -13,8 +13,17 @@ author_profile: true
 In the first part of the presentation, I briefly recall the Diem story, June 2018-January 2022. I joined the Diem project (it was named Libra back then) in 2019 as CTO and stayed until its closing. I explain the stablecoin structure Diem built over a purpose-built blockchain.
 In the second part, I switch gears and talk about my current role as chief research officer at Chainlink Labs. Chainlink enables smart contracts to interact with the real world and to reduce trust in centralized intermediaries. I provide a glimpse into Chainlink Labs technology and a research outlook._
 
--   "Tech Transfer Stories and Takeaways", [Cornell CS fall colloqium](https://www.cs.cornell.edu/content/tech-transfer-stories-and-takeaways)
--   [DISC 2011 keynote](http://www.disc-conference.org/wp/disc2021/program/) ["Tech Transfer Stories and Takeaways"](https://drops.dagstuhl.de/opus/volltexte/2021/14804/pdf/LIPIcs-DISC-2021-2.pdf) [[video]](https://www.youtube.com/watch?v=9RRUQHymcJA)
+-   "Tech Transfer Stories and Takeaways", fall 2021, [[Cornell CS fall colloqium]](https://www.cs.cornell.edu/content/tech-transfer-stories-and-takeaways), [[DISC 2011 keynote]](http://www.disc-conference.org/wp/disc2021/program/) [[video]](https://www.youtube.com/watch?v=9RRUQHymcJA)
+
+&emsp;&emsp; &emsp;&emsp;_Abstract_
+
+&emsp;&emsp; _In this talk, I share impressions from several industrial research project experiences that reached
+production and became part of successful products. I will go through four stories of how these
+systems transpired and their journey to impact. All of the stories are in the distributed computing
+arena, and more specifically, they revolve around the state-machine-replication paradigm. Yet, I
+hope that the take-aways from the experience of building foundations for these systems may be of
+interest and value to everyone, no matter the discipline._
+
 -   Several invited presentations about the Libra technology:
     -  [UC Davis ExpoLab](https://expolab.org/ecs189f-fall-2020/speakers.html) [[video]](https://www.youtube.com/watch?v=WR7K3adIqbI&feature=youtu.be&ab_channel=ExpoLabatUCDavis)
     -  [CMU ECE](https://ece.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=83b2040d-b937-4889-831e-ac6401292548)
