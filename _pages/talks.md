@@ -65,9 +65,12 @@ supporting in the same protocol synchronous and asynchronous beliefs, as well as
 [[BITCOIN '18]](https://fc18.ifca.ai/bitcoin/index.html),<br> 
 [[Tsinghua-Cornell Blockchain Winter School 2017]](http://iiis.tsinghua.edu.cn/en/show-6611-1.html)
 
--   *"BFT Reconfiguration",* at  [Swiss Blockchain Summer School 2017](https://blockchain-summer.epfl.ch/)
--   [Beyond Paxos, BIRS workshop 11/2016](http://www.birs.ca/events/2016/5-day-workshops/16w5152/videos/watch/201611290900-Malkhi.html)
--   [*"Randomized Gossip Methods: From Grapevine to SWIM"*](https://youtu.be/Gxf5glthqrk?list=PLGRqfvsPiRShwIXMA5P3WR_9LgBOAdvw4), at [PWL Conference 2016](http://pwlconf.org)
+-   *"BFT Reconfiguration",* [[Swiss Blockchain Summer School 2017]](https://blockchain-summer.epfl.ch/)
+-   *"Beyond Paxos"*, [[BIRS workshop 11/2016]](http://www.birs.ca/events/2016/5-day-workshops/16w5152/videos/watch/201611290900-Malkhi.html)
+-   *"Randomized Gossip Methods: From Grapevine to SWIM"*, 
+[PWL Conference 2016](http://pwlconf.org)
+[[PWL conf 2016 video]](https://youtu.be/Gxf5glthqrk?list=PLGRqfvsPiRShwIXMA5P3WR_9LgBOAdvw4), 
+
 -   *''Foundations of Reliable Distributed Systems in Practice'',* at [Women in Theory 2016](https://womenintheory.wordpress.com/)
 -   "*CorfuDB: Transactional Data Services over a Shared Log", *at [Princeton Distinguished Colloquium Series, fall 2014](https://www.cs.princeton.edu/events/event/corfudb-transactional-data-services-over-shared-log)*
 -   *"What happens when distributed systems go elastic?",* at *[SSS  '12](https://cs.uwaterloo.ca/conferences/sss2012/index.html)*
