@@ -9,11 +9,9 @@ author_profile: true
 
 &emsp;&emsp; &emsp;&emsp;_Abstract_
 
-&emsp;&emsp; _What would it take for blockchains to enable people and businesses everywhere better, trusted and innovative financial foundations?_
-
-&emsp;&emsp; In the first part of the presentation, I briefly recall the Diem story, June 2018-January 2022. I joined the Diem project (it was named Libra back then) in 2019 as CTO and stayed until its closing. I explain the stablecoin structure Diem built over a purpose-built blockchain.
-
-&emsp;&emsp; In the second part, I switch gears and talk about my current role as chief research officer at Chainlink Labs. Chainlink enables smart contracts to interact with the real world and to reduce trust in centralized intermediaries. I provide a glimpse into Chainlink Labs technology and a research outlook._
+&emsp;&emsp; _What would it take for blockchains to enable people and businesses everywhere better, trusted and innovative financial foundations?
+In the first part of the presentation, I briefly recall the Diem story, June 2018-January 2022. I joined the Diem project (it was named Libra back then) in 2019 as CTO and stayed until its closing. I explain the stablecoin structure Diem built over a purpose-built blockchain.
+In the second part, I switch gears and talk about my current role as chief research officer at Chainlink Labs. Chainlink enables smart contracts to interact with the real world and to reduce trust in centralized intermediaries. I provide a glimpse into Chainlink Labs technology and a research outlook._
 
 -   "Tech Transfer Stories and Takeaways", [Cornell CS fall colloqium](https://www.cs.cornell.edu/content/tech-transfer-stories-and-takeaways)
 -   [DISC 2011 keynote](http://www.disc-conference.org/wp/disc2021/program/) ["Tech Transfer Stories and Takeaways"](https://drops.dagstuhl.de/opus/volltexte/2021/14804/pdf/LIPIcs-DISC-2021-2.pdf) [[video]](https://www.youtube.com/watch?v=9RRUQHymcJA)
