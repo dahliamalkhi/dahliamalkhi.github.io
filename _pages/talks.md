@@ -65,7 +65,7 @@ supporting in the same protocol synchronous and asynchronous beliefs, as well as
 [[BITCOIN '18, keynote]](https://fc18.ifca.ai/bitcoin/index.html)<br> 
 [[Tsinghua-Cornell Blockchain Winter School 2017, invited speaker]](http://iiis.tsinghua.edu.cn/en/show-6611-1.html)
 
-&emsp;&emsp; _This series of talks I shared classical BFT foundations for blockchains which were gradually developed.
+&emsp;&emsp; _In this series of talks, I introduced classical BFT foundations for blockchains which were gradually developed.
 They followed several blogposts I made, including
 [[Blockchain/BFT]](https://dahliamalkhi.github.io/posts/2017/10/bft-blockchain/)
 [[The BFT Lens: HotStuff and Casper]](https://dahliamalkhi.github.io/posts/2018/03/bft-lens-casper/)
