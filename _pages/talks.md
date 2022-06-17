@@ -6,7 +6,9 @@ author_profile: true
 ---
 
 -   **Connecting Blockchains and the World**.<br>
-[[UC Berkeley RISE/Sky seminar, summer 2022]](https://rise.cs.berkeley.edu/events/), [[Imperial College London LSDS seminar, summer 2022]](https://lsds.doc.ic.ac.uk/seminars), [ETH and EPFL, summer 2022]
+[[UC Berkeley RISE/Sky seminar, summer 2022]](https://rise.cs.berkeley.edu/events/),<br>
+ [[Imperial College London LSDS seminar, summer 2022]](https://lsds.doc.ic.ac.uk/seminars),<br>
+ [ETH and EPFL, summer 2022]
 
 
 &emsp;&emsp; _What would it take for blockchains to enable people and businesses everywhere better, trusted and innovative financial foundations?
@@ -14,8 +16,8 @@ In the first part of the presentation, I briefly recall the Diem story, June 201
 In the second part, I switch gears and talk about my current role as chief research officer at Chainlink Labs. Chainlink enables smart contracts to interact with the real world and to reduce trust in centralized intermediaries. I provide a glimpse into Chainlink Labs technology and a research outlook._
 
 -   **Tech Transfer Stories and Takeaways**. <br>
-[[IEEE TCDP Outstanding Technical Achievement Award keynote at ICDCS 2021]](https://icdcs2021.us/keynotes.html), 
-[[Cornell CS colloqium 2021]](https://www.cs.cornell.edu/content/tech-transfer-stories-and-takeaways), 
+[[IEEE TCDP Outstanding Technical Achievement Award keynote at ICDCS 2021]](https://icdcs2021.us/keynotes.html), <br>
+[[Cornell CS colloqium 2021]](https://www.cs.cornell.edu/content/tech-transfer-stories-and-takeaways), <br>
 [[DISC 2021 keynote]](http://www.disc-conference.org/wp/disc2021/program/) [[DISC 2021 video]](https://www.youtube.com/watch?v=9RRUQHymcJA)
 
 &emsp;&emsp; _In this talk, I share impressions from several industrial research project experiences that reached
@@ -27,21 +29,21 @@ interest and value to everyone, no matter the discipline._
 
 
 -   Invited presentations about the **Libra technology**. <br>
-[[UC Davis ExpoLab 2020]](https://expolab.org/ecs189f-fall-2020/speakers.html) [[video]](https://www.youtube.com/watch?v=WR7K3adIqbI&feature=youtu.be&ab_channel=ExpoLabatUCDavis),
-[[CMU ECE 2020]](https://ece.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=83b2040d-b937-4889-831e-ac6401292548),
-[[ACM AFT'20]](https://aft.acm.org/program-2020),
-[[UZH Blockchain Center Summer School 2020]](https://www.blockchain.uzh.ch/events/summer-school-deep-dive-into-blockchain/),
-[[DSN'20]](https://dsn2020.webs.upv.es/final-program/keynotes/),
-[[TPBC'20]](https://eventum.upf.edu/51585/detail/theory-and-practice-of-blockchains-online-weekly-seminar-series-.html), [[TPBC'20 video]](https://www.youtube.com/watch?v=S9oPB9j-UZU&feature=youtu.be),
-[[FAB'20]](https://scfab.github.io/2020/index.html),
+[[UC Davis ExpoLab 2020]](https://expolab.org/ecs189f-fall-2020/speakers.html) [[video]](https://www.youtube.com/watch?v=WR7K3adIqbI&feature=youtu.be&ab_channel=ExpoLabatUCDavis),<br>
+[[CMU ECE 2020]](https://ece.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=83b2040d-b937-4889-831e-ac6401292548),<br>
+[[ACM AFT'20]](https://aft.acm.org/program-2020),<br>
+[[UZH Blockchain Center Summer School 2020]](https://www.blockchain.uzh.ch/events/summer-school-deep-dive-into-blockchain/),<br>
+[[DSN'20]](https://dsn2020.webs.upv.es/final-program/keynotes/),<br>
+[[TPBC'20]](https://eventum.upf.edu/51585/detail/theory-and-practice-of-blockchains-online-weekly-seminar-series-.html), [[TPBC'20 video]](https://www.youtube.com/watch?v=S9oPB9j-UZU&feature=youtu.be),<br>
+[[FAB'20]](https://scfab.github.io/2020/index.html),<br>
 [[ITA 2020]](https://ita.ucsd.edu/ws/schedule2020/#d_5) 
 
 - **Flexible BFT, New Approaches in Byzantine Fault Tolerance**.<br>
-[[Chicago booth Cryptocurrencies and Blockchains Conference, 2019]](https://bfi.uchicago.edu/event/cryptocurrencies-and-blockchains-conference/),
-[[Richard M. Karp Distinguished Lecture 2019]](https://simons.berkeley.edu/rmklectures2019-fall-3),
-[[CES 2019]](https://cryptoeconomicsystems.pubpub.org/),
-[[BC '19]](https://crypto.iacr.org/2019/affevents/blockchain/page.html),
-[[Tokenomics 2019]](http://tokenomics2019.org/infoattendees/invitedspeakers),
+[[Chicago booth Cryptocurrencies and Blockchains Conference, 2019]](https://bfi.uchicago.edu/event/cryptocurrencies-and-blockchains-conference/),<br>
+[[Richard M. Karp Distinguished Lecture 2019]](https://simons.berkeley.edu/rmklectures2019-fall-3),<br>
+[[CES 2019]](https://cryptoeconomicsystems.pubpub.org/),<br>
+[[BC '19]](https://crypto.iacr.org/2019/affevents/blockchain/page.html),<br>
+[[Tokenomics 2019]](http://tokenomics2019.org/infoattendees/invitedspeakers),<br>
 [[she256 conference 2019]](https://www.recolor.io/) , [[she 256 video]](https://youtu.be/4np_2K8WNPU?t=4297)
 
 &emsp;&emsp; _In this presentation, I introduce the 
