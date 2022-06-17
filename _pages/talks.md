@@ -70,8 +70,10 @@ They followed several blogposts I made, including
 [[Blockchain/BFT]](https://dahliamalkhi.github.io/posts/2017/10/bft-blockchain/)
 [[The BFT Lens: HotStuff and Casper]](https://dahliamalkhi.github.io/posts/2018/03/bft-lens-casper/)
 [[The BFT Lens: Tendermint]](https://dahliamalkhi.github.io/posts/2018/04/BFT-lens-tndrmnt/),
-a [[tutorial]]({{ base_path }}/files/BlockchainBFT-BEATCS2017.pdf) on the topic we published in the fall issue of the Distributed Computing column of the Bulletin of the EATCS ([BEATCS link](http://bulletin.eatcs.org/index.php/beatcs/article/view/506)), 
-and culminating with the introduction of the HotStuff algorithm [[HotStuff-PODC2019]] [<https://arxiv.org/abs/1803.05069>]._
+a 
+[[BEATCS fall 2017 tutorial]](http://bulletin.eatcs.org/index.php/beatcs/article/view/506), 
+and culminating with the introduction of the HotStuff algorithm 
+[[HotStuff-PODC2019]](https://arxiv.org/abs/1803.05069)._
 
 -   *"BFT Reconfiguration",* [[Swiss Blockchain Summer School 2017]](https://blockchain-summer.epfl.ch/)
 -   *"Beyond Paxos"*, [[BIRS workshop 11/2016]](http://www.birs.ca/events/2016/5-day-workshops/16w5152/videos/watch/201611290900-Malkhi.html)
