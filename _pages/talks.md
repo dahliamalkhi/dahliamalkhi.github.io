@@ -11,7 +11,7 @@ author_profile: true
 In the first part of the presentation, I briefly recall the Diem story, June 2018-January 2022. I joined the Diem project (it was named Libra back then) in 2019 as CTO and stayed until its closing. I explain the stablecoin structure Diem built over a purpose-built blockchain.
 In the second part, I switch gears and talk about my current role as chief research officer at Chainlink Labs. Chainlink enables smart contracts to interact with the real world and to reduce trust in centralized intermediaries. I provide a glimpse into Chainlink Labs technology and a research outlook._
 
-[[UC Berkeley RISE/Sky seminar, summer 2022]](https://rise.cs.berkeley.edu/events/), [[Imperial College London, LSDS seminar, summer 2022]](https://lsds.doc.ic.ac.uk/seminars), ETH, EPFL
+[[UC Berkeley RISE/Sky seminar, summer 2022]](https://rise.cs.berkeley.edu/events/), [[Imperial College London, LSDS seminar, summer 2022]](https://lsds.doc.ic.ac.uk/seminars), [ETH and EPFL, summer 2022]
 
 -   "Tech Transfer Stories and Takeaways". 
 
