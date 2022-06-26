@@ -36,6 +36,7 @@ author_profile: true
 -   *ACE: Abstract Consensus Encapsulation for Liveness Boosting of State Machine Replication.*
     Alexander Spiegelman, Arik Rinberg, Dahlia Malkhi. 
     [The 24th International Conference on Principles of Distributed Systems (OPODIS 2020)](https://opodis2020.unistra.fr/).
+    [pdf]({{ base_path }}/files/ACE-OPODIS2020.pdf)
 -   *Asynchronous Distributed Key Generation for Computationally Secure Randomness, Consensus, and Threshold Signatures.*
     Eleftherios Kokoris Kogias, Dahlia Malkhi, Alexander Spiegelman. 
     [ACS Conference on Computer and Communications Security (CCS) 2020](https://www.sigsac.org/ccs/CCS2020/).
