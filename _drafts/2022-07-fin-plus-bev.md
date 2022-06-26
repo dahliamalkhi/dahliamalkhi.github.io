@@ -1,3 +1,23 @@
+---
+title: 'DAG-BFT with BEV-resistant Fair-Ordering'
+date: 2022-07-01
+permalink: /posts/2022/07/dag-fo/
+header: 
+  teaser: "/images/FIN/cover.png"
+tags:
+  - blockchain
+  - DAG
+  - Consensus
+  - BEV
+  - Fair ordering
+  - BFT
+---
+
+I found a really simple way to explain how to embed Consensus inside a DAG (Direct Acyclic Graph),
+which at the same time, is highly efficient.
+
+<img src="/images/FIN/cover.png" width="600"  class="center"  />
+
 In a [previous post](..), we explained the use of a reliable, causally-ordered broadcast DAG transport 
 in constructing message-free BFT consensus.
 
