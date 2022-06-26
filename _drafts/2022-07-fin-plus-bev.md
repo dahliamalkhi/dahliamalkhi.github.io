@@ -3,7 +3,7 @@ title: 'DAG-BFT with BEV-resistant Fair-Ordering'
 date: 2022-07-01
 permalink: /posts/2022/07/dag-fo/
 header: 
-  teaser: "/images/FIN/cover.png"
+  teaser: "/images/FIN/SWARMING-animate-2.gif"
 tags:
   - blockchain
   - DAG
@@ -13,13 +13,12 @@ tags:
   - BFT
 ---
 
-I found a really simple way to explain how to embed Consensus inside a DAG (Direct Acyclic Graph),
-which at the same time, is highly efficient.
-
-<img src="/images/FIN/cover.png" width="600"  class="center"  />
+<img src="/images/FIN/SWARMING-animate-2.gif" />
 
 In a [previous post](..), we explained the use of a reliable, causally-ordered broadcast DAG transport 
 in constructing message-free BFT consensus.
+
+## BEV
 
 We can build fair ordering into DAG-based BFT Consensus protocols
 in order to prevent blockchain extractable value (BEV) exploits.
@@ -42,7 +41,10 @@ Section 5.5 in the SoK mentions other forms of algorithmic committee orderings, 
 These works address a different notion of fairness that (informally) guarantees equal participation but not BEV mitigation. 
 In fact, a corrupt party may take advantage of the equal participation privilege to front-run transactions it has already observed.
 
-To protect against BEV, transaction information may be kept hidden until after a commit is delivered on a "blind" ordering. 
+## Blind Ordering
+
+The first line of defense against BEV is
+to keep transaction information hidden until after a commit is delivered on a "blind" ordering. 
 This prevents any party from observing the contents of transactions until the ordering has been committed.
 
 To order transactions blindly, 
@@ -84,6 +86,6 @@ This method guarantees agreement about how to decrypt (or about failing to decry
 Note that when more than F+1 shares are broadcast, the leader has a choice which ones to reference. 
 This is fine because if the user is honest, all compositions are the same; and if not, we don't care what the leader chooses.
 
-
 In all the above cases, blind ordering do not send extra messages nor require the DAG to wait for Consensus steps. 
 
+## Other requirements
