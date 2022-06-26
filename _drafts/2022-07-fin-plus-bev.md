@@ -3,6 +3,7 @@ in constructing message-free BFT consensus.
 
 We can build fair ordering into DAG-based BFT Consensus protocols
 in order to prevent blockchain extractable value (BEV) exploits.
+** add: why is BEV a serious problem**.
 BEV is a measure introduced by Daian et al. in
 [Flash Boys 2.0](https://ieeexplore.ieee.org/document/9152675)
 of the "profit that can be made through including, excluding, or re-ordering transactions within blocks". 
@@ -47,8 +48,22 @@ employing a scheme by Basu et al. for efficient
 [asynchronous VSS in BFT Consensus](https://dahliamalkhi.github.io/files/T3P-CCS19.pdf).
 
 There is another alternative that foregoes VSS secret-sharing verification completely and utilizes another Consensus round instead. 
-The idea is that when a DAG commit is observed, it is regarded as provisional. 
-For each provisional transaction which has not committed yet,
-the leader of the next view collects key shares (signed by the user) from F+1 parties
-and posts them inside its proposal. 
-In this way, there is agreement about how to decrypt (or about failing to decrypt) committed transactions.
+The idea is that when a DAG commit is observed, it is regarded as _provisional_ only. 
+When a party observes that a transaction is provisionally committed, it broadcasts
+its share of the decryption key for the transaction.
+Note that key shares do not need dedicated broadcasts, they can be piggybacked on the stream of normal broadcasts. 
+
+Once the leader of the next view has delivered F+1 messages with shares, it
+enters the view by setting setInfo() to the next view number.
+In this way, the next view proposal references F+1 shares of provisional commits from the previous view.
+When the proposal commits,
+every provisional transaction in its causal past has F+1 shares and
+anyone can decrypt it.
+
+This method guarantees agreement about how to decrypt (or about failing to decrypt) committed transactions.
+Note that when more than F+1 shares are broadcast, the leader has a choice which ones to reference. 
+This is fine because if the user is honest, all compositions are the same; and if not, we don't care what the leader chooses.
+
+
+In all the above cases, blind ordering do not send extra messages nor require the DAG to wait for Consensus steps. 
+
