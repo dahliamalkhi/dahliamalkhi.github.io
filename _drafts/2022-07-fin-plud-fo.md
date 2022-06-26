@@ -23,29 +23,34 @@ other forms of algorithmic committee orderings, which do not mitigate BEV, e.g.,
 These works address a different notion of fairness, namely, ``chain quality'', which (informally) guarantees equal participation. 
 Chain quality is not a goal we address here.
 
-To protect against BEV, transaction information may be kept hidden until after a commit is delivered to a "blind" ordering. 
+To protect against BEV, transaction information may be kept hidden until after a commit is delivered on a "blind" ordering. 
 This prevents any party from observing the contents of transactions until the ordering has been committed.
 
-One way to implement blind ordering commit/reveal is by encrypting transactions with a secret key which is shared among parties.
-In a secret-sharing scheme, users send to parties a transaction digest with individual shares
-Reconstructing the transaction requires a threshold greater than F of the parties to participate, 
-which parties do only after observing in the DAG a commit to an ordering that includes the transaction.
+To order transactions blindly, 
+users should broadcast encrypted transactions to the Consensus parties, 
+such that decrypting a transaction requires a threshold greater than F of the parties to participate. 
+Parties must contribute to decrypting a transaction only after observing the transaction committed in the DAG.
+
+One way to implement this is using pub/private key encryption, 
+such that the public key is known to users and the private key is shared (at setup time) among parties.
+Another way is for users to encrypt each transaction with a symmetric key chosen for it, 
+and share the key among parties using Shamir's secret sharing scheme.
 
 The two forms differ in the manner in which the integrity of shares collected from parties can be verified.
-In the threshold-crypto case, parties can attach a cryptographic proof to decryption shares during the transaction reconstruction stage. 
-A threshold of correct shares guarantees correct decryption. 
+Public key encryption schemes allow to verify that a party is contributing a correct decryption share and furthermore, 
+a threshold of honest parties can always succeed in decrypting. 
 
-In a secret-sharing scheme, users send to parties a transaction digest with individual shares
-can attach proofs to shares they send to participants. 
-In order to deliver a 
-reliable broad
+In the secret-sharing scheme,
+a bad user might send bogus shares to some parties.
+Hence, reconstructing the key from different subsets of parties might produce different keys. 
+The solution is either employing a verifiable secret-sharing scheme (VSS),
+that can be implemented inside the echo broadcast protocol, e.g., 
+employing a scheme by Basu et al. for efficient
+[asynchronous VSS in BFT Consensus](https://dahliamalkhi.github.io/files/T3P-CCS19.pdf).
 
-Parties deliver a re
-
-include proofs of their shares in the DAG, not the shares themselves. 
-The commit of a leader proposal orders transactions 
-
-A 
-
-leader proposal
-
+There is another alternative that foregoes VSS secret-sharing verification completely and utilizes another Consensus round instead. 
+The idea is that when a DAG commit is observed, it is regarded as provisional. 
+For each provisional transaction which has not committed yet,
+the leader of the next view collects key shares (signed by the user) from F+1 parties
+and posts them inside its proposal. 
+In this way, there is agreement about how to decrypt (or about failing to decrypt) committed transactions.
