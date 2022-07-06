@@ -17,7 +17,7 @@ Summer interns
     - [Erica Blum](http://www.cs.umd.edu/~erblum/) (UMD, summer 2020)
     - [Suyash Gupta](https://gupta-suyash.github.io/) (UC Davis, summer 2020)
     - [Zhuolun (Daniel) Xiang](https://sites.google.com/site/danielxiangzl/) (UIUC, summer 2020)
-    - [Shir Cohen](https://www.linkedin.com/in/shir-cohen/?originalSubdomain=il) (Technion, summer)
+    - [Shir Cohen](https://www.linkedin.com/in/shir-cohen/?originalSubdomain=il) (Technion, summer 2020)
 
 -   At [VRG](http://research.vmware.com) :
     -   [Ted Yin](https://www.cs.cornell.edu/~tedyin/) (Cornell, summer 2018)
