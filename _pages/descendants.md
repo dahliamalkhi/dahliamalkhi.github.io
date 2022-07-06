@@ -7,12 +7,17 @@ author_profile: true
 
 Summer interns
 
+-   At [Chainlink Labs](http://chainlinklabs.com) :
+    - [Deepak Maram](https://www.linkedin.com/in/deepakmaram/) (Cornell Tech, summer 2022)
+    - [Hongbo Zhang](https://www.linkedin.com/in/hongbozhang/) (Cornell, summer 2022)
+    - [Nibesh Shrestha](https://www.linkedin.com/in/nibesh-shrestha-73485380/) (Rochester Institute of Technology, summer 2022)
+
 -   At [Novi](http://novi.com) :
-    - [Oded Naor](https://www.linkedin.com/in/oded-naor/?originalSubdomain=il)
-    - [Erica Blum](http://www.cs.umd.edu/~erblum/)
-    - [Suyash Gupta](https://gupta-suyash.github.io/)
-    - [Zhuolun (Daniel) Xiang](https://sites.google.com/site/danielxiangzl/)
-    - [Shir Cohen](https://www.linkedin.com/in/shir-cohen/?originalSubdomain=il)
+    - [Oded Naor](https://www.linkedin.com/in/oded-naor/?originalSubdomain=il) (Technion, summer 2019)
+    - [Erica Blum](http://www.cs.umd.edu/~erblum/) (UMD, summer 2020)
+    - [Suyash Gupta](https://gupta-suyash.github.io/) (UC Davis, summer 2020)
+    - [Zhuolun (Daniel) Xiang](https://sites.google.com/site/danielxiangzl/) (UIUC, summer 2020)
+    - [Shir Cohen](https://www.linkedin.com/in/shir-cohen/?originalSubdomain=il) (Technion, summer)
 
 -   At [VRG](http://research.vmware.com) :
     -   [Ted Yin](https://www.cs.cornell.edu/~tedyin/) (Cornell, summer 2018)
