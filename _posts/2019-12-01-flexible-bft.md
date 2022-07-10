@@ -1,14 +1,13 @@
 ---
-title: 'Flexible Byzantine Fault Tolerance'
-date: 2019-12-01
-permalink: /posts/2019/9/flexible-bft/
-header: 
-  teaser: "/images/compare.png"
+title: Flexible Byzantine Fault Tolerance
+date: 2019-12-01 00:00:00 -08:00
+permalink: "/posts/2019/9/flexible-bft/"
 tags:
-  - consensus
-  - BFT
+- consensus
+- BFT
+header:
+  teaser: "/images/compare.png"
 ---
-
 
 Author: [Kartik Nayak](https://users.cs.duke.edu/~kartik/)
 

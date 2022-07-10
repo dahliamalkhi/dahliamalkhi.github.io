@@ -1,7 +1,7 @@
 ---
+title: Academic Descendants
+permalink: "/descendants/"
 layout: archive
-title: "Academic Descendants"
-permalink: /descendants/
 author_profile: true
 ---
 

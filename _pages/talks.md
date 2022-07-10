@@ -1,7 +1,7 @@
 ---
+title: Invited Talks and Keynotes
+permalink: "/talks/"
 layout: archive
-title: "Invited Talks and Keynotes"
-permalink: /talks/
 author_profile: true
 ---
 

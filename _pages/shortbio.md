@@ -1,11 +1,11 @@
 ---
-permalink: /
-title: "About me"
-excerpt: "dahlia malkhi short bio"
+title: About me
+permalink: "/"
+excerpt: dahlia malkhi short bio
 author_profile: true
-redirect_from: 
-  - /about/
-  - /about.html
+redirect_from:
+- "/about/"
+- "/about.html"
 ---
 
 #### Short bio

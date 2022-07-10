@@ -1,11 +1,10 @@
 ---
+title: Tech profile -- Dahlia Malkhi
+permalink: "/techprofile/"
 layout: archive
-permalink: /techprofile/
-title: "Tech profile -- Dahlia Malkhi"
-excerpt: "dahlia malkhi tech profile"
+excerpt: dahlia malkhi tech profile
 author_profile: true
 ---
-
 
 ## Short bio
 
