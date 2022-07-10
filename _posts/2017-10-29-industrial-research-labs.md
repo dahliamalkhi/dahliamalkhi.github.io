@@ -1,10 +1,10 @@
 ---
-title: 'The Greek Tragedy of Industrial Computing Research Labs'
-date: 2017-10-29
-permalink: /posts/2017/10/industrial-research-labs
+title: The Greek Tragedy of Industrial Computing Research Labs
+date: 2017-10-29 00:00:00 -07:00
+permalink: "/posts/2017/10/industrial-research-labs"
 tags:
-  - BFT
-  - consensus
+- BFT
+- consensus
 ---
 
 Authors: Guy Singer and Dahlia Malkhi

@@ -1,10 +1,10 @@
 ---
 title: '"Nevertheless She Persisted" Book is Here.'
-date: 2018-06-21
-permalink: /posts/2018/06/nevetheless-book/
+date: 2018-06-21 00:00:00 -07:00
+permalink: "/posts/2018/06/nevetheless-book/"
 tags:
-  - book
-  - tech leadership
+- book
+- tech leadership
 ---
 
 I was introduced to the beauty of math by my high school Russian math teacher, Mr Gershovits. He taught us not just math, but the pleasure of grappling with math challenges.

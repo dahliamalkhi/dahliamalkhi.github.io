@@ -1,10 +1,10 @@
 ---
-title: 'Fast Practical Byzantine Fault Tolerance is trickier than you might think'
-date: 2017-12-07
-permalink: /posts/2017/12/bft-broken
+title: Fast Practical Byzantine Fault Tolerance is trickier than you might think
+date: 2017-12-07 00:00:00 -08:00
+permalink: "/posts/2017/12/bft-broken"
 tags:
-  - BFT
-  - consensus
+- BFT
+- consensus
 ---
 
 Over a decade of improvements to the seminal PBFT work have turned out to have safety or liveness issues, as demonstrated in a recent ArXiv note we posted:

@@ -1,10 +1,10 @@
 ---
-title: 'Dfinty Consensus Explored'
-date: 2019-08-01
-permalink: /posts/2019/08/dfinty-explored
+title: Dfinty Consensus Explored
+date: 2019-08-01 00:00:00 -07:00
+permalink: "/posts/2019/08/dfinty-explored"
 tags:
-  - BFT
-  - consensus
+- BFT
+- consensus
 ---
 
 Did you ever wonder what is the BFT consensus engine that drives Dfinity, is it new or known, and how can it be improved?

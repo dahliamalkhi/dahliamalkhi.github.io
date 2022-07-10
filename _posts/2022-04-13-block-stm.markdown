@@ -1,13 +1,13 @@
 ---
 title: 'Block-STM: Accelerating Smart-Contract Processing'
-date: 2022-04-13
-permalink: /posts/2022/04/block-stm/
+date: 2022-04-13 00:00:00 -07:00
+permalink: "/posts/2022/04/block-stm/"
+tags:
+- blockchain
+- parallel execution
+- transactions
 header:
   teaser: "/images/bstm-scene.png"
-tags:
-  - blockchain
-  - parallel execution
-  - transactions
 ---
 
 ![](/images/bstm-scene.png)

@@ -1,11 +1,11 @@
 ---
 title: 'HotStuff: Three-Chain Rules!'
-date: 2019-08-01
-permalink: /posts/2019/08/hotstuff-three-chain-rules/
+date: 2019-08-01 00:00:00 -07:00
+permalink: "/posts/2019/08/hotstuff-three-chain-rules/"
 tags:
-  - BFT
-  - consensus
-  - hotstuff
+- BFT
+- consensus
+- hotstuff
 ---
 
 _Renewed interest in the Blockchain world on a long standing problem of asynchronous Byzantine Fault Tolerant (BFT) Consensus focuses on the following scaling challenges:_
