@@ -607,4 +607,4 @@ which defined "Differential-Order Fairness":
 
 #### Acknowledgements
 
-*Many thanks to [Mahimna Kelkar](https://www.cs.cornell.edu/~mahimna/) and [Oded Naor](https://www.odednaor.work/home) for the comments that helped improve this post.*
+*Many thanks to [Soumya Basu](http://www.soumyabasu.com/), [Mahimna Kelkar](https://www.cs.cornell.edu/~mahimna/) and [Oded Naor](https://www.odednaor.work/home) for the comments that helped improve this post.*
