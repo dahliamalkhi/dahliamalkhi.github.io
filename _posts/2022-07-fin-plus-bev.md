@@ -1,6 +1,6 @@
 ---
 title: 'Another Advantage of DAG-based BFT: BEV Resistance'
-date: 2022-07-01
+date: 2022-07-11
 permalink: "/posts/2022/07/dag-fo/"
 header:
   teaser: "/images/share-expose-1.png"
