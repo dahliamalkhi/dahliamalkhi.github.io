@@ -15,7 +15,7 @@ tags:
 
 Authors: Dahlia Malkhi and Pawel Szalachowski.
 
-<img src="/images/FIN/SWARMING-animate-2.gif" />
+<img src="/images/share-expose-1.png" />
 
 ## Synopsis
 
