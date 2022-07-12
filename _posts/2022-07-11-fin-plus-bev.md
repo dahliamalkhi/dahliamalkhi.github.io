@@ -27,7 +27,7 @@ into DAG-based BFT Consensus protocols to prevent BEV exploits.
 
 The first line of BEV defense is ["Blind Order-Fairness"](https://arxiv.org/pdf/2203.11520.pdf).
 The idea is for users to send their transactions to Consensus parties encrypted,
-such that honest parties must be engaged to open the decryption key. 
+such that honest parties must be involved in opening the decryption key. 
 Consensus parties commit to a blind order of transactions first, and only later open the transactions.
 We discuss how to leverage the DAG structure to achieve blind ordering BEV protection in a simple and efficient manner.
 Notably, 
