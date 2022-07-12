@@ -419,7 +419,7 @@ shares from later transactions without revealing shares for already-ordered
 ones.
 
 **A note on Share Certification.**
-In lieu of share verification information, in symmetric encryption,
+In lieu of share verification information in SS-share(),
 a sender needs to certify shares so that parties cannot tamper with them.
 
 A naive way would be for the sender to simply sign every share.
