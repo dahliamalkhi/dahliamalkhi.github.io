@@ -59,10 +59,12 @@ rising phenomena of BEV professionalization, where an entire ecosystem of BEV
 exploitation, comprising of BEV opportunity "searchers" and collaborating
 miners, has arisen.
 
-BEV is a measure introduced by Daian et al. in
+Daian et al. introduced a measure in
 [[Flash Boys 2.0, S&P 2020]](https://arxiv.org/pdf/1904.05234.pdf)
 of the _"profit that can be made through including, excluding, or re-ordering transactions within blocks"_.
-It is related to and replaces a previously coined measure called miner/maximal extractable value (MEV).
+The original work called the measure miner extractable value (MEV), which was later
+extended by blockchain extractable value (BEV) [[Qin et al., S&P 2022]](https://arxiv.org/abs/2101.05511), to
+include other forms of attacks, not necessarily performed by miners.
 [[MEV-explore]](https://explore.flashbots.net/) estimates the amount of BEV
 extracted on Ethereum since the 1st of Jan 2020 to be close to $700M. However,
 it is safe to assume that the total BEV extracted is much higher, since
