@@ -350,7 +350,7 @@ Can we have the best of both worlds, seamless Decipherability of threshold crypt
 Enter **Fino**,
 an embedding of Blind Order-Fairness in DAG-based BFT Consensus
 that leverages the DAG structure to completely forego the need for share verification,
-users fast secret-sharing during steady-state,
+works with (fast) secret-sharing during steady-state,
 and falls back to threshold crypto during a period of network instability.
 That is, Fino works without VSS and is optimistically fast.
 Importantly, in Fino the DAG transport does not need to be materially modified.
