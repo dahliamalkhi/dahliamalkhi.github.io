@@ -355,8 +355,8 @@ and falls back to threshold crypto during a period of network instability.
 That is, Fino works without VSS and is optimistically fast.
 Importantly, in Fino the DAG transport does not need to be materially modified.
 
-The key insight is to use the DAG structure to drive a unique SS-combining with zero overhead.
-After a blind ordering decision is made in a view, a proposal in a succeeding view implicitly determines a unique decryption by those shares that have been revealed in its causal past.
+The key insight is to use the DAG structure to drive unique SS-combining with zero overhead.
+More specifically, after a blind ordering decision is made in a view, a proposal in a succeeding view implicitly determines a unique decryption by those shares that have been revealed in its causal past.
 
 To build Fino, we wanted a simple baseline DAG-BFT algorithmic foundation, so we chose
 [[Fin, 2022]](https://dahliamalkhi.github.io/posts/2022/06/dag-bft/), hence the name
