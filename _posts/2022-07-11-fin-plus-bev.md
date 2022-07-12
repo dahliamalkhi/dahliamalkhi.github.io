@@ -406,7 +406,7 @@ it determines a unique decryption for every transaction `tx` in the causal past 
 
 Note that above, `txt` could be from views earlier than view(r) if they haven't been opened already.
 
-The commit rule ensures that when a transaction is opened, it has a unique decryption.
+The Opening rule ensures that when a transaction is opened, it has a unique decryption.
 For example, a deterministic decryption rule may be:
 decrypt transactions in commit order using SS-combine() shares, if existing, using the F+1 lowest parties whose certified revealed shares
 are in the causal past. Otherwise, use any F+1 D() shares.
