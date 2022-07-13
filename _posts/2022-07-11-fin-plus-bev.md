@@ -359,6 +359,7 @@ Importantly, in Fino the DAG transport does not need to be materially modified.
 
 The key insight is to use the DAG structure to drive unique SS-combining with zero overhead.
 More specifically, after a blind ordering decision is made in a view, a proposal in a succeeding view implicitly determines a unique decryption by those shares that have been revealed in its causal past.
+During periods of synchrony, transactions that were committed blindly to the total order will be opened within three network latencies following the commit.
 
 To build Fino, we wanted a simple baseline DAG-BFT algorithmic foundation, so we chose
 [[Fin, 2022]](https://dahliamalkhi.github.io/posts/2022/06/dag-bft/), hence the name
@@ -406,7 +407,7 @@ it determines a unique decryption for every transaction `tx` in the causal past 
    * `tx` is committed but not yet opened, <br>
    * `tx` has F+1 certified shares revealed in the causal past of `proposal(r+1)`,
 
-Note that above, `txt` could be from views earlier than view(r) if they haven't been opened already.
+Note that above, `tx` could be from views earlier than view(r) if they haven't been opened already.
 
 The Opening rule ensures that when a transaction is opened, it has a unique decryption.
 For example, a deterministic decryption rule may be:
@@ -420,7 +421,16 @@ The rule also prevents other corner cases, like when bad parties reveal
 shares from later transactions without revealing shares for already-ordered
 ones.
 
-**A note on Share Certification.**
+**A Note on Latency.**
+During periods of stability, there are no complaints about honest leaders by any honest party. 
+If tx is proposed by an honest leader in view(r), it will receive F+1 votes and become committed within one network latency.
+Within one more network latency, 
+every honest party will post a message containing a share for tx. Out of 2F+1 shares, either F+1 are SS-combine() shares or D() shares. 
+Thereafter, whenever a leader proposal which references these 2F+1 shares commits, everyone will be able to open tx. 
+In a happy path, opening happens three network latencies after a commit: one for revealing shares, one for a leader proposal following the shares, and one to commit the proposal.
+
+
+**A Note on Share Certification.**
 In lieu of share verification information in SS-share(),
 a sender needs to certify shares so that parties cannot tamper with them.
 
