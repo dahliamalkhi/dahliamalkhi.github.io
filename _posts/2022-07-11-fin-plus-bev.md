@@ -426,7 +426,7 @@ During periods of stability, there are no complaints about honest leaders by any
 If tx is proposed by an honest leader in view(r), it will receive F+1 votes and become committed within one network latency.
 Within one more network latency, 
 every honest party will post a message containing a share for tx. Out of 2F+1 shares, either F+1 are SS-combine() shares or D() shares. 
-Thereafter, whenever a leader proposal which references these 2F+1 shares commits, everyone will be able to open tx. 
+Thereafter, whenever a leader proposal references 2F+1 shares commits (in a layered DAG, the leader after next will), everyone will be able to open tx. 
 In a happy path, opening happens three network latencies after a commit: one for revealing shares, one for a leader proposal following the shares, and one to commit the proposal.
 
 
