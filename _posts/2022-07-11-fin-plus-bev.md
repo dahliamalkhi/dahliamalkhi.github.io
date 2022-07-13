@@ -421,7 +421,7 @@ The rule also prevents other corner cases, like when bad parties reveal
 shares from later transactions without revealing shares for already-ordered
 ones.
 
-**A Note on Latency.**
+**A Note on Happy-path Latency.**
 During periods of stability, there are no complaints about honest leaders by any honest party. 
 If tx is proposed by an honest leader in view(r), it will receive F+1 votes and become committed within one network latency.
 Within one more network latency, 
