@@ -25,7 +25,7 @@ is enabling simple and smooth prevention of
 [blockchain extractable value (BEV) exploits](https://arxiv.org/pdf/1904.05234.pdf).
 This post describes how to integrate "Order-Fairness"
 into DAG-based BFT Consensus protocols to prevent BEV exploits.
-For more details, refers to our recent manuscript [**Maximal Extractable Value (MEV) Protection on a DAG**](https://arxiv.org/abs/2208.00940).
+For more details, refer to our recent manuscript [_**"Maximal Extractable Value (MEV) Protection on a DAG"**_](https://arxiv.org/abs/2208.00940).
 
 The first line of BEV defense is ["Blind Order-Fairness"](https://arxiv.org/pdf/2203.11520.pdf).
 The idea is for users to send their transactions to Consensus parties encrypted,
@@ -171,7 +171,7 @@ Fino achieves the best of both worlds, seamless blind ordering of threshold cryp
 * The last section adds a discussion on [**Achieving Time-Based Order-Fairness**](#time-based).
 
 A recent ArXiv manuscript provides more detail and rigor, see
-[**Maximal Extractable Value (MEV) Protection on a DAG**](https://arxiv.org/abs/2208.00940).
+[_**"Maximal Extractable Value (MEV) Protection on a DAG"**_](https://arxiv.org/abs/2208.00940).
 
 <span id="quick-refresher"> </span>
 ## Quick refresher on DAG-based BFT Consensus and Fin
