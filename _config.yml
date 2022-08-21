@@ -1,137 +1,20 @@
 ---
 title: Dahlia Malkhi / PhD
-timezone: America/Los_Angeles
-collections:
-  posts:
-    title: Posts
-    output: true
-  uploads:
-    title: Uploads
-    output: true
-defaults:
-- scope:
-    path: ''
-    type: posts
-  values:
-    layout: single
-    author_profile: true
-    read_time: false
-    comments: 
-    share: true
-    related: true
-    show_date: true
-- scope:
-    path: ''
-    type: pages
-  values:
-    layout: single
-    author_profile: true
-remote_theme: mmistakes/minimal-mistakes@4.24.0
+description: >-
+Personal homepage of Dahlia Malkhi, Chief Research Officer at Chainlink Labs
 minimal_mistakes_skin: default
-locale: en-US
-title_separator: "-"
-name: Dahlia Malkhi
-description: Personal homepage of Dahlia Malkhi, Chief Research Officer at Chainlink
-  Labs
-url: https://dahliamalkhi.github.io
-baseurl: ''
-repository: dahliamalkhi/dahliamalkhi.github.io
-teaser: 
-breadcrumbs: false
-words_per_minute: 160
-future: true
-read_more: disabled
-talkmap_link: false
-comments:
-  provider: disqus
-  disqus:
-    shortname: 
-  discourse:
-    server: 
-  facebook:
-    appid: 
-    num_posts: 
-    colorscheme: 
-staticman:
-  allowedFields:
-  - name
-  - email
-  - url
-  - message
-  branch: gh-pages
-  commitMessage: New comment.
-  filename: comment-{@timestamp}
-  format: yml
-  moderation: true
-  path: _data/comments/{options.slug}
-  requiredFields:
-  - name
-  - email
-  - message
-  transforms:
-    email: md5
-  generatedFields:
-    date:
-      type: date
-      options:
-        format: iso8601
-atom_feed:
-  path: 
-google_site_verification: 
-bing_site_verification: 
-alexa_site_verification: 
-yandex_site_verification: 
-twitter:
-  username: 
-  facebook: 
-  app_id: 
-  publisher: 
-og_image: 
-social:
-  type: 
-  name: 
-  links: 
-analytics:
-  provider: google-universal
-  google:
-    tracking_id: 
-author:
-  name: Dahlia Malkhi
-  avatar: "/images/dahliabest.jpg"
-  bio: Chief Research Officer of Chainlink Labs
-  location: California
-  employer: 
-  pubmed: 
-  googlescholar: http://scholar.google.com/citations?user=A_VZ7N0AAAAJ&hl=en
-  email: 
-  researchgate: 
-  uri: 
-  bitbucket: 
-  codepen: 
-  dribbble: 
-  flickr: 
-  facebook: 
-  foursquare: 
-  github: dahliamalkhi
-  google_plus: 
-  keybase: 
-  instagram: 
-  impactstory: 
-  lastfm: 
-  linkedin: dahlia-malkhi-8b836a5
-  orcid: 
-  pinterest: 
-  soundcloud: 
-  stackoverflow: 
-  steam: 
-  tumblr: 
-  twitter: dahlia_malkhi
-  vine: 
-  weibo: 
-  xing: 
-  youtube: 
-  wikipedia: 
-  dblp: https://dblp.uni-trier.de/pers/m/Malkhi:Dahlia.html
+search: true
+
+# Build settings
+markdown: kramdown
+remote_theme: mmistakes/minimal-mistakes@4.24.0
+# Outputting
+permalink: /:categories/:title/
+paginate: 15 # amount of posts to show
+paginate_path: /page:num/
+timezone: America/Los_Angeles
+#timezone: # https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+
 include:
 - ".htaccess"
 - _pages
@@ -150,9 +33,6 @@ exclude:
 - LICENSE
 - README
 - Rakefile
-- assets/js/_main.js
-- assets/js/plugins
-- assets/js/vendor
 - config
 - gulpfile.js
 - log
@@ -163,13 +43,70 @@ exclude:
 keep_files:
 - ".git"
 - ".svn"
-encoding: utf-8
-markdown_ext: markdown,mkdown,mkdn,mkd,md
-markdown: kramdown
-highlighter: rouge
-lsi: false
-excerpt_separator: "\n\n"
-incremental: false
+
+plugins:
+- jekyll-paginate
+- jekyll-sitemap
+- jekyll-gist
+- jekyll-feed
+- jekyll-redirect-from
+- jekyll-include-cache
+
+author:
+  name: Dahlia Malkhi
+  avatar: "/images/dahliabest.jpg"
+  bio: Chief Research Officer of Chainlink Labs
+  location: California
+  employer: 
+  pubmed: 
+  googlescholar: http://scholar.google.com/citations?user=A_VZ7N0AAAAJ&hl=en
+  email: 
+  researchgate: 
+  github: dahliamalkhi
+  linkedin: dahlia-malkhi-8b836a5
+  twitter: dahlia_malkhi
+  wikipedia: 
+  dblp: https://dblp.uni-trier.de/pers/m/Malkhi:Dahlia.html
+
+defaults:
+- scope:
+    path: ''
+    type: posts
+  values:
+    layout: single
+    author_profile: true
+    read_time: false
+    comments: 
+    share: true
+    related: true
+    show_date: true
+- scope:
+    path: ''
+    type: pages
+  values:
+    layout: single
+    author_profile: true
+locale: en-US
+title_separator: "-"
+
+category_archive:
+  type: liquid
+  path: /categories/
+tag_archive:
+  type: liquid
+  path: /tags/
+
+url: https://dahliamalkhi.github.io
+baseurl: ''
+repository: dahliamalkhi/dahliamalkhi.github.io
+teaser: 
+breadcrumbs: false
+
+collections:
+  posts:
+    title: Posts
+    output: true
+
 kramdown:
   input: GFM
   hard_wrap: false
@@ -179,54 +116,5 @@ kramdown:
   toc_levels: 1..6
   smart_quotes: lsquo,rsquo,ldquo,rdquo
   enable_coderay: false
-sass:
-  sass_dir: _sass
-  style: compressed
-permalink: "/:categories/:title/"
-plugins:
-- jekyll-paginate
-- jekyll-sitemap
-- jekyll-gist
-- jekyll-feed
-- jekyll-redirect-from
-- jekyll-include-cache
-whitelist:
-- jekyll-paginate
-- jekyll-sitemap
-- jekyll-gist
-- jekyll-feed
-- jemoji
-- jekyll-include-cache
-category_archive:
-  type: liquid
-  path: "/categories/"
-tag_archive:
-  type: liquid
-  path: "/tags/"
-compress_html:
-  clippings: all
-  ignore:
-    envs: development
 
-# Archives
-#  Type
-#  - GitHub Pages compatible archive pages built with Liquid ~> type: liquid (default)
-#  - Jekyll Archives plugin archive pages ~> type: jekyll-archives
-#  Path (examples)
-#  - Archive page should exist at path when using Liquid method or you can
-#    expect broken links (especially with breadcrumbs enabled)
-#  - <base_path>/tags/my-awesome-tag/index.html ~> path: /tags/
-#  - <base_path>/categories/my-awesome-category/index.html ~> path: /categories/
-#  - <base_path>/my-awesome-category/index.html ~> path: /
-category_archive:
-  type: liquid
-  path: /categories/
-tag_archive:
-  type: liquid
-  path: /tags/
-
-# Liquid
-strict_front_matter: true
-liquid:
-  error_mode: strict
 
