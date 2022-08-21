@@ -101,10 +101,10 @@ repository: dahliamalkhi/dahliamalkhi.github.io
 teaser: 
 breadcrumbs: false
 
-collections:
-  posts:
-    title: Posts
-    output: true
+#collections:
+#  posts:
+#    title: Posts
+#    output: true
 
 kramdown:
   input: GFM
