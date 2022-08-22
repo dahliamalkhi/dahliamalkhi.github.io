@@ -97,17 +97,6 @@ category_archive:
 tag_archive:
   type: liquid
   path: /tags/
-# https://github.com/jekyll/jekyll-archives
-jekyll-archives:
-  enabled:
-    - categories
-    - tags
-#   layouts:
-#     category: archive-taxonomy
-#     tag: archive-taxonomy
-#   permalinks:
-#     category: /categories/:name/
-#     tag: /tags/:name/
 
 url: https://dahliamalkhi.github.io
 baseurl: ''
@@ -115,10 +104,10 @@ repository: dahliamalkhi/dahliamalkhi.github.io
 teaser: 
 breadcrumbs: false
 
-#collections:
-#  posts:
-#    title: Posts
-#    output: true
+collections:
+  posts:
+    title: Posts
+    output: true
 
 kramdown:
   input: GFM
