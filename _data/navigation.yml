@@ -28,7 +28,7 @@ main:
 #    - title: "Academic-descendants"
 #      url: /descendants/
 posts:
-  - title: "Posts:"
+  - title: "More posts:"
     image: "/images/CA-3FPLUS1.jpg"
     image_alt: "Blockchain Foundations"
     children:
