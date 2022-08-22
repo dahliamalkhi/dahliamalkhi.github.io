@@ -8,7 +8,7 @@ main:
 
 my-work:
   - title: "My work"
- children:  
+  children:  
     - title: "Short bio"
       url: /
 
@@ -26,6 +26,3 @@ my-work:
   
     - title: "Academic-descendants"
       url: /descendants/
-      
-  
-  
