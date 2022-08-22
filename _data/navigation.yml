@@ -1,25 +1,25 @@
 # main links links
 main:
   - title: "Blog"
-    url: /posts/
+    url: /tags/
     
+  - title: "Profile"
+    url: /
+
+my-work:
+  - title: "My work"
+ children:  
+    - title: "Short bio"
+      url: /
+
+  - title: "About me"
+    url: /techprofile/
+
   - title: "Books"
     url: /books/    
 
   - title: "Talks"
     url: /talks/    
-
-#  - title: "Teaching"
-#    url: /teaching/    
-    
-#  - title: "Portfolio"
-#    url: /portfolio/
-        
-  - title: "Short-bio"
-    url: /
-
-  - title: "Tech-profile"
-    url: /techprofile/
     
   - title: "Publications"
     url: /publications/
@@ -27,5 +27,5 @@ main:
   - title: "Academic-descendants"
     url: /descendants/
     
-#  - title: "Guide"
-#    url: /markdown/
+
+
