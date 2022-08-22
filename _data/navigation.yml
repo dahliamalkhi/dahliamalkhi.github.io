@@ -6,9 +6,9 @@ main:
   - title: "Profile"
     url: /
 
-my-work:
-  - title: "My work"
-  children:  
+#my-work:
+#  - title: "My work"
+#  children:  
     - title: "Short bio"
       url: /
 
