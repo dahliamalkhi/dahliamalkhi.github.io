@@ -3,8 +3,7 @@ title: Flexible Byzantine Fault Tolerance
 date: 2019-12-01 00:00:00 -08:00
 permalink: "/posts/2019/9/flexible-bft/"
 tags:
-- consensus
-- BFT
+- Consensus
 header:
   teaser: "/images/compare.png"
 ---

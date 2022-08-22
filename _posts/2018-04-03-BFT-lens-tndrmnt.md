@@ -3,8 +3,8 @@ title: 'The BFT lens: Tendermint'
 date: 2018-04-03 00:00:00 -07:00
 permalink: "/posts/2018/04/BFT-lens-tndrmnt/"
 tags:
-- BFT
-- consensus
+- Blockchain
+- Consensus
 ---
 
 This is the second post  discussing: ![title.png](/images/title1.png)

@@ -5,12 +5,9 @@ permalink: "/posts/2022/07/dag-fo/"
 header:
   teaser: "/images/share-expose-1.png"
 tags:
-  - blockchain
+  - Blockchain
   - DAG
   - Consensus
-  - BEV
-  - Fair ordering
-  - BFT
 classes: wide
 ---
 
