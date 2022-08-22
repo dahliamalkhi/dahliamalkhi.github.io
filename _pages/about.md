@@ -5,7 +5,7 @@ excerpt: dahlia malkhi -- profile and a short bio
 author_profile: true
 header:
   overlay_image: "/images/CA-3FPLUS1.jpg"
-  overlay_filter: rgba(0, 47, 108, 0.5)
+  overlay_filter: rgba(0, 47, 108, 0.8)
   caption: "photo credit: Ted Yin"
 #redirect_from:
 #- "/about.html"
