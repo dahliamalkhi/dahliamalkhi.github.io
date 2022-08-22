@@ -5,12 +5,12 @@ main:
 
   - title: "Profile"
     url: /
+    children:  
+      - title: "Short bio"
+        url: /
 
 #my-work:
 #  - title: "My work"
-#  children:  
-#    - title: "Short bio"
-#      url: /
 #
 #    - title: "About me"
 #      url: /techprofile/
