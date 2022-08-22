@@ -5,7 +5,7 @@ permalink: "/posts/2018/06/nevetheless-book/"
 tags:
 - Book
 category:
-- announcement
+- announcements
 ---
 
 I was introduced to the beauty of math by my high school Russian math teacher, Mr Gershovits. He taught us not just math, but the pleasure of grappling with math challenges.

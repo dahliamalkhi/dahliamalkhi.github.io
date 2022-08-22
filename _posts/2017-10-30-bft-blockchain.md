@@ -6,7 +6,7 @@ tags:
 - Blockchain
 - Consensus
 category:
-- tutorial
+- tutorials
 ---
 
 In the early 2000’s, a group of activists advocating the wide-spread use of cryptography and privacy-enhancing technologies were engaging over the `cypherpunks’ mailing-list in an effort to create an anonymous, monitor-free digital cash. Step by step, they jointly built the ingredients that eventually led to the emergence of Bitcoin in 2009.

@@ -6,7 +6,7 @@ tags:
 - Blockchain
 - Consensus
 category:
-- tutorial
+- tutorials
 ---
 
 This is the second post  discussing: ![title.png](/images/title1.png)

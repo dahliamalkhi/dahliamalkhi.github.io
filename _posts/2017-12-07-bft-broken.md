@@ -5,7 +5,7 @@ permalink: "/posts/2017/12/bft-broken"
 tags:
 - Consensus
 category:
-- announcement
+- announcements
 ---
 
 Over a decade of improvements to the seminal PBFT work have turned out to have safety or liveness issues, as demonstrated in a recent ArXiv note we posted:

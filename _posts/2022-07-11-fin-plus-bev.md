@@ -10,7 +10,7 @@ tags:
   - Consensus
 category:
 - new research
-- tutorial
+- tutorials
 ---
 
 Authors: Dahlia Malkhi and Pawel Szalachowski.

@@ -8,7 +8,7 @@ tags:
 header:
   teaser: "/images/streamlet1.png"
 category:
-- tutorial
+- tutorials
 ---
 
 Authors: Shir Cohen and Dahlia Malkhi
