@@ -2,7 +2,7 @@
 main:
   - title: "Blog"
     url: /tags/
-    
+
   - title: "Profile"
     url: /
 
@@ -14,15 +14,15 @@ main:
 
     - title: "About me"
       url: /techprofile/
-  
+
     - title: "Books"
       url: /books/    
-  
+
     - title: "Talks"
       url: /talks/    
-      
+
     - title: "Publications"
       url: /publications/
-  
+
     - title: "Academic-descendants"
       url: /descendants/
