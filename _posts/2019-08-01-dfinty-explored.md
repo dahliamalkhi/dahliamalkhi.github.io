@@ -5,6 +5,8 @@ permalink: "/posts/2019/08/dfinty-explored"
 tags:
 - Blockchain
 - Consensus
+category:
+- Consensus Foundations of Blockchains
 ---
 
 Did you ever wonder what is the BFT consensus engine that drives Dfinity, is it new or known, and how can it be improved?

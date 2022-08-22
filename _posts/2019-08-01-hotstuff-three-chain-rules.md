@@ -6,6 +6,8 @@ tags:
 - Blockchain
 - Consensus
 - Hotstuff
+category:
+- Consensus Foundations of Blockchains
 ---
 
 _Renewed interest in the Blockchain world on a long standing problem of asynchronous Byzantine Fault Tolerant (BFT) Consensus focuses on the following scaling challenges:_

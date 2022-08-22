@@ -5,6 +5,8 @@ permalink: "/posts/2018/03/bft-lens-casper/"
 tags:
 - Blockchain
 - Consensus
+category:
+- Consensus Foundations of Blockchains
 ---
 
 Today I am going to overview a new algorithmic foundation called ‘[HotStuff the Linear, Optimal-Resilience, One-Message BFT Devil](https://arxiv.org/abs/1803.05069)’ (in short, HotStuff), developed jointly with my colleagues [Ittai Abraham](https://research.vmware.com/researchers/ittai-abraham) and [Guy Gueta](https://research.vmware.com/researchers/guy-golan-gueta), and harness it to explain the safety and liveness of [Casper the Friendly Finality Gadget](http://arxiv.org/abs/1710.09437).

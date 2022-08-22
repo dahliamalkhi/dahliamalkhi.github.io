@@ -5,6 +5,8 @@ permalink: "/posts/2018/04/BFT-lens-tndrmnt/"
 tags:
 - Blockchain
 - Consensus
+category:
+- Consensus Foundations of Blockchains
 ---
 
 This is the second post  discussing: ![title.png](/images/title1.png)

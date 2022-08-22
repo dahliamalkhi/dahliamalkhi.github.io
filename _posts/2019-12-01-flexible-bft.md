@@ -6,6 +6,8 @@ tags:
 - Consensus
 header:
   teaser: "/images/compare.png"
+category:
+- Foundations of Distribured Computing
 ---
 
 Author: [Kartik Nayak](https://users.cs.duke.edu/~kartik/)

@@ -7,6 +7,8 @@ tags:
 - Transaction Execution
 header:
   teaser: "/images/bstm-scene.png"
+category:
+- Consensus Foundations of Blockchains
 ---
 
 ![](/images/bstm-scene.png)

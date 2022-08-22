@@ -8,7 +8,8 @@ tags:
   - Blockchain
   - DAG
   - Consensus
-classes: wide
+category:
+- Consensus Foundations of Blockchains
 ---
 
 Authors: Dahlia Malkhi and Pawel Szalachowski.

@@ -7,6 +7,8 @@ tags:
 - Consensus
 header:
   teaser: "/images/streamlet1.png"
+category:
+- Consensus Foundations of Blockchains
 ---
 
 Authors: Shir Cohen and Dahlia Malkhi
