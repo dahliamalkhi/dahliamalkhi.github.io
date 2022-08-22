@@ -7,11 +7,11 @@ tags:
 - Transaction Execution
 header:
   teaser: "/images/bstm-scene.png"
+  overlay_image: "/images/bstm-scene.png"
+  overlay_filter: 0.5
 category:
 - new research
 ---
-
-![](/images/bstm-scene.png)
 
 [Block-STM](https://arxiv.org/pdf/2203.06871.pdf) is a recently announced technology for accelerating smart-contract execution, emanating from the 
 [Diem project](https://github.com/diem)
