@@ -4,7 +4,7 @@ main:
     url: /tags/
 
   - title: "Profile"
-    url: /
+#    url: /
     children:  
       - title: "Short bio"
         url: /
