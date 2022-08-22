@@ -4,7 +4,7 @@ permalink: "/about/"
 excerpt: dahlia malkhi -- profile and a short bio 
 author_profile: true
 header:
-  image: "/images/CA-3FPLUS1.jpg"
+  overlay_image: "/images/CA-3FPLUS1.jpg"
 #redirect_from:
 #- "/about.html"
 ---
