@@ -7,7 +7,7 @@ tags:
 header:
   teaser: "/images/compare.png"
 category:
-- Foundations of Distribured Computing
+- new research
 ---
 
 Author: [Kartik Nayak](https://users.cs.duke.edu/~kartik/)

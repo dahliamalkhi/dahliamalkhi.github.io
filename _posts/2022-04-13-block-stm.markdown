@@ -8,7 +8,7 @@ tags:
 header:
   teaser: "/images/bstm-scene.png"
 category:
-- Consensus Foundations of Blockchains
+- new research
 ---
 
 ![](/images/bstm-scene.png)

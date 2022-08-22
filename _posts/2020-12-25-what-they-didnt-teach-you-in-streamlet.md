@@ -8,7 +8,7 @@ tags:
 header:
   teaser: "/images/streamlet1.png"
 category:
-- Consensus Foundations of Blockchains
+- tutorial
 ---
 
 Authors: Shir Cohen and Dahlia Malkhi

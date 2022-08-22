@@ -6,7 +6,7 @@ tags:
 - Blockchain
 - Consensus
 category:
-- Consensus Foundations of Blockchains
+- tutorial
 ---
 
 Did you ever wonder what is the BFT consensus engine that drives Dfinity, is it new or known, and how can it be improved?

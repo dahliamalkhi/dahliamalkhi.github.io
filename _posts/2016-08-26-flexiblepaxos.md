@@ -5,7 +5,7 @@ permalink: "/posts/2016/08/flexible-paxos/"
 tags:
 - Consensus
 category:
-- Foundations of Distribured Computing
+- new research
 ---
 
 Summer was buzzing with intern activity at the  [VMware Research Group (VRG)](http://research.vmware.com/), working with all the research team and with David Tennenhouse, Chief Research Officer of VMware, and Chris Ramming, director of XLR8 and VMAP. Here I chose to share one story from our productive summer.

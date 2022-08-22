@@ -9,7 +9,8 @@ tags:
   - DAG
   - Consensus
 category:
-- Consensus Foundations of Blockchains
+- new research
+- tutorial
 ---
 
 Authors: Dahlia Malkhi and Pawel Szalachowski.

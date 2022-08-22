@@ -5,7 +5,7 @@ permalink: "/posts/2017/10/industrial-research-labs"
 tags:
 - Research
 category:
-- About Research Organizations 
+- misc
 ---
 
 Authors: Guy Singer and Dahlia Malkhi
