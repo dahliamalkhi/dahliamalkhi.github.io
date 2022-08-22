@@ -81,6 +81,8 @@ defaults:
     related: true
     show_date: true
     classes: wide
+    sidebar:
+      nav: "posts"
 - scope:
     path: ''
     type: pages
