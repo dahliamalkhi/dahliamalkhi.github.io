@@ -151,6 +151,6 @@ the Fairplay source code has been downloaded by hundreds of academic groups, and
 sparked in the past
 decade a wave of crypto-engineering projects which bring crypto theory into
 practice, including heavy crypto methods like oblivious RAM, ZK proofs and PCP.
-### [Books]({{ base_path }}/_pages/books.html)
-### [Talks]({{ base_path }}/_pages/talks.md)
-### [Academic descendants]({{ base_path }}/_pages/descendants.md)
+### [Books]({{ base_path }}/books/)
+### [Talks]({{ base_path }}/talks/)
+### [Academic descendants]({{ base_path }}/descendants/)
