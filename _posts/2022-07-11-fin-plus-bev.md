@@ -4,7 +4,8 @@ date: 2022-07-11
 permalink: "/posts/2022/07/dag-fo/"
 header:
   teaser: "/images/share-expose-1.png"
-  image: "/images/share-expose-1.png"
+  overlay_image: "/images/share-expose-1.png"
+  overlay_filter: 0.5
 tags:
   - Blockchain
   - DAG
