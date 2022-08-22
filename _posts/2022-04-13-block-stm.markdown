@@ -8,8 +8,8 @@ tags:
 header:
   teaser: "/images/bstm-scene.png"
   overlay_image: "/images/bstm-scene.png"
-  overlay_filter: 0.7
-excerpt: Block-STM is a parallel execution engine that enforces block pre-ordering combined with on-the-fly optimistic Software Transactional Memory
+  overlay_filter: (100, 0, 100, 0.7)
+excerpt: A parallel execution engine enforcing block pre-ordering, combined with on-the-fly optimistic Software Transactional Memory.
 category:
 - new research
 ---
