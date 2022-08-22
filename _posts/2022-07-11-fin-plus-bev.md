@@ -11,6 +11,7 @@ tags:
   - BEV
   - Fair ordering
   - BFT
+classes: wide
 ---
 
 Authors: Dahlia Malkhi and Pawel Szalachowski.
