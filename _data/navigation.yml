@@ -1,19 +1,18 @@
 # main links links
 main:
   - title: "Blog"
+    url: /posts/
+
+  - title: "Blog grouped-by-tags"
     url: /tags/
 
   - title: "Profile"
-#    url: /
     children:  
       - title: "Short bio"
         url: /
 
-#my-work:
-#  - title: "My work"
-#
-#    - title: "About me"
-#      url: /techprofile/
+     - title: "About me"
+       url: /techprofile/
 #
 #    - title: "Books"
 #      url: /books/    
