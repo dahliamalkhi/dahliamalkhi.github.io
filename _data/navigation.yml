@@ -19,11 +19,11 @@ main:
 #     - title: "Work Sampler"
 #       url: /techprofile/
 #
-   - title: "Books"
-     url: /books/    
-#
-   - title: "Talks"
-     url: /talks/    
+  - title: "Books"
+    url: /books/    
+
+  - title: "Talks"
+    url: /talks/    
 #
 #    - title: "Academic-descendants"
 #      url: /descendants/
