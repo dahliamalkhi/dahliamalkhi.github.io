@@ -3,25 +3,27 @@ main:
   - title: "Blog"
     url: /posts/
 
-  - title: "Blog grouped-by-tags"
-    url: /tags/
+  - title: "Blog grouped-by-categories"
+    url: /categories/
 
-  - title: "Profile"
-    children:  
-      - title: "Short bio"
-        url: /
+  - title: "About me"
+    url: /
 
-     - title: "About me"
-       url: /techprofile/
+   - title: "Publications"
+     url: /publications/
+
+
+#      - title: "Short bio"
+#        url: /
+#
+#     - title: "Work Sampler"
+#       url: /techprofile/
 #
 #    - title: "Books"
 #      url: /books/    
 #
 #    - title: "Talks"
 #      url: /talks/    
-#
-#    - title: "Publications"
-#      url: /publications/
 #
 #    - title: "Academic-descendants"
 #      url: /descendants/
