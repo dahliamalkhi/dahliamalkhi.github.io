@@ -3,8 +3,8 @@ title: About me
 permalink: "/about"
 excerpt: dahlia malkhi -- profile and a short bio 
 author_profile: true
-redirect_from:
-- "/about.html"
+#redirect_from:
+#- "/about.html"
 ---
 
 #### Short bio
