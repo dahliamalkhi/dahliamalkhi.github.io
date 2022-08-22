@@ -15,7 +15,7 @@ category:
 - tutorials
 ---
 
-Authors: Dahlia Malkhi and Pawel Szalachowski.
+Authors: Dahlia Malkhi and Pawel Szalachowski
 
 ## Synopsis
 
