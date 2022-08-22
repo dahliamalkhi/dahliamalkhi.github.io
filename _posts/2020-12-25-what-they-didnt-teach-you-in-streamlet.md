@@ -2,6 +2,7 @@
 title: What They Did not Teach you in Streamlet
 date: 2020-12-25 00:00:00 -08:00
 permalink: "/posts/2020/12/what-they-didnt-teach-you-in-streamlet/"
+excerpt: In this post, we explore Streamlet and some gaps it leaves.
 tags:
 - Blockchain
 - Consensus
