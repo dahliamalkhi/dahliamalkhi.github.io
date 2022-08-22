@@ -16,9 +16,6 @@ category:
 
 Authors: Dahlia Malkhi and Pawel Szalachowski.
 
-<!-- img src="/images/share-expose-1.png" />
-
-
 ## Synopsis
 
 Another advantage of a [DAG-based approach to BFT Consensus](https://dahliamalkhi.github.io/posts/2022/06/dag-bft/) 
