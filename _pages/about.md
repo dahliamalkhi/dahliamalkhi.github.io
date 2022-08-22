@@ -1,6 +1,6 @@
 ---
 title: About me
-permalink: "/about"
+permalink: "/about/"
 excerpt: dahlia malkhi -- profile and a short bio 
 author_profile: true
 #redirect_from:
@@ -151,6 +151,5 @@ the Fairplay source code has been downloaded by hundreds of academic groups, and
 sparked in the past
 decade a wave of crypto-engineering projects which bring crypto theory into
 practice, including heavy crypto methods like oblivious RAM, ZK proofs and PCP.
-### [Books]({{ base_path }}/books/)
-### [Talks]({{ base_path }}/talks/)
+
 ### [Academic descendants]({{ base_path }}/descendants/)
