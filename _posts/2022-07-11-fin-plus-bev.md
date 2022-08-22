@@ -5,7 +5,10 @@ permalink: "/posts/2022/07/dag-fo/"
 header:
   teaser: "/images/share-expose-1.png"
   overlay_image: "/images/share-expose-1.png"
-  overlay_filter: 0.5
+  overlay_filter: 0.7
+axcerpt: 
+This post describes how to integrate "Order-Fairness"
+into DAG-based BFT Consensus protocols to prevent BEV exploits.
 tags:
   - Blockchain
   - DAG
