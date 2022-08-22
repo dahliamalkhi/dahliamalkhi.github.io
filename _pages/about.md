@@ -3,7 +3,8 @@ title: About me
 permalink: "/about/"
 excerpt: dahlia malkhi -- profile and a short bio 
 author_profile: true
-image: CA-3FPLUS1.jpg
+header:
+  image: "CA-3FPLUS1.jpg"
 #redirect_from:
 #- "/about.html"
 ---

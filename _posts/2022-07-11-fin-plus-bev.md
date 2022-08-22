@@ -4,6 +4,7 @@ date: 2022-07-11
 permalink: "/posts/2022/07/dag-fo/"
 header:
   teaser: "/images/share-expose-1.png"
+  image: "/images/share-expose-1.png"
 tags:
   - Blockchain
   - DAG
@@ -15,7 +16,7 @@ category:
 
 Authors: Dahlia Malkhi and Pawel Szalachowski.
 
-<img src="/images/share-expose-1.png" />
+<!-- img src="/images/share-expose-1.png" />
 
 
 ## Synopsis
