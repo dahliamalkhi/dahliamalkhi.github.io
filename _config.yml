@@ -96,6 +96,10 @@ title_separator: "-"
 category_archive:
   type: liquid
   path: /categories/
+  values:
+    author_profile: false
+    sidebar:
+      nav: "posts"
 tag_archive:
   type: liquid
   path: /tags/
