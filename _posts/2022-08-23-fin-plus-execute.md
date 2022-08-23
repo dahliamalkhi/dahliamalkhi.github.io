@@ -1,7 +1,7 @@
 ---
 title: 'Execution and Parallelism for DAG-based BFT Consensus'
 date: 2022-08-23 00:00:00 -07:00
-# permalink: "/posts/2022/08/dag-exec/"
+permalink: "/posts/2022/08/dag-exec/"
 tags:
 - Blockchain
 - DAG
