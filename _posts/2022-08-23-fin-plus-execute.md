@@ -11,9 +11,7 @@ header:
   overlay_image: "/images/DAG/caveman-pushing-cart.png"
   overlay_filter:  0.7
   caption: "license: iStock"
-excerpt: A system is only as fast as it slowest bottleneck.
-This post presents paradigms for high-throughput **transaction execution** over a DAG, meeting recent advances in scaling 
-the core Consensus engine in blockchains via a DAG-based approach.
+excerpt: A system is only as fast as it slowest bottleneck. This post presents paradigms for high-throughput **transaction execution** over a DAG, meeting recent advances in scaling the core Consensus engine in blockchains via a DAG-based approach.
 category:
 - tutorial
 ---
