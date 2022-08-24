@@ -48,7 +48,7 @@ Performing the execution asynchronously is simple and is outside the critical pa
 
 #### Option #3: leader-proposed execution
 
-This option can work with DAG-based BFT Consensus protocols for the partial-synchrony model like (the first part of) [Bullshark](https://arxiv.org/abs/2201.05677%22) and [Fin](https://dahliamalkhi.github.io/posts/2022/06/dag-bft/). It may also work for [Tusk](https://arxiv.org/abs/2105.11827) but is potentially inefficient. It works as follows.
+This option can work with DAG-based BFT Consensus protocols for the partial-synchrony model like (the first part of) [Bullshark](https://arxiv.org/abs/2201.05677%22) and [Fin](https://dahliamalkhi.github.io/posts/2022/06/dag-bft/). It may also work for [Tusk](https://arxiv.org/abs/2105.11827) and (full) Bullshark but is potentially inefficient. It works as follows.
 
 When a leader Consensus proposal is embedded in a DAG, the leader already knows what is included in a proposal (namely, the causal history of the proposal). Therefore, despite all the block proposals going on in parallel, the leader can preprocess the outcome of executing the sequence on the basis of the proposed block and bring it to a vote. The leader includes the proposed outcome as a state commitment, and when Validators vote, they check and implicitly vote for the outcome as well.
 
