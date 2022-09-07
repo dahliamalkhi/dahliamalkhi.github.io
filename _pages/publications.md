@@ -11,12 +11,14 @@ author_profile: true
 
 -   *Maximal Extractable Value (MEV) Protection on a DAG*.
     Dahlia Malkhi, Pawel Szalachowski.
+    To appear at [CESC'22](https://cesc.io/).
+    ArXiv version:
     [https://arxiv.org/abs/2208.00940](https://arxiv.org/abs/2208.00940).
 
 -   *Block-STM: Scaling Blockchain Execution by Turning Ordering Curse to a Performance Blessing*.
     Rati Gelashvili, Alexander Spiegelman, Zhuolun Xiang, George Danezis, Zekun Li, Yu Xia, Runtian Zhou, Dahlia Malkhi.
     To appear at [ConsensusDay22](https://research.protocol.ai/sites/consensusday22/). 
-    Also available as ArXiv report, 
+    ArXiv version:
     [https://arxiv.org/abs/2203.06871](https://arxiv.org/abs/2203.06871).
 
 -   *Be Aware of Your Leaders*.
