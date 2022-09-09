@@ -25,7 +25,7 @@ is enabling simple and smooth prevention of
 [blockchain extractable value (BEV) exploits](https://arxiv.org/pdf/1904.05234.pdf).
 This post describes how to integrate "Order-Fairness"
 into DAG-based BFT Consensus protocols to prevent BEV exploits.
-For more details, refer to our recent manuscript [_**"Maximal Extractable Value (MEV) Protection on a DAG"**_](https://arxiv.org/abs/2208.00940).
+For more details, refer to our recent manuscript [_**"Maximal Extractable Value (MEV) Disperseion on a DAG"**_](https://arxiv.org/abs/2208.00940).
 
 The first line of BEV defense is ["Blind Order-Fairness"](https://arxiv.org/pdf/2203.11520.pdf).
 The idea is for users to send their transactions to Consensus parties encrypted,
@@ -171,7 +171,7 @@ Fino achieves the best of both worlds, seamless blind ordering of threshold cryp
 * The last section adds a discussion on [**Achieving Time-Based Order-Fairness**](#time-based).
 
 A recent ArXiv manuscript provides more detail and rigor, see
-[_**"Maximal Extractable Value (MEV) Protection on a DAG"**_](https://arxiv.org/abs/2208.00940).
+[_**"Maximal Extractable Value (MEV) Disperseion on a DAG"**_](https://arxiv.org/abs/2208.00940).
 
 <span id="quick-refresher"> </span>
 ## Quick refresher on DAG-based BFT Consensus and Fin
@@ -250,16 +250,17 @@ hence satisfying Blind Order-Fairness.
 
 To order transactions blindly,
 users choose a symmetric key to encrypt each transaction and broadcast the transaction encrypted to Consensus parties.
-Decrypting the transaction key ("tx-key") itself 
-requires a threshold greater than F of the parties to participate.
+
+Order-then-Reveal is implemented using three abstract functionalities to hide and open
+the transaction key ("tx-key") itself:
+**Disperse(tx-key), Reveal(tx-key), Reconstruct(tx-key)**.
+In Disperse(), the user shares tx-key with parties such that 
+a threshold greater than F of the parties is required to participate in reconstruction.
+In Reveal(), parties retrieve F+1 shares.
 Parties must withhold revealing decryption shares until after they observe the transaction's ordering committed.
+In Reconstruct(), parties produce a unique reconstruction of tx or reject it.
 
-The challenge with Blind Order-Fairness is that we want messages to enter the DAG encrypted
-and guarantee that later, parties can uniquely decipher them. 
-Hence, we need to add the following requirement to the DAG transport:
-
-**Decipherability:** If `deliver(m)` happens at an honest party, i.e., `m` is delivered into the local DAG of an honest party,
-then eventually `m` can be uniquely deciphered.
+The challenge with Blind Order-Fairness is enforcing a unique outcome once an ordering has been committed.
 
 <span id="strawman1"> </span>
 ### Strawman 1: Order-then-Reveal with Threshold Cryptography
@@ -267,16 +268,15 @@ then eventually `m` can be uniquely deciphered.
 It is straight-forward to support blind ordering using threshold encryption,
 such that a public encryption "E()" is known to users and the private decryption "D()" is shared (at setup time) among parties.
 
-To order transactions tx blindly using threshold encryption,
-a user first chooses a transaction-specific symmetric key tx-key and encrypts tx with it.
-It sends tx encrypted with tx-key to the Consensus parties and attaches E(tx-key), 
+For each tx, a user chooses a transaction-specific symmetric key tx-key and sends tx encrypted with it.
+To Disperse(tx-key), the user sends attaches E(tx-key), 
 the transaction key encrypted with the global threshold key.
 Once a transaction tx's ordering is committed, 
-every party immediately reveals its decryption share for D(tx-key),
+Reveal(tx-key) is implemented by every party generating its decryption share for D(tx-key),
 piggybacked on the DAG broadcast that causally follows the commit.
 Some threshold cryptography schemes allow to verify that a party is contributing a correct decryption share.
-A threshold of honest parties can always succeed in decrypting messages,
-hence Decipherability of a committed transaction is guaranteed as soon as F+1 honest messages causally follow the commit.
+A threshold of honest parties can always succeed in Reconstruct(tx-key) and try applying it to decrypt tx,
+hence by retrieving F+1 threshold shares, a unique outcome is guaranteed.
 
 The main drawback of threshold cryptography is that share verification and decryption are computationally heavy.  It takes an order of milliseconds per transaction in today's computing technology, as we show later in the article
 (see [Performance notes](#Performance)).
@@ -284,17 +284,14 @@ The main drawback of threshold cryptography is that share verification and decry
 <span id="strawman2"> </span>
 ### Strawman 2: Order-then-Reveal with Verifiable Secret-Sharing (VSS)
 
-Another way for users to share with Consensus parties transaction-specific symmetric keys tx-key 
+Another way for users Disperse(tx-key)
 is [[Shamir's secret sharing scheme, CACM 1979]](https://dl.acm.org/doi/pdf/10.1145/359168.359176).
 A sharing function "SS-share(tx-key)" is employed by users to send individual shares to each Consensus party, 
 such that F+1 parties can combine shares via "SS-combine()" to reconstruct tx-key.
 
 Combining shares is three orders of magnitude faster than threshold crypto and takes a few microseconds in today's computing environment
 (see [Performance notes](#Performance)).
-The challenge in the secret sharing scheme is that a bad user might send bogus shares to some parties, or not send shares to some parties at all.
-Furthermore, reconstructing the key from different subsets of parties might produce different keys.
-
-Thus, it is far less straight-forward to build Decipherability via secret sharing on top of a DAG:
+However, it is far less straight-forward to build Reveal() and Reconstruct() with secret-sharing on a DAG:
 
 1. When a transaction ordering becomes committed, revealing F+1 shares is not guaranteed even during periods of synchrony.
 In particular, there may be only F+1 honest parties with shares but F of them are "left behind" when the DAG grows.
@@ -308,13 +305,12 @@ In each layer of a DAG, participation by 2F+1 parties is guaranteed, but unfortu
 2. Conversely, if more than F+1 shares are revealed, combining different subsets could yield different "decryption" tx-keys
 if the user is bad. Hence, a transaction decryption might not be uniquely determined.
 
-**Decipherability with VSS.**
 One solution is to employ a VSS scheme, allowing F+1 parties 
 to construct missing shares on behalf of other parties, 
 as well as to verify that shares are consistent, 
 This enables the integration of secret sharing into the DAG broadcast protocol, but it requires modifying the DAG transport.
 
-**A DAG transport with Secret Sharing.**
+**A DAG transport with Verifiable Secret Sharing.**
 To ensure that a transaction that has been delivered into the DAG can be deciphered,
 a party should not acknowledge a message 
 unless it has retrieved its own individual shares for all the transactions referenced in the message and its causal past. 
@@ -352,19 +348,29 @@ Last, as noted above, in the DAG setting this requires integrating a share-recov
 <span id="Fino"> </span>
 ## Fino: Optimistically-Fast Blind Order-Fairness without VSS
 
-Can we have the best of both worlds, seamless Decipherability of threshold cryptography with the low latency of secret sharing?
+Can we have the best of both worlds, seamless Reveal/Reconstruct of threshold cryptography with the low latency of secret sharing?
 
 Enter **Fino**,
 an embedding of Blind Order-Fairness in DAG-based BFT Consensus
-that leverages the DAG structure to completely forego the need for share verification,
+that leverages the DAG structure to completely forego the need for share verification during dispersal,
 works with (fast) secret-sharing during steady-state,
 and falls back to threshold crypto during a period of network instability.
 That is, Fino works without VSS and is optimistically fast.
 Importantly, in Fino the DAG transport does not need to be materially modified.
-
-The key insight is to use the DAG structure to drive unique SS-combining with zero overhead.
-More specifically, after a blind ordering decision is made in a view, a proposal in a succeeding view implicitly determines a unique decryption by those shares that have been revealed in its causal past.
 During periods of synchrony, transactions that were committed blindly to the total order will be opened within three network latencies following the commit.
+
+To avoid verifying shares during Disperse (costly),
+we borrows a key insight from AVID-M (see [DispersedLedger](https://arxiv.org/pdf/2110.04371.pdf)), 
+namely verifying that the (entire) sharing was correct **post-reconstruction** (cheap).
+Importantly, 
+even when reconstruction using revealed shares happens to be successful, 
+if either the slow or the fast sharing was incorrect and fails post-reconstruction verification, 
+the transaction is simply rejected.
+More specifically, this works as follows.
+After ordering a batch of transactions is committed and F+1 shares are revealed,
+each party re-encodes opened transactions using both secret-sharing and threshold encryption and compares with two hashes:
+one is a Merkle-tree root hash of the SS shares, the second is the threshold-encryption hash of the symmetric key. If there is a mismatch, the transaction is rejected.
+
 
 To build Fino, we wanted a simple baseline DAG-BFT algorithmic foundation, so we chose
 [[Fin, 2022]](https://dahliamalkhi.github.io/posts/2022/06/dag-bft/), hence the name
@@ -381,14 +387,16 @@ Additionally, Fino never requires the DAG to wait for input that depends on Cons
 To order transactions tx blindly in Fino,
 a user first chooses (as before) a transaction-specific symmetric key tx-key and encrypts tx with it.
 
-Users share with Consensus parties transaction-specific symmetric keys tx-key twice.
-First, they use SS-share(tx-key) and send parties individual shares of tx-key.
-Second, as a fallback, they use E(tx-key) to encrypt tx-key with the global threshold public key.
+Disperse(tx-key) is implemented in two parts.
+First, a users applies SS-share(tx-key) to send parties individual shares of tx-key.
+Second, as a fallback, it sends parties E(tx-key).
 
-Once a transaction tx's ordering is committed, every party that holds a share for tx-key reveals it 
+Once a transaction tx's ordering is committed, Reveal(tx-key) has a fast track and a slow track. 
+In the fast track, every party that holds an SS-share for tx-key reveals it 
 piggybacked on the DAG broadcast that causally follows the decision.
 A party that doesn't hold a share for tx-key reveals a threshold key decryption share, 
 similarly piggybacked on a normal DAG broadcast that causally follows the commit.
+In the slow track, parties give up on waiting for SS-shares and reveal threshold key decryption shares even if they already revealed SS-shares.
 
 It is left to form agreement on a unique decryption.
 Luckily, we can embed deterministic agreement about how to decipher transactions into the DAG 
@@ -402,7 +410,7 @@ The differences between Fino and Fin are as follows:
 When parties observe that a transaction tx becomes committed, their next 
 DAG broadcast causally following the commit reveals shares of the decryption key tx-key in one of two forms:
 a party that holds a share for SS-combine(tx-key) reveals it,
-while a party that doesn't hold a share for SS-combine(tx-key) reveals a threshold share for D(tx-key).
+while a party that doesn't hold a share for SS-combine(tx-key) or give up waiting reveals a threshold share for D(tx-key).
 
 **TX Opening.**
 When a new leader enters view(r+1), it emits a proposal `proposal(r+1)` as usual.
@@ -413,25 +421,15 @@ it determines a unique decryption for every transaction `tx` in the causal past 
    * `tx` has F+1 certified shares revealed in the causal past of `proposal(r+1)`,
 
 Note that above, `tx` could be from views earlier than view(r) if they haven't been opened already.
+The unique opening or rejection of `tx` based on f+1 revealed shares is explained above.
 
-The Opening rule ensures that when a transaction is opened, it has a unique decryption.
-For example, a deterministic decryption rule may be:
-decrypt transactions in commit order using SS-combine() shares, if existing, using the F+1 lowest parties whose certified revealed shares
-are in the causal past. Otherwise, use any F+1 D() shares.
-The deterministic selection of decryption shares guarantees that parties end up
-with the same decrypted plaintext (note that a malicious client could send some
-number of invalid shares, causing decryption inconsistency -- some node would
-get a proper plaintext while some a pseudorandom string).
-The rule also prevents other corner cases, like when bad parties reveal
-shares from later transactions without revealing shares for already-ordered
-ones.
 
 **A Note on Happy-path Latency.**
 During periods of stability, there are no complaints about honest leaders by any honest party. 
 If tx is proposed by an honest leader in view(r), it will receive F+1 votes and become committed within one network latency.
 Within one more network latency, 
 every honest party will post a message containing a share for tx. Out of 2F+1 shares, either F+1 are SS-combine() shares or D() shares. 
-Thereafter, whenever a leader proposal references 2F+1 shares commits (in a layered DAG, the leader after next will), everyone will be able to open tx. 
+Thereafter, whenever a leader proposal references 2F+1 shares commits (in a layered DAG, the leader after next will), everyone will be able to apply Reconstruct(tx-key) and either open tx or reject it. 
 In a happy path, opening happens three network latencies after a commit: one for revealing shares, one for a leader proposal following the shares, and one to commit the proposal.
 
 
@@ -439,10 +437,12 @@ In a happy path, opening happens three network latencies after a commit: one for
 In lieu of share verification information in SS-share(),
 a sender needs to certify shares so that parties cannot tamper with them.
 
-A naive way would be for the sender to simply sign every share.
-A better way is for the sender to combine all shares in a Merkle tree, certify the root, and send with
-each share a proof of membership (i.e., a Merkle tree paths to the root);
-then parties need to check only one signature when they collect shares for reconstruction.
+The sender combines all shares in a Merkle tree, certifies the root, and sends with
+each share a proof of membership (i.e., a Merkle tree path to the root);
+parties need to check only one signature when they collect shares for reconstruction.
+After reconstruction, parties can re-encode the Merkle tree and verify it was generated correctly.
+
+To verify share-generation in the slow path, the sender additionally certifies E(tx-key), the threshold encryption of symmetric key used for encrypting the transaction.
 
 ### Scenario-by-scenario Walkthrough
 
