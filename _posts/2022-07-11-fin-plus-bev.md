@@ -360,7 +360,7 @@ Importantly, in Fino the DAG transport does not need to be materially modified.
 During periods of synchrony, transactions that were committed blindly to the total order will be opened within three network latencies following the commit.
 
 To avoid verifying shares during Disperse (costly),
-we borrows a key insight from AVID-M (see [DispersedLedger](https://arxiv.org/pdf/2110.04371.pdf)), 
+we borrow a key insight from AVID-M (see [DispersedLedger](https://arxiv.org/pdf/2110.04371.pdf)), 
 namely verifying that the (entire) sharing was correct **post-reconstruction** (cheap).
 Importantly, 
 even when reconstruction using revealed shares happens to be successful, 
