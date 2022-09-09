@@ -624,4 +624,4 @@ which defined "Differential-Order Fairness":
 
 #### Acknowledgements
 
-*Many thanks to [Soumya Basu](http://www.soumyabasu.com/), [Mahimna Kelkar](https://www.cs.cornell.edu/~mahimna/) and [Oded Naor](https://www.odednaor.work/home) for the comments that helped improve this post.*
+*Many thanks to [Soumya Basu](http://www.soumyabasu.com/), [Christian Cachin](https://crypto.unibe.ch/cc/), [Mahimna Kelkar](https://www.cs.cornell.edu/~mahimna/) and [Oded Naor](https://www.odednaor.work/home) for the comments that helped improve this post.*
