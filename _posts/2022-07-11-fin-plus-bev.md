@@ -25,7 +25,7 @@ is enabling simple and smooth prevention of
 [blockchain extractable value (BEV) exploits](https://arxiv.org/pdf/1904.05234.pdf).
 This post describes how to integrate "Order-Fairness"
 into DAG-based BFT Consensus protocols to prevent BEV exploits.
-For more details, refer to our recent manuscript [_**"Maximal Extractable Value (MEV) Disperseion on a DAG"**_](https://arxiv.org/abs/2208.00940).
+For more details, refer to our recent manuscript [_**"Maximal Extractable Value (MEV) Protection on a DAG"**_](https://arxiv.org/abs/2208.00940).
 
 The first line of BEV defense is ["Blind Order-Fairness"](https://arxiv.org/pdf/2203.11520.pdf).
 The idea is for users to send their transactions to Consensus parties encrypted,
@@ -171,7 +171,7 @@ Fino achieves the best of both worlds, seamless blind ordering of threshold cryp
 * The last section adds a discussion on [**Achieving Time-Based Order-Fairness**](#time-based).
 
 A recent ArXiv manuscript provides more detail and rigor, see
-[_**"Maximal Extractable Value (MEV) Disperseion on a DAG"**_](https://arxiv.org/abs/2208.00940).
+[_**"Maximal Extractable Value (MEV) Protection on a DAG"**_](https://arxiv.org/abs/2208.00940).
 
 <span id="quick-refresher"> </span>
 ## Quick refresher on DAG-based BFT Consensus and Fin
@@ -269,7 +269,7 @@ It is straight-forward to support blind ordering using threshold encryption,
 such that a public encryption "E()" is known to users and the private decryption "D()" is shared (at setup time) among parties.
 
 For each tx, a user chooses a transaction-specific symmetric key tx-key and sends tx encrypted with it.
-To Disperse(tx-key), the user sends attaches E(tx-key), 
+To Disperse(tx-key), the user attaches E(tx-key),
 the transaction key encrypted with the global threshold key.
 Once a transaction tx's ordering is committed, 
 Reveal(tx-key) is implemented by every party generating its decryption share for D(tx-key),
@@ -284,7 +284,7 @@ The main drawback of threshold cryptography is that share verification and decry
 <span id="strawman2"> </span>
 ### Strawman 2: Order-then-Reveal with Verifiable Secret-Sharing (VSS)
 
-Another way for users Disperse(tx-key)
+Another way for users to Disperse(tx-key)
 is [[Shamir's secret sharing scheme, CACM 1979]](https://dl.acm.org/doi/pdf/10.1145/359168.359176).
 A sharing function "SS-share(tx-key)" is employed by users to send individual shares to each Consensus party, 
 such that F+1 parties can combine shares via "SS-combine()" to reconstruct tx-key.
@@ -388,7 +388,7 @@ To order transactions tx blindly in Fino,
 a user first chooses (as before) a transaction-specific symmetric key tx-key and encrypts tx with it.
 
 Disperse(tx-key) is implemented in two parts.
-First, a users applies SS-share(tx-key) to send parties individual shares of tx-key.
+First, a user applies SS-share(tx-key) to send parties individual shares of tx-key.
 Second, as a fallback, it sends parties E(tx-key).
 
 Once a transaction tx's ordering is committed, Reveal(tx-key) has a fast track and a slow track. 
