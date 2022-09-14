@@ -11,8 +11,8 @@ category:
 
 authors: Dahlia Malkhi, Atsuki Momose, Ling Ren
 
-In this [post on blog.chain.link](https://blog.chain.link/instant-finality-in-byzantine-atomic-broadcast-under-unknown-dynamic-participation/),
-we expand our previous work in the Unknown/Dynamic participation model 
+Announcing our recent [post on blog.chain.link](https://blog.chain.link/instant-finality-in-byzantine-atomic-broadcast-under-unknown-dynamic-participation/),
+where we expand our previous work in the Unknown/Dynamic participation model 
 from 
 [**one-shot, binary** Byzantine agreement](https://blog.chain.link/instant-finality-in-byzantine-generals-with-unknown-and-dynamic-participation/) 
 to full Byzantine atomic broadcast. 
