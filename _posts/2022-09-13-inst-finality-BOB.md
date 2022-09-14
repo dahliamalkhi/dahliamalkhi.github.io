@@ -14,6 +14,6 @@ authors: Dahlia Malkhi, Atsuki Momose, Ling Ren
 In this [post on blog.chain.link](https://blog.chain.link/instant-finality-in-byzantine-atomic-broadcast-under-unknown-dynamic-participation/),
 we expand our previous work in the Unknown/Dynamic participation model 
 from 
-[**one-shot, binary** Byzantine agreement](https://blog.chain.link/instant-finality-in-byzantine-generals-with-unknown-and-dynamic-participation/). 
-to multi-valued consensus on a sequence of values, i.e., solve the Byzantine atomic broadcast (BAB) problem. 
+[**one-shot, binary** Byzantine agreement](https://blog.chain.link/instant-finality-in-byzantine-generals-with-unknown-and-dynamic-participation/) 
+to full Byzantine atomic broadcast. 
 Key properties of the solutions remain, including small constant (3-round) expected latency to finality and allowing an adversary to fluctuate Byzantine parties from round to round provided that two-thirds of the active participants are honest.
