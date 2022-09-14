@@ -12,8 +12,9 @@ category:
 authors: Dahlia Malkhi, Atsuki Momose, Ling Ren
 
 Announcing our recent [post on blog.chain.link](https://blog.chain.link/instant-finality-in-byzantine-atomic-broadcast-under-unknown-dynamic-participation/),
-where we expand our previous work in the Unknown/Dynamic participation model 
-from 
-[**one-shot, binary** Byzantine agreement](https://blog.chain.link/instant-finality-in-byzantine-generals-with-unknown-and-dynamic-participation/) 
+where we expand our 
+[previous work](https://blog.chain.link/instant-finality-in-byzantine-generals-with-unknown-and-dynamic-participation/) 
+in the Unknown/Dynamic participation model from 
+**one-shot, binary** Byzantine agreement
 to full **Byzantine atomic broadcast**. 
 Key properties of the solution remain, including small constant (3-round) expected latency to finality and allowing an adversary to fluctuate Byzantine parties from round to round provided that two-thirds of the active participants are honest.
