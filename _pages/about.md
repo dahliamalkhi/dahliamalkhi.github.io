@@ -11,14 +11,14 @@ header:
 #- "/about.html"
 ---
 
-#### Short bio
+# Short bio
 
 A research and innovation lead in broad aspects of reliability and security of distributed systems with focus on blockchains and advances in financial technology.
 Co-inventor of [HotStuff](https://arxiv.org/abs/1803.05069), co-founder and technical co-lead of [VMware blockchain](https://research.vmware.com/projects/vmware-blockchain), co-inventor of [Flexible Paxos](https://arxiv.org/abs/1608.06696) (the technology behind [Log Device](https://logdevice.io/docs/Consensus.html)), creator and tech lead of [CorfuDB](https://github.com/CorfuDB/CorfuDB) (a database-less database driving VMware’s NSX-T distributed control plane), and co-inventor of the [FairPlay project](https://www.cs.huji.ac.il/project/Fairplay/).
 
 Chief Research Officer of [Chainlink Labs](https://chainlinklabs.com/) since Q1/2022. From 2019 to 2022, served three roles in the Diem(Libra) project: CTO at the [Diem Association](https://www.diem.com/en-us/), Lead Maintainer of the [Diem open-source project](https://github.com/diem/diem), and Lead Researcher at [Novi](https://about.fb.com/news/2020/05/welcome-to-novi/). In 2014, after the closing of the Microsoft Research Silicon Valley lab, co-founded [VMware Research](https://octo.vmware.com/introduction-vrg/) and became a Principal Researcher at VMware until June 2019. Prior to that, over two decades of [research contributions](https://scholar.google.com/citations?user=A_VZ7N0AAAAJ&hl=en) spanning industrial research at Microsoft Research, 2004-2014, and at AT&T Labs, 1995-1999; and as a tenured Associate Professor of the Hebrew University of Jerusalem, 1999-2007. 
 
-#### Selected academic roles and distinctions:
+# Selected academic roles and distinctions:
 
 -   [IEEE TCDP Outstanding Technical Achievement Award](https://tc.computer.org/tcdp/awardrecipients/), 2021.
 -   Advisory board member of [Cryptoeconomic Systems](https://cryptoeconomicsystems.pubpub.org/), 2019-present.
@@ -30,7 +30,7 @@ Chief Research Officer of [Chainlink Labs](https://chainlinklabs.com/) since Q1/
 -   German-Israeli Foundation (G.I.F.) Young Scientist career award, 2002.
 -   Program chair for [Usenix ATC 2019](https://www.usenix.org/conferences/byname/131), [LADIS 2012](http://ladisworkshop.org/) , [Locality 2007](http://research.microsoft.com/en-us/um/people/moscitho/locality/), [PODC 2006](http://www.podc.org/podc2006/), [Locality 2005](http://www.mimuw.edu.pl/~disc2005/index.php?page=workshops) and [DISC 2002](http://www.disc-conference.org/disc2002/index.html).
 
-## Technology Impact
+# Technology Impact
 
 For over two decades, my work has been straddling by choice between foundational and applied research. 
 I published over 150 papers; recent ones are listed on my homepage, DBLP
@@ -39,8 +39,8 @@ keeps track of the rest.
 I was fortunate to bring several scientific results into fruition within leading industrial platforms. 
 Below, I tell the stories of four technologies I participated in creating.
 
-### HotStuff and DiemBFT
-#### Co-Inventor and Technical Lead, at VMware 2016, Diem(Libra) 2019
+## HotStuff and DiemBFT
+### Co-Inventor and Technical Lead, at VMware 2016, Diem(Libra) 2019
 
 Renewed interest in the Blockchain world on scaling and robustifying the long standing problem of
 asynchronous Byzantine Fault Tolerant (BFT) Consensus. 
@@ -74,8 +74,8 @@ linearity, but (and perhaps mostly) due to its simplicity and developer-friendly
 Diem(Libra) adopted it to drive the blockchain infrastructure, as did (that we know of) Flow, Celo,
 and Cypherium. 
 
-### Flexible Paxos
-#### Co-inventor, at VMware 2016
+## Flexible Paxos
+### Co-inventor, at VMware 2016
 
 In the summer of 2016, I hosted a research intern named Heidi Howard from
 Cambridge, UK. I told her about the CorfuDB protocol and encouraged her to think
@@ -104,8 +104,8 @@ as is
  of YouTube's distributed MySQL backbone.
  
 
-### CorfuDB
-#### Initiator and Technical Lead, at Microsoft 2012 and VMware 2014
+## CorfuDB
+### Initiator and Technical Lead, at Microsoft 2012 and VMware 2014
 
 In 2012, [Phil Bernstein](https://en.wikipedia.org/wiki/Phil_Bernstein) approached me at Microsoft Research with the following
 observation. RAM has grown cheap/large enough to hold a complete database index
@@ -138,8 +138,8 @@ At Facebook, CorfuDB was re-engineered in
 You might wonder what happened to Phil's in-memory fully replicated DB. Several years later, it became the backbone of the SQL Azure cloud database.
 
 
-### Fairplay
-#### Co-Inventor at Hebrew University of Jerusalem, 2004
+## Fairplay
+### Co-Inventor at Hebrew University of Jerusalem, 2004
 
 In 2004, Noam Nisan and I asked ourselves whether cryptographic primitives which
 were considered completely impractical are actually becoming practical. With my 
