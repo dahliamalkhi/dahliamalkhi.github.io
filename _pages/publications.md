@@ -9,6 +9,13 @@ author_profile: true
 
 #### 2022
 
+-   *Byzantine Consensus under Fully Fluctuating Participation*. 
+    Dahlia Malkhi, Atsuki Momose, Ling Ren. 
+    Under submission. 
+    This whitepaper expands on 
+["Instant Finality in **Byzantine Generals** with Unknown and Dynamic Participation"](https://blog.chain.link/instant-finality-in-byzantine-generals-with-unknown-and-dynamic-participation/) and
+["Instant Finality in **Byzantine Atomic Broadcast** under Unknown/Dynamic Participation"](https://blog.chain.link/instant-finality-in-byzantine-atomic-broadcast-under-unknown-dynamic-participation/).
+
 -   *Maximal Extractable Value (MEV) Protection on a DAG*.
     Dahlia Malkhi, Pawel Szalachowski.
     To appear at [CESC'22](https://cesc.io/).
