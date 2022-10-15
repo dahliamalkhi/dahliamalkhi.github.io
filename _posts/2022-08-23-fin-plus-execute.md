@@ -18,7 +18,7 @@ category:
 
 Authors: George Danezis and Dahlia Malkhi
 
-**September 24th, 2022 update: See [the latest revision](https://blog.chain.link/execution-and-parallelism-for-dag-based-bft-consensus/) that subsumes this post **.
+**September 24th, 2022: see an [updated revision](https://blog.chain.link/execution-and-parallelism-for-dag-based-bft-consensus/)**.
 
 ---
 ---

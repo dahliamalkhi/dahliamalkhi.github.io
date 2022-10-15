@@ -14,7 +14,7 @@ category:
 - new research
 ---
 
-**September 1st, 2022 update: See a [slight revision](https://blog.chain.link/block-stm/) that subsumes this post**.
+**September 1st, 2022: see an [updated revision](https://blog.chain.link/block-stm/)**.
 
 ---
 ---
