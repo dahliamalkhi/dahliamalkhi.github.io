@@ -13,12 +13,13 @@ header:
 
 # Short bio
 
-Dr. Malkhi's research over
-two decades of [innovation](https://scholar.google.com/citations?user=A_VZ8N0AAAAJ&hl=en)
+Dr. Malkhi's (research)(https://scholar.google.com/citations?user=A_VZ8N0AAAAJ&hl=en)
+over two decades 
 spans broad aspects of reliability and security of distributed systems, recently with focus on blockchains and advances in financial technology.
-A selected sample of contributions includes: 
 
-* Co-inventor of [HotStuff](https://arxiv.org/abs/1803.05069) (driving the core engine of the [Diem blockchain](DiemBFT), the [Aptos blockchain](aptosBFT) and other blockchains, 
+A select sample of contributions includes: 
+
+* Co-inventor of [HotStuff](https://arxiv.org/abs/1803.05069) (driving the core engine of the [Diem blockchain](https://developers.diem.com/docs/technical-papers/state-machine-replication-paper/), the [Aptos blockchain](https://aptos.dev/reference/glossary/#aptosbft) and other blockchains, 
 * Co-founder and technical co-lead of [VMware blockchain](https://research.vmware.com/projects/vmware-blockchain),
 * Co-inventor of [Flexible Paxos](https://arxiv.org/abs/1608.06696) (the technology behind [Log Device](https://logdevice.io/docs/Consensus.html)),
 * Creator and tech lead of [CorfuDB](https://github.com/CorfuDB/CorfuDB) (a database-less database driving VMware’s NSX-T distributed control plane),
