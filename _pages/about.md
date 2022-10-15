@@ -25,7 +25,9 @@ A selected sample of contributions includes:
 * Co-inventor of the [FairPlay project](https://www.cs.huji.ac.il/project/Fairplay/).
 
 Presently, Malkhi serves as Chief Research Officer of [Chainlink Labs](https://chainlinklabs.com/) (since Q1/2022). From 2019 to 2022, Malkhi served three roles in the Diem(Libra) project: CTO at the [Diem Association](https://www.diem.com/en-us/), Lead Maintainer of the [Diem open-source project](https://github.com/diem/diem), and Lead Researcher at [Novi](https://about.fb.com/news/2020/05/welcome-to-novi/). In 2014, after the closing of the Microsoft Research Silicon Valley lab, Malkhi co-founded [VMware Research](https://octo.vmware.com/introduction-vrg/) and became a Principal Researcher at VMware until June 2019. Prior to that, Malkhi was a partner principal researcher (last rank) 
-at Microsoft Research, 2004-2014; senior researcher (last rank) at AT&T Labs, 1995-1999; and a tenured Associate Professor (last rank, promoted in 2005) of the Hebrew University of Jerusalem, 1999-2007.
+at Microsoft Research, 2004-2014; 
+a tenured Associate Professor (last rank, promoted in 2005) of the Hebrew University of Jerusalem, 1999-2007;
+and a senior researcher (last rank) at AT&T Labs, 1995-1999.
 
 # Selected academic roles and distinctions:
 
