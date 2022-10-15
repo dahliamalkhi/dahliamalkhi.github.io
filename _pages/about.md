@@ -13,7 +13,7 @@ header:
 
 # Short bio
 
-Dr. Malkhi's (research)(https://scholar.google.com/citations?user=A_VZ8N0AAAAJ&hl=en)
+Dr. Malkhi's [research](https://scholar.google.com/citations?user=A_VZ8N0AAAAJ&hl=en)
 over two decades 
 spans broad aspects of reliability and security of distributed systems, recently with focus on blockchains and advances in financial technology.
 
