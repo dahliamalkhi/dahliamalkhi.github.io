@@ -14,6 +14,10 @@ category:
 - new research
 ---
 
+**September 1st, 2022 update: A slight revision that subsumes this post appears [on blog.chain.link](https://blog.chain.link/block-stm/)**.
+
+---
+
 [Block-STM](https://arxiv.org/pdf/2203.06871.pdf) is a recently announced technology for accelerating smart-contract execution, emanating from the 
 [Diem project](https://github.com/diem)
 and matured by 
