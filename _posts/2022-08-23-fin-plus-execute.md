@@ -18,9 +18,11 @@ category:
 
 Authors: George Danezis and Dahlia Malkhi
 
-**September 24th, 2022 update: A slight revision that subsumes this post appears [on blog.chain.link](https://blog.chain.link/execution-and-parallelism-for-dag-based-bft-consensus/)**.
+**September 24th, 2022 update: See [the latest revision](https://blog.chain.link/execution-and-parallelism-for-dag-based-bft-consensus/) that subsumes this post **.
 
 ---
+---
+
 In DAG-based BFT Consensus (the subject of two previous blog posts, ["On BFT Consensus Evolution: From Monolithic to DAG"](https://dahliamalkhi.github.io/posts/2022/06/dag-bft/), and "[Another Advantage of DAG-based BFT: BEV Resistance](https://dahliamalkhi.github.io/posts/2022/07/dag-fo/)"), multiple block proposals are sent in parallel by all Validators and it may not be clear how and when to process transactions they contain and certify the outcome.
 
 It's time to talk about transaction execution for DAG-based Consensus protocols.
