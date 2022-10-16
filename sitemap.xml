@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://malkhi.com/</loc>
+  <lastmod>2022-10-16T20:13:11+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://malkhi.com/about/</loc>
+  <lastmod>2022-10-16T20:13:11+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://malkhi.com/publications/</loc>
+  <lastmod>2022-10-16T20:13:11+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://malkhi.com/books/</loc>
+  <lastmod>2022-10-16T20:13:11+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://malkhi.com/talks/</loc>
+  <lastmod>2022-10-16T20:13:11+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://malkhi.com/posts/2022/09/inst-finality/</loc>
+  <lastmod>2022-10-16T20:13:11+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://malkhi.com/posts/2022/08/inst-finality/</loc>
+  <lastmod>2022-10-16T20:13:11+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://malkhi.com/posts/2022/08/dag-exec/</loc>
+  <lastmod>2022-10-16T20:13:11+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://malkhi.com/posts/2022/07/dag-fo/</loc>
+  <lastmod>2022-10-16T20:13:11+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://malkhi.com/posts/2022/06/dag-bft/</loc>
+  <lastmod>2022-10-16T20:13:11+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://malkhi.com/posts/2022/04/block-stm/</loc>
+  <lastmod>2022-10-16T20:13:11+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://malkhi.com/posts/2020/12/what-they-didnt-teach-you-in-streamlet/</loc>
+  <lastmod>2022-10-16T20:13:11+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://malkhi.com/posts/2020/04/making-BFT-systems-robust/</loc>
+  <lastmod>2022-10-16T20:13:11+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://malkhi.com/posts/2019/9/flexible-bft/</loc>
+  <lastmod>2022-10-16T20:13:11+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://malkhi.com/posts/2019/10/concurrency-book/</loc>
+  <lastmod>2022-10-16T20:13:11+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://malkhi.com/posts/2019/08/hotstuff-three-chain-rules/</loc>
+  <lastmod>2022-10-16T20:13:11+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://malkhi.com/posts/2019/08/dfinty-explored</loc>
+  <lastmod>2022-10-16T20:13:11+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://malkhi.com/posts/2018/06/nevetheless-book/</loc>
+  <lastmod>2022-10-16T20:13:11+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://malkhi.com/posts/2018/04/BFT-lens-tndrmnt/</loc>
+  <lastmod>2022-10-16T20:13:11+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://malkhi.com/posts/2018/03/bft-lens-casper/</loc>
+  <lastmod>2022-10-16T20:13:11+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://malkhi.com/page2/</loc>
+  <lastmod>2022-10-16T20:13:11+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://malkhi.com/descendants/</loc>
+  <lastmod>2022-10-16T20:13:11+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://malkhi.com/categories/</loc>
+  <lastmod>2022-10-16T20:13:11+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://malkhi.com/tags/</loc>
+  <lastmod>2022-10-16T20:13:11+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://malkhi.com/posts/</loc>
+  <lastmod>2022-10-16T20:13:11+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://malkhi.com/posts/2017/12/bft-broken</loc>
+  <lastmod>2022-10-16T20:13:11+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://malkhi.com/posts/2017/10/bft-blockchain/</loc>
+  <lastmod>2022-10-16T20:13:11+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://malkhi.com/posts/2017/10/industrial-research-labs</loc>
+  <lastmod>2022-10-16T20:13:11+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://malkhi.com/posts/2016/08/flexible-paxos/</loc>
+  <lastmod>2022-10-16T20:13:11+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+
+
+</urlset>
