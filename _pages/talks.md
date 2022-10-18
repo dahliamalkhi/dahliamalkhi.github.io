@@ -5,6 +5,16 @@ layout: archive
 author_profile: true
 ---
 
+**Privacy-Preserving Oracles with DECO**.<br>
+[[at SmartCon 2022]](https://www.youtube.com/watch?v=eJqZQ2_VBzo)
+
+&emsp;&emsp; _😯 Imagine that users can bring claims about themselves into smart contracts with complete privacy:  "I am a person" (but not private information about me); "I live in the US" (but not my address); "my combined bank accounts balance is above a threshold" (but not my balances); and more. 
+ 
+🤔 In this presentation at SmartCon 2022, we explain how DECO enables the unlocking of user information from current web 2.0 servers into Web 3.0; we describe the application of academic research to allow smart contracts to serve even more powerful use cases in a truly privacy-preserving manner; and we give a glimpse into real-world use cases._
+
+---
+
+
 **Connecting Blockchains and the World**.<br>
 [[UC Berkeley RISE/Sky seminar, summer 2022, invited speaker]](https://rise.cs.berkeley.edu/events/)<br>
  [[Imperial College London LSDS seminar, summer 2022, invited speaker]](https://lsds.doc.ic.ac.uk/seminars)<br>
