@@ -18,6 +18,8 @@ category:
 
 Authors: Dahlia Malkhi and Pawel Szalachowski
 
+**October 19th, 2022: see an [updated revision](https://blog.chain.link/mev-resistance-on-a-dag/)**.
+
 ## Synopsis
 
 Another advantage of a [DAG-based approach to BFT Consensus](https://dahliamalkhi.github.io/posts/2022/06/dag-bft/) 
