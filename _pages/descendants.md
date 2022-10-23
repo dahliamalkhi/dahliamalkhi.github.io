@@ -8,6 +8,7 @@ author_profile: true
 Summer interns
 
 -   At [Chainlink Labs](http://chainlinklabs.com) :
+    - [Chenkai Weng](https://www.linkedin.com/in/chenkai-weng/) (Northwestern, Fall 2022)
     - [Deepak Maram](https://www.linkedin.com/in/deepakmaram/) (Cornell Tech, summer 2022)
     - [Hongbo Zhang](https://www.linkedin.com/in/hongbozhang/) (Cornell, summer 2022)
     - [Nibesh Shrestha](https://www.linkedin.com/in/nibesh-shrestha-73485380/) (Rochester Institute of Technology, summer 2022)
