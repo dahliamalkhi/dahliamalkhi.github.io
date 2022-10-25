@@ -16,3 +16,5 @@ where we expand our previous
 [one-shot, binary solution](https://blog.chain.link/instant-finality-in-byzantine-generals-with-unknown-and-dynamic-participation/) 
 to full **Byzantine atomic broadcast**. 
 Key properties of the solution remain, including small constant (3-round) expected latency to finality and allowing an adversary to fluctuate Byzantine parties from round to round provided that two-thirds of the active participants are honest.
+
+Read more in our whitepaper [https://eprint.iacr.org/2022/1448](https://eprint.iacr.org/2022/1448).
