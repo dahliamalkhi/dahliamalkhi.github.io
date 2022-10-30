@@ -67,6 +67,14 @@ MSc students (Hebrew U.)
 
 Thesis committee member
 
--   Leander Jehl
--   Xiaver DeFago
--   Adnan Agabria
+-   Michael Wei, UCSD
+-   Leander Jehl, Norway
+-   Richar Ekwall, Swiss Federal Institute of Technology (EPFL), Switzerland
+-   Adnan Agabria, The Technion, Israel
+-   David Breitgand,  The Hebrew University of Jerusalem, Israel
+-   Xavier Defago, Swiss Federal Institute of Technology (EPFL), Switzerland
+-   Carlo Marcetti, University of Rome ``La Sapienza'', Italy
+-   Ronen Kat, University of Beer-Sheva, Israel
+-   Konstantin Shagin, The Technion, Israel
+-   Roie Melamed, The Technion, Israel
+-   Nuno Santos, EPFL, Switzerland.
