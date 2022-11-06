@@ -78,13 +78,14 @@ author_profile: true
 -   *Bootstrapping Consensus Without Trusted Setup: Fully Asynchronous Distributed Key Generation.*
     Eleftherios Kokoris-Kogias, Alexander Spiegelman, Dahlia Malkhi and Ittai Abraham. [<https://eprint.iacr.org/2019/1015>]
 -   *Efficient Verifiable Secret Sharing with Share Recovery in BFT Protocols.*
-    Soumya Basu, Alin Tomescu, Ittai Abraham, Dahlia Malkhi, Mike Reiter, Emin Gün Sirer. ACM CCS '19 [T3P-CCS19]({{ base_path }}/files/T3P-CCS19.pdf)], [<https://arxiv.org/abs/1807.03720>].
+    Soumya Basu, Alin Tomescu, Ittai Abraham, Dahlia Malkhi, Mike Reiter, Emin Gün Sirer. ACM CCS '19 [T3P-CCS19]({{ base_path }}/files/T3P-CCS19.pdf), [<https://arxiv.org/abs/1807.03720>].
 -   *Flexible Byzantine Fault Tolerance.*
-    Dahlia Malkhi, Kartik Nayak, Ling Ren. ACM CCS '19. [Flex-BFT-CCS19]({{ base_path }}/files/Flex-BFT-CCS19.pdf)]
+    Dahlia Malkhi, Kartik Nayak, Ling Ren. ACM CCS '19. [Flex-BFT-CCS19]({{ base_path }}/files/Flex-BFT-CCS19.pdf)
 -   *HotStuff: BFT Consensus with Linearity and Responsiveness.*
-    Maofan Yin, Dahlia Malkhi, Michael K. Reiter, Guy Golan Gueta, Ittai Abraham. PODC 2019. [HotStuff-PODC2019] [<https://arxiv.org/abs/1803.05069>].
+    Maofan Yin, Dahlia Malkhi, Michael K. Reiter, Guy Golan Gueta, Ittai Abraham. PODC 2019. 
+    [HotStuff-PODC2019]({{ base_path }}/files/HotStuff-PODC2019.pdf) [<https://arxiv.org/abs/1803.05069>].
 -   *Validated Asynchronous Byzantine Agreement with Optimal Resilience and Asymptotically Optimal Time and Word Communication.*
-    Ittai Abraham, Dahlia Malkhi, Alexander Spiegelman. PODC 2019. [VABA-podc2019]({{ base_path }}/files/vaba-podc2019-2.pdf)]
+    Ittai Abraham, Dahlia Malkhi, Alexander Spiegelman. PODC 2019. [VABA-podc2019]({{ base_path }}/files/vaba-podc2019-2.pdf)
 -   *SBFT: a Scalable Decentralized Trust Infrastructure for Blockchains.*
     Guy Golan Gueta, Ittai Abraham, Shelly Grossman, Dahlia Malkhi, Benny Pinkas, Mike Reiter, Dragos Adrian Seredinschi, Orr Tamir, Alin Tomescu. DSN 2019. [pdf]({{ base_path }}/files/1804.01626.pdf>]
 
