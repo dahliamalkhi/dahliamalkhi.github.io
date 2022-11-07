@@ -9,11 +9,6 @@ author_profile: true
 
 #### 2022
 
--   *Block-STM: Scaling Blockchain Execution by Turning Ordering*.<br>
-    Rati Gelashvili, Alexander Spiegelman, Zhuolun Xiang, George Danezis, Zekun Li, Dahlia Malkhi, Yu Xia, Runtian Zhou.
-    To appear at [PPoPP 2023](https://conf.researchr.org/home/PPoPP-2023),
-    Related to [https://arxiv.org/abs/2203.06871](https://arxiv.org/abs/2203.06871).
-
 -   *Byzantine Consensus under Fully Fluctuating Participation*.<br>
     Dahlia Malkhi, Atsuki Momose, Ling Ren. 
     [https://eprint.iacr.org/2022/1448](https://eprint.iacr.org/2022/1448),
@@ -28,9 +23,9 @@ author_profile: true
 
 -   *Block-STM: Scaling Blockchain Execution by Turning Ordering Curse to a Performance Blessing*.<br>
     Rati Gelashvili, Alexander Spiegelman, Zhuolun Xiang, George Danezis, Zekun Li, Yu Xia, Runtian Zhou, Dahlia Malkhi.
-    To appear at [ConsensusDay22](https://research.protocol.ai/sites/consensusday22/). 
-    ArXiv version:
-    [https://arxiv.org/abs/2203.06871](https://arxiv.org/abs/2203.06871).
+    To appear at [ConsensusDay22](https://research.protocol.ai/sites/consensusday22/), 
+    [https://arxiv.org/abs/2203.06871](https://arxiv.org/abs/2203.06871),
+    (*New*) [PPoPP 2023](https://conf.researchr.org/home/PPoPP-2023) with a different title and alphabetical author order.
 
 -   *Be Aware of Your Leaders*.<br>
     Shir Cohen, Rati Gelashvili, Eleftherios Kokoris Kogias, Dahlia Malkhi, Zekun Li, Alberto Sonnino, Alexander Spiegelman.
