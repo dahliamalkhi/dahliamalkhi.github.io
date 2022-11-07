@@ -9,56 +9,55 @@ author_profile: true
 
 #### 2022
 
--   *Block-STM: Scaling Blockchain Execution by Turning Ordering*.
+-   *Block-STM: Scaling Blockchain Execution by Turning Ordering*.<br>
     Rati Gelashvili, Alexander Spiegelman, Zhuolun Xiang, George Danezis, Zekun Li, Dahlia Malkhi, Yu Xia, Runtian Zhou.
-    To appear at [PPoPP 2023](https://conf.researchr.org/home/PPoPP-2023).
-    Related to
-    [https://arxiv.org/abs/2203.06871](https://arxiv.org/abs/2203.06871).
+    To appear at [PPoPP 2023](https://conf.researchr.org/home/PPoPP-2023),
+    Related to [https://arxiv.org/abs/2203.06871](https://arxiv.org/abs/2203.06871).
 
--   *Byzantine Consensus under Fully Fluctuating Participation*. 
+-   *Byzantine Consensus under Fully Fluctuating Participation*.<br>
     Dahlia Malkhi, Atsuki Momose, Ling Ren. 
-    [https://eprint.iacr.org/2022/1448](https://eprint.iacr.org/2022/1448).<br>
-    This whitepaper expands on 
-["Instant Finality in **Byzantine Generals** with Unknown and Dynamic Participation"](https://blog.chain.link/instant-finality-in-byzantine-generals-with-unknown-and-dynamic-participation/) and
-["Instant Finality in **Byzantine Atomic Broadcast** under Unknown/Dynamic Participation"](https://blog.chain.link/instant-finality-in-byzantine-atomic-broadcast-under-unknown-dynamic-participation/).
+    [https://eprint.iacr.org/2022/1448](https://eprint.iacr.org/2022/1448),
+[blogpost1](https://blog.chain.link/instant-finality-in-byzantine-generals-with-unknown-and-dynamic-participation/),
+[blogpost2](https://blog.chain.link/instant-finality-in-byzantine-atomic-broadcast-under-unknown-dynamic-participation/).<br>
 
--   *Maximal Extractable Value (MEV) Protection on a DAG*.
+-   *Maximal Extractable Value (MEV) Protection on a DAG*.<br>
     Dahlia Malkhi, Pawel Szalachowski.
     To appear at [CESC'22](https://cesc.io/).
     ArXiv version:
     [https://arxiv.org/abs/2208.00940](https://arxiv.org/abs/2208.00940).
 
--   *Block-STM: Scaling Blockchain Execution by Turning Ordering Curse to a Performance Blessing*.
+-   *Block-STM: Scaling Blockchain Execution by Turning Ordering Curse to a Performance Blessing*.<br>
     Rati Gelashvili, Alexander Spiegelman, Zhuolun Xiang, George Danezis, Zekun Li, Yu Xia, Runtian Zhou, Dahlia Malkhi.
     To appear at [ConsensusDay22](https://research.protocol.ai/sites/consensusday22/). 
     ArXiv version:
     [https://arxiv.org/abs/2203.06871](https://arxiv.org/abs/2203.06871).
 
--   *Be Aware of Your Leaders*.
+-   *Be Aware of Your Leaders*.<br>
     Shir Cohen, Rati Gelashvili, Eleftherios Kokoris Kogias, Dahlia Malkhi, Zekun Li, Alberto Sonnino, Alexander Spiegelman.
     [FC'22](https://fc22.ifca.ai/).
 
 #### 2021
 
--   *Twins: BFT Systems Made Robust*.
+-   *Twins: BFT Systems Made Robust*.<br>
     Shehar Bano, Alberto Sonnino, Andrey Chursin, Dmitri Perelman, Zekun Li, Avery Ching, Dahlia Malkhi.
     [The 25th International Conference on Principles of Distributed Systems (OPODIS 2021)](https://opodis2021.unistra.fr/).
 
--   *RainBlock: Faster Transaction Processing in Public Blockchains*.
+-   *RainBlock: Faster Transaction Processing in Public Blockchains*.<br>
     Soujanya Ponnapalli, Aashaka Shah, Souvik Banerjee, Dahlia Malkhi, Amy Tai, Vijai Chidambaram, Michael Wei. 
     [Usenix ATC 2021](https://www.usenix.org/conference/atc21) [[RainBlock-ATC21.pdf]](https://www.usenix.org/system/files/atc21-ponnapalli.pdf).
 
--   *Strengthened Fault Tolerance in Byzantine Fault Tolerant Replication*.
+-   *Strengthened Fault Tolerance in Byzantine Fault Tolerant Replication*.<br>
     Zhuolun Xiang, Dahlia Malkhi, Kartik Nayak and Ling Ren
     [ICDCS 2021](https://icdcs2021.us/).
     Arxiv version [https://arxiv/abs/2101.03715](https://arxiv.org/abs/2101.03715).
 
 #### 2020
 
--   *ACE: Abstract Consensus Encapsulation for Liveness Boosting of State Machine Replication.*
+-   *ACE: Abstract Consensus Encapsulation for Liveness Boosting of State Machine Replication.*<br>
     Alexander Spiegelman, Arik Rinberg, Dahlia Malkhi. 
     [The 24th International Conference on Principles of Distributed Systems (OPODIS 2020)](https://opodis2020.unistra.fr/).
     [pdf]({{ base_path }}/files/ACE-OPODIS2020.pdf)
+
 -   *Asynchronous Distributed Key Generation for Computationally Secure Randomness, Consensus, and Threshold Signatures.*
     Eleftherios Kokoris Kogias, Dahlia Malkhi, Alexander Spiegelman. 
     [ACS Conference on Computer and Communications Security (CCS) 2020](https://www.sigsac.org/ccs/CCS2020/).
