@@ -34,17 +34,17 @@ author_profile: true
 #### 2021
 
 -   *Twins: BFT Systems Made Robust*.<br>
-    Shehar Bano, Alberto Sonnino, Andrey Chursin, Dmitri Perelman, Zekun Li, Avery Ching, Dahlia Malkhi.
-    [The 25th International Conference on Principles of Distributed Systems (OPODIS 2021)](https://opodis2021.unistra.fr/).
+    Shehar Bano, Alberto Sonnino, Andrey Chursin, Dmitri Perelman, Zekun Li, Avery Ching, Dahlia Malkhi.<br>
+    [OPODIS 2021](https://opodis2021.unistra.fr/).
 
 -   *RainBlock: Faster Transaction Processing in Public Blockchains*.<br>
-    Soujanya Ponnapalli, Aashaka Shah, Souvik Banerjee, Dahlia Malkhi, Amy Tai, Vijai Chidambaram, Michael Wei. 
+    Soujanya Ponnapalli, Aashaka Shah, Souvik Banerjee, Dahlia Malkhi, Amy Tai, Vijai Chidambaram, Michael Wei.<br>
     [Usenix ATC 2021](https://www.usenix.org/conference/atc21) [[RainBlock-ATC21.pdf]](https://www.usenix.org/system/files/atc21-ponnapalli.pdf).
 
 -   *Strengthened Fault Tolerance in Byzantine Fault Tolerant Replication*.<br>
-    Zhuolun Xiang, Dahlia Malkhi, Kartik Nayak and Ling Ren
+    Zhuolun Xiang, Dahlia Malkhi, Kartik Nayak and Ling Ren.<br>
     [ICDCS 2021](https://icdcs2021.us/).
-    Arxiv version [https://arxiv/abs/2101.03715](https://arxiv.org/abs/2101.03715).
+    [[https://arxiv/abs/2101.03715]](https://arxiv.org/abs/2101.03715).
 
 #### 2020
 
