@@ -17,8 +17,8 @@ author_profile: true
 
 -   *Maximal Extractable Value (MEV) Protection on a DAG*.<br>
     Dahlia Malkhi, Pawel Szalachowski.
-    To appear at [CESC'22](https://cesc.io/).
-    ArXiv version:
+    [Tokenomics 2022 (International Conference on Blockchain Economics, Security and Protocols)](https://tokenomics-conference.lip6.fr/index.php?n=Main.Tokenomics2022), 
+    [short video from CESC '22](https://youtu.be/q5v3tLLoOXM),
     [https://arxiv.org/abs/2208.00940](https://arxiv.org/abs/2208.00940).
 
 -   *Block-STM: Scaling Blockchain Execution by Turning Ordering Curse to a Performance Blessing*.<br>
