@@ -11,59 +11,61 @@ author_profile: true
 
 -   *Byzantine Consensus under Fully Fluctuating Participation*.<br>
     Dahlia Malkhi, Atsuki Momose, Ling Ren. <br>
-    [phttps://eprint.iacr.org/2022/1448]](https://eprint.iacr.org/2022/1448),
+    [[https://eprint.iacr.org/2022/1448]](https://eprint.iacr.org/2022/1448),
     [[blogpost 1]](https://blog.chain.link/instant-finality-in-byzantine-generals-with-unknown-and-dynamic-participation/),
     [[blogpost 2]](https://blog.chain.link/instant-finality-in-byzantine-atomic-broadcast-under-unknown-dynamic-participation/).<br>
 
 -   *Maximal Extractable Value (MEV) Protection on a DAG*.<br>
-    Dahlia Malkhi, Pawel Szalachowski.<br>
-    [Tokenomics 2022](https://tokenomics-conference.lip6.fr/index.php?n=Main.Tokenomics2022), 
+    Dahlia Malkhi, Pawel Szalachowski.
+    [Tokenomics 2022](https://tokenomics-conference.lip6.fr/index.php?n=Main.Tokenomics2022).<br> 
     [[short video from CESC '22]](https://youtu.be/q5v3tLLoOXM),
     [[https://arxiv.org/abs/2208.00940]](https://arxiv.org/abs/2208.00940).
 
 -   *Block-STM: Scaling Blockchain Execution by Turning Ordering Curse to a Performance Blessing*.<br>
     Rati Gelashvili, Alexander Spiegelman, Zhuolun Xiang, George Danezis, Zekun Li, Yu Xia, Runtian Zhou, Dahlia Malkhi.<br>
-    [PPoPP 2023](https://conf.researchr.org/home/PPoPP-2023) under a different title and alphabetical author order,
-    [ConsensusDay22](https://research.protocol.ai/sites/consensusday22/), 
+    [PPoPP 2023](https://conf.researchr.org/home/PPoPP-2023) (under a different title and alphabetical author order) and
+    [ConsensusDay22](https://research.protocol.ai/sites/consensusday22/).<br> 
     [[https://arxiv.org/abs/2203.06871]](https://arxiv.org/abs/2203.06871).
 
 -   *Be Aware of Your Leaders*.<br>
-    Shir Cohen, Rati Gelashvili, Eleftherios Kokoris Kogias, Dahlia Malkhi, Zekun Li, Alberto Sonnino, Alexander Spiegelman.<br>
+    Shir Cohen, Rati Gelashvili, Eleftherios Kokoris Kogias, Dahlia Malkhi, Zekun Li, Alberto Sonnino, Alexander Spiegelman.
     [FC'22](https://fc22.ifca.ai/).
 
 #### 2021
 
 -   *Twins: BFT Systems Made Robust*.<br>
-    Shehar Bano, Alberto Sonnino, Andrey Chursin, Dmitri Perelman, Zekun Li, Avery Ching, Dahlia Malkhi.<br>
+    Shehar Bano, Alberto Sonnino, Andrey Chursin, Dmitri Perelman, Zekun Li, Avery Ching, Dahlia Malkhi.
     [OPODIS 2021](https://opodis2021.unistra.fr/).
 
 -   *RainBlock: Faster Transaction Processing in Public Blockchains*.<br>
-    Soujanya Ponnapalli, Aashaka Shah, Souvik Banerjee, Dahlia Malkhi, Amy Tai, Vijai Chidambaram, Michael Wei.<br>
-    [Usenix ATC 2021](https://www.usenix.org/conference/atc21) [[RainBlock-ATC21.pdf]](https://www.usenix.org/system/files/atc21-ponnapalli.pdf).
+    Soujanya Ponnapalli, Aashaka Shah, Souvik Banerjee, Dahlia Malkhi, Amy Tai, Vijai Chidambaram, Michael Wei.
+    [Usenix ATC 2021](https://www.usenix.org/conference/atc21).<br>
+    [[RainBlock-ATC21.pdf]](https://www.usenix.org/system/files/atc21-ponnapalli.pdf).
 
 -   *Strengthened Fault Tolerance in Byzantine Fault Tolerant Replication*.<br>
-    Zhuolun Xiang, Dahlia Malkhi, Kartik Nayak and Ling Ren.<br>
-    [ICDCS 2021](https://icdcs2021.us/).
+    Zhuolun Xiang, Dahlia Malkhi, Kartik Nayak and Ling Ren. [ICDCS 2021](https://icdcs2021.us/).<br>
     [[https://arxiv/abs/2101.03715]](https://arxiv.org/abs/2101.03715).
 
 #### 2020
 
 -   *ACE: Abstract Consensus Encapsulation for Liveness Boosting of State Machine Replication.*<br>
     Alexander Spiegelman, Arik Rinberg, Dahlia Malkhi. 
-    [The 24th International Conference on Principles of Distributed Systems (OPODIS 2020)](https://opodis2020.unistra.fr/).
-    [pdf]({{ base_path }}/files/ACE-OPODIS2020.pdf)
+    [The 24th International Conference on Principles of Distributed Systems (OPODIS 2020)](https://opodis2020.unistra.fr/).<br>
+    [[ACE-OPODIS2020.pdf]]({{ base_path }}/files/ACE-OPODIS2020.pdf)
 
 -   *Asynchronous Distributed Key Generation for Computationally Secure Randomness, Consensus, and Threshold Signatures.*
     Eleftherios Kokoris Kogias, Dahlia Malkhi, Alexander Spiegelman. 
-    [ACS Conference on Computer and Communications Security (CCS) 2020](https://www.sigsac.org/ccs/CCS2020/).
-    ArXiv 2019 version [https://eprint.iacr.org/2019/1015](https://eprint.iacr.org/2019/1015)
+    [ACM CCS 2020](https://www.sigsac.org/ccs/CCS2020/).<br>
+    [[https://eprint.iacr.org/2019/1015]](https://eprint.iacr.org/2019/1015)
+
 -   *Twins: White-Glove Approach for BFT Testing.*
      Shehar Bano, Alberto Sonnino, Andrey Chursin, Dmitri Perelman, Dahlia Malkhi.
     [<https://arxiv.org/abs/2004.10617>]
+
 -   *Cogsworth: Byzantine Round Synchronization.*
-     Oded Naor, Mathieu Baudet, Dahlia Malkhi, Alexander Spiegelman.
-    [Cryptoeconomics Systems Conference (CES) 2020](https://cryptoeconomicsystems.pubpub.org/ces20).
-    ArXiv 2019 version [https://arxiv.org/abs/1909.05204](https://arxiv.org/abs/1909.05204).
+    Oded Naor, Mathieu Baudet, Dahlia Malkhi, Alexander Spiegelman.
+    [CES 2020](https://cryptoeconomicsystems.pubpub.org/ces20).<br>
+    [[https://arxiv.org/abs/1909.05204]](https://arxiv.org/abs/1909.05204)
 
 #### 2019
 
