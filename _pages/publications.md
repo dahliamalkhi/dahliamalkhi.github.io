@@ -10,25 +10,25 @@ author_profile: true
 #### 2022
 
 -   *Byzantine Consensus under Fully Fluctuating Participation*.<br>
-    Dahlia Malkhi, Atsuki Momose, Ling Ren. 
-    [https://eprint.iacr.org/2022/1448](https://eprint.iacr.org/2022/1448),
-[blogpost1](https://blog.chain.link/instant-finality-in-byzantine-generals-with-unknown-and-dynamic-participation/),
-[blogpost2](https://blog.chain.link/instant-finality-in-byzantine-atomic-broadcast-under-unknown-dynamic-participation/).<br>
+    Dahlia Malkhi, Atsuki Momose, Ling Ren. <br>
+    [phttps://eprint.iacr.org/2022/1448]](https://eprint.iacr.org/2022/1448),
+    [[blogpost 1]](https://blog.chain.link/instant-finality-in-byzantine-generals-with-unknown-and-dynamic-participation/),
+    [[blogpost 2]](https://blog.chain.link/instant-finality-in-byzantine-atomic-broadcast-under-unknown-dynamic-participation/).<br>
 
 -   *Maximal Extractable Value (MEV) Protection on a DAG*.<br>
-    Dahlia Malkhi, Pawel Szalachowski.
-    [Tokenomics 2022 (International Conference on Blockchain Economics, Security and Protocols)](https://tokenomics-conference.lip6.fr/index.php?n=Main.Tokenomics2022), 
-    [short video from CESC '22](https://youtu.be/q5v3tLLoOXM),
-    [https://arxiv.org/abs/2208.00940](https://arxiv.org/abs/2208.00940).
+    Dahlia Malkhi, Pawel Szalachowski.<br>
+    [Tokenomics 2022](https://tokenomics-conference.lip6.fr/index.php?n=Main.Tokenomics2022), 
+    [[short video from CESC '22]](https://youtu.be/q5v3tLLoOXM),
+    [[https://arxiv.org/abs/2208.00940]](https://arxiv.org/abs/2208.00940).
 
 -   *Block-STM: Scaling Blockchain Execution by Turning Ordering Curse to a Performance Blessing*.<br>
-    Rati Gelashvili, Alexander Spiegelman, Zhuolun Xiang, George Danezis, Zekun Li, Yu Xia, Runtian Zhou, Dahlia Malkhi.
-    To appear at [ConsensusDay22](https://research.protocol.ai/sites/consensusday22/), 
-    [https://arxiv.org/abs/2203.06871](https://arxiv.org/abs/2203.06871),
-    (*New*) [PPoPP 2023](https://conf.researchr.org/home/PPoPP-2023) with a different title and alphabetical author order.
+    Rati Gelashvili, Alexander Spiegelman, Zhuolun Xiang, George Danezis, Zekun Li, Yu Xia, Runtian Zhou, Dahlia Malkhi.<br>
+    [PPoPP 2023](https://conf.researchr.org/home/PPoPP-2023) under a different title and alphabetical author order,
+    [ConsensusDay22](https://research.protocol.ai/sites/consensusday22/), 
+    [[https://arxiv.org/abs/2203.06871]](https://arxiv.org/abs/2203.06871).
 
 -   *Be Aware of Your Leaders*.<br>
-    Shir Cohen, Rati Gelashvili, Eleftherios Kokoris Kogias, Dahlia Malkhi, Zekun Li, Alberto Sonnino, Alexander Spiegelman.
+    Shir Cohen, Rati Gelashvili, Eleftherios Kokoris Kogias, Dahlia Malkhi, Zekun Li, Alberto Sonnino, Alexander Spiegelman.<br>
     [FC'22](https://fc22.ifca.ai/).
 
 #### 2021
