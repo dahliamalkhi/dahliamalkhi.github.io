@@ -52,14 +52,14 @@ author_profile: true
 | :--- | :--- | :-- | :--- |
 | State Machine Replication is Harder than Consensus |  [[pdf]]({{ base_path }}/files/SMR-DISC2018.pdf) | Karolos Antoniadis, Rachid Guerraoui, Dahlia Malkhi and Dragos-Adrian Seredinschi |DISC 2018 |
 | Stable and Consistent Membership at Scale with Rapid |  [[pdf]]({{ base_path }}/files/Rapid-atc2018.pdf)  | Lalith Suresh, Dahlia Malkhi, Parikshit Gopalan, Ivan Porto Carreiro, Zeeshan Lokhandwala | USENIX ATC 2018 |
-| Revisiting Fast Practical Byzantine Fault Tolerance: Thelma, Velma and Zelma |[[pdf]](https://arxiv.org/abs/1801.10022) | Ittai Abraham, Guy Gueta, Dahlia Malkhi, Jean-Philippe Martin | ArXiv
+| Revisiting Fast Practical Byzantine Fault Tolerance: Thelma, Velma and Zelma | [[pdf]](https://arxiv.org/abs/1801.10022) | Ittai Abraham, Guy Gueta, Dahlia Malkhi, Jean-Philippe Martin | ArXiv
 | Dfinity Consensus Explored | [[pdf]](https://eprint.iacr.org/2018/1153.pdf) | Ittai Abraham, Dahlia Malkhi, Kartik Nayak, Ling Ren | ePrint | 
 
 #### 2017
 
 | Title |   Authors | Where | Links |
 | :--- | :--- | :-- | :--- |
-|  Revisiting Fast Practical Byzantine Fault Tolerance. | Ittai Abraham, Guy Gueta, Dahlia Malkhi; with Lorenzo Alvisi, Rama Kotla, Jean-Philippe Martin. [ArXiv 2017](http://arxiv.org/abs/1712.01367)  [pdf]({{ base_path }}/files/revisit-fast-practical-arxiv20172.pdf)
+|  Revisiting Fast Practical Byzantine Fault Tolerance | Ittai Abraham, Guy Gueta, Dahlia Malkhi; with Lorenzo Alvisi, Rama Kotla, Jean-Philippe Martin | ArXiv | [ArXiv 2017](http://arxiv.org/abs/1712.01367)   |
 |  Solida: A Cryptocurrency Based on Reconfigurable Byzantine Consensus. | Ittai Abraham, Dahlia Malkhi, Kartik Nayak, Ling Ren, Alexander Spiegelment |  OPODIS 2017 | [pdf]({{ base_path }}/files/Solida-OPODIS2017.pdf) | 
 |  The Blockchain Consensus Layer and BFT | Ittai Abraham, Dahlia Malkhi | Tutorial, fall issue of the Distributed Computing column of the Bulletin of the EATCS ([BEATCS link](http://bulletin.eatcs.org/index.php/beatcs/article/view/506)). | [pdf]({{ base_path }}/files/BlockchainBFT-BEATCS2017.pdf) | 
 |  Consistent Clustered Applications with Corfu | 18 co-authors, including me | SIGOPS Oper. Syst. Rev. 51, , 2017 | [pdf]({{ base_path }}/files/CMPLAT-OSR2017.pdf) |
