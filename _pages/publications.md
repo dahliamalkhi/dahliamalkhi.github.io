@@ -254,9 +254,7 @@ author_profile: true
 | :--- | :--- | :-- | :--- |
 |   *A High-Throughput Secure Reliable Multicast Protocol.* | Dahlia Malkhi and Mike Reiter. | The Journal of Computer Security, 5:113, 1997. | [pdf]({{ base_path }}/files/SecureMulticast-JCS1997.pdf) |
 
-#### 1986-1996
-
-#### (note: on most publications prior to 1996, my name is spelled Dalia Malki)
+#### 1986-1996 (prior to 1996, my name is spelled Dalia Malki)
 
 | Title |   Authors | Where | Links |
 | :--- | :--- | :-- | :--- |
