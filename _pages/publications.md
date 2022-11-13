@@ -13,8 +13,8 @@ author_profile: true
 
 | Title |  Authors | Where | Links |
 | :--- | :--- | :-- | :--- |
-| Byzantine Consensus under Fully Fluctuating Participation |  Dahlia Malkhi, Atsuki Momose, Ling Ren | ArXiv | [📄](https://eprint.iacr.org/2022/1448),<br> [🗞️](https://blog.chain.link/instant-finality-in-byzantine-generals-with-unknown-and-dynamic-participation/),<br> [🗞️](https://blog.chain.link/instant-finality-in-byzantine-atomic-broadcast-under-unknown-dynamic-participation/) |
-| Maximal Extractable Value (MEV) Protection on a DAG |   Dahlia Malkhi, Pawel Szalachowski | [CESC 2022](https://cesc.io/), [Tokenomics 2022](https://tokenomics-conference.lip6.fr/index.php?n=Main.Tokenomics2022) |[📄](https://arxiv.org/abs/2208.00940),<br> [🎥](https://youtu.be/q5v3tLLoOXM) |
+| Byzantine Consensus under Fully Fluctuating Participation |  Dahlia Malkhi, Atsuki Momose, Ling Ren | ArXiv | [📄](https://eprint.iacr.org/2022/1448), [🗞️](https://blog.chain.link/instant-finality-in-byzantine-generals-with-unknown-and-dynamic-participation/), [🗞️](https://blog.chain.link/instant-finality-in-byzantine-atomic-broadcast-under-unknown-dynamic-participation/) |
+| Maximal Extractable Value (MEV) Protection on a DAG |   Dahlia Malkhi, Pawel Szalachowski | [CESC 2022](https://cesc.io/), [Tokenomics 2022](https://tokenomics-conference.lip6.fr/index.php?n=Main.Tokenomics2022) |[📄](https://arxiv.org/abs/2208.00940), [🎥](https://youtu.be/q5v3tLLoOXM) |
 | Block-STM: Scaling Blockchain Execution by Turning Ordering Curse to a Performance Blessing |   Rati Gelashvili, Alexander Spiegelman, Zhuolun Xiang, George Danezis, Zekun Li, Yu Xia, Runtian Zhou, Dahlia Malkhi| [PPoPP 2023](https://conf.researchr.org/home/PPoPP-2023), [ConsensusDay22](https://research.protocol.ai/sites/consensusday22/) |[📄](https://arxiv.org/abs/2203.06871) |
 | Be Aware of Your Leaders |   Shir Cohen, Rati Gelashvili, Eleftherios Kokoris Kogias, Dahlia Malkhi, Zekun Li, Alberto Sonnino, Alexander Spiegelman | [FC'22](https://fc22.ifca.ai/) |[📄](https://fc22.ifca.ai/preproceedings/32.pdf) |
 
