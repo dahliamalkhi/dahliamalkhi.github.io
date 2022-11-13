@@ -8,12 +8,12 @@ author_profile: true
 {% include base_path %}
 
 #### 2022
-
--   *Byzantine Consensus under Fully Fluctuating Participation*.<br>
-    Dahlia Malkhi, Atsuki Momose, Ling Ren. <br>
+| Title | Authors | Where | Links | 
+| :--- | :--- | :-- | :--- |
+| Byzantine Consensus under Fully Fluctuating Participation | Dahlia Malkhi, Atsuki Momose, Ling Ren | ArXiv | 
     [[https://eprint.iacr.org/2022/1448]](https://eprint.iacr.org/2022/1448),
     [[blogpost 1]](https://blog.chain.link/instant-finality-in-byzantine-generals-with-unknown-and-dynamic-participation/),
-    [[blogpost 2]](https://blog.chain.link/instant-finality-in-byzantine-atomic-broadcast-under-unknown-dynamic-participation/).<br>
+    [[blogpost 2]](https://blog.chain.link/instant-finality-in-byzantine-atomic-broadcast-under-unknown-dynamic-participation/) |
 
 -   *Maximal Extractable Value (MEV) Protection on a DAG*.<br>
     Dahlia Malkhi, Pawel Szalachowski.
