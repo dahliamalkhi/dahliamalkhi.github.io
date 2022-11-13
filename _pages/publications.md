@@ -16,7 +16,7 @@ author_profile: true
 | Byzantine Consensus under Fully Fluctuating Participation | [[pdf]](https://eprint.iacr.org/2022/1448),<br> [[blogpost 1]](https://blog.chain.link/instant-finality-in-byzantine-generals-with-unknown-and-dynamic-participation/),<br> [[blogpost 2]](https://blog.chain.link/instant-finality-in-byzantine-atomic-broadcast-under-unknown-dynamic-participation/) | Dahlia Malkhi, Atsuki Momose, Ling Ren | ArXiv | 
 | Maximal Extractable Value (MEV) Protection on a DAG | [[pdf]](https://arxiv.org/abs/2208.00940),<br> [[🎥 CESC '22]](https://youtu.be/q5v3tLLoOXM) |  Dahlia Malkhi, Pawel Szalachowski | [CESC 2022](https://cesc.io/), [Tokenomics 2022](https://tokenomics-conference.lip6.fr/index.php?n=Main.Tokenomics2022) |
 | Block-STM: Scaling Blockchain Execution by Turning Ordering Curse to a Performance Blessing | [[pdf]](https://arxiv.org/abs/2203.06871) |  Rati Gelashvili, Alexander Spiegelman, Zhuolun Xiang, George Danezis, Zekun Li, Yu Xia, Runtian Zhou, Dahlia Malkhi| [PPoPP 2023](https://conf.researchr.org/home/PPoPP-2023), [ConsensusDay22](https://research.protocol.ai/sites/consensusday22/) |
-| Be Aware of Your Leaders | |  Shir Cohen, Rati Gelashvili, Eleftherios Kokoris Kogias, Dahlia Malkhi, Zekun Li, Alberto Sonnino, Alexander Spiegelman | [FC'22](https://fc22.ifca.ai/) |
+| Be Aware of Your Leaders | [[pdf]](https://fc22.ifca.ai/preproceedings/32.pdf) |  Shir Cohen, Rati Gelashvili, Eleftherios Kokoris Kogias, Dahlia Malkhi, Zekun Li, Alberto Sonnino, Alexander Spiegelman | [FC'22](https://fc22.ifca.ai/) |
 
 #### 2021
 
@@ -48,16 +48,12 @@ author_profile: true
 
 #### 2018
 
--   *State Machine Replication is Harder than Consensus*.
-    Karolos Antoniadis, Rachid Guerraoui, Dahlia Malkhi and Dragos-Adrian Seredinschi.
-    DISC 2018 [pdf]({{ base_path }}/files/SMR-DISC2018.pdf).
--   *Stable and Consistent Membership at Scale with Rapid*.
-    Lalith Suresh, Dahlia Malkhi, Parikshit Gopalan, Ivan Porto Carreiro, Zeeshan Lokhandwala.
-    USENIX ATC 2018. [pdf]({{ base_path }}/files/Rapid-atc2018.pdf) [ArXiv preprint](http://Arxiv preprint: https://arxiv.org/abs/1803.03620) .
--   *Revisiting Fast Practical Byzantine Fault Tolerance: Thelma, Velma and Zelma*.
-    Ittai Abraham, Guy Gueta, Dahlia Malkhi, Jean-Philippe Martin. [ArXiv 2018](https://arxiv.org/abs/1801.10022) [pdf]({{ base_path }}/files/revisit-fast-practical-TVZ-arxiv2018.pdf)
--   Dfinity Consensus Explored.
-    Ittai Abraham, Dahlia Malkhi, Kartik Nayak, Ling Ren. [ePrint](https://eprint.iacr.org/2018/1153.pdf)
+| Title | Links | Authors | Where | 
+| :--- | :--- | :-- | :--- |
+| State Machine Replication is Harder than Consensus |  [[pdf]]({{ base_path }}/files/SMR-DISC2018.pdf) | Karolos Antoniadis, Rachid Guerraoui, Dahlia Malkhi and Dragos-Adrian Seredinschi |DISC 2018 |
+| Stable and Consistent Membership at Scale with Rapid |  [[pdf]]({{ base_path }}/files/Rapid-atc2018.pdf) [ArXiv preprint](http://Arxiv preprint: https://arxiv.org/abs/1803.03620)  | Lalith Suresh, Dahlia Malkhi, Parikshit Gopalan, Ivan Porto Carreiro, Zeeshan Lokhandwala | USENIX ATC 2018 |
+| Revisiting Fast Practical Byzantine Fault Tolerance: Thelma, Velma and Zelma |[[pdf]](https://arxiv.org/abs/1801.10022) | Ittai Abraham, Guy Gueta, Dahlia Malkhi, Jean-Philippe Martin | ArXiv
+| Dfinity Consensus Explored | [[pdf]](https://eprint.iacr.org/2018/1153.pdf) | Ittai Abraham, Dahlia Malkhi, Kartik Nayak, Ling Ren | ePrint | 
 
 #### 2017
 
