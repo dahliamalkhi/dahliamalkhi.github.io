@@ -151,65 +151,31 @@ author_profile: true
 
 | Title |   Authors | Where | Links |
 | :--- | :--- | :-- | :--- |
--   *Concise Version Vectors in WinFS.*
-    Dahlia Malkhi, Doug Terry.
-    Distributed Computing Journal 2007 [pdf]({{ base_path }}/files/WinFS-version-vectors-DISC2005.pdf)
--   *P2P Replica Synchronization with Vector Sets.*
-
-    Dahlia Malkhi, Lev Novik, Chris Purcell.
-    ACM SIGOPS Operating Systems Review - Systems work at Microsoft Research, 41(2), 2007. [pdf]({{ base_path }}/files/VersionVectors2-OSR2007.pdf)
-
--   *Reconstructing approximate tree metrics.*
-    Ittai Abraham, Mahesh Balakrishnan, Fabian Kuhn, Dahlia Malkhi, Venugopalan Ramasubramanian, Kunal Talwar.
-    PODC 2007. [pdf]({{ base_path }}/files/ReconstructingTrees-PODC2007.pdf)
--   *Wait-Free Regular Storage from Byzantine Components.*
-    Ittai Abraham, Gregory Chockler, Idit Keidar, Dahlia Malkhi.
-    Information Processsing Letters 2007 [pdf]({{ base_path }}/files/bqs-regular-IPL2007.pdf)
--   *On Collaborative Content Distribution Using Multi-Message Gossip.*
-    Coby Fernandess and Dahlia Malkhi.
-    IEEE JPDC 2007 [pdf]({{ base_path }}/files/MultiGossip-IPDPS2006-bestpaper.pdf)
+|   *Concise Version Vectors in WinFS.* | Dahlia Malkhi, Doug Terry. | Distributed Computing Journal 2007 | [pdf]({{ base_path }}/files/WinFS-version-vectors-DISC2005.pdf) |
+|   *P2P Replica Synchronization with Vector Sets.* |  | Dahlia Malkhi, Lev Novik, Chris Purcell. | ACM SIGOPS Operating Systems Review - Systems work at Microsoft Research, 41(2), 2007. | [pdf]({{ base_path }}/files/VersionVectors2-OSR2007.pdf) |
+|   *Reconstructing approximate tree metrics.* | Ittai Abraham, Mahesh Balakrishnan, Fabian Kuhn, Dahlia Malkhi, Venugopalan Ramasubramanian, Kunal Talwar. | PODC 2007. | [pdf]({{ base_path }}/files/ReconstructingTrees-PODC2007.pdf) |
+|   *Wait-Free Regular Storage from Byzantine Components.* | Ittai Abraham, Gregory Chockler, Idit Keidar, Dahlia Malkhi. | Information Processsing Letters 2007 | [pdf]({{ base_path }}/files/bqs-regular-IPL2007.pdf) |
+|   *On Collaborative Content Distribution Using Multi-Message Gossip.* | Coby Fernandess and Dahlia Malkhi. | IEEE JPDC 2007 | [pdf]({{ base_path }}/files/MultiGossip-IPDPS2006-bestpaper.pdf) |
 
 #### 2006
 
 | Title |   Authors | Where | Links |
 | :--- | :--- | :-- | :--- |
--   *Byzantine Disk Paxos: Optimal Resilience with Byzantine Shared Memory*.
-    Ittai Abraham, Gregory Chockler, Idit Keidar, Dahlia Malkhi.
-    PODC 2004 [pdf]({{ base_path }}/files/ByzDP-DC2006.pdf)
--   *Light-Weight Leases for Storage-Centric Coordination.*
-    Gregory Chockler, Dahlia Malkhi.
-    International Journal of Parallel Programming 2006 [pdf]({{ base_path }}/files/LightLeases-IJPP2006.pdf)
--   *On Space-Stretch Trade-Offs: Upper bounds.*
-    Ittai Abraham, Cyril Gavoille, Dahlia Malkhi.
-    ACM Symposium on Parallel Algorithms and Architectures (SPAA), 2006. [pdf]({{ base_path }}/files/stretch-UB-SPAA2006.pdf)
--   *On Space-Stretch Trade-Offs: Lower bounds.*
-    Ittai Abraham, Cyril Gavoille, Dahlia Malkhi.
-    ACM Symposium on Parallel Algorithms and Architectures (SPAA), 2006. [pdf]({{ base_path }}/files/stretch-LB-SPAA2006.pdf)
+|   *Byzantine Disk Paxos: Optimal Resilience with Byzantine Shared Memory*. | Ittai Abraham, Gregory Chockler, Idit Keidar, Dahlia Malkhi. | PODC 2004 | [pdf]({{ base_path }}/files/ByzDP-DC2006.pdf) |
+|   *Light-Weight Leases for Storage-Centric Coordination.* | Gregory Chockler, Dahlia Malkhi. | International Journal of Parallel Programming 2006 | [pdf]({{ base_path }}/files/LightLeases-IJPP2006.pdf) |
+|   *On Space-Stretch Trade-Offs: Upper bounds.* | Ittai Abraham, Cyril Gavoille, Dahlia Malkhi. | ACM Symposium on Parallel Algorithms and Architectures (SPAA), 2006. | [pdf]({{ base_path }}/files/stretch-UB-SPAA2006.pdf) |
+|   *On Space-Stretch Trade-Offs: Lower bounds.* | Ittai Abraham, Cyril Gavoille, Dahlia Malkhi. | ACM Symposium on Parallel Algorithms and Architectures (SPAA), 2006. | [pdf]({{ base_path }}/files/stretch-LB-SPAA2006.pdf) |
 
 #### 2005
 
 | Title |   Authors | Where | Links |
 | :--- | :--- | :-- | :--- |
--   *Active Disk Paxos with Infinitely Many Processes*.
-    Gregory Chockler, Dahlia Malkhi.
-    PODC 2002 [pdf]({{ base_path }}/files/ActiveDP-DC2005.pdf)
--   *Probabilistic quorums for dynamic systems*.
-    DISC 2003 [pdf]({{ base_path }}/files/DynPquorums-DC2005.pdf)
--   *Name Independent Routing for Growth Bounded Networks.*
-    Ittai Abraham, Dahlia Malkhi.
-    SPAA 2005 [pdf]({{ base_path }}/files/nameindep-gb-SPAA2005.pdf)
--   The Julia Content Distribution Network.
-    Danny Bickson, Dahlia Malkhi.
-    The 2nd Usenix Workshop on Real Large Distributed Systems (WORLDS) 2005. [pdf]({{ base_path }}/files/julia-WORLDS2005.pdf)
--   *Ω Meets Paxos: Leader Election and Stability without Eventual Timely Links.*
-
-    Dahlia Malkhi, Florin Oprea, Lidong Zhou.
-    DISC 2005 [pdf]({{ base_path }}/files/OmegaMeetsPaxos-DISC2005.pdf)
-
--   *Practical Locality-Awareness for Large Scale Information Sharing*.
-    Ittai Abraham, Ankur Badola, Danny Bickson, Dahlia Malkhi, Sahrad Maloo, Saar Ron.
-
-    International Workshop on Peer-To-Peer Systems (IPTPS) 2005 [pdf]({{ base_path }}/files/PracticalLocalityP2P-IPTPS2005.pdf)
+|   *Active Disk Paxos with Infinitely Many Processes*. | Gregory Chockler, Dahlia Malkhi. | PODC 2002 | [pdf]({{ base_path }}/files/ActiveDP-DC2005.pdf) |
+|   *Probabilistic quorums for dynamic systems*. | Ittai Abraham, Dahlia Malkhi | DISC 2003 | [pdf]({{ base_path }}/files/DynPquorums-DC2005.pdf) | 
+|   *Name Independent Routing for Growth Bounded Networks.* | Ittai Abraham, Dahlia Malkhi. | SPAA 2005 | [pdf]({{ base_path }}/files/nameindep-gb-SPAA2005.pdf) |
+|   The Julia Content Distribution Network. | Danny Bickson, Dahlia Malkhi. | The 2nd Usenix Workshop on Real Large Distributed Systems (WORLDS) 2005. | [pdf]({{ base_path }}/files/julia-WORLDS2005.pdf) |
+|   *Ω Meets Paxos: Leader Election and Stability without Eventual Timely Links.* | Dahlia Malkhi, Florin Oprea, Lidong Zhou. | DISC 2005 | [pdf]({{ base_path }}/files/OmegaMeetsPaxos-DISC2005.pdf) |
+|   *Practical Locality-Awareness for Large Scale Information Sharing*. | Ittai Abraham, Ankur Badola, Danny Bickson, Dahlia Malkhi, Sahrad Maloo, Saar Ron. | International Workshop on Peer-To-Peer Systems (IPTPS) 2005 | [pdf]({{ base_path }}/files/PracticalLocalityP2P-IPTPS2005.pdf) | 
 
 #### 2004
 
