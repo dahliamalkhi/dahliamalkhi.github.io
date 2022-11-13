@@ -30,7 +30,7 @@ author_profile: true
 
 | Title | Links |  Authors | Where |
 | :--- | :--- | :-- | :--- |
-| ACE: Abstract Consensus Encapsulation for Liveness Boosting of State Machine Replication | [[pdf]]({{ base_path }}/files/ACE-OPODIS2020.pdf) | Alexander Spiegelman, Arik Rinberg, Dahlia Malkhi | [The 24th International Conference on Principles of Distributed Systems (OPODIS 2020)](https://opodis2020.unistra.fr/) | 
+| ACE: Abstract Consensus Encapsulation for Liveness Boosting of State Machine Replication | [[pdf]]({{ base_path }}/files/ACE-OPODIS2020.pdf) | Alexander Spiegelman, Arik Rinberg, Dahlia Malkhi | [OPODIS 2020](https://opodis2020.unistra.fr/) | 
 | Asynchronous Distributed Key Generation for Computationally Secure Randomness, Consensus, and Threshold Signatures | [[pdf]](https://eprint.iacr.org/2019/1015) |  Eleftherios Kokoris Kogias, Dahlia Malkhi, Alexander Spiegelman | [ACM CCS 2020](https://www.sigsac.org/ccs/CCS2020/) |
 | Cogsworth: Byzantine Round Synchronization | [[pdf]](https://arxiv.org/abs/1909.05204) |  Oded Naor, Mathieu Baudet, Dahlia Malkhi, Alexander Spiegelman | [CES 2020](https://cryptoeconomicsystems.pubpub.org/ces20) |
 
@@ -42,9 +42,9 @@ author_profile: true
 | Sync HotStuff: Simple and Practical Synchronous State Machine Replication |  [[pdf]]({{ base_path }}/files/SyncHotStuff-SP2020.pdf), [short 🎥](https://drive.google.com/file/d/1GDMU61PeQY9ytPiiX3BXWpqWZGPdHX6P/view?usp=sharing) |  Ittai Abraham, Dahlia Malkhi, Kartik Nayak, Ling Ren, Maofan Yin | IEEE S&P 2020 |
 | Efficient Verifiable Secret Sharing with Share Recovery in BFT Protocols | [[pdf]]({{ base_path }}/files/T3P-CCS19.pdf) |  Soumya Basu, Alin Tomescu, Ittai Abraham, Dahlia Malkhi, Mike Reiter, Emin Gün Sirer | ACM CCS '19 |
 | Flexible Byzantine Fault Tolerance | [[pdf]]({{ base_path }}/files/Flex-BFT-CCS19.pdf) | Dahlia Malkhi, Kartik Nayak, Ling Ren | ACM CCS '19 |
-| HotStuff: BFT Consensus with Linearity and Responsiveness | PODC 2019 | [[pdf]]({{ base_path }}/files/HotStuff-PODC2019.pdf) | Maofan Yin, Dahlia Malkhi, Michael K. Reiter, Guy Golan Gueta, Ittai Abraham |
+| HotStuff: BFT Consensus with Linearity and Responsiveness |  [[pdf]]({{ base_path }}/files/HotStuff-PODC2019.pdf) | Maofan Yin, Dahlia Malkhi, Michael K. Reiter, Guy Golan Gueta, Ittai Abraham |PODC 2019 |
 | Validated Asynchronous Byzantine Agreement with Optimal Resilience and Asymptotically Optimal Time and Word Communication |  [[pdf]]({{ base_path }}/files/vaba-podc2019-2.pdf) |  Ittai Abraham, Dahlia Malkhi, Alexander Spiegelman |  PODC 2019 |
-| SBFT: a Scalable Decentralized Trust Infrastructure for Blockchains | DSN 2019 | [[pdf]]({{ base_path }}/files/1804.01626.pdf) | Guy Golan Gueta, Ittai Abraham, Shelly Grossman, Dahlia Malkhi, Benny Pinkas, Mike Reiter, Dragos Adrian Seredinschi, Orr Tamir, Alin Tomescu |
+| SBFT: a Scalable Decentralized Trust Infrastructure for Blockchains |  [[pdf]]({{ base_path }}/files/1804.01626.pdf) | Guy Golan Gueta, Ittai Abraham, Shelly Grossman, Dahlia Malkhi, Benny Pinkas, Mike Reiter, Dragos Adrian Seredinschi, Orr Tamir, Alin Tomescu |DSN 2019 |
 
 #### 2018
 
