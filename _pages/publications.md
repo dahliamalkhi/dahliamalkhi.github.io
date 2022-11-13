@@ -6,6 +6,7 @@ author_profile: true
 ---
 
 {% include base_path %}
+ <base target="_blank">
 
 #### 2022
 
@@ -19,18 +20,11 @@ author_profile: true
 
 #### 2021
 
--   *Twins: BFT Systems Made Robust*.<br>
-    Shehar Bano, Alberto Sonnino, Andrey Chursin, Dmitri Perelman, Zekun Li, Avery Ching, Dahlia Malkhi.
-    [OPODIS 2021](https://opodis2021.unistra.fr/).
-
--   *RainBlock: Faster Transaction Processing in Public Blockchains*.<br>
-    Soujanya Ponnapalli, Aashaka Shah, Souvik Banerjee, Dahlia Malkhi, Amy Tai, Vijai Chidambaram, Michael Wei.
-    [Usenix ATC 2021](https://www.usenix.org/conference/atc21).<br>
-    [[RainBlock-ATC21.pdf]](https://www.usenix.org/system/files/atc21-ponnapalli.pdf).
-
--   *Strengthened Fault Tolerance in Byzantine Fault Tolerant Replication*.<br>
-    Zhuolun Xiang, Dahlia Malkhi, Kartik Nayak and Ling Ren. [ICDCS 2021](https://icdcs2021.us/).<br>
-    [[https://arxiv/abs/2101.03715]](https://arxiv.org/abs/2101.03715).
+| Title | Authors | Where | Links | 
+| :--- | :--- | :-- | :--- |
+| Twins: BFT Systems Made Robust | Shehar Bano, Alberto Sonnino, Andrey Chursin, Dmitri Perelman, Zekun Li, Avery Ching, Dahlia Malkhi | [OPODIS 2021](https://opodis2021.unistra.fr/) | |
+| RainBlock: Faster Transaction Processing in Public Blockchains | Soujanya Ponnapalli, Aashaka Shah, Souvik Banerjee, Dahlia Malkhi, Amy Tai, Vijai Chidambaram, Michael Wei | [Usenix ATC 2021](https://www.usenix.org/conference/atc21) | [[pdf]](https://www.usenix.org/system/files/atc21-ponnapalli.pdf) |
+| Strengthened Fault Tolerance in Byzantine Fault Tolerant Replication | Zhuolun Xiang, Dahlia Malkhi, Kartik Nayak and Ling Ren | [ICDCS 2021](https://icdcs2021.us/) | [[pdf]](https://arxiv.org/abs/2101.03715) | 
 
 #### 2020
 
