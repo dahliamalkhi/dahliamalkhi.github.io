@@ -208,7 +208,7 @@ author_profile: true
 |   *From Byzantine Agreement to Practical Survivability.* | Dahlia Malkhi | keynote at RCDS 2002 |  [pdf]({{ base_path }}/files/bqs-position-RCDS2002.pdf) | 
 |   *Dynamic Lookup Networks: A position paper.* | Dahlia Malkhi. | FUDICO 2002. | [pdf]({{ base_path }}/files/DynamicLookup-FUDICO2002.pdf) |
 |   *A Data-Centric Approach for Scalable State Machine Replication*. | Gregory Chockler, Dahlia Malkhi, Danny Dolev. | The International Workshop on Future Directions in Distributed Computing (FuDiCo), LNCS Volume 2584, 2002. | [pdf]({{ base_path }}/files/datacentric-FUDICO2002.pdf) |
-|   *Scalable Secure Storage when Half the System is Faulty.* | Noga Alon, Haim Kaplan, Michael Krivelevich, Dahlia Malkhi, Julien Stern. | ICALP 2000 | [pdf] ;]({{ base_path }}/files/SecureStore2F-INC-addendum-2003.pdf) |
+|   *Scalable Secure Storage when Half the System is Faulty.* | Noga Alon, Haim Kaplan, Michael Krivelevich, Dahlia Malkhi, Julien Stern. | ICALP 2000 | [pdf]({{ base_path }}/files/SecureStore2F-INC-addendum-2003.pdf) |
 
 #### 2001
 
