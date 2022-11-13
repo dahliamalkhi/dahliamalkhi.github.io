@@ -91,7 +91,7 @@ author_profile: true
 | Title |   Authors | Where | Links |
 | :--- | :--- | :-- | :--- |
 |   *Optimal Gossip with Direct Addressing*. | Bernhard Haeupler, Dahlia Malkhi. | PODC 2014. | [📄]({{ base_path }}/files/DirectAdressing-PODC2014.pdf) |
-|   *REEFU: A Logging Service for Cluster Applications.* | Dahlia Malkhi and Marcus Weimer. | Invited position paper, the 8th Workshop on Large-Scale Distributed Systems and Middleware (LADIS), 2014. | |
+|   REEFU: A Logging Service for Cluster Applications | Dahlia Malkhi and Marcus Weimer. | LADIS 2014 | |
 
 #### 2013
 
@@ -120,11 +120,11 @@ author_profile: true
 
 | Title |   Authors | Where | Links |
 | :--- | :--- | :-- | :--- |
-|   *Reconfiguring Replicated Atomic Storage: A Tutorial*. | Marcos Aguilera, Idit Keidar, Dahlia Malkhi, Jean-Phillipe Martin, Alex Shraer. | Bulletin of the EATCS 2010. | [📄]({{ base_path }}/files/DynamicStorageSurvey-BEATCS2012.pdf) |
-|   *Virtually Synchronous Methodology for Dynamic Service Replication.* | Ken Birman, Dahlia Malkhi, Robbert Van Renesse. | MSR Tech Report, 2010. | [📄]({{ base_path }}/files/bmvr-virtsync.pdf) |
-|   *Reconfiguring a State Machine* | Leslie Lamport, Dahlia Malkhi, Lidong Zhou. | AIGACT News 2010. | [📄]({{ base_path }}/files/RSMR-SIGACT2010.pdf) |
-|   *Fast Asynchronous Consensus with Optimal Resilience*. | Ittai Abraham, Marcos Aguilera, Dahlia Malkhi. | DISC 2010. | [📄]({{ base_path }}/files/asynch2fplus1-DISC2010.pdf) |
-|   *Data-Centric Reconfiguration with Network-Attached Disks* | Alex Shraer, Jean-Phillpe Martin, Dahlia Malkhi, Idit Keidar. | LADIS 2010. | [📄]({{ base_path }}/files/DynaDisk-LADIS2010.pdf) |
+|   Reconfiguring Replicated Atomic Storage: A Tutorial | Marcos Aguilera, Idit Keidar, Dahlia Malkhi, Jean-Phillipe Martin, Alex Shraer | Bulletin of the EATCS 2010 | [📄]({{ base_path }}/files/DynamicStorageSurvey-BEATCS2012.pdf) |
+|   Virtually Synchronous Methodology for Dynamic Service Replication | Ken Birman, Dahlia Malkhi, Robbert Van Renesse | MSR Tech Report 2010 | [📄]({{ base_path }}/files/bmvr-virtsync.pdf) |
+|   Reconfiguring a State Machine | Leslie Lamport, Dahlia Malkhi, Lidong Zhou | AIGACT News 2010 | [📄]({{ base_path }}/files/RSMR-SIGACT2010.pdf) |
+|   Fast Asynchronous Consensus with Optimal Resilience | Ittai Abraham, Marcos Aguilera, Dahlia Malkhi | DISC 2010 | [📄]({{ base_path }}/files/asynch2fplus1-DISC2010.pdf) |
+|   Data-Centric Reconfiguration with Network-Attached Disks | Alex Shraer, Jean-Phillpe Martin, Dahlia Malkhi, Idit Keidar | LADIS 2010 | [📄]({{ base_path }}/files/DynaDisk-LADIS2010.pdf) |
 
 #### 2009
 
