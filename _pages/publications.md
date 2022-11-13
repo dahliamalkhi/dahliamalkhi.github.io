@@ -11,7 +11,7 @@ author_profile: true
 #### 2022
 
 
-| Title | Links | Authors | Where | 
+| Title | Links &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Authors | Where | 
 | :--- | :--- | :-- | :--- |
 | Byzantine Consensus under Fully Fluctuating Participation | [[pdf]](https://eprint.iacr.org/2022/1448),<br> [[blogpost 1]](https://blog.chain.link/instant-finality-in-byzantine-generals-with-unknown-and-dynamic-participation/),<br> [[blogpost 2]](https://blog.chain.link/instant-finality-in-byzantine-atomic-broadcast-under-unknown-dynamic-participation/) | Dahlia Malkhi, Atsuki Momose, Ling Ren | ArXiv | 
 | Maximal Extractable Value (MEV) Protection on a DAG | [[pdf]](https://arxiv.org/abs/2208.00940),<br> [[🎥 CESC '22]](https://youtu.be/q5v3tLLoOXM) |  Dahlia Malkhi, Pawel Szalachowski | [CESC 2022](https://cesc.io/), [Tokenomics 2022](https://tokenomics-conference.lip6.fr/index.php?n=Main.Tokenomics2022) |
@@ -39,7 +39,7 @@ author_profile: true
 | Title | Links |  Authors | Where |
 | :--- | :--- | :-- | :--- |
 | FairLedger: A Fair Blockchain Protocol for Financial Institutions | [[pdf]]({{ base_path }}/files/FairLedger-OPODIS2019.pdf) |  Kfir Lev-Ari, Alexander Spiegelman, Idit Keidar and Dahlia Malkhi | OPODIS 2019, **best paper award** |
-| Sync HotStuff: Simple and Practical Synchronous State Machine Replication |  [[pdf]]({{ base_path }}/files/SyncHotStuff-SP2020.pdf), [short 🎥](https://drive.google.com/file/d/1GDMU61PeQY9ytPiiX3BXWpqWZGPdHX6P/view?usp=sharing) |  Ittai Abraham, Dahlia Malkhi, Kartik Nayak, Ling Ren, Maofan Yin | IEEE S&P 2020 |
+| Sync HotStuff: Simple and Practical Synchronous State Machine Replication |  [[pdf]]({{ base_path }}/files/SyncHotStuff-SP2020.pdf), [[short 🎥]](https://drive.google.com/file/d/1GDMU61PeQY9ytPiiX3BXWpqWZGPdHX6P/view?usp=sharing) |  Ittai Abraham, Dahlia Malkhi, Kartik Nayak, Ling Ren, Maofan Yin | IEEE S&P 2020 |
 | Efficient Verifiable Secret Sharing with Share Recovery in BFT Protocols | [[pdf]]({{ base_path }}/files/T3P-CCS19.pdf) |  Soumya Basu, Alin Tomescu, Ittai Abraham, Dahlia Malkhi, Mike Reiter, Emin Gün Sirer | ACM CCS '19 |
 | Flexible Byzantine Fault Tolerance | [[pdf]]({{ base_path }}/files/Flex-BFT-CCS19.pdf) | Dahlia Malkhi, Kartik Nayak, Ling Ren | ACM CCS '19 |
 | HotStuff: BFT Consensus with Linearity and Responsiveness |  [[pdf]]({{ base_path }}/files/HotStuff-PODC2019.pdf) | Maofan Yin, Dahlia Malkhi, Michael K. Reiter, Guy Golan Gueta, Ittai Abraham |PODC 2019 |
@@ -51,7 +51,7 @@ author_profile: true
 | Title | Links | Authors | Where | 
 | :--- | :--- | :-- | :--- |
 | State Machine Replication is Harder than Consensus |  [[pdf]]({{ base_path }}/files/SMR-DISC2018.pdf) | Karolos Antoniadis, Rachid Guerraoui, Dahlia Malkhi and Dragos-Adrian Seredinschi |DISC 2018 |
-| Stable and Consistent Membership at Scale with Rapid |  [[pdf]]({{ base_path }}/files/Rapid-atc2018.pdf) [ArXiv preprint](http://Arxiv preprint: https://arxiv.org/abs/1803.03620)  | Lalith Suresh, Dahlia Malkhi, Parikshit Gopalan, Ivan Porto Carreiro, Zeeshan Lokhandwala | USENIX ATC 2018 |
+| Stable and Consistent Membership at Scale with Rapid |  [[pdf]]({{ base_path }}/files/Rapid-atc2018.pdf)  | Lalith Suresh, Dahlia Malkhi, Parikshit Gopalan, Ivan Porto Carreiro, Zeeshan Lokhandwala | USENIX ATC 2018 |
 | Revisiting Fast Practical Byzantine Fault Tolerance: Thelma, Velma and Zelma |[[pdf]](https://arxiv.org/abs/1801.10022) | Ittai Abraham, Guy Gueta, Dahlia Malkhi, Jean-Philippe Martin | ArXiv
 | Dfinity Consensus Explored | [[pdf]](https://eprint.iacr.org/2018/1153.pdf) | Ittai Abraham, Dahlia Malkhi, Kartik Nayak, Ling Ren | ePrint | 
 
