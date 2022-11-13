@@ -13,9 +13,9 @@ author_profile: true
 
 | Title |  Authors | Where | Links |
 | :--- | :--- | :-- | :--- |
-| Byzantine Consensus under Fully Fluctuating Participation |  Dahlia Malkhi, Atsuki Momose, Ling Ren | ArXiv | [📄](https://eprint.iacr.org/2022/1448), [🗞️](https://blog.chain.link/instant-finality-in-byzantine-generals-with-unknown-and-dynamic-participation/), [🗞️](https://blog.chain.link/instant-finality-in-byzantine-atomic-broadcast-under-unknown-dynamic-participation/) |
-| Maximal Extractable Value (MEV) Protection on a DAG |   Dahlia Malkhi, Pawel Szalachowski | [CESC 2022](https://cesc.io/), [Tokenomics 2022](https://tokenomics-conference.lip6.fr/index.php?n=Main.Tokenomics2022) |[📄](https://arxiv.org/abs/2208.00940), [🎥](https://youtu.be/q5v3tLLoOXM) |
-| Block-STM: Scaling Blockchain Execution by Turning Ordering Curse to a Performance Blessing |   Rati Gelashvili, Alexander Spiegelman, Zhuolun Xiang, George Danezis, Zekun Li, Yu Xia, Runtian Zhou, Dahlia Malkhi| [PPoPP 2023](https://conf.researchr.org/home/PPoPP-2023), [ConsensusDay22](https://research.protocol.ai/sites/consensusday22/) |[📄](https://arxiv.org/abs/2203.06871) |
+| Byzantine Consensus under Fully Fluctuating Participation |  Dahlia Malkhi, Atsuki Momose, Ling Ren | ArXiv | [📄](https://eprint.iacr.org/2022/1448) [🗞️](https://blog.chain.link/instant-finality-in-byzantine-generals-with-unknown-and-dynamic-participation/) [🗞️](https://blog.chain.link/instant-finality-in-byzantine-atomic-broadcast-under-unknown-dynamic-participation/) |
+| Maximal Extractable Value (MEV) Protection on a DAG |   Dahlia Malkhi, Pawel Szalachowski | [CESC 2022](https://cesc.io/) [Tokenomics 2022](https://tokenomics-conference.lip6.fr/index.php?n=Main.Tokenomics2022) |[📄](https://arxiv.org/abs/2208.00940) [🎥](https://youtu.be/q5v3tLLoOXM) |
+| Block-STM: Scaling Blockchain Execution by Turning Ordering Curse to a Performance Blessing |   Rati Gelashvili, Alexander Spiegelman, Zhuolun Xiang, George Danezis, Zekun Li, Yu Xia, Runtian Zhou, Dahlia Malkhi| [PPoPP 2023](https://conf.researchr.org/home/PPoPP-2023) [ConsensusDay22](https://research.protocol.ai/sites/consensusday22/) |[📄](https://arxiv.org/abs/2203.06871) |
 | Be Aware of Your Leaders |   Shir Cohen, Rati Gelashvili, Eleftherios Kokoris Kogias, Dahlia Malkhi, Zekun Li, Alberto Sonnino, Alexander Spiegelman | [FC'22](https://fc22.ifca.ai/) |[📄](https://fc22.ifca.ai/preproceedings/32.pdf) |
 
 #### 2021
@@ -38,8 +38,8 @@ author_profile: true
 
 | Title |   Authors | Where | Links |
 | :--- | :--- | :-- | :--- |
-| FairLedger: A Fair Blockchain Protocol for Financial Institutions |   Kfir Lev-Ari, Alexander Spiegelman, Idit Keidar and Dahlia Malkhi | OPODIS 2019, **best paper award** |[📄]({{ base_path }}/files/FairLedger-OPODIS2019.pdf) |
-| Sync HotStuff: Simple and Practical Synchronous State Machine Replication |    Ittai Abraham, Dahlia Malkhi, Kartik Nayak, Ling Ren, Maofan Yin | IEEE S&P 2020 |[📄]({{ base_path }}/files/SyncHotStuff-SP2020.pdf), [🎥](https://drive.google.com/file/d/1GDMU61PeQY9ytPiiX3BXWpqWZGPdHX6P/view?usp=sharing) |
+| FairLedger: A Fair Blockchain Protocol for Financial Institutions |   Kfir Lev-Ari, Alexander Spiegelman, Idit Keidar and Dahlia Malkhi | OPODIS 2019 (**best paper award**) |[📄]({{ base_path }}/files/FairLedger-OPODIS2019.pdf) |
+| Sync HotStuff: Simple and Practical Synchronous State Machine Replication |    Ittai Abraham, Dahlia Malkhi, Kartik Nayak, Ling Ren, Maofan Yin | IEEE S&P 2020 |[📄]({{ base_path }}/files/SyncHotStuff-SP2020.pdf) [🎥](https://drive.google.com/file/d/1GDMU61PeQY9ytPiiX3BXWpqWZGPdHX6P/view?usp=sharing) |
 | Efficient Verifiable Secret Sharing with Share Recovery in BFT Protocols |   Soumya Basu, Alin Tomescu, Ittai Abraham, Dahlia Malkhi, Mike Reiter, Emin Gün Sirer | ACM CCS '19 |[📄]({{ base_path }}/files/T3P-CCS19.pdf) |
 | Flexible Byzantine Fault Tolerance |  Dahlia Malkhi, Kartik Nayak, Ling Ren | ACM CCS '19 |[📄]({{ base_path }}/files/Flex-BFT-CCS19.pdf) |
 | HotStuff: BFT Consensus with Linearity and Responsiveness |   Maofan Yin, Dahlia Malkhi, Michael K. Reiter, Guy Golan Gueta, Ittai Abraham |PODC 2019 |[📄]({{ base_path }}/files/HotStuff-PODC2019.pdf) |
@@ -74,7 +74,7 @@ author_profile: true
 | :--- | :--- | :-- | :--- |
 |  Flexible Paxos: Quorum Intersection Revisited. | Heidi Howard, Dahlia Malkhi, Alexander Spiegelman. | OPODIS 2016. | [📄]({{ base_path }}/files/fpaxos-opodis20161.pdf) | 
 |  BVP: Byzantine Vertical Paxos. | Ittai Abraham, Dahlia Malkhi. | Distributed Cryptocurrencies and Consensus Ledgers (DCCL) 2016. |  [📄]({{ base_path }}/files/bvp-byzantine-vertical.pdf) | 
-|  Replex: A Scalable, Highly Available Multi-Index Store. | Amy Tai, Michael Wei, Michael Freedman, Ittai Abraham, Dahlia Malkhi. | Usenix ATC 2016 (best paper award).  | [📄]({{ base_path }}/files/atc2016.pdf) | 
+|  Replex: A Scalable, Highly Available Multi-Index Store. | Amy Tai, Michael Wei, Michael Freedman, Ittai Abraham, Dahlia Malkhi. | Usenix ATC 2016 (**best paper award**).  | [📄]({{ base_path }}/files/atc2016.pdf) | 
 |  *Silver: A scalable, distributed, multi-versioning, Always growing (Ag) File System*. |  Michael Wei, Amy Tai, Chris Rossbach, Ittai Abraham, Udi Wieder, Steven Swanson, Dahlia Malkhi.  | HotStorage '2016. | [📄]({{ base_path }}/files/Silver-hotstorage2016.pdf) | 
 |  *Dynamic Reconfiguration: A Tutorial.* | Alexander Spiegelman, Idit Keidar, Dahlia Malkhi. | OPODIS 2016 | [📄]({{ base_path }}/files/ReconfigTutorial-OPODIS2016.pdf) | 
 
@@ -185,7 +185,7 @@ author_profile: true
 |   *Routing with Improved Communication-Space Trade-Off*. | Ittai Abraham, Cyril Gavoille, Dahlia Malkhi. | Eighteenth International Symposium on Distributed Computing (DISC), 2004. | |
 |   *Compact Routing on Euclidian Metrics*. | Ittai Abraham, Dahlia Malkhi. | Twenty-Third Annual ACM SIGACT-SIGOPS Symposium on Principles of Distributed Computing (PODC), 2004. | |
 |   *Efficient Large Scale Content Distribution.* | Danny Bickson, Dahlia Malkhi, David Rabinowitz. | The 6th Workshop on Distributed Data and Structures (WDAS), 2004. | [📄]({{ base_path }}/files/julia-WDAS2004.pdf) |
-|   *Fairplay: A Secure Two-Party Computation System*. | Dahlia Malkhi, Noam Nisan, Benny Pinkas, Yaron Sella. | Usenix Security (best student paper award), 2004. | [📄]({{ base_path }}/files/Fairplay-usenix2004.pdf) |
+|   *Fairplay: A Secure Two-Party Computation System*. | Dahlia Malkhi, Noam Nisan, Benny Pinkas, Yaron Sella. | Usenix Security (**best student paper award**), 2004. | [📄]({{ base_path }}/files/Fairplay-usenix2004.pdf) |
 |   *Limiting Duplicate Identities in Distributed Systems (A position paper)*. | Elliot Jaffe, Dahlia Malkhi, Elan Pavlov. | 2nd Bertinoro Workshop on Future Directions in Distributed Computing, FuDiCo II: S.O.S. Survivability: Obstacles and Solutions, 2004. | |
 |   *Optimal Resilience Wait-Free Storage from Byzantine Components: Inherent Costs and Solutions* | Gregory Chockler, Idit Keidar, Dahlia Malkhi. | 2nd Bertinoro Workshop on Future Directions in Distributed Computing, FuDiCo II: S.O.S. Survivability: Obstacles and Solutions, 2004. | [📄]({{ base_path }}/files/optimal-byz-rw-SOS2004.pdf) |
 |   *Principles of Locality-Aware Networks for Locating Nearest Copies of Data.* | Ittai Abraham, Dahlia Malkhi. | International Workshop on Self-\* Properties in Complex Information Systems, Bertinoro, 2004. | |
