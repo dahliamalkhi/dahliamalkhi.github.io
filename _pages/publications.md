@@ -12,9 +12,9 @@ author_profile: true
 
 | Title | Authors | Where | Links | 
 | :--- | :--- | :-- | :--- |
-| Byzantine Consensus under Fully Fluctuating Participation | Dahlia Malkhi, Atsuki Momose, Ling Ren | ArXiv | [[pdf]](https://eprint.iacr.org/2022/1448), [[blogpost 1]](https://blog.chain.link/instant-finality-in-byzantine-generals-with-unknown-and-dynamic-participation/), [[blogpost 2]](https://blog.chain.link/instant-finality-in-byzantine-atomic-broadcast-under-unknown-dynamic-participation/) |
-| Maximal Extractable Value (MEV) Protection on a DAG | Dahlia Malkhi, Pawel Szalachowski | [Tokenomics 2022](https://tokenomics-conference.lip6.fr/index.php?n=Main.Tokenomics2022) | [[pdf]](https://arxiv.org/abs/2208.00940), [[🎥 CESC '22]](https://youtu.be/q5v3tLLoOXM) | 
-| Block-STM: Scaling Blockchain Execution by Turning Ordering Curse to a Performance Blessing | Gelashvili et al. | [PPoPP 2023](https://conf.researchr.org/home/PPoPP-2023), [ConsensusDay22](https://research.protocol.ai/sites/consensusday22/) | [[pdf]](https://arxiv.org/abs/2203.06871) | 
+| Byzantine Consensus under Fully Fluctuating Participation | Dahlia Malkhi, Atsuki Momose, Ling Ren | ArXiv | [[pdf]](https://eprint.iacr.org/2022/1448),<br> [[blogpost 1]](https://blog.chain.link/instant-finality-in-byzantine-generals-with-unknown-and-dynamic-participation/),<br> [[blogpost 2]](https://blog.chain.link/instant-finality-in-byzantine-atomic-broadcast-under-unknown-dynamic-participation/) |
+| Maximal Extractable Value (MEV) Protection on a DAG | Dahlia Malkhi, Pawel Szalachowski | [Tokenomics 2022](https://tokenomics-conference.lip6.fr/index.php?n=Main.Tokenomics2022) | [[pdf]](https://arxiv.org/abs/2208.00940),<br> [[🎥 CESC '22]](https://youtu.be/q5v3tLLoOXM) | 
+| Block-STM: Scaling Blockchain Execution by Turning Ordering Curse to a Performance Blessing | Rati Gelashvili, Alexander Spiegelman, Zhuolun Xiang, George Danezis, Zekun Li, Yu Xia, Runtian Zhou, Dahlia Malkhi| [PPoPP 2023](https://conf.researchr.org/home/PPoPP-2023), [ConsensusDay22](https://research.protocol.ai/sites/consensusday22/) | [[pdf]](https://arxiv.org/abs/2203.06871) | 
 | Be Aware of Your Leaders | Shir Cohen, Rati Gelashvili, Eleftherios Kokoris Kogias, Dahlia Malkhi, Zekun Li, Alberto Sonnino, Alexander Spiegelman | [FC'22](https://fc22.ifca.ai/) | | 
 
 #### 2021
