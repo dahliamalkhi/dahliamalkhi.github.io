@@ -30,7 +30,7 @@ author_profile: true
 
 | Title | Links |  Authors | Where |
 | :--- | :--- | :-- | :--- |
-| ACE: Abstract Consensus Encapsulation for Liveness Boosting of State Machine Replication | | [The 24th International Conference on Principles of Distributed Systems (OPODIS 2020)](https://opodis2020.unistra.fr/) | [[pdf]]({{ base_path }}/files/ACE-OPODIS2020.pdf) Alexander Spiegelman, Arik Rinberg, Dahlia Malkhi |
+| ACE: Abstract Consensus Encapsulation for Liveness Boosting of State Machine Replication | [[pdf]]({{ base_path }}/files/ACE-OPODIS2020.pdf) | Alexander Spiegelman, Arik Rinberg, Dahlia Malkhi | [The 24th International Conference on Principles of Distributed Systems (OPODIS 2020)](https://opodis2020.unistra.fr/) | 
 | Asynchronous Distributed Key Generation for Computationally Secure Randomness, Consensus, and Threshold Signatures | [[pdf]](https://eprint.iacr.org/2019/1015) |  Eleftherios Kokoris Kogias, Dahlia Malkhi, Alexander Spiegelman | [ACM CCS 2020](https://www.sigsac.org/ccs/CCS2020/) |
 | Cogsworth: Byzantine Round Synchronization | [[pdf]](https://arxiv.org/abs/1909.05204) |  Oded Naor, Mathieu Baudet, Dahlia Malkhi, Alexander Spiegelman | [CES 2020](https://cryptoeconomicsystems.pubpub.org/ces20) |
 
