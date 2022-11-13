@@ -22,33 +22,22 @@ author_profile: true
 
 | Title | Links |  Authors | Where |
 | :--- | :--- | :-- | :--- |
-| Twins: BFT Systems Made Robust | [OPODIS 2021](https://opodis2021.unistra.fr/) | | Shehar Bano, Alberto Sonnino, Andrey Chursin, Dmitri Perelman, Zekun Li, Avery Ching, Dahlia Malkhi |
-| RainBlock: Faster Transaction Processing in Public Blockchains | [Usenix ATC 2021](https://www.usenix.org/conference/atc21) | [[pdf]](https://www.usenix.org/system/files/atc21-ponnapalli.pdf) | Soujanya Ponnapalli, Aashaka Shah, Souvik Banerjee, Dahlia Malkhi, Amy Tai, Vijai Chidambaram, Michael Wei |
+| Twins: BFT Systems Made Robust | [[pdf]](https://arxiv.org/abs/2004.10617) | Shehar Bano, Alberto Sonnino, Andrey Chursin, Dmitri Perelman, Zekun Li, Avery Ching, Dahlia Malkhi | [OPODIS 2021](https://opodis2021.unistra.fr/) |
+| RainBlock: Faster Transaction Processing in Public Blockchains |  [[pdf]](https://www.usenix.org/system/files/atc21-ponnapalli.pdf) | Soujanya Ponnapalli, Aashaka Shah, Souvik Banerjee, Dahlia Malkhi, Amy Tai, Vijai Chidambaram, Michael Wei | [Usenix ATC 2021](https://www.usenix.org/conference/atc21) |
 | Strengthened Fault Tolerance in Byzantine Fault Tolerant Replication | [[pdf]](https://arxiv.org/abs/2101.03715) |  Zhuolun Xiang, Dahlia Malkhi, Kartik Nayak and Ling Ren | [ICDCS 2021](https://icdcs2021.us/) |
 
 #### 2020
 
--   *ACE: Abstract Consensus Encapsulation for Liveness Boosting of State Machine Replication.*<br>
-    Alexander Spiegelman, Arik Rinberg, Dahlia Malkhi. 
-    [The 24th International Conference on Principles of Distributed Systems (OPODIS 2020)](https://opodis2020.unistra.fr/).<br>
-    [[ACE-OPODIS2020.pdf]]({{ base_path }}/files/ACE-OPODIS2020.pdf)
-
--   *Asynchronous Distributed Key Generation for Computationally Secure Randomness, Consensus, and Threshold Signatures.*
-    Eleftherios Kokoris Kogias, Dahlia Malkhi, Alexander Spiegelman. 
-    [ACM CCS 2020](https://www.sigsac.org/ccs/CCS2020/).<br>
-    [[https://eprint.iacr.org/2019/1015]](https://eprint.iacr.org/2019/1015)
-
--   *Twins: White-Glove Approach for BFT Testing.*
-     Shehar Bano, Alberto Sonnino, Andrey Chursin, Dmitri Perelman, Dahlia Malkhi.
-    [<https://arxiv.org/abs/2004.10617>]
-
--   *Cogsworth: Byzantine Round Synchronization.*
-    Oded Naor, Mathieu Baudet, Dahlia Malkhi, Alexander Spiegelman.
-    [CES 2020](https://cryptoeconomicsystems.pubpub.org/ces20).<br>
-    [[https://arxiv.org/abs/1909.05204]](https://arxiv.org/abs/1909.05204)
+| Title | Links |  Authors | Where |
+| :--- | :--- | :-- | :--- |
+| ACE: Abstract Consensus Encapsulation for Liveness Boosting of State Machine Replication | [The 24th International Conference on Principles of Distributed Systems (OPODIS 2020)](https://opodis2020.unistra.fr/) | [[pdf]]({{ base_path }}/files/ACE-OPODIS2020.pdf) Alexander Spiegelman, Arik Rinberg, Dahlia Malkhi |
+| Asynchronous Distributed Key Generation for Computationally Secure Randomness, Consensus, and Threshold Signatures | [[pdf]](https://eprint.iacr.org/2019/1015) |  Eleftherios Kokoris Kogias, Dahlia Malkhi, Alexander Spiegelman | [ACM CCS 2020](https://www.sigsac.org/ccs/CCS2020/) |
+| Cogsworth: Byzantine Round Synchronization | [[pdf]](https://arxiv.org/abs/1909.05204) |  Oded Naor, Mathieu Baudet, Dahlia Malkhi, Alexander Spiegelman | [CES 2020](https://cryptoeconomicsystems.pubpub.org/ces20) |
 
 #### 2019
 
+| Title | Links |  Authors | Where |
+| :--- | :--- | :-- | :--- |
 -   *FairLedger: A Fair Blockchain Protocol for Financial Institutions.*
     Kfir Lev-Ari, Alexander Spiegelman, Idit Keidar and Dahlia Malkhi. OPODIS 2019, **best paper award** [[FairLedger-OPODIS2019.pdf]]({{ base_path }}/files/FairLedger-OPODIS2019.pdf) . (see also <https://arxiv.org/abs/1906.03819>).
 -   *Sync HotStuff: Simple and Practical Synchronous State Machine Replication.*
