@@ -11,20 +11,20 @@ author_profile: true
 #### 2022
 
 
-| Title | Authors | Where | Links | 
+| Title | Links | Authors | Where | 
 | :--- | :--- | :-- | :--- |
-| Byzantine Consensus under Fully Fluctuating Participation | Dahlia Malkhi, Atsuki Momose, Ling Ren | ArXiv | [[pdf]](https://eprint.iacr.org/2022/1448),<br> [[blogpost 1]](https://blog.chain.link/instant-finality-in-byzantine-generals-with-unknown-and-dynamic-participation/),<br> [[blogpost 2]](https://blog.chain.link/instant-finality-in-byzantine-atomic-broadcast-under-unknown-dynamic-participation/) |
-| Maximal Extractable Value (MEV) Protection on a DAG | Dahlia Malkhi, Pawel Szalachowski | [Tokenomics 2022](https://tokenomics-conference.lip6.fr/index.php?n=Main.Tokenomics2022) | [[pdf]](https://arxiv.org/abs/2208.00940),<br> [[🎥 CESC '22]](https://youtu.be/q5v3tLLoOXM) | 
-| Block-STM: Scaling Blockchain Execution by Turning Ordering Curse to a Performance Blessing | Rati Gelashvili, Alexander Spiegelman, Zhuolun Xiang, George Danezis, Zekun Li, Yu Xia, Runtian Zhou, Dahlia Malkhi| [PPoPP 2023](https://conf.researchr.org/home/PPoPP-2023), [ConsensusDay22](https://research.protocol.ai/sites/consensusday22/) | [[pdf]](https://arxiv.org/abs/2203.06871) | 
-| Be Aware of Your Leaders | Shir Cohen, Rati Gelashvili, Eleftherios Kokoris Kogias, Dahlia Malkhi, Zekun Li, Alberto Sonnino, Alexander Spiegelman | [FC'22](https://fc22.ifca.ai/) | | 
+| Byzantine Consensus under Fully Fluctuating Participation | [[pdf]](https://eprint.iacr.org/2022/1448),<br> [[blogpost 1]](https://blog.chain.link/instant-finality-in-byzantine-generals-with-unknown-and-dynamic-participation/),<br> [[blogpost 2]](https://blog.chain.link/instant-finality-in-byzantine-atomic-broadcast-under-unknown-dynamic-participation/) | Dahlia Malkhi, Atsuki Momose, Ling Ren | ArXiv | 
+| Maximal Extractable Value (MEV) Protection on a DAG | [[pdf]](https://arxiv.org/abs/2208.00940),<br> [[🎥 CESC '22]](https://youtu.be/q5v3tLLoOXM) |  Dahlia Malkhi, Pawel Szalachowski | [Tokenomics 2022](https://tokenomics-conference.lip6.fr/index.php?n=Main.Tokenomics2022) |
+| Block-STM: Scaling Blockchain Execution by Turning Ordering Curse to a Performance Blessing | [[pdf]](https://arxiv.org/abs/2203.06871) |  Rati Gelashvili, Alexander Spiegelman, Zhuolun Xiang, George Danezis, Zekun Li, Yu Xia, Runtian Zhou, Dahlia Malkhi| [PPoPP 2023](https://conf.researchr.org/home/PPoPP-2023), [ConsensusDay22](https://research.protocol.ai/sites/consensusday22/) |
+| Be Aware of Your Leaders | |  Shir Cohen, Rati Gelashvili, Eleftherios Kokoris Kogias, Dahlia Malkhi, Zekun Li, Alberto Sonnino, Alexander Spiegelman | [FC'22](https://fc22.ifca.ai/) |
 
 #### 2021
 
-| Title | Authors | Where | Links | 
+| Title | Links |  Authors | Where |
 | :--- | :--- | :-- | :--- |
-| Twins: BFT Systems Made Robust | Shehar Bano, Alberto Sonnino, Andrey Chursin, Dmitri Perelman, Zekun Li, Avery Ching, Dahlia Malkhi | [OPODIS 2021](https://opodis2021.unistra.fr/) | |
-| RainBlock: Faster Transaction Processing in Public Blockchains | Soujanya Ponnapalli, Aashaka Shah, Souvik Banerjee, Dahlia Malkhi, Amy Tai, Vijai Chidambaram, Michael Wei | [Usenix ATC 2021](https://www.usenix.org/conference/atc21) | [[pdf]](https://www.usenix.org/system/files/atc21-ponnapalli.pdf) |
-| Strengthened Fault Tolerance in Byzantine Fault Tolerant Replication | Zhuolun Xiang, Dahlia Malkhi, Kartik Nayak and Ling Ren | [ICDCS 2021](https://icdcs2021.us/) | [[pdf]](https://arxiv.org/abs/2101.03715) | 
+| Twins: BFT Systems Made Robust | [OPODIS 2021](https://opodis2021.unistra.fr/) | | Shehar Bano, Alberto Sonnino, Andrey Chursin, Dmitri Perelman, Zekun Li, Avery Ching, Dahlia Malkhi |
+| RainBlock: Faster Transaction Processing in Public Blockchains | [Usenix ATC 2021](https://www.usenix.org/conference/atc21) | [[pdf]](https://www.usenix.org/system/files/atc21-ponnapalli.pdf) | Soujanya Ponnapalli, Aashaka Shah, Souvik Banerjee, Dahlia Malkhi, Amy Tai, Vijai Chidambaram, Michael Wei |
+| Strengthened Fault Tolerance in Byzantine Fault Tolerant Replication | [[pdf]](https://arxiv.org/abs/2101.03715) |  Zhuolun Xiang, Dahlia Malkhi, Kartik Nayak and Ling Ren | [ICDCS 2021](https://icdcs2021.us/) |
 
 #### 2020
 
