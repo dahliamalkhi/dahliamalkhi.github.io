@@ -70,22 +70,13 @@ author_profile: true
 
 #### 2016
 
--   Flexible Paxos: Quorum Intersection Revisited.
-    Heidi Howard, Dahlia Malkhi, Alexander Spiegelman.
-    OPODIS 2016. [pdf]({{ base_path }}/files/fpaxos-opodis20161.pdf)
-    ArXiv manuscript, August 2016. [pdf](https://arxiv.org/abs/1608.06696)
--   BVP: Byzantine Vertical Paxos.
-    Ittai Abraham, Dahlia Malkhi.
-    Distributed Cryptocurrencies and Consensus Ledgers (DCCL) 2016. [pdf]({{ base_path }}/files/bvp-byzantine-vertical.pdf)
--   Replex: A Scalable, Highly Available Multi-Index Store.
-    Amy Tai, Michael Wei, Michael Freedman, Ittai Abraham, Dahlia Malkhi.
-    Usenix ATC 2016 (best paper award). [pdf]({{ base_path }}/files/atc2016.pdf)
--   *Silver: A scalable, distributed, multi-versioning, Always growing (Ag) File System*.
-    Michael Wei, Amy Tai, Chris Rossbach, Ittai Abraham, Udi Wieder, Steven Swanson, Dahlia Malkhi.
-    HotStorage '2016. [pdf]({{ base_path }}/files/Silver-hotstorage2016.pdf)
--   *Dynamic Reconfiguration: A Tutorial.*
-    Alexander Spiegelman, Idit Keidar, Dahlia Malkhi.
-    OPODIS 2016. [pdf]({{ base_path }}/files/ReconfigTutorial-OPODIS2016.pdf)
+| Title |   Authors | Where | Links |
+| :--- | :--- | :-- | :--- |
+|  Flexible Paxos: Quorum Intersection Revisited. | Heidi Howard, Dahlia Malkhi, Alexander Spiegelman. | OPODIS 2016. | [pdf]({{ base_path }}/files/fpaxos-opodis20161.pdf) | 
+|  BVP: Byzantine Vertical Paxos. | Ittai Abraham, Dahlia Malkhi. | Distributed Cryptocurrencies and Consensus Ledgers (DCCL) 2016. |  [pdf]({{ base_path }}/files/bvp-byzantine-vertical.pdf) | 
+|  Replex: A Scalable, Highly Available Multi-Index Store. | Amy Tai, Michael Wei, Michael Freedman, Ittai Abraham, Dahlia Malkhi. | Usenix ATC 2016 (best paper award).  | [pdf]({{ base_path }}/files/atc2016.pdf) | 
+|  *Silver: A scalable, distributed, multi-versioning, Always growing (Ag) File System*. |  Michael Wei, Amy Tai, Chris Rossbach, Ittai Abraham, Udi Wieder, Steven Swanson, Dahlia Malkhi.  | HotStorage '2016. | [pdf]({{ base_path }}/files/Silver-hotstorage2016.pdf) | 
+|  *Dynamic Reconfiguration: A Tutorial.* | Alexander Spiegelman, Idit Keidar, Dahlia Malkhi. | OPODIS 2016 | [pdf]({{ base_path }}/files/ReconfigTutorial-OPODIS2016.pdf) | 
 
 #### 2015
 
