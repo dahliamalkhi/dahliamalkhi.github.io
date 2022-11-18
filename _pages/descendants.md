@@ -7,63 +7,66 @@ author_profile: true
 
 Summer interns
 
--   At [Chainlink Labs](http://chainlinklabs.com) :
-    - [Chenkai Weng](https://www.linkedin.com/in/chenkai-weng/) (Northwestern, Fall 2022)
-    - [Deepak Maram](https://www.linkedin.com/in/deepakmaram/) (Cornell Tech, summer 2022)
-    - [Hongbo Zhang](https://www.linkedin.com/in/hongbozhang/) (Cornell, summer 2022)
-    - [Nibesh Shrestha](https://www.linkedin.com/in/nibesh-shrestha-73485380/) (Rochester Institute of Technology, summer 2022)
+-   At [Chainlink Labs](http://chainlinklabs.com), :
+    - [Chenkai Weng](https://www.linkedin.com/in/chenkai-weng/), Northwestern, Fall 2022
+    - [Deepak Maram](https://www.linkedin.com/in/deepakmaram/), Cornell Tech, summer 2022
+    - [Hongbo Zhang](https://www.linkedin.com/in/hongbozhang/), Cornell, summer 2022
+    - [Nibesh Shrestha](https://www.linkedin.com/in/nibesh-shrestha-73485380/), Rochester Institute of Technology, summer 2022
 
--   At [Novi](http://novi.com) :
-    - [Oded Naor](https://www.linkedin.com/in/oded-naor/?originalSubdomain=il) (Technion, summer 2019)
-    - [Erica Blum](http://www.cs.umd.edu/~erblum/) (UMD, summer 2020)
-    - [Suyash Gupta](https://gupta-suyash.github.io/) (UC Davis, summer 2020)
-    - [Zhuolun (Daniel) Xiang](https://sites.google.com/site/danielxiangzl/) (UIUC, summer 2020)
-    - [Shir Cohen](https://www.linkedin.com/in/shir-cohen/?originalSubdomain=il) (Technion, summer 2020)
+-   At [Novi](http://novi.com), :
+    - [Oded Naor](https://www.linkedin.com/in/oded-naor/?originalSubdomain=il), Technion, summer 2019
+    - [Erica Blum](http://www.cs.umd.edu/~erblum/), UMD, summer 2020
+    - [Suyash Gupta](https://gupta-suyash.github.io/), UC Davis, summer 2020. (2022 update: postdoc at UC Berkeley).
+    - [Zhuolun (Daniel), Xiang](https://sites.google.com/site/danielxiangzl/) UIUC, summer 2020. (2021 update: postdoc at CMU).
+    - [Shir Cohen](https://www.linkedin.com/in/shir-cohen/?originalSubdomain=il), Technion, summer 2020
 
--   At [VRG](http://research.vmware.com) :
-    -   [Ted Yin](https://www.cs.cornell.edu/~tedyin/) (Cornell, summer 2018)
-    -   [Soujanya Ponnapalli](https://www.linkedin.com/in/soujanya-ponnapalli-553275107/) (UT Austin, summer 2018)
-    -   [Alin Tomescu](http://people.csail.mit.edu/alinush/) (MIT, summer 2017 and 2018)
-    -   [Dragos-Adrian Seredinschi](https://people.epfl.ch/dragos-adrian.seredinschi) (EPFL, summer 2017)
-    -   [Soumya Basu](http://www.soumyabasu.com/) (Cornell, summer 2017)
-    -   [Igor Zablotchi](https://www.linkedin.com/in/zablo) (EPFL, summer 2016)
-    -   [Ling Ren](http://people.csail.mit.edu/renling/) (MIT, summer 2016)
-    -   [Kartik Nayak](https://www.cs.umd.edu/~kartik/) (UMD, summer 2016)
-    -   [Heidi Howard](http://hh360.user.srcf.net/blog/) (Cambridge, summer 2016)
-    -   [Sasha Spiegelman](https://alexanderspiegelman.github.io/) (Technion, summer 2016)
-    -   [Amy Tai](http://www.cs.princeton.edu/~amytai/) (Princeton, summer 2015)
-    -   [Tudor David](https://people.epfl.ch/tudor.david) (EPFL, summer 2015)
-    -   [Michael Wei](http://cseweb.ucsd.edu/~m3wei/) (UCSD, winter 2015)
--   At [MSR SVC](http://msrsvc.org/) :
-    -   [Michael Wei](http://cseweb.ucsd.edu/~m3wei/) (UCSD, summers 2011, 2012)
-    -   [Michael Dinitz](http://www.cs.jhu.edu/~mdinitz/), (CMU, summer 2010)
-    -   [Alex Shraer](http://www.cs.technion.ac.il/~shralex/) (Technion, summers 2008, 2009)
-    -   [Mahesh Balakrishnan](http://www.cs.yale.edu/homes/mahesh/) (Cornell, summer 2007)
+-   At [VRG](http://research.vmware.com), :
+    -   [Ted Yin](https://www.cs.cornell.edu/~tedyin/) Cornell, summer 2018. (2021 update: co-founder and senior researcher at AVA Labs).
+    -   [Soujanya Ponnapalli](https://www.linkedin.com/in/soujanya-ponnapalli-553275107/) UT Austin, summer 2018
+    -   [Alin Tomescu](http://people.csail.mit.edu/alinush/), MIT, summer 2017 and 2018. (2019 update: researcher at VMware Research Group). 
+    -   [Dragos-Adrian Seredinschi](https://people.epfl.ch/dragos-adrian.seredinschi), EPFL, summer 2017
+    -   [Soumya Basu](http://www.soumyabasu.com/), Cornell, summer 2017
+    -   [Igor Zablotchi](https://www.linkedin.com/in/zablo), EPFL, summer 2016. (2020 update: postdoctoral researcher at MIT).
+    -   [Ling Ren](http://people.csail.mit.edu/renling/), MIT, summer 2016. (2019 update: faculty at UIUC). 
+    -   [Kartik Nayak](https://www.cs.umd.edu/~kartik/), UMD, summer 2016. (2019 update: faculty at Duke). 
+    -   [Heidi Howard](http://hh360.user.srcf.net/blog/), Cambridge, summer 2016. (2021 update: researcher at Microsoft Research, Cambridge, UK). 
+    -   [Sasha Spiegelman](https://alexanderspiegelman.github.io/), Technion, summer 2016. (2020 update: researcher at Novi Research). 
+    -   [Amy Tai](http://www.cs.princeton.edu/~amytai/), Princeton, summer 2015. (2021 update: researcher at Google). 
+    -   [Tudor David](https://people.epfl.ch/tudor.david), EPFL, summer 2015
+    -   [Michael Wei](http://cseweb.ucsd.edu/~m3wei/), UCSD, winter 2015. (2017 update: senior researcher at VMware Research Group). 
+-   At [MSR SVC](http://msrsvc.org/), :
+    -   [Michael Wei](http://cseweb.ucsd.edu/~m3wei/), UCSD, summers 2011, 2012. (update above). 
+    -   [Michael Dinitz](http://www.cs.jhu.edu/~mdinitz/), CMU, summer 2010. (update: faculty at Johns Hopkins University). 
+    -   [Alex Shraer](http://www.cs.technion.ac.il/~shralex/), Technion, summers 2008, 2009
+    -   [Mahesh Balakrishnan](http://www.cs.yale.edu/homes/mahesh/), Cornell, summer 2007
 
 Post-docs
 
--   [Bernhard Haeupler](http://www.cs.cmu.edu/~haeupler/), MIT PhD, 2012-2013
--   [Fabian Kuhn](http://ac.informatik.uni-freiburg.de/kuhn/), ETH Zurich PhD, 2006-2007
+-   [Ling Ren](https://sites.google.com/view/renling), MIT PhD, 2018. (update above).
+-   [Kartik Nayak](https://users.cs.duke.edu/~kartik/), UMD PhD, 2018. (update above).
+-   [Amy Tai](https://amytai.github.io/), Princeton PhD, 2017. (update above).
+-   [Bernhard Haeupler](http://www.cs.cmu.edu/~haeupler/), MIT PhD, 2012. (update: faculty at CMU). 
+-   [Fabian Kuhn](http://ac.informatik.uni-freiburg.de/kuhn/), ETH Zurich PhD, 2006. (update: faculty at Freiburg). 
 
-PhD students (Hebrew U.)
+PhD students Hebrew U.
 
--   Gregory (Grisha) Chockler (2003), [professor, Royal Holloway](https://pure.royalholloway.ac.uk/portal/en/persons/gregory-chockler%28bc850403-f033-4dbe-978f-094e06b3068a%29.html).
--   Yaron Sella (2004), Cisco.
--   Elan Pavlov (2005).
--   Ittai Abraham (2008), [VMware Research](https://research.vmware.com/researchers/8).
--   Danny Bickson (2008), [Dato (formerly GraphLab)](https://dato.com/company/team/index.html).
--   Yaacov Fernandess (2010).
+-   [Gregory (Grisha) Chockler](https://pure.royalholloway.ac.uk/portal/en/persons/gregory-chockler%28bc850403-f033-4dbe-978f-094e06b3068a%29.html), graduated 2003. (update: professor at Royal Holloway, UK).
+-   Yaron Sella, graduated 2004, Cisco.
+-   Elan Pavlov, graduated 2005.
+-   [Ittai Abraham](https://research.vmware.com/researchers/8), graduated 2008. (update: senior researcher at VMware Research Group).
+-   [Danny Bickson](https://dato.com/company/team/index.html), graduated 2008.
+-   Yaacov Fernandess, graduated 2010.
 
-MSc students (Hebrew U.)
+MSc students Hebrew U.
 
 -   Yaacov Fernandess, graduated 2002
 -   Ofer Margoninsky, graduated 2002
 -   Keren Horowitz, graduated 2002
 -   Danny Bickson, graduated 2003
--   Tzachy Reinman , graduated 2005
--   David Rabinowitz , graduated 2004
--   Barak Merimovich , graduated 2004
--   Elliot Jaffe , graduated 2004
+-   Tzachy Reinman, graduated 2005
+-   David Rabinowitz, graduated 2004
+-   Barak Merimovich, graduated 2004
+-   Elliot Jaffe, graduated 2004
 
 Thesis committee member
 
