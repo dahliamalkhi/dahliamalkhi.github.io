@@ -7,6 +7,7 @@ author_profile: true
 
 Summer interns
 -   At [Chainlink Labs](http://chainlinklabs.com):
+
 | Intern |  Grad-school | Year | Updates |
 | :--- | :--- | :-- | :--- |
 [Chenkai Weng](https://www.linkedin.com/in/chenkai-weng/) | Northwestern | 2022 | |
@@ -15,6 +16,7 @@ Summer interns
 [Nibesh Shrestha](https://www.linkedin.com/in/nibesh-shrestha-73485380/) | Rochester Institute of Technology | 2022 | |
 
 -   At [Novi](http://novi.com):
+
 | Intern |  Grad-school | Year | Updates |
 | :--- | :--- | :-- | :--- |
 [Oded Naor](https://www.linkedin.com/in/oded-naor/?originalSubdomain=il) | Technion | 2019 | |
@@ -24,6 +26,7 @@ Summer interns
 [Shir Cohen](https://www.linkedin.com/in/shir-cohen/?originalSubdomain=il) | Technion | 2020 | |
 
 -   At [VRG](http://research.vmware.com):
+
 | Intern |  Grad-school | Year | Updates |
 | :--- | :--- | :-- | :--- |
 [Ted Yin](https://www.cs.cornell.edu/~tedyin/) | Cornell | 2018  | co-founder and senior researcher at AVA Labs | 
@@ -32,7 +35,7 @@ Summer interns
 [Dragos-Adrian Seredinschi](https://people.epfl.ch/dragos-adrian.seredinschi) | EPFL | 2017 | |
 [Soumya Basu](http://www.soumyabasu.com/) | Cornell | 2017 | |
 [Igor Zablotchi](https://www.linkedin.com/in/zablo) | EPFL | 2016  | postdoctoral researcher at MIT |
-[Ling Ren](http://people.csail.mit.edu/renling/) | MIT | 2016 | faculty at UIUC) |
+[Ling Ren](http://people.csail.mit.edu/renling/) | MIT | 2016 | faculty at UIUC |
 [Kartik Nayak](https://www.cs.umd.edu/~kartik/) | UMD | 2016 |  faculty at Duke  | 
 [Heidi Howard](http://hh360.user.srcf.net/blog/) | Cambridge | 2016 |  researcher at Microsoft Research, Cambridge, UK |
 [Sasha Spiegelman](https://alexanderspiegelman.github.io/) | Technion | 2016 | researcher at Novi Research |
@@ -41,6 +44,7 @@ Summer interns
 [Michael Wei](http://cseweb.ucsd.edu/~m3wei/) | UCSD | 2015 | senior researcher at VMware Research Group) |
 
 -   At [MSR SVC](http://msrsvc.org/):
+
 | Intern |  Grad-school | Year | Updates |
 | :--- | :--- | :-- | :--- |
 [Michael Wei](http://cseweb.ucsd.edu/~m3wei/) | UCSD | 2011, 2012 | (above)  |
@@ -50,11 +54,13 @@ Summer interns
 
 Post-docs
 
--   [Ling Ren](https://sites.google.com/view/renling), MIT PhD, 2018. (update above).
--   [Kartik Nayak](https://users.cs.duke.edu/~kartik/), UMD PhD, 2018. (update above).
--   [Amy Tai](https://amytai.github.io/), Princeton PhD, 2017. (update above).
--   [Bernhard Haeupler](http://www.cs.cmu.edu/~haeupler/), MIT PhD, 2012. (update: faculty at CMU). 
--   [Fabian Kuhn](http://ac.informatik.uni-freiburg.de/kuhn/), ETH Zurich PhD, 2006. (update: faculty at Freiburg). 
+| Intern |  Grad-school | Postdoc Year | Updates |
+| :--- | :--- | :-- | :--- |
+[Ling Ren](https://sites.google.com/view/renling) | MIT | 2018 | (above) |
+[Kartik Nayak](https://users.cs.duke.edu/~kartik/) | UMD | 2018 | (above) |
+[Amy Tai](https://amytai.github.io/) | Princeton | 2017 | (above) |
+[Bernhard Haeupler](http://www.cs.cmu.edu/~haeupler/) | MIT | 2012 |  faculty at CMU |
+[Fabian Kuhn](http://ac.informatik.uni-freiburg.de/kuhn/) | ETH Zurich | 2006 | faculty at Freiburg |
 
 PhD students Hebrew U.
 
