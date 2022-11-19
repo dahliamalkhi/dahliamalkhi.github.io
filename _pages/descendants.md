@@ -8,7 +8,7 @@ author_profile: true
 Summer interns
 -   At [Chainlink Labs](http://chainlinklabs.com):
 
-| Intern |  Grad-school | Year | Updates |
+| Intern |  Grad-school | Internship Year | Updates |
 | :--- | :--- | :-- | :--- |
 [Chenkai Weng](https://www.linkedin.com/in/chenkai-weng/) | Northwestern | 2022 | |
 [Deepak Maram](https://www.linkedin.com/in/deepakmaram/) | Cornell Tech | 2022 | |
@@ -17,7 +17,7 @@ Summer interns
 
 -   At [Novi](http://novi.com):
 
-| Intern |  Grad-school | Year | Updates |
+| Intern |  Grad-school | Internship Year | Updates |
 | :--- | :--- | :-- | :--- |
 [Oded Naor](https://www.linkedin.com/in/oded-naor/?originalSubdomain=il) | Technion | 2019 | |
 [Erica Blum](http://www.cs.umd.edu/~erblum/) | UMD | 2020 | |
@@ -27,7 +27,7 @@ Summer interns
 
 -   At [VRG](http://research.vmware.com):
 
-| Intern |  Grad-school | Year | Updates |
+| Intern |  Grad-school | Internship Year | Updates |
 | :--- | :--- | :-- | :--- |
 [Ted Yin](https://www.cs.cornell.edu/~tedyin/) | Cornell | 2018  | co-founder and senior researcher at AVA Labs | 
 [Soujanya Ponnapalli](https://www.linkedin.com/in/soujanya-ponnapalli-553275107/) | UT Austin | 2018 | |
@@ -45,14 +45,14 @@ Summer interns
 
 -   At [MSR SVC](http://msrsvc.org/):
 
-| Intern |  Grad-school | Year | Updates |
+| Intern |  Grad-school | Internship Year | Updates |
 | :--- | :--- | :-- | :--- |
 [Michael Wei](http://cseweb.ucsd.edu/~m3wei/) | UCSD | 2011, 2012 | (above)  |
 [Michael Dinitz](http://www.cs.jhu.edu/~mdinitz/) | CMU | 2010 | faculty at JHU |
 [Alex Shraer](http://www.cs.technion.ac.il/~shralex/) | Technion | 2008, 2009 | |
 [Mahesh Balakrishnan](http://www.cs.yale.edu/homes/mahesh/) | Cornell | 2007 | |
 
-Post-docs
+Post-docs:
 
 | Intern |  Grad-school | Postdoc Year | Updates |
 | :--- | :--- | :-- | :--- |
@@ -62,36 +62,40 @@ Post-docs
 [Bernhard Haeupler](http://www.cs.cmu.edu/~haeupler/) | MIT | 2012 |  faculty at CMU |
 [Fabian Kuhn](http://ac.informatik.uni-freiburg.de/kuhn/) | ETH Zurich | 2006 | faculty at Freiburg |
 
-PhD students Hebrew U.
+Students at the Hebrew University:
 
--   [Gregory (Grisha) Chockler](https://pure.royalholloway.ac.uk/portal/en/persons/gregory-chockler%28bc850403-f033-4dbe-978f-094e06b3068a%29.html), graduated 2003. (update: professor at Royal Holloway, UK).
--   Yaron Sella, graduated 2004, Cisco.
--   Elan Pavlov, graduated 2005.
--   [Ittai Abraham](https://research.vmware.com/researchers/8), graduated 2008. (update: senior researcher at VMware Research Group).
--   [Danny Bickson](https://dato.com/company/team/index.html), graduated 2008.
--   Yaacov Fernandess, graduated 2010.
+| PhD student |  Graduation Year | Updates |
+| :--- | :-- | :--- |
+[Gregory (Grisha) Chockler](https://pure.royalholloway.ac.uk/portal/en/persons/gregory-chockler%28bc850403-f033-4dbe-978f-094e06b3068a%29.html) | 2003 | faculty at Royal Holloway UK |
+Yaron Sella | 2004 |  Cisco |
+Elan Pavlov |  2005 | |
+[Ittai Abraham](https://research.vmware.com/researchers/8) | 2008 | senior researcher at VMware Research Group |
+[Danny Bickson](https://dato.com/company/team/index.html) | 2008 | |
+Yaacov Fernandess |  2010 | |
 
-MSc students Hebrew U.
+| MSc student |  Graduation Year | Updates |
+| :--- | :-- | :--- |
+Yaacov Fernandess | 2002 | |
+Ofer Margoninsky | 2002 | |
+Keren Horowitz | 2002 | |
+Danny Bickson | 2003 | |
+Tzachy Reinman | 2005 | |
+David Rabinowitz | 2004 | |
+Barak Merimovich | 2004 | |
+Elliot Jaffe | 2004 | |
 
--   Yaacov Fernandess, graduated 2002
--   Ofer Margoninsky, graduated 2002
--   Keren Horowitz, graduated 2002
--   Danny Bickson, graduated 2003
--   Tzachy Reinman, graduated 2005
--   David Rabinowitz, graduated 2004
--   Barak Merimovich, graduated 2004
--   Elliot Jaffe, graduated 2004
+PhD Thesis committee member:
 
-Thesis committee member
-
--   Michael Wei, UCSD
--   Leander Jehl, Norway
--   Richar Ekwall, Swiss Federal Institute of Technology (EPFL), Switzerland
--   Adnan Agabria, The Technion, Israel
--   David Breitgand,  The Hebrew University of Jerusalem, Israel
--   Xavier Defago, Swiss Federal Institute of Technology (EPFL), Switzerland
--   Carlo Marcetti, University of Rome ``La Sapienza'', Italy
--   Ronen Kat, University of Beer-Sheva, Israel
--   Konstantin Shagin, The Technion, Israel
--   Roie Melamed, The Technion, Israel
--   Nuno Santos, EPFL, Switzerland.
+| PhD student |  Institution | 
+| :-- | :--- |
+Michael Wei | UCSD  |
+Leander Jehl |  University of Stavanger, Norway |
+Richar Ekwall | Federal Institute of Technology (EPFL), Switzerland |
+Adnan Agabria | Technion, Israel |
+David Breitgand | The Hebrew University of Jerusalem, Israel |
+Xavier Defago | Federal Institute of Technology (EPFL), Switzerland |
+Carlo Marcetti | Rome ``La Sapienza'', Italy |
+Ronen Kat | Beer-Sheva, Israel |
+Konstantin Shagin | Technion, Israel |
+Roie Melamed | Technion, Israel |
+Nuno Santos | Switzerland |
