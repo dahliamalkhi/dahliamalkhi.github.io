@@ -24,9 +24,10 @@ main:
 
   - title: "Keynotes"
     url: /talks/    
-#
-#    - title: "Academic-descendants"
-#      url: /descendants/
+
+    - title: "Students"
+      url: /descendants/
+
 posts:
   - title: "More posts:"
     image: "/images/CA-3FPLUS1.jpg"
