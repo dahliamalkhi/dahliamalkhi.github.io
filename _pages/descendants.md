@@ -53,7 +53,7 @@ Interns at [MSR SVC](http://msrsvc.org/):
 
 Post-docs:
 
-| Intern |  Grad-school | Postdoc Year | Updates |
+| Post-doc |  Grad-school | Postdoc Year | Updates |
 | :--- | :--- | :-- | :--- |
 [Ling Ren](https://sites.google.com/view/renling) | MIT | 2018 | (above) |
 [Kartik Nayak](https://users.cs.duke.edu/~kartik/) | UMD | 2018 | (above) |
