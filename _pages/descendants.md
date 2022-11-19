@@ -21,7 +21,7 @@ Interns at [Novi](http://novi.com):
 [Oded Naor](https://www.linkedin.com/in/oded-naor/?originalSubdomain=il) | Technion | 2019 | |
 [Erica Blum](http://www.cs.umd.edu/~erblum/) | UMD | 2020 | |
 [Suyash Gupta](https://gupta-suyash.github.io/) | UC Davis | 2020 | postdoc at UC Berkeley |
-[Zhuolun (Daniel) | Xiang](https://sites.google.com/site/danielxiangzl/) UIUC | 2020 | postdoc at CMU |
+[Zhuolun (Daniel) Xiang](https://sites.google.com/site/danielxiangzl/) | UIUC | 2020 | postdoc at CMU |
 [Shir Cohen](https://www.linkedin.com/in/shir-cohen/?originalSubdomain=il) | Technion | 2020 | |
 
 Interns at [VRG](http://research.vmware.com):
