@@ -5,8 +5,7 @@ layout: archive
 author_profile: true
 ---
 
-Summer interns
--   At [Chainlink Labs](http://chainlinklabs.com):
+Interns at [Chainlink Labs](http://chainlinklabs.com):
 
 | Intern |  Grad-school | Internship Year | Updates |
 | :--- | :--- | :-- | :--- |
@@ -15,7 +14,7 @@ Summer interns
 [Hongbo Zhang](https://www.linkedin.com/in/hongbozhang/) | Cornell | 2022 | |
 [Nibesh Shrestha](https://www.linkedin.com/in/nibesh-shrestha-73485380/) | Rochester Institute of Technology | 2022 | |
 
--   At [Novi](http://novi.com):
+Interns at [Novi](http://novi.com):
 
 | Intern |  Grad-school | Internship Year | Updates |
 | :--- | :--- | :-- | :--- |
@@ -25,7 +24,7 @@ Summer interns
 [Zhuolun (Daniel) | Xiang](https://sites.google.com/site/danielxiangzl/) UIUC | 2020 | postdoc at CMU |
 [Shir Cohen](https://www.linkedin.com/in/shir-cohen/?originalSubdomain=il) | Technion | 2020 | |
 
--   At [VRG](http://research.vmware.com):
+Interns at [VRG](http://research.vmware.com):
 
 | Intern |  Grad-school | Internship Year | Updates |
 | :--- | :--- | :-- | :--- |
@@ -43,7 +42,7 @@ Summer interns
 [Tudor David](https://people.epfl.ch/tudor.david) | EPFL | 2015 | |
 [Michael Wei](http://cseweb.ucsd.edu/~m3wei/) | UCSD | 2015 | senior researcher at VMware Research Group) |
 
--   At [MSR SVC](http://msrsvc.org/):
+Interns at [MSR SVC](http://msrsvc.org/):
 
 | Intern |  Grad-school | Internship Year | Updates |
 | :--- | :--- | :-- | :--- |
