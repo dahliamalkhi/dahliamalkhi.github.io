@@ -6,39 +6,47 @@ author_profile: true
 ---
 
 Summer interns
+-   At [Chainlink Labs](http://chainlinklabs.com):
+| Intern |  Grad-school | Year | Updates |
+| :--- | :--- | :-- | :--- |
+[Chenkai Weng](https://www.linkedin.com/in/chenkai-weng/) | Northwestern | 2022 | |
+[Deepak Maram](https://www.linkedin.com/in/deepakmaram/) | Cornell Tech | 2022 | |
+[Hongbo Zhang](https://www.linkedin.com/in/hongbozhang/) | Cornell | 2022 | |
+[Nibesh Shrestha](https://www.linkedin.com/in/nibesh-shrestha-73485380/) | Rochester Institute of Technology | 2022 | |
 
--   At [Chainlink Labs](http://chainlinklabs.com), :
-    - [Chenkai Weng](https://www.linkedin.com/in/chenkai-weng/), Northwestern, Fall 2022
-    - [Deepak Maram](https://www.linkedin.com/in/deepakmaram/), Cornell Tech, summer 2022
-    - [Hongbo Zhang](https://www.linkedin.com/in/hongbozhang/), Cornell, summer 2022
-    - [Nibesh Shrestha](https://www.linkedin.com/in/nibesh-shrestha-73485380/), Rochester Institute of Technology, summer 2022
+-   At [Novi](http://novi.com):
+| Intern |  Grad-school | Year | Updates |
+| :--- | :--- | :-- | :--- |
+[Oded Naor](https://www.linkedin.com/in/oded-naor/?originalSubdomain=il) | Technion | 2019 | |
+[Erica Blum](http://www.cs.umd.edu/~erblum/) | UMD | 2020 | |
+[Suyash Gupta](https://gupta-suyash.github.io/) | UC Davis | 2020 | postdoc at UC Berkeley |
+[Zhuolun (Daniel) | Xiang](https://sites.google.com/site/danielxiangzl/) UIUC | 2020 | postdoc at CMU |
+[Shir Cohen](https://www.linkedin.com/in/shir-cohen/?originalSubdomain=il) | Technion | 2020 | |
 
--   At [Novi](http://novi.com), :
-    - [Oded Naor](https://www.linkedin.com/in/oded-naor/?originalSubdomain=il), Technion, summer 2019
-    - [Erica Blum](http://www.cs.umd.edu/~erblum/), UMD, summer 2020
-    - [Suyash Gupta](https://gupta-suyash.github.io/), UC Davis, summer 2020. (2022 update: postdoc at UC Berkeley).
-    - [Zhuolun (Daniel), Xiang](https://sites.google.com/site/danielxiangzl/) UIUC, summer 2020. (2021 update: postdoc at CMU).
-    - [Shir Cohen](https://www.linkedin.com/in/shir-cohen/?originalSubdomain=il), Technion, summer 2020
+-   At [VRG](http://research.vmware.com):
+| Intern |  Grad-school | Year | Updates |
+| :--- | :--- | :-- | :--- |
+[Ted Yin](https://www.cs.cornell.edu/~tedyin/) | Cornell | 2018  | co-founder and senior researcher at AVA Labs | 
+[Soujanya Ponnapalli](https://www.linkedin.com/in/soujanya-ponnapalli-553275107/) | UT Austin | 2018 | |
+[Alin Tomescu](http://people.csail.mit.edu/alinush/) | MIT | 2017, 2018 | researcher at VMware Research Group |
+[Dragos-Adrian Seredinschi](https://people.epfl.ch/dragos-adrian.seredinschi) | EPFL | 2017 | |
+[Soumya Basu](http://www.soumyabasu.com/) | Cornell | 2017 | |
+[Igor Zablotchi](https://www.linkedin.com/in/zablo) | EPFL | 2016  | postdoctoral researcher at MIT |
+[Ling Ren](http://people.csail.mit.edu/renling/) | MIT | 2016 | faculty at UIUC) |
+[Kartik Nayak](https://www.cs.umd.edu/~kartik/) | UMD | 2016 |  faculty at Duke  | 
+[Heidi Howard](http://hh360.user.srcf.net/blog/) | Cambridge | 2016 |  researcher at Microsoft Research, Cambridge, UK |
+[Sasha Spiegelman](https://alexanderspiegelman.github.io/) | Technion | 2016 | researcher at Novi Research |
+[Amy Tai](http://www.cs.princeton.edu/~amytai/) | Princeton | 2015 | researcher at Google System Research Lab |
+[Tudor David](https://people.epfl.ch/tudor.david) | EPFL | 2015 | |
+[Michael Wei](http://cseweb.ucsd.edu/~m3wei/) | UCSD | 2015 | senior researcher at VMware Research Group) |
 
--   At [VRG](http://research.vmware.com), :
-    -   [Ted Yin](https://www.cs.cornell.edu/~tedyin/) Cornell, summer 2018. (2021 update: co-founder and senior researcher at AVA Labs).
-    -   [Soujanya Ponnapalli](https://www.linkedin.com/in/soujanya-ponnapalli-553275107/) UT Austin, summer 2018
-    -   [Alin Tomescu](http://people.csail.mit.edu/alinush/), MIT, summer 2017 and 2018. (2019 update: researcher at VMware Research Group). 
-    -   [Dragos-Adrian Seredinschi](https://people.epfl.ch/dragos-adrian.seredinschi), EPFL, summer 2017
-    -   [Soumya Basu](http://www.soumyabasu.com/), Cornell, summer 2017
-    -   [Igor Zablotchi](https://www.linkedin.com/in/zablo), EPFL, summer 2016. (2020 update: postdoctoral researcher at MIT).
-    -   [Ling Ren](http://people.csail.mit.edu/renling/), MIT, summer 2016. (2019 update: faculty at UIUC). 
-    -   [Kartik Nayak](https://www.cs.umd.edu/~kartik/), UMD, summer 2016. (2019 update: faculty at Duke). 
-    -   [Heidi Howard](http://hh360.user.srcf.net/blog/), Cambridge, summer 2016. (2021 update: researcher at Microsoft Research, Cambridge, UK). 
-    -   [Sasha Spiegelman](https://alexanderspiegelman.github.io/), Technion, summer 2016. (2020 update: researcher at Novi Research). 
-    -   [Amy Tai](http://www.cs.princeton.edu/~amytai/), Princeton, summer 2015. (2021 update: researcher at Google). 
-    -   [Tudor David](https://people.epfl.ch/tudor.david), EPFL, summer 2015
-    -   [Michael Wei](http://cseweb.ucsd.edu/~m3wei/), UCSD, winter 2015. (2017 update: senior researcher at VMware Research Group). 
--   At [MSR SVC](http://msrsvc.org/), :
-    -   [Michael Wei](http://cseweb.ucsd.edu/~m3wei/), UCSD, summers 2011, 2012. (update above). 
-    -   [Michael Dinitz](http://www.cs.jhu.edu/~mdinitz/), CMU, summer 2010. (update: faculty at Johns Hopkins University). 
-    -   [Alex Shraer](http://www.cs.technion.ac.il/~shralex/), Technion, summers 2008, 2009
-    -   [Mahesh Balakrishnan](http://www.cs.yale.edu/homes/mahesh/), Cornell, summer 2007
+-   At [MSR SVC](http://msrsvc.org/):
+| Intern |  Grad-school | Year | Updates |
+| :--- | :--- | :-- | :--- |
+[Michael Wei](http://cseweb.ucsd.edu/~m3wei/) | UCSD | 2011, 2012 | (above)  |
+[Michael Dinitz](http://www.cs.jhu.edu/~mdinitz/) | CMU | 2010 | faculty at JHU |
+[Alex Shraer](http://www.cs.technion.ac.il/~shralex/) | Technion | 2008, 2009 | |
+[Mahesh Balakrishnan](http://www.cs.yale.edu/homes/mahesh/) | Cornell | 2007 | |
 
 Post-docs
 
