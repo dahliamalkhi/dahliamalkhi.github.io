@@ -25,8 +25,8 @@ main:
   - title: "Keynotes"
     url: /talks/    
 
-    - title: "Students"
-      url: /descendants/
+  - title: "Students"
+    url: /descendants/
 
 posts:
   - title: "More posts:"
