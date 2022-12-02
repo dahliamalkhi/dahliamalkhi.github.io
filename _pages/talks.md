@@ -17,7 +17,7 @@ author_profile: true
 **Maximal Extractable Value (MEV) Protection on a DAG**.<br>
 [[Science and Engineering of Consensus 2022]](https://tselab.stanford.edu/workshop-sbc22/)  [🎥](https://www.youtube.com/watch?v=9WLoJRrnTsA&list=PL4XSNxeZhdqBBgqqokIdK4PcyPSl6t0rQ&index=6) 
 
-Many cryptocurrency platforms are vulnerable to  blockchain extractable value (BEV) attacks, where a malicious consensus leader can inject transactions or change the order of user transactions to maximize its profit. This joint work with Pawel Szalachowski
+Many cryptocurrency platforms are vulnerable to Maximal Extractable Value (MEV) attacks, where a malicious consensus leader can inject transactions or change the order of user transactions to maximize its profit. This joint work with Pawel Szalachowski
 introduces [Fino](https://arxiv.org/abs/2208.00940), 
 an efficient method to implement an approach known as “Blind Order-Fairness”, which enables certain MEV protection to services that subscribe to it.
  
