@@ -20,7 +20,7 @@ Steady progress in the practicality of leader-based Byzantine consensus protocol
 More specifically, before HotStuff, BFT solutions for the partial synchrony settings required quadratic communication complexity per view (with a new leader), hence no one cared if coordinating entering/leaving a view also incurs quadratic communication. HotStuff demonstrated a protocol whose per-view complexity is (always) linear and also defined the Pacemaker as a separate component of BFT consensus. 
 Thus, the challenge has shifted to developing a Pacemaker with low communication efficiency.
 
-our post [The Latest View on View Synchronization](https://blog.chain.link/view-synchronization/)
+Our post [The Latest View on View Synchronization](https://blog.chain.link/view-synchronization/)
 provides a foundational perspective on the evolution of Pacemaker solutions to the Byzantine View Synchronization problem.
 Spoiler alert: The theoretical worst-case communication lower bound for reaching a single consensus decision is quadratic, but only this year has this complexity (finally) been achieved; these quadratic Pacemakers are described in the post.
 
