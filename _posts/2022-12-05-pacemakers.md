@@ -13,7 +13,7 @@ category:
 - tutorial
 ---
 
-authors: Dahlia Malkhi, [Oded Naor](https://www.odednaor.work/)
+Authors: Dahlia Malkhi, [Oded Naor](https://www.odednaor.work/)
 
 Steady progress in the practicality of leader-based Byzantine consensus protocols, including the introduction of HotStuff—whose leader protocol incurs only a linear communication cost—shifts the challenge to the “Pacemaker” part, which is responsible for View Synchronization.
 
