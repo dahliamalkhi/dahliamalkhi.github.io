@@ -17,7 +17,8 @@ authors: Dahlia Malkhi, [Oded Naor](https://www.odednaor.work/)
 
 Steady progress in the practicality of leader-based Byzantine consensus protocols, including the introduction of HotStuff—whose leader protocol incurs only a linear communication cost—shifts the challenge to the “Pacemaker” part, which is responsible for View Synchronization.
 
-More specifically, before HotStuff, BFT solutions for the partial synchrony settings required quadratic communication complexity per view (with a new leader), hence no one cared if coordinating entering/leaving a view also incurs quadratic communication. HotStuff demonstrated a protocol whose per-view complexity is (always) linear and also defined the Pacemaker as a separate component of BFT consensus. Thus, communication efficiency shifted to being a Pacemaker challenge.
+More specifically, before HotStuff, BFT solutions for the partial synchrony settings required quadratic communication complexity per view (with a new leader), hence no one cared if coordinating entering/leaving a view also incurs quadratic communication. HotStuff demonstrated a protocol whose per-view complexity is (always) linear and also defined the Pacemaker as a separate component of BFT consensus. 
+Thus, the challenge has shifted to developing a Pacemaker with low communication efficiency.
 
 our post [The Latest View on View Synchronization](https://blog.chain.link/view-synchronization/)
 provides a foundational perspective on the evolution of Pacemaker solutions to the Byzantine View Synchronization problem.
