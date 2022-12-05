@@ -7,7 +7,7 @@ tags:
 header:
   teaser: "/images/pacemaker.png"
   overlay_image: "/images/pacemaker.png"
-  overlay_filter: rgba(100, 0, 100, 0.8)
+  overlay_filter: rgba(0, 100, 100, 0.8)
 excerpt: An evolution of “Pacemaker” solutions to the Byzantine View Synchronization problem finally led to optimal communication-complexity solutions. 
 category:
 - tutorial
