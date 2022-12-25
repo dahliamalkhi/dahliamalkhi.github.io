@@ -43,7 +43,7 @@ author_profile: true
 | Efficient Verifiable Secret Sharing with Share Recovery in BFT Protocols |   Soumya Basu, Alin Tomescu, Ittai Abraham, Dahlia Malkhi, Mike Reiter, Emin Gün Sirer | ACM CCS '19 |[📄]({{ base_path }}/files/T3P-CCS19.pdf) |
 | Flexible Byzantine Fault Tolerance |  Dahlia Malkhi, Kartik Nayak, Ling Ren | ACM CCS '19 |[📄]({{ base_path }}/files/Flex-BFT-CCS19.pdf) |
 | HotStuff: BFT Consensus with Linearity and Responsiveness |   Maofan Yin, Dahlia Malkhi, Michael K. Reiter, Guy Golan Gueta, Ittai Abraham |PODC 2019 |[📄]({{ base_path }}/files/HotStuff-PODC2019.pdf) |
-| Validated Asynchronous Byzantine Agreement with Optimal Resilience and Asymptotically Optimal Time and Word Communication |    Ittai Abraham, Dahlia Malkhi, Alexander Spiegelman |  PODC 2019 |[📄]({{ base_path }}/files/vaba-podc2019-2.pdf) |
+| Validated Asynchronous Byzantine Agreement with Optimal Resilience and Asymptotically Optimal Time and Word Communication |    Ittai Abraham, Dahlia Malkhi, Alexander Spiegelman |  PODC 2019 |[📄]({{ base_path }}/files/VABA-PODC2019.pdf) |
 | SBFT: a Scalable Decentralized Trust Infrastructure for Blockchains |   Guy Golan Gueta, Ittai Abraham, Shelly Grossman, Dahlia Malkhi, Benny Pinkas, Mike Reiter, Dragos Adrian Seredinschi, Orr Tamir, Alin Tomescu |DSN 2019 |[📄]({{ base_path }}/files/1804.01626.pdf) |
 
 #### 2018
