@@ -1,6 +1,6 @@
 ---
 title: Dahlia Malkhi / PhD
-description: Personal homepage of Dahlia Malkhi, Chief Research Officer at Chainlink Labs
+description: Personal homepage of Dahlia Malkhi, Distinguished Scientist at Chainlink Labs
 minimal_mistakes_skin: default
 search: true
 
@@ -55,7 +55,7 @@ plugins:
 author:
   name: Dahlia Malkhi
   avatar: "/images/dahliabest.jpg"
-  bio: Chief Research Officer of Chainlink Labs
+  bio: Distinguished Scientists, Chainlink Labs
   location: California
   employer: 
   pubmed: 
