@@ -33,6 +33,7 @@ and a senior researcher at AT&T Labs, 1995-1999.
 # Selected academic roles and distinctions:
 
 -   [IEEE TCDP Outstanding Technical Achievement Award](https://tc.computer.org/tcdp/awardrecipients/), 2021.
+-   Vice-chair, [ACM Charles P. "Chuck" Thacker Breakthrough in Computing Award](https://awards.acm.org/thacker), 2020-present.
 -   Advisory board member of [Cryptoeconomic Systems](https://cryptoeconomicsystems.pubpub.org/), 2019-present.
 -   Co-chair of the Simons Institute [Advisory Board](https://simons.berkeley.edu/people/advisory), 2019-2022.
 -   ACM fellow, 2011.
