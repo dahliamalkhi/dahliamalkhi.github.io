@@ -12,7 +12,7 @@ author_profile: true
 
 | Title |  Authors | Where | Links |
 | :--- | :--- | :-- | :--- |
-| HotStuff-2: Optimal Two-Phase Responsive BFT |  Dahlia Malkhi, Kartik Nayak | eprint | [📄][https://eprint.iacr.org/2023/397](https://eprint.iacr.org/2023/397) |
+| HotStuff-2: Optimal Two-Phase Responsive BFT |  Dahlia Malkhi, Kartik Nayak | eprint | [📄](https://eprint.iacr.org/2023/397) |
 
 #### 2022
 
