@@ -9,6 +9,7 @@ author_profile: true
  <base target="_blank">
 
 #### 2023
+
 | Title |  Authors | Where | Links |
 | :--- | :--- | :-- | :--- |
 | Byzantine Consensus under Fully Fluctuating Participation |  Dahlia Malkhi, Kartik Nayak | eprint | [📄][https://eprint.iacr.org/2023/397](https://eprint.iacr.org/2023/397) |
