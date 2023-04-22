@@ -12,7 +12,8 @@ author_profile: true
 
 | Title |  Authors | Where | Links |
 | :--- | :--- | :-- | :--- |
-| HotStuff-2: Optimal Two-Phase Responsive BFT |  Dahlia Malkhi, Kartik Nayak | eprint | [📄](https://eprint.iacr.org/2023/397) |
+| BBCA-LEDGER: High Throughput Consensus meets Low Latency (WIP) | Chrysoula Stathakopoulou, Michael Wei, Hongbo Zhang, Maofan Yin, Dahlia Malkhi |  [ConsensusDay23](https://research.protocol.ai/sites/consensusday23/) | coming soon |
+| HotStuff-2: Optimal Two-Phase Responsive BFT |  Dahlia Malkhi, Kartik Nayak | [ConsensusDay23](https://research.protocol.ai/sites/consensusday23/) | [📄](https://eprint.iacr.org/2023/397) |
 
 #### 2022
 
