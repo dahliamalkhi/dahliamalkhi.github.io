@@ -8,18 +8,7 @@ author_profile: true
 | Talk title |  Abstract | Where | Links |
 | :--- | :--- | :-- | :--- |
 |**Privacy-Preserving Oracles with DECO** | &emsp;&emsp; 😯 _Imagine that users can bring claims about themselves into smart contracts with complete privacy:  "I am a person" (but not private information about me); "I live in the US" (but not my address); "my combined bank accounts balance is above a threshold" (but not my balances); and more._<br> &emsp;&emsp; 🤔 _In this presentation at SmartCon 2022, we explain how DECO enables the unlocking of user information from current web 2.0 servers into Web 3.0; we describe the application of academic research to allow smart contracts to serve even more powerful use cases in a truly privacy-preserving manner; and we give a glimpse into real-world use cases._ | [[SmartCon22]](https://smartcon.chain.link/) | [[🎥]](https://www.youtube.com/watch?v=eJqZQ2_VBzo) | 
-
-
----
-
-**Maximal Extractable Value (MEV) Protection on a DAG**.<br>
-[[Science and Engineering of Consensus 2022]](https://tselab.stanford.edu/workshop-sbc22/)  [🎥](https://www.youtube.com/watch?v=9WLoJRrnTsA&list=PL4XSNxeZhdqBBgqqokIdK4PcyPSl6t0rQ&index=6) 
-
-Many cryptocurrency platforms are vulnerable to Maximal Extractable Value (MEV) attacks, where a malicious consensus leader can inject transactions or change the order of user transactions to maximize its profit. This joint work with Pawel Szalachowski
-introduces [Fino](https://arxiv.org/abs/2208.00940), 
-an efficient method to implement an approach known as “Blind Order-Fairness”, which enables certain MEV protection to services that subscribe to it.
- 
----
+| **Maximal Extractable Value (MEV) Protection on a DAG** | Many cryptocurrency platforms are vulnerable to Maximal Extractable Value (MEV) attacks, where a malicious consensus leader can inject transactions or change the order of user transactions to maximize its profit. This joint work with Pawel Szalachowski introduces [Fino](https://arxiv.org/abs/2208.00940), an efficient method to implement an approach known as “Blind Order-Fairness”, which enables certain MEV protection to services that subscribe to it. | [[Science and Engineering of Consensus 2022]](https://tselab.stanford.edu/workshop-sbc22/)  | [🎥](https://www.youtube.com/watch?v=9WLoJRrnTsA&list=PL4XSNxeZhdqBBgqqokIdK4PcyPSl6t0rQ&index=6) |
 
 
 **Connecting Blockchains and the World**.<br>
