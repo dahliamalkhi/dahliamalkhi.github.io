@@ -9,7 +9,7 @@ author_profile: true
 
 | Talk title & Abstract | Where | Links |
 | :--- |  :-- | :--- |
-| **Tech Transfer Stories and Takeaways** <br><br> &emsp;&emsp; _I spoke at various occassions about my experience driving basic research to production. The stories I share are all in the distributed computing arena. Yet, I hope that the take-aways from the experience of building foundations for these systems may be of interest and value to everyone, no matter the discipline._ | [[Brown 2023]](https://events.brown.edu/event/252258-dahlia-malkhi-research-flywheel-from-basic) <br> [[Duke 2023]](https://pratt.duke.edu/about/events/71320), UCSB 2023, [[ICDCS keynote 2021]](https://icdcs2021.us/keynotes.html), [[Cornell 2021]](https://www.cs.cornell.edu/content/tech-transfer-stories-and-takeaways), [[DISC keynote 2021]](http://www.disc-conference.org/wp/disc2021/program/) |  [[🎥]](https://www.youtube.com/watch?v=9RRUQHymcJA) | 
+| **Tech Transfer Stories and Takeaways** <br><br> &emsp;&emsp; _I spoke at various occassions about my experience driving basic research to production. The stories I share are all in the distributed computing arena. Yet, I hope that the take-aways from the experience of building foundations for these systems may be of interest and value to everyone, no matter the discipline._ | [[Brown 2023]](https://events.brown.edu/event/252258-dahlia-malkhi-research-flywheel-from-basic), [[Duke 2023]](https://pratt.duke.edu/about/events/71320), UCSB 2023, [[ICDCS keynote 2021]](https://icdcs2021.us/keynotes.html), [[Cornell 2021]](https://www.cs.cornell.edu/content/tech-transfer-stories-and-takeaways), [[DISC keynote 2021]](http://www.disc-conference.org/wp/disc2021/program/) |  [[🎥]](https://www.youtube.com/watch?v=9RRUQHymcJA) | 
 
 ## Chainlink Labs
 
@@ -30,7 +30,7 @@ author_profile: true
 
 | Talk title & Abstract |  Where | Links |
 | :--- | :--- | :-- | 
-| **Flexible BFT and New Approaches in Byzantine Fault Tolerance** | [[Chicago Booth 2019]](https://bfi.uchicago.edu/event/cryptocurrencies-and-blockchains-conference/)<br> [[Richard M. Karp Distinguished Lecture 2019]](https://simons.berkeley.edu/rmklectures2019-fall-3)<br> [[CES 2019]](https://cryptoeconomicsystems.pubpub.org/)<br> [[BC '19]](https://crypto.iacr.org/2019/affevents/blockchain/page.html)<br> [[Tokenomics 2019]](http://tokenomics2019.org/infoattendees/invitedspeakers)<br> [[SHE256 Conference 2019]](https://www.recolor.io/) | [[🎥]](https://youtu.be/4np_2K8WNPU?t=4297) | 
+| **Flexible BFT and New Approaches in Byzantine Fault Tolerance** | [[Chicago Booth 2019]](https://bfi.uchicago.edu/event/cryptocurrencies-and-blockchains-conference/), [[Richard M. Karp Distinguished Lecture 2019]](https://simons.berkeley.edu/rmklectures2019-fall-3), [[CES 2019]](https://cryptoeconomicsystems.pubpub.org/), [[BC '19]](https://crypto.iacr.org/2019/affevents/blockchain/page.html), [[Tokenomics 2019]](http://tokenomics2019.org/infoattendees/invitedspeakers), [[SHE256 Conference 2019]](https://www.recolor.io/) | [[🎥]](https://youtu.be/4np_2K8WNPU?t=4297) | 
 |**BFT Reconfiguration** | [[Swiss Blockchain Summer School 2017]](https://blockchain-summer.epfl.ch/) | |
 | **Beyond Paxos** |  [[BIRS 2016]](http://www.birs.ca/events/2016/5-day-workshops/) | [[🎥]](http://www.birs.ca/events/2016/5-day-workshops/16w5152/videos/watch/201611290900-Malkhi.html) | 
 | **Randomized Gossip Methods: From Grapevine to SWIM**  |  [[PWL Conference 2016]](http://pwlconf.org) | [[🎥]](https://youtu.be/Gxf5glthqrk?list=PLGRqfvsPiRShwIXMA5P3WR_9LgBOAdvw4)  |
