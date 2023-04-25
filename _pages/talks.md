@@ -31,7 +31,7 @@ author_profile: true
 | Talk title |  Where | Links |
 | :--- | :--- | :-- | 
 | **Flexible BFT and New Approaches in Byzantine Fault Tolerance** | [[Chicago Booth 2019]](https://bfi.uchicago.edu/event/cryptocurrencies-and-blockchains-conference/)<br> [[Richard M. Karp Distinguished Lecture 2019]](https://simons.berkeley.edu/rmklectures2019-fall-3)<br> [[CES 2019]](https://cryptoeconomicsystems.pubpub.org/)<br> [[BC '19]](https://crypto.iacr.org/2019/affevents/blockchain/page.html)<br> [[Tokenomics 2019]](http://tokenomics2019.org/infoattendees/invitedspeakers)<br> [[SHE256 Conference 2019]](https://www.recolor.io/) | [[🎥]](https://youtu.be/4np_2K8WNPU?t=4297) | 
-||**BFT Reconfiguration** | [[Swiss Blockchain Summer School 2017]](https://blockchain-summer.epfl.ch/) | |
+|**BFT Reconfiguration** | [[Swiss Blockchain Summer School 2017]](https://blockchain-summer.epfl.ch/) | |
 | **Beyond Paxos** |  [[BIRS 2016]](http://www.birs.ca/events/2016/5-day-workshops/) | [[🎥]](http://www.birs.ca/events/2016/5-day-workshops/16w5152/videos/watch/201611290900-Malkhi.html) | 
 | **"Randomized Gossip Methods: From Grapevine to SWIM**  |  [[PWL Conference 2016]](http://pwlconf.org) | [[🎥]](https://youtu.be/Gxf5glthqrk?list=PLGRqfvsPiRShwIXMA5P3WR_9LgBOAdvw4)  |
 | **Foundations of Reliable Distributed Systems in Practice** | [[Women in Theory 2016]](https://womenintheory.wordpress.com/) | |
