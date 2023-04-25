@@ -9,31 +9,9 @@ author_profile: true
 | :--- | :--- | :-- | :--- |
 |**Privacy-Preserving Oracles with DECO** | &emsp;&emsp; 😯 _Imagine that users can bring claims about themselves into smart contracts with complete privacy:  "I am a person" (but not private information about me); "I live in the US" (but not my address); "my combined bank accounts balance is above a threshold" (but not my balances); and more._<br> &emsp;&emsp; 🤔 _In this presentation at SmartCon 2022, we explain how DECO enables the unlocking of user information from current web 2.0 servers into Web 3.0; we describe the application of academic research to allow smart contracts to serve even more powerful use cases in a truly privacy-preserving manner; and we give a glimpse into real-world use cases._ | [[SmartCon22]](https://smartcon.chain.link/) | [[🎥]](https://www.youtube.com/watch?v=eJqZQ2_VBzo) | 
 | **Maximal Extractable Value (MEV) Protection on a DAG** | Many cryptocurrency platforms are vulnerable to Maximal Extractable Value (MEV) attacks, where a malicious consensus leader can inject transactions or change the order of user transactions to maximize its profit. This joint work with Pawel Szalachowski introduces [Fino](https://arxiv.org/abs/2208.00940), an efficient method to implement an approach known as “Blind Order-Fairness”, which enables certain MEV protection to services that subscribe to it. | [[Science and Engineering of Consensus 2022]](https://tselab.stanford.edu/workshop-sbc22/)  | [🎥](https://www.youtube.com/watch?v=9WLoJRrnTsA&list=PL4XSNxeZhdqBBgqqokIdK4PcyPSl6t0rQ&index=6) |
+| **Connecting Blockchains and the World** | &emsp;&emsp; _What would it take for blockchains to enable people and businesses everywhere better, trusted and innovative financial foundations?  In the first part of the presentation, I briefly recall the Diem story, June 2018-January 2022. I joined the Diem project (it was named Libra back then) in 2019 as CTO and stayed until its closing. I explain the stablecoin structure Diem built over a purpose-built blockchain.  In the second part, I switch gears and talk about my current role as chief research officer at Chainlink Labs. Chainlink enables smart contracts to interact with the real world and to reduce trust in centralized intermediaries. I provide a glimpse into Chainlink Labs technology and a research outlook._ | [[UC Berkeley RISE/Sky seminar, summer 2022, invited speaker]](https://rise.cs.berkeley.edu/events/)<br> [[Imperial College London LSDS seminar, summer 2022, invited speaker]](https://lsds.doc.ic.ac.uk/seminars)<br> [ETH and EPFL, summer 2022] | | 
+| **Tech Transfer Stories and Takeaways** | &emsp;&emsp; _In this talk, I share impressions from several industrial research project experiences that reached production and became part of successful products. I will go through four stories of how these systems transpired and their journey to impact. All of the stories are in the distributed computing arena, and more specifically, they revolve around the state-machine-replication paradigm. Yet, I hope that the take-aways from the experience of building foundations for these systems may be of interest and value to everyone, no matter the discipline._ | [[IEEE TCDP Outstanding Technical Achievement Award keynote at ICDCS 2021]](https://icdcs2021.us/keynotes.html) <br> [[Cornell CS colloqium 2021 invited speaker]](https://www.cs.cornell.edu/content/tech-transfer-stories-and-takeaways) <br> [[DISC 2021 keynote]](http://www.disc-conference.org/wp/disc2021/program/) |  [[🎥]](https://www.youtube.com/watch?v=9RRUQHymcJA) | 
 
-
-**Connecting Blockchains and the World**.<br>
-[[UC Berkeley RISE/Sky seminar, summer 2022, invited speaker]](https://rise.cs.berkeley.edu/events/)<br>
- [[Imperial College London LSDS seminar, summer 2022, invited speaker]](https://lsds.doc.ic.ac.uk/seminars)<br>
- [ETH and EPFL, summer 2022]
-
-
-&emsp;&emsp; _What would it take for blockchains to enable people and businesses everywhere better, trusted and innovative financial foundations?
-In the first part of the presentation, I briefly recall the Diem story, June 2018-January 2022. I joined the Diem project (it was named Libra back then) in 2019 as CTO and stayed until its closing. I explain the stablecoin structure Diem built over a purpose-built blockchain.
-In the second part, I switch gears and talk about my current role as chief research officer at Chainlink Labs. Chainlink enables smart contracts to interact with the real world and to reduce trust in centralized intermediaries. I provide a glimpse into Chainlink Labs technology and a research outlook._
-
----
-
-**Tech Transfer Stories and Takeaways**. <br>
-[[IEEE TCDP Outstanding Technical Achievement Award keynote at ICDCS 2021]](https://icdcs2021.us/keynotes.html) <br>
-[[Cornell CS colloqium 2021 invited speaker]](https://www.cs.cornell.edu/content/tech-transfer-stories-and-takeaways) <br>
-[[DISC 2021 keynote]](http://www.disc-conference.org/wp/disc2021/program/) [[🎥]](https://www.youtube.com/watch?v=9RRUQHymcJA)
-
-&emsp;&emsp; _In this talk, I share impressions from several industrial research project experiences that reached
-production and became part of successful products. I will go through four stories of how these
-systems transpired and their journey to impact. All of the stories are in the distributed computing
-arena, and more specifically, they revolve around the state-machine-replication paradigm. Yet, I
-hope that the take-aways from the experience of building foundations for these systems may be of
-interest and value to everyone, no matter the discipline._
 
 
 ---
