@@ -5,10 +5,11 @@ layout: archive
 author_profile: true
 ---
 
-## Industrial Tech
+## Industrial Tech Stories
 
 | Talk title & Abstract | Where | Links |
 | :--- |  :-- | :--- |
+| **Unexpected Lessons from Production Systems Impacting the Foundations of Distributed Computing** <br><br> &emsp;&emsp; _This talk is a spin on the tech-transfer stories talk (below), in which I describe insights from distributed systems I worked on that led to breaking myths and grounds in distributed computing._ | [[NorCalDB Day 2023]](https://www.microsoft.com/en-us/research/event/norcaldb-2023/) | |
 | **Tech Transfer Stories and Takeaways** <br><br> &emsp;&emsp; _I spoke at various occassions about my experience driving basic research to production. The stories I share are all in the distributed computing arena. Yet, I hope that the take-aways from the experience of building foundations for these systems may be of interest and value to everyone, no matter the discipline._ | [[Brown 2023]](https://events.brown.edu/event/252258-dahlia-malkhi-research-flywheel-from-basic), [[Duke 2023]](https://pratt.duke.edu/about/events/71320), UCSB 2023, [[ICDCS keynote 2021]](https://icdcs2021.us/keynotes.html), [[Cornell 2021]](https://www.cs.cornell.edu/content/tech-transfer-stories-and-takeaways), [[DISC keynote 2021]](http://www.disc-conference.org/wp/disc2021/program/) |  [[🎥]](https://www.youtube.com/watch?v=9RRUQHymcJA) | 
 
 ## Chainlink Labs
