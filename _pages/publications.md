@@ -12,7 +12,7 @@ author_profile: true
 
 | Title |  Authors | Where | Links |
 | :--- | :--- | :-- | :--- |
-| Invited Paper: Lessons from HotStuff | Dahlia Malkhi, Maofan Yin | [ApPLIED 2023](https://www.cse.chalmers.se/~elad/ApPLIED2023/) | coming soon |
+| Invited Paper: Lessons from HotStuff | Dahlia Malkhi, Maofan Yin | [ApPLIED 2023](https://www.cse.chalmers.se/~elad/ApPLIED2023/) | [📄](https://arxiv.org/abs/2305.13556)|
 | BBCA-LEDGER: High Throughput Consensus meets Low Latency (WIP) | Chrysoula Stathakopoulou, Michael Wei, Hongbo Zhang, Maofan Yin, Dahlia Malkhi |  [ConsensusDay23](https://research.protocol.ai/sites/consensusday23/) | coming soon |
 | HotStuff-2: Optimal Two-Phase Responsive BFT |  Dahlia Malkhi, Kartik Nayak | [ConsensusDay23](https://research.protocol.ai/sites/consensusday23/) | [📄](https://eprint.iacr.org/2023/397) |
 
