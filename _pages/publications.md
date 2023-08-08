@@ -10,7 +10,7 @@ author_profile: true
 
 #### 2023
 
-| Title |  Authors | Where | Links |
+| Title |  Authors | Where | Read/Watch |
 | :--- | :--- | :-- | :--- |
 | Invited Paper: Lessons from HotStuff | Dahlia Malkhi, Maofan Yin | [ApPLIED 2023](https://www.cse.chalmers.se/~elad/ApPLIED2023/) | [📄](https://arxiv.org/abs/2305.13556)|
 | BBCA-LEDGER: High Throughput Consensus meets Low Latency (WIP) | Chrysoula Stathakopoulou, Michael Wei, Hongbo Zhang, Maofan Yin, Dahlia Malkhi |  [ConsensusDay23](https://research.protocol.ai/sites/consensusday23/) | [📄](https://arxiv.org/abs/2306.14757) |
@@ -19,7 +19,7 @@ author_profile: true
 #### 2022
 
 
-| Title |  Authors | Where | Links |
+| Title |  Authors | Where | Read/Watch |
 | :--- | :--- | :-- | :--- |
 | Byzantine Consensus under Fully Fluctuating Participation |  Dahlia Malkhi, Atsuki Momose, Ling Ren | ArXiv | [📄](https://eprint.iacr.org/2022/1448) [🗞️1](https://blog.chain.link/instant-finality-in-byzantine-generals-with-unknown-and-dynamic-participation/) [🗞️2](https://blog.chain.link/instant-finality-in-byzantine-atomic-broadcast-under-unknown-dynamic-participation/) |
 | Maximal Extractable Value (MEV) Protection on a DAG |   Dahlia Malkhi, Pawel Szalachowski | [CESC 2022](https://cesc.io/) [Tokenomics 2022](https://tokenomics-conference.lip6.fr/index.php?n=Main.Tokenomics2022) [Science and Engineering of Consensus 2022](https://tselab.stanford.edu/workshop-sbc22/) |[📄](https://arxiv.org/abs/2208.00940) [🎥1](https://youtu.be/q5v3tLLoOXM) [🎥2](https://www.youtube.com/watch?v=9WLoJRrnTsA&list=PL4XSNxeZhdqBBgqqokIdK4PcyPSl6t0rQ&index=6) |
@@ -28,7 +28,7 @@ author_profile: true
 
 #### 2021
 
-| Title |  Authors | Where | Links |
+| Title |  Authors | Where | Read/Watch |
 | :--- | :--- | :-- | :--- |
 | Twins: BFT Systems Made Robust |  Shehar Bano, Alberto Sonnino, Andrey Chursin, Dmitri Perelman, Zekun Li, Avery Ching, Dahlia Malkhi | [OPODIS 2021](https://opodis2021.unistra.fr/) |[📄](https://arxiv.org/abs/2004.10617) |
 | RainBlock: Faster Transaction Processing in Public Blockchains |   Soujanya Ponnapalli, Aashaka Shah, Souvik Banerjee, Dahlia Malkhi, Amy Tai, Vijai Chidambaram, Michael Wei | [Usenix ATC 2021](https://www.usenix.org/conference/atc21) |[📄](https://www.usenix.org/system/files/atc21-ponnapalli.pdf) |
@@ -36,7 +36,7 @@ author_profile: true
 
 #### 2020
 
-| Title |   Authors | Where | Links |
+| Title |   Authors | Where | Read/Watch |
 | :--- | :--- | :-- | :--- |
 | ACE: Abstract Consensus Encapsulation for Liveness Boosting of State Machine Replication |  Alexander Spiegelman, Arik Rinberg, Dahlia Malkhi | [OPODIS 2020](https://opodis2020.unistra.fr/) | [📄]({{ base_path }}/files/ACE-OPODIS2020.pdf) |
 | Asynchronous Distributed Key Generation for Computationally Secure Randomness, Consensus, and Threshold Signatures |   Eleftherios Kokoris Kogias, Dahlia Malkhi, Alexander Spiegelman | [ACM CCS 2020](https://www.sigsac.org/ccs/CCS2020/) |[📄](https://eprint.iacr.org/2019/1015) |
@@ -44,7 +44,7 @@ author_profile: true
 
 #### 2019
 
-| Title |   Authors | Where | Links |
+| Title |   Authors | Where | Read/Watch |
 | :--- | :--- | :-- | :--- |
 | FairLedger: A Fair Blockchain Protocol for Financial Institutions |   Kfir Lev-Ari, Alexander Spiegelman, Idit Keidar and Dahlia Malkhi | OPODIS 2019 (**best paper award**) |[📄]({{ base_path }}/files/FairLedger-OPODIS2019.pdf) |
 | Sync HotStuff: Simple and Practical Synchronous State Machine Replication |    Ittai Abraham, Dahlia Malkhi, Kartik Nayak, Ling Ren, Maofan Yin | IEEE S&P 2020 |[📄]({{ base_path }}/files/SyncHotStuff-SP2020.pdf) [🎥](https://drive.google.com/file/d/1GDMU61PeQY9ytPiiX3BXWpqWZGPdHX6P/view?usp=sharing) |
@@ -56,7 +56,7 @@ author_profile: true
 
 #### 2018
 
-| Title |  Authors | Where | Links |
+| Title |  Authors | Where | Read/Watch |
 | :--- | :--- | :-- | :--- |
 | State Machine Replication is Harder than Consensus |   Karolos Antoniadis, Rachid Guerraoui, Dahlia Malkhi and Dragos-Adrian Seredinschi |DISC 2018 |[📄]({{ base_path }}/files/SMR-DISC2018.pdf) |
 | Stable and Consistent Membership at Scale with Rapid |   Lalith Suresh, Dahlia Malkhi, Parikshit Gopalan, Ivan Porto Carreiro, Zeeshan Lokhandwala | USENIX ATC 2018 |[📄]({{ base_path }}/files/Rapid-atc2018.pdf)  |
@@ -65,7 +65,7 @@ author_profile: true
 
 #### 2017
 
-| Title |   Authors | Where | Links |
+| Title |   Authors | Where | Read/Watch |
 | :--- | :--- | :-- | :--- |
 |  Revisiting Fast Practical Byzantine Fault Tolerance | Ittai Abraham, Guy Gueta, Dahlia Malkhi; with Lorenzo Alvisi, Rama Kotla, Jean-Philippe Martin | ArXiv | [📄](http://arxiv.org/abs/1712.01367)   |
 |  Solida: A Cryptocurrency Based on Reconfigurable Byzantine Consensus. | Ittai Abraham, Dahlia Malkhi, Kartik Nayak, Ling Ren, Alexander Spiegelment |  OPODIS 2017 | [📄]({{ base_path }}/files/Solida-OPODIS2017.pdf) | 
@@ -78,7 +78,7 @@ author_profile: true
 
 #### 2016
 
-| Title |   Authors | Where | Links |
+| Title |   Authors | Where | Read/Watch |
 | :--- | :--- | :-- | :--- |
 |  Flexible Paxos: Quorum Intersection Revisited. | Heidi Howard, Dahlia Malkhi, Alexander Spiegelman. | OPODIS 2016. | [📄]({{ base_path }}/files/fpaxos-opodis20161.pdf) | 
 |  BVP: Byzantine Vertical Paxos. | Ittai Abraham, Dahlia Malkhi. | Distributed Cryptocurrencies and Consensus Ledgers (DCCL) 2016. |  [📄]({{ base_path }}/files/bvp-byzantine-vertical.pdf) | 
@@ -88,7 +88,7 @@ author_profile: true
 
 #### 2015
 
-| Title |   Authors | Where | Links |
+| Title |   Authors | Where | Read/Watch |
 | :--- | :--- | :-- | :--- |
 |   *Elastic Configuration Maintenance via a Parsimonious Speculating Snapshot Solution.* | Eli Gafni, Dahlia Malkhi. | DISC 2015 | [📄]({{ base_path }}/files/GafniMalkhi-DISC2015.pdf) |
 |   *Distributed Resource Discovery in Sub-Logarithmic Time*. | Bernhard Haeupler, Dahlia Malkhi. | PODC 2015. | [📄]({{ base_path }}/files/SublogDiscovery-PODC2015.pdf) |
@@ -96,14 +96,14 @@ author_profile: true
 
 #### 2014
 
-| Title |   Authors | Where | Links |
+| Title |   Authors | Where | Read/Watch |
 | :--- | :--- | :-- | :--- |
 |   *Optimal Gossip with Direct Addressing*. | Bernhard Haeupler, Dahlia Malkhi. | PODC 2014. | [📄]({{ base_path }}/files/DirectAdressing-PODC2014.pdf) |
 |   REEFU: A Logging Service for Cluster Applications | Dahlia Malkhi and Marcus Weimer. | LADIS 2014 | |
 
 #### 2013
 
-| Title |   Authors | Where | Links |
+| Title |   Authors | Where | Read/Watch |
 | :--- | :--- | :-- | :--- |
 |   *Beyond Block I/O: Implementing a Distributed Shared Log in Hardware*. | Michael Wei, John Davis, Ted Wobber, Mahesh Balakrishnan, Dahlia Malkhi. | SYSTOR 2013. | [📄]({{ base_path }}/files/CorfuHW-SYSTOR2013.pdf) |
 |   *CORFU: A Distributed Shared Log*. | Mahesh Balakrishnan, Dahlia Malkhi, John Davis, Vijay Prabhakaran, Michael Wei, Teb Wobber. | ACM Transactions on Computer Systems 2013. | [📄]({{ base_path }}/files/CORFU-TOCS2013.pdf) |
@@ -112,7 +112,7 @@ author_profile: true
 
 #### 2012
 
-| Title |   Authors | Where | Links |
+| Title |   Authors | Where | Read/Watch |
 | :--- | :--- | :-- | :--- |
 |   *CORFU: A Shared Log Design for Flash Clusters*. | Mahesh Balakrishnan, Dahlia Malkhi, Vijay Prabhakaran, Teb Wobber, Michael Wei, John Davis. | NSDI 2012. | [📄]({{ base_path }}/files/Corfu-NSDI2012.pdf) |
 |   *From Paxos to CORFU: A Flash-Speed Shared Log*. | Dahlia Malkhi, Mahesh Balakrishnan, Vijay Prabhakaran, Teb Wobber, John Davis. | ACM SIGOPS 2012. | [📄]({{ base_path }}/files/MBDPW-OSR2012.pdf) |
@@ -120,13 +120,13 @@ author_profile: true
 
 #### 2011
 
-| Title |   Authors | Where | Links |
+| Title |   Authors | Where | Read/Watch |
 | :--- | :--- | :-- | :--- |
 |   *Dynamic Atomic Storage Without Consensus*. | Marcos Aguilera, Idit Keidar, Dahlia Malkhi, Alex Shraer. | PODC 2009 | [📄]({{ base_path }}/files/DynaStore-JACM2011.pdf) |
 
 #### 2010
 
-| Title |   Authors | Where | Links |
+| Title |   Authors | Where | Read/Watch |
 | :--- | :--- | :-- | :--- |
 |   Reconfiguring Replicated Atomic Storage: A Tutorial | Marcos Aguilera, Idit Keidar, Dahlia Malkhi, Jean-Phillipe Martin, Alex Shraer | Bulletin of the EATCS 2010 | [📄]({{ base_path }}/files/DynamicStorageSurvey-BEATCS2012.pdf) |
 |   Virtually Synchronous Methodology for Dynamic Service Replication | Ken Birman, Dahlia Malkhi, Robbert Van Renesse | MSR Tech Report 2010 | [📄]({{ base_path }}/files/bmvr-virtsync.pdf) |
@@ -136,7 +136,7 @@ author_profile: true
 
 #### 2009
 
-| Title |   Authors | Where | Links |
+| Title |   Authors | Where | Read/Watch |
 | :--- | :--- | :-- | :--- |
 |   *Brief Announcement: Vertical Paxos and Primary-Backup Replication.* | Leslie Lamport, Dahlia Malkhi, Lidong Zhou. | PODC 2009 | [📄]({{ base_path }}/files/VerticalPaxos-TR2009.pdf) |
 |   *Virtual Ring Routing Trends*. | Dahlia Malkhi, Siddhartha Sen, Kunal Talwar, Renato Werneck, Udi Wieder. | DISC 2009. | [📄]({{ base_path }}/files/VRR-DISC2009.pdf) |
@@ -148,7 +148,7 @@ author_profile: true
 
 #### 2008
 
-| Title |   Authors | Where | Links |
+| Title |   Authors | Where | Read/Watch |
 | :--- | :--- | :-- | :--- |
 |   *On spreading recommendations via social gossip*.  | Coby Fernandess and Dahlia Malkhi. | SPAA 2008. | [📄]({{ base_path }}/files/SocialGossip-SPAA2008.pdf) |
 |   *Stoppable Paxos.* | Leslie Lamport, Dahlia Malkhi, Lidong Zhou. | MSR Tech Report 2008. | [📄]({{ base_path }}/files/Stoppable-TR2008.pdf) |
@@ -157,7 +157,7 @@ author_profile: true
 
 #### 2007
 
-| Title |   Authors | Where | Links |
+| Title |   Authors | Where | Read/Watch |
 | :--- | :--- | :-- | :--- |
 |   *Concise Version Vectors in WinFS.* | Dahlia Malkhi, Doug Terry. | Distributed Computing Journal 2007 | [📄]({{ base_path }}/files/WinFS-version-vectors-DISC2005.pdf) |
 |   *P2P Replica Synchronization with Vector Sets.* |  | Dahlia Malkhi, Lev Novik, Chris Purcell. | ACM SIGOPS Operating Systems Review - Systems work at Microsoft Research, 41(2), 2007. | [📄]({{ base_path }}/files/VersionVectors2-OSR2007.pdf) |
@@ -167,7 +167,7 @@ author_profile: true
 
 #### 2006
 
-| Title |   Authors | Where | Links |
+| Title |   Authors | Where | Read/Watch |
 | :--- | :--- | :-- | :--- |
 |   *Byzantine Disk Paxos: Optimal Resilience with Byzantine Shared Memory*. | Ittai Abraham, Gregory Chockler, Idit Keidar, Dahlia Malkhi. | PODC 2004 | [📄]({{ base_path }}/files/ByzDP-DC2006.pdf) |
 |   *Light-Weight Leases for Storage-Centric Coordination.* | Gregory Chockler, Dahlia Malkhi. | International Journal of Parallel Programming 2006 | [📄]({{ base_path }}/files/LightLeases-IJPP2006.pdf) |
@@ -176,7 +176,7 @@ author_profile: true
 
 #### 2005
 
-| Title |   Authors | Where | Links |
+| Title |   Authors | Where | Read/Watch |
 | :--- | :--- | :-- | :--- |
 |   *Active Disk Paxos with Infinitely Many Processes*. | Gregory Chockler, Dahlia Malkhi. | PODC 2002 | [📄]({{ base_path }}/files/ActiveDP-DC2005.pdf) |
 |   *Probabilistic quorums for dynamic systems*. | Ittai Abraham, Dahlia Malkhi | DISC 2003 | [📄]({{ base_path }}/files/DynPquorums-DC2005.pdf) | 
@@ -187,7 +187,7 @@ author_profile: true
 
 #### 2004
 
-| Title |   Authors | Where | Links |
+| Title |   Authors | Where | Read/Watch |
 | :--- | :--- | :-- | :--- |
 |   *LLS : a Locality Aware Location Service for Mobile Ad Hoc Networks.* | Ittai Abraham, Danny Dolev, Dahlia Malkhi. | DIAL M-POMC 2004. | |
 |   *Routing with Improved Communication-Space Trade-Off*. | Ittai Abraham, Cyril Gavoille, Dahlia Malkhi. | Eighteenth International Symposium on Distributed Computing (DISC), 2004. | |
@@ -201,7 +201,7 @@ author_profile: true
 
 #### 2003
 
-| Title |   Authors | Where | Links |
+| Title |   Authors | Where | Read/Watch |
 | :--- | :--- | :-- | :--- |
 |   *A Generic Scheme for Building Overlay Networks in Adversarial Scenarios.* | Ittai Abraham, Baruch Awerbuch, Yossi Azar, Yair Bartal, Dahlia Malkhi, Elan Pavlov. | Proceedings of the 17th International Symposium on Parallel and Distributed Processing (IPDPS), 2003. | [📄]({{ base_path }}/files/generic-overlay-IPDPS2002.pdf) |
 |   *Diffusion without False Rumours: On Propagating Updates in a Byzantine Environment.* | Dahlia Malkhi, Yishay Mansour, Mike Reiter. | TCS 2003 | [📄]({{ base_path }}/files/ByzGossip-SRDS1999.pdf) |
@@ -210,7 +210,7 @@ author_profile: true
 
 #### 2002
 
-| Title |   Authors | Where | Links |
+| Title |   Authors | Where | Read/Watch |
 | :--- | :--- | :-- | :--- |
 |   *Viceroy: A Scalable and Dynamic Emulation of the Butterfly.* | Dahlia Malkhi, Moni Naor, David Ratajczak. | ACM Symposium on Principles of Distributed Computing (PODC), 2002. | [📄]({{ base_path }}/files/viceroy-PODC2002.pdf) |
 |   *From Byzantine Agreement to Practical Survivability.* | Dahlia Malkhi | keynote at RCDS 2002 |  [📄]({{ base_path }}/files/bqs-position-RCDS2002.pdf) | 
@@ -220,7 +220,7 @@ author_profile: true
 
 #### 2001
 
-| Title |   Authors | Where | Links |
+| Title |   Authors | Where | Read/Watch |
 | :--- | :--- | :-- | :--- |
 |   *Replication by Diffusion in Large Networks.* | Dahlia Malkhi, Yaron Sella. | Ersads 2001 | [📄]({{ base_path }}/files/ByzReplication-ERSADS2001.pdf) |
 |   *A Quorum Based Approach to CORBA Fault-Tolerance.* | Gregory Chockler, Danny Dolev, Dahlia Malkhi. | European Research Seminar on Advances in Distributed Systems (Ersads 2001) | [📄]({{ base_path }}/files/CORBA-ERSADS2001.pdf) |
@@ -232,7 +232,7 @@ author_profile: true
 
 #### 2000
 
-| Title |   Authors | Where | Links |
+| Title |   Authors | Where | Read/Watch |
 | :--- | :--- | :-- | :--- |
 |   *The Load and Availability of Byzantine Quorum Systems.* | Dahlia Malkhi, Mike Reiter, Avishai Wool. | Siam Journal of Computing 2000 | [📄]({{ base_path }}/files/bqsload-PODC1997.pdf) |
 |   *Dynamic Byzantine Quorum Systems.* | Lorenzo Alvisi, Dahlia Malkhi, Evelyn Pierce, Mike Reiter, Rebecca Wright. | ICDSN 2000 | [📄]({{ base_path }}/files/bqs-dynamic-DSN2000.pdf) |
@@ -241,30 +241,31 @@ author_profile: true
 
 #### 1999
 
-| Title |   Authors | Where | Links |
+| Title |   Authors | Where | Read/Watch |
 | :--- | :--- | :-- | :--- |
 |   *Quorum Systems.* | Dahlia Malkhi. | A tutorial, 1999 | [📄]({{ base_path }}/files/Quorums1999.pdf) |
 |   *Fault Detection for Byzantine Quorum Systems.* | Lorenzo Alvisi, Dahlia Malkhi, Evelyn Pierce, Mike Reiter. | DCCA 1999 | [📄]({{ base_path }}/files/bqs-fd-DCCA1999.pdf) |
 
 #### 1998
 
-| Title |   Authors | Where | Links |
+| Title |   Authors | Where | Read/Watch |
 | :--- | :--- | :-- | :--- |
 |   *Probabilistic Byzantine Quorum Systems*. | Dahlia Malkhi, Mike Reiter, Avishai Wool, Rebecca Wright. | Brief announcement at PODC 98 | [📄]({{ base_path }}/files/ByzPquorums-PODC1998.pdf) |
 |   *Byzantine Quorum Systems.* | Dahlia Malkhi, Mike Reiter. | Distributed Computing 1998 | [📄]({{ base_path }}/files/byzquorums-STOC1997.pdf) |
 |   *Survivable Consensus Objects.* | Dahlia Malkhi, Mike Reiter. | SRDS 1998 | [📄]({{ base_path }}/files/bqs-consensus-SRDS1998.pdf) |
 |   *Secure and Scalable Replication in Phalanx*. | Dahlia Malkhi, Mike Reiter. | SRDS 1998 | [📄]({{ base_path }}/files/bqs-phalanx-SRDS1998.pdf) |
 |   *Auditable Metering with Lightweight Security.* | Matthew Franklin, Dahlia Malkhi. | The Journal of Computer Security, 6(4), 1998 | [📄]({{ base_path }}/files/AuditableMetering-TCS1998.pdf) ; Financial Cryptography (FC) 1997 |
+| 1997 || 
 
 #### 1997
 
-| Title |   Authors | Where | Links |
+| Title |   Authors | Where | Read/Watch |
 | :--- | :--- | :-- | :--- |
 |   *A High-Throughput Secure Reliable Multicast Protocol.* | Dahlia Malkhi and Mike Reiter. | The Journal of Computer Security, 5:113, 1997. | [📄]({{ base_path }}/files/SecureMulticast-JCS1997.pdf) |
 
 #### 1986-1996 (prior to 1996, my name is spelled Dalia Malki)
 
-| Title |   Authors | Where | Links |
+| Title |   Authors | Where | Read/Watch |
 | :--- | :--- | :-- | :--- |
 |   *The Transis Approach to High Availability Cluster Communication*. | Danny Dolev, Dalia Malki. | Communications of the ACM, 39(4):64--70, April, 1996. | [📄]({{ base_path }}/files/Transis-CACM1994.pdf) |
 |   *Warm Backup using Snooping.* | Danny Dolev, Dalia Malki, Yuval Yarom. | First International Workshop on Services in Distributed and Networked Environments (SDNE), Prague, Czech Republic, June 1994, pp. 60-65. | [📄]({{ base_path }}/files/WarmBackup-SDNE1994.pdf) |
