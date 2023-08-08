@@ -255,7 +255,7 @@ author_profile: true
 |   *Survivable Consensus Objects.* | Dahlia Malkhi, Mike Reiter. | SRDS 1998 | [📄]({{ base_path }}/files/bqs-consensus-SRDS1998.pdf) |
 |   *Secure and Scalable Replication in Phalanx*. | Dahlia Malkhi, Mike Reiter. | SRDS 1998 | [📄]({{ base_path }}/files/bqs-phalanx-SRDS1998.pdf) |
 |   *Auditable Metering with Lightweight Security.* | Matthew Franklin, Dahlia Malkhi. | The Journal of Computer Security, 6(4), 1998 | [📄]({{ base_path }}/files/AuditableMetering-TCS1998.pdf) ; Financial Cryptography (FC) 1997 |
-| 1997 || 
+| *1997* ||||
 
 #### 1997
 
