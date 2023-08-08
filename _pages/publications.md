@@ -160,7 +160,7 @@ author_profile: true
 | Title |   Authors | Where | Read/Watch |
 | :--- | :--- | :-- | :--- |
 |   *Concise Version Vectors in WinFS.* | Dahlia Malkhi, Doug Terry. | Distributed Computing Journal 2007 | [📄]({{ base_path }}/files/WinFS-version-vectors-DISC2005.pdf) |
-|   *P2P Replica Synchronization with Vector Sets.* |  | Dahlia Malkhi, Lev Novik, Chris Purcell. | ACM SIGOPS Operating Systems Review - Systems work at Microsoft Research, 41(2), 2007. | [📄]({{ base_path }}/files/VersionVectors2-OSR2007.pdf) |
+|   *P2P Replica Synchronization with Vector Sets.* |  Dahlia Malkhi, Lev Novik, Chris Purcell. | ACM SIGOPS Operating Systems Review - Systems work at Microsoft Research, 41(2), 2007. | [📄]({{ base_path }}/files/VersionVectors2-OSR2007.pdf) |
 |   *Reconstructing approximate tree metrics.* | Ittai Abraham, Mahesh Balakrishnan, Fabian Kuhn, Dahlia Malkhi, Venugopalan Ramasubramanian, Kunal Talwar. | PODC 2007. | [📄]({{ base_path }}/files/ReconstructingTrees-PODC2007.pdf) |
 |   *Wait-Free Regular Storage from Byzantine Components.* | Ittai Abraham, Gregory Chockler, Idit Keidar, Dahlia Malkhi. | Information Processsing Letters 2007 | [📄]({{ base_path }}/files/bqs-regular-IPL2007.pdf) |
 |   *On Collaborative Content Distribution Using Multi-Message Gossip.* | Coby Fernandess and Dahlia Malkhi. | IEEE JPDC 2007 | [📄]({{ base_path }}/files/MultiGossip-IPDPS2006-bestpaper.pdf) |
@@ -255,7 +255,6 @@ author_profile: true
 |   *Survivable Consensus Objects.* | Dahlia Malkhi, Mike Reiter. | SRDS 1998 | [📄]({{ base_path }}/files/bqs-consensus-SRDS1998.pdf) |
 |   *Secure and Scalable Replication in Phalanx*. | Dahlia Malkhi, Mike Reiter. | SRDS 1998 | [📄]({{ base_path }}/files/bqs-phalanx-SRDS1998.pdf) |
 |   *Auditable Metering with Lightweight Security.* | Matthew Franklin, Dahlia Malkhi. | The Journal of Computer Security, 6(4), 1998 | [📄]({{ base_path }}/files/AuditableMetering-TCS1998.pdf) ; Financial Cryptography (FC) 1997 |
-| *1997* ||||
 
 #### 1997
 
