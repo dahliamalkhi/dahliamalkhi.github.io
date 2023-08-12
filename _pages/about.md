@@ -13,22 +13,20 @@ header:
 
 # Short bio
 
-Dr. Malkhi's [research](https://scholar.google.com/citations?user=A_VZ8N0AAAAJ&hl=en)
-over two decades 
-spans broad aspects of reliability and security of distributed systems, recently with focus on blockchains and advances in financial technology.
-Her work resulted in over 150 publications as well as a strong impact on computing technology. 
+Dr. Malkhi's work over two decades brought scientific innovation into fruition in several leadering industrial settings. 
+Her research spans broad aspects of reliability and security of distributed systems, recently with focus on blockchains and advances in financial technology.
+Her work resulted in over [200 publications](https://scholar.google.com/citations?user=A_VZ8N0AAAAJ&hl=en) as well as a strong impact on computing technology. 
 
-A select sample of contributions includes: 
+A select sample of technologies she participated in creating includes: 
 
-* Co-inventor of [HotStuff](https://arxiv.org/abs/1803.05069) (driving the [Diem blockchain core engine](https://developers.diem.com/docs/technical-papers/state-machine-replication-paper/), the [Aptos blockchain core engine](https://aptos.dev/reference/glossary/#aptosbft)), and many other blockchains 
-* Co-founder and technical co-lead of [VMware blockchain](https://research.vmware.com/projects/vmware-blockchain)
-* Co-inventor of [Flexible Paxos](https://arxiv.org/abs/1608.06696) (the technology behind [Log Device](https://logdevice.io/docs/Consensus.html))
-* Creator and tech lead of [CorfuDB](https://github.com/CorfuDB/CorfuDB) (a database-less database driving VMware’s NSX-T distributed control plane)
-* Co-inventor of the [FairPlay project](https://www.cs.huji.ac.il/project/Fairplay/)
+* Co-inventor of [HotStuff](https://arxiv.org/abs/1803.05069), , the golden standard for blockchain design, driving the [Diem blockchain core engine](https://developers.diem.com/docs/technical-papers/state-machine-replication-paper/), the [Aptos blockchain core engine](https://aptos.dev/reference/glossary/#aptosbft), and many other blockchains 
+* Co-founder of [VMware blockchain](https://research.vmware.com/projects/vmware-blockchain)
+* Co-inventor of [Flexible Paxos](https://arxiv.org/abs/1608.06696), the technology behind [Log Device](https://logdevice.io/docs/Consensus.html)
+* Creator of [CorfuDB](https://github.com/CorfuDB/CorfuDB), a database-less database driving VMware’s NSX-T distributed control plane
+* Co-lead of the [FairPlay project](https://www.cs.huji.ac.il/project/Fairplay/), the pioneering materialization of secure multi-party computation
 
-Presently, Malkhi serves as Distinguished Scientist of [Chainlink Labs](https://chainlinklabs.com/) (since 2022). From 2019 to 2022, Malkhi served three roles in the Diem(Libra) project: CTO at the [Diem Association](https://www.diem.com/en-us/), Lead Maintainer of the [Diem open-source project](https://github.com/diem/diem), and Lead Researcher at [Novi](https://about.fb.com/news/2020/05/welcome-to-novi/). In 2014, after the closing of the Microsoft Research Silicon Valley lab, Malkhi co-founded [VMware Research](https://octo.vmware.com/introduction-vrg/) and became a Principal Researcher at VMware until June 2019. Prior to that, Malkhi was a partner principal researcher at Microsoft Research, 2004-2014;
-a tenured Associate Professor (promoted 2003) of the Hebrew University of Jerusalem, 1999-2007;
-and a senior researcher at AT&T Labs, 1995-1999.
+Malkhi is a Professor in the Department of Computer Science of UCSB starting 2024. She serves as Chief Research Officer and Distinguished Scientist of [Chainlink Labs](https://chainlinklabs.com/) since 2022. From 2019 to 2022, she was the CTO of [Diem Association](https://www.diem.com/en-us/) and Lead Researcher at [Novi Financial](https://about.fb.com/news/2020/05/welcome-to-novi/). In 2014, she co-founded [VMware Research](https://octo.vmware.com/introduction-vrg/) and became a Principal Researcher at VMware until June 2019. Prior to that, Malkhi was a partner principal researcher at Microsoft Research, 2004-2014; a tenured Associate Professor of the Hebrew University of Jerusalem,
+and a senior researcher at AT&T Labs.
 
 # Selected academic roles and distinctions:
 
@@ -45,14 +43,11 @@ and a senior researcher at AT&T Labs, 1995-1999.
 
 # Technology Impact
 
-For over two decades, my work has been straddling by choice between foundational and applied research. 
-I published over 150 papers; recent ones are listed on my homepage, DBLP
-keeps track of the rest.
-
-I was fortunate to bring several scientific results into fruition within leading industrial platforms. 
+I enjoy working on questions that emerge from the engineering of real systems. 
+I spent the past two decades working on bringing scientific innovation into fruition in several leading industrial settings. 
 Below, I tell the stories of four technologies I participated in creating.
 
-## HotStuff and DiemBFT -- Co-Inventor and Technical Lead, at VMware 2016, Diem(Libra) 2019
+## HotStuff at VMware 2016 and DiemBFT at Diem(Libra) 2019
 
 Renewed interest in the Blockchain world on scaling and robustifying the long standing problem of
 asynchronous Byzantine Fault Tolerant (BFT) Consensus. 
@@ -86,7 +81,7 @@ linearity, but (and perhaps mostly) due to its simplicity and developer-friendly
 Diem(Libra) adopted it to drive the blockchain infrastructure, as did (that we know of) Flow, Celo,
 and Cypherium. 
 
-## Flexible Paxos -- Co-inventor, at VMware 2016
+## Flexible Paxos at VMware 2016
 
 In the summer of 2016, I hosted a research intern named Heidi Howard from
 Cambridge, UK. I told her about the CorfuDB protocol and encouraged her to think
@@ -115,7 +110,7 @@ as is
  of YouTube's distributed MySQL backbone.
  
 
-## CorfuDB -- Initiator and Technical Lead, at Microsoft 2012 and VMware 2014
+## CorfuDB at Microsoft 2012 and at VMware 2014
 
 In 2012, [Phil Bernstein](https://en.wikipedia.org/wiki/Phil_Bernstein) approached me at Microsoft Research with the following
 observation. RAM has grown cheap/large enough to hold a complete database index
@@ -148,7 +143,7 @@ At Facebook, CorfuDB was re-engineered in
 You might wonder what happened to Phil's in-memory fully replicated DB. Several years later, it became the backbone of the SQL Azure cloud database.
 
 
-## Fairplay -- Co-Inventor at Hebrew University of Jerusalem, 2004
+## Fairplay at the Hebrew University of Jerusalem 2004
 
 In 2004, Noam Nisan and I asked ourselves whether cryptographic primitives which
 were considered completely impractical are actually becoming practical. With my 
@@ -165,4 +160,4 @@ sparked in the past
 decade a wave of crypto-engineering projects which bring crypto theory into
 practice, including heavy crypto methods like oblivious RAM, ZK proofs and PCP.
 
-## [Academic descendants]({{ base_path }}/descendants/)
+# [Academic descendants]({{ base_path }}/descendants/)
