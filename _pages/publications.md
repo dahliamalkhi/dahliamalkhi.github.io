@@ -10,8 +10,8 @@ author_profile: true
 
 #### 2023
 
-| | 📄 Paper / 🗞️ Post /<br> 🎥 Video |
-| :--- | :-- | :--- |
+| | 📄 Paper / 🗞️ Post / 🎥 Video |
+| :--- | :-- | 
 | *Build it Super Simple: Introducing Single Broadcast Consensus on a DAG*.<br> Dahlia Malkhi, Chrysa Stathakopoulou, Ted Yin. Coming soon. | [[🗞️ Introducing BBCA-Chain]](https://blog.chain.link/bbca-chain-single-broadcast-consensus-on-a-dag/) |
 | *Invited Paper: Lessons from HotStuff*.<br> Dahlia Malkhi, Maofan Yin. [ApPLIED 23](https://www.cse.chalmers.se/~elad/ApPLIED2023/). | [📄 ArXiv](https://arxiv.org/abs/2305.13556) |
 | *BBCA-LEDGER: High Throughput Consensus meets Low Latency (WIP)*.<br> Chrysoula Stathakopoulou, Michael Wei, Hongbo Zhang, Maofan Yin, Dahlia Malkhi. [ConsensusDay23](https://research.protocol.ai/sites/consensusday23/). | [📄 ArXiv](https://arxiv.org/abs/2306.14757) | 
