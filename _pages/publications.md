@@ -8,27 +8,27 @@ author_profile: true
 {% include base_path %}
  <base target="_blank">
 
-papers 📄, blog-posts 🗞️, and presentations 🎥 .
+<!-- papers 📄, blog-posts 🗞️, and presentations 🎥 .->
 
 #### 2023
 
-| Title |  Authors | Where | Paper | Post | Video |
-| :--- | :--- | :-- | :--- |
-| Build it Super Simple: Introducing Single Broadcast Consensus on a DAG | Dahlia Malkhi, Chrysa Stathakopoulou, Ted Yin | | coming |  [🗞️](https://blog.chain.link/bbca-chain-single-broadcast-consensus-on-a-dag/) | |
-| Invited Paper: Lessons from HotStuff | Dahlia Malkhi, Maofan Yin | [ApPLIED 23](https://www.cse.chalmers.se/~elad/ApPLIED2023/) | [📄](https://arxiv.org/abs/2305.13556)| | |
-| BBCA-LEDGER: High Throughput Consensus meets Low Latency (WIP) | Chrysoula Stathakopoulou, Michael Wei, Hongbo Zhang, Maofan Yin, Dahlia Malkhi |  [ConsensusDay23](https://research.protocol.ai/sites/consensusday23/) | [📄](https://arxiv.org/abs/2306.14757) | | |
-| HotStuff-2: Optimal Two-Phase Responsive BFT |  Dahlia Malkhi, Kartik Nayak | [ConsensusDay23](https://research.protocol.ai/sites/consensusday23/) | [📄](https://eprint.iacr.org/2023/397) | [🗞️](https://decentralizedthoughts.github.io/2023-04-01-hotstuff-2/) | |
+| | 📄 Paper | 🗞️ Post / 🎥 Video |
+| :--- | :-- | :--- |
+| *Build it Super Simple: Introducing Single Broadcast Consensus on a DAG*. Dahlia Malkhi, Chrysa Stathakopoulou, Ted Yin. Coming soon. ||  [🗞️](https://blog.chain.link/bbca-chain-single-broadcast-consensus-on-a-dag/) |
+| *Invited Paper: Lessons from HotStuff*. Dahlia Malkhi, Maofan Yin. [ApPLIED 23](https://www.cse.chalmers.se/~elad/ApPLIED2023/). | [📄](https://arxiv.org/abs/2305.13556)| |
+| *BBCA-LEDGER: High Throughput Consensus meets Low Latency (WIP)*. Chrysoula Stathakopoulou, Michael Wei, Hongbo Zhang, Maofan Yin, Dahlia Malkhi. [ConsensusDay23](https://research.protocol.ai/sites/consensusday23/). | [📄](https://arxiv.org/abs/2306.14757) | |
+| *HotStuff-2: Optimal Two-Phase Responsive BFT*. Dahlia Malkhi, Kartik Nayak. [ConsensusDay23](https://research.protocol.ai/sites/consensusday23/). [📄](https://eprint.iacr.org/2023/397) | [🗞️](https://decentralizedthoughts.github.io/2023-04-01-hotstuff-2/) | 
 
 #### 2022
 
 
-| Title |  Authors | Where | Paper | Post | Video |
-| :--- | :--- | :-- | :--- |
-Minority Corruption Resilience in Byzantine Generals With Unknown and Fluctuating Participation | Dahlia Malkhi, Atsuki Momose, Ling Ren | | coming | [🗞️](https://blog.chain.link/minority-corruption-resilience-in-byzantine-generals-with-unknown-and-fluctuating-participation/) | | 
-| Byzantine Consensus under Fully Fluctuating Participation |  Dahlia Malkhi, Atsuki Momose, Ling Ren | ArXiv | [📄](https://eprint.iacr.org/2022/1448) | [🗞️1](https://blog.chain.link/instant-finality-in-byzantine-generals-with-unknown-and-dynamic-participation/) [🗞️2](https://blog.chain.link/instant-finality-in-byzantine-atomic-broadcast-under-unknown-dynamic-participation/) | | 
-| Maximal Extractable Value (MEV) Protection on a DAG |   Dahlia Malkhi, Pawel Szalachowski | [CESC22](https://cesc.io/) [Tokenomics22](https://tokenomics-conference.lip6.fr/index.php?n=Main.Tokenomics2022) [SEC22](https://tselab.stanford.edu/workshop-sbc22/) | [📄](https://arxiv.org/abs/2208.00940) || [🎥1](https://youtu.be/q5v3tLLoOXM) [🎥2](https://www.youtube.com/watch?v=9WLoJRrnTsA&list=PL4XSNxeZhdqBBgqqokIdK4PcyPSl6t0rQ&index=6) |
-| Block-STM: Scaling Blockchain Execution by Turning Ordering Curse to a Performance Blessing |   Rati Gelashvili, Alexander Spiegelman, Zhuolun Xiang, George Danezis, Zekun Li, Yu Xia, Runtian Zhou, Dahlia Malkhi| [PPoPP23](https://conf.researchr.org/home/PPoPP-2023) [ConsensusDay22](https://research.protocol.ai/sites/consensusday22/) | [📄arxiv](https://arxiv.org/abs/2203.06871) [📄ppopp23]({{ base_path }}/files/BlockSTM-ppopp23.pdf) | [🗞️Block-STM](https://blog.chain.link/block-stm/) [🗞️Parallel Execution on DAG](https://blog.chain.link/execution-and-parallelism-for-dag-based-bft-consensus/) | |
-| Be Aware of Your Leaders |   Shir Cohen, Rati Gelashvili, Eleftherios Kokoris Kogias, Dahlia Malkhi, Zekun Li, Alberto Sonnino, Alexander Spiegelman | [FC'22](https://fc22.ifca.ai/) |[📄](https://fc22.ifca.ai/preproceedings/32.pdf) | | | 
+| | 📄 Paper | 🗞️ Post / 🎥 Video |
+| :--- | :-- | :--- |
+| *Minority Corruption Resilience in Byzantine Generals With Unknown and Fluctuating Participation*. Dahlia Malkhi, Atsuki Momose, Ling Ren.  Coming soon. || [🗞️](https://blog.chain.link/minority-corruption-resilience-in-byzantine-generals-with-unknown-and-fluctuating-participation/) | 
+| *Byzantine Consensus under Fully Fluctuating Participation*.  Dahlia Malkhi, Atsuki Momose, Ling Ren. Eprint 2002. | [📄](https://eprint.iacr.org/2022/1448). | [🗞️1](https://blog.chain.link/instant-finality-in-byzantine-generals-with-unknown-and-dynamic-participation/) [🗞️2](https://blog.chain.link/instant-finality-in-byzantine-atomic-broadcast-under-unknown-dynamic-participation/) |  
+| *Maximal Extractable Value (MEV) Protection on a DAG*.   Dahlia Malkhi, Pawel Szalachowski. [CESC22](https://cesc.io/), [Tokenomics22](https://tokenomics-conference.lip6.fr/index.php?n=Main.Tokenomics2022), [SEC22](https://tselab.stanford.edu/workshop-sbc22/). |  [📄](https://arxiv.org/abs/2208.00940). | [🎥1](https://youtu.be/q5v3tLLoOXM) [🎥2](https://www.youtube.com/watch?v=9WLoJRrnTsA&list=PL4XSNxeZhdqBBgqqokIdK4PcyPSl6t0rQ&index=6) |
+| *Block-STM: Scaling Blockchain Execution by Turning Ordering Curse to a Performance Blessing*.   Rati Gelashvili, Alexander Spiegelman, Zhuolun Xiang, George Danezis, Zekun Li, Yu Xia, Runtian Zhou, Dahlia Malkh. [PPoPP23](https://conf.researchr.org/home/PPoPP-2023), [ConsensusDay22](https://research.protocol.ai/sites/consensusday22/). |  [📄 ArXiv](https://arxiv.org/abs/2203.06871), [📄 PPoPP23]({{ base_path }}/files/BlockSTM-ppopp23.pdf). | [🗞️ Block-STM](https://blog.chain.link/block-stm/) [🗞️ Parallel Execution on a DAG](https://blog.chain.link/execution-and-parallelism-for-dag-based-bft-consensus/) | 
+| *Be Aware of Your Leaders*.   Shir Cohen, Rati Gelashvili, Eleftherios Kokoris Kogias, Dahlia Malkhi, Zekun Li, Alberto Sonnino, Alexander Spiegelman. [FC'22](https://fc22.ifca.ai/).  | [📄](https://fc22.ifca.ai/preproceedings/32.pdf). | |  
 
 #### 2021
 
