@@ -8,8 +8,6 @@ author_profile: true
 {% include base_path %}
  <base target="_blank">
 
-<!-- papers 📄, blog-posts 🗞️, and presentations 🎥 .->
-
 #### 2023
 
 | | 📄 Paper | 🗞️ Post / 🎥 Video |
