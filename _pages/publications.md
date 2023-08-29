@@ -12,7 +12,7 @@ author_profile: true
 
 | | 📄 Paper | 🗞️ Post / 🎥 Video |
 | :--- | :-- | :--- |
-| *Build it Super Simple: Introducing Single Broadcast Consensus on a DAG*. Dahlia Malkhi, Chrysa Stathakopoulou, Ted Yin. Coming soon. ||  [🗞️](https://blog.chain.link/bbca-chain-single-broadcast-consensus-on-a-dag/) |
+| *Build it Super Simple: Introducing Single Broadcast Consensus on a DAG*.<br> Dahlia Malkhi, Chrysa Stathakopoulou, Ted Yin. Coming soon. ||  [🗞️](https://blog.chain.link/bbca-chain-single-broadcast-consensus-on-a-dag/) |
 | *Invited Paper: Lessons from HotStuff*. Dahlia Malkhi, Maofan Yin. [ApPLIED 23](https://www.cse.chalmers.se/~elad/ApPLIED2023/). | [📄](https://arxiv.org/abs/2305.13556)| |
 | *BBCA-LEDGER: High Throughput Consensus meets Low Latency (WIP)*. Chrysoula Stathakopoulou, Michael Wei, Hongbo Zhang, Maofan Yin, Dahlia Malkhi. [ConsensusDay23](https://research.protocol.ai/sites/consensusday23/). | [📄](https://arxiv.org/abs/2306.14757) | |
 | *HotStuff-2: Optimal Two-Phase Responsive BFT*. Dahlia Malkhi, Kartik Nayak. [ConsensusDay23](https://research.protocol.ai/sites/consensusday23/). [📄](https://eprint.iacr.org/2023/397) | [🗞️](https://decentralizedthoughts.github.io/2023-04-01-hotstuff-2/) | 
