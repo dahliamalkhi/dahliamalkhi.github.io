@@ -16,14 +16,8 @@ author_profile: true
 | *Optimal Latency and Communication SMR View-Synchronization*.<br>  Andrew Lewis-Pye, Dahlia Malkhi, Oded Naor. Coming soon. | [🗞️ Introducing Lumiere](https://blog.chain.link/optimal-latency-and-communication-smr-view-synchronization/) |
 | *Invited Paper: Lessons from HotStuff*.<br> Dahlia Malkhi, Maofan Yin. [ApPLIED 23](https://www.cse.chalmers.se/~elad/ApPLIED2023/). | [📄 ArXiv](https://arxiv.org/abs/2305.13556) |
 | *BBCA-LEDGER: High Throughput Consensus meets Low Latency (WIP)*.<br> Chrysoula Stathakopoulou, Michael Wei, Hongbo Zhang, Maofan Yin, Dahlia Malkhi. [ConsensusDay23](https://research.protocol.ai/sites/consensusday23/). | [📄 ArXiv](https://arxiv.org/abs/2306.14757) | 
-| :--- | :-- | 
 | *HotStuff-2: Optimal Two-Phase Responsive BFT*.<br> Dahlia Malkhi, Kartik Nayak. [ConsensusDay23](https://research.protocol.ai/sites/consensusday23/). | [📄 eprint](https://eprint.iacr.org/2023/397)<br> [🗞️ Difference between PBFT, Tendermint, HotStuff, and HotStuff-2](https://decentralizedthoughts.github.io/2023-04-01-hotstuff-2/) | 
-
-#### 2022
-
-
-| Paper | 📄 PDF / 🗞️ Post / 🎥 Video |
-| :-- | :--- |
+| 2022 ||
 | *Minority Corruption Resilience in Byzantine Generals With Unknown and Fluctuating Participation*.<br> Dahlia Malkhi, Atsuki Momose, Ling Ren.  Coming soon. | [🗞️ Minority Corruption with Fluctuating Participation](https://blog.chain.link/minority-corruption-resilience-in-byzantine-generals-with-unknown-and-fluctuating-participation/) | 
 | *Byzantine Consensus under Fully Fluctuating Participation*.<br>  Dahlia Malkhi, Atsuki Momose, Ling Ren. Eprint 2002. | [📄 eprint](https://eprint.iacr.org/2022/1448)<br> [🗞️ Unknown and Dynamic Participation (Single-Shot Consensus)](https://blog.chain.link/instant-finality-in-byzantine-generals-with-unknown-and-dynamic-participation/) <br> [🗞️ Unknown and Dynamic Participation (Atomic Broadcast)](https://blog.chain.link/instant-finality-in-byzantine-atomic-broadcast-under-unknown-dynamic-participation/) |  
 | *Maximal Extractable Value (MEV) Protection on a DAG*.<br>   Dahlia Malkhi, Pawel Szalachowski. [CESC22](https://cesc.io/), [Tokenomics22](https://tokenomics-conference.lip6.fr/index.php?n=Main.Tokenomics2022), [SEC22](https://tselab.stanford.edu/workshop-sbc22/). |  [📄 ArXiv](https://arxiv.org/abs/2208.00940)<br> [🎥 CESC22](https://youtu.be/q5v3tLLoOXM) <br> [🎥 SEC22](https://www.youtube.com/watch?v=9WLoJRrnTsA&list=PL4XSNxeZhdqBBgqqokIdK4PcyPSl6t0rQ&index=6) |
