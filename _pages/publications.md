@@ -12,13 +12,13 @@ author_profile: true
 
 | Title | 📄 PDF / 🗞️ Post / 🎥 Video |
 | :--- | :-- | 
-| **2023** |
+| **2023** ||
 | *Build it Super Simple: Introducing Single Broadcast Consensus on a DAG*.<br> Dahlia Malkhi, Chrysa Stathakopoulou, Ted Yin. Coming soon. | [🗞️ *"Introducing BBCA-Chain"*](https://blog.chain.link/bbca-chain-single-broadcast-consensus-on-a-dag/)<br> (See also [🗞️ *"BFT on a DAG*"](https://blog.chain.link/bft-on-a-dag/)) |
 | *Optimal Latency and Communication SMR View-Synchronization*.<br>  Andrew Lewis-Pye, Dahlia Malkhi, Oded Naor. Coming soon. | [🗞️ *"Introducing Lumiere"*](https://blog.chain.link/optimal-latency-and-communication-smr-view-synchronization/) |
 | *Invited Paper: Lessons from HotStuff*.<br> Dahlia Malkhi, Maofan Yin. [ApPLIED 23](https://www.cse.chalmers.se/~elad/ApPLIED2023/). | [📄 ArXiv](https://arxiv.org/abs/2305.13556) |
 | *BBCA-LEDGER: High Throughput Consensus meets Low Latency (WIP)*.<br> Chrysoula Stathakopoulou, Michael Wei, Hongbo Zhang, Maofan Yin, Dahlia Malkhi. [ConsensusDay23](https://research.protocol.ai/sites/consensusday23/). | [📄 ArXiv](https://arxiv.org/abs/2306.14757)<br>(See also [🗞️ *"BFT on a DAG*"](https://blog.chain.link/bft-on-a-dag/))| 
 | *HotStuff-2: Optimal Two-Phase Responsive BFT*.<br> Dahlia Malkhi, Kartik Nayak. [ConsensusDay23](https://research.protocol.ai/sites/consensusday23/). | [📄 ePrint](https://eprint.iacr.org/2023/397)<br> [🗞️ *"Difference between PBFT, Tendermint, HotStuff, and HotStuff-2"*](https://decentralizedthoughts.github.io/2023-04-01-hotstuff-2/) | 
-| **2022** |
+| **2022** ||
 | *Minority Corruption Resilience in Byzantine Generals With Unknown and Fluctuating Participation*.<br> Dahlia Malkhi, Atsuki Momose, Ling Ren.  Coming soon. | [🗞️ *"Minority Corruption with Fluctuating Participation"*](https://blog.chain.link/minority-corruption-resilience-in-byzantine-generals-with-unknown-and-fluctuating-participation/) | 
 | *Byzantine Consensus under Fully Fluctuating Participation*.<br>  Dahlia Malkhi, Atsuki Momose, Ling Ren. eprint. | [📄 eprint](https://eprint.iacr.org/2022/1448)<br> [🗞️ *"Unknown and Dynamic Participation (Single-Shot Consensus)"*](https://blog.chain.link/instant-finality-in-byzantine-generals-with-unknown-and-dynamic-participation/) <br> [🗞️ *"Unknown and Dynamic Participation (Atomic Broadcast)"*](https://blog.chain.link/instant-finality-in-byzantine-atomic-broadcast-under-unknown-dynamic-participation/) |  
 | *Maximal Extractable Value (MEV) Protection on a DAG*.<br>   Dahlia Malkhi, Pawel Szalachowski. [CESC22](https://cesc.io/), [Tokenomics22](https://tokenomics-conference.lip6.fr/index.php?n=Main.Tokenomics2022), [SEC22](https://tselab.stanford.edu/workshop-sbc22/). |  [📄 ArXiv](https://arxiv.org/abs/2208.00940)<br> [🗞️ *"MEV Resistance on a DAG"*](https://blog.chain.link/mev-resistance-on-a-dag/)<br> (See also [🗞️ *"BFT on a DAG*"](https://blog.chain.link/bft-on-a-dag/))<br> [🎥 CESC22](https://youtu.be/q5v3tLLoOXM) <br> [🎥 SEC22](https://www.youtube.com/watch?v=9WLoJRrnTsA&list=PL4XSNxeZhdqBBgqqokIdK4PcyPSl6t0rQ&index=6) |
@@ -32,7 +32,7 @@ author_profile: true
 | *ACE: Abstract Consensus Encapsulation for Liveness Boosting of State Machine Replication*.<br>  Alexander Spiegelman, Arik Rinberg, Dahlia Malkhi. [OPODIS 20](https://opodis2020.unistra.fr/) | [📄 OPODIS20]({{ base_path }}/files/ACE-OPODIS2020.pdf) |
 | *Asynchronous Distributed Key Generation for Computationally Secure Randomness, Consensus, and Threshold Signatures*.<br>   Eleftherios Kokoris Kogias, Dahlia Malkhi, Alexander Spiegelman. [ACM CCS 20](https://www.sigsac.org/ccs/CCS2020/) |[📄 eprint](https://eprint.iacr.org/2019/1015) |
 | *Cogsworth: Byzantine Round Synchronization*.<br>   Oded Naor, Mathieu Baudet, Dahlia Malkhi, Alexander Spiegelman. [CES 20](https://cryptoeconomicsystems.pubpub.org/ces20) |[📄 Arxiv](https://arxiv.org/abs/1909.05204)<br> [🗞️ *"Latest on View Synchronization"*](https://blog.chain.link/view-synchronization/) |
-| **2019** |
+| **2019** ||
 | *FairLedger: A Fair Blockchain Protocol for Financial Institutions*.<br>   Kfir Lev-Ari, Alexander Spiegelman, Idit Keidar and Dahlia Malkhi. OPODIS 19 (**best paper award**) |[📄 OPODIS19]({{ base_path }}/files/FairLedger-OPODIS2019.pdf) | |
 | *Sync HotStuff: Simple and Practical Synchronous State Machine Replication*.<br>    Ittai Abraham, Dahlia Malkhi, Kartik Nayak, Ling Ren, Maofan Yin. IEEE S&P 20 |[📄S&P20]({{ base_path }}/files/SyncHotStuff-SP2020.pdf)<br> |
 | *Efficient Verifiable Secret Sharing with Share Recovery in BFT Protocols*.<br>   Soumya Basu, Alin Tomescu, Ittai Abraham, Dahlia Malkhi, Mike Reiter, Emin Gün Sirer. ACM CCS '19 |[📄 CCS19]({{ base_path }}/files/T3P-CCS19.pdf) |
@@ -40,12 +40,12 @@ author_profile: true
 | *HotStuff: BFT Consensus with Linearity and Responsiveness*.<br>   Maofan Yin, Dahlia Malkhi, Michael K. Reiter, Guy Golan Gueta, Ittai Abraham.PODC 19 |[📄 PODC19]({{ base_path }}/files/HotStuff-PODC2019.pdf) |
 | *Validated Asynchronous Byzantine Agreement with Optimal Resilience and Asymptotically Optimal Time and Word Communication*.<br>    Ittai Abraham, Dahlia Malkhi, Alexander Spiegelman.  PODC 19 |[📄 PODC19]({{ base_path }}/files/VABA-PODC2019.pdf) |
 | *SBFT: a Scalable Decentralized Trust Infrastructure for Blockchains*.<br>   Guy Golan Gueta, Ittai Abraham, Shelly Grossman, Dahlia Malkhi, Benny Pinkas, Mike Reiter, Dragos Adrian Seredinschi, Orr Tamir, Alin Tomescu. DSN 19 |[📄 ArXiv]({{ base_path }}/files/1804.01626.pdf) | |
-| **2018** |
+| **2018** ||
 | *State Machine Replication is Harder than Consensus*.<br>   Karolos Antoniadis, Rachid Guerraoui, Dahlia Malkhi and Dragos-Adrian Seredinschi. DISC 18 |[📄]({{ base_path }}/files/SMR-DISC2018.pdf) |
 | *Stable and Consistent Membership at Scale with Rapid*.<br>   Lalith Suresh, Dahlia Malkhi, Parikshit Gopalan, Ivan Porto Carreiro, Zeeshan Lokhandwala.  USENIX ATC 18 |[📄]({{ base_path }}/files/Rapid-atc2018.pdf)  |
 | *Revisiting Fast Practical Byzantine Fault Tolerance: Thelma, Velma and Zelma*.<br>  Ittai Abraham, Guy Gueta, Dahlia Malkhi, Jean-Philippe Martin. | [📄 ArXiv](https://arxiv.org/abs/1801.10022) |
 | *Dfinity Consensus Explored*.<br>  Ittai Abraham, Dahlia Malkhi, Kartik Nayak, Ling Ren.  ePrint | [📄](https://eprint.iacr.org/2018/1153.pdf) |
-| **2017** |
+| **2017** ||
 |  *Revisiting Fast Practical Byzantine Fault Tolerance*.<br> Ittai Abraham, Guy Gueta, Dahlia Malkhi; with Lorenzo Alvisi, Rama Kotla, Jean-Philippe Martin.  ArXiv | [📄](http://arxiv.org/abs/1712.01367)   |
 |  *Solida: A Cryptocurrency Based on Reconfigurable Byzantine Consensus*.<br> Ittai Abraham, Dahlia Malkhi, Kartik Nayak, Ling Ren, Alexander Spiegelment.   OPODIS 17 | [📄]({{ base_path }}/files/Solida-OPODIS2017.pdf) | 
 |  *The Blockchain Consensus Layer and BFT*.<br> Ittai Abraham, Dahlia Malkhi.  Tutorial, fall issue of the Distributed Computing column of the Bulletin of the EATCS ([BEATCS link](http://bulletin.eatcs.org/index.php/beatcs/article/view/506)). | [📄]({{ base_path }}/files/BlockchainBFT-BEATCS2017.pdf) | 
@@ -54,20 +54,20 @@ author_profile: true
 |  *Apache REEF: Retainable Evaluator Execution Framework*.<br> 27 co-authors including me.  ACM TOCS 17 | [📄]({{ base_path }}/files/reef-TOCS2017.pdf) |
 |  *Dynamic Reconfiguration: Abstraction and Optimal Asynchronous Solution*.<br> Alexander Spiegelman, Idit Keidar, Dahlia Malkhi.  DISC 17 | [📄]({{ base_path }}/files/DynamicReconfig-DISC2017.pdf) | 
 |  *vCorfu: A Cloud-Scale Object Store on a Shared Log*.<br> Michael Wei, Amy Tai, Christopher J. Rossbach, Ittai Abraham, Maithem Munshed, Medhavi Dhawan, Jim Stabile, Udi Wieder, Scott Fritchie, Steven Swanson, Michael J. Freedman , Dahlia Malkhi.  NSDI 17 |  [📄]({{ base_path }}/files/vcorfu-nsdi20172.pdf) | 
-| **2016** |
+| **2016** ||
 |  *Flexible Paxos: Quorum Intersection Revisited*.<br> Heidi Howard, Dahlia Malkhi, Alexander Spiegelman.  OPODIS 16. | [📄]({{ base_path }}/files/fpaxos-opodis20161.pdf) | 
 |  *BVP: Byzantine Vertical Paxos*.<br> Ittai Abraham, Dahlia Malkhi.  Distributed Cryptocurrencies and Consensus Ledgers (DCCL) 16. |  [📄]({{ base_path }}/files/bvp-byzantine-vertical.pdf) | 
 |  *Replex: A Scalable, Highly Available Multi-Index Store*.<br> Amy Tai, Michael Wei, Michael Freedman, Ittai Abraham, Dahlia Malkhi.  Usenix ATC 16 (**best paper award**).  | [📄]({{ base_path }}/files/atc2016.pdf) | 
 |  *Silver: A scalable, distributed, multi-versioning, Always growing (Ag) File System*.<br>  Michael Wei, Amy Tai, Chris Rossbach, Ittai Abraham, Udi Wieder, Steven Swanson, Dahlia Malkhi. .  HotStorage '2016. | [📄]({{ base_path }}/files/Silver-hotstorage2016.pdf) | 
 |  *Dynamic Reconfiguration: A Tutorial.*<br> Alexander Spiegelman, Idit Keidar, Dahlia Malkhi.  OPODIS 16 | [📄]({{ base_path }}/files/ReconfigTutorial-OPODIS2016.pdf) | 
-| **2015** |
+| **2015** ||
 |   *Elastic Configuration Maintenance via a Parsimonious Speculating Snapshot Solution*.<br> Eli Gafni, Dahlia Malkhi.  DISC 15 | [📄]({{ base_path }}/files/GafniMalkhi-DISC2015.pdf) |
 |   *Distributed Resource Discovery in Sub-Logarithmic Time*.<br> Bernhard Haeupler, Dahlia Malkhi.  PODC 15. | [📄]({{ base_path }}/files/SublogDiscovery-PODC2015.pdf) |
 |   *REEF: Retainable Evaluator Execution Framework.<br> 16 co-authors, including me. SIGMOD 15.  SIGMOD 15 | [📄]({{ base_path }}/files/REEF-SIGMOD2015.pdf) | 
-| **2014** |
+| **2014** ||
 |   *Optimal Gossip with Direct Addressing*.<br> Bernhard Haeupler, Dahlia Malkhi.  PODC 14. | [📄]({{ base_path }}/files/DirectAdressing-PODC2014.pdf) |
 |   *REEFU: A Logging Service for Cluster Applications*.<br> Dahlia Malkhi and Marcus Weimer.  LADIS 14 | |
-| **2013** |
+| **2013** ||
 |   *Beyond Block I/O: Implementing a Distributed Shared Log in Hardware*.<br> Michael Wei, John Davis, Ted Wobber, Mahesh Balakrishnan, Dahlia Malkhi.  SYSTOR 13. | [📄]({{ base_path }}/files/CorfuHW-SYSTOR2013.pdf) |
 |   *CORFU: A Distributed Shared Log*.<br> Mahesh Balakrishnan, Dahlia Malkhi, John Davis, Vijay Prabhakaran, Michael Wei, Teb Wobber.  ACM Transactions on Computer Systems 13. | [📄]({{ base_path }}/files/CORFU-TOCS2013.pdf) |
 |   *Tango: Distributed Data Structures over a Shared Log*.<br> Mahesh Balakrishnan, Dahlia Malkhi, Teb Wobber, Ming Wu, Vijay Prabhakaran, Michael Wei, John Davis, Sriram Rao, Tao Zou, Aviad Zuck.  SOSP 13. | [📄]({{ base_path }}/files/Tango-SOSP2013.pdf) |
