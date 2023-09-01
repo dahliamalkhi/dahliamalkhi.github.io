@@ -55,7 +55,7 @@ author_profile: true
 |  *Dynamic Reconfiguration: Abstraction and Optimal Asynchronous Solution*.<br> Alexander Spiegelman, Idit Keidar, Dahlia Malkhi.  DISC 17 | [📄 DISC17]({{ base_path }}/files/DynamicReconfig-DISC2017.pdf) | 
 |  *vCorfu: A Cloud-Scale Object Store on a Shared Log*.<br> Michael Wei, Amy Tai, Christopher J. Rossbach, Ittai Abraham, Maithem Munshed, Medhavi Dhawan, Jim Stabile, Udi Wieder, Scott Fritchie, Steven Swanson, Michael J. Freedman , Dahlia Malkhi.  NSDI 17 |  [📄 NSDI17]({{ base_path }}/files/vcorfu-nsdi20172.pdf) | 
 | **2016** ||
-|  *Flexible Paxos: Quorum Intersection Revisited*.<br> Heidi Howard, Dahlia Malkhi, Alexander Spiegelman.  OPODIS 16. | [📄 OPODIS16]({{ base_path }}/files/fpaxos-opodis2016.pdf) | 
+|  *Flexible Paxos: Quorum Intersection Revisited*.<br> Heidi Howard, Dahlia Malkhi, Alexander Spiegelman.  OPODIS 16.<br> [🗞️ *"Flexible Paxos"*](https://malkhi.com/posts/2016/08/flexible-paxos/) | [📄 OPODIS16]({{ base_path }}/files/fpaxos-opodis2016.pdf) | 
 |  *BVP: Byzantine Vertical Paxos*.<br> Ittai Abraham, Dahlia Malkhi.  Distributed Cryptocurrencies and Consensus Ledgers (DCCL) 16. |  [📄]({{ base_path }}/files/bvp-byzantine-vertical.pdf) | 
 |  *Replex: A Scalable, Highly Available Multi-Index Store*.<br> Amy Tai, Michael Wei, Michael Freedman, Ittai Abraham, Dahlia Malkhi.  Usenix ATC 16 (**best paper award**).  | [📄]({{ base_path }}/files/atc2016.pdf) | 
 |  *Silver: A scalable, distributed, multi-versioning, Always growing (Ag) File System*.<br>  Michael Wei, Amy Tai, Chris Rossbach, Ittai Abraham, Udi Wieder, Steven Swanson, Dahlia Malkhi. .  HotStorage '2016. | [📄]({{ base_path }}/files/Silver-hotstorage2016.pdf) | 
