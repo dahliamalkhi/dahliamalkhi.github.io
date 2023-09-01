@@ -41,24 +41,24 @@ author_profile: true
 | *Validated Asynchronous Byzantine Agreement with Optimal Resilience and Asymptotically Optimal Time and Word Communication*.<br>    Ittai Abraham, Dahlia Malkhi, Alexander Spiegelman.  PODC 19 |[📄 PODC19]({{ base_path }}/files/VABA-PODC2019.pdf) |
 | *SBFT: a Scalable Decentralized Trust Infrastructure for Blockchains*.<br>   Guy Golan Gueta, Ittai Abraham, Shelly Grossman, Dahlia Malkhi, Benny Pinkas, Mike Reiter, Dragos Adrian Seredinschi, Orr Tamir, Alin Tomescu. DSN 19 |[📄 ArXiv]({{ base_path }}/files/1804.01626.pdf) | |
 | **2018** |
-| *State Machine Replication is Harder than Consensus*.<br>   Karolos Antoniadis, Rachid Guerraoui, Dahlia Malkhi and Dragos-Adrian Seredinschi . DISC 18 |[📄]({{ base_path }}/files/SMR-DISC2018.pdf) |
-| *Stable and Consistent Membership at Scale with Rapid*.<br>   Lalith Suresh, Dahlia Malkhi, Parikshit Gopalan, Ivan Porto Carreiro, Zeeshan Lokhandwala .  USENIX ATC 18 |[📄]({{ base_path }}/files/Rapid-atc2018.pdf)  |
-| *Revisiting Fast Practical Byzantine Fault Tolerance: Thelma, Velma and Zelma*.<br>  Ittai Abraham, Guy Gueta, Dahlia Malkhi, Jean-Philippe Martin .  ArXiv[📄](https://arxiv.org/abs/1801.10022) |
-| *Dfinity Consensus Explored*.<br>  Ittai Abraham, Dahlia Malkhi, Kartik Nayak, Ling Ren .  ePrint | [📄](https://eprint.iacr.org/2018/1153.pdf) |
+| *State Machine Replication is Harder than Consensus*.<br>   Karolos Antoniadis, Rachid Guerraoui, Dahlia Malkhi and Dragos-Adrian Seredinschi. DISC 18 |[📄]({{ base_path }}/files/SMR-DISC2018.pdf) |
+| *Stable and Consistent Membership at Scale with Rapid*.<br>   Lalith Suresh, Dahlia Malkhi, Parikshit Gopalan, Ivan Porto Carreiro, Zeeshan Lokhandwala.  USENIX ATC 18 |[📄]({{ base_path }}/files/Rapid-atc2018.pdf)  |
+| *Revisiting Fast Practical Byzantine Fault Tolerance: Thelma, Velma and Zelma*.<br>  Ittai Abraham, Guy Gueta, Dahlia Malkhi, Jean-Philippe Martin. | [📄 ArXiv](https://arxiv.org/abs/1801.10022) |
+| *Dfinity Consensus Explored*.<br>  Ittai Abraham, Dahlia Malkhi, Kartik Nayak, Ling Ren.  ePrint | [📄](https://eprint.iacr.org/2018/1153.pdf) |
 | **2017** |
-|  *Revisiting Fast Practical Byzantine Fault Tolerance*.<br> Ittai Abraham, Guy Gueta, Dahlia Malkhi; with Lorenzo Alvisi, Rama Kotla, Jean-Philippe Martin .  ArXiv | [📄](http://arxiv.org/abs/1712.01367)   |
-|  *Solida: A Cryptocurrency Based on Reconfigurable Byzantine Consensus*.<br> Ittai Abraham, Dahlia Malkhi, Kartik Nayak, Ling Ren, Alexander Spiegelment .   OPODIS 17 | [📄]({{ base_path }}/files/Solida-OPODIS2017.pdf) | 
-|  *The Blockchain Consensus Layer and BFT*.<br> Ittai Abraham, Dahlia Malkhi .  Tutorial, fall issue of the Distributed Computing column of the Bulletin of the EATCS ([BEATCS link](http://bulletin.eatcs.org/index.php/beatcs/article/view/506)). | [📄]({{ base_path }}/files/BlockchainBFT-BEATCS2017.pdf) | 
-|  *Consistent Clustered Applications with Corfu*.<br> 18 co-authors, including me .  SIGOPS Oper. Syst. Rev. 51, , 17 | [📄]({{ base_path }}/files/CMPLAT-OSR2017.pdf) |
-|  *Revisiting the Paxos Foundations: A Look at Summer Internship Work at VMware Research*.<br> Heidi Howard, Dahlia Malkhi, and Alexander Spiegelman .   SIGOPS Oper. Syst. Rev. 51, 1, 17. | [📄]({{ base_path }}/files/FPaxos-OSR2017.pdf) |
-|  *Apache REEF: Retainable Evaluator Execution Framework*.<br> 27 co-authors including me .  ACM TOCS 17 | [📄]({{ base_path }}/files/reef-TOCS2017.pdf) |
-|  *Dynamic Reconfiguration: Abstraction and Optimal Asynchronous Solution*.<br> Alexander Spiegelman, Idit Keidar, Dahlia Malkhi .  DISC 17 | [📄]({{ base_path }}/files/DynamicReconfig-DISC2017.pdf) | 
-|  *vCorfu: A Cloud-Scale Object Store on a Shared Log*.<br> Michael Wei, Amy Tai, Christopher J. Rossbach, Ittai Abraham, Maithem Munshed, Medhavi Dhawan, Jim Stabile, Udi Wieder, Scott Fritchie, Steven Swanson, Michael J. Freedman , Dahlia Malkhi .  NSDI 17 |  [📄]({{ base_path }}/files/vcorfu-nsdi20172.pdf) | 
+|  *Revisiting Fast Practical Byzantine Fault Tolerance*.<br> Ittai Abraham, Guy Gueta, Dahlia Malkhi; with Lorenzo Alvisi, Rama Kotla, Jean-Philippe Martin.  ArXiv | [📄](http://arxiv.org/abs/1712.01367)   |
+|  *Solida: A Cryptocurrency Based on Reconfigurable Byzantine Consensus*.<br> Ittai Abraham, Dahlia Malkhi, Kartik Nayak, Ling Ren, Alexander Spiegelment.   OPODIS 17 | [📄]({{ base_path }}/files/Solida-OPODIS2017.pdf) | 
+|  *The Blockchain Consensus Layer and BFT*.<br> Ittai Abraham, Dahlia Malkhi.  Tutorial, fall issue of the Distributed Computing column of the Bulletin of the EATCS ([BEATCS link](http://bulletin.eatcs.org/index.php/beatcs/article/view/506)). | [📄]({{ base_path }}/files/BlockchainBFT-BEATCS2017.pdf) | 
+|  *Consistent Clustered Applications with Corfu*.<br> 18 co-authors, including me.  SIGOPS Oper. Syst. Rev. 51, , 17 | [📄]({{ base_path }}/files/CMPLAT-OSR2017.pdf) |
+|  *Revisiting the Paxos Foundations: A Look at Summer Internship Work at VMware Research*.<br> Heidi Howard, Dahlia Malkhi, and Alexander Spiegelman.   SIGOPS Oper. Syst. Rev. 51, 1, 17. | [📄]({{ base_path }}/files/FPaxos-OSR2017.pdf) |
+|  *Apache REEF: Retainable Evaluator Execution Framework*.<br> 27 co-authors including me.  ACM TOCS 17 | [📄]({{ base_path }}/files/reef-TOCS2017.pdf) |
+|  *Dynamic Reconfiguration: Abstraction and Optimal Asynchronous Solution*.<br> Alexander Spiegelman, Idit Keidar, Dahlia Malkhi.  DISC 17 | [📄]({{ base_path }}/files/DynamicReconfig-DISC2017.pdf) | 
+|  *vCorfu: A Cloud-Scale Object Store on a Shared Log*.<br> Michael Wei, Amy Tai, Christopher J. Rossbach, Ittai Abraham, Maithem Munshed, Medhavi Dhawan, Jim Stabile, Udi Wieder, Scott Fritchie, Steven Swanson, Michael J. Freedman , Dahlia Malkhi.  NSDI 17 |  [📄]({{ base_path }}/files/vcorfu-nsdi20172.pdf) | 
 | **2016** |
 |  *Flexible Paxos: Quorum Intersection Revisited*.<br> Heidi Howard, Dahlia Malkhi, Alexander Spiegelman.  OPODIS 16. | [📄]({{ base_path }}/files/fpaxos-opodis20161.pdf) | 
 |  *BVP: Byzantine Vertical Paxos*.<br> Ittai Abraham, Dahlia Malkhi.  Distributed Cryptocurrencies and Consensus Ledgers (DCCL) 16. |  [📄]({{ base_path }}/files/bvp-byzantine-vertical.pdf) | 
 |  *Replex: A Scalable, Highly Available Multi-Index Store*.<br> Amy Tai, Michael Wei, Michael Freedman, Ittai Abraham, Dahlia Malkhi.  Usenix ATC 16 (**best paper award**).  | [📄]({{ base_path }}/files/atc2016.pdf) | 
-|  *Silver: A scalable, distributed, multi-versioning, Always growing (Ag) File System*.<br>  Michael Wei, Amy Tai, Chris Rossbach, Ittai Abraham, Udi Wieder, Steven Swanson, Dahlia Malkhi.  .  HotStorage '2016. | [📄]({{ base_path }}/files/Silver-hotstorage2016.pdf) | 
+|  *Silver: A scalable, distributed, multi-versioning, Always growing (Ag) File System*.<br>  Michael Wei, Amy Tai, Chris Rossbach, Ittai Abraham, Udi Wieder, Steven Swanson, Dahlia Malkhi. .  HotStorage '2016. | [📄]({{ base_path }}/files/Silver-hotstorage2016.pdf) | 
 |  *Dynamic Reconfiguration: A Tutorial.*<br> Alexander Spiegelman, Idit Keidar, Dahlia Malkhi.  OPODIS 16 | [📄]({{ base_path }}/files/ReconfigTutorial-OPODIS2016.pdf) | 
 | **2015** |
 |   *Elastic Configuration Maintenance via a Parsimonious Speculating Snapshot Solution*.<br> Eli Gafni, Dahlia Malkhi.  DISC 15 | [📄]({{ base_path }}/files/GafniMalkhi-DISC2015.pdf) |
@@ -191,7 +191,7 @@ author_profile: true
 |   *Optimal Unconditional Information Diffusion.* | Dahlia Malkhi, Elan Pavlov, Yaron Sella. | DISC 01 | [📄]({{ base_path }}/files/OptimalByzGossip-DISC2001.pdf) |
 |   *Probabilistic Quorum Systems.* | Dahlia Malkhi, Mike Reiter, Avishai Wool, Rebecca Wright. | PODC 1997 | [📄]({{ base_path }}/files/pquorums-inco2001.pdf) |
 |   *Persistent Objects Fleet System.* | Dahlia Malkhi, Mike Reiter, Daniela Tulone, Elisha Ziskind. | DARPA DISCEX II 01 | [📄]({{ base_path }}/files/Fleet-DISCEX2001.pdf) |
-|   *On k-set consensus problems in asynchronous systems.* | R. De Prisco, D. Malkhi and M. K. Reiter . | PODC 1999 | [📄]({{ base_path }}/files/KsetAsyncByzantine-TPDS2001.pdf) |
+|   *On k-set consensus problems in asynchronous systems.* | R. De Prisco, D. Malkhi and M. K. Reiter. | PODC 1999 | [📄]({{ base_path }}/files/KsetAsyncByzantine-TPDS2001.pdf) |
 
 #### 2000
 
