@@ -10,7 +10,7 @@ author_profile: true
 
 #### 2013-2023
 
-| Paper / [[🗞️]]-Post  | [[📄]]-PDF / [[🎥]]-Video |
+| Paper / [🗞️]-Post  | [📄]-PDF / [🎥]-Video |
 | :--- | :-- | 
 | **2023** ||
 | *Build it Super Simple: Introducing Single Broadcast Consensus on a DAG*.<br> Dahlia Malkhi, Chrysa Stathakopoulou, Ted Yin.<br>  [[🗞️-*"Introducing BBCA-Chain"*]](https://blog.chain.link/bbca-chain-single-broadcast-consensus-on-a-dag/)<br> (See also [[🗞️-*"BFT on a DAG*"]](https://blog.chain.link/bft-on-a-dag/)) | Coming soon. |
@@ -33,8 +33,8 @@ author_profile: true
 | *Asynchronous Distributed Key Generation for Computationally Secure Randomness, Consensus, and Threshold Signatures*.<br>   Eleftherios Kokoris Kogias, Dahlia Malkhi, Alexander Spiegelman. [ACM CCS 20]](https://www.sigsac.org/ccs/CCS2020/) |[[📄-eprint]](https://eprint.iacr.org/2019/1015) |
 | *Cogsworth: Byzantine Round Synchronization*.<br>   Oded Naor, Mathieu Baudet, Dahlia Malkhi, Alexander Spiegelman. [CES 20]](https://cryptoeconomicsystems.pubpub.org/ces20). <br> [[🗞️-*"Latest on View Synchronization"*]](https://blog.chain.link/view-synchronization/) |[[📄-Arxiv]](https://arxiv.org/abs/1909.05204) |
 | **2019** ||
-| *FairLedger: A Fair Blockchain Protocol for Financial Institutions*.<br>   Kfir Lev-Ari, Alexander Spiegelman, Idit Keidar and Dahlia Malkhi. OPODIS 19 (**best paper award**) |[[📄-OPODIS19]]({{ base_path }}/files/FairLedger-OPODIS2019.pdf) | |
-| *Sync HotStuff: Simple and Practical Synchronous State Machine Replication*.<br>    Ittai Abraham, Dahlia Malkhi, Kartik Nayak, Ling Ren, Maofan Yin. IEEE S&P 20 |[[📄]]S&P20]]({{ base_path }}/files/SyncHotStuff-SP2020.pdf)<br> |
+| *FairLedger: A Fair Blockchain Protocol for Financial Institutions*.<br>   Kfir Lev-Ari, Alexander Spiegelman, Idit Keidar and Dahlia Malkhi. OPODIS 19 (**best paper award**) |[[📄-OPODIS19]]({{ base_path }}/files/FairLedger-OPODIS2019.pdf) | 
+| *Sync HotStuff: Simple and Practical Synchronous State Machine Replication*.<br>    Ittai Abraham, Dahlia Malkhi, Kartik Nayak, Ling Ren, Maofan Yin. IEEE S&P 2020. |[[📄-S&P20]]({{ base_path }}/files/SyncHotStuff-SP2020.pdf)<br> |
 | *Efficient Verifiable Secret Sharing with Share Recovery in BFT Protocols*.<br>   Soumya Basu, Alin Tomescu, Ittai Abraham, Dahlia Malkhi, Mike Reiter, Emin Gün Sirer. ACM CCS '19 |[[📄-CCS19]]({{ base_path }}/files/T3P-CCS19.pdf) |
 | *Flexible Byzantine Fault Tolerance*.<br>  Dahlia Malkhi, Kartik Nayak, Ling Ren. ACM CCS '19.<br> [[🗞️-*"Flexible BFT"*]](https://malkhi.com/posts/2019/9/flexible-bft/) |[[📄-CCS19]]({{ base_path }}/files/Flex-BFT-CCS19.pdf) |
 | *HotStuff: BFT Consensus with Linearity and Responsiveness*.<br>   Maofan Yin, Dahlia Malkhi, Michael K. Reiter, Guy Golan Gueta, Ittai Abraham. PODC 2019.<br> [[🗞️-*"HotStuff and Casper"*]](https://malkhi.com/posts/2018/03/bft-lens-casper/)<br> [[🗞️-*"PBFT, Tendermint, Casper and HotStuff"*]](https://malkhi.com/posts/2018/04/BFT-lens-tndrmnt/) |[[📄-PODC19]]({{ base_path }}/files/HotStuff-PODC2019.pdf) |
