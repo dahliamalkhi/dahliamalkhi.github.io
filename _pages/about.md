@@ -4,9 +4,7 @@ permalink: "/about/"
 excerpt: dahlia malkhi -- profile and a short bio 
 author_profile: true
 header:
-  overlay_image: "/images/CA-3FPLUS1.jpg"
-  overlay_filter: rgba(100, 0, 100, 0.8)
-  caption: "photo credit: Ted Yin"
+  overlay_image: "/images/hotstuff-expresso-zm.jpeg"
 #redirect_from:
 #- "/about.html"
 ---
