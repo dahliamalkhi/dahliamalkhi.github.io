@@ -5,6 +5,7 @@ excerpt: dahlia malkhi -- profile and a short bio
 author_profile: true
 header:
   overlay_image: "/images/hotstuff-expresso-zm.jpeg"
+  overlay_filter: rgba(100, 0, 100, 0.6)
 #redirect_from:
 #- "/about.html"
 ---
