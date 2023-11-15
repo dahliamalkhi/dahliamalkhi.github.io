@@ -9,6 +9,9 @@ Interns at [Chainlink Labs](http://chainlinklabs.com):
 
 | Intern |  Grad-school | Internship Year | Updates |
 | :--- | :--- | :-- | :--- |
+[Harjasleen (Jasleen) Malvai](https://jasleenmalvai.com/) | University of Illinois at Urbana-Champaign | 2023 | |
+[Peiyao Sheng](https://simplespy.github.io/about/) | University of Illinois at Urbana-Champaign | 2023 | |
+[Chenyuan Wu](https://chenyuanwu.com/) | University of Pennsylvania (UPenn) | 2023 | |
 [Chenkai Weng](https://www.linkedin.com/in/chenkai-weng/) | Northwestern | 2022 | |
 [Deepak Maram](https://www.linkedin.com/in/deepakmaram/) | Cornell Tech | 2022 | |
 [Hongbo Zhang](https://www.linkedin.com/in/hongbozhang/) | Cornell | 2022 | |
