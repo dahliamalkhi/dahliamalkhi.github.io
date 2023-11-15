@@ -13,9 +13,9 @@ Interns at [Chainlink Labs](http://chainlinklabs.com):
 [Peiyao Sheng](https://simplespy.github.io/about/) | University of Illinois at Urbana-Champaign | 2023 | |
 [Chenyuan Wu](https://chenyuanwu.com/) | University of Pennsylvania (UPenn) | 2023 | |
 [Chenkai Weng](https://www.linkedin.com/in/chenkai-weng/) | Northwestern | 2022 | |
-[Deepak Maram](https://www.linkedin.com/in/deepakmaram/) | Cornell Tech | 2022 | |
+[Deepak Maram](https://www.linkedin.com/in/deepakmaram/) | Cornell Tech | 2022 | researcher at Sui |
 [Hongbo Zhang](https://www.linkedin.com/in/hongbozhang/) | Cornell | 2022 | |
-[Nibesh Shrestha](https://www.linkedin.com/in/nibesh-shrestha-73485380/) | Rochester Institute of Technology | 2022 | |
+[Nibesh Shrestha](https://www.linkedin.com/in/nibesh-shrestha-73485380/) | Rochester Institute of Technology | 2022 | researcher at SupraOracles |
 
 Interns at [Novi](http://novi.com):
 
