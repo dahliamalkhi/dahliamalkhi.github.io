@@ -1,6 +1,6 @@
 ---
-title: Dahlia Malkhi / PhD
-description: Personal homepage of Dahlia Malkhi, Distinguished Scientist at Chainlink Labs
+title: Professor Dahlia Malkhi 
+description: Personal homepage of Dahlia Malkhi, Professor of Computer Science at UC Santa Barbara, and Distinguished Scientist at Chainlink Labs
 minimal_mistakes_skin: default
 search: true
 
@@ -55,7 +55,7 @@ plugins:
 author:
   name: Dahlia Malkhi
   avatar: "/images/dahliabest.jpg"
-  bio: Distinguished Scientist, Chainlink Labs
+  bio: Professor of Computer Science, UC Santa Barbara, and Distinguished Scientist, Chainlink Labs
   location: California
   employer: 
   pubmed: 
