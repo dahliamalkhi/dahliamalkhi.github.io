@@ -5,7 +5,7 @@ layout: archive
 author_profile: true
 ---
 
-## Research & Industrial 
+## Research & Industry 
 
 | Talk title & Abstract | Where | Links |
 | :--- |  :-- | :--- |
