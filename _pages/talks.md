@@ -1,5 +1,5 @@
 ---
-title: Distinguished Speaker Presentations and Keynotes
+title: Keynotes
 permalink: "/talks/"
 layout: archive
 author_profile: true
