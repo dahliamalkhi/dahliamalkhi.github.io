@@ -10,7 +10,7 @@ author_profile: true
 
 #### 2013-present
 
-| Paper / [🗞️]-Post  | [📄]-PDF / [🎥]-Video |
+| Paper <br> [🗞️]-Post  | [📄]-PDF <br> [🎥]-Video |
 | :--- | :-- | 
 | **2023** ||
 | 🆕 *On Orchestrating Parallel Broadcasts for Distributed Ledgers*.<br> Peiyao Sheng , Chenyuan Wu , Dahlia Malkhi, Mike Reiter , Chrysoula Stathakopoulou , Michael Wei , Maofan "Ted" Yin. <br>  [🗞️-*Coming Soon.*] | [[📄-ePrint]](https://eprint.iacr.org/2024/923) |
