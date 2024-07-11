@@ -8,9 +8,7 @@ author_profile: true
 {% include base_path %}
  <base target="_blank">
 
-#### 2013-present
-
-| Paper | [🗞️]-Post  <br>  [📄]-PDF <br> [🎥]-Video |
+| Paper | [🗞️-related post] <br>  [📄-paper PDF] <br> [🎥-recorded presentation] |
 | :--- | :-- | 
 | **2024** ||
 | 🆕 *The Espresso Sequencer: HotShot Consensus, Tiramisu Data-Availability, and Builder-Exchange*. With the [Espresso Sysmtes](https://www.espressosys.com/) team. [SBC'24](https://www.sbc-conference.com/) | [📄-*Coming Soon.*] |
