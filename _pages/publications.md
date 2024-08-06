@@ -11,7 +11,7 @@ author_profile: true
 | Paper | [🗞️-related post] <br>  [📄-paper PDF] <br> [🎥-recorded presentation] |
 | :--- | :-- | 
 | **2025** ||
-| 🆕 *BFTBrain: Adaptive BFT Consensus with Reinforcement Learning*. Chenyuan Wu, Haoyun Qin, Mohammad Javad Amiri, Boon Thau Loo, Dahlia Malkhi, Ryan Marcus. [Usenix NSDI'25](https://www.usenix.org/conference/nsdi25) | [📄-*Coming Soon.*] |
+| 🆕 *BFTBrain: Adaptive BFT Consensus with Reinforcement Learning*.<br> Chenyuan Wu, Haoyun Qin, Mohammad Javad Amiri, Boon Thau Loo, Dahlia Malkhi, Ryan Marcus. [Usenix NSDI'25](https://www.usenix.org/conference/nsdi25) | [📄-*Coming Soon.*] |
 | **2024** ||
 | 🆕 *CLVR Ordering of Transactions on AMMs*.<br> Robert McLaughlin, Nir Chemaya, Dingyue Liu, Dahlia Malkhi. | [[📄-arXiv]](https://arxiv.org/abs/2408.02634) |
 | *The Espresso Sequencer: HotShot Consensus, Tiramisu Data-Availability, and Builder-Exchange*. With the [Espresso Sysmtes](https://www.espressosys.com/) team. [SBC'24](https://www.sbc-conference.com/) | [📄-*Coming Soon.*] |
