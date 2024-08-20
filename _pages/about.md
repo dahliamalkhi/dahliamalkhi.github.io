@@ -12,7 +12,7 @@ header:
 
 # Short bio
 
-Dr. Malkhi is a Professor in the Department of Computer Science of UCSB since 2024, where shes is heading the [Foundations of Financial Technology ("FifTech") lab](https://fiftech.cs.ucsb.edu/). 
+Dr. Malkhi is a Professor in the Department of Computer Science of UCSB since 2024, where she is heading the [Foundations of Financial Technology ("FifTech") lab](https://fiftech.cs.ucsb.edu/). 
 
 Dr. Malkhi's work over two decades brought scientific innovation into fruition in several industrial leadership positions. 
 Currently, Malkhi serves as a Distinguished Scientist of [Chainlink Labs](https://chainlinklabs.com/), and a consultant to [Espresso Systems](https://www.espressosys.com/), [Nubit](https://www.nubit.org/), and [Spacecoin](https://www.nubit.org/).
