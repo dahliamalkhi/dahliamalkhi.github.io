@@ -15,7 +15,7 @@ header:
 Dr. Malkhi is a Professor in the Department of Computer Science of UCSB since 2024, where she is heading the [Foundations of Financial Technology ("FifTech") lab](https://fiftech.cs.ucsb.edu/). 
 
 Dr. Malkhi's work over two decades brought scientific innovation into fruition in several industrial leadership positions. 
-Currently, Malkhi serves as a Distinguished Scientist of [Chainlink Labs](https://chainlinklabs.com/), and a consultant to [Espresso Systems](https://www.espressosys.com/), [Nubit](https://www.nubit.org/), and [Spacecoin](https://www.nubit.org/).
+Currently, Malkhi serves as a Distinguished Scientist of [Chainlink Labs](https://chainlinklabs.com/), and a consultant to [Espresso Systems](https://www.espressosys.com/), [Nubit](https://www.nubit.org/), and [Spacecoin](https://www.spacecoin.xyz/).
 Formerly, she was the CTO of [Diem Association](https://www.diem.com/en-us/) and Lead Researcher at [Novi Financial](https://about.fb.com/news/2020/05/welcome-to-novi/) from 2019 to 2022. In 2014, she co-founded [VMware Research](https://octo.vmware.com/introduction-vrg/) and became a Principal Researcher at VMware until June 2019. Prior to that, Malkhi was a partner principal researcher at Microsoft Research, 2004-2014; a tenured Associate Professor of the Hebrew University of Jerusalem, and a senior researcher at AT&T Labs.
 
 Her research spans broad aspects of reliability and security of distributed systems, recently with focus on blockchains and advances in financial technology. Her work resulted in over [200 publications](https://scholar.google.com/citations?user=A_VZ8N0AAAAJ&hl=en) as well as a strong impact on computing technology. A selected sample of technologies she participated in creating includes: 
