@@ -8,7 +8,7 @@ author_profile: true
 {% include base_path %}
  <base target="_blank">
 
-| Paper | [🗞️-related post] <br>  [📄-paper PDF] <br> [🎥-recorded presentation] |
+| Paper | [📄-paper PDF] <br> [🗞️-related post] <br>   [🎥-recorded presentation] |
 | :--- | :-- | 
 | **2024-** ||
 | 🆕 *HotStuff-1: Linear Consensus with One-Phase Speculation*.<br> Dakai Kang, Suyash Gupta, Dahlia Malkhi, Mohammad Sadoghi.  |  [[📄-arXiv]](https://arxiv.org/abs/2408.04728) <br> [[🗞️-*"HotStuff-1 and the Speculation Dilemma"*]](https://decentralizedthoughts.github.io/2024-08-24-hotstuff1/)|
