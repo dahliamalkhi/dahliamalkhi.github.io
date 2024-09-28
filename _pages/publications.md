@@ -35,7 +35,7 @@ author_profile: true
 | **2020** | |
 | *ACE: Abstract Consensus Encapsulation for Liveness Boosting of State Machine Replication*.<br>  Alexander Spiegelman, Arik Rinberg, Dahlia Malkhi. [OPODIS 20](https://opodis2020.unistra.fr/) | [[📄-OPODIS20]]({{ base_path }}/files/ACE-OPODIS2020.pdf) |
 | *Asynchronous Distributed Key Generation for Computationally Secure Randomness, Consensus, and Threshold Signatures*.<br>   Eleftherios Kokoris Kogias, Dahlia Malkhi, Alexander Spiegelman. [ACM CCS 20](https://www.sigsac.org/ccs/CCS2020/) |[[📄-eprint]](https://eprint.iacr.org/2019/1015) |
-| *Cogsworth: Byzantine Round Synchronization*.<br>   Oded Naor, Mathieu Baudet, Dahlia Malkhi, Alexander Spiegelman. [CES 20](https://cryptoeconomicsystems.pubpub.org/ces20). <br> [[🗞️-*"Latest on View Synchronization"*]](https://blog.chain.link/view-synchronization/) |[[📄-Arxiv]](https://arxiv.org/abs/1909.05204) |
+| *Cogsworth: Byzantine Round Synchronization*.<br>   Oded Naor, Mathieu Baudet, Dahlia Malkhi, Alexander Spiegelman. [CES 20](https://cryptoeconomicsystems.pubpub.org/ces20). | [[🗞️-*"Latest on View Synchronization"*]](https://blog.chain.link/view-synchronization/) <br> [[📄-Arxiv]](https://arxiv.org/abs/1909.05204) |
 | **2019** ||
 | *FairLedger: A Fair Blockchain Protocol for Financial Institutions*.<br>   Kfir Lev-Ari, Alexander Spiegelman, Idit Keidar and Dahlia Malkhi. OPODIS 19 (**best paper award**) |[[📄-OPODIS19]]({{ base_path }}/files/FairLedger-OPODIS2019.pdf) | 
 | *Sync HotStuff: Simple and Practical Synchronous State Machine Replication*.<br>    Ittai Abraham, Dahlia Malkhi, Kartik Nayak, Ling Ren, Maofan Yin. IEEE S&P 2020. |[[📄-S&P20]]({{ base_path }}/files/SyncHotStuff-SP2020.pdf)<br> |
