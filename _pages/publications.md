@@ -11,6 +11,7 @@ author_profile: true
 | Paper | [📄-paper PDF] <br> [🛜 -related post] <br>   [🎥-recorded presentation] |
 | :--- | :-- | 
 | **2024-** ||
+| 🆕 *Blue Paper - Spacecoin.xyz*.<br> with the [Spacecoin.xyz](https://www.spacecoin.xyz/) R&D team.  |  [[📄-github]](https://github.com/spacecoinxyz/research/blob/main/publications/Blue-Paper-Spacecoinxyz.pdf) <br> [[🛜 -*Cointelegraph piece*]](https://cointelegraph.com/news/spacecoin-xyz-launches-blue-paper-decentralized-blockchain-platform-in-space)|
 | 🆕 *CIRC: Coordinated Inter-Rollup Communication*.<br> with the [Espresso Systems](https://www.espressosys.com/) R&D team.  |  [[📄-discourse]](https://espresso.discourse.group/t/circ-coordinated-inter-rollup-communication/43) <br> [[🛜 -*"Defragmenting Liquidity with Synchronous Composability"*]](https://hackmd.io/@EspressoSystems/composability-circ)|
 | 🆕 *HotStuff-1: Linear Consensus with One-Phase Speculation*.<br> Dakai Kang, Suyash Gupta, Dahlia Malkhi, Mohammad Sadoghi.  |  [[📄-arXiv]](https://arxiv.org/abs/2408.04728) <br> [[🛜 -*"HotStuff-1 and the Speculation Dilemma"*]](https://decentralizedthoughts.github.io/2024-08-24-hotstuff1/)|
 | 🆕 *CLVR Ordering of Transactions on AMMs*.<br> Robert McLaughlin, Nir Chemaya, Dingyue Liu, Dahlia Malkhi. | [[📄-arXiv]](https://arxiv.org/abs/2408.02634) |
