@@ -1,5 +1,5 @@
 ---
-title: 'Models'
+title: 'Some Common Models in Consensus Papers (duplicate)'
 permalink: "/posts/2024/01/models/"
 ---
 <script>
