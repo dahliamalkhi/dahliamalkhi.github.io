@@ -1,3 +1,5 @@
+---
+title: 'Models'
 permalink: "/posts/2024/01/models/"
 ---
 <script>
