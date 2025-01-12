@@ -5,7 +5,7 @@ permalink: "/posts/2025/01/hs-from-vpcbc/"
 tags:
 - Consensus
 header:
-  teaser: "/images/NY-3FPLUS1.png"
+  teaser: "/images/title1.png"
   overlay_image: "/images/NY-3FPLUS1.png"
   overlay_filter: rgba(0, 100, 100, 0.8)
 excerpt: A modular construction
