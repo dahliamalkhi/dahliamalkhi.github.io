@@ -5,8 +5,8 @@ permalink: "/posts/2025/01/hs-from-vpcbc/"
 tags:
 - Consensus
 header:
-  teaser: "/images/title1.png"
-  overlay_image: "/images/NY-3FPLUS1.png"
+  teaser: "/images/NY-3FPLUS1.jpeg"
+  overlay_image: "/images/NY-3FPLUS1.jpeg"
   overlay_filter: rgba(0, 100, 100, 0.8)
 excerpt: A modular construction
 category:
@@ -15,8 +15,8 @@ category:
 
 # From VPCBC to HotStuff and HotStuff-2
 
-In this post, we give a simple and modular construction of both [HotStuff](https://api.semanticscholar.org/CorpusID:197644531) and [HotStuff-2](https://api.semanticscholar.org/CorpusID:259144145)[^1]
-from three common ingredients:
+In this post, we give a simple and modular construction of both [HotStuff](https://api.semanticscholar.org/CorpusID:197644531) and [HotStuff-2](https://api.semanticscholar.org/CorpusID:259144145)
+from three common ingredients:[^1]
 
 **Verifiable-Provable-Consistent-Broadcast [VPCBC](https://malkhi.com/posts/2025/01/vpcbc/) sub-protocol.**
 
