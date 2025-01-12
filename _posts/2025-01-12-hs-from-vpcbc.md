@@ -115,6 +115,6 @@ In View 3, the leader proposes to extend $QC(T1)$, and View 3 is successful (sho
 
 ---
 
-[^1] The variants of HotStuff we look at here are not pipelined; we will comment in a future post on pipelining VPCBC. 
+[^1]: The variants of HotStuff we look at here are not pipelined; we will comment in a future post on pipelining VPCBC. 
 
 
