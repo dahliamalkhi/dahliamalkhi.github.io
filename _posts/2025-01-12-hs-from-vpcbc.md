@@ -63,7 +63,7 @@ The External Validity condition V() employed within VPCBC verifies that the lead
 
 Either upon a commit or if a commit doesn't happen within a certain period, send lock to the next leader and synchronize entry to the next view via Pacemaker.
 
-'''
+```
 ---
 
 That's all!
