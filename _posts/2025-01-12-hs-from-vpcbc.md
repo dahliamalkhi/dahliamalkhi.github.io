@@ -53,11 +53,10 @@ The leader waits for the Handover-Completion predicate to be satisfied in order 
 2. VPCBC. 
 
 The leader chooses a new transaction (or a batch) T extending the highest known QC and invokes VPCBC-send(T). 
-
-	Throughout the protocol, Validators maintain a lock on the highest QC they learn from VPCBC. 
+Throughout the protocol, Validators maintain a lock on the highest QC they learn from VPCBC. 
 The External Validity condition V() employed within VPCBC verifies that the leader proposal proposal extends the known lock or a higher one. 
 
-	Upon VPCBC-deliver(T), commit T.
+Upon VPCBC-deliver(T), commit T.
 
 3. View Synchronization. 
 
