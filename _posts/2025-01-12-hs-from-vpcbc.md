@@ -1,5 +1,5 @@
 ---
-title: 'From VPCBC to HotStuff and HotStuff-2'
+title: 'From VPCBC to HotStuff and HotStuff-2 in Three Steps'
 date: 2025-01-12 00:00:00 -07:00
 permalink: "/posts/2025/01/hs-from-vpcbc/"
 tags:
