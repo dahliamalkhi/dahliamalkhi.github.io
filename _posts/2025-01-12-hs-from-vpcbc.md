@@ -15,7 +15,7 @@ category:
 
 # From VPCBC to HotStuff and HotStuff-2
 
-In this post, we give a simple and modular construction of both [HotStuff](https://api.semanticscholar.org/CorpusID:197644531) and [HotStuff-2] (https://api.semanticscholar.org/CorpusID:259144145)[^1]
+In this post, we give a simple and modular construction of both [HotStuff](https://api.semanticscholar.org/CorpusID:197644531) and [HotStuff-2](https://api.semanticscholar.org/CorpusID:259144145)[^1]
 from three common ingredients:
 
 **Verifiable-Provable-Consistent-Broadcast [VPCBC](https://malkhi.com/posts/2025/01/vpcbc/) sub-protocol.**
@@ -45,23 +45,25 @@ Each view performs the following steps:
 
 ---
 
-1. **Handover-Completion precidate.**
+```
+1. Handover. 
 
 The leader waits for the Handover-Completion predicate to be satisfied in order to learn the highest QC held by Validators from previous VPCBCs.
 
-2. **VPCBC.**
+2. VPCBC. 
 
-The leader chooses a new transaction (or a batch) $T$ extending the highest known QC and proposes $T$ via VPCBC. 
+The leader chooses a new transaction (or a batch) T extending the highest known QC and invokes VPCBC-send(T). 
 
-Throughout the protocol, Validators maintain a lock on the highest QC they learn from VPCBC. 
-The External Validity condition $V()$ employed within VPCBC verifies that the leader proposal proposal extends the known lock or a higher one. 
+	Throughout the protocol, Validators maintain a lock on the highest QC they learn from VPCBC. 
+The External Validity condition V() employed within VPCBC verifies that the leader proposal proposal extends the known lock or a higher one. 
 
-Upon VPCBC-deliver($T$), **commit** $T$.
+	Upon VPCBC-deliver(T), commit T.
 
-3. **View Synchronization.**
+3. View Synchronization. 
 
 Either upon a commit or if a commit doesn't happen within a certain period, send lock to the next leader and synchronize entry to the next view via Pacemaker.
 
+'''
 ---
 
 That's all!
