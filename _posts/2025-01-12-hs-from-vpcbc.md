@@ -68,8 +68,7 @@ Either upon a commit or if a commit doesn't happen within a certain period, send
 
 That's all!
 
-The difference between HotStuff and HotStuff-2 is simply whether 2 or 3 phases are used in VPCBC.
-Since VPCBC incurs only linear Communication complexity, it is left to linearize the Handover-Completion regime. The goal of Handover-Completion is to guarantee that Validators accept leader proposals, in order to maintain progress.
+Since VPCBC incurs only linear Communication complexity, the crux is linearizizing the Handover-Completion regime. The goal of Handover-Completion is to guarantee that Validators accept leader proposals, in order to maintain progress.
 
 > [PBFT](https://api.semanticscholar.org/CorpusID:221599614) and [Tendermint](https://api.semanticscholar.org/CorpusID:59082906) achieved this goal via gossip communication: all Validators must receive the same messages that the leader received and apply the same justification logic to accept the leader proposal. This requires quadratic word-Communication.
 
@@ -78,6 +77,7 @@ HotStuff pioneered a different Handover-Completion approach:
 >**when leaders start a new view, they learn the latest lock which is held by any Honest Validator and extend it.** 
 
 In a future post, we show how Handover-Completion predicate can be implemented with linear word-Communication with either 2-phase or 3-phase VPCBC under different setting.   
+Note that the difference between HotStuff and HotStuff-2 is simply whether 2 or 3 phases are used in VPCBC, and the crux is implementing the Handover-Completion rule. 
 
 ---
 ---
