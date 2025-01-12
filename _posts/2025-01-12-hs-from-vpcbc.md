@@ -53,6 +53,7 @@ The leader waits for the Handover-Completion predicate to be satisfied in order 
 2. VPCBC. 
 
 The leader chooses a new transaction (or a batch) T extending the highest known QC and invokes VPCBC-send(T). 
+
 Throughout the protocol, Validators maintain a lock on the highest QC they learn from VPCBC. 
 The External Validity condition V() employed within VPCBC verifies that the leader proposal proposal extends the known lock or a higher one. 
 
@@ -85,7 +86,7 @@ We now exemplify the use of the Handover-Completion predicate through several sc
 
 **Scenario 1.** The figure below depicts a simple scenario, where views 1, 2, 3 are all successful operating VPCBC's to completion (denoted in green), and proposals $T1$, $T2$, $T3$ are chained to each other.
 
-![chain-a](https://hackmd.io/_uploads/HJ-P6mxDkg.png)
+![image](/images/HS/chain-a.png)
 
 ---
 
@@ -96,7 +97,7 @@ What happens if a VPCBC does not complete?
 In the scenario below, despite VPCBC only partially completing in View 1, 
 the leader of view 2 learns $QC(T1)$ from View 1. Therefore, the leader proposal of View 2 extends $QC(T1)$ with $T2$. All Honest parties accept the proposal, and View 2 is successful in completing VPCBC. Transaction $T2$ is committed (shown in green), and $T1$ is indirectly committed by being extended by $T2$. View 3 extends $T2$ normally.
 
-![chain-b](https://hackmd.io/_uploads/HyLW-Ngwke.png)
+![image](/images/HS/chain-b.png)
 
 ---
 
@@ -110,7 +111,7 @@ If there are no Validators locked on $QC(T1)$ (shown on left), Validators accept
 On the right, the scenario shows what happens if Validators are locked on $QC(T1)$ but the leader of View 2 does not learn the highest lock. In this case, the proposal $T2$ in View does not extend the highest lock, hence the VPCBC by the leader of View 2 may not succeed.
 In View 3, the leader proposes to extend $QC(T1)$, and View 3 is successful (shown in green). $T1$ and $T3$ become committed, where $T1$ is indirectly committed by being extended by $T3$. Transaction $T2$ is **abandoned**.
 
-![chaincd](https://hackmd.io/_uploads/HJMdmYgvkx.png)
+![image](/images/HS/chaincd.png)
 
 ---
 
