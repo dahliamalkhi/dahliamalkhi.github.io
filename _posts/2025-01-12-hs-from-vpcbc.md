@@ -51,7 +51,7 @@ VPCBC disseminates a value with an External Validity predicate V(), such that if
 Throughout the protocol, Validators maintain a lock on the highest QC they learn from VPCBC. 
 The External Validity condition V() employed within VPCBC verifies that the leader proposal proposal extends the known lock or a higher one. 
 
-Upon VPCBC-deliver(T), commit T.
+Upon VPCBC-deliver(T), a Validator commits T.
 
 3. View Synchronization. 
 
@@ -69,9 +69,9 @@ Since VPCBC incurs only linear Communication complexity, the crux is linearizing
 
 HotStuff pioneered a different Handover-Completion approach: 
 
->**when leaders start a new view, they learn the latest lock which is held by any Honest Validator and extend it.** 
+>**When leaders start a new view, they learn the latest lock which is held by any Honest Validator and extend it.** 
 
-In a future post, we show how Handover-Completion predicate can be implemented with linear word-Communication with either 2-phase or 3-phase VPCBC under different setting.   
+In [a future post](), we show how Handover-Completion predicate can be implemented with linear word-Communication with either 2-phase or 3-phase VPCBC under different setting.   
 Note that the difference between HotStuff and HotStuff-2 is simply whether 2 or 3 phases are used in VPCBC, but whether 2 or 3 phases are used matters a lot in materializing the Handover-Completion rule. 
 
 ---
@@ -79,20 +79,15 @@ Note that the difference between HotStuff and HotStuff-2 is simply whether 2 or 
 
 We now exemplify the use of the Handover-Completion predicate through several scenarios.
 
-**Scenario 1.** The figure below depicts a simple scenario, where views 1, 2, 3 are all successful operating VPCBC's to completion (denoted in green), and proposals $T1$, $T2$, $T3$ are chained to each other.
+**Scenario 1.** The figure below depicts two simple scenario.
+On the left, views 1, 2, 3 are all successful operating VPCBC's to completion (denoted in green), and proposals $T1$, $T2$, $T3$ are chained to each other.
 
-![image](/images/HS/chain-a.png)
-
----
-
-What happens if a VPCBC does not complete? 
-
-**Scenario 2.** The figure below depicts another simple scenario. The VPCBC in view 1 is not completed (shown as black), but it is "partially" successful: it generates and disseminates $QC(T1)$ to some Validators who become locked on it. Other Validators expire the view without accepting $QC(T1)$.
+In the right, the VPCBC in view 1 is not completed (shown as black), but it is "partially" successful: it generates and disseminates $QC(T1)$ to some Validators who become locked on it. Other Validators expire the view without accepting $QC(T1)$.
 
 In the scenario below, despite VPCBC only partially completing in View 1, 
 the leader of view 2 learns $QC(T1)$ from View 1. Therefore, the leader proposal of View 2 extends $QC(T1)$ with $T2$. All Honest parties accept the proposal, and View 2 is successful in completing VPCBC. Transaction $T2$ is committed (shown in green), and $T1$ is indirectly committed by being extended by $T2$. View 3 extends $T2$ normally.
 
-![image](/images/HS/chain-b.png)
+![image](/images/HS/chain-ab.png)
 
 ---
 
@@ -105,6 +100,7 @@ If there are no Validators locked on $QC(T1)$ (shown on left), Validators accept
 
 On the right, the scenario shows what happens if Validators are locked on $QC(T1)$ but the leader of View 2 does not learn the highest lock. In this case, the proposal $T2$ in View does not extend the highest lock, hence the VPCBC by the leader of View 2 may not succeed.
 In View 3, the leader proposes to extend $QC(T1)$, and View 3 is successful (shown in green). $T1$ and $T3$ become committed, where $T1$ is indirectly committed by being extended by $T3$. Transaction $T2$ is **abandoned**.
+The Handover-Completion rule prevents what happened to View 2 from happening to Honest leaders.
 
 ![image](/images/HS/chaincd.png)
 
