@@ -17,18 +17,11 @@ category:
 
 In this post, we give a simple and modular construction of both [HotStuff](https://api.semanticscholar.org/CorpusID:197644531) and [HotStuff-2](https://api.semanticscholar.org/CorpusID:259144145)
 from a 
-**Verifiable-Provable-Consistent-Broadcast [VPCBC](https://malkhi.com/posts/2025/01/vpcbc/) sub-protocol.**[^1]
-The original [HotStuff: Three-Chain Rules](https://malkhi.com/posts/2019/08/hotstuff-three-chain-rules/) post was the first to explain the three-phase core-subprotocol of HotStuff, which VPCBC formalizes:
-
-: VPCBC($x$, $V$) disseminates a value $x$ with an External Validity predicate $V()$, such that if an Honest Validator VPCBC-deliver($x$), then: 
-
-  (i) $V(x)$ is satisfied.
-  
-  (ii) $n-f$ Validators become locked on $QC(x)$. 
-
+*Verifiable-Provable-Consistent-Broadcast* [VPCBC](https://malkhi.com/posts/2025/01/vpcbc/) sub-protocol.[^1]
+The first post about HotStuff, [``HotStuff: Three-Chain Rules''](https://malkhi.com/posts/2019/08/hotstuff-three-chain-rules/), already describes the three-phase core-subprotocol of HotStuff. 
 This post underscores the importance of a **Handover-Completion rule:** 
 
-: The Handover-Completion rule guarantees that **when leaders start a new view, they learn the latest VPCBC lock which is held by any Honest Validator.** An (linear) implementation of the rule is described in [a future post](https://).
+> The Handover-Completion rule guarantees that **when leaders start a new view, they learn the latest VPCBC lock which is held by any Honest Validator.** An (linear) implementation of the rule is described in [a future post](https://).
 
 ## The Construction 
 
@@ -48,7 +41,12 @@ The leader waits for the Handover-Completion predicate to be satisfied in order 
 
 2. VPCBC. 
 
-The leader chooses a new transaction (or a batch) T extending the highest known QC and invokes VPCBC-send(T). 
+The leader chooses a new transaction (or a batch) T extending the highest known QC and invokes VPCBC-send(T).
+VPCBC disseminates a value with an External Validity predicate V(), such that if an Honest Validator VPCBC-deliver(x), then: 
+
+  (i) V(x) is satisfied.
+  
+  (ii) n-f Validators become locked on QC(x). 
 
 Throughout the protocol, Validators maintain a lock on the highest QC they learn from VPCBC. 
 The External Validity condition V() employed within VPCBC verifies that the leader proposal proposal extends the known lock or a higher one. 
