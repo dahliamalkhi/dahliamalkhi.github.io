@@ -93,7 +93,7 @@ the leader of view 2 learns $QC(T1)$ from View 1. Therefore, the leader proposal
 
 What happens if a leader does not learn any QC from the immediately preceding view?
 
-**Scenario 3.**
+**Scenario 2.**
 Consider the case above, i.e., the leader of view 1 does not succeed in completing VPCBC, and that the leader of View 2 makes a proposal $T2$ that does not extend $QC(T1)$.
 
 If there are no Validators locked on $QC(T1)$ (shown on left), Validators accept the proposal and vote for $T2$. Hence, View 2 is successful in completing VPCBC, Transaction $T2$ is committed (shown in green), and $T1$ is **abadoned**. View 3 extends $T2$ normally.
@@ -102,7 +102,7 @@ On the right, the scenario shows what happens if Validators are locked on $QC(T1
 In View 3, the leader proposes to extend $QC(T1)$, and View 3 is successful (shown in green). $T1$ and $T3$ become committed, where $T1$ is indirectly committed by being extended by $T3$. Transaction $T2$ is **abandoned**.
 The Handover-Completion rule prevents what happened to View 2 from happening to Honest leaders.
 
-![image](/images/HS/chaincd.png)
+![image](/images/HS/chain-cd.png)
 
 ---
 
