@@ -16,9 +16,9 @@ category:
 # From VPCBC to HotStuff and HotStuff-2
 
 In this post, we give a simple and modular construction of both [HotStuff](https://api.semanticscholar.org/CorpusID:197644531) and [HotStuff-2](https://api.semanticscholar.org/CorpusID:259144145)
-from three common ingredients:[^1]
-
-**Verifiable-Provable-Consistent-Broadcast [VPCBC](https://malkhi.com/posts/2025/01/vpcbc/) sub-protocol.**
+from a 
+**Verifiable-Provable-Consistent-Broadcast [VPCBC](https://malkhi.com/posts/2025/01/vpcbc/) sub-protocol.**[^1]
+The original [HotStuff: Three-Chain Rules](https://malkhi.com/posts/2019/08/hotstuff-three-chain-rules/) post was the first to explain the three-phase core-subprotocol of HotStuff, which VPCBC formalizes:
 
 : VPCBC($x$, $V$) disseminates a value $x$ with an External Validity predicate $V()$, such that if an Honest Validator VPCBC-deliver($x$), then: 
 
@@ -26,14 +26,9 @@ from three common ingredients:[^1]
   
   (ii) $n-f$ Validators become locked on $QC(x)$. 
 
-**Handover-Completion rule.** 
+This post underscores the importance of a **Handover-Completion rule:** 
 
-: The Handover-Completion rule determins when it is safe to transition views. The predicate guarantees that **when leaders start a new view, they learn the latest VPCBC lock which is held by any Honest Validator.** An (linear) implementation of the rule is described in [a future post](https://).
-
-**Pacemaker sub-protocol for [View Synchronization](https://malkhi.com/posts/2023/04/lumiere/).**
-
-: View Synchronization guarantees after GST that all Validators enter a view within a known bounded skew.
-
+: The Handover-Completion rule guarantees that **when leaders start a new view, they learn the latest VPCBC lock which is held by any Honest Validator.** An (linear) implementation of the rule is described in [a future post](https://).
 
 ## The Construction 
 
@@ -62,7 +57,8 @@ Upon VPCBC-deliver(T), commit T.
 
 3. View Synchronization. 
 
-Either upon a commit or if a commit doesn't happen within a certain period, send lock to the next leader and synchronize entry to the next view via Pacemaker.
+Either upon a commit or if a commit doesn't happen within a certain period, send lock to the next leader and synchronize entry to the next view via Pacemaker sub-protocol for [View Synchronization](https://malkhi.com/posts/2023/04/lumiere/).
+View Synchronization guarantees after GST that all Validators enter a view within a known bounded skew.
 
 ```
 ---
