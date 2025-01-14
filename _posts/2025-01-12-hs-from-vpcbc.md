@@ -15,13 +15,21 @@ category:
 
 # From VPCBC to HotStuff and HotStuff-2
 
-In this post, we give a simple and modular construction of both [HotStuff](https://api.semanticscholar.org/CorpusID:197644531) and [HotStuff-2](https://api.semanticscholar.org/CorpusID:259144145)
-from a 
-*Verifiable-Provable-Consistent-Broadcast* [VPCBC](https://malkhi.com/posts/2025/01/vpcbc/) sub-protocol.[^1]
-The first post about HotStuff, [``HotStuff: Three-Chain Rules''](https://malkhi.com/posts/2019/08/hotstuff-three-chain-rules/), already describes the three-phase core-subprotocol of HotStuff. 
-This post underscores the importance of a **Handover-Completion rule:** 
+In this post, we give a simple and modular construction of both [HotStuff](https://api.semanticscholar.org/CorpusID:197644531) and [HotStuff-2](https://api.semanticscholar.org/CorpusID:259144145)[^1],
+consisting of two parts.
 
-> The Handover-Completion rule guarantees that **when leaders start a new view, they learn the latest VPCBC lock which is held by any Honest Validator.** An (linear) implementation of the rule is described in [a future post](https://).
+First, a leader uses *Verifiable-Provable-Consistent-Broadcast* [VPCBC](https://malkhi.com/posts/2025/01/vpcbc/) to post a new proposal. If it commits, it is guaranteed that $n-f$ Validators hold a lock on it. 
+
+Second, a new leader starts with a simplified and linear sub-protocol which is enabled by a **Handover-Completion rule:** 
+
+> The Handover-Completion rule guarantees that **when leaders start a new view, they learn the latest VPCBC lock which is held by any Honest Validator.** 
+
+
+HotStuff employs a 3-phase VPCBC that follows the original post
+[``HotStuff: Three-Chain Rules''](https://malkhi.com/posts/2019/08/hotstuff-three-chain-rules/),
+whereas HotStuff-2 uses a 2-phase VPCBC,
+as explained in a previous post oh [HotStuff-2](https://decentralizedthoughts.github.io/2023-04-01-hotstuff-2/).
+A linear implementation of the Handover-Completion rule for both cases is described in [a future post](https://).
 
 ## The Construction 
 
