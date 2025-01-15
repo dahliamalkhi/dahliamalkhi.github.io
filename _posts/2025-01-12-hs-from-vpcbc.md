@@ -15,11 +15,11 @@ category:
 
 # From VPCBC to HotStuff and HotStuff-2
 
-In this post, we give a simple and modular construction of both [HotStuff](https://api.semanticscholar.org/CorpusID:197644531) and [HotStuff-2](https://api.semanticscholar.org/CorpusID:259144145)[^1],
-consisting of two parts.
+In this post, we give a simple and modular construction of both [HotStuff](https://api.semanticscholar.org/CorpusID:197644531) by Yin, Malkhi et al., 
+and [HotStuff-2](https://api.semanticscholar.org/CorpusID:259144145) by Malkhi and Nayak.
 
+The construction [^1] consists of two parts.
 First, a leader uses *Verifiable-Provable-Consistent-Broadcast* [VPCBC](https://malkhi.com/posts/2025/01/vpcbc/) to post a new proposal. If it commits, it is guaranteed that $n-f$ Validators hold a lock on it. 
-
 Second, a new leader starts with a simplified and linear sub-protocol which is enabled by a **Handover-Completion rule:** 
 
 > The Handover-Completion rule guarantees that **when leaders start a new view, they learn the latest VPCBC lock which is held by any Honest Validator.** 
