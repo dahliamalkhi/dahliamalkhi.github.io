@@ -20,16 +20,12 @@ and [HotStuff-2](https://api.semanticscholar.org/CorpusID:259144145) by Malkhi a
 
 The construction [^1] consists of two parts.
 First, a leader uses *Verifiable-Provable-Consistent-Broadcast* [VPCBC](https://malkhi.com/posts/2025/01/vpcbc/) to post a new proposal. If it commits, it is guaranteed that $n-f$ Validators hold a lock on it. 
-Second, a new leader starts with a simplified and linear sub-protocol which is enabled by a **Handover-Completion rule:** 
-
-> The Handover-Completion rule guarantees that **when leaders start a new view, they learn the latest VPCBC lock which is held by any Honest Validator.** 
+Second, a new leader starts with a simplified and linear sub-protocol which is enabled by a **Handover rule** . In a nutshell, the Handover rule guarantees that when leaders start a new view, they learn the latest VPCBC lock which is held by any Honest Validator. 
 
 
-HotStuff employs a 3-phase VPCBC that follows the original post
-[``HotStuff: Three-Chain Rules''](https://malkhi.com/posts/2019/08/hotstuff-three-chain-rules/),
-whereas HotStuff-2 uses a 2-phase VPCBC,
-as explained in a previous post oh [HotStuff-2](https://decentralizedthoughts.github.io/2023-04-01-hotstuff-2/).
-A linear implementation of the Handover-Completion rule for both cases is described in [a future post](https://).
+The difference between HotStuff and HotStuff-2 is utilizing 3 phases in [``HotStuff: Three-Chain Rules''](https://malkhi.com/posts/2019/08/hotstuff-three-chain-rules/) and 2 phases in
+[HotStuff-2](https://malkhi.com/posts/2023/03/hs2/).
+The (linear) implementation of the Handover rule for the two different cases is described in a separate post on the [Handover rule](https://).
 
 ## The Construction 
 
@@ -45,7 +41,7 @@ Each view performs the following steps:
 ```
 1. Handover. 
 
-The leader waits for the Handover-Completion predicate to be satisfied in order to learn the highest QC held by Validators from previous VPCBCs.
+The leader waits for completion of the Handover condition in order to learn the highest QC held by Validators from previous VPCBCs.
 
 2. VPCBC. 
 
@@ -71,21 +67,26 @@ View Synchronization guarantees after GST that all Validators enter a view withi
 
 That's all!
 
-Since VPCBC incurs only linear Communication complexity, the crux is linearizing the Handover-Completion regime. The goal of Handover-Completion is to guarantee that Validators accept leader proposals, in order to maintain progress.
+Since VPCBC incurs only linear Communication complexity, the crux is linearizing the leader handover regime. The goal of a leader handover is to guarantee that Validators accept leader proposals, in order to maintain progress.
+The crux of the handover is for the next leader to learn whether it is possible for $2f+1$ to have a lock.
+For many years, handover was handled via an approach pioneered in PBFT:
 
-> [PBFT](https://api.semanticscholar.org/CorpusID:221599614) and [Tendermint](https://api.semanticscholar.org/CorpusID:59082906) achieved this goal via gossip communication: all Validators must receive the same messages that the leader received and apply the same justification logic to accept the leader proposal. This requires quadratic word-Communication.
 
-HotStuff pioneered a different Handover-Completion approach: 
+> [PBFT](https://api.semanticscholar.org/CorpusID:221599614) and [Tendermint](https://api.semanticscholar.org/CorpusID:59082906) achieved this goal via gossip communication: all Validators must receive exactly the same messages that the leader received and apply the same justification logic to accept the leader proposal. This requires quadratic word-Communication.
+> Faced with a cascade of failures, this incurs super-quadratic (up to cubic) communication
+    complexity which is sub-optimal.
 
->**When leaders start a new view, they learn the latest lock which is held by any Honest Validator and extend it.** 
+HotStuff pioneered a different approach, which allowed a linear implementation in the Partial Synchrony setting by utilizing 3-phase VPCBC.  The gist of the new approach is encapsulated by the following handover rule:
 
-In [a future post](), we show how Handover-Completion predicate can be implemented with linear word-Communication with either 2-phase or 3-phase VPCBC under different setting.   
-Note that the difference between HotStuff and HotStuff-2 is simply whether 2 or 3 phases are used in VPCBC, but whether 2 or 3 phases are used matters a lot in materializing the Handover-Completion rule. 
+>**The Handover rule:** When a leader starts a new view, it must learn the latest lock which is held by any Honest Validator. Validators will accept a leader proposal conditioned on it extending the highest lock they know.
+
+We dedicate a separate post to the [Handover rule]() and show how it can be materialized with linear word-Communication with either 2-phase or 3-phase VPCBC under different setting.   
+Note that the difference between HotStuff and HotStuff-2 is simply whether 2 or 3 phases are used in VPCBC, but whether 2 or 3 phases are used matters a lot in materializing the Handover rule. 
 
 ---
 ---
 
-We now exemplify the use of the Handover-Completion predicate through several scenarios.
+We now exemplify the use of the Handover rule through several scenarios.
 
 **Scenario 1.** The figure below depicts two simple scenario.
 On the left, views 1, 2, 3 are all successful operating VPCBC's to completion (denoted in green), and proposals $T1$, $T2$, $T3$ are chained to each other.
@@ -108,7 +109,7 @@ If there are no Validators locked on $QC(T1)$ (shown on left), Validators accept
 
 On the right, the scenario shows what happens if Validators are locked on $QC(T1)$ but the leader of View 2 does not learn the highest lock. In this case, the proposal $T2$ in View does not extend the highest lock, hence the VPCBC by the leader of View 2 may not succeed.
 In View 3, the leader proposes to extend $QC(T1)$, and View 3 is successful (shown in green). $T1$ and $T3$ become committed, where $T1$ is indirectly committed by being extended by $T3$. Transaction $T2$ is **abandoned**.
-The Handover-Completion rule prevents what happened to View 2 from happening to Honest leaders.
+The Handover rule prevents what happened to View 2 from happening to Honest leaders.
 
 ![image](/images/HS/chain-cd.png)
 
