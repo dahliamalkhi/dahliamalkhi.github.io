@@ -25,7 +25,7 @@ Second, a new leader starts with a simplified and linear sub-protocol which is e
 
 The difference between HotStuff and HotStuff-2 is utilizing 3 phases in [``HotStuff: Three-Chain Rules''](https://malkhi.com/posts/2019/08/hotstuff-three-chain-rules/) and 2 phases in
 [HotStuff-2](https://malkhi.com/posts/2023/03/hs2/).
-The (linear) implementation of the Handover rule for the two different cases is described in a separate post on the [Handover rule](https://).
+The (linear) implementation of the Handover rule for the two different cases is described in a separate post on the [Handover rule](https://malkhi.com/posts/2025/01/handover/).
 
 ## The Construction 
 
@@ -80,7 +80,7 @@ HotStuff pioneered a different approach, which allowed a linear implementation i
 
 >**The Handover rule:** When a leader starts a new view, it must learn the latest lock which is held by any Honest Validator. Validators will accept a leader proposal conditioned on it extending the highest lock they know.
 
-We dedicate a separate post to the [Handover rule](posts/2025/01/handover/) and show how it can be materialized with linear word-Communication with either 2-phase or 3-phase VPCBC under different setting.   
+We dedicate a separate post to the [Handover rule](http://malkhi.com/posts/2025/01/handover/) and show how it can be materialized with linear word-Communication with either 2-phase or 3-phase VPCBC under different setting.   
 Note that the difference between HotStuff and HotStuff-2 is simply whether 2 or 3 phases are used in VPCBC, but whether 2 or 3 phases are used matters a lot in materializing the Handover rule. 
 
 ---
