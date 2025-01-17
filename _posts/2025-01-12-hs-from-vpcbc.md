@@ -15,8 +15,8 @@ category:
 
 # From VPCBC to HotStuff and HotStuff-2
 
-In this post, we give a simple and modular construction of both [HotStuff](https://api.semanticscholar.org/CorpusID:197644531) by Yin, Malkhi et al., 
-and [HotStuff-2](https://api.semanticscholar.org/CorpusID:259144145) by Malkhi and Nayak.
+In this post, we give a simple and modular construction of both [HotStuff  by Yin, Malkhi, Reiter, Abraham and Gueta](https://api.semanticscholar.org/CorpusID:197644531), 
+and [HotStuff-2 by Malkhi and Nayak](https://api.semanticscholar.org/CorpusID:259144145).
 
 The construction [^1] consists of two parts.
 First, a leader uses *Verifiable-Provable-Consistent-Broadcast* [VPCBC](https://malkhi.com/posts/2025/01/vpcbc/) to post a new proposal. If it commits, it is guaranteed that $n-f$ Validators hold a lock on it. 
@@ -80,7 +80,7 @@ HotStuff pioneered a different approach, which allowed a linear implementation i
 
 >**The Handover rule:** When a leader starts a new view, it must learn the latest lock which is held by any Honest Validator. Validators will accept a leader proposal conditioned on it extending the highest lock they know.
 
-We dedicate a separate post to the [Handover rule]() and show how it can be materialized with linear word-Communication with either 2-phase or 3-phase VPCBC under different setting.   
+We dedicate a separate post to the [Handover rule](posts/2025/01/handover/) and show how it can be materialized with linear word-Communication with either 2-phase or 3-phase VPCBC under different setting.   
 Note that the difference between HotStuff and HotStuff-2 is simply whether 2 or 3 phases are used in VPCBC, but whether 2 or 3 phases are used matters a lot in materializing the Handover rule. 
 
 ---
