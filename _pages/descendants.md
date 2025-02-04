@@ -90,6 +90,7 @@ PhD Thesis committee member:
 
 | PhD student |  Institution | 
 | :-- | :--- |
+Manuel José Ribeiro Vidigueira | EPFL, Switzerland |
 Michael Wei | UCSD  |
 Leander Jehl |  University of Stavanger, Norway |
 Richar Ekwall | Federal Institute of Technology (EPFL), Switzerland |
