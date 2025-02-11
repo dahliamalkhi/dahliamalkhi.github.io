@@ -1,5 +1,5 @@
 ---
-title: 'From VPCBC to HotStuff and HotStuff-2'
+title: 'From Verifiable Broadcast to HotStuff and HotStuff-2'
 date: 2025-01-12 00:00:00 -07:00
 permalink: "/posts/2025/01/hs-from-vpcbc/"
 tags:
@@ -13,7 +13,7 @@ category:
 - tutorial
 ---
 
-# From VPCBC to HotStuff and HotStuff-2
+# From Verifiable Broadcast to HotStuff and HotStuff-2
 
 In this post, we give a simple and modular construction of both [HotStuff  by Yin, Malkhi, Reiter, Abraham and Gueta](https://api.semanticscholar.org/CorpusID:197644531), 
 and [HotStuff-2 by Malkhi and Nayak](https://api.semanticscholar.org/CorpusID:259144145).
