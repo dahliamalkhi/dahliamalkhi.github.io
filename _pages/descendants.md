@@ -5,7 +5,18 @@ layout: archive
 author_profile: true
 ---
 
-Interns at [Chainlink Labs](http://chainlinklabs.com):
+Graduate students at [UC Santa Barbara](https://cs.ucsb.edu/people/faculty/dahlia-malkhi)
+| Student |  degree and year |  Updates |
+| Nir Chemaya | PhD in economics, 2025 | joining Ben-Gurion University, fall 2025 |
+| Swathi Bhat | Master, 2025 | | 
+| Rithwik Kerur | PhD, (start 2024) | | 
+| Kali Hale | PhD, (start 2024) | | 
+| Eirik (Jiaming) Xu | Master, (start 2024) |  |
+| Kaiyang Chang | master, (start 2025) | | 
+| Hugo Lin | MS/BS | | 
+| :--- | :--- | :-- | :--- |
+
+Interns at [Chainlink Labs](https://chainlinklabs.com):
 
 | Intern |  Grad-school | Internship Year | Updates |
 | :--- | :--- | :-- | :--- |
