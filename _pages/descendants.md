@@ -23,8 +23,8 @@ Interns at [Chainlink Labs](https://chainlinklabs.com):
 | :--- | :--- | :-- | :--- |
 [Harjasleen (Jasleen) Malvai](https://jasleenmalvai.com/) | University of Illinois at Urbana-Champaign | 2023 | |
 [Peiyao Sheng](https://simplespy.github.io/about/) | University of Illinois at Urbana-Champaign | 2023 | |
-[Chenyuan Wu](https://chenyuanwu.com/) | University of Pennsylvania (UPenn) | 2023 | joined City Universtiy of Hong Kong (CityU), 2025 |
-[Chenkai Weng](https://ckweng.github.io/) | Northwestern | 2022 | joined Arizona State University, 2024|
+[Chenyuan Wu](https://chenyuanwu.com/) | University of Pennsylvania (UPenn) | 2023 | professor at City Universtiy of Hong Kong (CityU), 2025 |
+[Chenkai Weng](https://ckweng.github.io/) | Northwestern | 2022 | professor at Arizona State University, 2024|
 [Deepak Maram](https://www.linkedin.com/in/deepakmaram/) | Cornell Tech | 2022 | researcher at Sui |
 [Hongbo Zhang](https://www.linkedin.com/in/hongbozhang/) | Cornell | 2022 | |
 [Nibesh Shrestha](https://www.linkedin.com/in/nibesh-shrestha-73485380/) | Rochester Institute of Technology | 2022 | researcher at SupraOracles |
