@@ -23,7 +23,7 @@ and [Chainlink Labs](https://chainlinklabs.com/).
 
 Formerly, 
 she served as Distinguished Scientist of [Chainlink Labs](https://chainlinklabs.com/) (2022-2025), 
-was the CTO of [Diem Association](https://www.diem.com/en-us/) and Lead Researcher at [Novi Financial](https://about.fb.com/news/2020/05/welcome-to-novi/) (2019-2022). In 2014, she co-founded [VMware Research](https://octo.vmware.com/introduction-vrg/) and became a Principal Researcher at VMware (2014-2019). Prior to that, Malkhi was a partner principal researcher at Microsoft Research (2004-2014), a tenured Associate Professor of the Hebrew University of Jerusalem (1999-2007), and a senior researcher at AT&T Labs (1995-1999).
+and was the CTO of [Diem Association](https://www.diem.com/en-us/) and Lead Researcher at [Novi Financial](https://about.fb.com/news/2020/05/welcome-to-novi/) (2019-2022). In 2014, she co-founded [VMware Research](https://octo.vmware.com/introduction-vrg/) and became a Principal Researcher at VMware (2014-2019). Prior to that, Malkhi was a partner principal researcher at Microsoft Research (2004-2014), a tenured Associate Professor of the Hebrew University of Jerusalem (1999-2007), and a senior researcher at AT&T Labs (1995-1999).
 
 Her research spans broad aspects of reliability and security of distributed systems, recently with focus on blockchains and advances in financial technology. Her work resulted in over [200 publications](https://scholar.google.com/citations?user=A_VZ8N0AAAAJ&hl=en) as well as a strong impact on computing technology. A selected sample of technologies she participated in creating includes: 
 
