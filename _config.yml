@@ -1,6 +1,6 @@
 ---
 title: Professor Dahlia Malkhi 
-description: Personal homepage of Dahlia Malkhi, Professor of Computer Science at UC Santa Barbara, and Distinguished Scientist at Chainlink Labs
+description: Personal homepage of Dahlia Malkhi, Professor of Computer Science at UC Santa Barbara
 minimal_mistakes_skin: default
 search: true
 
@@ -55,7 +55,7 @@ plugins:
 author:
   name: Dahlia Malkhi
   avatar: "/images/dahliabest.jpg"
-  bio: Professor of Computer Science, UC Santa Barbara, and Distinguished Scientist, Chainlink Labs
+  bio: Professor of Computer Science and head of Foundations of Financial Technology research lab, UC Santa Barbara 
   location: California
   employer: 
   pubmed: 
