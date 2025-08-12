@@ -11,7 +11,9 @@ author_profile: true
 | Paper | [📄-paper PDF] <br> [🛜 -related post] <br>   [🎥-recorded presentation] |
 | :--- | :-- | 
 | **2025** ||
-| 🆕 *Thunderbolt: A Formally Verified Protocol for Off-Chain Bitcoin Transfers*.<br> Hongbo Wen, Hanzhi Liu, Jingyu Ke, Yanju Chen, Dahlia Malkhi, Yu Feng | [[📄-ePrint]](https://eprint.iacr.org/2025/709) |
+| *Brief Announcement: Carry the Tail in Consensus Protocols*.<br>Dakai Kang, Suyash Gupta, Dahlia Malkhi, Mohammad Sadoghi. [[DISC2025]](https://www.disc-conference.org/wp/disc2025/) | To appear. |
+| *Inequality in the Age of Pseudonymity*. <br> Aviv Yaish, Nir Chemaya, Lin William Cong, Dahlia Malkhi. | [[📄-arXiv]](http://arxiv.org/abs/2508.04668) | 
+| 🆕 *Thunderbolt: A Formally Verified Protocol for Off-Chain Bitcoin Transfers*.<br> Hongbo Wen, Hanzhi Liu, Jingyu Ke, Yanju Chen, Dahlia Malkhi, Yu Feng. | [[📄-ePrint]](https://eprint.iacr.org/2025/709) |
 | 🆕 *HotStuff-1: Linear Consensus with One-Phase Speculation*.<br> Dakai Kang, Suyash Gupta, Dahlia Malkhi, Mohammad Sadoghi. [SIGMOD 2025](https://2025.sigmod.org/) |  [[📄-arXiv]](https://arxiv.org/abs/2408.04728) <br> [[🛜 -*"HotStuff-1 and the Speculation Dilemma"*]](https://decentralizedthoughts.github.io/2024-08-24-hotstuff1/)|
 | *BFTBrain: Adaptive BFT Consensus with Reinforcement Learning*.<br> Chenyuan Wu, Haoyun Qin, Mohammad Javad Amiri, Boon Thau Loo, Dahlia Malkhi, Ryan Marcus. [Usenix NSDI'25](https://www.usenix.org/conference/nsdi25) | [[📄-arXiv]](https://arxiv.org/abs/2408.06432) <br> [[📄-SIGOPS'24 prelim version]](https://dl.acm.org/doi/10.1145/3689051.3689055)|
 | **2024** ||
