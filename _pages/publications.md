@@ -11,7 +11,7 @@ author_profile: true
 | Paper | [📄-paper PDF] <br> [🛜 -related post] <br>   [🎥-recorded presentation] |
 | :--- | :-- | 
 | **2025** ||
-| 🆕 *Brief Announcement: Carry the Tail in Consensus Protocols*.<br>Dakai Kang, Suyash Gupta, Dahlia Malkhi, Mohammad Sadoghi. [[DISC2025]](https://www.disc-conference.org/wp/disc2025/) | To appear. |
+| 🆕 *Brief Announcement: Carry the Tail in Consensus Protocols*.<br>Dakai Kang, Suyash Gupta, Dahlia Malkhi, Mohammad Sadoghi. [[DISC2025]](https://www.disc-conference.org/wp/disc2025/) | [[📄-arXiv]](https://arxiv.org/abs/2508.12173v1). |
 | 🆕 *Inequality in the Age of Pseudonymity*. <br> Aviv Yaish, Nir Chemaya, Lin William Cong, Dahlia Malkhi. | [[📄-arXiv]](http://arxiv.org/abs/2508.04668) [[📄-SSRN]](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5380783) | 
 | *Thunderbolt: A Formally Verified Protocol for Off-Chain Bitcoin Transfers*.<br> Hongbo Wen, Hanzhi Liu, Jingyu Ke, Yanju Chen, Dahlia Malkhi, Yu Feng. | [[📄-ePrint]](https://eprint.iacr.org/2025/709) |
 | *HotStuff-1: Linear Consensus with One-Phase Speculation*.<br> Dakai Kang, Suyash Gupta, Dahlia Malkhi, Mohammad Sadoghi. [SIGMOD 2025](https://2025.sigmod.org/) |  [[📄-arXiv]](https://arxiv.org/abs/2408.04728) <br> [[🛜 -*"HotStuff-1 and the Speculation Dilemma"*]](https://decentralizedthoughts.github.io/2024-08-24-hotstuff1/)|
