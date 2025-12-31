@@ -7,11 +7,11 @@ author_profile: true
 
 Graduate students at [UC Santa Barbara](https://cs.ucsb.edu/people/faculty/dahlia-malkhi):
 
-| Student |  degree |  Updates |
+| Student |  degree and year |  Updates |
 | :--- | :--- | :-- | :--- |
-| Nir Chemaya, 2025 | PhD in economics | joined Ben-Gurion University, 2025 |
-| Swathi Bhat, 2025 | Master | joined Arista | 
-| :--- | :--- | :--- |
+| [Nir Chemaya](https://sites.google.com/view/nir-chemaya/home) | PhD in economics, 2025 | joined Ben-Gurion University, 2025 |
+| Swathi Bhat | Master, 2025 | joined Arista | 
+| --- | --- | --- |
 | Rithwik Kerur | PhD | (started 2024) | 
 | Kali Hale | PhD | (started 2024) | 
 | Eirik (Jiaming) Xu | Master | (started 2024) |
