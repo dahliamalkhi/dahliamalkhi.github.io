@@ -7,15 +7,17 @@ author_profile: true
 
 Graduate students at [UC Santa Barbara](https://cs.ucsb.edu/people/faculty/dahlia-malkhi):
 
-| Student |  degree and year |  Updates |
+| Student |  degree |  Updates |
 | :--- | :--- | :-- | :--- |
-| Nir Chemaya | PhD in economics, 2025 | joining Ben-Gurion University, fall 2025 |
-| Swathi Bhat | Master, 2025 | | 
-| Rithwik Kerur | PhD, (start 2024) | | 
-| Kali Hale | PhD, (start 2024) | | 
-| Eirik (Jiaming) Xu | Master, (start 2024) |  |
-| Kaiyang Chang | master, (start 2025) | | 
-| Hugo Lin | MS/BS | | 
+| Nir Chemaya, 2025 | PhD in economics | joined Ben-Gurion University, 2025 |
+| Swathi Bhat, 2025 | Master | joined Arista | 
+| :--- | :--- | :--- |
+| Rithwik Kerur | PhD | (started 2024) | 
+| Kali Hale | PhD | (started 2024) | 
+| Eirik (Jiaming) Xu | Master | (started 2024) |
+| Kaiyang Chang | master | (started 2025) | 
+| Hugo Lin | MS/BS | (started 2025) | 
+| Tom Shangguan | MS/BS | (started 2025) |
 
 Interns at [Chainlink Labs](https://chainlinklabs.com):
 
@@ -102,7 +104,9 @@ PhD Thesis committee member:
 
 | PhD student |  Institution | 
 | :-- | :--- |
-Manuel José Ribeiro Vidigueira | EPFL, Switzerland |
+Hongbo Wen, 2027 (expected) | UCSB | 
+Robert McLaughlin, 2025 | UCSB | 
+Manuel José Ribeiro Vidigueira, 2025 | EPFL, Switzerland |
 Michael Wei | UCSD  |
 Leander Jehl |  University of Stavanger, Norway |
 Richar Ekwall | Federal Institute of Technology (EPFL), Switzerland |
