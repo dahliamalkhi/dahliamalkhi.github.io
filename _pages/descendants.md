@@ -15,9 +15,9 @@ Graduate students at [UC Santa Barbara](https://cs.ucsb.edu/people/faculty/dahli
 
 | MSc Student |  degree and year |  Updates |
 | :--- | :--- | :--- | 
-| Swathi Bhat | Master, 2025 | joined Arista | 
-| Eirik (Jiaming) Xu | Master, 2026 | joined Tik Tok |
-| Ofir Dvir | Master, 2026 | joined NVidia |
+| Swathi Bhat | Master, 2025 | joined Arista, 2025 | 
+| Eirik (Jiaming) Xu | Master, 2026 | joined Tik Tok, 2026 |
+| Ofir Dvir | Master, 2026 | joined NVidia, 2026 |
 | Kaiyang Chang | Master | (started 2025) | 
 | Hugo Lin | Master | (started 2025) | 
 | Tom Shangguan | MS/BS | (started 2025) |
