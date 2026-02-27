@@ -7,18 +7,21 @@ author_profile: true
 
 Graduate students at [UC Santa Barbara](https://cs.ucsb.edu/people/faculty/dahlia-malkhi):
 
-| Student |  degree and year |  Updates |
-| :--- | :--- | :-- | :--- |
+| PhD Student |  year |  Updates |
+| :--- | :--- | :--- | 
 | [Nir Chemaya](https://sites.google.com/view/nir-chemaya/home) | PhD in economics, 2025 | joined Ben-Gurion University, 2025 |
-| Swathi Bhat | Master, 2025 | joined Arista | 
-| &nbsp; | &nbsp; | &nbsp; | 
+<!-- | &nbsp; | &nbsp; | &nbsp; | -->
 | Rithwik Kerur | PhD | (started 2024) | 
 | Kali Hale | PhD | (started 2024) | 
+
+| MSc Student |  degree and year |  Updates |
+| :--- | :--- | :--- | 
+| Swathi Bhat | Master, 2025 | joined Arista | 
 | Eirik (Jiaming) Xu | Master, 2026 | joined Tik Tok |
-| Kaiyang Chang | master | (started 2025) | 
-| Hugo Lin | MS/BS | (started 2025) | 
+| Ofir Dvir | Master, 2026 | joined NVidia |
+| Kaiyang Chang | Master | (started 2025) | 
+| Hugo Lin | Master | (started 2025) | 
 | Tom Shangguan | MS/BS | (started 2025) |
-| Ofir Dvir | master | (started 2024) |
 
 Interns at [Chainlink Labs](https://chainlinklabs.com):
 
