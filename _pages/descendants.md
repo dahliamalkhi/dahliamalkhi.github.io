@@ -14,10 +14,11 @@ Graduate students at [UC Santa Barbara](https://cs.ucsb.edu/people/faculty/dahli
 | &nbsp; | &nbsp; | &nbsp; | 
 | Rithwik Kerur | PhD | (started 2024) | 
 | Kali Hale | PhD | (started 2024) | 
-| Eirik (Jiaming) Xu | Master | (started 2024) |
+| Eirik (Jiaming) Xu | Master, 2026 | joined Tik Tok |
 | Kaiyang Chang | master | (started 2025) | 
 | Hugo Lin | MS/BS | (started 2025) | 
 | Tom Shangguan | MS/BS | (started 2025) |
+| Ofir Dvir | master | (started 2024) |
 
 Interns at [Chainlink Labs](https://chainlinklabs.com):
 
