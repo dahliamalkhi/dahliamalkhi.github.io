@@ -10,6 +10,8 @@ author_profile: true
 
 | Paper | [📄-paper PDF] <br> [🛜 -related post] <br>   [🎥-recorded presentation] |
 | :--- | :-- | 
+| **2026** ||
+| *Rafture: Erasure-coded Raft with Post-Dissemination Pruning*.<br>Rithwik Kerur, Divyakant Agrawal, Michael K. Reiter, Dahlia Malkhi. | [[📄-arXiv]](https://arxiv.org/abs/2603.24761) |
 | **2025** ||
 | *Brief Announcement: Carry the Tail in Consensus Protocols*.<br>Dakai Kang, Suyash Gupta, Dahlia Malkhi, Mohammad Sadoghi. <br> Published at [[DISC2025]](https://www.disc-conference.org/wp/disc2025/). | [[📄-DISC'25 short paper]](https://www.dagstuhl.de/dagpub/978-3-95977-402-4) [[📄-arXiv]](https://arxiv.org/abs/2508.12173v1). <br> [[🛜 -*"Carry: HotStuff Linearity with Tail-Forking-Resilience"*]](https://decentralizedthoughts.github.io/2025-09-27-carry-the-tail/) |
 | *Inequality in the Age of Pseudonymity*. <br> Aviv Yaish, Nir Chemaya, Lin William Cong, Dahlia Malkhi. <br> Published at [[AAAI-26]](https://aaai.org/) and [FC'26 DeFi workshop](https://fc26.ifca.ai/defi/). | [[📄-arXiv]](http://arxiv.org/abs/2508.04668) [[📄-SSRN]](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5380783) | 
