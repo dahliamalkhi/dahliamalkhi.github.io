@@ -24,30 +24,30 @@ author_profile: true
 | [[Brown dept. colloquium, 2023]](https://events.brown.edu/event/252258-dahlia-malkhi-research-flywheel-from-basic), invited speaker | Tech Transfer Stories and Takeaways. |  |
 | **At Diem and then Chainlink Labs**
 | :---- | :---- | :---- |
-| [[SmartCon23]](https://smartcon.chain.link/) |Recent Advances in Consensus Research from Chainlink Labs | [{recording 🎥}](https://www.youtube.com/watch?v=iZjfYRH4fVM) |
+| [[SmartCon23]](https://smartcon.chain.link/) |Recent Advances in Consensus Research from Chainlink Labs. | [{recording 🎥}](https://www.youtube.com/watch?v=iZjfYRH4fVM) |
 | [[Science and Engineering of Consensus 2022]](https://tselab.stanford.edu/workshop-sbc22/), invited speaker | Maximal Extractable Value (MEV) Protection on a DAG | [{recording 🎥}](https://www.youtube.com/watch?v=9WLoJRrnTsA&list=PL4XSNxeZhdqBBgqqokIdK4PcyPSl6t0rQ&index=6) <br> [Fino](https://arxiv.org/abs/2208.00940)  | 
 | [[SmartCon22]](https://smartcon.chain.link/) | Privacy-Preserving Oracles with DECO | [{recording 🎥}](https://www.youtube.com/watch?v=eJqZQ2_VBzo) |
-| [[Rise Lab seminar, Berkeley, 2022]](https://rise.cs.berkeley.edu/events/), invited speaker | | Connecting Blockchains and the World | |
-| [[ICL seminar, 2022]](https://lsds.doc.ic.ac.uk/seminars), invited speaker | | Connecting Blockchains and the World | |
+| [[Rise Lab seminar, Berkeley, 2022]](https://rise.cs.berkeley.edu/events/), invited speaker | | Connecting Blockchains and the World. | |
+| [[ICL seminar, 2022]](https://lsds.doc.ic.ac.uk/seminars), invited speaker | | Connecting Blockchains and the World. | |
 | [[ICDCS 2021]](https://icdcs2021.us/keynotes.html), conference keynote speaker | Tech Transfer Stories and Takeaways. |  |
 [[Cornell dept. colloquium, 2021]](https://www.cs.cornell.edu/content/tech-transfer-stories-and-takeaways) , invited speaker | Tech Transfer Stories and Takeaways. |  |
 [[DISC 2021]](http://www.disc-conference.org/wp/disc2021/program/) , conference keynote invited speaker | Tech Transfer Stories and Takeaways. | [{recording 🎥}](https://www.youtube.com/watch?v=9RRUQHymcJA)  |
-| [[UC Davis 2020]](https://expolab.org/ecs189f-fall-2020/speakers.html), invited speaker |Diem (formerly Libra) technology | [{recording 🎥}](https://www.youtube.com/watch?v=WR7K3adIqbI&feature=youtu.be&ab_channel=ExpoLabatUCDavis) |
-| [[CMU 2020]](https://ece.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=83b2040d-b937-4889-831e-ac6401292548), invited speaker |Diem (formerly Libra) technology | | 
-| [[ACM AFT'20]](https://aft.acm.org/program-2020), invited speaker |Diem (formerly Libra) technology | |  
-| [[UZH Blockchain Center Summer School 2020]](https://www.blockchain.uzh.ch/events/summer-school-deep-dive-into-blockchain/), invited speaker |Diem (formerly Libra) technology | | 
-| [[DSN'20]](https://dsn2020.webs.upv.es/final-program/keynotes/), conference keynote speaker |Diem (formerly Libra) technology | |  
-| [[TPBC'20]](https://eventum.upf.edu/51585/detail/theory-and-practice-of-blockchains-online-weekly-seminar-series-.html), invited speaker |Diem (formerly Libra) technology |  [{recording 🎥}](https://www.youtube.com/watch?v=S9oPB9j-UZU) |
-| [[FAB'20]](https://scfab.github.io/2020/index.html), invited speaker |Diem (formerly Libra) technology | |  
-| [[ITA 2020]](https://ita.ucsd.edu/ws/schedule2020/#d_5), invited speaker |Diem (formerly Libra) technology | | 
+| [[UC Davis 2020]](https://expolab.org/ecs189f-fall-2020/speakers.html), invited speaker |Diem (formerly Libra) technology. | [{recording 🎥}](https://www.youtube.com/watch?v=WR7K3adIqbI&feature=youtu.be&ab_channel=ExpoLabatUCDavis) |
+| [[CMU 2020]](https://ece.hosted.panopto.com/Panopto/Pages/Viewer.aspx?id=83b2040d-b937-4889-831e-ac6401292548), invited speaker |Diem (formerly Libra) technology. | | 
+| [[ACM AFT'20]](https://aft.acm.org/program-2020), invited speaker |Diem (formerly Libra) technology. | |  
+| [[UZH Blockchain Center Summer School 2020]](https://www.blockchain.uzh.ch/events/summer-school-deep-dive-into-blockchain/), invited speaker |Diem (formerly Libra) technology. | | 
+| [[DSN'20]](https://dsn2020.webs.upv.es/final-program/keynotes/), conference keynote speaker |Diem (formerly Libra) technology. | |  
+| [[TPBC'20]](https://eventum.upf.edu/51585/detail/theory-and-practice-of-blockchains-online-weekly-seminar-series-.html), invited speaker |Diem (formerly Libra) technology. |  [{recording 🎥}](https://www.youtube.com/watch?v=S9oPB9j-UZU) |
+| [[FAB'20]](https://scfab.github.io/2020/index.html), invited speaker |Diem (formerly Libra) technology. | |  
+| [[ITA 2020]](https://ita.ucsd.edu/ws/schedule2020/#d_5), invited speaker |Diem (formerly Libra) technology. | | 
 | **The Road to HotStuff, 2019** || [[Blockchain/BFT]](https://dahliamalkhi.github.io/posts/2017/10/bft-blockchain/)<br> [[The BFT Lens: HotStuff and Casper]](https://dahliamalkhi.github.io/posts/2018/03/bft-lens-casper/)<br> [[The BFT Lens: Tendermint]](https://dahliamalkhi.github.io/posts/2018/04/BFT-lens-tndrmnt/)<br>, [[BEATCS fall 2017 tutorial]](http://bulletin.eatcs.org/index.php/beatcs/article/view/506)<br> [[HotStuff-PODC2019]](https://arxiv.org/abs/1803.05069) | 
 | :---- | :---- | :---- |
-| [[Northeastern, distinguished lecture series, 2019]](https://www.khoury.northeastern.edu/event/distinguished-speaker-blockchains-in-the-lens-of-bft/), invited speaker |BFT in the Lens of Blockchains | |
-| [[Swiss Blockchain Winter School 2019]](https://blockchainschool.epfl.ch/), invited speaker | BFT in the Lens of Blockchains | |
-| [[JHU, distinguished lecture series, 2018]](https://www.cs.jhu.edu/news-events/gerald-m-masson-distinguished-lecture-series/), invited speaker | BFT in the Lens of Blockchains | |
- | [[Usenix ATC '18]](https://www.usenix.org/conference/atc18/presentation/malkhi), conference keynote speaker | BFT in the Lens of Blockchains | |
- | [[BITCOIN '18]](https://fc18.ifca.ai/bitcoin/index.html), invited speaker | BFT in the Lens of Blockchains | |
- | [[Tsinghua-Cornell Blockchain Winter School (TCWSC) 2017]](https://conference.iiis.tsinghua.edu.cn/TCWSC2017/attendees.html) , invited speaker | BFT in the Lens of Blockchains | |
+| [[Northeastern, distinguished lecture series, 2019]](https://www.khoury.northeastern.edu/event/distinguished-speaker-blockchains-in-the-lens-of-bft/), invited speaker |BFT in the Lens of Blockchains. | |
+| [[Swiss Blockchain Winter School 2019]](https://blockchainschool.epfl.ch/), invited speaker | BFT in the Lens of Blockchains. | |
+| [[JHU, distinguished lecture series, 2018]](https://www.cs.jhu.edu/news-events/gerald-m-masson-distinguished-lecture-series/), invited speaker | BFT in the Lens of Blockchains. | |
+ | [[Usenix ATC '18]](https://www.usenix.org/conference/atc18/presentation/malkhi), conference keynote speaker | BFT in the Lens of Blockchains. | |
+ | [[BITCOIN '18]](https://fc18.ifca.ai/bitcoin/index.html), invited speaker | BFT in the Lens of Blockchains. | |
+ | [[Tsinghua-Cornell Blockchain Winter School (TCWSC) 2017]](https://conference.iiis.tsinghua.edu.cn/TCWSC2017/attendees.html) , invited speaker | BFT in the Lens of Blockchains. | |
 
 
 ## Pre 2019
