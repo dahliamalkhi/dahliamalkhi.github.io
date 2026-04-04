@@ -27,8 +27,8 @@ author_profile: true
 | [[SmartCon23]](https://smartcon.chain.link/) |Recent Advances in Consensus Research from Chainlink Labs. | [{recording 🎥}](https://www.youtube.com/watch?v=iZjfYRH4fVM) |
 | [[Science and Engineering of Consensus 2022]](https://tselab.stanford.edu/workshop-sbc22/), invited speaker | Maximal Extractable Value (MEV) Protection on a DAG | [{recording 🎥}](https://www.youtube.com/watch?v=9WLoJRrnTsA&list=PL4XSNxeZhdqBBgqqokIdK4PcyPSl6t0rQ&index=6) <br> [Fino](https://arxiv.org/abs/2208.00940)  | 
 | [[SmartCon22]](https://smartcon.chain.link/) | Privacy-Preserving Oracles with DECO | [{recording 🎥}](https://www.youtube.com/watch?v=eJqZQ2_VBzo) |
-| [[Rise Lab seminar, Berkeley, 2022]](https://rise.cs.berkeley.edu/events/), invited speaker | | Connecting Blockchains and the World. | |
-| [[ICL seminar, 2022]](https://lsds.doc.ic.ac.uk/seminars), invited speaker | | Connecting Blockchains and the World. | |
+| [[Rise Lab seminar, Berkeley, 2022]](https://rise.cs.berkeley.edu/events/), invited speaker | Connecting Blockchains and the World. | |
+| [[ICL seminar, 2022]](https://lsds.doc.ic.ac.uk/seminars), invited speaker | Connecting Blockchains and the World. | |
 | [[ICDCS 2021]](https://icdcs2021.us/keynotes.html), conference keynote speaker | Tech Transfer Stories and Takeaways. |  |
 [[Cornell dept. colloquium, 2021]](https://www.cs.cornell.edu/content/tech-transfer-stories-and-takeaways) , invited speaker | Tech Transfer Stories and Takeaways. |  |
 [[DISC 2021]](http://www.disc-conference.org/wp/disc2021/program/) , conference keynote invited speaker | Tech Transfer Stories and Takeaways. | [{recording 🎥}](https://www.youtube.com/watch?v=9RRUQHymcJA)  |
