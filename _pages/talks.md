@@ -12,8 +12,8 @@ author_profile: true
 | [[Middleware 2025]](https://middleware-conf.github.io/2025/program/keynote-1/), conference keynote speaker  | From Libra to Space. |  |
 | [[CMU CyLab distinguished seminar]](https://www.cylab.cmu.edu/events/2025/09/08-seminar-malkhi.html), 2025  invited speaker | Research Advances in Scaling Byzantine Consensus. |  |
 | [[BASS’25]](https://lu.ma/BASS25) (workshop of [[SBC 2025]](https://www.sbc-conference.com/2025/)), invited speaker | SpaceComputer: Building Orbital Root of Trust with State-of-Art Technology. | [[{recording 🎥}]](https://www.youtube.com/watch?v=izADgtvgZnM&t=203s) [[{blogpost}]](https://blog.spacecomputer.io/recap-building-the-orbital-root-of-trust-w-dahlia-malkhi/) |
-| [[Sky Seminar Series, UC Berkeley]](https://sky.cs.berkeley.edu/events/), 2025 invited speaker | Research Advances in Scaling BFT Consensus.  | (canceled due to accident injury) |
-| [[ACM International Systems and Storage Conference (SYSTOR)]](https://www.systor.org/2024/attend/), 2024 conference keynote speaker | Research Advances in Scaling BFT Consensus. |  |
+| [[Sky Seminar Series, UC Berkeley]](https://sky.cs.berkeley.edu/events/) 2025, invited speaker | Research Advances in Scaling BFT Consensus.  | (canceled due to accident injury) |
+| [[ACM International Systems and Storage Conference (SYSTOR 2024)]](https://www.systor.org/2024/attend/), conference keynote speaker | Research Advances in Scaling BFT Consensus. |  |
 | [[Financial Crypto 2024]](https://fc24.ifca.ai/program.html), conference keynote speaker | Research Advances in Scaling BFT Consensus. |  |
 | [[SmartCon23]](https://smartcon.chain.link/), invited speaker | Recent Advances in Consensus Research from Chainlink Labs. | [[{recording 🎥}]](https://www.youtube.com/watch?v=iZjfYRH4fVM)  |
 | [[NorCalDB Day 2023]](https://www.microsoft.com/en-us/research/event/norcaldb-2023/), invited speaker | Unexpected Lessons from Production Systems Impacting the Foundations of Distributed Computing. |  |
