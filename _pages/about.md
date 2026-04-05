@@ -50,10 +50,7 @@ Her research spans broad aspects of reliability and security of distributed syst
 -   [Coinbase](https://www.coinbase.com/blog/coinbase-establishes-independent-advisory-board-on-quantum-computing-and-blockchain),  Independent Advisory Board on Quantum Computing and Blockchain, established 2026\.
 -   ACM SIGOPS Annual Technical Conference (ATC) Steering Committee, 2026-present.
 -   [IEEE TCDP Outstanding Technical Achievement Award](https://tc.computer.org/tcdp/awardrecipients/), 2021.
--   [ACM Charles P. "Chuck" Thacker Breakthrough in Computing Award](https://awards.acm.org/thacker), 2020-2025.
-  * Chair 2023-2025  
-  * Vice-chair 2021-2023  
-  * Member 2020-2021  
+-   [ACM Charles P. "Chuck" Thacker Breakthrough in Computing Award](https://awards.acm.org/thacker), 2020-2025 (chair 2025).
 -   Advisory board member of [Cryptoeconomic Systems](https://cryptoeconomicsystems.pubpub.org/), 2019-present.
 -   Co-chair of the Simons Institute [Advisory Board](https://simons.berkeley.edu/people/advisory), 2019-2022.
 -   ACM fellow, 2011.
