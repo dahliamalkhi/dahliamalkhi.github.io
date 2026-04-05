@@ -11,6 +11,9 @@ author_profile: true
 | Paper | [📄-paper PDF] <br> [🛜 -related post] <br>   [🎥-recorded presentation] |
 | :--- | :-- | 
 | **2026** ||
+|*SPIDER: Two Server Functionality for the Cost of Zero.*<br> Kali Hale, Ofir Dvir, Javin Zipkin, Diviakant Agrawal, Dahlia Malkhi. | Coming soon. |
+| *Finding Nemo-Nemo: CFT DAG-based Consensus in the WAN.<br> Rithwik Kerur, Pasindu Tennage, Philipp Jovanovic, Dahlia Malkhi, Alberto Sonnino, Igor Zablotchi. | Coming soon. |
+| *Lyte Quorum: Off-Chain Ready Smart Contract Hosted with Choice.*<br> Hao Hao, Dahlia Malkhi, Maofan Yin, Lizan Zhou. <br> Lyquor Labs, 2025. |  [[📄-arXiv]](https://arxiv.org/abs/2509.23448) |
 | *Rafture: Erasure-coded Raft with Post-Dissemination Pruning*.<br>Rithwik Kerur, Divyakant Agrawal, Michael K. Reiter, Dahlia Malkhi. | [[📄-arXiv]](https://arxiv.org/abs/2603.23745) |
 | *Space Fabric: A Satellite-Enhanced Trusted Execution Architecture*.<br> Filip Rezabek, Dahlia Malkhi, Amir Yahalom. | [[📄-arXiv]](https://arxiv.org/abs/2603.24761) |
 | **2025** ||
