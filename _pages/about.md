@@ -16,14 +16,25 @@ Dr. Malkhi is a Professor of Computer Science and head of
 [Foundations of Financial Technology ("Fftech") research lab](https://fiftech.cs.ucsb.edu/),
 UC Santa Barbara (2024-).
 
-Dr. Malkhi's work over two decades brought scientific innovation into fruition in several industrial leadership positions. She serves as academic advisor in various projects, including [SpaceComputer](https://www.spacecomputer.io/), [Lyquor Labs](https://www.linkedin.com/company/lyquor-labs/posts/?feedView=all),
-[Nubit|Bitcoin Thunderbolt](https://www.nubit.org/), 
-[Espresso Systems](https://www.espressosys.com/), 
-and [Chainlink Labs](https://chainlinklabs.com/).
+Dr. Malkhi's work over two decades brought scientific innovation into fruition in several industrial leadership positions. She serves as academic advisor in various capacities, including:
+* [Coinbase](https://www.coinbase.com/blog/coinbase-establishes-independent-advisory-board-on-quantum-computing-and-blockchain), Independent Advisory Board on Quantum Computing and Blockchain, established 2026\.  
+* [Chainlink Labs](https://chainlinklabs.com/),   
+  * Academic advisor, 2025-present  
+  * Distinguished Scientist, 2023-2025  
+* StableClear LTD  
+  * Distinguished Scientist, 2025-present  
+* [SpaceComputer IO](https://spacecomputer.io/)  
+  * Academic advisor, 2024-present  
+* [Lyquor Labs](https://lyquor.xyz/)   
+  * Academic advisor, 2024-present  
+* [Nubit Thenderbolt](https://www.nubit.org/)  
+  * Academic advisor, 2024-present  
+* [Espresso Systems](https://www.espressosys.com/)  
+  * Academic advisor, 2022-present  
+* [Cryptoeconomic Systems](https://cryptoeconomicsystems.pubpub.org/), advisory board member, 2019-present.  
 
 Formerly, 
-she served as Distinguished Scientist of [Chainlink Labs](https://chainlinklabs.com/) (2022-2025), 
-and was the CTO of [Diem Association](https://www.diem.com/en-us/) and Lead Researcher at [Novi Financial](https://about.fb.com/news/2020/05/welcome-to-novi/) (2019-2022). In 2014, she co-founded [VMware Research](https://octo.vmware.com/introduction-vrg/) and became a Principal Researcher at VMware (2014-2019). Prior to that, Malkhi was a partner principal researcher at Microsoft Research (2004-2014), a tenured Associate Professor of the Hebrew University of Jerusalem (1999-2007), and a senior researcher at AT&T Labs (1995-1999).
+she was the CTO of [Diem Association](https://www.diem.com/en-us/) and Lead Researcher at [Novi Financial](https://about.fb.com/news/2020/05/welcome-to-novi/) (2019-2022). In 2014, she co-founded [VMware Research](https://octo.vmware.com/introduction-vrg/) and became a Principal Researcher at VMware (2014-2019). Prior to that, Malkhi was a partner principal researcher at Microsoft Research (2004-2014), a tenured Associate Professor of the Hebrew University of Jerusalem (1999-2007), and a senior researcher at AT&T Labs (1995-1999).
 
 Her research spans broad aspects of reliability and security of distributed systems, recently with focus on blockchains and advances in financial technology. Her work resulted in over [200 publications](https://scholar.google.com/citations?user=A_VZ8N0AAAAJ&hl=en) as well as a strong impact on computing technology. A selected sample of technologies she participated in creating includes: 
 
@@ -36,10 +47,13 @@ Her research spans broad aspects of reliability and security of distributed syst
 
 # Selected academic roles and distinctions:
 
--   [Coinbase Independent Advisory Board on Quantum Computing and Blockchain](https://www.coinbase.com/blog/coinbase-establishes-independent-advisory-board-on-quantum-computing-and-blockchain), established 2026.
+-   [Coinbase](https://www.coinbase.com/blog/coinbase-establishes-independent-advisory-board-on-quantum-computing-and-blockchain),  Independent Advisory Board on Quantum Computing and Blockchain, established 2026\.
 -   ACM SIGOPS Annual Technical Conference (ATC) Steering Committee, 2026-present.
 -   [IEEE TCDP Outstanding Technical Achievement Award](https://tc.computer.org/tcdp/awardrecipients/), 2021.
--   Vice-chair, [ACM Charles P. "Chuck" Thacker Breakthrough in Computing Award](https://awards.acm.org/thacker), 2020-2025.
+-   [ACM Charles P. "Chuck" Thacker Breakthrough in Computing Award](https://awards.acm.org/thacker), 2020-2025.
+  * Chair 2023-2025  
+  * Vice-chair 2021-2023  
+  * Member 2020-2021  
 -   Advisory board member of [Cryptoeconomic Systems](https://cryptoeconomicsystems.pubpub.org/), 2019-present.
 -   Co-chair of the Simons Institute [Advisory Board](https://simons.berkeley.edu/people/advisory), 2019-2022.
 -   ACM fellow, 2011.
