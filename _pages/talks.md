@@ -4,8 +4,6 @@ permalink: "/talks/"
 layout: archive
 author_profile: true
 ---
-# Keynotes 
-
 
 | Venue / Date | Presentation title | Recording link / Other notes |
 | :---- | :---- | :---- |
