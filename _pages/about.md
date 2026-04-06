@@ -18,7 +18,7 @@ UC Santa Barbara (2024-).
 
 A sought-out expert in distributed systems, she serves as academic advisor in various capacities, including:
 * [Coinbase](https://www.coinbase.com/blog/coinbase-establishes-independent-advisory-board-on-quantum-computing-and-blockchain), Independent Advisory Board on Quantum Computing and Blockchain, established 2026\.  
-* [Chainlink Labs](https://chainlinklabs.com/), academic advisor, 2025-present and distinguished scientist, 2023-2025. 
+* [Chainlink Labs](https://chainlinklabs.com/), academic advisor, 2025-present, and distinguished scientist, 2023-2025. 
 * StableClear LTD, distinguished scientist, 2025-present.
 * [SpaceComputer IO](https://spacecomputer.io/), academic advisor, 2024-present.
 * [Lyquor Labs](https://lyquor.xyz/), academic advisor, 2024-present.
