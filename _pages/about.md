@@ -25,10 +25,6 @@ Dr. Malkhi is an ACM Fellow (2011) and recipient of numerous honors, including t
 
 # Technology Impact
 
-I enjoy working on questions that emerge from the engineering of real systems. 
-I spent the past two decades working on bringing scientific innovation into fruition in several leading industrial settings. 
-Below, I tell the stories of four technologies I participated in creating.
-
 ## HotStuff at VMware 2016 and DiemBFT at Diem(Libra) 2019
 
 Renewed interest in the Blockchain world on scaling and robustifying the long standing problem of
