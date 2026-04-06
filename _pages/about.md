@@ -25,7 +25,7 @@ Dr. Malkhi is an ACM Fellow (2011) and recipient of numerous honors, including t
 
 # Technology Impact
 
-## HotStuff at VMware 2016 and DiemBFT at Diem(Libra) 2019
+## HotStuff 
 
 Renewed interest in the Blockchain world on scaling and robustifying the long standing problem of
 asynchronous Byzantine Fault Tolerant (BFT) Consensus. 
@@ -59,7 +59,7 @@ linearity, but (and perhaps mostly) due to its simplicity and developer-friendly
 Diem(Libra) adopted it to drive the blockchain infrastructure, as did (that we know of) Flow, Celo,
 and Cypherium. 
 
-## Flexible Paxos at VMware 2016
+## Flexible Paxos 
 
 In the summer of 2016, I hosted a research intern named Heidi Howard from
 Cambridge, UK. I told her about the CorfuDB protocol and encouraged her to think
@@ -88,7 +88,7 @@ as is
  of YouTube's distributed MySQL backbone.
  
 
-## CorfuDB at Microsoft 2012 and at VMware 2014
+## CorfuDB 
 
 In 2012, [Phil Bernstein](https://en.wikipedia.org/wiki/Phil_Bernstein) approached me at Microsoft Research with the following
 observation. RAM has grown cheap/large enough to hold a complete database index
@@ -121,7 +121,7 @@ At Facebook, CorfuDB was re-engineered in
 You might wonder what happened to Phil's in-memory fully replicated DB. Several years later, it became the backbone of the SQL Azure cloud database.
 
 
-## Fairplay at the Hebrew University of Jerusalem 2004
+## Fairplay 
 
 In 2004, Noam Nisan and I asked ourselves whether cryptographic primitives which
 were considered completely impractical are actually becoming practical. With my 
@@ -139,3 +139,5 @@ decade a wave of crypto-engineering projects which bring crypto theory into
 practice, including heavy crypto methods like oblivious RAM, ZK proofs and PCP.
 
 # [Academic descendants]({{ base_path }}/descendants/)
+
+# [Keynotes]({{ base_path }}/talks/)
