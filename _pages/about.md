@@ -16,25 +16,17 @@ Dr. Malkhi is a Professor of Computer Science and head of
 [Foundations of Financial Technology ("Fftech") research lab](https://fiftech.cs.ucsb.edu/),
 UC Santa Barbara (2024-).
 
-Dr. Malkhi's work over two decades brought scientific innovation into fruition in several industrial leadership positions. She serves as academic advisor in various capacities, including:
+A sought-out expert in distributed systems, she serves as academic advisor in various capacities, including:
 * [Coinbase](https://www.coinbase.com/blog/coinbase-establishes-independent-advisory-board-on-quantum-computing-and-blockchain), Independent Advisory Board on Quantum Computing and Blockchain, established 2026\.  
-* [Chainlink Labs](https://chainlinklabs.com/),   
-  * Academic advisor, 2025-present  
-  * Distinguished Scientist, 2023-2025  
-* StableClear LTD  
-  * Distinguished Scientist, 2025-present  
-* [SpaceComputer IO](https://spacecomputer.io/)  
-  * Academic advisor, 2024-present  
-* [Lyquor Labs](https://lyquor.xyz/)   
-  * Academic advisor, 2024-present  
-* [Nubit Thenderbolt](https://www.nubit.org/)  
-  * Academic advisor, 2024-present  
-* [Espresso Systems](https://www.espressosys.com/)  
-  * Academic advisor, 2022-present  
+* [Chainlink Labs](https://chainlinklabs.com/), academic advisor, 2025-present and distinguished scientist, 2023-2025. 
+* StableClear LTD, distinguished scientist, 2025-present.
+* [SpaceComputer IO](https://spacecomputer.io/), academic advisor, 2024-present.
+* [Lyquor Labs](https://lyquor.xyz/), academic advisor, 2024-present.
+* [Nubit Thenderbolt](https://www.nubit.org/), academic advisor, 2024-present.
+* [Espresso Systems](https://www.espressosys.com/), academic advisor, 2022-present.
 * [Cryptoeconomic Systems](https://cryptoeconomicsystems.pubpub.org/), advisory board member, 2019-present.  
 
-Formerly, 
-she was the CTO of [Diem Association](https://www.diem.com/en-us/) and Lead Researcher at [Novi Financial](https://about.fb.com/news/2020/05/welcome-to-novi/) (2019-2022). In 2014, she co-founded [VMware Research](https://octo.vmware.com/introduction-vrg/) and became a Principal Researcher at VMware (2014-2019). Prior to that, Malkhi was a partner principal researcher at Microsoft Research (2004-2014), a tenured Associate Professor of the Hebrew University of Jerusalem (1999-2007), and a senior researcher at AT&T Labs (1995-1999).
+Dr. Malkhi's work over two decades brought scientific innovation into fruition in several industrial leadership positions. Formerly, she served as CTO of [Diem Association](https://www.diem.com/en-us/) and Lead Researcher at [Novi Financial](https://about.fb.com/news/2020/05/welcome-to-novi/) (2019-2022). In 2014, she co-founded [VMware Research](https://octo.vmware.com/introduction-vrg/) and became a Principal Researcher at VMware (2014-2019). Prior to that, Malkhi was a partner principal researcher at Microsoft Research (2004-2014), a tenured Associate Professor of the Hebrew University of Jerusalem (1999-2007), and a senior researcher at AT&T Labs (1995-1999).
 
 Her research spans broad aspects of reliability and security of distributed systems, recently with focus on blockchains and advances in financial technology. Her work resulted in over [200 publications](https://scholar.google.com/citations?user=A_VZ8N0AAAAJ&hl=en) as well as a strong impact on computing technology. A selected sample of technologies she participated in creating includes: 
 
@@ -43,7 +35,6 @@ Her research spans broad aspects of reliability and security of distributed syst
 * Co-inventor of [Flexible Paxos](https://arxiv.org/abs/1608.06696), the technology behind [Log Device](https://logdevice.io/docs/Consensus.html)
 * Creator of [CorfuDB](https://github.com/CorfuDB/CorfuDB), a database-less database driving VMware’s NSX-T distributed control plane
 * Co-lead of the [FairPlay project](https://www.cs.huji.ac.il/project/Fairplay/), the pioneering materialization of secure multi-party computation
-
 
 # Selected academic roles and distinctions:
 
