@@ -9,18 +9,20 @@ Graduate students at [UC Santa Barbara](https://cs.ucsb.edu/people/faculty/dahli
 
 | PhD Student |  graduation year |  Updates |
 | :--- | :--- | :--- | 
-| [Nir Chemaya](https://sites.google.com/view/nir-chemaya/home) | economics, 2025 | joined Ben-Gurion University, 2025 |
+| Maksym Ioffe | 2030 (expected) | | 
+| Shaunak Girishant Umarkhedi | 2030 (expected) | | 
 | Rithwik Kerur | 2028 (expected) |  | 
 | Kali Hale | 2028 (expected) |  | 
+| [Nir Chemaya](https://sites.google.com/view/nir-chemaya/home) | 2025 (economics) | joined Ben-Gurion University, 2025 |
 
 | MSc Student |  degree and year |  Updates |
 | :--- | :--- | :--- | 
-| Swathi Bhat | Master, 2025 | joined Arista, 2025 | 
-| Eirik (Jiaming) Xu | Master, 2026 | joined Tik Tok, 2026 |
-| Ofir Dvir | Master, 2026 | joined NVidia, 2026 |
 | Kaiyang Chang | Master, 2027 (expected) |  | 
 | Hugo Lin | Master, 2026 (expected) | | 
 | Tom Shangguan | MS/BS, 2026 (expected) | |
+| Eirik (Jiaming) Xu | Master, 2026 | joined Tik Tok, 2026 |
+| Ofir Dvir | Master, 2026 | joined NVidia, 2026 |
+| Swathi Bhat | Master, 2025 | joined Arista, 2025 | 
 
 Interns at [Chainlink Labs](https://chainlinklabs.com):
 
@@ -38,11 +40,11 @@ Interns at [Novi](http://novi.com):
 
 | Intern |  Grad-school | Internship Year | Updates |
 | :--- | :--- | :-- | :--- |
-[Oded Naor](https://www.linkedin.com/in/oded-naor/?originalSubdomain=il) | Technion | 2019 | |
 [Erica Blum](http://www.cs.umd.edu/~erblum/) | UMD | 2020 | |
 [Suyash Gupta](https://gupta-suyash.github.io/) | UC Davis | 2020 | postdoc at UC Berkeley |
 [Zhuolun (Daniel) Xiang](https://sites.google.com/site/danielxiangzl/) | UIUC | 2020 | postdoc at CMU |
 [Shir Cohen](https://www.linkedin.com/in/shir-cohen/?originalSubdomain=il) | Technion | 2020 | |
+[Oded Naor](https://www.linkedin.com/in/oded-naor/?originalSubdomain=il) | Technion | 2019 | |
 
 Interns at [VRG](http://research.vmware.com):
 
