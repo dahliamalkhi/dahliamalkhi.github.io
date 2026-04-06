@@ -10,46 +10,18 @@ header:
 #- "/about.html"
 ---
 
-# Short bio
+## Short Bio
 
-Dr. Malkhi is a Professor of Computer Science and head of 
-[Foundations of Financial Technology ("Fftech") research lab](https://fiftech.cs.ucsb.edu/),
-UC Santa Barbara (2024-).
+Dr. Dahlia Malkhi is a Professor of Computer Science at the University of California, Santa Barbara, and head of the [Foundations of Financial Technology (Fftech) Research Lab](https://fiftech.cs.ucsb.edu/) (2024–). She is a leading expert in distributed systems, with a focus on reliability, security, blockchain technologies, and financial infrastructure.
 
-A sought-out expert in distributed systems, she serves as academic advisor in various capacities, including:
-* [Coinbase](https://www.coinbase.com/blog/coinbase-establishes-independent-advisory-board-on-quantum-computing-and-blockchain), Independent Advisory Board on Quantum Computing and Blockchain, established 2026\.  
-* [Chainlink Labs](https://chainlinklabs.com/), academic advisor, 2025-present, and distinguished scientist, 2023-2025. 
-* StableClear LTD, distinguished scientist, 2025-present.
-* [SpaceComputer IO](https://spacecomputer.io/), academic advisor, 2024-present.
-* [Lyquor Labs](https://lyquor.xyz/), academic advisor, 2024-present.
-* [Nubit Thenderbolt](https://www.nubit.org/), academic advisor, 2024-present.
-* [Espresso Systems](https://www.espressosys.com/), academic advisor, 2022-present.
-* [Cryptoeconomic Systems](https://cryptoeconomicsystems.pubpub.org/), advisory board member, 2019-present.  
+Over a career spanning more than two decades, Dr. Malkhi has bridged foundational research with large-scale industrial systems through senior leadership roles across academia and industry. She previously served as Chief Technology Officer of the [Diem Association](https://www.diem.com/en-us/) and Lead Researcher at [Novi Financial](https://about.fb.com/news/2020/05/welcome-to-novi/) (2019–2022). Prior to that, she co-founded [VMware Research](https://octo.vmware.com/introduction-vrg/) and was a Principal Researcher at VMware (2014–2019). Earlier, she was a Partner Principal Researcher at Microsoft Research (2004–2014), a tenured Associate Professor at the Hebrew University of Jerusalem (1999–2007), and a Senior Researcher at AT&T Labs (1995–1999).
 
-Dr. Malkhi's work over two decades brought scientific innovation into fruition in several industrial leadership positions. Formerly, she served as CTO of [Diem Association](https://www.diem.com/en-us/) and Lead Researcher at [Novi Financial](https://about.fb.com/news/2020/05/welcome-to-novi/) (2019-2022). In 2014, she co-founded [VMware Research](https://octo.vmware.com/introduction-vrg/) and became a Principal Researcher at VMware (2014-2019). Prior to that, Malkhi was a partner principal researcher at Microsoft Research (2004-2014), a tenured Associate Professor of the Hebrew University of Jerusalem (1999-2007), and a senior researcher at AT&T Labs (1995-1999).
+Dr. Malkhi’s research has produced over [200 publications](https://scholar.google.com/citations?user=A_VZ8N0AAAAJ&hl=en) and has had lasting impact on modern distributed computing. She is a co-inventor of [HotStuff](https://arxiv.org/abs/1803.05069), a foundational consensus protocol that underpins the [Diem blockchain core engine](https://developers.diem.com/docs/technical-papers/state-machine-replication-paper/) and the [Aptos blockchain core engine](https://aptos.dev/reference/glossary/#aptosbft), among others. Her contributions also include co-inventing [Flexible Paxos](https://arxiv.org/abs/1608.06696), which underlies systems such as [LogDevice](https://logdevice.io/docs/Consensus.html), creating [CorfuDB](https://github.com/CorfuDB/CorfuDB), a database-less storage system used in VMware’s NSX-T distributed control plane, co-founding [VMware Blockchain](https://research.vmware.com/projects/vmware-blockchain), and co-leading the [FairPlay project](https://www.cs.huji.ac.il/project/Fairplay/), one of the earliest practical implementations of secure multiparty computation.
 
-Her research spans broad aspects of reliability and security of distributed systems, recently with focus on blockchains and advances in financial technology. Her work resulted in over [200 publications](https://scholar.google.com/citations?user=A_VZ8N0AAAAJ&hl=en) as well as a strong impact on computing technology. A selected sample of technologies she participated in creating includes: 
+In parallel with her academic work, Dr. Malkhi serves as a sought-after advisor across the blockchain and financial technology ecosystem. Her roles include serving on the [Coinbase Independent Advisory Board on Quantum Computing and Blockchain](https://www.coinbase.com/blog/coinbase-establishes-independent-advisory-board-on-quantum-computing-and-blockchain) (established 2026), academic advisor to [Chainlink Labs](https://chainlinklabs.com/) (2025–present) and former Distinguished Scientist (2023–2025), Distinguished Scientist at StableClear LTD (2025–present), and advisor to [SpaceComputer IO](https://spacecomputer.io/), [Lyquor Labs](https://lyquor.xyz/), [Nubit Thunderbolt](https://www.nubit.org/), and [Espresso Systems](https://www.espressosys.com/). She has also served on the advisory board of [Cryptoeconomic Systems](https://cryptoeconomicsystems.pubpub.org/) since 2019.
 
-* Co-inventor of [HotStuff](https://arxiv.org/abs/1803.05069), , the golden standard for blockchain design, driving the [Diem blockchain core engine](https://developers.diem.com/docs/technical-papers/state-machine-replication-paper/), the [Aptos blockchain core engine](https://aptos.dev/reference/glossary/#aptosbft), and many other blockchains 
-* Co-founder of [VMware blockchain](https://research.vmware.com/projects/vmware-blockchain)
-* Co-inventor of [Flexible Paxos](https://arxiv.org/abs/1608.06696), the technology behind [Log Device](https://logdevice.io/docs/Consensus.html)
-* Creator of [CorfuDB](https://github.com/CorfuDB/CorfuDB), a database-less database driving VMware’s NSX-T distributed control plane
-* Co-lead of the [FairPlay project](https://www.cs.huji.ac.il/project/Fairplay/), the pioneering materialization of secure multi-party computation
+Dr. Malkhi is an ACM Fellow (2011) and recipient of numerous honors, including the [IEEE TCDP Outstanding Technical Achievement Award](https://tc.computer.org/tcdp/awardrecipients/) (2021). She has played a leading role in the research community, including serving on the ACM SIGOPS ATC Steering Committee (2026–present), chairing the [ACM Charles P. “Chuck” Thacker Breakthrough in Computing Award](https://awards.acm.org/thacker) (2025), and previously co-chairing the Simons Institute Advisory Board (2019–2022). She has also served as program chair for major conferences including [USENIX ATC 2019](https://www.usenix.org/conferences/byname/131), [LADIS 2012](http://ladisworkshop.org/), [Locality 2007](http://research.microsoft.com/en-us/um/people/moscitho/locality/), [PODC 2006](http://www.podc.org/podc2006/), [Locality 2005](http://www.mimuw.edu.pl/~disc2005/index.php?page=workshops), and [DISC 2002](http://www.disc-conference.org/disc2002/index.html).
 
-# Selected academic roles and distinctions:
-
--   [Coinbase](https://www.coinbase.com/blog/coinbase-establishes-independent-advisory-board-on-quantum-computing-and-blockchain),  Independent Advisory Board on Quantum Computing and Blockchain, established 2026\.
--   ACM SIGOPS Annual Technical Conference (ATC) Steering Committee, 2026-present.
--   [IEEE TCDP Outstanding Technical Achievement Award](https://tc.computer.org/tcdp/awardrecipients/), 2021.
--   [ACM Charles P. "Chuck" Thacker Breakthrough in Computing Award](https://awards.acm.org/thacker), 2020-2025 (chair 2025).
--   Advisory board member of [Cryptoeconomic Systems](https://cryptoeconomicsystems.pubpub.org/), 2019-present.
--   Co-chair of the Simons Institute [Advisory Board](https://simons.berkeley.edu/people/advisory), 2019-2022.
--   ACM fellow, 2011.
--   Associate editor of the Distributed Computing Journal, 2002-2018.
--   Associate editor of IEEE Transactions on Dependable and Secure Computing (TDSC), 2014-2016.
--   IBM Faculty award recipient, 2003 and 2004.
--   German-Israeli Foundation (G.I.F.) Young Scientist career award, 2002.
--   Program chair for [Usenix ATC 2019](https://www.usenix.org/conferences/byname/131), [LADIS 2012](http://ladisworkshop.org/) , [Locality 2007](http://research.microsoft.com/en-us/um/people/moscitho/locality/), [PODC 2006](http://www.podc.org/podc2006/), [Locality 2005](http://www.mimuw.edu.pl/~disc2005/index.php?page=workshops) and [DISC 2002](http://www.disc-conference.org/disc2002/index.html).
 
 # Technology Impact
 
