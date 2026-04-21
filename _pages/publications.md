@@ -11,6 +11,7 @@ author_profile: true
 | Paper | [📄-paper PDF] <br> [🛜 -related post] <br>   [🎥-recorded presentation] |
 | :--- | :-- | 
 | **2026** ||
+| Quantum Computing & Blockchain. <br> Prof. Scott Aaronson (UT Austin), Prof. Dan Boneh (Stanford), Justin Drake (Ethereum Foundation), Prof. Sreeram Kannan (Eigen Labs and University of Washington), Prof. Yehuda Lindell (Coinbase and Bar-Ilan University), Prof. Dahlia Malkhi (UCSB).<br><br>Coinbase Quantum Advisory Council, 2026. | [📄-Report](https://assets.ctfassets.net/sygt3q11s4a9/6EjYavuGdtJDYCqaJrASj9/9f464a8bf26f44bd6c85710fe7e4a29f/Quantum_Computing_and_Blockchain_v10.3_15April2026.pdf) | 
 |*SPIDER: Two Server Functionality for the Cost of Zero.*<br> Kali Hale, Ofir Dvir, Javin Zipkin, Diviakant Agrawal, Dahlia Malkhi. | Coming soon. |
 | *Finding Nemo-Nemo: CFT DAG-based Consensus in the WAN.*<br> Rithwik Kerur, Pasindu Tennage, Philipp Jovanovic, Dahlia Malkhi, Alberto Sonnino, Igor Zablotchi. | [[📄-arXiv]](https://arxiv.org/abs/2604.08914) |
 | *Rafture: Erasure-coded Raft with Post-Dissemination Pruning*.<br>Rithwik Kerur, Divyakant Agrawal, Michael K. Reiter, Dahlia Malkhi. | [[📄-arXiv]](https://arxiv.org/abs/2603.23745) |
