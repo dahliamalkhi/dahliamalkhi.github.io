@@ -1,5 +1,5 @@
 ---
-title: Industyr Reports
+title: Industry Reports
 permalink: "/reports/"
 layout: single
 author_profile: true
@@ -20,7 +20,11 @@ author_profile: true
 | *DiemBFT: State Machine Replication in the Diem Blockchain* <br>The Diem Team, 2021 | [[📄 on developers.diem.com]](https://developers.diem.com/papers/diem-consensus-state-machine-replication-in-the-diem-blockchain/2021-08-17.pdf) | 
 
 ---
+<h4>Book chapters:</h4>
+<a href="https://read.amazon.com/kp/embed?asin=B07Z3LJCHW&preview=newtab&linkCode=kpe&ref_=cm_sw_r_kb_dp_o65VDbKBY12W6"><img class="alignnone  wp-image-1051" src="https://dahliamalkhi.files.wordpress.com/2019/11/5118xptsndl.jpg" alt="5118XPTsNDL" width="145" height="215" />     </a><a href="https://read.amazon.com/kp/embed?asin=B07D4MB52W&preview=newtab&linkCode=kpe&ref_=cm_sw_r_kb_dp_.-5VDbD1CS7G9"><img class="alignnone  wp-image-1053" src="https://dahliamalkhi.files.wordpress.com/2019/11/51qvgtxtvol.jpg" alt="51qVGTxtVoL" width="143" height="215" /></a>
 
+
+---
 {% if author.googlescholar %}
    You can also find my articles on <u><a href="{{author.googlescholar}}">my Google Scholar profile</a>.</u>
 {% endif %}

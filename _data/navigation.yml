@@ -22,8 +22,8 @@ main:
 #     - title: "Work Sampler"
 #       url: /techprofile/
 #
-  - title: "Books"
-    url: /books/    
+#  - title: "Books"
+#    url: /books/    
 
   - title: "Keynotes"
     url: /talks/    

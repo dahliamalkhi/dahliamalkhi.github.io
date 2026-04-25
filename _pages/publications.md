@@ -8,6 +8,9 @@ author_profile: true
 {% include base_path %}
  <base target="_blank">
 
+<h4><strong>Featured books</strong></h4>
+<a href="https://www.amazon.com/dp/1450372708/ref=cm_sw_em_r_mt_dp_U_J-VVDbCASWF85"><img src="https://dahliamalkhi.files.wordpress.com/2019/10/lam.jpg" width="150" height="225" /></a>
+
 | Paper | [📄-paper PDF] <br> [🛜 -related post] <br>   [🎥-recorded presentation] |
 | :--- | :-- | 
 | **2026** ||
