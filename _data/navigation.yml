@@ -4,7 +4,7 @@ main:
     url: /
 
   - title: "Blog"
-    url: /blog/
+    url: /posts/
 
 #  - title: "Blog grouped-by-categories"
 #    url: /categories/
@@ -42,5 +42,5 @@ posts:
       url: "/tags/"
     - title: "by year"
       url: "/posts/"
-    - title: "recent"
-      url: "/"
+#    - title: "recent"
+#      url: "/"
