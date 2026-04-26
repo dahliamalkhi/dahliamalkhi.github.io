@@ -1,6 +1,6 @@
 ---
 title: About me
-permalink: "/about/"
+permalink: "/"
 excerpt: dahlia malkhi -- profile and a short bio 
 author_profile: true
 header:
