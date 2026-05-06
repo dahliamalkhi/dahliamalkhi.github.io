@@ -112,14 +112,14 @@ PhD Thesis committee member:
 Hongbo Wen, 2027 (expected) | UCSB | 
 Robert McLaughlin, 2025 | UCSB | 
 Manuel José Ribeiro Vidigueira, 2025 | EPFL, Switzerland |
-Michael Wei | UCSD  |
-Leander Jehl |  University of Stavanger, Norway |
-Richar Ekwall | Federal Institute of Technology (EPFL), Switzerland |
-Adnan Agabria | Technion, Israel |
-David Breitgand | The Hebrew University of Jerusalem, Israel |
-Xavier Defago | Federal Institute of Technology (EPFL), Switzerland |
+Michael Wei 2017, | UCSD  |
+Leander Jehl, 2016 |  University of Stavanger, Norway |
+Richar Ekwall, 2007 | École Polytechnique Fédérale de Lausanne (EPFL), Switzerland |
+Adnan Agabria, 2002 | Technion – Israel Institute of TechnologyTechnion, Israel |
+David Breitgand, 2003 | The Hebrew University of Jerusalem, Israel |
+Xavier Defago, 2000 | Federal Institute of Technology (EPFL), Switzerland |
 Carlo Marcetti | Rome ``La Sapienza'', Italy |
-Ronen Kat | Beer-Sheva, Israel |
-Konstantin Shagin | Technion, Israel |
-Roie Melamed | Technion, Israel |
-Nuno Santos | Switzerland |
+Ronen Kat, 2007 | Ben-Gurion University of the Negev in Beer-Sheva, Israel |
+Konstantin Shagin, 2009 | Technion – Israel Institute of Technology, Israel |
+Roie Melamed, 2006 | Technion – Israel Institute of TechnologyTechnion, Israel |
+Nuno Santos, 2012 | École Polytechnique Fédérale de Lausanne (EPFL), Switzerland |

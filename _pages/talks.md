@@ -22,7 +22,7 @@ author_profile: true
 | [[SmartCon23]](https://smartcon.chain.link/) |Recent Advances in Consensus Research from Chainlink Labs. | [[{recording 🎥}]](https://www.youtube.com/watch?v=iZjfYRH4fVM) |
 | [[Science and Engineering of Consensus 2022]](https://tselab.stanford.edu/workshop-sbc22/), invited speaker | Maximal Extractable Value (MEV) Protection on a DAG | [[{recording 🎥}]](https://www.youtube.com/watch?v=9WLoJRrnTsA&list=PL4XSNxeZhdqBBgqqokIdK4PcyPSl6t0rQ&index=6) <br> [[Fino]](https://arxiv.org/abs/2208.00940)  | 
 | [[SmartCon22]](https://smartcon.chain.link/) | Privacy-Preserving Oracles with DECO | [[{recording 🎥}]](https://www.youtube.com/watch?v=eJqZQ2_VBzo) |
-| [[Rise Lab seminar, Berkeley, 2022]](https://rise.cs.berkeley.edu/events/), invited speaker | Connecting Blockchains and the World. | |
+| [[Sky Lab seminar, Berkeley, 2022]](https://sky.cs.berkeley.edu/2022-sky-seminar-schedule/), invited speaker | Connecting Blockchains and the World. | |
 | [[ICL seminar, 2022]](https://lsds.doc.ic.ac.uk/seminars), invited speaker | Connecting Blockchains and the World. | |
 | [[ICDCS 2021]](https://icdcs2021.us/keynotes.html), conference keynote speaker | Tech Transfer Stories and Takeaways. |  |
 [[Cornell dept. colloquium, 2021]](https://www.cs.cornell.edu/content/tech-transfer-stories-and-takeaways) , invited speaker | Tech Transfer Stories and Takeaways. |  |
@@ -39,7 +39,7 @@ author_profile: true
 | :--- | :--- | :-- | 
 | **Flexible BFT and New Approaches in Byzantine Fault Tolerance** | [[Chicago Booth 2019]](https://bfi.uchicago.edu/event/cryptocurrencies-and-blockchains-conference/), [[Richard M. Karp Distinguished Lecture 2019]](https://simons.berkeley.edu/rmklectures2019-fall-3), [[CES 2019]](https://cryptoeconomicsystems.pubpub.org/), [[BC '19]](https://crypto.iacr.org/2019/affevents/blockchain/page.html), [[Tokenomics 2019]](http://tokenomics2019.org/infoattendees/invitedspeakers), [[SHE256 Conference 2019]](https://www.recolor.io/) | [{recording 🎥}]](https://youtu.be/4np_2K8WNPU?t=4297) ; 
 |**BFT Reconfiguration** | [[Swiss Blockchain Summer School 2017]](https://blockchain-summer.epfl.ch/) ; |
-| **Beyond Paxos** |  [[BIRS 2016]](http://www.birs.ca/events/2016/5-day-workshops/) | [[{recording 🎥}]](http://www.birs.ca/events/2016/5-day-workshops/16w5152/videos/watch/201611290900-Malkhi.html) ; 
+| **Beyond Paxos** |  [[BIRS 2016]](https://archytas2.birs.ca/events/2016/5-day-workshops/16w5152) | [[{recording 🎥}]](http://www.birs.ca/events/2016/5-day-workshops/16w5152/videos/watch/201611290900-Malkhi.html) ; 
 | **Randomized Gossip Methods: From Grapevine to SWIM**  |  [[PWL Conference 2016]](http://pwlconf.org) <br>[{recording 🎥}]](https://youtu.be/Gxf5glthqrk?list=PLGRqfvsPiRShwIXMA5P3WR_9LgBOAdvw4)  |
 | **Foundations of Reliable Distributed Systems in Practice** | [[Women in Theory 2016]](https://womenintheory.wordpress.com/) ; |
 | **CorfuDB: Transactional Data Services over a Shared Log** | [[Princeton 2014]](https://www.cs.princeton.edu/events/event/corfudb-transactional-data-services-over-shared-log) ; |
