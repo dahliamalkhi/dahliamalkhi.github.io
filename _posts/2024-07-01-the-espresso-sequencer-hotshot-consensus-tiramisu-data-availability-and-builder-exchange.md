@@ -1,0 +1,13 @@
+---
+title: 'The Espresso Sequencer: HotShot Consensus, Tiramisu Data-Availability, and Builder-Exchange'
+date: 2024-07 00:00:00 -07:00
+permalink: "/posts/2024/07/2024-S5/"
+tags:
+- notification
+excerpt: The Espresso Sequencer: HotShot Consensus, Tiramisu Data-Availability, and Builder-Exchange.
+category:
+- news
+---
+authors: Jeb Bearer, Benedikt Bünz, Philippe Camacho, Binyi Chen, Ellie Davidson, Ben Fisch, Brendon Fish, Gus Gutoski, Fernando Krell, Chengyu Lin, Dahlia Malkhi, Kartik Nayak, Keyao Shen, Alex Xiong, Nathan Yospe, Sishan Long
+
+See 'The Espresso Sequencer: HotShot Consensus, Tiramisu Data-Availability, and Builder-Exchange' on eprint [https://eprint.iacr.org/2024/1189](https://eprint.iacr.org/2024/1189).

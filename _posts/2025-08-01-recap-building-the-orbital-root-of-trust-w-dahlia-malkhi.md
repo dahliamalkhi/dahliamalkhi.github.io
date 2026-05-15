@@ -1,0 +1,13 @@
+---
+title: 'Recap: Building the Orbital Root of Trust w/ Dahlia Malkhi'
+date: 2025-08 00:00:00 -07:00
+permalink: "/posts/2025/08/2025-S4/"
+tags:
+- notification
+excerpt: Recap: Building the Orbital Root of Trust w/ Dahlia Malkhi.
+category:
+- news
+---
+authors: Tara Jean
+
+See 'Recap: Building the Orbital Root of Trust w/ Dahlia Malkhi' on SpaceComputer [https://blog.spacecomputer.io/recap-building-the-orbital-root-of-trust-w-dahlia-malkhi/](https://blog.spacecomputer.io/recap-building-the-orbital-root-of-trust-w-dahlia-malkhi/).

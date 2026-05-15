@@ -1,0 +1,13 @@
+---
+title: 'Blue Paper - SpaceComputer'
+date: 2024-11 00:00:00 -07:00
+permalink: "/posts/2024/11/2024-S4/"
+tags:
+- notification
+excerpt: Blue Paper - SpaceComputer.
+category:
+- news
+---
+authors: Daniel Bar, Dahlia Malkhi, Matej Nemcek, Filip Rezabek
+
+See 'Blue Paper - SpaceComputer' on SpaceComputer [https://github.com/spacecomputer-io/research/blob/main/publications/blue-paper.pdf](https://github.com/spacecomputer-io/research/blob/main/publications/blue-paper.pdf).

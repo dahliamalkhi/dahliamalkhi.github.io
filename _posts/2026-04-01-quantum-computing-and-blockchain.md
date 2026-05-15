@@ -1,0 +1,13 @@
+---
+title: 'Quantum Computing & Blockchain'
+date: 2026-04 00:00:00 -07:00
+permalink: "/posts/2026/04/2026-S1/"
+tags:
+- notification
+excerpt: Quantum Computing & Blockchain.
+category:
+- news
+---
+authors: Scott Aaronson, Dan Boneh, Justin Drake, Sreeram Kannan, Yehuda Lindell, Dahlia Malkhi
+
+See 'Quantum Computing & Blockchain' on Coinbase [https://assets.ctfassets.net/sygt3q11s4a9/6EjYavuGdtJDYCqaJrASj9/9f464a8bf26f44bd6c85710fe7e4a29f/Quantum_Computing_and_Blockchain_v10.3_15April2026.pdf](https://assets.ctfassets.net/sygt3q11s4a9/6EjYavuGdtJDYCqaJrASj9/9f464a8bf26f44bd6c85710fe7e4a29f/Quantum_Computing_and_Blockchain_v10.3_15April2026.pdf).

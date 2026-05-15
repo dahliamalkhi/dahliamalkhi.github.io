@@ -1,0 +1,13 @@
+---
+title: 'Lyte Quorum: Off-Chain Ready Smart Contract Hosted with Choice'
+date: 2025-02 00:00:00 -07:00
+permalink: "/posts/2025/02/2025-S6/"
+tags:
+- notification
+excerpt: Lyte Quorum: Off-Chain Ready Smart Contract Hosted with Choice.
+category:
+- news
+---
+authors: Hao Hao, Dahlia Malkhi, Maofan Yin, Lizan Zhou
+
+See 'Lyte Quorum: Off-Chain Ready Smart Contract Hosted with Choice' on Lyquor [https://arxiv.org/abs/2509.23448](https://arxiv.org/abs/2509.23448).
