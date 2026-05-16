@@ -5,7 +5,7 @@ permalink: "/posts/2024/05/exploring/"
 tags:
 - notification
 - consensus
-excerpt: Exploring Consensus With Parallel Proposals: The Difference Between PBFT and BBCA-Chain.
+excerpt: Exploring Consensus With Parallel Proposals -- The Difference Between PBFT and BBCA-Chain.
 category:
 - post
 ---
