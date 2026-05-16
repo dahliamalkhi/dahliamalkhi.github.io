@@ -6,7 +6,7 @@ tags:
 - notification
 - interview
 - book
-excerpt: Enterprise Blockchain Has Arrived: Real Deployments. Real Value. Chapter 4, interview..
+excerpt: Enterprise Blockchain Has Arrived. Chapter 4, interview.
 category:
 - interview
 ---
