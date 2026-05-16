@@ -1,6 +1,6 @@
 ---
 title: 'Defragmenting Liquidity with Asynchronous and Synchronous Composability'
-date: 2024-11 00:00:00 -07:00
+date: 2024-11-01 00:00:00 -07:00
 permalink: "/posts/2024/11/defragmenting/"
 tags:
 - notification
