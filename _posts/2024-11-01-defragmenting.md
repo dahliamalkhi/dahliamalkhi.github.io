@@ -6,8 +6,9 @@ tags:
 - notification
 excerpt: Defragmenting Liquidity with Asynchronous and Synchronous Composability.
 category:
-- news
+- post
 ---
+
 authors: Espresso Systems R&D team
 
 See 'Defragmenting Liquidity with Asynchronous and Synchronous Composability' on Espresso Systems [https://hackmd.io/@EspressoSystems/composability-circ](https://hackmd.io/@EspressoSystems/composability-circ).
