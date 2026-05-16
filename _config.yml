@@ -103,6 +103,10 @@ category_archive:
 tag_archive:
   type: liquid
   path: /tags/
+  values:
+    author_profile: false
+    sidebar:
+      nav: "posts"
 
 url: https://dahliamalkhi.github.io
 baseurl: ''

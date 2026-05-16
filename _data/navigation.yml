@@ -43,4 +43,4 @@ posts:
 #    - title: "by year"
 #      url: "/posts/"
     - title: "recent"
-      url: "/"
+      url: "/posts/"
