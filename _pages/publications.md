@@ -18,7 +18,8 @@ author_profile: true
 |*SPIDER: Two Server Functionality for the Cost of Zero.*<br> Kali Hale, Ofir Dvir, Javin Zipkin, Diviakant Agrawal, Dahlia Malkhi. | Coming soon. |
 | *Finding Nemo-Nemo: CFT DAG-based Consensus in the WAN.*<br> Rithwik Kerur, Pasindu Tennage, Philipp Jovanovic, Dahlia Malkhi, Alberto Sonnino, Igor Zablotchi. | [[📄-arXiv]](https://arxiv.org/abs/2604.08914) |
 | *Rafture: Erasure-coded Raft with Post-Dissemination Pruning*.<br>Rithwik Kerur, Divyakant Agrawal, Michael K. Reiter, Dahlia Malkhi. | [[📄-arXiv]](https://arxiv.org/abs/2603.24761) |
-| *Space Fabric: A Satellite-Enhanced Trusted Execution Architecture*.<br> Filip Rezabek, Dahlia Malkhi, Amir Yahalom.<br> [[SpaceComputer]](https://spacecomputer.io), 2025. | [[📄-arXiv]](https://arxiv.org/abs/2603.23745) |
+| *Space Fabric: A Satellite-Enhanced Trusted Execution Architecture*.<br> Filip Rezabek, Dahlia Malkhi, Amir Yahalom.<br> [[SpaceComputer]](https://spacecomputer.io), <br> To be published at [Science of Blockchain
+Conference (SBC) 2026](https://www.sbc-conference.com/2026/). | [[📄-arXiv]](https://arxiv.org/abs/2603.23745) |
 | **2025** ||
 | *Lyte Quorum: Off-Chain Ready Smart Contract Hosted with Choice.*<br> Hao Hao, Dahlia Malkhi, Maofan Yin, Lizan Zhou. <br> [[Lyquor Labs]](https://lyquor.xyz/), 2025. |  [[📄-arXiv]](https://arxiv.org/abs/2509.23448) |
 | *Brief Announcement: Carry the Tail in Consensus Protocols*.<br>Dakai Kang, Suyash Gupta, Dahlia Malkhi, Mohammad Sadoghi. <br> Published at [[DISC2025]](https://www.disc-conference.org/wp/disc2025/). | [[📄-DISC'25 short paper]](https://www.dagstuhl.de/dagpub/978-3-95977-402-4) [[📄-arXiv]](https://arxiv.org/abs/2508.12173v1). <br> [[🛜 -*"Carry: HotStuff Linearity with Tail-Forking-Resilience"*]](https://decentralizedthoughts.github.io/2025-09-27-carry-the-tail/) |
