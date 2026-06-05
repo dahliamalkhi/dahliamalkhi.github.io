@@ -15,7 +15,7 @@ author_profile: true
 | :--- | :-- | 
 | **2026** ||
 | *Quantum Computing & Blockchain.* <br> Prof. Scott Aaronson (UT Austin), Prof. Dan Boneh (Stanford), Justin Drake (Ethereum Foundation), Prof. Sreeram Kannan (Eigen Labs and University of Washington), Prof. Yehuda Lindell (Coinbase and Bar-Ilan University), Prof. Dahlia Malkhi (UCSB).<br><br>Coinbase Quantum Advisory Council, 2026. | [📄-Report](https://assets.ctfassets.net/sygt3q11s4a9/6EjYavuGdtJDYCqaJrASj9/9f464a8bf26f44bd6c85710fe7e4a29f/Quantum_Computing_and_Blockchain_v10.3_15April2026.pdf) | 
-|*SPIDER: Two Server Functionality for the Cost of Zero.*<br> Kali Hale, Ofir Dvir, Javin Zipkin, Diviakant Agrawal, Dahlia Malkhi. | [[📄-ArXiv]](https://arxiv.org/abs/2605.21857) |
+|*SPIDER: Two Server Functionality for the Cost of Zero.*<br> Kali Hale, Ofir Dvir, Javin Zipkin, Diviakant Agrawal, Dahlia Malkhi. | [[📄-ArXiv]](https://arxiv.org/abs/2605.21857) <br> [[📄-ePrint]](https://eprint.iacr.org/2026/1134) |
 | *Finding Nemo-Nemo: CFT DAG-based Consensus in the WAN.*<br> Rithwik Kerur, Pasindu Tennage, Philipp Jovanovic, Dahlia Malkhi, Alberto Sonnino, Igor Zablotchi. | [[📄-arXiv]](https://arxiv.org/abs/2604.08914) |
 | *Rafture: Erasure-coded Raft with Post-Dissemination Pruning*.<br>Rithwik Kerur, Divyakant Agrawal, Michael K. Reiter, Dahlia Malkhi. | [[📄-arXiv]](https://arxiv.org/abs/2603.24761) |
 | *Space Fabric: A Satellite-Enhanced Trusted Execution Architecture*.<br> Filip Rezabek, Dahlia Malkhi, Amir Yahalom. [SpaceComputer](https://spacecomputer.io). <br> To be published at [Science of Blockchain Conference (SBC) 2026](https://www.sbc-conference.com/2026/). | [[📄-arXiv]](https://arxiv.org/abs/2603.23745) |
