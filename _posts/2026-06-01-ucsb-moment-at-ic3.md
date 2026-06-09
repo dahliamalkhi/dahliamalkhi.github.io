@@ -9,7 +9,7 @@ category:
 - news 
 ---
 
-🚀 Proud moment for UCSB at the IC3 Blockchain Camp 2026 at Princeton University (https://lnkd.in/eEcjstGE)!
+🚀 Proud moment for UCSB at the [IC3 Blockchain Camp 2026](https://ic3research.org/ic3-blockchain-camp-2026/) at Princeton University)!
 
 Congratulations to the outstanding UCSB students who represented our community and made their mark:
 
