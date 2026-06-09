@@ -4,7 +4,7 @@ date: 2026-06-09 00:00:00 -07:00
 permalink: "/posts/2026/06/ucsbatic3/"
 tags:
 - notification
-excerpt: Outstanding UCSB students made their mark at IC3
+excerpt: 1st hackathon prize and other accomplishments at IC3 camp, 2026
 category:
 - news 
 ---
