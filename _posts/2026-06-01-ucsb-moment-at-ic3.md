@@ -1,5 +1,5 @@
 ---
-title: 'Outstanding UCSB students made their mark at IC3 at the IC3 Blockchain Camp 2026'
+title: 'Outstanding UCSB students made their mark at the IC3 Blockchain Camp 2026'
 date: 2026-06-09 00:00:00 -07:00
 permalink: "/posts/2026/06/ucsbatic3/"
 tags:
