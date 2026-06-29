@@ -7,6 +7,11 @@ author_profile: true
 
 Graduate students at [UC Santa Barbara](https://cs.ucsb.edu/people/faculty/dahlia-malkhi):
 
+| Postdoc Researcher |  year |  Updates |
+| :--- | :--- | :--- | 
+| Nibesh Shreshta | 2026- ||
+| Ted (Maofan) Yin | 2022-2023 | CEO and co-founder, Lyquor Labs |
+
 | PhD Student |  graduation year |  Updates |
 | :--- | :--- | :--- | 
 | Maksym Ioffe | 2030 (expected) | | 
