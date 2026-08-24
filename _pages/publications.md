@@ -14,6 +14,7 @@ author_profile: true
 | Paper | [📄-paper PDF] <br> [🛜 -related post] <br>   [🎥-recorded presentation] |
 | :--- | :-- | 
 | **2026** ||
+| *eAVID: Asynchronous Verifiable Information Dispersal with Post-Dissemination Pruning*. <br> Rithwik Kerur, Dahlia Malkhi, Michael K. Reiter <br> Preprint at arXiv:2608.15469 |  [[arXiv:2608.15469]](https://arxiv.org/abs/2608.15469) |
 | *eAID: Elastic Asynchronous Information Dispersal with Post-Dissemination Pruning*. <br>Rithwik Kerur, Divyakant Agrawal, Dahlia Malkhi, Michael K. Reiter, Amit Wieder <br> [DISC 2026](https://www.disc-conference.org/wp/disc2026/), to appear. | [[📄-arXiv:2603.24761 (preprint)]](https://arxiv.org/abs/2603.24761) |
 | *Hermes: Low Tail-Latency Via Prefix Consensus*. <br> Alejandro Ranchal-Pedrosa, Dakai Kang, Neil Giridharan, Mohammad Sadoghi, Dahlia Malkhi, Ben Marsh. <br> Preprint at arXiv:2607.25916 | [[arXiv:2607.25916]](https://arxiv.org/pdf/2607.25916) | 
 | *Quintus: Two-round Good-case Information Theoretic BFT for n=5f+1.* <br> Chenyang Liu, Dahlia Malkhi, Kartik Nayak, and Nibesh Shrestha. <br> Preprint at ePrint:2026/1520 | [📄-ePrint:2026/1520](https://eprint.iacr.org/2026/1520) | 
