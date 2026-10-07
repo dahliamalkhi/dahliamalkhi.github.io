@@ -46,7 +46,7 @@ Interns at [Novi](http://novi.com):
 | Intern |  Grad-school | Internship Year | Updates |
 | :--- | :--- | :-- | :--- |
 [Erica Blum](http://www.cs.umd.edu/~erblum/) | UMD | 2020 | |
-[Suyash Gupta](https://gupta-suyash.github.io/) | UC Davis | 2020 | postdoc at UC Berkeley |
+[Suyash Gupta](https://gupta-suyash.github.io/) | UC Davis | 2020 | professor at U Oregon |
 [Zhuolun (Daniel) Xiang](https://sites.google.com/site/danielxiangzl/) | UIUC | 2020 | postdoc at CMU |
 [Shir Cohen](https://www.linkedin.com/in/shir-cohen/?originalSubdomain=il) | Technion | 2020 | |
 [Oded Naor](https://www.linkedin.com/in/oded-naor/?originalSubdomain=il) | Technion | 2019 | |
@@ -60,7 +60,7 @@ Interns at [VRG](http://research.vmware.com):
 [Alin Tomescu](http://people.csail.mit.edu/alinush/) | MIT | 2017, 2018 | researcher at VMware Research Group |
 [Dragos-Adrian Seredinschi](https://people.epfl.ch/dragos-adrian.seredinschi) | EPFL | 2017 | |
 [Soumya Basu](http://www.soumyabasu.com/) | Cornell | 2017 | |
-[Igor Zablotchi](https://www.linkedin.com/in/zablo) | EPFL | 2016  | postdoctoral researcher at MIT |
+[Igor Zablotchi](https://www.linkedin.com/in/zablo) | EPFL | 2016  | researcher at Mysten Labs |
 [Ling Ren](http://people.csail.mit.edu/renling/) | MIT | 2016 | faculty at UIUC |
 [Kartik Nayak](https://www.cs.umd.edu/~kartik/) | UMD | 2016 |  faculty at Duke  | 
 [Heidi Howard](http://hh360.user.srcf.net/blog/) | Cambridge | 2016 |  researcher at Microsoft Research, Cambridge, UK |
