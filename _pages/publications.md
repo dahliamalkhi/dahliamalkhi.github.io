@@ -14,6 +14,7 @@ author_profile: true
 | Paper | [📄-paper PDF] <br> [🛜 -related post] <br>   [🎥-recorded presentation] |
 | :--- | :-- | 
 | **2026** ||
+|*FirstSwap: Pre-consensus Trade Approvals for Decentralized Market Design*.  <br>Diamond, William and Elsheimy, Fatima and Malkhi, Dahlia and Ramseyer, Geoff and Sridhar, Srivatsan.<br> Available on SSRN. | [[📄-https://ssrn.com/abstract=7652139]](https://ssrn.com/abstract=7652139). |
 | *eAID: Elastic Asynchronous Information Dispersal with Post-Dissemination Pruning*. <br>Rithwik Kerur, Divyakant Agrawal, Dahlia Malkhi, Michael K. Reiter, Amit Wieder <br> [DISC 2026](https://www.disc-conference.org/wp/disc2026/), to appear. | preprint on [[📄-arXiv:2603.24761]](https://arxiv.org/abs/2603.24761) |
 | *Finding Nemo-Nemo: CFT DAG-based Consensus in the WAN.*<br> Rithwik Kerur, Pasindu Tennage, Philipp Jovanovic, Dahlia Malkhi, Alberto Sonnino, Igor Zablotchi. [ACM Middleware 2026](https://middleware-conf.github.io/2026/). (to appear) | preprint on [[📄-arXiv]](https://arxiv.org/abs/2604.08914) |
 | *Thunderbolt: Fast Asynchronous Off-Chain Bitcoin Transfers*.<br>Hongbo Wen, Hanzhi Liu, Jingyu Ke, Yanju Chen, Dahlia Malkhi, Yu Feng.<br> ACM CCS 2026. (to appear) | preprint on [[📄-ePrint]](https://eprint.iacr.org/2025/709) |
