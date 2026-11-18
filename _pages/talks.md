@@ -7,6 +7,7 @@ author_profile: true
 
 | Venue / Date | Presentation title | Recording link / Other notes |
 | :---- | :---- | :---- |
+| [[the 30th Conference on Principles of Distributed Systems (OPODIS 2026)]](https://opodis26.software.imdea.org/), conference keynote speaker | Post-Quantum Migration in Consensus Protocols. | |
 | [[Mid-chain 2026]](https://www.mid-chain.com/), conference keynote speaker | (deferred due to the war) |  |
 | [[Frontiers Forum by SpaceComputer, DevConnect ‘25]](https://frontierforum.xyz/), conference keynote speaker | From HotStuff to Space.  | [[{recording 🎥}]](https://youtube.com/watch?v=sLE_beF5ct8&si=l-aZdhzjXwgLS74Y) |
 | [[Middleware 2025]](https://middleware-conf.github.io/2025/program/keynote-1/), conference keynote speaker  | From Libra to Space. |  |
